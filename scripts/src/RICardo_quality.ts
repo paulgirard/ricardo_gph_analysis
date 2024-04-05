@@ -171,8 +171,8 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
             reportingRatio[`z_${n}`] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp
             worldTradeReportingBilateral += atts.Worldbestguess_Exp || 0
           }
-          worldTradeReporting += atts.Worldbestguess_Exp || 0
         }
+        worldTradeReporting += atts.Worldbestguess_Exp || 0
       })
       const data = {
         year,
