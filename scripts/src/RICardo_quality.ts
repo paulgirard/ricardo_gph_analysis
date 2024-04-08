@@ -1,5 +1,5 @@
 import { MultiDirectedGraph } from "graphology";
-import { flatten, keyBy, keys, range, uniq } from 'lodash';
+import { flatten, get, keyBy, keys, range, sum, uniq } from 'lodash';
 import sqlite3, { Database } from "sqlite3";
 import conf from "./configuration.json";
 
@@ -52,6 +52,8 @@ interface ComputedData {
   ratioValueIntraOnBestGuestReportingBilateral: number;
   ratioValueBestGuessReportingBilateralOnBestGuess: number;
   ratioValueBestGuessReportingBilateralOnFedericoTena: number;
+  partnersOnlyRatio: Record<string, number>,
+  reportingRatio: Record<string, number>
 }
 type NodeAttributes = Record<string, string | number>
 
@@ -161,6 +163,7 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
       let worldTradeReporting = 0;
       let worldTradeTena = 0;
       let nbReportings = 0
+      const partnersOnlyRatio: Record<string, number> = {}
       const reportingRatio: Record<string, number> = {}
       graph.forEachNode((n, atts) => {
 
@@ -168,9 +171,20 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
         if (atts.reporting === 1) {
           nbReportings += 1
           if (graph.degree(n) > 0) {
-            reportingRatio[`z_${n}`] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp
+            reportingRatio[n] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp
             worldTradeReportingBilateral += atts.Worldbestguess_Exp || 0
           }
+        }
+        else {
+          // partner only trade partner aka dead hand
+          // how important if that dead hand
+          const totalTradePartner = sum(graph.inboundEdges().map(e => {
+            const { weight, direction } = graph.getEdgeAttributes(e)
+            if (direction)
+              return weight
+            else return 0
+          }))
+          partnersOnlyRatio[atts.label] = totalTradePartner / worldTradeReporting
         }
         worldTradeReporting += atts.Worldbestguess_Exp || 0
       })
@@ -185,7 +199,8 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
         ratioValueIntraOnBestGuestReportingBilateral: valueFlowsIntraReporting / worldTradeReportingBilateral,
         ratioValueBestGuessReportingBilateralOnBestGuess: worldTradeReportingBilateral / worldTradeReporting,
         ratioValueBestGuessReportingBilateralOnFedericoTena: worldTradeReportingBilateral / worldTradeTena,
-        ...reportingRatio
+        reportingRatio,
+        partnersOnlyRatio
       }
       done(null, data);
     })
@@ -199,12 +214,27 @@ const years = range(conf.startDate, conf.endDate)
 async.map(years, computeGraph, (err, data) => {
   if (err || data === undefined) throw new Error(err ? err.message : "No Data")
   if (data !== undefined) {
-    let csv = `variable,${years.join(',')}\n`;
-    const variables = uniq(flatten(data.map(d => { return keys(d).filter(k => k !== 'year') }))) as (keyof ComputedData)[]
+    const header = (variable: string) => `${variable},${years.join(',')}\n`
+
+    let csv = header("Global ratios");
+    const variables = uniq(flatten(data.map(d => { return keys(d).filter(k => !['year', 'reportingRatio', 'partnersOnlyRatio'].includes(k)) }))) as (keyof ComputedData)[]
 
     const dataByYear = keyBy(data.filter((d): d is ComputedData => d !== undefined), d => d.year)
+
+    const csvLine = (path: string[]) => `${path.slice(1,)},${years.map(y => get(dataByYear[y], path) || '').join(',')}\n`
+
     variables.forEach(variable => {
-      csv += `${variable},${years.map(y => dataByYear[y][variable] || '').join(',')}\n`
+      csv += csvLine([variable])
+    })
+    csv += header('Reportings')
+    const reportings = uniq(flatten(data.map(d => { return keys(d?.reportingRatio) })))
+    reportings.forEach(reporting => {
+      csv += csvLine(['reportingRatio', reporting])
+    })
+    csv += header('Partners (ratio on total bilateral trade)')
+    const partners = uniq(flatten(data.map(d => { return keys(d?.partnersOnlyRatio) })))
+    partners.forEach(partner => {
+      csv += csvLine(['partnersOnlyRatio', partner])
     })
 
 
