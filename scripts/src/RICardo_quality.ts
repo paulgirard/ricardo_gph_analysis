@@ -1,5 +1,5 @@
 import { MultiDirectedGraph } from "graphology";
-import { flatten, get, keyBy, keys, range, sum, uniq } from 'lodash';
+import { flatten, get, keyBy, keys, last, range, sum, uniq } from 'lodash';
 import sqlite3, { Database } from "sqlite3";
 import conf from "./configuration.json";
 
@@ -175,10 +175,14 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
             worldTradeReportingBilateral += atts.Worldbestguess_Exp || 0
           }
         }
-        else {
+        worldTradeReporting += atts.Worldbestguess_Exp || 0
+      })
+      graph.forEachNode((n, atts) => {
+
+        if (atts.reporting !== 1) {
           // partner only trade partner aka dead hand
           // how important if that dead hand
-          const totalTradePartner = sum(graph.inboundEdges().map(e => {
+          const totalTradePartner = sum(graph.inboundEdges(n).map(e => {
             const { weight, direction } = graph.getEdgeAttributes(e)
             if (direction)
               return weight
@@ -186,7 +190,6 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
           }))
           partnersOnlyRatio[atts.label] = totalTradePartner / worldTradeReporting
         }
-        worldTradeReporting += atts.Worldbestguess_Exp || 0
       })
       const data = {
         year,
@@ -221,12 +224,12 @@ async.map(years, computeGraph, (err, data) => {
 
     const dataByYear = keyBy(data.filter((d): d is ComputedData => d !== undefined), d => d.year)
 
-    const csvLine = (path: string[]) => `${path.slice(1,)},${years.map(y => get(dataByYear[y], path) || '').join(',')}\n`
+    const csvLine = (path: string[]) => `${last(path)},${years.map(y => get(dataByYear[y], path) || '').join(',')}\n`
 
     variables.forEach(variable => {
       csv += csvLine([variable])
     })
-    csv += header('Reportings')
+    csv += header('Reportings (BestGuess/FT)')
     const reportings = uniq(flatten(data.map(d => { return keys(d?.reportingRatio) })))
     reportings.forEach(reporting => {
       csv += csvLine(['reportingRatio', reporting])
