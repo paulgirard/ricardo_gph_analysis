@@ -1,5 +1,5 @@
 import { MultiDirectedGraph } from "graphology";
-import { flatten, get, keyBy, keys, last, range, sum, uniq } from 'lodash';
+import { flatten, get, identity, isNaN, keyBy, keys, last, range, sortBy, sum, uniq } from 'lodash';
 import sqlite3, { Database } from "sqlite3";
 import conf from "./configuration.json";
 
@@ -36,7 +36,7 @@ class DB {
     if (this._db === null) {
       this._db = new sqlite3.Database(`${conf["pathToRICardoData"]}/sqlite_data/RICardo_viz.sqlite`);
     }
-    return this._db;
+    return this._db; 
   }
 
 }
@@ -170,8 +170,9 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
         worldTradeTena += atts.WorldFedericoTena_Exp || 0
         if (atts.reporting === 1) {
           nbReportings += 1
-          if (graph.degree(n) > 0) {
-            reportingRatio[n] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp
+          if (graph.degree(n) > 0 && atts.Worldbestguess_Exp) {
+            if (atts.WorldFedericoTena_Exp )
+              reportingRatio[n] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp
             worldTradeReportingBilateral += atts.Worldbestguess_Exp || 0
           }
         }
@@ -179,7 +180,7 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
       })
       graph.forEachNode((n, atts) => {
 
-        if (atts.reporting !== 1) {
+        if (atts.reporting !== 1 && graph.inDegree(n) > 0) {
           // partner only trade partner aka dead hand
           // how important if that dead hand
           const totalTradePartner = sum(graph.inboundEdges(n).map(e => {
@@ -188,7 +189,10 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
               return weight
             else return 0
           }))
-          partnersOnlyRatio[atts.label] = totalTradePartner / worldTradeReporting
+          partnersOnlyRatio[atts.label] = totalTradePartner / worldTradeReporting * 100
+        }
+        else if(atts.reporting !== 1){
+          console.log(`dead hand partner with no incoming flows ${n}`)
         }
       })
       const data = {
@@ -224,18 +228,40 @@ async.map(years, computeGraph, (err, data) => {
 
     const dataByYear = keyBy(data.filter((d): d is ComputedData => d !== undefined), d => d.year)
 
-    const csvLine = (path: string[]) => `${last(path)},${years.map(y => get(dataByYear[y], path) || '').join(',')}\n`
+    const csvLine = (path: string[]) => `${last(path)},${years.map(y => {
+      const value = get(dataByYear[y], path) || '';
+      // reduce float precision
+      return  value  % 1 !== 0 ? value.toPrecision(3) : value
+    }).join(',')}\n`
 
     variables.forEach(variable => {
       csv += csvLine([variable])
     })
     csv += header('Reportings (BestGuess/FT)')
-    const reportings = uniq(flatten(data.map(d => { return keys(d?.reportingRatio) })))
+    // Reportings data: list and sort by average of logs
+    const reportings = sortBy(uniq(flatten(data.map(d => { return keys(d?.reportingRatio) }))),
+      r => {
+        const logs = data.map(d => d?.reportingRatio[r] && !isNaN(d.reportingRatio[r] ) ? 
+                Math.log((Math.abs(1 - d?.reportingRatio[r]))) : null).filter((log):log is number => log !== null);
+        if (logs.length> 0)
+          return -1*sum(logs)/logs.length;
+        else
+          return null;
+      }).filter(identity)
     reportings.forEach(reporting => {
       csv += csvLine(['reportingRatio', reporting])
     })
-    csv += header('Partners (ratio on total bilateral trade)')
-    const partners = uniq(flatten(data.map(d => { return keys(d?.partnersOnlyRatio) })))
+    // Partner data: list and sort by average value
+    csv += header('Partners (percentage on total bilateral trade)')
+    const partners = sortBy(uniq(flatten(data.map(d => { return keys(d?.partnersOnlyRatio) }))),
+    p => {
+      const values = data.map(d => d?.partnersOnlyRatio[p]).filter((v):v is number => v !== undefined && !isNaN(v));
+      if (values.length > 0)
+        return -1*sum(values)/values.length;
+      else {
+        console.log(`no data for partner ${p}`);
+        return null;}
+    }).filter(identity)
     partners.forEach(partner => {
       csv += csvLine(['partnersOnlyRatio', partner])
     })
