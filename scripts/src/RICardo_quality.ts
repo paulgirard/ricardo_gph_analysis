@@ -2,41 +2,10 @@ import async from "async";
 import fs from "fs";
 import { MultiDirectedGraph } from "graphology";
 import { flatten, get, identity, isNaN, keyBy, keys, last, range, sortBy, sum, uniq } from "lodash";
-import sqlite3, { Database } from "sqlite3";
 
+import { DB } from "./DB";
+import { GPH_status } from "./GPH";
 import conf from "./configuration.json";
-
-// GeoPolHist
-type GeoPolHistEntitiesExtended = Record<
-  string,
-  { name: string; years: Record<string, { status: string; sovereign: string }[]> }
->;
-const _GPH_Data = fs.readFileSync(`${conf.pathToGeoPolHist}/data/aggregated/GeoPolHist_entities_extended.json`, "utf8");
-const GPH_Data: GeoPolHistEntitiesExtended = JSON.parse(_GPH_Data);
-
-function GPH_status(GPH_code: string, year: string) {
-  if (GPH_Data && GPH_Data[GPH_code] && GPH_Data[GPH_code].years && year in GPH_Data[GPH_code].years) {
-    return {
-      status: GPH_Data[GPH_code].years[year][0].status,
-      sovereign: GPH_Data[GPH_code].years[year][0].sovereign
-        ? GPH_Data[GPH_Data[GPH_code].years[year][0].sovereign].name
-        : GPH_Data[GPH_code].name,
-    };
-  }
-  return null;
-}
-
-// RICardo database access as singleton
-class DB {
-  static _db: Database | null = null;
-
-  static get(): Database {
-    if (this._db === null) {
-      this._db = new sqlite3.Database(`${conf["pathToRICardoData"]}/sqlite_data/RICardo_viz.sqlite`);
-    }
-    return this._db;
-  }
-}
 
 interface ComputedData {
   year: number;
