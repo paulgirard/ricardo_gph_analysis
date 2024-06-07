@@ -57,7 +57,7 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
               type: r.reporting_type,
               label: r.reporting,
               GPH_status: reporting_GPH_status?.status || r.reporting_type,
-              part_of: r.reporting_part_of_GPH_entity || reporting_GPH_status?.sovereign,
+              part_of: r.reporting_parent_entity || reporting_GPH_status?.sovereign,
               continent: r.reporting_continent,
               reporting: 1,
             });
@@ -66,7 +66,7 @@ const computeGraph = (year: number, done: (error: Error | null, data?: ComputedD
               type: r.partner_type,
               label: r.partner,
               GPH_status: partner_GPH_status?.status || r.partner_type,
-              part_of: r.partner_part_of_GPH_entity || partner_GPH_status?.sovereign,
+              part_of: r.partner_parent_entity || partner_GPH_status?.sovereign,
               continent: r.partner_continent,
             });
             let source = r.reporting_slug;

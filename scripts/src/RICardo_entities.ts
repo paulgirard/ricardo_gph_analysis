@@ -13,12 +13,12 @@ import conf from "./configuration.json";
 //   if (rictype === "GPH")
 
 // }
-type RICType = "GPH_entity" | "group" | "city/part_of" | "geographical_area" | "colonial_area";
+type RICType = "GPH_entity" | "group" | "locality" | "geographical_area" | "colonial_area";
 
 interface RICentity {
   RICname: string;
   type: RICType;
-  part_of_GPH_entity?: string;
+  parent_entity?: string;
   GPH_code?: string;
 }
 
@@ -58,10 +58,11 @@ export const entitesTransformationGraph = (year: number) => {
   const ricToGPH = (RICname: string, graph: GraphType) => {
     const RICentity = RICentities[RICname];
     switch (RICentity.type) {
-      case "city/part_of":
-        // (entity) -[AGGREGATE_INTO]-> (entity)
-        if (RICentity.part_of_GPH_entity) {
-          const parent = RICentities[RICentity.part_of_GPH_entity];
+      case "locality":
+        // (locality) -[AGGREGATE_INTO]-> (parent)
+        if (RICentity.parent_entity) {
+          const parent = RICentities[RICentity.parent_entity];
+          // ajouter le noeud que si pas déjà présent
           graph.updateNode(nodeId(parent), (atts) => ({
             label: parent.RICname,
             reporting: false,
@@ -70,7 +71,7 @@ export const entitesTransformationGraph = (year: number) => {
             ...atts,
           }));
           graph.addDirectedEdge(nodeId(RICentity), nodeId(parent), { label: "AGGREGATE_INTO" });
-        } else throw new Error(`${RICname} is city/part_of without part of`);
+        } else throw new Error(`${RICname} is locality without part of`);
         break;
       case "group":
         // (entity) -[SPLIT]-> (entity)
@@ -78,23 +79,25 @@ export const entitesTransformationGraph = (year: number) => {
           const part = RICentities[group_part.RICname_part];
           // treat group part by recursion if not already seen
           if (!graph.hasNode(nodeId(part))) ricToGPH(part.RICname, graph);
+          // récupérerle résultat de la récursion
           graph.addDirectedEdge(nodeId(RICentity), nodeId(part), { label: "SPLIT" });
         });
         break;
       default:
-        // add without treatment, areas will be done later, GPH are good as is
-        graph.updateNode(nodeId(RICentity), (atts) => ({
-          reporting: false,
-          label: RICentity.RICname,
-          ricType: RICentity.type,
-          entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
-          ...atts,
-        }));
-        break;
+      // add without treatment, areas will be done later, GPH are good as is
+      // nothing to do
+      // graph.updateNode(nodeId(RICentity), (atts) => ({
+      //   reporting: false,
+      //   label: RICentity.RICname,
+      //   ricType: RICentity.type,
+      //   entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
+      //   ...atts,
+      // }));
+      // break;
     }
   };
 
-  const ricGphToSovCol = (gphCode: string, graph: GraphType): string => {
+  const ricGphToSovCol = (gphCode: string, graph: GraphType): string | null => {
     //TODO: replace by GPH dictionary
     const entity = RICentitiesByGPHCode[gphCode];
     if (!entity.GPH_code || entity?.type !== "GPH_entity") {
@@ -111,10 +114,10 @@ export const entitesTransformationGraph = (year: number) => {
             gphStatus: status.status,
             entityType: "GPH-OK",
           });
-          return entity.RICname;
+          return null;
         case "informal":
-          //TODO
-          return entity.RICname;
+          // to be treated as geographical area later
+          return null;
         default: {
           if (status?.sovereign) {
             //TODO: get sovereign name it might not be in RICentity
@@ -135,7 +138,7 @@ export const entitesTransformationGraph = (year: number) => {
 
   const db = DB.get();
   db.all(
-    `SELECT reporting, reporting_type, reporting_part_of_GPH_entity, partner, partner_type, partner_part_of_GPH_entity FROM flow_aggregated
+    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity FROM flow_aggregated
     WHERE
       flow is not null and rate is not null AND
       year = ${year} AND
@@ -160,8 +163,8 @@ export const entitesTransformationGraph = (year: number) => {
           reporting: true,
           ricType: r.reporting_type,
           cited: true,
-          entityType: r.reporting_type === "GPH" ? "GPH-OK" : "RIC",
-          ricPartOf: r.reporting_part_of_GPH_entity,
+          entityType: r.reporting_type === "GPH" ? "GPH" : "RIC",
+          ricPartOf: r.reporting_parent_entity,
         });
         console.log(r.partner);
         const partner = RICentities[r.partner];
@@ -169,8 +172,8 @@ export const entitesTransformationGraph = (year: number) => {
           label: partner.RICname,
           ricType: r.partner_type,
           cited: true,
-          entityType: r.partner_type === "GPH" ? "GPH-OK" : "RIC",
-          ricPartOf: r.partner_part_of_GPH_entity,
+          entityType: r.partner_type === "GPH" ? "GPH" : "RIC",
+          ricPartOf: r.partner_parent_entity,
         });
         graph.addDirectedEdge(reporting.GPH_code || reporting.RICname, partner.GPH_code || partner.RICname, {
           label: "REPORTED_TRADE",
@@ -191,6 +194,8 @@ export const entitesTransformationGraph = (year: number) => {
           graph.addDirectedEdge(n, target, { label: "AGGREGATE_INTO" });
         }
       });
+
+      // HERE GPH** =  GPH* AND cited == true
 
       // STEP 3 OTHERs
       // (entity) -[SPLIT_OTHER]-> (entity)
