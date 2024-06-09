@@ -2,10 +2,10 @@ import { parse } from "csv/sync";
 import { readFileSync, writeFileSync } from "fs";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy, values } from "lodash";
+import { groupBy, keyBy } from "lodash";
 
 import { DB } from "./DB";
-import { GPH_status } from "./GPH";
+import { GPHEntitiesByCode, GPHEntity, GPH_status } from "./GPH";
 import conf from "./configuration.json";
 
 // function targetEntity(ricname:string, rictype:string) {
@@ -22,22 +22,59 @@ interface RICentity {
   GPH_code?: string;
 }
 
+type EntityType = "RIC" | "GPH" | "GPH-AUTONOMOUS" | "GPH-AUTONOMOUS-CITED";
+
 interface NodeAttributes {
   label: string;
   reporting: boolean;
   ricType: RICType;
-  entityType: "RIC" | "GPH" | "GPH-OK";
+  entityType: EntityType;
   cited?: boolean;
   gphStatus?: string;
-  ricPartOf?: string;
+  ricParent?: string;
 }
+
+type EdgeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
 interface EdgeAttribues {
-  label: "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
+  labels: Set<EdgeLabelType>;
+  labelsStr?: string;
 }
 type GraphType = DirectedGraph<NodeAttributes, EdgeAttribues>;
 
-const nodeId = (entity: RICentity) => {
-  return entity.GPH_code || entity.RICname;
+/**
+ * UTILS
+ */
+const nodeId = (entity: RICentity | GPHEntity) => {
+  if ("RICname" in entity) {
+    if (!entity.GPH_code) return entity.RICname;
+    else return entity.GPH_code;
+  } else return entity.GPH_code;
+};
+
+const statsEntityType = (graph: GraphType) => {
+  return {
+    nodes: graph.reduceNodes(
+      (acc: Partial<Record<EntityType, number>>, _, atts) => ({
+        ...acc,
+        [atts.entityType]: (acc[atts.entityType] || 0) + 1,
+      }),
+      {},
+    ),
+    edges: graph.reduceEdges(
+      (acc: Partial<Record<EdgeLabelType, number>>, _, atts) => ({
+        ...acc,
+        ...[...atts.labels].reduce((subacc, l) => ({ ...subacc, [l]: (acc[l] || 0) + 1 }), {}),
+      }),
+      {},
+    ),
+  };
+};
+
+const addEdgeLabel = (graph: GraphType, source: string, target: string, label: EdgeLabelType) => {
+  graph.updateDirectedEdge(source, target, (atts) => ({
+    ...atts,
+    labels: new Set([...(atts.labels || []), label]),
+  }));
 };
 
 export const entitesTransformationGraph = (year: number) => {
@@ -46,10 +83,6 @@ export const entitesTransformationGraph = (year: number) => {
     (r) => r.RICname,
   );
 
-  const RICentitiesByGPHCode = keyBy<RICentity & { GPH_code: string }>(
-    values(RICentities).filter((r): r is RICentity & { GPH_code: string } => r.GPH_code !== undefined),
-    (r) => r.GPH_code,
-  );
   const RICgroups = groupBy<{ RICname_group: string; RICname_part: string }>(
     parse(readFileSync(`${conf["pathToRICardoData"]}/data/RICentities_groups.csv`), { columns: true }),
     (r) => r.RICname_group,
@@ -57,21 +90,29 @@ export const entitesTransformationGraph = (year: number) => {
 
   const ricToGPH = (RICname: string, graph: GraphType) => {
     const RICentity = RICentities[RICname];
+    // make sur the entity is in the graph
+    if (!graph.hasNode(nodeId(RICentity))) {
+      graph.addNode(nodeId(RICentity), {
+        label: RICentity.RICname,
+        reporting: false, // TODO: should we give reporting status to entity created from transforming a reporting ?
+        cited: false,
+        ricType: RICentity.type,
+        entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
+      });
+    }
+
     switch (RICentity.type) {
       case "locality":
         // (locality) -[AGGREGATE_INTO]-> (parent)
         if (RICentity.parent_entity) {
           const parent = RICentities[RICentity.parent_entity];
-          // ajouter le noeud que si pas déjà présent
-          graph.updateNode(nodeId(parent), (atts) => ({
-            label: parent.RICname,
-            reporting: false,
-            ricType: parent.type,
-            entityType: "GPH",
-            ...atts,
-          }));
-          graph.addDirectedEdge(nodeId(RICentity), nodeId(parent), { label: "AGGREGATE_INTO" });
-        } else throw new Error(`${RICname} is locality without part of`);
+          if (!graph.hasNode(parent)) {
+            // recursion on this new parent
+            ricToGPH(parent.RICname, graph);
+          }
+          // for now we store all transformation steps, no shortcut to final (after recursion) solution
+          addEdgeLabel(graph, nodeId(RICentity), nodeId(parent), "AGGREGATE_INTO");
+        } else console.warn(`${RICname} is locality without parent`);
         break;
       case "group":
         // (entity) -[SPLIT]-> (entity)
@@ -79,54 +120,54 @@ export const entitesTransformationGraph = (year: number) => {
           const part = RICentities[group_part.RICname_part];
           // treat group part by recursion if not already seen
           if (!graph.hasNode(nodeId(part))) ricToGPH(part.RICname, graph);
-          // récupérerle résultat de la récursion
-          graph.addDirectedEdge(nodeId(RICentity), nodeId(part), { label: "SPLIT" });
+          // for now we store all transformation steps, no shortcut to final (after recursion) solution
+          graph.addDirectedEdge(nodeId(RICentity), nodeId(part), { labels: new Set(["SPLIT"]) });
         });
         break;
       default:
-      // add without treatment, areas will be done later, GPH are good as is
-      // nothing to do
-      // graph.updateNode(nodeId(RICentity), (atts) => ({
-      //   reporting: false,
-      //   label: RICentity.RICname,
-      //   ricType: RICentity.type,
-      //   entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
-      //   ...atts,
-      // }));
-      // break;
+      // anothing to do: areas will be done later, GPH are good as is
     }
   };
 
-  const ricGphToSovCol = (gphCode: string, graph: GraphType): string | null => {
+  const gphToGPHAutonomous = (gphCode: string, graph: GraphType): string | null => {
     //TODO: replace by GPH dictionary
-    const entity = RICentitiesByGPHCode[gphCode];
-    if (!entity.GPH_code || entity?.type !== "GPH_entity") {
-      throw new Error(`${entity.RICname} is not a GPH with a GPH code`);
+    const entity = GPHEntitiesByCode[gphCode];
+    if (!entity) {
+      throw new Error(`${gphCode} is not a known GPH code`);
     } else {
       const status = GPH_status(gphCode, year + "", true);
       switch (status?.status) {
         case undefined:
-          throw new Error(`unknown GPH ${gphCode}`);
-        case "sovereign":
-        case "colony_of":
+          console.warn(`${entity.GPH_name} (${gphCode}) has no known status in ${year}`);
+          return null;
+        case "Sovereign":
+        case "Associated state of":
+        case "Sovereign (limited)":
+        case "Sovereign (unrecognized)":
+        case "Colony of":
+        case "Dependency of":
+        case "Protectorate of":
           graph.mergeNode(nodeId(entity), {
-            label: entity.RICname,
+            label: entity.GPH_name,
             gphStatus: status.status,
-            entityType: "GPH-OK",
+            entityType: "GPH-AUTONOMOUS",
           });
           return null;
-        case "informal":
+        case "Informal":
           // to be treated as geographical area later
           return null;
         default: {
+          graph.mergeNode(nodeId(entity), {
+            label: entity.GPH_name,
+            gphStatus: status?.status,
+          });
           if (status?.sovereign) {
-            //TODO: get sovereign name it might not be in RICentity
-            const sovereignName = "REPLACE...";
-            graph.mergeNode(status?.sovereign, {
-              label: sovereignName,
+            const sovereign = GPHEntitiesByCode[status.sovereign];
+            graph.mergeNode(sovereign, {
+              label: sovereign.GPH_name,
               entityType: "GPH",
             });
-            return ricGphToSovCol(status?.sovereign, graph);
+            return gphToGPHAutonomous(status?.sovereign, graph) || sovereign.GPH_code;
           } else
             throw new Error(
               `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
@@ -138,7 +179,7 @@ export const entitesTransformationGraph = (year: number) => {
 
   const db = DB.get();
   db.all(
-    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity FROM flow_aggregated
+    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity FROM flow_joined
     WHERE
       flow is not null and rate is not null AND
       year = ${year} AND
@@ -163,45 +204,59 @@ export const entitesTransformationGraph = (year: number) => {
           reporting: true,
           ricType: r.reporting_type,
           cited: true,
-          entityType: r.reporting_type === "GPH" ? "GPH" : "RIC",
-          ricPartOf: r.reporting_parent_entity,
+          entityType: r.reporting_type === "GPH_entity" ? "GPH" : "RIC",
+          ricParent: r.reporting_parent_entity,
         });
-        console.log(r.partner);
         const partner = RICentities[r.partner];
         graph.mergeNode(partner.GPH_code || partner.RICname, {
           label: partner.RICname,
           ricType: r.partner_type,
           cited: true,
-          entityType: r.partner_type === "GPH" ? "GPH" : "RIC",
-          ricPartOf: r.partner_parent_entity,
+          entityType: r.partner_type === "GPH_entity" ? "GPH" : "RIC",
+          ricParent: r.partner_parent_entity,
         });
         graph.addDirectedEdge(reporting.GPH_code || reporting.RICname, partner.GPH_code || partner.RICname, {
-          label: "REPORTED_TRADE",
+          labels: new Set(["REPORTED_TRADE"]),
         });
       });
-
+      console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
       //STEP 1 RIC => GPH (but areas)
       const notGphRicNodes = graph.filterNodes((_, atts) => atts.entityType === "RIC");
       notGphRicNodes.forEach((n) => {
         ricToGPH(n, graph);
       });
 
+      console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
+
       // STEP 2 GPH => GPH*
       const GphNodes = graph.filterNodes((_, atts) => atts.entityType === "GPH");
       GphNodes.forEach((n) => {
-        const target = ricGphToSovCol(n, graph);
-        if (target !== n) {
-          graph.addDirectedEdge(n, target, { label: "AGGREGATE_INTO" });
+        const target = gphToGPHAutonomous(n, graph);
+        if (target !== null && target !== n) {
+          addEdgeLabel(graph, n, target, "AGGREGATE_INTO");
         }
       });
 
       // HERE GPH** =  GPH* AND cited == true
+      graph.mapNodes((_, atts) => ({
+        ...atts,
+        entityType: atts.entityType === "GPH-AUTONOMOUS" && atts.cited ? "GPH-AUTONOMOUS-CITED" : atts.entityType,
+      }));
+
+      console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
 
       // STEP 3 OTHERs
       // (entity) -[SPLIT_OTHER]-> (entity)
 
       // STEP 4 treat trade data
       // (entity) -[GENERATED_TRADE]-> (entity)
+
+      //bug in gexf export with set as attributes
+      //graph.mapDirectedEdges((_, atts) => ({ ...atts, labels: [...atts.labels].join("|") }));
+      graph.edges().forEach((e) => {
+        const atts = graph.getEdgeAttributes(e);
+        graph.setEdgeAttribute(e, "labelsStr", [...atts.labels].join("|"));
+      });
 
       writeFileSync(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
     },
