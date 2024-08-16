@@ -5,7 +5,7 @@ import gexf from "graphology-gexf";
 import { groupBy, keyBy } from "lodash";
 
 import { DB } from "./DB";
-import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPH_status } from "./GPH";
+import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import conf from "./configuration.json";
 
@@ -31,7 +31,7 @@ interface NodeAttributes {
   ricType: RICType;
   entityType: EntityType;
   cited?: boolean;
-  gphStatus?: string;
+  gphStatus?: GPHStatusType;
   ricParent?: string;
 }
 
@@ -154,11 +154,13 @@ export const entitesTransformationGraph = (year: number) => {
             entityType: "GPH-AUTONOMOUS",
           });
           return nodeId(entity);
-        case "Discovered":
-        case "Unknown":
         case "Informal":
-          console.warn(`${entity.GPH_name} (${gphCode}) not treated yet. TODO`);
           // to be treated as geographical area later
+          graph.mergeNode(nodeId(entity), {
+            label: entity.GPH_name,
+            gphStatus: status.status,
+            entityType: "GPH",
+          });
           return nodeId(entity);
         default: {
           if (status?.sovereign) {
@@ -325,10 +327,23 @@ export const entitesTransformationGraph = (year: number) => {
           } else console.warn(`colonial area not in geographical translation table: ${atts.label}`);
         });
 
-      // TODO treat informal cases
-      // get all entities which are 'part of' or 'dissolved into' the informal
-      // remove from those the one which have a political link to another entity the year studied
-
+      // treat informal cases
+      graph
+        .filterNodes((_, atts) => atts.gphStatus === "Informal")
+        .forEach((informalNode) => {
+          const atts = graph.getNodeAttributes(informalNode);
+          console.log("treating informal", informalNode, atts);
+          const parts = GPH_informal_parts(informalNode, year);
+          console.log(`found ${parts.length} parts`);
+          if (parts.length > 0) {
+            parts.forEach((p) => {
+              // TODO: remove from those the one which have a political link to another entity the year studied
+              // not easy to do lot of false negative, the in graph filter might suffice.
+              console.log(p, graph.hasNode(p) && graph.degree(p));
+              if (graph.hasNode(p) && graph.degree(p) > 0) addEdgeLabel(graph, informalNode, p, "SPLIT_OTHER");
+            });
+          } else console.warn(`no parts for informal ${informalNode} in year ${year}`);
+        });
       // STEP 4 treat trade data
       // (entity) -[GENERATED_TRADE]-> (entity)
 

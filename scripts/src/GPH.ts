@@ -1,6 +1,6 @@
 import { parse } from "csv/sync";
 import { readFileSync } from "fs";
-import { keyBy } from "lodash";
+import { keyBy, toPairs, values } from "lodash";
 
 import conf from "./configuration.json";
 
@@ -54,6 +54,28 @@ export function GPH_status(GPH_code: string, year: string, sovereignCode?: boole
     };
   }
   return null;
+}
+/**
+ * GPH_informal_parts retrieve entities which formed an informal entity at its creation
+ * @param informal_GPH_code code of the informal entity
+ * @param year year to filter out parts which are not autonomous
+ */
+export function GPH_informal_parts(informal_GPH_code: string, year: number) {
+  const parts = toPairs(GPHInTime)
+    .map(([entity_code, gph_data]) => {
+      // get all entities which are 'part of' or 'dissolved into' the informal
+      if (
+        gph_data.years[year] &&
+        values(gph_data.years).some((statuses) =>
+          statuses.some((s) => s.sovereign === informal_GPH_code && ["Part of", "Dissolved into"].includes(s.status)),
+        )
+      ) {
+        return entity_code;
+      } else return null;
+    })
+    .filter((code): code is string => code !== null);
+
+  return parts;
 }
 
 export type GPHStatusType =
