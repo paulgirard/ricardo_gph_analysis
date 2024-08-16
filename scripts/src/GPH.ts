@@ -39,7 +39,7 @@ const _GPH_Data = readFileSync(`${conf.pathToGeoPolHist}/data/aggregated/GeoPolH
 const GPHInTime: GeoPolHistEntitiesExtended = JSON.parse(_GPH_Data);
 
 const gphEntitiesF = readFileSync(`${conf.pathToGeoPolHist}/data/GeoPolHist_entities.csv`);
-const GPHEntities = parse(gphEntitiesF, { columns: true }) as GPHEntity[];
+export const GPHEntities = parse(gphEntitiesF, { columns: true }) as GPHEntity[];
 export const GPHEntitiesByCode = keyBy(GPHEntities, (g) => g.GPH_code);
 
 export function GPH_status(GPH_code: string, year: string, sovereignCode?: boolean) {
