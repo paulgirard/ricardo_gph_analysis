@@ -2,7 +2,7 @@ import { parse } from "csv/sync";
 import { readFileSync, writeFileSync } from "fs";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy } from "lodash";
+import { groupBy, keyBy, sum } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
@@ -33,12 +33,18 @@ interface NodeAttributes {
   cited?: boolean;
   gphStatus?: GPHStatusType;
   ricParent?: string;
+  totalBilateralTrade?: number;
 }
 
 type EdgeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
 interface EdgeAttribues {
   labels: Set<EdgeLabelType>;
   labelsStr?: string;
+  Exp?: number;
+  Imp?: number;
+  reportedBy?: string;
+  status?: "toTreat" | "ok";
+  value?: number;
 }
 type GraphType = DirectedGraph<NodeAttributes, EdgeAttribues>;
 
@@ -188,12 +194,11 @@ export const entitesTransformationGraph = (year: number) => {
 
   const db = DB.get();
   db.all(
-    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity FROM flow_joined
+    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity, flow, unit, rate, expimp FROM flow_joined
     WHERE
       flow is not null and rate is not null AND
       year = ${year} AND
       (partner is not null AND (partner not LIKE 'world%'))
-      GROUP BY reporting, partner
       `,
     function (err, rows) {
       console.log(year);
@@ -224,10 +229,31 @@ export const entitesTransformationGraph = (year: number) => {
           entityType: r.partner_type === "GPH_entity" ? "GPH" : "RIC",
           ricParent: r.partner_parent_entity,
         });
-        graph.addDirectedEdge(reporting.GPH_code || reporting.RICname, partner.GPH_code || partner.RICname, {
+        const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
+        const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
+        // add trade value on directed edges: bilateral trade
+        const value = { [r.expimp]: (r.flow * r.unit) / (r.rate + 0 || 1) };
+
+        graph.mergeDirectedEdge(from, to, {
           labels: new Set(["REPORTED_TRADE"]),
+          // add reported by attribute to trade flows
+          reportedBy: reporting.RICname,
+          ...value,
         });
       });
+
+      graph.forEachNode((node) => {
+        // add trade value on nodes: weightedDegree (sum of bilateral trade of connected edges)
+        graph.setNodeAttribute(
+          node,
+          "totalBilateralTrade",
+          graph.edges(node).reduce((total: number, e) => {
+            const tradeValue = graph.getEdgeAttribute(e, "Exp") || graph.getEdgeAttribute(e, "Imp") || 0;
+            return total + tradeValue;
+          }, 0),
+        );
+      });
+
       console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
       //STEP 1 RIC => GPH (but areas)
       const notGphRicNodes = graph.filterNodes((_, atts) => atts.entityType === "RIC");
@@ -245,12 +271,6 @@ export const entitesTransformationGraph = (year: number) => {
           addEdgeLabel(graph, n, target, "AGGREGATE_INTO");
         }
       });
-
-      // HERE GPH** =  GPH* AND cited == true
-      graph.mapNodes((_, atts) => ({
-        ...atts,
-        entityType: atts.entityType === "GPH-AUTONOMOUS" && atts.cited ? "GPH-AUTONOMOUS-CITED" : atts.entityType,
-      }));
 
       console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
 
@@ -329,7 +349,8 @@ export const entitesTransformationGraph = (year: number) => {
 
       // treat informal cases
       graph
-        .filterNodes((_, atts) => atts.gphStatus === "Informal")
+        // todo : apply to all undefined GPH status
+        .filterNodes((_, atts) => atts.gphStatus === "Informal" || atts.gphStatus === undefined)
         .forEach((informalNode) => {
           const atts = graph.getNodeAttributes(informalNode);
           console.log("treating informal", informalNode, atts);
@@ -339,24 +360,74 @@ export const entitesTransformationGraph = (year: number) => {
             parts.forEach((p) => {
               // TODO: remove from those the one which have a political link to another entity the year studied
               // not easy to do lot of false negative, the in graph filter might suffice.
-              console.log(p, graph.hasNode(p) && graph.degree(p));
+              //console.log(p, graph.hasNode(p) && graph.degree(p));
               if (graph.hasNode(p) && graph.degree(p) > 0) addEdgeLabel(graph, informalNode, p, "SPLIT_OTHER");
             });
           } else console.warn(`no parts for informal ${informalNode} in year ${year}`);
         });
+
+      //bug in gexf export with set as attributes
+      //graph.mapDirectedEdges((_, atts) => ({ ...atts, labels: [...atts.labels].join("|") }));
+
+      // HERE GPH** =  GPH* AND cited == true
+      graph.forEachNode((n, atts) => {
+        if (atts.entityType === "GPH-AUTONOMOUS" && atts.cited === true) {
+          graph.setNodeAttribute(n, "entityType", "GPH-AUTONOMOUS-CITED");
+        }
+      });
+
+      graph.forEachEdge((e, atts) => {
+        // simplify label for Gephi Lite
+        graph.setEdgeAttribute(e, "labelsStr", [...atts.labels].join("|"));
+        // flag edges to be treated
+        if (atts.labels.has("REPORTED_TRADE")) {
+          if (graph.extremities(e).every((n) => graph.getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED"))
+            graph.setEdgeAttribute(e, "status", "ok");
+          else graph.setEdgeAttribute(e, "status", "toTreat");
+        }
+        // average import/export
+        const values = [];
+        if (atts.Exp) values.push(atts.Exp);
+        if (atts.Imp) values.push(atts.Imp);
+        if (values.length > 0) graph.setEdgeAttribute(e, "value", sum(values) / values.length);
+      });
+
       // STEP 4 treat trade data
+
+      // trade edges we want to keep as is
+      // trade between two cited GPH autonomous
+
+      // we could start by reporting which are locality cause simple to handle
+
+      // to be treated:
+      // - not cited: at least one of the node is GPH autonomous but not cited
+      // - not autonomous: at least one of the node is GPH not autonomous
+      // - not GPH: at least one of the node is not GPH
+
+      // general idea:
+      // - follow edges recursively (AGGREGATE_INTO SPLIT_INTO ...) till the first GPH autonomous entity (cited or not)
+      // - we want to remove internal flows
+      // - find a way to transform the existing trade edge into the one or many new edges to GPH autonomous
+      // - some trade flow (or part of existing flow) will be redirected to a "rest of the world" entity
+      // - Not cited autonomous entity are not kept. Trade to not cited autonomous entities are merged to the 'Rest of the world' entity.
+
+      // - cited autonomous reporting entity trade with not interested (real partners) which we transform into a list of autonomous cited (ideal partners)
+      // - we must ignore the ideal partners which are already reported by the cited autonomous reporting
+      // - we should split the trade (to be defined later) into the ideal partner filtered list
+
+      // method which resolve one not wanted entity into a list of relevant GPH autonomous cited (recursive) + list of to-be-merged-into-rest-of-world entities
+      // method which filters out this list to make sure not to generate duplicated/superfluous flows (...)
+
+      // rule locality + parent are reporting: remove locality node + all flows reported by it
+      // rule Group :
+      // - split trade value with new partner part of group (see work by Béatrice and Paul to be rediscussed)
+      // -
+
       // (entity) -[GENERATED_TRADE]-> (entity)
 
       // /!\ for SPLIT_OTHER
       // - remove reporting from entities
       // - remove entities which are already cited in reporting trade
-
-      //bug in gexf export with set as attributes
-      //graph.mapDirectedEdges((_, atts) => ({ ...atts, labels: [...atts.labels].join("|") }));
-      graph.edges().forEach((e) => {
-        const atts = graph.getEdgeAttributes(e);
-        graph.setEdgeAttribute(e, "labelsStr", [...atts.labels].join("|"));
-      });
 
       writeFileSync(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
     },
