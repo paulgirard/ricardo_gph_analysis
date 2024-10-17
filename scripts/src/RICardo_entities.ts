@@ -8,6 +8,7 @@ import { DB } from "./DB";
 import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import conf from "./configuration.json";
+import { resolveAutonomous } from "./graphTraversals";
 
 // function targetEntity(ricname:string, rictype:string) {
 
@@ -43,10 +44,11 @@ interface EdgeAttribues {
   Exp?: number;
   Imp?: number;
   reportedBy?: string;
-  status?: "toTreat" | "ok";
+  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved";
   value?: number;
+  valueAlt?: number;
 }
-type GraphType = DirectedGraph<NodeAttributes, EdgeAttribues>;
+export type GraphType = DirectedGraph<NodeAttributes, EdgeAttribues>;
 
 /**
  * UTILS
@@ -393,6 +395,66 @@ export const entitesTransformationGraph = (year: number) => {
       });
 
       // STEP 4 treat trade data
+      graph
+        .filterEdges((_, atts) => atts.status === "toTreat")
+        .forEach((e) => {
+          const autonomousExporters = resolveAutonomous(graph.source(e), graph);
+          const autonomousImporters = resolveAutonomous(graph.target(e), graph);
+          const valueToTreat = graph.getEdgeAttribute(e, "value");
+
+          if (autonomousExporters.length === 1 && autonomousImporters.length === 1) {
+            // case of simple resolution 1:1
+            // créer une méthode
+            const newSource = autonomousExporters[0];
+            const newTarget = autonomousImporters[0];
+            // internal trade flows case => source = target
+            if (newSource === newTarget) {
+              graph.setEdgeAttribute(e, "status", "ignore_internal");
+              return;
+            } else {
+              // first check if trade flow does not already exist
+              if (graph.hasDirectedEdge(newSource, newTarget)) {
+                const e = graph.edge(newSource, newTarget);
+                const labels = graph.getEdgeAttribute(e, "labels");
+
+                if (labels.has("REPORTED_TRADE")) {
+                  // we already have a direct reported figure
+                  // flag and see later
+                  // erreur de type de collision
+                  graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (valueToTreat || 0));
+                } else {
+                  throw new Error(
+                    `${newSource}->${newTarget} can't be created as a ${[...labels].join(", ")} edge already exists`,
+                  );
+                }
+              } else {
+                // re-route the edge
+                graph.addDirectedEdge(newSource, newTarget, {
+                  ...graph.getEdgeAttributes(e),
+                  labels: new Set(["GENERATED_TRADE"]),
+                });
+              }
+              // state the edge as resolved
+              graph.setEdgeAttribute(e, "status", "ignore_resolved");
+              return;
+            }
+          } else {
+            // 1 -> n  or n -> 1 case
+            // parcourir les 1- a puis 1 -> b et pour chacun d'eux
+            // il faut à minima vérifier si on n'a pas déjà un flux
+            // n -> n case
+            // cas en attente de clef
+            // (newexporters) -- (RESOLUTION 1 type resolution : aggregate, split les deux, value flux d'origine) --> (newImporter)
+            // comment représenter les dead-ends resolutions impossible
+            // générer les flux 1:1
+            // flaggue le noeud résolution avec colision ou pas
+          }
+        });
+
+      // Tâches à faire en regardant les résolutions
+      // déterminer si les cas de résolution vaut la peine
+      // déterminer la clef de répartition de la valeur des flux
+      // déterminer comment résoudre les collisions avec le flux de commerce existant (somme, ajout miroire, ignorer...)
 
       // trade edges we want to keep as is
       // trade between two cited GPH autonomous
