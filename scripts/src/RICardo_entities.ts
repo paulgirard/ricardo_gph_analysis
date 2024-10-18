@@ -8,7 +8,7 @@ import { DB } from "./DB";
 import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import conf from "./configuration.json";
-import { resolveAutonomous } from "./graphTraversals";
+import { resolveAutonomous, resolveTradeFlow } from "./graphTraversals";
 
 // function targetEntity(ricname:string, rictype:string) {
 
@@ -24,9 +24,9 @@ interface RICentity {
   GPH_code?: string;
 }
 
-type EntityType = "RIC" | "GPH" | "GPH-AUTONOMOUS" | "GPH-AUTONOMOUS-CITED";
+type EntityType = "RIC" | "GPH" | "GPH-AUTONOMOUS" | "GPH-AUTONOMOUS-CITED" | "ROTW";
 
-interface NodeAttributes {
+interface EntityNodeAttributes {
   label: string;
   reporting: boolean;
   ricType: RICType;
@@ -35,20 +35,28 @@ interface NodeAttributes {
   gphStatus?: GPHStatusType;
   ricParent?: string;
   totalBilateralTrade?: number;
+  type: "entity";
+}
+interface ResolutionNodeAttributes {
+  label: string;
+  type: "resolution";
+  value?: number;
 }
 
-type EdgeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
+type EdgeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER" | "RESOLVE";
 interface EdgeAttribues {
   labels: Set<EdgeLabelType>;
   labelsStr?: string;
   Exp?: number;
   Imp?: number;
   reportedBy?: string;
-  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved";
+  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved" | "collision";
   value?: number;
-  valueAlt?: number;
+  collision: Set<"Exp" | "Imp">;
 }
-export type GraphType = DirectedGraph<NodeAttributes, EdgeAttribues>;
+export type GraphType = DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttribues>;
+export type GraphEntityPartiteType = DirectedGraph<EntityNodeAttributes, EdgeAttribues>;
+export type GraphResolutionPartiteType = DirectedGraph<ResolutionNodeAttributes, EdgeAttribues>;
 
 /**
  * UTILS
@@ -62,13 +70,17 @@ const nodeId = (entity: RICentity | GPHEntity) => {
 
 const statsEntityType = (graph: GraphType) => {
   return {
-    nodes: graph.reduceNodes(
-      (acc: Partial<Record<EntityType, number>>, _, atts) => ({
-        ...acc,
-        [atts.entityType]: (acc[atts.entityType] || 0) + 1,
-      }),
-      {},
-    ),
+    nodes: graph
+      .filterNodes((n, atts) => {
+        atts.type === "entity";
+      })
+      .reduce((acc: Partial<Record<EntityType, number>>, n) => {
+        const atts = graph.getNodeAttributes(n) as EntityNodeAttributes;
+        return {
+          ...acc,
+          [atts.entityType]: (acc[atts.entityType] || 0) + 1,
+        };
+      }, {}),
     edges: graph.reduceEdges(
       (acc: Partial<Record<EdgeLabelType, number>>, _, atts) => ({
         ...acc,
@@ -107,6 +119,7 @@ export const entitesTransformationGraph = (year: number) => {
         cited: false,
         ricType: RICentity.type,
         entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
+        type: "entity",
       });
     }
 
@@ -147,7 +160,7 @@ export const entitesTransformationGraph = (year: number) => {
       const status = GPH_status(gphCode, year + "", true);
       switch (status?.status) {
         case undefined:
-          console.warn(`${entity.GPH_name} (${gphCode}) has no known status in ${year}`);
+          //console.warn(`${entity.GPH_name} (${gphCode}) has no known status in ${year}`);
           return nodeId(entity);
         case "Sovereign":
         case "Associated state of":
@@ -160,6 +173,7 @@ export const entitesTransformationGraph = (year: number) => {
             label: entity.GPH_name,
             gphStatus: status.status,
             entityType: "GPH-AUTONOMOUS",
+            type: "entity",
           });
           return nodeId(entity);
         case "Informal":
@@ -168,6 +182,7 @@ export const entitesTransformationGraph = (year: number) => {
             label: entity.GPH_name,
             gphStatus: status.status,
             entityType: "GPH",
+            type: "entity",
           });
           return nodeId(entity);
         default: {
@@ -175,14 +190,15 @@ export const entitesTransformationGraph = (year: number) => {
             const sovereign = GPHEntitiesByCode[status.sovereign];
             graph.mergeNode(nodeId(sovereign), {
               label: sovereign.GPH_name,
-
               entityType: "GPH",
+              type: "entity",
             });
             return gphToGPHAutonomous(status?.sovereign, graph) || sovereign.GPH_code;
           } else {
             graph.mergeNode(nodeId(entity), {
               label: entity.GPH_name,
               gphStatus: status?.status,
+              type: "entity",
             });
             console.warn(
               `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
@@ -196,17 +212,18 @@ export const entitesTransformationGraph = (year: number) => {
 
   const db = DB.get();
   db.all(
-    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity, flow, unit, rate, expimp FROM flow_joined
-    WHERE
-      flow is not null and rate is not null AND
-      year = ${year} AND
-      (partner is not null AND (partner not LIKE 'world%'))
-      `,
+    `SELECT reporting, reporting_type, reporting_parent_entity, partner, partner_type, partner_parent_entity, flow, unit, rate, expimp 
+      FROM flow_joined
+      WHERE
+        flow is not null and rate is not null AND
+        year = ${year} AND
+        (partner is not null AND (partner not LIKE 'world%'))
+        `,
     function (err, rows) {
       console.log(year);
       if (err) throw err;
 
-      const graph = new DirectedGraph<NodeAttributes, EdgeAttribues>();
+      const graph = new DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttribues>();
 
       // trade network (baseline)
       // (reporting) -[REPORTED_TRADE]-> (partner)
@@ -222,6 +239,7 @@ export const entitesTransformationGraph = (year: number) => {
           cited: true,
           entityType: r.reporting_type === "GPH_entity" ? "GPH" : "RIC",
           ricParent: r.reporting_parent_entity,
+          type: "entity",
         });
         const partner = RICentities[r.partner];
         graph.mergeNode(nodeId(partner), {
@@ -230,6 +248,7 @@ export const entitesTransformationGraph = (year: number) => {
           cited: true,
           entityType: r.partner_type === "GPH_entity" ? "GPH" : "RIC",
           ricParent: r.partner_parent_entity,
+          type: "entity",
         });
         const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
         const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
@@ -246,27 +265,28 @@ export const entitesTransformationGraph = (year: number) => {
 
       graph.forEachNode((node) => {
         // add trade value on nodes: weightedDegree (sum of bilateral trade of connected edges)
-        graph.setNodeAttribute(
-          node,
-          "totalBilateralTrade",
-          graph.edges(node).reduce((total: number, e) => {
-            const tradeValue = graph.getEdgeAttribute(e, "Exp") || graph.getEdgeAttribute(e, "Imp") || 0;
-            return total + tradeValue;
-          }, 0),
-        );
+        if (graph.getNodeAttribute(node, "type") === "entity")
+          (graph as GraphEntityPartiteType).setNodeAttribute(
+            node,
+            "totalBilateralTrade",
+            graph.edges(node).reduce((total: number, e) => {
+              const tradeValue = graph.getEdgeAttribute(e, "Exp") || graph.getEdgeAttribute(e, "Imp") || 0;
+              return total + tradeValue;
+            }, 0),
+          );
       });
 
       console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
       //STEP 1 RIC => GPH (but areas)
-      const notGphRicNodes = graph.filterNodes((_, atts) => atts.entityType === "RIC");
+      const notGphRicNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "RIC");
       notGphRicNodes.forEach((n) => {
         ricToGPH(n, graph);
       });
 
       console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
 
-      // STEP 2 GPH => GPH*
-      const GphNodes = graph.filterNodes((_, atts) => atts.entityType === "GPH");
+      // STEP 2 GPH => GPH autonomous
+      const GphNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "GPH");
       GphNodes.forEach((n) => {
         const target = gphToGPHAutonomous(n, graph);
         if (target !== null && target !== n) {
@@ -281,9 +301,12 @@ export const entitesTransformationGraph = (year: number) => {
       // for all areas
       // (area_entity) -[SPLIT_OTHER]-> (member_entity)
       graph
-        .filterNodes((_, atts) => ["geographical_area", "colonial_area"].includes(atts.ricType))
+        .filterNodes(
+          (_, atts) => atts.type === "entity" && ["geographical_area", "colonial_area"].includes(atts.ricType),
+        )
         .forEach((n) => {
-          const atts = graph.getNodeAttributes(n);
+          const entityGraph = graph as GraphEntityPartiteType;
+          const atts = entityGraph.getNodeAttributes(n);
           // find geographical areas members (combine the two tables)
           const colonialEmpire =
             atts.ricParent && RICentities[atts.ricParent] ? RICentities[atts.ricParent].GPH_code : undefined;
@@ -349,15 +372,19 @@ export const entitesTransformationGraph = (year: number) => {
           } else console.warn(`colonial area not in geographical translation table: ${atts.label}`);
         });
 
-      // treat informal cases
+      // treat informal and no Known GPH status cases
       graph
         // todo : apply to all undefined GPH status
-        .filterNodes((_, atts) => atts.gphStatus === "Informal" || atts.gphStatus === undefined)
+        .filterNodes(
+          (_, atts) =>
+            atts.type === "entity" &&
+            atts.entityType === "GPH" &&
+            (atts.gphStatus === "Informal" || atts.gphStatus === undefined),
+        )
         .forEach((informalNode) => {
-          const atts = graph.getNodeAttributes(informalNode);
-          console.log("treating informal", informalNode, atts);
+          //console.log("treating informal", informalNode, atts);
           const parts = GPH_informal_parts(informalNode, year);
-          console.log(`found ${parts.length} parts`);
+          //console.log(`found ${parts.length} parts`);
           if (parts.length > 0) {
             parts.forEach((p) => {
               // TODO: remove from those the one which have a political link to another entity the year studied
@@ -371,10 +398,22 @@ export const entitesTransformationGraph = (year: number) => {
       //bug in gexf export with set as attributes
       //graph.mapDirectedEdges((_, atts) => ({ ...atts, labels: [...atts.labels].join("|") }));
 
-      // HERE GPH** =  GPH* AND cited == true
+      // Detect GPH Autonomous cited
       graph.forEachNode((n, atts) => {
-        if (atts.entityType === "GPH-AUTONOMOUS" && atts.cited === true) {
-          graph.setNodeAttribute(n, "entityType", "GPH-AUTONOMOUS-CITED");
+        if (atts.type === "entity" && atts.entityType === "GPH-AUTONOMOUS") {
+          const entityGraph = graph as GraphEntityPartiteType;
+          if (
+            atts.cited === true
+            // grant GPH-AUTONOMOUS-CITED status to sovereign whose one locality is cited
+            // || entityGraph.filterInNeighbors(n, (nb) => {
+            //   return (
+            //     entityGraph.getNodeAttribute(nb, "cited") &&
+            //     graph.getEdgeAttribute(nb, n, "labels").has("AGGREGATE_INTO")
+            //   );
+            // }).length > 0
+          ) {
+            entityGraph.setNodeAttribute(n, "entityType", "GPH-AUTONOMOUS-CITED");
+          }
         }
       });
 
@@ -383,7 +422,13 @@ export const entitesTransformationGraph = (year: number) => {
         graph.setEdgeAttribute(e, "labelsStr", [...atts.labels].join("|"));
         // flag edges to be treated
         if (atts.labels.has("REPORTED_TRADE")) {
-          if (graph.extremities(e).every((n) => graph.getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED"))
+          if (
+            graph
+              .extremities(e)
+              .every(
+                (n) => (graph as GraphEntityPartiteType).getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED",
+              )
+          )
             graph.setEdgeAttribute(e, "status", "ok");
           else graph.setEdgeAttribute(e, "status", "toTreat");
         }
@@ -401,44 +446,38 @@ export const entitesTransformationGraph = (year: number) => {
           const autonomousExporters = resolveAutonomous(graph.source(e), graph);
           const autonomousImporters = resolveAutonomous(graph.target(e), graph);
           const valueToTreat = graph.getEdgeAttribute(e, "value");
+          const tradeDirection =
+            (graph as GraphEntityPartiteType).getEdgeAttribute(e, "reportedBy") === graph.source(e) ? "Exp" : "Imp";
 
           if (autonomousExporters.length === 1 && autonomousImporters.length === 1) {
             // case of simple resolution 1:1
             // créer une méthode
             const newSource = autonomousExporters[0];
             const newTarget = autonomousImporters[0];
-            // internal trade flows case => source = target
-            if (newSource === newTarget) {
-              graph.setEdgeAttribute(e, "status", "ignore_internal");
-              return;
-            } else {
-              // first check if trade flow does not already exist
-              if (graph.hasDirectedEdge(newSource, newTarget)) {
-                const e = graph.edge(newSource, newTarget);
-                const labels = graph.getEdgeAttribute(e, "labels");
-
-                if (labels.has("REPORTED_TRADE")) {
-                  // we already have a direct reported figure
-                  // flag and see later
-                  // erreur de type de collision
-                  graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (valueToTreat || 0));
-                } else {
-                  throw new Error(
-                    `${newSource}->${newTarget} can't be created as a ${[...labels].join(", ")} edge already exists`,
-                  );
-                }
-              } else {
-                // re-route the edge
-                graph.addDirectedEdge(newSource, newTarget, {
-                  ...graph.getEdgeAttributes(e),
-                  labels: new Set(["GENERATED_TRADE"]),
-                });
-              }
-              // state the edge as resolved
-              graph.setEdgeAttribute(e, "status", "ignore_resolved");
-              return;
-            }
+            resolveTradeFlow(graph, e, newSource, newTarget, tradeDirection);
           } else {
+            console.log(
+              ` ${graph.source(e)} transform to ${autonomousExporters.length} ${graph.target(e)} transform to ${autonomousImporters.length}`,
+            );
+            // we create one RESOLUTION node to inspect cases
+            (graph as GraphResolutionPartiteType).addNode(e, {
+              type: "resolution",
+              label: graph
+                .extremities(e)
+                .map((n) => graph.getNodeAttribute(n, "label"))
+                .join("->"),
+              value: graph.getEdgeAttribute(e, "value"),
+            });
+
+            autonomousExporters.forEach((exporter) => {
+              addEdgeLabel(graph, exporter, e, "RESOLVE");
+            });
+            autonomousImporters.forEach((importer) => {
+              addEdgeLabel(graph, importer, e, "RESOLVE");
+            });
+
+            //
+
             // 1 -> n  or n -> 1 case
             // parcourir les 1- a puis 1 -> b et pour chacun d'eux
             // il faut à minima vérifier si on n'a pas déjà un flux
