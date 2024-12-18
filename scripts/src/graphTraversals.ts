@@ -7,48 +7,55 @@ export interface AutonomousResolutionType {
   traversedLabels: Set<EntityResolutionLabelType>;
 }
 
-export function resolveAutonomous(entityId: string, graph: GraphType): AutonomousResolutionType {
-  if ((graph as GraphEntityPartiteType).getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
-    return { autonomousIds: [entityId], traversedLabels: new Set() };
-  const traversedLabels = new Set<EntityResolutionLabelType>();
-  const autonomousEntities = flatten(
+function getEntityAutonomousResolutionEdges(entityNodeId: string, graph: GraphEntityPartiteType) {
+  return (
     graph
       // only traverse aggregate and split edges
       .filterOutboundEdges(
-        entityId,
+        entityNodeId,
         (_, atts) => atts.labels.has("AGGREGATE_INTO") || atts.labels.has("SPLIT") || atts.labels.has("SPLIT_OTHER"),
       )
-      .map((e) => {
-        // track traversed labels
-        graph.getEdgeAttribute(e, "labels").forEach((l) => {
-          if (l === "AGGREGATE_INTO" || l === "SPLIT" || l === "SPLIT_OTHER") traversedLabels.add(l);
-        });
+  );
+}
 
-        const n = graph.target(e);
+export function resolveAutonomous(entityId: string, graph: GraphEntityPartiteType): AutonomousResolutionType {
+  console.log(`resolve ${entityId}`);
+  if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
+    return { autonomousIds: [entityId], traversedLabels: new Set() };
+  const traversedLabels = new Set<EntityResolutionLabelType>();
+  const autonomousEntities = flatten(
+    // only traverse aggregate and split edges
+    getEntityAutonomousResolutionEdges(entityId, graph).map((e) => {
+      // track traversed labels
+      graph.getEdgeAttribute(e, "labels").forEach((l) => {
+        if (l === "AGGREGATE_INTO" || l === "SPLIT" || l === "SPLIT_OTHER") traversedLabels.add(l);
+      });
 
-        // Flag resolution with aggregate
-        if (
-          graph.getNodeAttribute(n, "type") === "entity" &&
-          (graph as GraphEntityPartiteType).getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED"
-        ) {
-          return { autonomousIds: [n], traversedLabels };
-        } else {
-          if (graph.outDegree(n) > 0) return resolveAutonomous(n, graph);
-          // dead-end not resolved: should we send it to rest of the world?
-          else {
-            console.log(`${n} is not GPH-AUTONOMOUS-CITED but does not have any outNeighbors -> rest of the World`);
-            if (!graph.hasNode("restOfTheWorld"))
-              (graph as GraphEntityPartiteType).addNode("restOfTheWorld", {
-                type: "entity",
-                label: "Rest Of The World",
-                entityType: "ROTW",
-                ricType: "geographical_area",
-                reporting: false,
-              });
-            return { autonomousIds: ["restOfTheWorld"], traversedLabels };
-          }
+      const n = graph.target(e);
+
+      // Flag resolution with aggregate
+      if (
+        graph.getNodeAttribute(n, "type") === "entity" &&
+        graph.getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED"
+      ) {
+        return { autonomousIds: [n], traversedLabels };
+      } else {
+        if (getEntityAutonomousResolutionEdges(n, graph).length > 0) return resolveAutonomous(n, graph);
+        // dead-end not resolved: should we send it to rest of the world?
+        else {
+          console.log(`${n} is not GPH-AUTONOMOUS-CITED but does not have any outNeighbors -> rest of the World`);
+          if (!graph.hasNode("restOfTheWorld"))
+            graph.addNode("restOfTheWorld", {
+              type: "entity",
+              label: "Rest Of The World",
+              entityType: "ROTW",
+              ricType: "geographical_area",
+              reporting: false,
+            });
+          return { autonomousIds: ["restOfTheWorld"], traversedLabels };
         }
-      }),
+      }
+    }),
     // reduce the result of recursion to merge all ids and labels into one result object
   ).reduce<AutonomousResolutionType>(
     (acc, result) => {

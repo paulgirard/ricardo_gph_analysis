@@ -1,6 +1,6 @@
 import { parse } from "csv/sync";
 import { readFileSync } from "fs";
-import { keyBy, toPairs, values } from "lodash";
+import { flatten, keyBy, toPairs, uniq, values } from "lodash";
 
 import conf from "./configuration.json";
 
@@ -55,25 +55,71 @@ export function GPH_status(GPH_code: string, year: string, sovereignCode?: boole
   }
   return null;
 }
+
+export function autonomousGPHEntity(
+  gphCode: string,
+  year: number,
+): { entity: GPHEntity; status?: GPHStatusType; autonomous: boolean } {
+  const entity = GPHEntitiesByCode[gphCode];
+  if (!entity) {
+    throw new Error(`${gphCode} is not a known GPH code`);
+  } else {
+    const status = GPH_status(gphCode, year + "", true);
+    switch (status?.status) {
+      case undefined:
+        //console.warn(`${entity.GPH_name} (${gphCode}) has no known status in ${year}`);
+        return { entity, autonomous: false };
+      case "Sovereign":
+      case "Associated state of":
+      case "Sovereign (limited)":
+      case "Sovereign (unrecognized)":
+      case "Colony of":
+      case "Dependency of":
+      case "Protectorate of":
+        return { entity, status: status.status, autonomous: true };
+      case "Informal":
+        // to be treated as geographical area later
+        return { entity, status: status.status, autonomous: false };
+      default: {
+        if (status?.sovereign) {
+          return autonomousGPHEntity(status?.sovereign, year);
+        } else {
+          console.warn(
+            `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
+          );
+          return { entity, status: status?.status, autonomous: false };
+        }
+      }
+    }
+  }
+}
+
 /**
  * GPH_informal_parts retrieve entities which formed an informal entity at its creation
  * @param informal_GPH_code code of the informal entity
  * @param year year to filter out parts which are not autonomous
  */
 export function GPH_informal_parts(informal_GPH_code: string, year: number) {
-  const parts = toPairs(GPHInTime)
-    .map(([entity_code, gph_data]) => {
-      // get all entities which are 'part of' or 'dissolved into' the informal
-      if (
-        gph_data.years[year] &&
-        values(gph_data.years).some((statuses) =>
-          statuses.some((s) => s.sovereign === informal_GPH_code && ["Part of", "Dissolved into"].includes(s.status)),
-        )
-      ) {
-        return entity_code;
-      } else return null;
-    })
-    .filter((code): code is string => code !== null);
+  const parts = uniq(
+    flatten(
+      toPairs(GPHInTime).map(([entity_code, gph_data]): string | string[] | null => {
+        if (
+          // 'part of' or 'dissolved into' the informal
+          gph_data.years[year] &&
+          values(gph_data.years).some((statuses) =>
+            statuses.some((s) => s.sovereign === informal_GPH_code && ["Part of", "Dissolved into"].includes(s.status)),
+          )
+        ) {
+          // make sure to return the corresponding autonomous for the requested year
+          const autonomousPart = autonomousGPHEntity(entity_code, year);
+          // make sure one part is not a informal or unkown entity itself, if yes: recursion
+          if (!autonomousPart.status || autonomousPart.status === "Informal")
+            return GPH_informal_parts(autonomousPart.entity.GPH_code, year);
+          else return autonomousPart.entity.GPH_code;
+        } else return null;
+      }),
+    ),
+  ).filter((code): code is string => code !== null && code !== informal_GPH_code);
 
   return parts;
 }

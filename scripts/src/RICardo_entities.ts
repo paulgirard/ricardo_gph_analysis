@@ -5,7 +5,15 @@ import gexf from "graphology-gexf";
 import { groupBy, keyBy, sortedUniq, sum } from "lodash";
 
 import { DB } from "./DB";
-import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
+import {
+  GPHEntities,
+  GPHEntitiesByCode,
+  GPHEntity,
+  GPHStatusType,
+  GPH_informal_parts,
+  GPH_status,
+  autonomousGPHEntity,
+} from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import conf from "./configuration.json";
 import { resolveAutonomous, resolveTradeFlow } from "./graphTraversals";
@@ -298,9 +306,16 @@ export const entitesTransformationGraph = (year: number) => {
       // STEP 2 GPH => GPH autonomous
       const GphNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "GPH");
       GphNodes.forEach((n) => {
-        const target = gphToGPHAutonomous(n, graph);
-        if (target !== null && target !== n) {
-          addEdgeLabel(graph, n, target, "AGGREGATE_INTO");
+        const { entity: targetGPHEntity, status: targetStatus, autonomous } = autonomousGPHEntity(n, year);
+        //merge node
+        (graph as GraphEntityPartiteType).mergeNode(nodeId(targetGPHEntity), {
+          label: targetGPHEntity.GPH_name,
+          gphStatus: targetStatus,
+          entityType: autonomous ? "GPH-AUTONOMOUS" : "GPH",
+          type: "entity",
+        });
+        if (nodeId(targetGPHEntity) !== n) {
+          addEdgeLabel(graph, n, nodeId(targetGPHEntity), "AGGREGATE_INTO");
         }
       });
 
@@ -369,14 +384,13 @@ export const entitesTransformationGraph = (year: number) => {
                 ) {
                   // /!\ Could Danish Europe contain Danemark?
                   // add member to the graph as autonomous resolution
-                  const autonomousMember = gphToGPHAutonomous(member.GPH_code, graph);
+                  const autonomousMember = autonomousGPHEntity(member.GPH_code, year);
                   if (
-                    autonomousMember &&
-                    autonomousMember !== n &&
-                    graph.hasNode(autonomousMember) &&
-                    graph.degree(autonomousMember) > 0
+                    autonomousMember.entity.GPH_code !== n &&
+                    graph.hasNode(autonomousMember.entity.GPH_code) &&
+                    graph.degree(autonomousMember.entity.GPH_code) > 0
                   )
-                    addEdgeLabel(graph, n, autonomousMember, "SPLIT_OTHER");
+                    addEdgeLabel(graph, n, autonomousMember.entity.GPH_code, "SPLIT_OTHER");
                 }
               });
           } else console.warn(`colonial area not in geographical translation table: ${atts.label}`);
@@ -451,9 +465,8 @@ export const entitesTransformationGraph = (year: number) => {
       graph
         .filterEdges((_, atts) => atts.status === "toTreat")
         .forEach((e) => {
-          const autonomousExporters = resolveAutonomous(graph.source(e), graph);
-          const autonomousImporters = resolveAutonomous(graph.target(e), graph);
-          const valueToTreat = graph.getEdgeAttribute(e, "value");
+          const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
+          const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
 
           if (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length === 1) {
             // case of simple resolution 1:1
