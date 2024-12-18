@@ -2,7 +2,7 @@ import { parse } from "csv/sync";
 import { readFileSync, writeFileSync } from "fs";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy, sum } from "lodash";
+import { groupBy, keyBy, sortedUniq, sum } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntities, GPHEntitiesByCode, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status } from "./GPH";
@@ -43,20 +43,32 @@ interface ResolutionNodeAttributes {
   value?: number;
 }
 
-type EdgeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER" | "RESOLVE";
-interface EdgeAttribues {
+export type EntityResolutionLabelType = "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
+type TradeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "RESOLVE";
+
+export type EdgeLabelType = TradeLabelType | EntityResolutionLabelType;
+
+export type FlowValueImputationMethod =
+  | "aggregation"
+  | "split_to_one"
+  | "split_by_years_ratio"
+  | "split_by_mirror_ratio";
+export interface EdgeAttributes {
   labels: Set<EdgeLabelType>;
-  labelsStr?: string;
+  label?: string;
   Exp?: number;
   Imp?: number;
-  reportedBy?: string;
-  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved" | "collision";
+  valueGeneratedBy?: FlowValueImputationMethod;
+  ExpReportedBy?: string;
+  ImpReportedBy?: string;
+  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved" | "discard_collision";
   value?: number;
-  collision: Set<"Exp" | "Imp">;
+  notes?: string;
+  aggregatedIn?: string;
 }
-export type GraphType = DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttribues>;
-export type GraphEntityPartiteType = DirectedGraph<EntityNodeAttributes, EdgeAttribues>;
-export type GraphResolutionPartiteType = DirectedGraph<ResolutionNodeAttributes, EdgeAttribues>;
+export type GraphType = DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttributes>;
+export type GraphEntityPartiteType = DirectedGraph<EntityNodeAttributes, EdgeAttributes>;
+export type GraphResolutionPartiteType = DirectedGraph<ResolutionNodeAttributes, EdgeAttributes>;
 
 /**
  * UTILS
@@ -223,7 +235,7 @@ export const entitesTransformationGraph = (year: number) => {
       console.log(year);
       if (err) throw err;
 
-      const graph = new DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttribues>();
+      const graph = new DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttributes>();
 
       // trade network (baseline)
       // (reporting) -[REPORTED_TRADE]-> (partner)
@@ -253,13 +265,11 @@ export const entitesTransformationGraph = (year: number) => {
         const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
         const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
         // add trade value on directed edges: bilateral trade
-        const value = { [r.expimp]: (r.flow * r.unit) / (r.rate + 0 || 1) };
-
         graph.mergeDirectedEdge(from, to, {
           labels: new Set(["REPORTED_TRADE"]),
           // add reported by attribute to trade flows
-          reportedBy: reporting.RICname,
-          ...value,
+          [`${r.expimp}ReportedBy`]: reporting.RICname,
+          [r.expimp]: (r.flow * r.unit) / (r.rate + 0 || 1),
         });
       });
 
@@ -418,8 +428,6 @@ export const entitesTransformationGraph = (year: number) => {
       });
 
       graph.forEachEdge((e, atts) => {
-        // simplify label for Gephi Lite
-        graph.setEdgeAttribute(e, "labelsStr", [...atts.labels].join("|"));
         // flag edges to be treated
         if (atts.labels.has("REPORTED_TRADE")) {
           if (
@@ -446,18 +454,22 @@ export const entitesTransformationGraph = (year: number) => {
           const autonomousExporters = resolveAutonomous(graph.source(e), graph);
           const autonomousImporters = resolveAutonomous(graph.target(e), graph);
           const valueToTreat = graph.getEdgeAttribute(e, "value");
-          const tradeDirection =
-            (graph as GraphEntityPartiteType).getEdgeAttribute(e, "reportedBy") === graph.source(e) ? "Exp" : "Imp";
 
-          if (autonomousExporters.length === 1 && autonomousImporters.length === 1) {
+          if (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length === 1) {
             // case of simple resolution 1:1
-            // créer une méthode
-            const newSource = autonomousExporters[0];
-            const newTarget = autonomousImporters[0];
-            resolveTradeFlow(graph, e, newSource, newTarget, tradeDirection);
+            // TODO: créer une méthode
+            const newSource = autonomousExporters.autonomousIds[0];
+            const newTarget = autonomousImporters.autonomousIds[0];
+            resolveTradeFlow(
+              graph,
+              e,
+              newSource,
+              newTarget,
+              autonomousExporters.traversedLabels.union(autonomousImporters.traversedLabels),
+            );
           } else {
             console.log(
-              ` ${graph.source(e)} transform to ${autonomousExporters.length} ${graph.target(e)} transform to ${autonomousImporters.length}`,
+              ` ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
             );
             // we create one RESOLUTION node to inspect cases
             (graph as GraphResolutionPartiteType).addNode(e, {
@@ -469,10 +481,10 @@ export const entitesTransformationGraph = (year: number) => {
               value: graph.getEdgeAttribute(e, "value"),
             });
 
-            autonomousExporters.forEach((exporter) => {
+            autonomousExporters.autonomousIds.forEach((exporter) => {
               addEdgeLabel(graph, exporter, e, "RESOLVE");
             });
-            autonomousImporters.forEach((importer) => {
+            autonomousImporters.autonomousIds.forEach((importer) => {
               addEdgeLabel(graph, importer, e, "RESOLVE");
             });
 
@@ -529,6 +541,12 @@ export const entitesTransformationGraph = (year: number) => {
       // /!\ for SPLIT_OTHER
       // - remove reporting from entities
       // - remove entities which are already cited in reporting trade
+
+      // GEXF preparation/generation
+      graph.forEachEdge((e, atts) => {
+        // simplify label for Gephi Lite
+        graph.setEdgeAttribute(e, "label", sortedUniq([...atts.labels]).join("|"));
+      });
 
       writeFileSync(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
     },
