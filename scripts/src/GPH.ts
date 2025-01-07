@@ -81,7 +81,7 @@ export function autonomousGPHEntity(
         // to be treated as geographical area later
         return { entity, status: status.status, autonomous: false };
       default: {
-        if (status?.sovereign) {
+        if (status && status.sovereign) {
           return autonomousGPHEntity(status?.sovereign, year);
         } else {
           console.warn(
@@ -99,7 +99,7 @@ export function autonomousGPHEntity(
  * @param informal_GPH_code code of the informal entity
  * @param year year to filter out parts which are not autonomous
  */
-export function GPH_informal_parts(informal_GPH_code: string, year: number) {
+export function GPH_informal_parts(informal_GPH_code: string, year: number, recursionStep: number = 0) {
   const parts = uniq(
     flatten(
       toPairs(GPHInTime).map(([entity_code, gph_data]): string | string[] | null => {
@@ -113,8 +113,12 @@ export function GPH_informal_parts(informal_GPH_code: string, year: number) {
           // make sure to return the corresponding autonomous for the requested year
           const autonomousPart = autonomousGPHEntity(entity_code, year);
           // make sure one part is not a informal or unkown entity itself, if yes: recursion
-          if (!autonomousPart.status || autonomousPart.status === "Informal")
-            return GPH_informal_parts(autonomousPart.entity.GPH_code, year);
+          if (
+            recursionStep < 3 &&
+            !autonomousPart.autonomous &&
+            (!autonomousPart.status || autonomousPart.status === "Informal")
+          )
+            return GPH_informal_parts(autonomousPart.entity.GPH_code, year, recursionStep + 1);
           else return autonomousPart.entity.GPH_code;
         } else return null;
       }),
