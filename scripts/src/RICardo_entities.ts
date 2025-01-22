@@ -7,6 +7,7 @@ import { groupBy, keyBy, range, sortedUniq, sum } from "lodash";
 import { DB } from "./DB";
 import { GPHEntities, GPHEntity, GPHStatusType, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
+import { findBilateralRatios } from "./bilateralRatios";
 import conf from "./configuration.json";
 import { resolveAutonomous, resolveTradeFlow } from "./graphTraversals";
 
@@ -409,6 +410,8 @@ export const entitesTransformationGraph = (startYear: number, endYear: number) =
               graph
                 .filterEdges((_, atts) => atts.status === "toTreat")
                 .forEach((e) => {
+                  const edgeToTreatAtts = graph.getEdgeAttributes(e);
+
                   const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
                   const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
 
@@ -417,7 +420,6 @@ export const entitesTransformationGraph = (startYear: number, endYear: number) =
                     autonomousImporters.autonomousIds.length === 1
                   ) {
                     // case of simple resolution 1:1
-                    // TODO: créer une méthode
                     const newSource = autonomousExporters.autonomousIds[0];
                     const newTarget = autonomousImporters.autonomousIds[0];
                     resolveTradeFlow(
@@ -428,10 +430,45 @@ export const entitesTransformationGraph = (startYear: number, endYear: number) =
                       autonomousExporters.traversedLabels.union(autonomousImporters.traversedLabels),
                     );
                   } else {
-                    console.log(
-                      ` ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
-                    );
+                    if (
+                      autonomousImporters.autonomousIds.length === 1 ||
+                      autonomousExporters.autonomousIds.length === 1
+                    ) {
+                      // case 1->n
+                      // theorically the 1 side should be the reporter
+                      const oneEndEntity =
+                        autonomousImporters.autonomousIds.length === 1
+                          ? autonomousImporters.autonomousIds[0]
+                          : autonomousExporters.autonomousIds[0];
+                      const entitiesToSplitInto =
+                        autonomousImporters.autonomousIds.length === 1
+                          ? autonomousExporters.autonomousIds
+                          : autonomousImporters.autonomousIds[0];
+                      const valueToSplit =
+                        oneEndEntity === edgeToTreatAtts.ExpReportedBy
+                          ? edgeToTreatAtts.Exp
+                          : oneEndEntity === edgeToTreatAtts.ImpReportedBy
+                            ? edgeToTreatAtts.Imp
+                            : undefined;
+                      if (valueToSplit === undefined) {
+                        console.log(`1->n where 1- entity ${oneEndEntity} is not reporting.`);
+                        // ignore
+                        //TODO redirect to rest of the world
+
+                        return;
+                      } else {
+                        // we need to find the percentages to split the value of the flow among the destinations
+                        const _todo = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto as string[]);
+                      }
+                    } else {
+                      // case n -> n
+                      console.log(
+                        `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
+                      );
+                    }
+
                     // we create one RESOLUTION node to inspect cases
+                    // temporary solution to be replace by either a real resolution or Rest Of The world
                     (graph as GraphResolutionPartiteType).addNode(e, {
                       type: "resolution",
                       label: graph
@@ -447,7 +484,6 @@ export const entitesTransformationGraph = (startYear: number, endYear: number) =
                     autonomousImporters.autonomousIds.forEach((importer) => {
                       addEdgeLabel(graph, importer, e, "RESOLVE");
                     });
-
                     //
 
                     // 1 -> n  or n -> 1 case
