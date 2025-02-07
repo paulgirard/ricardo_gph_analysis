@@ -1,6 +1,6 @@
 import { flatten, pick, uniq } from "lodash";
 
-import { EntityResolutionLabelType, GraphEntityPartiteType, GraphType } from "./RICardo_entities";
+import { EntityResolutionLabelType, GraphEntityPartiteType, GraphType } from "./types";
 
 export interface AutonomousResolutionType {
   autonomousIds: string[];
@@ -85,6 +85,7 @@ export function resolveTradeFlow(
   newExporter: string,
   newImporter: string,
   entitiesResolutionLabels: Set<EntityResolutionLabelType>,
+  ratio: number = 1,
 ) {
   // internal trade flows case => source = target
   if (newExporter === newImporter) {
@@ -104,7 +105,7 @@ export function resolveTradeFlow(
       ) {
         // should we restrict to aggregation method?
         // update value by summing
-        graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "value") || 0));
+        graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "value") || 0) * ratio);
         graph.setEdgeAttribute(flow, "status", "ignore_resolved");
         graph.setEdgeAttribute(flow, "aggregatedIn", e);
         graph.setEdgeAttribute(e, "labels", graph.getEdgeAttribute(e, "labels").union(new Set(["GENERATED_TRADE"])));
@@ -129,6 +130,8 @@ export function resolveTradeFlow(
       graph.addDirectedEdge(newExporter, newImporter, {
         // reuse direction and value from original flow
         ...pick(graph.getEdgeAttributes(flow), ["Exp", "Imp", "value", "ExpReportedBy", "ImpReportedBy"]),
+        // which value to keep?
+        // on which to apply a ratio?
         valueGeneratedBy: generatedByMethod,
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(flow, graph),

@@ -4,6 +4,7 @@ import { sum } from "lodash";
 import { DB } from "./DB";
 import { GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
+import { findBilateralRatios } from "./bilateralRatios";
 import { resolveAutonomous, resolveTradeFlow } from "./graphTraversals";
 import {
   EdgeAttributes,
@@ -360,4 +361,57 @@ export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
         );
       }
     });
+}
+
+export function resolveOneToManyEntityTransform(
+  year: number,
+  tradeGraphsByYear: Record<string, GraphEntityPartiteType>,
+) {
+  const graph = tradeGraphsByYear[year];
+  if (!graph) {
+    throw new Error(`No trade graph available for year ${year}`);
+  } else {
+    graph
+      .filterEdges((_, atts) => atts.status === "toTreat")
+      .forEach((e) => {
+        const edgeToTreatAtts = graph.getEdgeAttributes(e);
+        const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
+        const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
+
+        if (autonomousExporters.autonomousIds.length === 1 || autonomousImporters.autonomousIds.length === 1) {
+          // case 1->n
+          // theoretically the 1 side should be the reporter
+          const oneEndEntity =
+            autonomousImporters.autonomousIds.length === 1
+              ? autonomousImporters.autonomousIds[0]
+              : autonomousExporters.autonomousIds[0];
+          const entitiesToSplitInto =
+            autonomousImporters.autonomousIds.length === 1
+              ? autonomousExporters.autonomousIds
+              : autonomousImporters.autonomousIds[0];
+          const valueToSplit =
+            oneEndEntity === edgeToTreatAtts.ExpReportedBy
+              ? edgeToTreatAtts.Exp
+              : oneEndEntity === edgeToTreatAtts.ImpReportedBy
+                ? edgeToTreatAtts.Imp
+                : undefined;
+          if (valueToSplit === undefined) {
+            console.log(`1->n where 1- entity ${oneEndEntity} is not reporting.`);
+            // ignore
+            //TODO redirect to rest of the world
+
+            return;
+          } else {
+            // we need to find the percentages to split the value of the flow among the destinations
+            const ratios = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto as string[], tradeGraphsByYear);
+            // TODO iterate on ratios and use resolveTradeFlow with ratio parameter
+          }
+        } else {
+          // case n -> n
+          console.log(
+            `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
+          );
+        }
+      });
+  }
 }

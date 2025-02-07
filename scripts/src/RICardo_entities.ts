@@ -2,7 +2,7 @@ import { parse } from "csv/sync";
 import { readFileSync } from "fs";
 import { writeFile } from "fs/promises";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy, range, sortedUniq } from "lodash";
+import { groupBy, keyBy, keys, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
@@ -10,13 +10,14 @@ import {
   aggregateIntoAutonomousEntities,
   flagAutonomousCited,
   flagFlowsToTreat,
+  resolveOneToManyEntityTransform,
   resolveOneToOneEntityTransform,
   ricEntityToGPHEntity,
   splitAreas,
   splitInformalUnknownEntities,
   tradeGraph,
 } from "./tradeGraphCreation";
-import { GraphEntityPartiteType, RICentity } from "./types";
+import { GraphEntityPartiteType, GraphType, RICentity } from "./types";
 import { statsEntityType } from "./utils";
 
 export const entitesTransformationGraph = async (startYear: number, endYear: number) => {
@@ -30,92 +31,64 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
     (r) => r.RICname_group,
   );
 
-  await Promise.all(
-    range(startYear, endYear, 1).map(async (year) => {
-      try {
-        const graph = await tradeGraph(year, RICentities);
-        console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
+  const yearTradeGraphs = (
+    await Promise.all(
+      range(startYear, endYear, 1).map(async (year) => {
+        try {
+          const graph = await tradeGraph(year, RICentities);
+          console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
 
-        //STEP 1 RIC => GPH (but areas)
-        const notGphRicNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "RIC");
-        notGphRicNodes.forEach((n) => {
-          ricEntityToGPHEntity(n, graph, RICentities, RICgroups);
-        });
-        console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
+          //STEP 1 RIC => GPH (but areas)
+          const notGphRicNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "RIC");
+          notGphRicNodes.forEach((n) => {
+            ricEntityToGPHEntity(n, graph, RICentities, RICgroups);
+          });
+          console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
 
-        // STEP 2 GPH => GPH autonomous
-        // (subEntity) -[AGGREGATE_INTO]-> (autonomous_entity)
-        aggregateIntoAutonomousEntities(graph as GraphEntityPartiteType);
-        console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
+          // STEP 2 GPH => GPH autonomous
+          // (subEntity) -[AGGREGATE_INTO]-> (autonomous_entity)
+          aggregateIntoAutonomousEntities(graph as GraphEntityPartiteType);
+          console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
 
-        // STEP 3 OTHERs
+          // STEP 3 OTHERs
 
-        // for all areas
-        // (area_entity) -[SPLIT_OTHER]-> (member_entity)
-        splitAreas(graph as GraphEntityPartiteType, RICentities, GPHEntities);
-        splitInformalUnknownEntities(graph as GraphEntityPartiteType);
+          // for all areas
+          // (area_entity) -[SPLIT_OTHER]-> (member_entity)
+          splitAreas(graph as GraphEntityPartiteType, RICentities, GPHEntities);
+          splitInformalUnknownEntities(graph as GraphEntityPartiteType);
 
-        // Detect GPH Autonomous cited
-        flagAutonomousCited(graph as GraphEntityPartiteType);
-        // flag flows as toTreat or ok
-        flagFlowsToTreat(graph as GraphEntityPartiteType);
+          // Detect GPH Autonomous cited
+          flagAutonomousCited(graph as GraphEntityPartiteType);
+          // flag flows as toTreat or ok
+          flagFlowsToTreat(graph as GraphEntityPartiteType);
 
-        // STEP 4 treat trade data
-        resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
-        // GEXF preparation/generation
-        graph.forEachEdge((e, atts) => {
-          // simplify label for Gephi Lite
-          graph.setEdgeAttribute(e, "label", sortedUniq([...atts.labels]).join("|"));
-        });
-        // TODO layout
+          // STEP 4 treat trade data
+          resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
+          // GEXF preparation/generation
+          graph.forEachEdge((e, atts) => {
+            // simplify label for Gephi Lite
+            graph.setEdgeAttribute(e, "label", sortedUniq([...atts.labels]).join("|"));
+          });
+          // TODO layout
 
-        await writeFile(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
-        return graph;
-      } catch (error) {
-        console.log(`error in ${year}`);
-        console.log(error);
-        return null;
-      }
-    }),
-  );
+          await writeFile(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
+          return graph;
+        } catch (error) {
+          console.log(`error in ${year}`);
+          console.log(error);
+          return null;
+        }
+      }),
+    )
+  ).filter((g): g is GraphType => g !== null);
+
+  const tradeGraphsByYear = keyBy(yearTradeGraphs, (g) => g.getAttribute("year") + 0);
+
+  // Treat split cases by looking through adjacent years
+  keys(tradeGraphsByYear).forEach((year) => {
+    resolveOneToManyEntityTransform(year, tradeGraphsByYear);
+  });
 };
-
-// if (
-//   autonomousImporters.autonomousIds.length === 1 ||
-//   autonomousExporters.autonomousIds.length === 1
-// ) {
-//   // case 1->n
-//   // theorically the 1 side should be the reporter
-//   const oneEndEntity =
-//     autonomousImporters.autonomousIds.length === 1
-//       ? autonomousImporters.autonomousIds[0]
-//       : autonomousExporters.autonomousIds[0];
-//   const entitiesToSplitInto =
-//     autonomousImporters.autonomousIds.length === 1
-//       ? autonomousExporters.autonomousIds
-//       : autonomousImporters.autonomousIds[0];
-//   const valueToSplit =
-//     oneEndEntity === edgeToTreatAtts.ExpReportedBy
-//       ? edgeToTreatAtts.Exp
-//       : oneEndEntity === edgeToTreatAtts.ImpReportedBy
-//         ? edgeToTreatAtts.Imp
-//         : undefined;
-//   if (valueToSplit === undefined) {
-//     console.log(`1->n where 1- entity ${oneEndEntity} is not reporting.`);
-//     // ignore
-//     //TODO redirect to rest of the world
-
-//     return;
-//   } else {
-//     // we need to find the percentages to split the value of the flow among the destinations
-//     const _todo = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto as string[]);
-//   }
-// } else {
-//   // case n -> n
-//   console.log(
-//     `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
-//   );
-// }
 
 // we create one RESOLUTION node to inspect cases
 // temporary solution to be replace by either a real resolution or Rest Of The world
