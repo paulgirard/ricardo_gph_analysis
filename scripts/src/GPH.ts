@@ -84,9 +84,9 @@ export function autonomousGPHEntity(
         if (status && status.sovereign) {
           return autonomousGPHEntity(status?.sovereign, year);
         } else {
-          console.warn(
-            `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
-          );
+          // console.warn(
+          //   `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
+          // );
           return { entity, status: status?.status, autonomous: false };
         }
       }

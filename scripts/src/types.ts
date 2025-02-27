@@ -31,7 +31,7 @@ export interface ResolutionNodeAttributes {
 }
 
 export type EntityResolutionLabelType = "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
-type TradeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "RESOLVE";
+export type TradeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "RESOLVE";
 
 export type EdgeLabelType = TradeLabelType | EntityResolutionLabelType;
 

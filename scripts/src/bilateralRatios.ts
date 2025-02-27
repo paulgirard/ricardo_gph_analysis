@@ -7,20 +7,34 @@ import { GraphEntityPartiteType } from "./types";
 export function findBilateralRatiosInOneYear(
   reportingGPHId: string,
   partnersGPHIds: string[],
+  direction: "Export" | "Import",
   graph: GraphEntityPartiteType,
 ) {
   const year = graph.getAttribute("year");
-  if (graph.addNode(reportingGPHId)) {
+
+  if (graph.hasNode(reportingGPHId) && partnersGPHIds.every((id) => graph.hasNode(id))) {
     // groupe trade edges by associated partners
     // there can be more than one partners by trade flow as some flows point to areas or groups
     const partnersByTradeEdges = partnersGPHIds.reduce<Record<string, string[]>>((acc, partner) => {
-      const paths = allSimpleEdgePaths(graph, reportingGPHId, partner);
+      const paths = allSimpleEdgePaths(
+        graph,
+        direction === "Export" ? reportingGPHId : partner,
+        direction === "Import" ? reportingGPHId : partner,
+        { maxDepth: 5 },
+      );
+
       if (paths.length > 0) {
         for (const path of paths) {
           const [firstEdge] = path;
-          const labels = graph.getEdgeAttribute(firstEdge, "labels");
-          if (labels.has("REPORTED_TRADE") || labels.has("GENERATED_TRADE"))
-            return { ...acc, [firstEdge]: [...acc[firstEdge], partner] };
+          const { labels, valueGeneratedBy } = graph.getEdgeAttributes(firstEdge);
+
+          if (
+            labels.has("REPORTED_TRADE") ||
+            // only consider GENERATED_TRADE which did not applied ratios, i.e. only aggregations or split to one.
+            (labels.has("GENERATED_TRADE") &&
+              (!valueGeneratedBy || !["split_by_years_ratio", "split_by_mirror_ratio"].includes(valueGeneratedBy)))
+          )
+            return { ...acc, [firstEdge]: [...(acc[firstEdge] || []), partner] };
         }
         // none of the path was a trade flow
         throw new Error(
@@ -30,21 +44,24 @@ export function findBilateralRatiosInOneYear(
       // one missing edge with one partner: abort
       else throw new Error(`no trade data between ${reportingGPHId} and ${partner} in year ${year}`);
     }, {});
+    if (keys(partnersByTradeEdges).length > 1) {
+      console.log(year, reportingGPHId, partnersByTradeEdges);
+      const tradeValues = mapValues(partnersByTradeEdges, (_, edge) => {
+        const { value, Exp, Imp } = graph.getEdgeAttributes(edge);
+        return (direction === "Export" ? Exp || value : Imp || value) || 0; //  || 0 should never be used...
+      });
+      const total = sum(values(tradeValues));
+      const ratios: Record<string, number> = {};
+      const groupRatios: { partners: string[]; ratio: number }[] = [];
+      toPairs(partnersByTradeEdges).forEach(([edge, partners]) => {
+        const ratio = tradeValues[edge] / total;
 
-    const tradeValues = mapValues(partnersByTradeEdges, (_, edge) => {
-      const { value, Exp, ExpReportedBy, Imp } = graph.getEdgeAttributes(edge);
-      return (ExpReportedBy === reportingGPHId ? Exp || value : Imp || value) || 0; //  || 0 should never be used...
-    });
-    const total = sum(values(tradeValues));
-    const ratios: Record<string, number> = {};
-    const groupRatios: { partners: string[]; ratio: number }[] = [];
-    toPairs(partnersByTradeEdges).forEach(([edge, partners]) => {
-      const ratio = tradeValues[edge] / total;
-      if (partners.length === 1) {
-        ratios[partners[0]] = ratio;
-      } else groupRatios.push({ partners, ratio });
-    });
-    return { ratios, groupRatios };
+        if (partners.length === 1) {
+          ratios[partners[0]] = ratio;
+        } else groupRatios.push({ partners, ratio });
+      });
+      return { ratios, groupRatios };
+    } else throw new Error(`can't find ratios in year ${year} found ${keys(partnersByTradeEdges).length} trade flow`);
 
     // we need to inspect resolved networks and search for set of flows reported by reporting targeting the exact same set of partners
     // should we inspect mirror flows? their values are different but are the ratios impacted by mirror disalignement?
@@ -76,7 +93,7 @@ export function findBilateralRatiosInOneYear(
 
     // calculate ratio among flows
   }
-  throw new Error(`can't find reporting ${reportingGPHId} in year ${year}`);
+  throw new Error(`can't find ratios in year ${year} can't find all entities`);
 }
 
 const YEAR_MAX_GAP = 10;
@@ -85,6 +102,7 @@ export function findBilateralRatios(
   year: number,
   reportingGPHId: string,
   partnersGPHIds: string[],
+  direction: "Export" | "Import",
   tradeGraphsByYear: Record<string, GraphEntityPartiteType>,
 ) {
   const partnerRatios: Record<string, { ratio?: number; status?: "ok" | "in_a_group" }> = fromPairs(
@@ -98,17 +116,19 @@ export function findBilateralRatios(
 
   for (const currentYear of yearsInScope) {
     const missingPartners = keys(partnerRatios).filter((p) => partnerRatios[p]?.status !== "ok");
-
+    console.log(currentYear, reportingGPHId, missingPartners);
     // early exit when all partners have a ratio
     if (missingPartners.length === 0) break;
 
-    if (tradeGraphsByYear[currentYear] !== undefined) {
+    if (tradeGraphsByYear[currentYear + ""] !== undefined) {
       try {
         const { ratios, groupRatios } = findBilateralRatiosInOneYear(
           reportingGPHId,
           missingPartners,
-          tradeGraphsByYear[currentYear],
+          direction,
+          tradeGraphsByYear[currentYear + ""],
         );
+        console.log(currentYear, reportingGPHId, { ratios, groupRatios });
         //update partners ratios
         toPairs(ratios).forEach(([partner, ratio]) => {
           partnerRatios[partner] = {
@@ -122,13 +142,13 @@ export function findBilateralRatios(
             // only keep group ratio if no other ratio has been seen to avoid applying group ratios on multiple years we keep only the first one we saw (i.e. the closest to original flow)
             if (!partnerRatios[p].status)
               partnerRatios[p] = {
-                ratio: partnerRatios[p].ratio,
+                ratio: gr.ratio,
                 status: "in_a_group",
               };
           });
         });
       } catch (error) {
-        console.log(error);
+        console.log((error as Error).message);
         // try next year
       }
     } else console.log(`${currentYear} not available in tradeGraphs`);

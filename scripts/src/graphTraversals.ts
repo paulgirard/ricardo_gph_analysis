@@ -1,6 +1,6 @@
 import { flatten, pick, uniq } from "lodash";
 
-import { EntityResolutionLabelType, GraphEntityPartiteType, GraphType } from "./types";
+import { EntityResolutionLabelType, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
 
 export interface AutonomousResolutionType {
   autonomousIds: string[];
@@ -19,7 +19,6 @@ function getEntityAutonomousResolutionEdges(entityNodeId: string, graph: GraphEn
 }
 
 export function resolveAutonomous(entityId: string, graph: GraphEntityPartiteType): AutonomousResolutionType {
-  console.log(`resolve ${entityId}`);
   if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
     return { autonomousIds: [entityId], traversedLabels: new Set() };
   const traversedLabels = new Set<EntityResolutionLabelType>();
@@ -36,14 +35,13 @@ export function resolveAutonomous(entityId: string, graph: GraphEntityPartiteTyp
       // Flag resolution with aggregate
       if (
         graph.getNodeAttribute(n, "type") === "entity" &&
-        graph.getNodeAttribute(n, "entityType") === "GPH-AUTONOMOUS-CITED"
+        ["GPH-AUTONOMOUS-CITED", "GPH-AUTONOMOUS"].includes(graph.getNodeAttribute(n, "entityType"))
       ) {
         return { autonomousIds: [n], traversedLabels };
       } else {
         if (getEntityAutonomousResolutionEdges(n, graph).length > 0) return resolveAutonomous(n, graph);
         // dead-end not resolved: should we send it to rest of the world?
         else {
-          console.log(`${n} is not GPH-AUTONOMOUS-CITED but does not have any outNeighbors -> rest of the World`);
           if (!graph.hasNode("restOfTheWorld"))
             graph.addNode("restOfTheWorld", {
               type: "entity",
@@ -92,7 +90,11 @@ export function resolveTradeFlow(
     graph.setEdgeAttribute(flow, "status", "ignore_internal");
     return;
   } else {
-    const generatedByMethod = entitiesResolutionLabels.has("AGGREGATE_INTO") ? "aggregation" : "split_to_one";
+    const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
+      ? "aggregation"
+      : ratio !== 1
+        ? "split_by_years_ratio"
+        : "split_to_one";
 
     // first check if trade flow does not already exist
     if (graph.hasDirectedEdge(newExporter, newImporter)) {
@@ -105,7 +107,17 @@ export function resolveTradeFlow(
       ) {
         // should we restrict to aggregation method?
         // update value by summing
+        graph.updateEdgeAttribute(e, "Exp", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "Exp") || 0) * ratio);
+        graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
+          Array.from(new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")])).join("|"),
+        );
+        graph.updateEdgeAttribute(e, "Imp", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "Imp") || 0) * ratio);
+        graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
+          Array.from(new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")])).join("|"),
+        );
+        // TODO: value should be generated at the end of the process
         graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "value") || 0) * ratio);
+
         graph.setEdgeAttribute(flow, "status", "ignore_resolved");
         graph.setEdgeAttribute(flow, "aggregatedIn", e);
         graph.setEdgeAttribute(e, "labels", graph.getEdgeAttribute(e, "labels").union(new Set(["GENERATED_TRADE"])));
@@ -126,12 +138,15 @@ export function resolveTradeFlow(
       // );
     } else {
       // re-route the edge
-
+      const atts = graph.getEdgeAttributes(flow);
       graph.addDirectedEdge(newExporter, newImporter, {
         // reuse direction and value from original flow
-        ...pick(graph.getEdgeAttributes(flow), ["Exp", "Imp", "value", "ExpReportedBy", "ImpReportedBy"]),
-        // which value to keep?
-        // on which to apply a ratio?
+        ...pick(atts, ["ExpReportedBy", "ImpReportedBy"]),
+        // one the two should be undefined, if we have to redirect the edge there should be no mirror
+        Exp: atts.Exp ? atts.Exp * ratio : undefined,
+        Imp: atts.Imp ? atts.Imp * ratio : undefined,
+        // TODO: value should be generated at the end of the process
+        value: atts.value ? atts.value * ratio : undefined,
         valueGeneratedBy: generatedByMethod,
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(flow, graph),

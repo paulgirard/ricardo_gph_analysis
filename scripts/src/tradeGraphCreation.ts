@@ -1,5 +1,5 @@
 import { DirectedGraph } from "graphology";
-import { sum } from "lodash";
+import { sum, toPairs, uniq } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
@@ -290,7 +290,8 @@ export function splitInformalUnknownEntities(graph: GraphEntityPartiteType) {
           //console.log(p, graph.hasNode(p) && graph.degree(p));
           if (graph.hasNode(p) && graph.degree(p) > 0) addEdgeLabel(graph, informalNode, p, "SPLIT_OTHER");
         });
-      } else console.warn(`no parts for informal ${informalNode} in year ${year}`);
+      }
+      //else console.warn(`no parts for informal ${informalNode} in year ${year}`);
     });
 }
 
@@ -367,7 +368,7 @@ export function resolveOneToManyEntityTransform(
   year: number,
   tradeGraphsByYear: Record<string, GraphEntityPartiteType>,
 ) {
-  const graph = tradeGraphsByYear[year];
+  const graph = tradeGraphsByYear[year].copy();
   if (!graph) {
     throw new Error(`No trade graph available for year ${year}`);
   } else {
@@ -385,33 +386,74 @@ export function resolveOneToManyEntityTransform(
             autonomousImporters.autonomousIds.length === 1
               ? autonomousImporters.autonomousIds[0]
               : autonomousExporters.autonomousIds[0];
+          const splitSide = autonomousImporters.autonomousIds.length === 1 ? "Import" : "Export";
           const entitiesToSplitInto =
             autonomousImporters.autonomousIds.length === 1
               ? autonomousExporters.autonomousIds
-              : autonomousImporters.autonomousIds[0];
-          const valueToSplit =
-            oneEndEntity === edgeToTreatAtts.ExpReportedBy
-              ? edgeToTreatAtts.Exp
-              : oneEndEntity === edgeToTreatAtts.ImpReportedBy
-                ? edgeToTreatAtts.Imp
-                : undefined;
+              : autonomousImporters.autonomousIds;
+
+          const oneEndEntityLabel = graph.getNodeAttribute(oneEndEntity, "label");
+          // TODO: reporter are not necessarly the same
+          const valueToSplit = splitSide === "Export" ? edgeToTreatAtts.Exp : edgeToTreatAtts.Imp;
+
           if (valueToSplit === undefined) {
-            console.log(`1->n where 1- entity ${oneEndEntity} is not reporting.`);
+            console.log(
+              `1->n where 1- entity ${oneEndEntity}-[${splitSide}]-${oneEndEntityLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
+            );
             // ignore
             //TODO redirect to rest of the world
 
             return;
           } else {
+            console.log(`looking for ratios for ${year} ${oneEndEntityLabel} ${oneEndEntity}, ${entitiesToSplitInto}`);
             // we need to find the percentages to split the value of the flow among the destinations
-            const ratios = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto as string[], tradeGraphsByYear);
-            // TODO iterate on ratios and use resolveTradeFlow with ratio parameter
+            const ratios = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto, splitSide, tradeGraphsByYear);
+
+            // redirect
+            const solved = toPairs(ratios).filter(([_, { status }]) => status === "ok");
+            let solvedRatio = 0;
+            solved.forEach(([partner, { ratio }]) => {
+              if (ratio !== undefined) {
+                solvedRatio += ratio;
+                resolveTradeFlow(
+                  graph,
+                  e,
+                  splitSide === "Export" ? oneEndEntity : partner,
+                  splitSide === "Export" ? partner : oneEndEntity,
+                  new Set(["SPLIT"]),
+                  ratio,
+                );
+              }
+            });
+
+            const toROW = toPairs(ratios).filter(([_, { status }]) => status !== "ok");
+            // check data coherence: ratio in groups should be the same as the remaining ratio after solved cases
+            // group ratio are actually duplicated by partner by the findBilateralRatios method. We need to deduplicate them before summing.
+            // We could also just do not check and just use 1-solvedRatio
+            const rowRatio = Number(sum(uniq(toROW.map(([_, { ratio }]) => ratio || 1))).toFixed(2));
+            if (Number((1 - solvedRatio).toFixed(2)) === rowRatio)
+              resolveTradeFlow(
+                graph,
+                e,
+                splitSide === "Export" ? oneEndEntity : "restOfTheWorld",
+                splitSide === "Export" ? "restOfTheWorld" : oneEndEntity,
+                new Set(["SPLIT"]),
+                Number((1 - solvedRatio).toFixed(2)),
+              );
+            else
+              throw new Error(
+                `Split flow with solvedRatio = ${solvedRatio} but 1-solvedRatios (${1 - solvedRatio}) !== ${rowRatio} from ${JSON.stringify(
+                  toROW,
+                )} `,
+              );
           }
         } else {
-          // case n -> n
+          // case n -> n["246",{}],["248",{}],["restOfTheWorld",{}]]
           console.log(
             `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
           );
         }
       });
   }
+  return graph;
 }

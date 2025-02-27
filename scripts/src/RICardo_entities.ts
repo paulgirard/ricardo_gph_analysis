@@ -1,8 +1,9 @@
 import { parse } from "csv/sync";
-import { readFileSync } from "fs";
-import { writeFile } from "fs/promises";
+import { readFileSync, writeFileSync } from "fs";
+import { readFile, writeFile } from "fs/promises";
+import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy, keys, range, sortedUniq } from "lodash";
+import { fromPairs, groupBy, keyBy, keys, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
@@ -17,7 +18,7 @@ import {
   splitInformalUnknownEntities,
   tradeGraph,
 } from "./tradeGraphCreation";
-import { GraphEntityPartiteType, GraphType, RICentity } from "./types";
+import { GraphEntityPartiteType, RICentity } from "./types";
 import { statsEntityType } from "./utils";
 
 export const entitesTransformationGraph = async (startYear: number, endYear: number) => {
@@ -80,13 +81,39 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
         }
       }),
     )
-  ).filter((g): g is GraphType => g !== null);
+  ).filter((g): g is GraphEntityPartiteType => g !== null);
 
-  const tradeGraphsByYear = keyBy(yearTradeGraphs, (g) => g.getAttribute("year") + 0);
+  await applyRatioMethod(
+    startYear,
+    endYear,
+    keyBy(yearTradeGraphs, (g) => g.getAttribute("year")),
+  ).catch((e) => console.log);
+};
 
-  // Treat split cases by looking through adjacent years
+const applyRatioMethod = async (
+  startYear: number,
+  endYear: number,
+  _tradeGraphsByYear?: Record<string, DirectedGraph>,
+) => {
+  const tradeGraphsByYear = _tradeGraphsByYear
+    ? _tradeGraphsByYear
+    : fromPairs(
+        await Promise.all(
+          range(startYear, endYear).map(async (year) => {
+            const graph = gexf.parse(DirectedGraph, await readFile(`../data/entity_networks/${year}.gexf`, "utf8"));
+            return [year, graph];
+          }),
+        ),
+      );
   keys(tradeGraphsByYear).forEach((year) => {
-    resolveOneToManyEntityTransform(year, tradeGraphsByYear);
+    console.log(`****** Compute ratio for ${year}`);
+    try {
+      const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear);
+      console.log(`writing gexf for ${year}`);
+      writeFileSync(`../data/entity_networks/${year}_ratios.gexf`, gexf.write(new_graph), "utf8");
+    } catch (e) {
+      console.log(e);
+    }
   });
 };
 
@@ -159,4 +186,5 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
 // - remove reporting from entities
 // - remove entities which are already cited in reporting trade
 
-entitesTransformationGraph(conf.startDate, conf.endDate + 1);
+entitesTransformationGraph(conf.startDate, conf.endDate + 1).catch((e) => console.log(e));
+//applyRatioMethod(conf.startDate, conf.endDate + 1);
