@@ -1,4 +1,4 @@
-import { flatten, pick, uniq } from "lodash";
+import { flatten, identity, pick, uniq } from "lodash";
 
 import { EntityResolutionLabelType, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
 
@@ -7,27 +7,32 @@ export interface AutonomousResolutionType {
   traversedLabels: Set<EntityResolutionLabelType>;
 }
 
-function getEntityAutonomousResolutionEdges(entityNodeId: string, graph: GraphEntityPartiteType) {
+function getEntityAutonomousResolutionEdges(
+  entityNodeId: string,
+  graph: GraphEntityPartiteType,
+  limitToResolutionTypes: Set<EntityResolutionLabelType>,
+) {
   return (
     graph
       // only traverse aggregate and split edges
-      .filterOutboundEdges(
-        entityNodeId,
-        (_, atts) => atts.labels.has("AGGREGATE_INTO") || atts.labels.has("SPLIT") || atts.labels.has("SPLIT_OTHER"),
-      )
+      .filterOutboundEdges(entityNodeId, (_, atts) => atts.labels.intersection(limitToResolutionTypes).size > 0)
   );
 }
 
-export function resolveAutonomous(entityId: string, graph: GraphEntityPartiteType): AutonomousResolutionType {
+export function resolveAutonomous(
+  entityId: string,
+  graph: GraphEntityPartiteType,
+  limitToResolutionTypes: Set<EntityResolutionLabelType> = new Set(["AGGREGATE_INTO", "SPLIT", "SPLIT_OTHER"]),
+): AutonomousResolutionType {
   if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
     return { autonomousIds: [entityId], traversedLabels: new Set() };
   const traversedLabels = new Set<EntityResolutionLabelType>();
   const autonomousEntities = flatten(
     // only traverse aggregate and split edges
-    getEntityAutonomousResolutionEdges(entityId, graph).map((e) => {
+    getEntityAutonomousResolutionEdges(entityId, graph, limitToResolutionTypes).map((e) => {
       // track traversed labels
       graph.getEdgeAttribute(e, "labels").forEach((l) => {
-        if (l === "AGGREGATE_INTO" || l === "SPLIT" || l === "SPLIT_OTHER") traversedLabels.add(l);
+        if (limitToResolutionTypes.has(l)) traversedLabels.add(l);
       });
 
       const n = graph.target(e);
@@ -39,17 +44,18 @@ export function resolveAutonomous(entityId: string, graph: GraphEntityPartiteTyp
       ) {
         return { autonomousIds: [n], traversedLabels };
       } else {
-        if (getEntityAutonomousResolutionEdges(n, graph).length > 0) return resolveAutonomous(n, graph);
+        if (getEntityAutonomousResolutionEdges(n, graph, limitToResolutionTypes).length > 0)
+          return resolveAutonomous(n, graph, limitToResolutionTypes);
         // dead-end not resolved: should we send it to rest of the world?
         else {
-          if (!graph.hasNode("restOfTheWorld"))
-            graph.addNode("restOfTheWorld", {
-              type: "entity",
-              label: "Rest Of The World",
-              entityType: "ROTW",
-              ricType: "geographical_area",
-              reporting: false,
-            });
+          // if (!graph.hasNode("restOfTheWorld"))
+          //   graph.addNode("restOfTheWorld", {
+          //     type: "entity",
+          //     label: "Rest Of The World",
+          //     entityType: "ROTW",
+          //     ricType: "geographical_area",
+          //     reporting: false,
+          //   });
           return { autonomousIds: ["restOfTheWorld"], traversedLabels };
         }
       }
@@ -92,10 +98,7 @@ export function resolveTradeFlow(
   } else {
     const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
       ? "aggregation"
-      : ratio !== 1
-        ? "split_by_years_ratio"
-        : "split_to_one";
-
+      : "split_by_years_ratio";
     // first check if trade flow does not already exist
     if (graph.hasDirectedEdge(newExporter, newImporter)) {
       const e = graph.edge(newExporter, newImporter) as string;
@@ -107,16 +110,26 @@ export function resolveTradeFlow(
       ) {
         // should we restrict to aggregation method?
         // update value by summing
-        graph.updateEdgeAttribute(e, "Exp", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "Exp") || 0) * ratio);
+        const exp = graph.getEdgeAttribute(flow, "Exp");
+        graph.updateEdgeAttribute(e, "Exp", (v) => (exp ? (v || 0) + exp * ratio : v));
         graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
-          Array.from(new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")])).join("|"),
+          Array.from(
+            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
+          ).join("|"),
         );
-        graph.updateEdgeAttribute(e, "Imp", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "Imp") || 0) * ratio);
+        const imp = graph.getEdgeAttribute(flow, "Imp");
+        graph.updateEdgeAttribute(e, "Imp", (v) => (exp ? (v || 0) + exp * ratio : v)) || undefined;
         graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
-          Array.from(new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")])).join("|"),
+          Array.from(
+            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
+          ).join("|"),
         );
         // TODO: value should be generated at the end of the process
-        graph.updateEdgeAttribute(e, "value", (v) => (v || 0) + (graph.getEdgeAttribute(flow, "value") || 0) * ratio);
+        graph.updateEdgeAttribute(
+          e,
+          "value",
+          (v) => (v as number) + (graph.getEdgeAttribute(flow, "value") as number) * ratio,
+        ) || undefined;
 
         graph.setEdgeAttribute(flow, "status", "ignore_resolved");
         graph.setEdgeAttribute(flow, "aggregatedIn", e);
@@ -131,15 +144,39 @@ export function resolveTradeFlow(
         // collision: we keep the reported trade and discard the incoming flow
         graph.setEdgeAttribute(flow, "status", "discard_collision");
         graph.setEdgeAttribute(flow, "notes", aggregatedFlowNote(e, graph));
-        // Do we need to aggregate flows to build a mirror view?
+        // add mirror value into existing edge
+        graph.updateEdgeAttribute(e, "Exp", (v) =>
+          v !== undefined ? v : (graph.getEdgeAttribute(flow, "Exp") as number) * ratio || undefined,
+        );
+        graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
+          Array.from(
+            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
+          ).join("|"),
+        );
+        graph.updateEdgeAttribute(e, "Imp", (v) =>
+          v !== undefined ? v : (graph.getEdgeAttribute(flow, "Imp") as number) * ratio || undefined,
+        );
+        graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
+          Array.from(
+            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
+          ).join("|"),
+        );
       }
       // throw new Error(
       //   `${newExporter}->${newImporter} can't be created as a ${[...labels].join(", ")} edge already exists`,
       // );
     } else {
       // re-route the edge
+      if ((newExporter === "restOfTheWorld" || newImporter === "restOfTheWorld") && !graph.hasNode("restOfTheWorld"))
+        graph.addNode("restOfTheWorld", {
+          type: "entity",
+          label: "Rest Of The World",
+          entityType: "ROTW",
+          ricType: "geographical_area",
+          reporting: false,
+        });
       const atts = graph.getEdgeAttributes(flow);
-      graph.addDirectedEdge(newExporter, newImporter, {
+      graph.addDirectedEdgeWithKey(`${newExporter}->${newImporter}`, newExporter, newImporter, {
         // reuse direction and value from original flow
         ...pick(atts, ["ExpReportedBy", "ImpReportedBy"]),
         // one the two should be undefined, if we have to redirect the edge there should be no mirror
@@ -150,10 +187,50 @@ export function resolveTradeFlow(
         valueGeneratedBy: generatedByMethod,
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(flow, graph),
+        status: "ok",
       });
       // state the edge as resolved
       graph.setEdgeAttribute(flow, "status", "ignore_resolved");
     }
     return;
   }
+}
+
+export function findRelevantTradeFlowToEntity(
+  graph: GraphEntityPartiteType,
+  reporting: string,
+  partners: string[],
+  direction: "Export" | "Import",
+) {
+  const tradeFlows = graph.filterEdges(reporting, (_, attributes, source, target) => {
+    return (
+      // Keep only REPORTED_TRADE and GENERATED_TRADE
+      (attributes.labels.has("REPORTED_TRADE") || attributes.labels.has("GENERATED_TRADE")) &&
+      // tests to make sure we have a reported value discard mirror flow only
+      (direction === "Export" ? source : target) === reporting &&
+      (direction === "Export" ? attributes.Exp !== undefined : attributes.Imp !== undefined) &&
+      // keep only status
+      (attributes.status === "ok" || attributes.status === "toTreat")
+    );
+  });
+
+  // for each trade flows of the reporting we look for the requested partners
+  return tradeFlows.reduce<Record<string, Set<string>>>((acc, tf) => {
+    const neighbor = direction === "Export" ? graph.target(tf) : graph.source(tf);
+    // does this trade Flows directly connect the requested partner: ideal case
+    if (partners.includes(neighbor)) return { ...acc, [tf]: new Set([...(acc[tf] || []), neighbor]) };
+
+    // this trade flow can indirectly concern some partners which are the autonomous behind the declared partner
+    // So we resolve the declared partner to autonomous entities
+
+    // limit to SPLIT OTHER
+    const autonomous = resolveAutonomous(neighbor, graph, new Set(["SPLIT", "SPLIT_OTHER"]));
+
+    // And look for our partners in this list. If all of the autonomous are the searched partners we keep that flow to compute ratio.
+    // if the autonomous ids does not all resolved to our partner list we must discard it as we can't use this to compute a ratio.
+    // we need the set to exactly match
+    if (autonomous.autonomousIds.length > 0 && autonomous.autonomousIds.every((id) => partners.includes(id)))
+      return { ...acc, [tf]: new Set([...(acc[tf] || []), ...autonomous.autonomousIds]) };
+    else return acc;
+  }, {});
 }

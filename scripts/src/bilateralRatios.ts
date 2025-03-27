@@ -1,7 +1,7 @@
-import { allSimpleEdgePaths } from "graphology-simple-path";
 import { flatten, fromPairs, keys, mapValues, range, sum, toPairs, values, zip } from "lodash";
 
 import conf from "./configuration.json";
+import { findRelevantTradeFlowToEntity } from "./graphTraversals";
 import { GraphEntityPartiteType } from "./types";
 
 export function findBilateralRatiosInOneYear(
@@ -15,52 +15,63 @@ export function findBilateralRatiosInOneYear(
   if (graph.hasNode(reportingGPHId) && partnersGPHIds.every((id) => graph.hasNode(id))) {
     // groupe trade edges by associated partners
     // there can be more than one partners by trade flow as some flows point to areas or groups
-    const partnersByTradeEdges = partnersGPHIds.reduce<Record<string, string[]>>((acc, partner) => {
-      const paths = allSimpleEdgePaths(
-        graph,
-        direction === "Export" ? reportingGPHId : partner,
-        direction === "Import" ? reportingGPHId : partner,
-        { maxDepth: 5 },
-      );
+    const partnersByTradeEdges = findRelevantTradeFlowToEntity(graph, reportingGPHId, partnersGPHIds, direction);
 
-      if (paths.length > 0) {
-        for (const path of paths) {
-          const [firstEdge] = path;
-          const { labels, valueGeneratedBy } = graph.getEdgeAttributes(firstEdge);
-
-          if (
-            labels.has("REPORTED_TRADE") ||
-            // only consider GENERATED_TRADE which did not applied ratios, i.e. only aggregations or split to one.
-            (labels.has("GENERATED_TRADE") &&
-              (!valueGeneratedBy || !["split_by_years_ratio", "split_by_mirror_ratio"].includes(valueGeneratedBy)))
-          )
-            return { ...acc, [firstEdge]: [...(acc[firstEdge] || []), partner] };
-        }
-        // none of the path was a trade flow
-        throw new Error(
-          `could not find any trade flow between ${reportingGPHId} and ${partner} in year ${year} but ${paths}`,
-        );
-      }
-      // one missing edge with one partner: abort
-      else throw new Error(`no trade data between ${reportingGPHId} and ${partner} in year ${year}`);
-    }, {});
     if (keys(partnersByTradeEdges).length > 1) {
+      // check that we found all partners
+      const foundAllPartners = values(partnersByTradeEdges)
+        .reduce((ac, s) => {
+          return ac.union(s);
+        }, new Set<string>())
+        .isSupersetOf(new Set(partnersGPHIds));
+      if (!foundAllPartners) throw new Error(`can't find ratios in year ${year} can't find all entities`);
+
       console.log(year, reportingGPHId, partnersByTradeEdges);
       const tradeValues = mapValues(partnersByTradeEdges, (_, edge) => {
-        const { value, Exp, Imp } = graph.getEdgeAttributes(edge);
-        return (direction === "Export" ? Exp || value : Imp || value) || 0; //  || 0 should never be used...
+        const { Exp, Imp } = graph.getEdgeAttributes(edge);
+        const value = direction === "Export" ? Exp : Imp;
+        if (value === undefined) throw new Error(`Edge ${edge} is not reported by ${reportingGPHId}`);
+        return value;
       });
-      const total = sum(values(tradeValues));
+
       const ratios: Record<string, number> = {};
-      const groupRatios: { partners: string[]; ratio: number }[] = [];
-      toPairs(partnersByTradeEdges).forEach(([edge, partners]) => {
-        const ratio = tradeValues[edge] / total;
+      let groupRatios: { partners: string[]; value: number }[] = [];
+      toPairs(partnersByTradeEdges).forEach(([edge, partnersSet]) => {
+        const value = tradeValues[edge];
+        const partners = Array.from(partnersSet);
 
         if (partners.length === 1) {
-          ratios[partners[0]] = ratio;
-        } else groupRatios.push({ partners, ratio });
+          ratios[partners[0]] = value;
+        } else groupRatios.push({ partners, value });
       });
-      return { ratios, groupRatios };
+
+      // if we have one direct edge to one partner we must remove it from group list
+      // in case of split other we can have this situation
+      // USA -> Cartagena (Colombia)
+      // USA -> south_america -> Cartagena (Colombia)
+      // we want to ignore the second flow as it's already reported by USA there fore we don't consider it's included in central america value
+      groupRatios = groupRatios
+        .map((gr) => {
+          const filteredPartners = gr.partners.filter((p) => ratios[p] === undefined);
+          //test if group is still a group
+          if (filteredPartners.length > 1)
+            return {
+              value: gr.value,
+              partners: filteredPartners,
+            };
+          else if (filteredPartners.length === 1) {
+            ratios[filteredPartners[0]] = gr.value;
+          }
+          return undefined;
+        })
+        .filter((gr) => gr !== undefined);
+
+      // compute ratios
+      const total = sum(values(ratios)) + sum(groupRatios.map((gr) => gr.value));
+      return {
+        ratios: mapValues(ratios, (v) => v / total),
+        groupRatios: groupRatios.map((gr) => ({ partners: gr.partners, ratio: gr.value / total })),
+      };
     } else throw new Error(`can't find ratios in year ${year} found ${keys(partnersByTradeEdges).length} trade flow`);
 
     // we need to inspect resolved networks and search for set of flows reported by reporting targeting the exact same set of partners

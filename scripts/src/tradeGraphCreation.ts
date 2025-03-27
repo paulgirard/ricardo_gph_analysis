@@ -73,7 +73,7 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
             const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
             // add trade value on directed edges: bilateral trade
-            graph.mergeDirectedEdge(from, to, {
+            graph.mergeDirectedEdgeWithKey(`${from}->${to}`, from, to, {
               labels: new Set(["REPORTED_TRADE"]),
               // add reported by attribute to trade flows
               [`${r.expimp}ReportedBy`]: reporting.RICname,
@@ -376,10 +376,17 @@ export function resolveOneToManyEntityTransform(
       .filterEdges((_, atts) => atts.status === "toTreat")
       .forEach((e) => {
         const edgeToTreatAtts = graph.getEdgeAttributes(e);
+        console.log(
+          `treating flow (${graph.source(e)}: ${graph.getNodeAttribute(graph.source(e), "label")})->(${graph.target(e)}:${graph.getNodeAttribute(graph.target(e), "label")})`,
+        );
+
         const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
         const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
 
-        if (autonomousExporters.autonomousIds.length === 1 || autonomousImporters.autonomousIds.length === 1) {
+        if (
+          (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length > 0) ||
+          (autonomousImporters.autonomousIds.length === 1 && autonomousExporters.autonomousIds.length > 0)
+        ) {
           // case 1->n
           // theoretically the 1 side should be the reporter
           const oneEndEntity =
@@ -393,7 +400,7 @@ export function resolveOneToManyEntityTransform(
               : autonomousImporters.autonomousIds;
 
           const oneEndEntityLabel = graph.getNodeAttribute(oneEndEntity, "label");
-          // TODO: reporter are not necessarly the same
+
           const valueToSplit = splitSide === "Export" ? edgeToTreatAtts.Exp : edgeToTreatAtts.Imp;
 
           if (valueToSplit === undefined) {
@@ -405,7 +412,9 @@ export function resolveOneToManyEntityTransform(
 
             return;
           } else {
-            console.log(`looking for ratios for ${year} ${oneEndEntityLabel} ${oneEndEntity}, ${entitiesToSplitInto}`);
+            console.log(
+              `looking for ratios for ${year} ${oneEndEntityLabel} ${oneEndEntity} ${valueToSplit} to/from ${entitiesToSplitInto}`,
+            );
             // we need to find the percentages to split the value of the flow among the destinations
             const ratios = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto, splitSide, tradeGraphsByYear);
 
@@ -440,18 +449,27 @@ export function resolveOneToManyEntityTransform(
                 new Set(["SPLIT"]),
                 Number((1 - solvedRatio).toFixed(2)),
               );
-            else
+            else {
+              console.log(
+                rowRatio,
+                toROW.map(([_, { ratio }]) => ratio || 1),
+                uniq(toROW.map(([_, { ratio }]) => ratio || 1)),
+              );
               throw new Error(
                 `Split flow with solvedRatio = ${solvedRatio} but 1-solvedRatios (${1 - solvedRatio}) !== ${rowRatio} from ${JSON.stringify(
                   toROW,
                 )} `,
               );
+            }
           }
         } else {
           // case n -> n["246",{}],["248",{}],["restOfTheWorld",{}]]
-          console.log(
-            `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
-          );
+          if (autonomousImporters.autonomousIds.length === 0 || autonomousExporters.autonomousIds.length === 0)
+            console.log(`Can"t resolve one partner`);
+          else
+            console.log(
+              `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
+            );
         }
       });
   }

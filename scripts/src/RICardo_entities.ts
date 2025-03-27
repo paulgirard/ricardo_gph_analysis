@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { fromPairs, groupBy, keyBy, keys, range, sortedUniq } from "lodash";
+import { fromPairs, groupBy, keyBy, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
@@ -84,10 +84,10 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
   ).filter((g): g is GraphEntityPartiteType => g !== null);
 
   await applyRatioMethod(
-    startYear,
-    endYear,
+    1833,
+    1834,
     keyBy(yearTradeGraphs, (g) => g.getAttribute("year")),
-  ).catch((e) => console.log);
+  ).catch((e) => console.log(e));
 };
 
 const applyRatioMethod = async (
@@ -99,13 +99,14 @@ const applyRatioMethod = async (
     ? _tradeGraphsByYear
     : fromPairs(
         await Promise.all(
+          // TODO use an other format or deserialize sets in labels
           range(startYear, endYear).map(async (year) => {
             const graph = gexf.parse(DirectedGraph, await readFile(`../data/entity_networks/${year}.gexf`, "utf8"));
             return [year, graph];
           }),
         ),
       );
-  keys(tradeGraphsByYear).forEach((year) => {
+  range(startYear, endYear).forEach((year) => {
     console.log(`****** Compute ratio for ${year}`);
     try {
       const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear);
