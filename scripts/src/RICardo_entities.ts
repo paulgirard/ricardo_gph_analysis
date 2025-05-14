@@ -83,11 +83,11 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
     )
   ).filter((g): g is GraphEntityPartiteType => g !== null);
 
-  await applyRatioMethod(
-    1833,
-    1834,
-    keyBy(yearTradeGraphs, (g) => g.getAttribute("year")),
-  ).catch((e) => console.log(e));
+  // await applyRatioMethod(
+  //   1833,
+  //   1834,
+  //   keyBy(yearTradeGraphs, (g) => g.getAttribute("year")),
+  // ).catch((e) => console.log(e));
 };
 
 const applyRatioMethod = async (
@@ -193,13 +193,14 @@ const applyRatioMethod = async (
 // - remove reporting from entities
 // - remove entities which are already cited in reporting trade
 
-//entitesTransformationGraph(conf.startDate, conf.endDate + 1).catch((e) => console.log(e));
-applyRatioMethod(1833, 1834, undefined, "200->325");
+entitesTransformationGraph(conf.startDate, conf.endDate + 1)
+  .catch((e) => console.log(e))
+  .then(() => applyRatioMethod(1833, 1834));
 // Poland "2903->290"
 
-// "901->British East Indies" Problem with soveriegn resolution British East Indies in 1833 should yield Straits Settlements
+// "901->British East Indies" Problem with sovereign resolution British East Indies in 1833 should yield Straits Settlements
 // "Cape Colony (Cape of Good Hope) & Mauritius->220" ratio decomposition should nt consider flow not with same reporter
-// informal custom list
-// log gph without status
 
+// TODO
+// log gph without status
 // export au format Gephi lite

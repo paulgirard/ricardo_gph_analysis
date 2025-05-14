@@ -2612,6 +2612,14 @@
           <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
         </attvalues>
       </node>
+      <node id="restOfTheWorld" label="Rest Of The World">
+        <attvalues>
+          <attvalue for="reporting" value="false"/>
+          <attvalue for="ricType" value="geographical_area"/>
+          <attvalue for="entityType" value="ROTW"/>
+          <attvalue for="type" value="entity"/>
+        </attvalues>
+      </node>
     </nodes>
     <edges>
       <edge id="200->Cape Town" source="200" target="Cape Town" label="REPORTED_TRADE">
@@ -3592,7 +3600,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Netherlands"/>
           <attvalue for="Imp" value="379866.79725759063"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="379866.79725759063"/>
         </attvalues>
       </edge>
@@ -3746,7 +3754,7 @@
       <edge id="210->Germany (Zollverein) (Rhine)" source="210" target="Germany (Zollverein) (Rhine)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="2670374.142997062"/>
           <attvalue for="ExpReportedBy" value="Netherlands"/>
           <attvalue for="Exp" value="2670374.142997062"/>
@@ -6249,8 +6257,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="2213.3574964639324"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="discard_collision"/>
           <attvalue for="value" value="2213.3574964639324"/>
+          <attvalue for="notes" value="Kokand -> Russia (USSR)  (REP)  : 42360.767326732675"/>
         </attvalues>
       </edge>
       <edge id="365->7010" source="365" target="7010" label="REPORTED_TRADE">
@@ -8139,7 +8148,7 @@
       <edge id="901->British East Indies" source="901" target="British East Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="3459"/>
           <attvalue for="ExpReportedBy" value="New South Wales"/>
           <attvalue for="Exp" value="3459"/>
@@ -8436,10 +8445,11 @@
       <edge id="Amsterdam->Germany (Zollverein) (Rhine)" source="Amsterdam" target="Germany (Zollverein) (Rhine)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="1138307.5416258571"/>
           <attvalue for="ExpReportedBy" value="Amsterdam"/>
           <attvalue for="Exp" value="1138307.5416258571"/>
+          <attvalue for="aggregatedIn" value="210->restOfTheWorld"/>
         </attvalues>
       </edge>
       <edge id="Amsterdam->Hanse Towns" source="Amsterdam" target="Hanse Towns" label="REPORTED_TRADE">
@@ -9394,7 +9404,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Trabzon"/>
           <attvalue for="Imp" value="8677.766895200784"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_internal"/>
           <attvalue for="value" value="8677.766895200784"/>
         </attvalues>
       </edge>
@@ -9438,7 +9448,7 @@
       <edge id="Trabzon->Moldavia &amp; Wallachia" source="Trabzon" target="Moldavia &amp; Wallachia" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_internal"/>
           <attvalue for="value" value="810.9696376101862"/>
           <attvalue for="ExpReportedBy" value="Trabzon"/>
           <attvalue for="Exp" value="810.9696376101862"/>
@@ -10648,10 +10658,11 @@
       <edge id="Izmir (Smyrna)->Egypt Arab Republic (Egypt) &amp; Syria" source="Izmir (Smyrna)" target="Egypt Arab Republic (Egypt) &amp; Syria" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="2664.054848188051"/>
           <attvalue for="ExpReportedBy" value="Izmir (Smyrna)"/>
           <attvalue for="Exp" value="2664.054848188051"/>
+          <attvalue for="aggregatedIn" value="640->651"/>
         </attvalues>
       </edge>
       <edge id="Izmir (Smyrna)->Barbary Coast" source="Izmir (Smyrna)" target="Barbary Coast" label="REPORTED_TRADE">
@@ -10727,8 +10738,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Izmir (Smyrna)"/>
           <attvalue for="Imp" value="23506.366307541626"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="23506.366307541626"/>
+          <attvalue for="aggregatedIn" value="651->640"/>
         </attvalues>
       </edge>
       <edge id="Barbary Coast->Izmir (Smyrna)" source="Barbary Coast" target="Izmir (Smyrna)" label="REPORTED_TRADE">
@@ -10760,9 +10772,9 @@
           <attvalue for="aggregatedIn" value="338->640"/>
         </attvalues>
       </edge>
-      <edge id="352->640" source="352" target="640" label="REPORTED_TRADE|AGGREGATE_INTO|SPLIT_OTHER">
+      <edge id="352->640" source="352" target="640" label="REPORTED_TRADE|AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="REPORTED_TRADE|AGGREGATE_INTO|SPLIT_OTHER"/>
+          <attvalue for="labels" value="REPORTED_TRADE|AGGREGATE_INTO"/>
           <attvalue for="status" value="ignore_internal"/>
           <attvalue for="value" value="14875.612144955927"/>
           <attvalue for="ExpReportedBy" value="Cyprus"/>
@@ -12241,36 +12253,36 @@
           <attvalue for="Exp" value="2272.2820763956906"/>
         </attvalues>
       </edge>
-      <edge id="290->239" source="290" target="239" label="REPORTED_TRADE|SPLIT_OTHER">
+      <edge id="290->239" source="290" target="239" label="REPORTED_TRADE">
         <attvalues>
-          <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
+          <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="451388.83447600395"/>
           <attvalue for="ExpReportedBy" value="Poland"/>
           <attvalue for="Exp" value="451388.83447600395"/>
         </attvalues>
       </edge>
-      <edge id="290->365" source="290" target="365" label="REPORTED_TRADE|SPLIT_OTHER">
+      <edge id="290->365" source="290" target="365" label="REPORTED_TRADE">
         <attvalues>
-          <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
+          <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="143408.42311459355"/>
           <attvalue for="ExpReportedBy" value="Poland"/>
           <attvalue for="Exp" value="143408.42311459355"/>
         </attvalues>
       </edge>
-      <edge id="290->300" source="290" target="300" label="REPORTED_TRADE|SPLIT_OTHER">
+      <edge id="290->300" source="290" target="300" label="REPORTED_TRADE">
         <attvalues>
-          <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
+          <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="5190.989226248776"/>
           <attvalue for="ExpReportedBy" value="Poland"/>
           <attvalue for="Exp" value="5190.989226248776"/>
         </attvalues>
       </edge>
-      <edge id="290->2903" source="290" target="2903" label="REPORTED_TRADE|SPLIT_OTHER">
+      <edge id="290->2903" source="290" target="2903" label="REPORTED_TRADE">
         <attvalues>
-          <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
+          <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="36458.37414299706"/>
           <attvalue for="ExpReportedBy" value="Poland"/>
@@ -12668,2122 +12680,2062 @@
           <attvalue for="notes" value="France (REP)  -> Egypt Arab Republic (Egypt)  : 109696.37610186092"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_0" source="Cape Town" target="561" label="AGGREGATE_INTO">
+      <edge id="geid_120_0" source="Cape Town" target="561" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_1" source="British Colonies (other)" target="British Colonies" label="AGGREGATE_INTO">
+      <edge id="geid_120_1" source="British Colonies (other)" target="British Colonies" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_2" source="Port Simon" target="561" label="AGGREGATE_INTO">
+      <edge id="geid_120_2" source="Port Simon" target="561" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_3" source="Port Elizabeth" target="561" label="AGGREGATE_INTO">
+      <edge id="geid_120_3" source="Port Elizabeth" target="561" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_4" source="St. Thomas" target="5" label="AGGREGATE_INTO">
+      <edge id="geid_120_4" source="St. Thomas" target="5" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_5" source="Sardinia" target="324" label="AGGREGATE_INTO">
+      <edge id="geid_120_5" source="Sardinia" target="324" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_6" source="Norway &amp; Sweden" target="385" label="SPLIT">
+      <edge id="geid_120_6" source="Norway &amp; Sweden" target="385" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_7" source="Norway &amp; Sweden" target="380" label="SPLIT">
+      <edge id="geid_120_7" source="Norway &amp; Sweden" target="380" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_8" source="Argentina (La Plata) &amp; Uruguay" target="160" label="SPLIT">
+      <edge id="geid_120_8" source="Argentina (La Plata) &amp; Uruguay" target="160" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_9" source="Argentina (La Plata) &amp; Uruguay" target="165" label="SPLIT">
+      <edge id="geid_120_9" source="Argentina (La Plata) &amp; Uruguay" target="165" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_10" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="390" label="SPLIT">
+      <edge id="geid_120_10" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="390" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_11" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="11" label="SPLIT">
+      <edge id="geid_120_11" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="11" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_12" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="10" label="SPLIT">
+      <edge id="geid_120_12" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="10" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_13" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="395" label="SPLIT">
+      <edge id="geid_120_13" source="Denmark &amp; Faeroe Is. &amp; Greenland &amp; Iceland" target="395" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_14" source="France &amp; French Colonies" target="220" label="SPLIT">
+      <edge id="geid_120_14" source="France &amp; French Colonies" target="220" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_15" source="France &amp; French Colonies" target="French Colonies" label="SPLIT">
+      <edge id="geid_120_15" source="France &amp; French Colonies" target="French Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_16" source="British Colonies &amp; United Kingdom" target="British Colonies" label="SPLIT">
+      <edge id="geid_120_16" source="British Colonies &amp; United Kingdom" target="British Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_17" source="British Colonies &amp; United Kingdom" target="200" label="SPLIT">
+      <edge id="geid_120_17" source="British Colonies &amp; United Kingdom" target="200" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_18" source="Dutch Colonies &amp; Netherlands" target="Dutch Colonies" label="SPLIT">
+      <edge id="geid_120_18" source="Dutch Colonies &amp; Netherlands" target="Dutch Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_19" source="Dutch Colonies &amp; Netherlands" target="210" label="SPLIT">
+      <edge id="geid_120_19" source="Dutch Colonies &amp; Netherlands" target="210" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_20" source="Portugal &amp; Portuguese Colonies" target="235" label="SPLIT">
+      <edge id="geid_120_20" source="Portugal &amp; Portuguese Colonies" target="235" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_21" source="Portugal &amp; Portuguese Colonies" target="Portuguese Colonies" label="SPLIT">
+      <edge id="geid_120_21" source="Portugal &amp; Portuguese Colonies" target="Portuguese Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_22" source="Spain &amp; Spanish Colonies" target="230" label="SPLIT">
+      <edge id="geid_120_22" source="Spain &amp; Spanish Colonies" target="230" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_23" source="Spain &amp; Spanish Colonies" target="Spanish Colonies" label="SPLIT">
+      <edge id="geid_120_23" source="Spain &amp; Spanish Colonies" target="Spanish Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_24" source="Sweden &amp; Swedish Colonies" target="380" label="SPLIT">
+      <edge id="geid_120_24" source="Sweden &amp; Swedish Colonies" target="380" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_25" source="Sweden &amp; Swedish Colonies" target="Swedish Colonies" label="SPLIT">
+      <edge id="geid_120_25" source="Sweden &amp; Swedish Colonies" target="Swedish Colonies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_26" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="100" label="SPLIT">
+      <edge id="geid_120_26" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="100" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_27" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="130" label="SPLIT">
+      <edge id="geid_120_27" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="130" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_28" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="101" label="SPLIT">
+      <edge id="geid_120_28" source="Colombia (New Granada) (Gran Colombia) &amp; Ecuador &amp; Venezuela" target="101" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_29" source="Germany (Zollverein) (Rhine)" target="255" label="AGGREGATE_INTO">
+      <edge id="geid_120_29" source="Germany (Zollverein) (Rhine)" target="255" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_30" source="West Indies (other)" target="West Indies" label="AGGREGATE_INTO">
+      <edge id="geid_120_30" source="West Indies (other)" target="West Indies" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_31" source="Cochin China &amp; People's Republic of China (China)" target="8151" label="SPLIT">
+      <edge id="geid_120_31" source="Cochin China &amp; People's Republic of China (China)" target="8151" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_32" source="Cochin China &amp; People's Republic of China (China)" target="710" label="SPLIT">
+      <edge id="geid_120_32" source="Cochin China &amp; People's Republic of China (China)" target="710" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_33" source="Hanse Towns (other)" target="Hanse Towns" label="AGGREGATE_INTO">
+      <edge id="geid_120_33" source="Hanse Towns (other)" target="Hanse Towns" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_34" source="Jakarta (Batavia)" target="850" label="AGGREGATE_INTO">
+      <edge id="geid_120_34" source="Jakarta (Batavia)" target="850" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_35" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="3343" label="SPLIT">
+      <edge id="geid_120_35" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="3343" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_36" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="3261" label="SPLIT">
+      <edge id="geid_120_36" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="3261" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_37" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="326" label="SPLIT">
+      <edge id="geid_120_37" source="Fiume &amp; Republic of St. Mark &amp; Trieste" target="326" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_38" source="Gibraltar &amp; Malta &amp; United Kingdom" target="231" label="SPLIT">
+      <edge id="geid_120_38" source="Gibraltar &amp; Malta &amp; United Kingdom" target="231" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_39" source="Gibraltar &amp; Malta &amp; United Kingdom" target="338" label="SPLIT">
+      <edge id="geid_120_39" source="Gibraltar &amp; Malta &amp; United Kingdom" target="338" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_40" source="Gibraltar &amp; Malta &amp; United Kingdom" target="200" label="SPLIT">
+      <edge id="geid_120_40" source="Gibraltar &amp; Malta &amp; United Kingdom" target="200" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_41" source="Naples" target="329" label="AGGREGATE_INTO">
+      <edge id="geid_120_41" source="Naples" target="329" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_42" source="Genoa" target="324" label="AGGREGATE_INTO">
+      <edge id="geid_120_42" source="Genoa" target="324" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_43" source="Tunis" target="616" label="AGGREGATE_INTO">
+      <edge id="geid_120_43" source="Tunis" target="616" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_44" source="Málaga" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_44" source="Málaga" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_45" source="Bilbao" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_45" source="Bilbao" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_46" source="Hanover &amp; Hanse Towns" target="240" label="SPLIT">
+      <edge id="geid_120_46" source="Hanover &amp; Hanse Towns" target="240" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_47" source="Hanover &amp; Hanse Towns" target="Hanse Towns" label="SPLIT">
+      <edge id="geid_120_47" source="Hanover &amp; Hanse Towns" target="Hanse Towns" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_48" source="Santander" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_48" source="Santander" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_49" source="Montevideo" target="165" label="AGGREGATE_INTO">
+      <edge id="geid_120_49" source="Montevideo" target="165" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_50" source="Havana" target="40" label="AGGREGATE_INTO">
+      <edge id="geid_120_50" source="Havana" target="40" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_51" source="Sund" target="390" label="AGGREGATE_INTO">
+      <edge id="geid_120_51" source="Sund" target="390" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_52" source="Portugal &amp; Spain" target="235" label="SPLIT">
+      <edge id="geid_120_52" source="Portugal &amp; Spain" target="235" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_53" source="Portugal &amp; Spain" target="230" label="SPLIT">
+      <edge id="geid_120_53" source="Portugal &amp; Spain" target="230" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_54" source="America (other)" target="America" label="AGGREGATE_INTO">
+      <edge id="geid_120_54" source="America (other)" target="America" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_55" source="America (other) &amp; Europe (other)" target="America (other)" label="SPLIT">
+      <edge id="geid_120_55" source="America (other) &amp; Europe (other)" target="America (other)" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_56" source="Europe (other)" target="Europe" label="AGGREGATE_INTO">
+      <edge id="geid_120_56" source="Europe (other)" target="Europe" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_57" source="America (other) &amp; Europe (other)" target="Europe (other)" label="SPLIT">
+      <edge id="geid_120_57" source="America (other) &amp; Europe (other)" target="Europe (other)" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_58" source="Asian Turkey" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_58" source="Asian Turkey" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_59" source="Asia (other)" target="Asia" label="AGGREGATE_INTO">
+      <edge id="geid_120_59" source="Asia (other)" target="Asia" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_60" source="Algiers" target="615" label="AGGREGATE_INTO">
+      <edge id="geid_120_60" source="Algiers" target="615" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_61" source="Cayenne" target="120" label="AGGREGATE_INTO">
+      <edge id="geid_120_61" source="Cayenne" target="120" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_62" source="Africa Coast &amp; Barbary Coast" target="Africa Coast" label="SPLIT">
+      <edge id="geid_120_62" source="Africa Coast &amp; Barbary Coast" target="Africa Coast" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_63" source="Africa Coast &amp; Barbary Coast" target="Barbary Coast" label="SPLIT">
+      <edge id="geid_120_63" source="Africa Coast &amp; Barbary Coast" target="Barbary Coast" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_64" source="Colombia (New Granada) (Gran Colombia) &amp; Guatemala" target="100" label="SPLIT">
+      <edge id="geid_120_64" source="Colombia (New Granada) (Gran Colombia) &amp; Guatemala" target="100" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_65" source="Colombia (New Granada) (Gran Colombia) &amp; Guatemala" target="90" label="SPLIT">
+      <edge id="geid_120_65" source="Colombia (New Granada) (Gran Colombia) &amp; Guatemala" target="90" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_66" source="Cape Colony (Cape of Good Hope) &amp; Mauritius" target="561" label="SPLIT">
+      <edge id="geid_120_66" source="Cape Colony (Cape of Good Hope) &amp; Mauritius" target="561" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_67" source="Cape Colony (Cape of Good Hope) &amp; Mauritius" target="590" label="SPLIT">
+      <edge id="geid_120_67" source="Cape Colony (Cape of Good Hope) &amp; Mauritius" target="590" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_68" source="Papal States &amp; Tuscany" target="327" label="SPLIT">
+      <edge id="geid_120_68" source="Papal States &amp; Tuscany" target="327" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_69" source="Papal States &amp; Tuscany" target="337" label="SPLIT">
+      <edge id="geid_120_69" source="Papal States &amp; Tuscany" target="337" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_70" source="Greece &amp; Turkey (Ottoman Empire)" target="350" label="SPLIT">
+      <edge id="geid_120_70" source="Greece &amp; Turkey (Ottoman Empire)" target="350" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_71" source="Greece &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
+      <edge id="geid_120_71" source="Greece &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_72" source="Bahia" target="140" label="AGGREGATE_INTO">
+      <edge id="geid_120_72" source="Bahia" target="140" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_73" source="Cartagena (Colombia)" target="100" label="AGGREGATE_INTO">
+      <edge id="geid_120_73" source="Cartagena (Colombia)" target="100" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_74" source="Colombia (New Granada) (Gran Colombia) (other)" target="100" label="AGGREGATE_INTO">
+      <edge id="geid_120_74" source="Colombia (New Granada) (Gran Colombia) (other)" target="100" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_75" source="Azores (Western Isles) &amp; Portugal" target="400" label="SPLIT">
+      <edge id="geid_120_75" source="Azores (Western Isles) &amp; Portugal" target="400" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_76" source="Azores (Western Isles) &amp; Portugal" target="235" label="SPLIT">
+      <edge id="geid_120_76" source="Azores (Western Isles) &amp; Portugal" target="235" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_77" source="Madeira Isles &amp; Portugal" target="401" label="SPLIT">
+      <edge id="geid_120_77" source="Madeira Isles &amp; Portugal" target="401" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_78" source="Madeira Isles &amp; Portugal" target="235" label="SPLIT">
+      <edge id="geid_120_78" source="Madeira Isles &amp; Portugal" target="235" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_79" source="Balearic Islands &amp; Spain" target="Balearic Islands" label="SPLIT">
+      <edge id="geid_120_79" source="Balearic Islands &amp; Spain" target="Balearic Islands" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_80" source="Balearic Islands &amp; Spain" target="230" label="SPLIT">
+      <edge id="geid_120_80" source="Balearic Islands &amp; Spain" target="230" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_81" source="Canary Is. &amp; Spain" target="410" label="SPLIT">
+      <edge id="geid_120_81" source="Canary Is. &amp; Spain" target="410" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_82" source="Canary Is. &amp; Spain" target="230" label="SPLIT">
+      <edge id="geid_120_82" source="Canary Is. &amp; Spain" target="230" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_83" source="Ionian Is. &amp; Morea" target="3349" label="SPLIT">
+      <edge id="geid_120_83" source="Ionian Is. &amp; Morea" target="3349" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_84" source="Morea" target="350" label="AGGREGATE_INTO">
+      <edge id="geid_120_84" source="Morea" target="350" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_85" source="Ionian Is. &amp; Morea" target="Morea" label="SPLIT">
+      <edge id="geid_120_85" source="Ionian Is. &amp; Morea" target="Morea" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_86" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="East India Company" label="SPLIT">
+      <edge id="geid_120_86" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="East India Company" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_87" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="710" label="SPLIT">
+      <edge id="geid_120_87" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="710" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_88" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="780" label="SPLIT">
+      <edge id="geid_120_88" source="East India Company &amp; People's Republic of China (China) &amp; Sri Lanka (Ceylon)" target="780" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_89" source="Indian Ocean Islands (other)" target="Indian Ocean Islands" label="AGGREGATE_INTO">
+      <edge id="geid_120_89" source="Indian Ocean Islands (other)" target="Indian Ocean Islands" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_90" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Indian Ocean Islands (other)" label="SPLIT">
+      <edge id="geid_120_90" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Indian Ocean Islands (other)" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_91" source="Java" target="850" label="AGGREGATE_INTO">
+      <edge id="geid_120_91" source="Java" target="850" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_92" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Java" label="SPLIT">
+      <edge id="geid_120_92" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Java" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_93" source="Sumatra" target="850" label="AGGREGATE_INTO">
+      <edge id="geid_120_93" source="Sumatra" target="850" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_94" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Sumatra" label="SPLIT">
+      <edge id="geid_120_94" source="Indian Ocean Islands (other) &amp; Java &amp; Sumatra" target="Sumatra" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_95" source="New Zealand &amp; Pacific Islands" target="920" label="SPLIT">
+      <edge id="geid_120_95" source="New Zealand &amp; Pacific Islands" target="920" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_96" source="New Zealand &amp; Pacific Islands" target="Pacific Islands" label="SPLIT">
+      <edge id="geid_120_96" source="New Zealand &amp; Pacific Islands" target="Pacific Islands" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_97" source="Cuba &amp; West Indies (other)" target="40" label="SPLIT">
+      <edge id="geid_120_97" source="Cuba &amp; West Indies (other)" target="40" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_98" source="Cuba &amp; West Indies (other)" target="West Indies (other)" label="SPLIT">
+      <edge id="geid_120_98" source="Cuba &amp; West Indies (other)" target="West Indies (other)" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_99" source="Channel Is. &amp; Isle of Man" target="2003" label="SPLIT">
+      <edge id="geid_120_99" source="Channel Is. &amp; Isle of Man" target="2003" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_100" source="Channel Is. &amp; Isle of Man" target="2004" label="SPLIT">
+      <edge id="geid_120_100" source="Channel Is. &amp; Isle of Man" target="2004" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_101" source="Ireland &amp; United Kingdom" target="205" label="SPLIT">
+      <edge id="geid_120_101" source="Ireland &amp; United Kingdom" target="205" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_102" source="Ireland &amp; United Kingdom" target="200" label="SPLIT">
+      <edge id="geid_120_102" source="Ireland &amp; United Kingdom" target="200" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_103" source="East Indies (other)" target="East Indies" label="AGGREGATE_INTO">
+      <edge id="geid_120_103" source="East Indies (other)" target="East Indies" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_104" source="People's Republic of China (China) &amp; Philippines" target="710" label="SPLIT">
+      <edge id="geid_120_104" source="People's Republic of China (China) &amp; Philippines" target="710" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_105" source="People's Republic of China (China) &amp; Philippines" target="840" label="SPLIT">
+      <edge id="geid_120_105" source="People's Republic of China (China) &amp; Philippines" target="840" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_106" source="East India Company" target="750" label="AGGREGATE_INTO">
+      <edge id="geid_120_106" source="East India Company" target="750" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_107" source="Amsterdam" target="210" label="AGGREGATE_INTO">
+      <edge id="geid_120_107" source="Amsterdam" target="210" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_108" source="Klaipėda (Memel)" target="239" label="AGGREGATE_INTO">
+      <edge id="geid_120_108" source="Klaipėda (Memel)" target="239" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_109" source="Livorno" target="337" label="AGGREGATE_INTO">
+      <edge id="geid_120_109" source="Livorno" target="337" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_110" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="Barbary Coast" label="SPLIT">
+      <edge id="geid_120_110" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="Barbary Coast" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_111" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="651" label="SPLIT">
+      <edge id="geid_120_111" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="651" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_112" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
+      <edge id="geid_120_112" source="Barbary Coast &amp; Egypt Arab Republic (Egypt) &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_113" source="Austria-Hungary (Austrian Empire) &amp; Lombardy-Venetia" target="300" label="SPLIT">
+      <edge id="geid_120_113" source="Austria-Hungary (Austrian Empire) &amp; Lombardy-Venetia" target="300" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_114" source="Austria-Hungary (Austrian Empire) &amp; Lombardy-Venetia" target="3262" label="SPLIT">
+      <edge id="geid_120_114" source="Austria-Hungary (Austrian Empire) &amp; Lombardy-Venetia" target="3262" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_115" source="Ionian Is. &amp; Malta" target="3349" label="SPLIT">
+      <edge id="geid_120_115" source="Ionian Is. &amp; Malta" target="3349" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_116" source="Ionian Is. &amp; Malta" target="338" label="SPLIT">
+      <edge id="geid_120_116" source="Ionian Is. &amp; Malta" target="338" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_117" source="Civitavecchia" target="327" label="AGGREGATE_INTO">
+      <edge id="geid_120_117" source="Civitavecchia" target="327" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_118" source="Cadix" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_118" source="Cadix" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_119" source="San Sebastián" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_119" source="San Sebastián" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_120" source="Trabzon" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_120" source="Trabzon" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_121" source="Istanbul (Constantinople)" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_121" source="Istanbul (Constantinople)" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_122" source="Moldavia &amp; Wallachia" target="3361" label="SPLIT">
+      <edge id="geid_120_122" source="Moldavia &amp; Wallachia" target="3361" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_123" source="Moldavia &amp; Wallachia" target="3362" label="SPLIT">
+      <edge id="geid_120_123" source="Moldavia &amp; Wallachia" target="3362" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_124" source="Tripoli (Syria)" target="660" label="AGGREGATE_INTO">
+      <edge id="geid_120_124" source="Tripoli (Syria)" target="660" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_125" source="Beirut" target="660" label="AGGREGATE_INTO">
+      <edge id="geid_120_125" source="Beirut" target="660" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_126" source="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies" target="651" label="SPLIT">
+      <edge id="geid_120_126" source="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies" target="651" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_127" source="Egypt Arab Republic (Egypt) Dependencies" target="651" label="AGGREGATE_INTO">
+      <edge id="geid_120_127" source="Egypt Arab Republic (Egypt) Dependencies" target="651" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_128" source="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies" target="Egypt Arab Republic (Egypt) Dependencies" label="SPLIT">
+      <edge id="geid_120_128" source="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies" target="Egypt Arab Republic (Egypt) Dependencies" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_129" source="Aleppo &amp; Alexandretta" target="6525" label="SPLIT">
+      <edge id="geid_120_129" source="Aleppo &amp; Alexandretta" target="6525" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_130" source="Alexandretta" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_130" source="Alexandretta" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_131" source="Aleppo &amp; Alexandretta" target="Alexandretta" label="SPLIT">
+      <edge id="geid_120_131" source="Aleppo &amp; Alexandretta" target="Alexandretta" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_132" source="Aleppo &amp; Latakia (Alaouites)" target="6525" label="SPLIT">
+      <edge id="geid_120_132" source="Aleppo &amp; Latakia (Alaouites)" target="6525" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_133" source="Aleppo &amp; Latakia (Alaouites)" target="6526" label="SPLIT">
+      <edge id="geid_120_133" source="Aleppo &amp; Latakia (Alaouites)" target="6526" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_134" source="Tripoli (Tripolitania)" target="6203" label="AGGREGATE_INTO">
+      <edge id="geid_120_134" source="Tripoli (Tripolitania)" target="6203" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_135" source="Benghazi" target="6202" label="AGGREGATE_INTO">
+      <edge id="geid_120_135" source="Benghazi" target="6202" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_136" source="Java &amp; Madura" target="Java" label="SPLIT">
+      <edge id="geid_120_136" source="Java &amp; Madura" target="Java" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_137" source="Madura" target="850" label="AGGREGATE_INTO">
+      <edge id="geid_120_137" source="Madura" target="850" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_138" source="Java &amp; Madura" target="Madura" label="SPLIT">
+      <edge id="geid_120_138" source="Java &amp; Madura" target="Madura" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_139" source="Indonesia (Dutch East Indies) (other)" target="850" label="AGGREGATE_INTO">
+      <edge id="geid_120_139" source="Indonesia (Dutch East Indies) (other)" target="850" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_140" source="Macao &amp; People's Republic of China (China)" target="721" label="SPLIT">
+      <edge id="geid_120_140" source="Macao &amp; People's Republic of China (China)" target="721" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_141" source="Macao &amp; People's Republic of China (China)" target="710" label="SPLIT">
+      <edge id="geid_120_141" source="Macao &amp; People's Republic of China (China)" target="710" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_142" source="Coromandel Coast Posts &amp; Malabar Coast" target="7503" label="SPLIT">
+      <edge id="geid_120_142" source="Coromandel Coast Posts &amp; Malabar Coast" target="7503" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_143" source="Coromandel Coast Posts &amp; Malabar Coast" target="7506" label="SPLIT">
+      <edge id="geid_120_143" source="Coromandel Coast Posts &amp; Malabar Coast" target="7506" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_144" source="Patras" target="350" label="AGGREGATE_INTO">
+      <edge id="geid_120_144" source="Patras" target="350" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_145" source="Izmir (Smyrna)" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_145" source="Izmir (Smyrna)" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_146" source="Egypt Arab Republic (Egypt) &amp; Syria" target="651" label="SPLIT">
+      <edge id="geid_120_146" source="Egypt Arab Republic (Egypt) &amp; Syria" target="651" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_147" source="Egypt Arab Republic (Egypt) &amp; Syria" target="652" label="SPLIT">
+      <edge id="geid_120_147" source="Egypt Arab Republic (Egypt) &amp; Syria" target="652" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_148" source="Nice" target="324" label="AGGREGATE_INTO">
+      <edge id="geid_120_148" source="Nice" target="324" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_149" source="Kingdom of Sardinia (continental)" target="324" label="AGGREGATE_INTO">
+      <edge id="geid_120_149" source="Kingdom of Sardinia (continental)" target="324" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_150" source="Hamburg &amp; Lübeck" target="248" label="SPLIT">
+      <edge id="geid_120_150" source="Hamburg &amp; Lübeck" target="248" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_151" source="Hamburg &amp; Lübeck" target="276" label="SPLIT">
+      <edge id="geid_120_151" source="Hamburg &amp; Lübeck" target="276" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_152" source="Bremen &amp; Hamburg" target="246" label="SPLIT">
+      <edge id="geid_120_152" source="Bremen &amp; Hamburg" target="246" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_153" source="Bremen &amp; Hamburg" target="248" label="SPLIT">
+      <edge id="geid_120_153" source="Bremen &amp; Hamburg" target="248" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_154" source="Denmark &amp; Saxony" target="390" label="SPLIT">
+      <edge id="geid_120_154" source="Denmark &amp; Saxony" target="390" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_155" source="Denmark &amp; Saxony" target="269" label="SPLIT">
+      <edge id="geid_120_155" source="Denmark &amp; Saxony" target="269" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_156" source="Greece &amp; Italy &amp; Levant" target="350" label="SPLIT">
+      <edge id="geid_120_156" source="Greece &amp; Italy &amp; Levant" target="350" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_157" source="Greece &amp; Italy &amp; Levant" target="325" label="SPLIT">
+      <edge id="geid_120_157" source="Greece &amp; Italy &amp; Levant" target="325" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_158" source="Greece &amp; Italy &amp; Levant" target="Levant" label="SPLIT">
+      <edge id="geid_120_158" source="Greece &amp; Italy &amp; Levant" target="Levant" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_159" source="Southern America (other)" target="Southern America" label="AGGREGATE_INTO">
+      <edge id="geid_120_159" source="Southern America (other)" target="Southern America" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_160" source="Barbary Coast &amp; Turkey (Ottoman Empire)" target="Barbary Coast" label="SPLIT">
+      <edge id="geid_120_160" source="Barbary Coast &amp; Turkey (Ottoman Empire)" target="Barbary Coast" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_161" source="Barbary Coast &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
+      <edge id="geid_120_161" source="Barbary Coast &amp; Turkey (Ottoman Empire)" target="640" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_162" source="Balearic Islands" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_162" source="Balearic Islands" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_163" source="Piedmont" target="324" label="AGGREGATE_INTO">
+      <edge id="geid_120_163" source="Piedmont" target="324" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_164" source="Piedmont &amp; Tuscany" target="Piedmont" label="SPLIT">
+      <edge id="geid_120_164" source="Piedmont &amp; Tuscany" target="Piedmont" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_165" source="Piedmont &amp; Tuscany" target="337" label="SPLIT">
+      <edge id="geid_120_165" source="Piedmont &amp; Tuscany" target="337" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_166" source="Denmark &amp; Sweden" target="390" label="SPLIT">
+      <edge id="geid_120_166" source="Denmark &amp; Sweden" target="390" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_167" source="Denmark &amp; Sweden" target="380" label="SPLIT">
+      <edge id="geid_120_167" source="Denmark &amp; Sweden" target="380" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_168" source="Alexandria" target="651" label="AGGREGATE_INTO">
+      <edge id="geid_120_168" source="Alexandria" target="651" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_169" source="Alexandria &amp; Egypt Arab Republic (Egypt)" target="Alexandria" label="SPLIT">
+      <edge id="geid_120_169" source="Alexandria &amp; Egypt Arab Republic (Egypt)" target="Alexandria" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_170" source="Alexandria &amp; Egypt Arab Republic (Egypt)" target="651" label="SPLIT">
+      <edge id="geid_120_170" source="Alexandria &amp; Egypt Arab Republic (Egypt)" target="651" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_171" source="Malta &amp; United Kingdom" target="338" label="SPLIT">
+      <edge id="geid_120_171" source="Malta &amp; United Kingdom" target="338" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_172" source="Malta &amp; United Kingdom" target="200" label="SPLIT">
+      <edge id="geid_120_172" source="Malta &amp; United Kingdom" target="200" label="SPLIT">
         <attvalues>
           <attvalue for="labels" value="SPLIT"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_173" source="420" target="451" label="AGGREGATE_INTO">
+      <edge id="geid_120_173" source="420" target="451" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_174" source="1065" target="68" label="AGGREGATE_INTO|SPLIT_OTHER">
+      <edge id="geid_120_174" source="1065" target="68" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_175" source="1161" target="160" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_176" source="703" target="7010" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_177" source="704" target="7010" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_178" source="3261" target="300" label="AGGREGATE_INTO">
-        <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_179" source="90" target="89" label="AGGREGATE_INTO">
+      <edge id="geid_120_175" source="1161" target="160" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_180" source="291" target="239" label="AGGREGATE_INTO">
+      <edge id="geid_120_176" source="703" target="7010" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_181" source="375" target="365" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_182" source="8151" target="815" label="AGGREGATE_INTO">
+      <edge id="geid_120_177" source="704" target="7010" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_183" source="3343" target="300" label="AGGREGATE_INTO">
+      <edge id="geid_120_178" source="3261" target="300" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_184" source="326" target="300" label="AGGREGATE_INTO">
+      <edge id="geid_120_179" source="90" target="89" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_185" source="400" target="235" label="AGGREGATE_INTO">
+      <edge id="geid_120_180" source="291" target="239" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_186" source="410" target="230" label="AGGREGATE_INTO">
+      <edge id="geid_120_181" source="375" target="365" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_187" source="2003" target="200" label="AGGREGATE_INTO">
+      <edge id="geid_120_182" source="8151" target="815" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_188" source="205" target="200" label="AGGREGATE_INTO">
+      <edge id="geid_120_183" source="3343" target="300" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_189" source="3262" target="300" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_190" source="3361" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_184" source="326" target="300" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_191" source="3362" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_185" source="400" target="235" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_192" source="660" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_186" source="410" target="230" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_193" source="6525" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_187" source="2003" target="200" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_194" source="6526" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_188" source="205" target="200" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_195" source="6203" target="640" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_196" source="6202" target="640" label="AGGREGATE_INTO">
+      <edge id="geid_120_189" source="3262" target="300" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_197" source="7503" target="750" label="AGGREGATE_INTO">
+      <edge id="geid_120_190" source="3361" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_198" source="7506" target="750" label="AGGREGATE_INTO">
+      <edge id="geid_120_191" source="3362" target="640" label="AGGREGATE_INTO">
         <attvalues>
           <attvalue for="labels" value="AGGREGATE_INTO"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_199" source="652" target="651" label="AGGREGATE_INTO|SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="AGGREGATE_INTO|SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_200" source="British Northern America" target="21" label="SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_201" source="British Northern America" target="1025" label="SPLIT_OTHER">
+      <edge id="geid_120_192" source="660" target="640" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_202" source="British West Indies" target="51" label="SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_203" source="Hanse Towns" target="246" label="SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
-        </attvalues>
-      </edge>
-      <edge id="geid_167_204" source="Hanse Towns" target="248" label="SPLIT_OTHER">
-        <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_205" source="Hanse Towns" target="276" label="SPLIT_OTHER">
+      <edge id="geid_120_193" source="6525" target="640" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_206" source="British Colonies" target="21" label="SPLIT_OTHER">
+      <edge id="geid_120_194" source="6526" target="640" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_207" source="British Colonies" target="51" label="SPLIT_OTHER">
+      <edge id="geid_120_195" source="6203" target="640" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_208" source="British Colonies" target="54" label="SPLIT_OTHER">
+      <edge id="geid_120_196" source="6202" target="640" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_209" source="British Colonies" target="56" label="SPLIT_OTHER">
+      <edge id="geid_120_197" source="7503" target="750" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_210" source="British Colonies" target="58" label="SPLIT_OTHER">
+      <edge id="geid_120_198" source="7506" target="750" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_211" source="British Colonies" target="231" label="SPLIT_OTHER">
+      <edge id="geid_120_199" source="652" target="651" label="AGGREGATE_INTO">
         <attvalues>
-          <attvalue for="labels" value="SPLIT_OTHER"/>
+          <attvalue for="labels" value="AGGREGATE_INTO"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_212" source="British Colonies" target="338" label="SPLIT_OTHER">
+      <edge id="geid_120_200" source="British Northern America" target="21" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_213" source="British Colonies" target="451" label="SPLIT_OTHER">
+      <edge id="geid_120_201" source="British Northern America" target="1025" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_214" source="British Colonies" target="561" label="SPLIT_OTHER">
+      <edge id="geid_120_202" source="British West Indies" target="51" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_215" source="British Colonies" target="590" label="SPLIT_OTHER">
+      <edge id="geid_120_203" source="Hanse Towns" target="246" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_216" source="British Colonies" target="750" label="SPLIT_OTHER">
+      <edge id="geid_120_204" source="Hanse Towns" target="248" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_217" source="British Colonies" target="780" label="SPLIT_OTHER">
+      <edge id="geid_120_205" source="Hanse Towns" target="276" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_218" source="British Colonies" target="901" label="SPLIT_OTHER">
+      <edge id="geid_120_206" source="British Colonies" target="21" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_219" source="British Colonies" target="902" label="SPLIT_OTHER">
+      <edge id="geid_120_207" source="British Colonies" target="51" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_220" source="British Colonies" target="1025" label="SPLIT_OTHER">
+      <edge id="geid_120_208" source="British Colonies" target="54" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_221" source="British Colonies" target="1049" label="SPLIT_OTHER">
+      <edge id="geid_120_209" source="British Colonies" target="56" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_222" source="British Colonies" target="1075" label="SPLIT_OTHER">
+      <edge id="geid_120_210" source="British Colonies" target="58" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_223" source="British Colonies" target="4050" label="SPLIT_OTHER">
+      <edge id="geid_120_211" source="British Colonies" target="231" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_224" source="French Colonies" target="65" label="SPLIT_OTHER">
+      <edge id="geid_120_212" source="British Colonies" target="338" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_225" source="French Colonies" target="66" label="SPLIT_OTHER">
+      <edge id="geid_120_213" source="British Colonies" target="451" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_226" source="French Colonies" target="120" label="SPLIT_OTHER">
+      <edge id="geid_120_214" source="British Colonies" target="561" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_227" source="French Colonies" target="433" label="SPLIT_OTHER">
+      <edge id="geid_120_215" source="British Colonies" target="590" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_228" source="French Colonies" target="585" label="SPLIT_OTHER">
+      <edge id="geid_120_216" source="British Colonies" target="750" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_229" source="French Colonies" target="615" label="SPLIT_OTHER">
+      <edge id="geid_120_217" source="British Colonies" target="780" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_230" source="French Colonies" target="751" label="SPLIT_OTHER">
+      <edge id="geid_120_218" source="British Colonies" target="901" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_231" source="French Colonies" target="1029" label="SPLIT_OTHER">
+      <edge id="geid_120_219" source="British Colonies" target="902" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_232" source="Central America" target="51" label="SPLIT_OTHER">
+      <edge id="geid_120_220" source="British Colonies" target="1025" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_233" source="Central America" target="89" label="SPLIT_OTHER">
+      <edge id="geid_120_221" source="British Colonies" target="1049" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_234" source="Central America" target="100" label="SPLIT_OTHER">
+      <edge id="geid_120_222" source="British Colonies" target="1075" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_235" source="West Indies" target="5" label="SPLIT_OTHER">
+      <edge id="geid_120_223" source="British Colonies" target="4050" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_236" source="West Indies" target="6" label="SPLIT_OTHER">
+      <edge id="geid_120_224" source="French Colonies" target="65" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_237" source="West Indies" target="40" label="SPLIT_OTHER">
+      <edge id="geid_120_225" source="French Colonies" target="66" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_238" source="West Indies" target="41" label="SPLIT_OTHER">
+      <edge id="geid_120_226" source="French Colonies" target="120" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_239" source="West Indies" target="51" label="SPLIT_OTHER">
+      <edge id="geid_120_227" source="French Colonies" target="433" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_240" source="West Indies" target="54" label="SPLIT_OTHER">
+      <edge id="geid_120_228" source="French Colonies" target="585" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_241" source="West Indies" target="56" label="SPLIT_OTHER">
+      <edge id="geid_120_229" source="French Colonies" target="615" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_242" source="West Indies" target="58" label="SPLIT_OTHER">
+      <edge id="geid_120_230" source="French Colonies" target="751" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_243" source="West Indies" target="65" label="SPLIT_OTHER">
+      <edge id="geid_120_231" source="French Colonies" target="1029" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_244" source="West Indies" target="66" label="SPLIT_OTHER">
+      <edge id="geid_120_232" source="Central America" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_245" source="West Indies" target="68" label="SPLIT_OTHER">
+      <edge id="geid_120_233" source="Central America" target="89" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_246" source="West Indies" target="1049" label="SPLIT_OTHER">
+      <edge id="geid_120_234" source="Central America" target="100" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_247" source="West Indies" target="200" label="SPLIT_OTHER">
+      <edge id="geid_120_235" source="West Indies" target="5" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_248" source="West Indies" target="1075" label="SPLIT_OTHER">
+      <edge id="geid_120_236" source="West Indies" target="6" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_249" source="East Indies" target="710" label="SPLIT_OTHER">
+      <edge id="geid_120_237" source="West Indies" target="40" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_250" source="East Indies" target="721" label="SPLIT_OTHER">
+      <edge id="geid_120_238" source="West Indies" target="41" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_251" source="East Indies" target="800" label="SPLIT_OTHER">
+      <edge id="geid_120_239" source="West Indies" target="51" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_252" source="East Indies" target="815" label="SPLIT_OTHER">
+      <edge id="geid_120_240" source="West Indies" target="54" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_253" source="East Indies" target="840" label="SPLIT_OTHER">
+      <edge id="geid_120_241" source="West Indies" target="56" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_254" source="East Indies" target="850" label="SPLIT_OTHER">
+      <edge id="geid_120_242" source="West Indies" target="58" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_255" source="Barbary Coast" target="600" label="SPLIT_OTHER">
+      <edge id="geid_120_243" source="West Indies" target="65" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_256" source="Barbary Coast" target="615" label="SPLIT_OTHER">
+      <edge id="geid_120_244" source="West Indies" target="66" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_257" source="Barbary Coast" target="616" label="SPLIT_OTHER">
+      <edge id="geid_120_245" source="West Indies" target="68" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_258" source="Mediterranean Sea" target="230" label="SPLIT_OTHER">
+      <edge id="geid_120_246" source="West Indies" target="1049" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_259" source="Mediterranean Sea" target="231" label="SPLIT_OTHER">
+      <edge id="geid_120_247" source="West Indies" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_260" source="Mediterranean Sea" target="324" label="SPLIT_OTHER">
+      <edge id="geid_120_248" source="West Indies" target="1075" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_261" source="Mediterranean Sea" target="325" label="SPLIT_OTHER">
+      <edge id="geid_120_249" source="East Indies" target="710" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_262" source="Mediterranean Sea" target="300" label="SPLIT_OTHER">
+      <edge id="geid_120_250" source="East Indies" target="721" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_263" source="Mediterranean Sea" target="327" label="SPLIT_OTHER">
+      <edge id="geid_120_251" source="East Indies" target="750" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_264" source="Mediterranean Sea" target="329" label="SPLIT_OTHER">
+      <edge id="geid_120_252" source="East Indies" target="751" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_265" source="Mediterranean Sea" target="337" label="SPLIT_OTHER">
+      <edge id="geid_120_253" source="East Indies" target="800" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_266" source="Mediterranean Sea" target="338" label="SPLIT_OTHER">
+      <edge id="geid_120_254" source="East Indies" target="815" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_267" source="Mediterranean Sea" target="350" label="SPLIT_OTHER">
+      <edge id="geid_120_255" source="East Indies" target="840" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_268" source="Mediterranean Sea" target="640" label="SPLIT_OTHER">
+      <edge id="geid_120_256" source="East Indies" target="850" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_269" source="Mediterranean Sea" target="600" label="SPLIT_OTHER">
+      <edge id="geid_120_257" source="Barbary Coast" target="600" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_270" source="Mediterranean Sea" target="615" label="SPLIT_OTHER">
+      <edge id="geid_120_258" source="Barbary Coast" target="615" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_271" source="Mediterranean Sea" target="616" label="SPLIT_OTHER">
+      <edge id="geid_120_259" source="Barbary Coast" target="616" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_272" source="Mediterranean Sea" target="651" label="SPLIT_OTHER">
+      <edge id="geid_120_260" source="Mediterranean Sea" target="230" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_273" source="America" target="2" label="SPLIT_OTHER">
+      <edge id="geid_120_261" source="Mediterranean Sea" target="231" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_274" source="America" target="5" label="SPLIT_OTHER">
+      <edge id="geid_120_262" source="Mediterranean Sea" target="324" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_275" source="America" target="6" label="SPLIT_OTHER">
+      <edge id="geid_120_263" source="Mediterranean Sea" target="325" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_276" source="America" target="70" label="SPLIT_OTHER">
+      <edge id="geid_120_264" source="Mediterranean Sea" target="300" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_277" source="America" target="10" label="SPLIT_OTHER">
+      <edge id="geid_120_265" source="Mediterranean Sea" target="327" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_278" source="America" target="11" label="SPLIT_OTHER">
+      <edge id="geid_120_266" source="Mediterranean Sea" target="329" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_279" source="America" target="21" label="SPLIT_OTHER">
+      <edge id="geid_120_267" source="Mediterranean Sea" target="337" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_280" source="America" target="40" label="SPLIT_OTHER">
+      <edge id="geid_120_268" source="Mediterranean Sea" target="338" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_281" source="America" target="41" label="SPLIT_OTHER">
+      <edge id="geid_120_269" source="Mediterranean Sea" target="350" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_282" source="America" target="51" label="SPLIT_OTHER">
+      <edge id="geid_120_270" source="Mediterranean Sea" target="640" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_283" source="America" target="54" label="SPLIT_OTHER">
+      <edge id="geid_120_271" source="Mediterranean Sea" target="600" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_284" source="America" target="56" label="SPLIT_OTHER">
+      <edge id="geid_120_272" source="Mediterranean Sea" target="615" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_285" source="America" target="58" label="SPLIT_OTHER">
+      <edge id="geid_120_273" source="Mediterranean Sea" target="616" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_286" source="America" target="65" label="SPLIT_OTHER">
+      <edge id="geid_120_274" source="Mediterranean Sea" target="651" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_287" source="America" target="66" label="SPLIT_OTHER">
+      <edge id="geid_120_275" source="America" target="2" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_288" source="America" target="68" label="SPLIT_OTHER">
+      <edge id="geid_120_276" source="America" target="5" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_289" source="America" target="89" label="SPLIT_OTHER">
+      <edge id="geid_120_277" source="America" target="6" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_290" source="America" target="100" label="SPLIT_OTHER">
+      <edge id="geid_120_278" source="America" target="70" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_291" source="America" target="101" label="SPLIT_OTHER">
+      <edge id="geid_120_279" source="America" target="10" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_292" source="America" target="120" label="SPLIT_OTHER">
+      <edge id="geid_120_280" source="America" target="11" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_293" source="America" target="130" label="SPLIT_OTHER">
+      <edge id="geid_120_281" source="America" target="21" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_294" source="America" target="135" label="SPLIT_OTHER">
+      <edge id="geid_120_282" source="America" target="40" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_295" source="America" target="140" label="SPLIT_OTHER">
+      <edge id="geid_120_283" source="America" target="41" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_296" source="America" target="155" label="SPLIT_OTHER">
+      <edge id="geid_120_284" source="America" target="51" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_297" source="America" target="160" label="SPLIT_OTHER">
+      <edge id="geid_120_285" source="America" target="54" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_298" source="America" target="165" label="SPLIT_OTHER">
+      <edge id="geid_120_286" source="America" target="56" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_299" source="America" target="200" label="SPLIT_OTHER">
+      <edge id="geid_120_287" source="America" target="58" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_300" source="America" target="1025" label="SPLIT_OTHER">
+      <edge id="geid_120_288" source="America" target="65" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_301" source="America" target="1029" label="SPLIT_OTHER">
+      <edge id="geid_120_289" source="America" target="66" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_302" source="America" target="1049" label="SPLIT_OTHER">
+      <edge id="geid_120_290" source="America" target="68" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_303" source="America" target="1075" label="SPLIT_OTHER">
+      <edge id="geid_120_291" source="America" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_304" source="Spanish America" target="6" label="SPLIT_OTHER">
+      <edge id="geid_120_292" source="America" target="89" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_305" source="British America" target="451" label="SPLIT_OTHER">
+      <edge id="geid_120_293" source="America" target="100" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_306" source="British America" target="561" label="SPLIT_OTHER">
+      <edge id="geid_120_294" source="America" target="101" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_307" source="British America" target="590" label="SPLIT_OTHER">
+      <edge id="geid_120_295" source="America" target="120" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_308" source="British America" target="4050" label="SPLIT_OTHER">
+      <edge id="geid_120_296" source="America" target="130" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_309" source="Western Africa" target="402" label="SPLIT_OTHER">
+      <edge id="geid_120_297" source="America" target="135" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_310" source="Western Africa" target="200" label="SPLIT_OTHER">
+      <edge id="geid_120_298" source="America" target="140" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_311" source="Western Africa" target="451" label="SPLIT_OTHER">
+      <edge id="geid_120_299" source="America" target="155" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_312" source="Western Africa" target="433" label="SPLIT_OTHER">
+      <edge id="geid_120_300" source="America" target="160" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_313" source="Western Africa" target="600" label="SPLIT_OTHER">
+      <edge id="geid_120_301" source="America" target="165" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_314" source="Pacific Islands" target="2" label="SPLIT_OTHER">
+      <edge id="geid_120_302" source="America" target="1025" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_315" source="Pacific Islands" target="200" label="SPLIT_OTHER">
+      <edge id="geid_120_303" source="America" target="1029" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_316" source="Spanish Colonies" target="6" label="SPLIT_OTHER">
+      <edge id="geid_120_304" source="America" target="1049" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_317" source="Spanish Colonies" target="40" label="SPLIT_OTHER">
+      <edge id="geid_120_305" source="America" target="1075" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_318" source="Spanish Colonies" target="840" label="SPLIT_OTHER">
+      <edge id="geid_120_306" source="Spanish America" target="6" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_319" source="Levant" target="651" label="SPLIT_OTHER">
+      <edge id="geid_120_307" source="British America" target="451" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_320" source="Levant" target="640" label="SPLIT_OTHER">
+      <edge id="geid_120_308" source="British America" target="561" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_321" source="Northern America" target="2" label="SPLIT_OTHER">
+      <edge id="geid_120_309" source="British America" target="590" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_322" source="Northern America" target="21" label="SPLIT_OTHER">
+      <edge id="geid_120_310" source="British America" target="4050" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_323" source="Northern America" target="70" label="SPLIT_OTHER">
+      <edge id="geid_120_311" source="Western Africa" target="402" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_324" source="Northern America" target="1025" label="SPLIT_OTHER">
+      <edge id="geid_120_312" source="Western Africa" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_325" source="Northern America" target="1029" label="SPLIT_OTHER">
+      <edge id="geid_120_313" source="Western Africa" target="451" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_326" source="French Africa" target="433" label="SPLIT_OTHER">
+      <edge id="geid_120_314" source="Western Africa" target="433" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_327" source="French Africa" target="585" label="SPLIT_OTHER">
+      <edge id="geid_120_315" source="Western Africa" target="600" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_328" source="French Africa" target="615" label="SPLIT_OTHER">
+      <edge id="geid_120_316" source="British East Indies" target="750" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_329" source="Europe" target="200" label="SPLIT_OTHER">
+      <edge id="geid_120_317" source="Pacific Islands" target="2" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_330" source="Europe" target="210" label="SPLIT_OTHER">
+      <edge id="geid_120_318" source="Pacific Islands" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_331" source="Europe" target="211" label="SPLIT_OTHER">
+      <edge id="geid_120_319" source="Spanish Colonies" target="6" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_332" source="Europe" target="220" label="SPLIT_OTHER">
+      <edge id="geid_120_320" source="Spanish Colonies" target="40" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_333" source="Europe" target="225" label="SPLIT_OTHER">
+      <edge id="geid_120_321" source="Spanish Colonies" target="840" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_334" source="Europe" target="230" label="SPLIT_OTHER">
+      <edge id="geid_120_322" source="Levant" target="651" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_335" source="Europe" target="231" label="SPLIT_OTHER">
+      <edge id="geid_120_323" source="Levant" target="640" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_336" source="Europe" target="235" label="SPLIT_OTHER">
+      <edge id="geid_120_324" source="Northern America" target="2" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_337" source="Europe" target="239" label="SPLIT_OTHER">
+      <edge id="geid_120_325" source="Northern America" target="21" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_338" source="Europe" target="240" label="SPLIT_OTHER">
+      <edge id="geid_120_326" source="Northern America" target="70" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_339" source="Europe" target="246" label="SPLIT_OTHER">
+      <edge id="geid_120_327" source="Northern America" target="1025" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_340" source="Europe" target="248" label="SPLIT_OTHER">
+      <edge id="geid_120_328" source="Northern America" target="1029" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_341" source="Europe" target="255" label="SPLIT_OTHER">
+      <edge id="geid_120_329" source="French Africa" target="433" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_342" source="Europe" target="257" label="SPLIT_OTHER">
+      <edge id="geid_120_330" source="French Africa" target="585" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_343" source="Europe" target="269" label="SPLIT_OTHER">
+      <edge id="geid_120_331" source="French Africa" target="615" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_344" source="Europe" target="276" label="SPLIT_OTHER">
+      <edge id="geid_120_332" source="Europe" target="200" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_345" source="Europe" target="280" label="SPLIT_OTHER">
+      <edge id="geid_120_333" source="Europe" target="210" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_346" source="Europe" target="290" label="SPLIT_OTHER">
+      <edge id="geid_120_334" source="Europe" target="211" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_347" source="Europe" target="300" label="SPLIT_OTHER">
+      <edge id="geid_120_335" source="Europe" target="220" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_348" source="Europe" target="324" label="SPLIT_OTHER">
+      <edge id="geid_120_336" source="Europe" target="225" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_349" source="Europe" target="325" label="SPLIT_OTHER">
+      <edge id="geid_120_337" source="Europe" target="230" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_350" source="Europe" target="327" label="SPLIT_OTHER">
+      <edge id="geid_120_338" source="Europe" target="231" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_351" source="Europe" target="329" label="SPLIT_OTHER">
+      <edge id="geid_120_339" source="Europe" target="235" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_352" source="Europe" target="335" label="SPLIT_OTHER">
+      <edge id="geid_120_340" source="Europe" target="239" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_353" source="Europe" target="337" label="SPLIT_OTHER">
+      <edge id="geid_120_341" source="Europe" target="240" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_354" source="Europe" target="338" label="SPLIT_OTHER">
+      <edge id="geid_120_342" source="Europe" target="246" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_355" source="Europe" target="640" label="SPLIT_OTHER">
+      <edge id="geid_120_343" source="Europe" target="248" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_356" source="Europe" target="350" label="SPLIT_OTHER">
+      <edge id="geid_120_344" source="Europe" target="255" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_357" source="Europe" target="651" label="SPLIT_OTHER">
+      <edge id="geid_120_345" source="Europe" target="257" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_358" source="Europe" target="365" label="SPLIT_OTHER">
+      <edge id="geid_120_346" source="Europe" target="269" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_359" source="Europe" target="380" label="SPLIT_OTHER">
+      <edge id="geid_120_347" source="Europe" target="276" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_360" source="Europe" target="385" label="SPLIT_OTHER">
+      <edge id="geid_120_348" source="Europe" target="280" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_361" source="Europe" target="390" label="SPLIT_OTHER">
+      <edge id="geid_120_349" source="Europe" target="290" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_362" source="Europe" target="395" label="SPLIT_OTHER">
+      <edge id="geid_120_350" source="Europe" target="300" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_363" source="Europe" target="2004" label="SPLIT_OTHER">
+      <edge id="geid_120_351" source="Europe" target="324" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_364" source="Europe" target="2903" label="SPLIT_OTHER">
+      <edge id="geid_120_352" source="Europe" target="325" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_365" source="Europe" target="3349" label="SPLIT_OTHER">
+      <edge id="geid_120_353" source="Europe" target="327" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_366" source="Europe" target="710" label="SPLIT_OTHER">
+      <edge id="geid_120_354" source="Europe" target="329" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_367" source="Asia" target="630" label="SPLIT_OTHER">
+      <edge id="geid_120_355" source="Europe" target="335" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_368" source="Asia" target="640" label="SPLIT_OTHER">
+      <edge id="geid_120_356" source="Europe" target="337" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_369" source="Asia" target="651" label="SPLIT_OTHER">
+      <edge id="geid_120_357" source="Europe" target="338" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_370" source="Asia" target="7020" label="SPLIT_OTHER">
+      <edge id="geid_120_358" source="Europe" target="640" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_371" source="Asia" target="7010" label="SPLIT_OTHER">
+      <edge id="geid_120_359" source="Europe" target="350" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_372" source="Asia" target="710" label="SPLIT_OTHER">
+      <edge id="geid_120_360" source="Europe" target="651" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_373" source="Asia" target="721" label="SPLIT_OTHER">
+      <edge id="geid_120_361" source="Europe" target="365" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_374" source="Asia" target="365" label="SPLIT_OTHER">
+      <edge id="geid_120_362" source="Europe" target="380" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_375" source="Asia" target="740" label="SPLIT_OTHER">
+      <edge id="geid_120_363" source="Europe" target="385" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_376" source="Asia" target="750" label="SPLIT_OTHER">
+      <edge id="geid_120_364" source="Europe" target="390" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_377" source="Asia" target="751" label="SPLIT_OTHER">
+      <edge id="geid_120_365" source="Europe" target="395" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_378" source="Asia" target="780" label="SPLIT_OTHER">
+      <edge id="geid_120_366" source="Europe" target="2004" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_379" source="Asia" target="800" label="SPLIT_OTHER">
+      <edge id="geid_120_367" source="Europe" target="2903" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_380" source="Asia" target="815" label="SPLIT_OTHER">
+      <edge id="geid_120_368" source="Europe" target="3349" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_381" source="Asia" target="840" label="SPLIT_OTHER">
+      <edge id="geid_120_369" source="Europe" target="710" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_382" source="Asia" target="850" label="SPLIT_OTHER">
+      <edge id="geid_120_370" source="Asia" target="630" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_383" source="Asia" target="7030" label="SPLIT_OTHER">
+      <edge id="geid_120_371" source="Asia" target="640" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_384" source="Asia" target="2" label="SPLIT_OTHER">
+      <edge id="geid_120_372" source="Asia" target="651" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_385" source="Asia" target="210" label="SPLIT_OTHER">
+      <edge id="geid_120_373" source="Asia" target="7020" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_386" source="Africa Coast" target="402" label="SPLIT_OTHER">
+      <edge id="geid_120_374" source="Asia" target="7010" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_387" source="Africa Coast" target="451" label="SPLIT_OTHER">
+      <edge id="geid_120_375" source="Asia" target="710" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_388" source="Africa Coast" target="433" label="SPLIT_OTHER">
+      <edge id="geid_120_376" source="Asia" target="721" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_389" source="Africa Coast" target="600" label="SPLIT_OTHER">
+      <edge id="geid_120_377" source="Asia" target="365" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_390" source="Africa Coast" target="651" label="SPLIT_OTHER">
+      <edge id="geid_120_378" source="Asia" target="740" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_391" source="Africa Coast" target="561" label="SPLIT_OTHER">
+      <edge id="geid_120_379" source="Asia" target="750" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_392" source="Indian Ocean Islands" target="850" label="SPLIT_OTHER">
+      <edge id="geid_120_380" source="Asia" target="751" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_393" source="Southern America" target="100" label="SPLIT_OTHER">
+      <edge id="geid_120_381" source="Asia" target="780" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_394" source="Southern America" target="101" label="SPLIT_OTHER">
+      <edge id="geid_120_382" source="Asia" target="800" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_395" source="Southern America" target="68" label="SPLIT_OTHER">
+      <edge id="geid_120_383" source="Asia" target="815" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_396" source="Southern America" target="120" label="SPLIT_OTHER">
+      <edge id="geid_120_384" source="Asia" target="840" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_397" source="Southern America" target="130" label="SPLIT_OTHER">
+      <edge id="geid_120_385" source="Asia" target="850" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_398" source="Southern America" target="135" label="SPLIT_OTHER">
+      <edge id="geid_120_386" source="Asia" target="7030" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_399" source="Southern America" target="140" label="SPLIT_OTHER">
+      <edge id="geid_120_387" source="Asia" target="2" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_400" source="Southern America" target="155" label="SPLIT_OTHER">
+      <edge id="geid_120_388" source="Asia" target="210" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_401" source="Southern America" target="160" label="SPLIT_OTHER">
+      <edge id="geid_120_389" source="Africa Coast" target="402" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_402" source="Southern America" target="165" label="SPLIT_OTHER">
+      <edge id="geid_120_390" source="Africa Coast" target="451" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_403" source="325" target="324" label="SPLIT_OTHER">
+      <edge id="geid_120_391" source="Africa Coast" target="433" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_404" source="325" target="300" label="SPLIT_OTHER">
+      <edge id="geid_120_392" source="Africa Coast" target="600" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_405" source="325" target="327" label="SPLIT_OTHER">
+      <edge id="geid_120_393" source="Africa Coast" target="651" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_406" source="325" target="329" label="SPLIT_OTHER">
+      <edge id="geid_120_394" source="Africa Coast" target="561" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_407" source="325" target="335" label="SPLIT_OTHER">
+      <edge id="geid_120_395" source="Indian Ocean Islands" target="850" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_408" source="325" target="337" label="SPLIT_OTHER">
+      <edge id="geid_120_396" source="Southern America" target="100" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_409" source="325" target="220" label="SPLIT_OTHER">
+      <edge id="geid_120_397" source="Southern America" target="101" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_410" source="704" target="7020" label="SPLIT_OTHER">
+      <edge id="geid_120_398" source="Southern America" target="68" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_411" source="704" target="7030" label="SPLIT_OTHER">
+      <edge id="geid_120_399" source="Southern America" target="120" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_412" source="255" target="239" label="SPLIT_OTHER">
+      <edge id="geid_120_400" source="Southern America" target="130" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_413" source="255" target="246" label="SPLIT_OTHER">
+      <edge id="geid_120_401" source="Southern America" target="135" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_414" source="255" target="248" label="SPLIT_OTHER">
+      <edge id="geid_120_402" source="Southern America" target="140" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_415" source="255" target="257" label="SPLIT_OTHER">
+      <edge id="geid_120_403" source="Southern America" target="155" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_416" source="255" target="269" label="SPLIT_OTHER">
+      <edge id="geid_120_404" source="Southern America" target="160" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_417" source="255" target="276" label="SPLIT_OTHER">
+      <edge id="geid_120_405" source="Southern America" target="165" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_418" source="255" target="280" label="SPLIT_OTHER">
+      <edge id="geid_120_406" source="325" target="324" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_419" source="255" target="300" label="SPLIT_OTHER">
+      <edge id="geid_120_407" source="325" target="329" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_420" source="900" target="901" label="SPLIT_OTHER">
+      <edge id="geid_120_408" source="325" target="335" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_421" source="900" target="902" label="SPLIT_OTHER">
+      <edge id="geid_120_409" source="325" target="337" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_422" source="3361" target="365" label="SPLIT_OTHER">
+      <edge id="geid_120_410" source="900" target="901" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
       </edge>
-      <edge id="geid_167_423" source="652" target="640" label="SPLIT_OTHER">
+      <edge id="geid_120_411" source="900" target="902" label="SPLIT_OTHER">
         <attvalues>
           <attvalue for="labels" value="SPLIT_OTHER"/>
         </attvalues>
@@ -14802,7 +14754,6 @@
       <edge id="561->200" source="561" target="200" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="54755"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="185965"/>
           <attvalue for="notes" value="Cape Town (REP)  -> United Kingdom  : 131210&#xA;Port Simon (REP)  -> United Kingdom  : 975&#xA;Port Elizabeth (REP)  -> United Kingdom  : 53780"/>
@@ -14814,7 +14765,6 @@
       <edge id="561->2" source="561" target="2" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="1220"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="6960"/>
           <attvalue for="notes" value="Cape Town (REP)  -> United States of America  : 5740&#xA;Port Simon (REP)  -> United States of America  : 1220"/>
@@ -14889,6 +14839,28 @@
           <attvalue for="valueGeneratedBy" value="aggregation"/>
         </attvalues>
       </edge>
+      <edge id="restOfTheWorld->210" source="restOfTheWorld" target="210" label="GENERATED_TRADE">
+        <attvalues>
+          <attvalue for="labels" value="GENERATED_TRADE"/>
+          <attvalue for="ImpReportedBy" value="Netherlands"/>
+          <attvalue for="Imp" value="379866.79725759063"/>
+          <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="379866.79725759063"/>
+          <attvalue for="notes" value="Germany (Zollverein) (Rhine) -> Netherlands  (REP)  : 379866.79725759063"/>
+          <attvalue for="valueGeneratedBy" value="aggregation"/>
+        </attvalues>
+      </edge>
+      <edge id="210->restOfTheWorld" source="210" target="restOfTheWorld" label="GENERATED_TRADE">
+        <attvalues>
+          <attvalue for="labels" value="GENERATED_TRADE"/>
+          <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="3808681.684622919"/>
+          <attvalue for="notes" value="Netherlands (REP)  -> Germany (Zollverein) (Rhine)  : 2670374.142997062&#xA;Amsterdam (REP)  -> Germany (Zollverein) (Rhine)  : 1138307.5416258571"/>
+          <attvalue for="ExpReportedBy" value="Netherlands|Amsterdam"/>
+          <attvalue for="Exp" value="3808681.684622919"/>
+          <attvalue for="valueGeneratedBy" value="aggregation"/>
+        </attvalues>
+      </edge>
       <edge id="246->324" source="246" target="324" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
@@ -14915,7 +14887,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Fiume &amp; Republic of St. Mark &amp; Trieste|Republic of St. Mark"/>
-          <attvalue for="Imp" value="582291.8707149854"/>
+          <attvalue for="Imp" value="535185.112634672"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="660877.571008815"/>
           <attvalue for="notes" value="Turkey (Ottoman Empire) -> Fiume &amp; Republic of St. Mark &amp; Trieste  (REP)  : 456599.41234084236&#xA;Turkey (Ottoman Empire) -> Republic of St. Mark  (REP)  : 78585.70029382958&#xA;Beirut (REP)  -> Austria-Hungary (Austrian Empire)  : 2605.288932419197&#xA;Izmir (Smyrna) (REP)  -> Austria-Hungary (Austrian Empire)  : 117704.21155729677&#xA;Cyprus (REP)  -> Austria-Hungary (Austrian Empire)  : 5382.957884427033"/>
@@ -14928,7 +14900,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Fiume &amp; Republic of St. Mark &amp; Trieste"/>
-          <attvalue for="Imp" value="818957.8844270324"/>
+          <attvalue for="Imp" value="395510.28403525957"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="818957.8844270324"/>
           <attvalue for="notes" value="Egypt Arab Republic (Egypt) -> Fiume &amp; Republic of St. Mark &amp; Trieste  (REP)  : 395510.28403525957&#xA;Alexandria &amp; Egypt Arab Republic (Egypt) (REP)  -> Austria-Hungary (Austrian Empire)  : 423447.6003917728"/>
@@ -14941,7 +14913,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Fiume &amp; Republic of St. Mark &amp; Trieste"/>
-          <attvalue for="Imp" value="560395.6904995103"/>
+          <attvalue for="Imp" value="457766.89520078356"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="560395.6904995103"/>
           <attvalue for="notes" value="Brazil -> Fiume &amp; Republic of St. Mark &amp; Trieste  (REP)  : 457766.89520078356&#xA;Bahia (REP)  -> Austria-Hungary (Austrian Empire)  : 102628.79529872675"/>
@@ -14954,7 +14926,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Fiume &amp; Republic of St. Mark &amp; Trieste"/>
-          <attvalue for="Imp" value="98785.50440744369"/>
+          <attvalue for="Imp" value="54887.3653281097"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="98785.50440744369"/>
           <attvalue for="notes" value="Greece -> Fiume &amp; Republic of St. Mark &amp; Trieste  (REP)  : 54887.3653281097&#xA;Thessaloniki (REP)  -> Austria-Hungary (Austrian Empire)  : 31216.454456415282&#xA;Patras (REP)  -> Austria-Hungary (Austrian Empire)  : 12681.684622918709"/>
@@ -15000,7 +14972,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Fiume &amp; Republic of St. Mark &amp; Trieste"/>
-          <attvalue for="Imp" value="1260227.2282076397"/>
+          <attvalue for="Imp" value="54793.33986287953"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="1260227.2282076397"/>
           <attvalue for="notes" value="Sardinia -> Fiume &amp; Republic of St. Mark &amp; Trieste  (REP)  : 54793.33986287953&#xA;Genoa (REP)  -> Austria-Hungary (Austrian Empire)  : 599326.1508325172&#xA;Sardinia (REP)  -> Austria-Hungary (Austrian Empire)  : 3000.979431929481&#xA;Kingdom of Sardinia (continental) (REP)  -> Austria-Hungary (Austrian Empire)  : 603106.7580803134"/>
@@ -15013,7 +14985,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Beirut|Aleppo &amp; Latakia (Alaouites)|Tripoli (Tripolitania)|Izmir (Smyrna)|Cyprus"/>
-          <attvalue for="Imp" value="43431.92948090108"/>
+          <attvalue for="Imp" value="132991.18511263467"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="496728.69735553383"/>
           <attvalue for="notes" value="Fiume &amp; Republic of St. Mark &amp; Trieste (REP)  -> Turkey (Ottoman Empire)  : 320305.58276199806&#xA;Republic of St. Mark (REP)  -> Turkey (Ottoman Empire)  : 43431.92948090108&#xA;Austria-Hungary (Austrian Empire) -> Beirut  (REP)  : 9296.767874632713&#xA;Austria-Hungary (Austrian Empire) -> Aleppo &amp; Latakia (Alaouites)  (REP)  : 1194.9069539666993&#xA;Austria-Hungary (Austrian Empire) -> Tripoli (Tripolitania)  (REP)  : 662.0959843290892&#xA;Austria-Hungary (Austrian Empire) -> Izmir (Smyrna)  (REP)  : 118667.97257590598&#xA;Austria-Hungary (Austrian Empire) -> Cyprus  (REP)  : 3169.441723800196"/>
@@ -15026,6 +14998,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Alexandria &amp; Egypt Arab Republic (Egypt)"/>
+          <attvalue for="Imp" value="324912.8305582762"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="429798.23702252697"/>
           <attvalue for="notes" value="Fiume &amp; Republic of St. Mark &amp; Trieste (REP)  -> Egypt Arab Republic (Egypt)  : 104885.40646425074&#xA;Austria-Hungary (Austrian Empire) -> Alexandria &amp; Egypt Arab Republic (Egypt)  (REP)  : 324912.8305582762"/>
@@ -15038,6 +15011,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Bahia"/>
+          <attvalue for="Imp" value="6190.009794319295"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="30127.32615083252"/>
           <attvalue for="notes" value="Fiume &amp; Republic of St. Mark &amp; Trieste (REP)  -> Brazil  : 23937.316356513224&#xA;Austria-Hungary (Austrian Empire) -> Bahia  (REP)  : 6190.009794319295"/>
@@ -15050,6 +15024,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Thessaloniki|Patras"/>
+          <attvalue for="Imp" value="17943.19294809011"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="192822.72282076394"/>
           <attvalue for="notes" value="Fiume &amp; Republic of St. Mark &amp; Trieste (REP)  -> Greece  : 174879.52987267385&#xA;Austria-Hungary (Austrian Empire) -> Thessaloniki  (REP)  : 5915.768854064643&#xA;Austria-Hungary (Austrian Empire) -> Patras  (REP)  : 12027.424094025466"/>
@@ -15095,6 +15070,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Sardinia|Kingdom of Sardinia (continental)"/>
+          <attvalue for="Imp" value="617849.1674828599"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="649547.5024485799"/>
           <attvalue for="notes" value="Fiume &amp; Republic of St. Mark &amp; Trieste (REP)  -> Sardinia  : 31698.334965719885&#xA;Austria-Hungary (Austrian Empire) -> Genoa  (REP)  : 302284.0352595495&#xA;Austria-Hungary (Austrian Empire) -> Sardinia  (REP)  : 6660.137120470128&#xA;Austria-Hungary (Austrian Empire) -> Kingdom of Sardinia (continental)  (REP)  : 308904.99510284036"/>
@@ -15118,7 +15094,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Naples|Two Sicilies"/>
-          <attvalue for="Imp" value="892293.8295788444"/>
+          <attvalue for="Imp" value="301978.45249755145"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="942809.0107737513"/>
           <attvalue for="notes" value="Sardinia -> Naples  (REP)  : 195071.4985308521&#xA;Genoa (REP)  -> Two Sicilies  : 341578.8442703232&#xA;Nice (REP)  -> Two Sicilies  : 1155.7296767874634&#xA;Sardinia (REP)  -> Two Sicilies  (REP)  : 56391.77277179236&#xA;Kingdom of Sardinia (continental) (REP)  -> Two Sicilies  : 348611.1655239961"/>
@@ -15153,7 +15129,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Sardinia|Nice|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="1791717.9236043096"/>
+          <attvalue for="Imp" value="1930354.554358472"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="2457610.1860920666"/>
           <attvalue for="notes" value="France -> Genoa  (REP)  : 608564.152791381&#xA;France (REP)  -> Sardinia  (REP)  : 655898.1390793341&#xA;France -> Nice  (REP)  : 227600.3917727718&#xA;France -> Kingdom of Sardinia (continental)  (REP)  : 965547.5024485799"/>
@@ -15166,7 +15142,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Nice|Sardinia|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="553692.4583741431"/>
+          <attvalue for="Imp" value="917547.5024485799"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="1052709.1087169442"/>
           <attvalue for="notes" value="Tuscany -> Genoa  (REP)  : 418530.8521057787&#xA;Livorno (REP)  -> Sardinia  : 135161.60626836435&#xA;Tuscany -> Nice  (REP)  : 20207.639569049952&#xA;Tuscany -> Sardinia  (REP)  : 20035.259549461312&#xA;Tuscany -> Kingdom of Sardinia (continental)  (REP)  : 458773.75122428994"/>
@@ -15179,7 +15155,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="254201.7629774731"/>
+          <attvalue for="Imp" value="411322.23310479923"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="459862.8795298727"/>
           <attvalue for="notes" value="Brazil -> Genoa  (REP)  : 205661.11655239962&#xA;Bahia (REP)  -> Sardinia  : 48540.64642507346&#xA;Brazil -> Kingdom of Sardinia (continental)  (REP)  : 205661.11655239962"/>
@@ -15192,7 +15168,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Nice|Sardinia|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="316270.32321253675"/>
+          <attvalue for="Imp" value="1141676.7874632715"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="1188295.7884427034"/>
           <attvalue for="notes" value="Two Sicilies -> Genoa  (REP)  : 205480.90107737514&#xA;Two Sicilies -> Nice  (REP)  : 347091.08716944174&#xA;Two Sicilies (REP)  -> Sardinia  (REP)  : 64170.42115572968&#xA;Two Sicilies -> Kingdom of Sardinia (continental)  (REP)  : 571553.3790401567"/>
@@ -15205,7 +15181,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="218182.17433888346"/>
+          <attvalue for="Imp" value="409590.597453477"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="422977.4730656219"/>
           <attvalue for="notes" value="Turkey (Ottoman Empire) -> Genoa  (REP)  : 204795.2987267385&#xA;Aleppo &amp; Latakia (Alaouites) (REP)  -> Sardinia  : 13386.875612144957&#xA;Turkey (Ottoman Empire) -> Kingdom of Sardinia (continental)  (REP)  : 204795.2987267385"/>
@@ -15218,7 +15194,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Nice|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="202993.14397649365"/>
+          <attvalue for="Imp" value="428050.930460333"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="428050.930460333"/>
           <attvalue for="notes" value="Russia (USSR) -> Genoa  (REP)  : 202993.14397649365&#xA;Russia (USSR) -> Nice  (REP)  : 11032.32125367287&#xA;Russia (USSR) -> Kingdom of Sardinia (continental)  (REP)  : 214025.4652301665"/>
@@ -15229,7 +15205,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Nice|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="187831.5377081293"/>
+          <attvalue for="Imp" value="413778.6483839373"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="414048.97159647406"/>
           <attvalue for="notes" value="Spain -> Genoa  (REP)  : 187561.21449559258&#xA;Spain -> Nice  (REP)  : 19063.663075416258&#xA;Spain -> Kingdom of Sardinia (continental)  (REP)  : 207153.7708129285&#xA;Balearic Islands (REP)  -> Sardinia  : 270.3232125367287"/>
@@ -15242,7 +15218,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="130577.86483839374"/>
+          <attvalue for="Imp" value="262879.52987267385"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="262879.52987267385"/>
           <attvalue for="notes" value="Portugal -> Genoa  (REP)  : 130577.86483839374&#xA;Portugal -> Kingdom of Sardinia (continental)  (REP)  : 132301.66503428013"/>
@@ -15253,7 +15229,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="147780.6072477963"/>
+          <attvalue for="Imp" value="192685.60235063662"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="246319.29480901075"/>
           <attvalue for="notes" value="Papal States -> Genoa  (REP)  : 94146.91478942214&#xA;Civitavecchia (REP)  -> Sardinia  : 17171.40058765916&#xA;Papal States -> Kingdom of Sardinia (continental)  (REP)  : 98538.6875612145&#xA;Papal States (REP)  -> Sardinia  : 36462.29187071499"/>
@@ -15266,7 +15242,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="60673.84916748286"/>
+          <attvalue for="Imp" value="121347.69833496572"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="121347.69833496572"/>
           <attvalue for="notes" value="Switzerland -> Genoa  (REP)  : 60673.84916748286&#xA;Switzerland -> Kingdom of Sardinia (continental)  (REP)  : 60673.84916748286"/>
@@ -15277,7 +15253,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="32552.39960822723"/>
+          <attvalue for="Imp" value="65104.79921645446"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="65104.79921645446"/>
           <attvalue for="notes" value="Argentina (La Plata) -> Genoa  (REP)  : 32552.39960822723&#xA;Argentina (La Plata) -> Kingdom of Sardinia (continental)  (REP)  : 32552.39960822723"/>
@@ -15288,7 +15264,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Genoa|Kingdom of Sardinia (continental)"/>
-          <attvalue for="Imp" value="28184.13320274241"/>
+          <attvalue for="Imp" value="56015.6709108717"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="56015.6709108717"/>
           <attvalue for="notes" value="United States of America -> Genoa  (REP)  : 28184.13320274241&#xA;United States of America -> Kingdom of Sardinia (continental)  (REP)  : 27831.537708129286"/>
@@ -15321,7 +15297,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
-          <attvalue for="Imp" value="2154264.44662096"/>
+          <attvalue for="Imp" value="2926542.6052889326"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="3798148.873653281"/>
           <attvalue for="notes" value="Genoa (REP)  -> France  : 202679.72575905974&#xA;Sardinia (REP)  -> France  (REP)  : 1485337.904015671&#xA;Nice (REP)  -> France  : 819122.4289911852&#xA;Kingdom of Sardinia (continental) (REP)  -> France  : 1291008.8148873653"/>
@@ -15334,7 +15310,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Livorno"/>
-          <attvalue for="Imp" value="289124.38785504404"/>
+          <attvalue for="Imp" value="151616.06268364348"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="689190.9892262488"/>
           <attvalue for="notes" value="Genoa (REP)  -> Tuscany  : 248450.53868756123&#xA;Sardinia -> Livorno  (REP)  : 151616.06268364348&#xA;Nice (REP)  -> Tuscany  : 4000&#xA;Sardinia (REP)  -> Tuscany  : 16336.924583741431&#xA;Kingdom of Sardinia (continental) (REP)  -> Tuscany  : 268787.46327130264"/>
@@ -15347,7 +15323,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Bahia"/>
-          <attvalue for="Imp" value="93002.93829578845"/>
+          <attvalue for="Imp" value="18135.161606268364"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="204141.03819784528"/>
           <attvalue for="notes" value="Genoa (REP)  -> Brazil  : 93002.93829578845&#xA;Sardinia -> Bahia  (REP)  : 18135.161606268364&#xA;Kingdom of Sardinia (continental) (REP)  -> Brazil  : 93002.93829578845"/>
@@ -15360,7 +15336,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Beirut|Aleppo &amp; Latakia (Alaouites)"/>
-          <attvalue for="Imp" value="48854.06464250735"/>
+          <attvalue for="Imp" value="15623.898139079336"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="113332.02742409403"/>
           <attvalue for="notes" value="Genoa (REP)  -> Turkey (Ottoman Empire)  : 48854.06464250735&#xA;Sardinia -> Beirut  (REP)  : 3024.4857982370227&#xA;Sardinia -> Aleppo &amp; Latakia (Alaouites)  (REP)  : 12599.412340842313&#xA;Kingdom of Sardinia (continental) (REP)  -> Turkey (Ottoman Empire)  : 48854.06464250735"/>
@@ -15372,7 +15348,6 @@
       <edge id="324->365" source="324" target="365" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="48293.82957884427"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="90914.78942213516"/>
           <attvalue for="notes" value="Genoa (REP)  -> Russia (USSR)  : 42620.9598432909&#xA;Nice (REP)  -> Russia (USSR)  : 2836.4348677766898&#xA;Kingdom of Sardinia (continental) (REP)  -> Russia (USSR)  : 45457.39471106758"/>
@@ -15385,7 +15360,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Balearic Islands"/>
-          <attvalue for="Imp" value="94323.21253672871"/>
+          <attvalue for="Imp" value="2029.3829578844272"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="188144.9559255632"/>
           <attvalue for="notes" value="Genoa (REP)  -> Spain  : 91792.36043095005&#xA;Nice (REP)  -> Spain  : 873.6532810969638&#xA;Kingdom of Sardinia (continental) (REP)  -> Spain  : 93449.55925563174&#xA;Sardinia -> Balearic Islands  (REP)  : 2029.3829578844272"/>
@@ -15397,7 +15372,6 @@
       <edge id="324->235" source="324" target="235" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="50276.19980411362"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="100552.39960822724"/>
           <attvalue for="notes" value="Genoa (REP)  -> Portugal  : 50276.19980411362&#xA;Kingdom of Sardinia (continental) (REP)  -> Portugal  : 50276.19980411362"/>
@@ -15410,7 +15384,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Civitavecchia|Papal States"/>
-          <attvalue for="Imp" value="147149.85308521058"/>
+          <attvalue for="Imp" value="82005.87659157689"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="375228.207639569"/>
           <attvalue for="notes" value="Genoa (REP)  -> Papal States  : 146072.4779627816&#xA;Sardinia -> Civitavecchia  (REP)  : 37210.57786483839&#xA;Kingdom of Sardinia (continental) (REP)  -> Papal States  : 147149.85308521058&#xA;Sardinia -> Papal States  (REP)  : 44795.298726738496"/>
@@ -15422,7 +15396,6 @@
       <edge id="324->225" source="324" target="225" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="43522.03721841332"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="87044.07443682665"/>
           <attvalue for="notes" value="Genoa (REP)  -> Switzerland  : 43522.03721841332&#xA;Kingdom of Sardinia (continental) (REP)  -> Switzerland  : 43522.03721841332"/>
@@ -15434,7 +15407,6 @@
       <edge id="324->160" source="324" target="160" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="28940.254652301668"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="54903.036238981396"/>
           <attvalue for="notes" value="Genoa (REP)  -> Argentina (La Plata)  : 25962.78158667973&#xA;Kingdom of Sardinia (continental) (REP)  -> Argentina (La Plata)  : 28940.254652301668"/>
@@ -15469,7 +15441,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Thessaloniki|Patras"/>
-          <attvalue for="Imp" value="53018.60920666015"/>
+          <attvalue for="Imp" value="20191.96865817826"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="53194.9069539667"/>
           <attvalue for="notes" value="Turkey (Ottoman Empire) -> Thessaloniki  (REP)  : 20015.670910871697&#xA;Beirut (REP)  -> Greece  : 1723.800195886386&#xA;Benghazi (REP)  -> Greece  : 1273.2615083251715&#xA;Turkey (Ottoman Empire) -> Patras  (REP)  : 176.2977473065622&#xA;Izmir (Smyrna) (REP)  -> Greece  : 26836.43486777669&#xA;Cyprus (REP)  -> Greece  : 3169.441723800196"/>
@@ -15482,7 +15454,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Thessaloniki|Patras"/>
-          <attvalue for="Imp" value="6781.5866797257595"/>
+          <attvalue for="Imp" value="6997.061704211557"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="6997.061704211557"/>
           <attvalue for="notes" value="France -> Thessaloniki  (REP)  : 6781.5866797257595&#xA;France -> Patras  (REP)  : 215.47502448579826"/>
@@ -15504,7 +15476,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Thessaloniki|Patras"/>
-          <attvalue for="Imp" value="2092.066601371205"/>
+          <attvalue for="Imp" value="4058.765915768854"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="4058.765915768854"/>
           <attvalue for="notes" value="Tuscany -> Thessaloniki  (REP)  : 2092.066601371205&#xA;Tuscany -> Patras  (REP)  : 1966.6993143976495"/>
@@ -15526,7 +15498,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Beirut|Benghazi|Izmir (Smyrna)|Cyprus"/>
-          <attvalue for="Imp" value="27.42409402546523"/>
+          <attvalue for="Imp" value="15420.176297747308"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="98895.20078354556"/>
           <attvalue for="notes" value="Thessaloniki (REP)  -> Turkey (Ottoman Empire)  : 83447.60039177278&#xA;Greece -> Beirut  (REP)  : 3400.587659157689&#xA;Greece -> Benghazi  (REP)  : 180.2154750244858&#xA;Patras (REP)  -> Turkey (Ottoman Empire)  : 27.42409402546523&#xA;Greece -> Izmir (Smyrna)  (REP)  : 9382.957884427033&#xA;Greece -> Cyprus  (REP)  : 2456.4152791381002"/>
@@ -15538,7 +15510,6 @@
       <edge id="350->220" source="350" target="220" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="352.5954946131244"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="10303.62389813908"/>
           <attvalue for="notes" value="Thessaloniki (REP)  -> France  : 9951.028403525956&#xA;Patras (REP)  -> France  : 352.5954946131244"/>
@@ -15617,7 +15588,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Tunis"/>
-          <attvalue for="Imp" value="29688.540646425074"/>
+          <attvalue for="Imp" value="28959.843290891284"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="29688.540646425074"/>
           <attvalue for="notes" value="Turkey (Ottoman Empire) -> Tunis  (REP)  : 28959.843290891284&#xA;Tripoli (Tripolitania) (REP)  -> Tunisia (Regency of Tunis)  : 728.6973555337904"/>
@@ -15718,6 +15689,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Tripoli (Tripolitania)"/>
+          <attvalue for="Imp" value="3232.125367286974"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="7753.183153770813"/>
           <attvalue for="notes" value="Tunis (REP)  -> Turkey (Ottoman Empire)  : 4521.05778648384&#xA;Tunisia (Regency of Tunis) -> Tripoli (Tripolitania)  (REP)  : 3232.125367286974"/>
@@ -15785,7 +15757,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Málaga|Bilbao|Cadix|Balearic Islands"/>
-          <attvalue for="Imp" value="43095.00489715965"/>
+          <attvalue for="Imp" value="127502.4485798237"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="127502.4485798237"/>
           <attvalue for="notes" value="United States of America -> Málaga  (REP)  : 43095.00489715965&#xA;United States of America -> Bilbao  (REP)  : 23631.733594515183&#xA;United States of America -> Cadix  (REP)  : 59224.28991185113&#xA;United States of America -> Balearic Islands  (REP)  : 1551.4201762977475"/>
@@ -15807,7 +15779,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Málaga|Bilbao|Cadix|San Sebastián|Balearic Islands"/>
-          <attvalue for="Imp" value="498417.4573947111"/>
+          <attvalue for="Imp" value="642942.2135161606"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="1116286.2135161606"/>
           <attvalue for="notes" value="United Kingdom -> Málaga  (REP)  : 25073.45739471107&#xA;United Kingdom -> Bilbao  (REP)  : 167416.2585700294&#xA;United Kingdom (REP)  -> Balearic Islands &amp; Spain  : 442837&#xA;United Kingdom (REP)  -> Canary Is. &amp; Spain  : 30507&#xA;United Kingdom -> Cadix  (REP)  : 442738.49167482863&#xA;United Kingdom -> San Sebastián  (REP)  : 6307.541625857003&#xA;United Kingdom -> Balearic Islands  (REP)  : 1406.464250734574"/>
@@ -15830,7 +15802,6 @@
       <edge id="230->2" source="230" target="2" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="61586.679725759066"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="147776.68952007836"/>
           <attvalue for="notes" value="Málaga (REP)  -> United States of America  : 86190.0097943193&#xA;Bilbao (REP)  -> United States of America  : 12732.615083251714&#xA;Cadix (REP)  -> United States of America  : 48666.01371204702&#xA;Balearic Islands (REP)  -> United States of America  : 188.050930460333"/>
@@ -15853,7 +15824,6 @@
       <edge id="230->200" source="230" target="200" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="1079298.7267384916"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="1173520.0783545543"/>
           <attvalue for="notes" value="Málaga (REP)  -> United Kingdom  : 94221.35161606269&#xA;Bilbao (REP)  -> United Kingdom  : 76568.07051909892&#xA;Santander (REP)  -> United Kingdom  : 6973.555337904016&#xA;Cadix (REP)  -> United Kingdom  : 992556.3173359452&#xA;San Sebastián (REP)  -> United Kingdom  : 352.5954946131244&#xA;Balearic Islands (REP)  -> United Kingdom  : 2848.1880509304606"/>
@@ -15876,7 +15846,6 @@
       <edge id="230->6" source="230" target="6" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="6268.364348677767"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="12340.842311459353"/>
           <attvalue for="notes" value="Málaga (REP)  -> Puerto Rico  : 6072.477962781587&#xA;Santander (REP)  -> Puerto Rico  : 6268.364348677767"/>
@@ -15933,7 +15902,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Montevideo"/>
-          <attvalue for="Imp" value="114221.35161606269"/>
+          <attvalue for="Imp" value="109010.77375122429"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="114221.35161606269"/>
           <attvalue for="notes" value="Brazil -> Montevideo  (REP)  : 109010.77375122429&#xA;Bahia (REP)  -> Montevideo  : 5210.577864838394"/>
@@ -16012,6 +15981,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Bahia"/>
+          <attvalue for="Imp" value="16172.38001958864"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="101202.74240940256"/>
           <attvalue for="notes" value="Montevideo (REP)  -> Brazil  : 85030.36238981392&#xA;Montevideo -> Bahia  (REP)  : 16172.38001958864"/>
@@ -16310,6 +16280,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Java &amp; Madura"/>
+          <attvalue for="Imp" value="290105.2380952381"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="761817.2380952381"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> Indian Ocean Islands (other) &amp; Java &amp; Sumatra  : 471712&#xA;United Kingdom -> Java &amp; Madura  (REP)  : 290105.2380952381"/>
@@ -16340,6 +16311,17 @@
           <attvalue for="valueGeneratedBy" value="aggregation"/>
         </attvalues>
       </edge>
+      <edge id="901->750" source="901" target="750" label="GENERATED_TRADE">
+        <attvalues>
+          <attvalue for="labels" value="GENERATED_TRADE"/>
+          <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="3459"/>
+          <attvalue for="notes" value="New South Wales (REP)  -> British East Indies  : 3459"/>
+          <attvalue for="ExpReportedBy" value="New South Wales"/>
+          <attvalue for="Exp" value="3459"/>
+          <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
+        </attvalues>
+      </edge>
       <edge id="200->901" source="200" target="901" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
@@ -16366,7 +16348,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Danzig (Free City of Danzig)|Klaipėda (Memel)"/>
-          <attvalue for="Imp" value="26961.802154750247"/>
+          <attvalue for="Imp" value="29089.128305582763"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="29089.128305582763"/>
           <attvalue for="notes" value="Denmark -> Danzig (Free City of Danzig)  (REP)  : 26961.802154750247&#xA;Denmark -> Klaipėda (Memel)  (REP)  : 2127.326150832517"/>
@@ -16376,7 +16358,6 @@
       <edge id="239->200" source="239" target="200" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="347921.64544564154"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="523044.07443682663"/>
           <attvalue for="notes" value="Danzig (Free City of Danzig) (REP)  -> United Kingdom  : 175122.42899118512&#xA;Klaipėda (Memel) (REP)  -> United Kingdom  : 347921.64544564154"/>
@@ -16388,7 +16369,6 @@
       <edge id="239->390" source="239" target="390" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="4763.956904995103"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="8846.2291870715"/>
           <attvalue for="notes" value="Danzig (Free City of Danzig) (REP)  -> Denmark  : 4082.272282076396&#xA;Klaipėda (Memel) (REP)  -> Denmark  : 4763.956904995103"/>
@@ -16587,7 +16567,6 @@
       <edge id="640->200" source="640" target="200" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="341281.096963761"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="346950.0489715965"/>
           <attvalue for="notes" value="Trabzon (REP)  -> United Kingdom  : 5668.952007835455&#xA;Beirut (REP)  -> United Kingdom  : 3384.9167482859943&#xA;Aleppo &amp; Alexandretta (REP)  -> United Kingdom  : 66197.84524975515&#xA;Aleppo &amp; Latakia (Alaouites) (REP)  -> United Kingdom  : 7917.727717923604&#xA;Izmir (Smyrna) (REP)  -> United Kingdom  : 263780.6072477963"/>
@@ -16611,7 +16590,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Tripoli (Syria)|Beirut|Aleppo &amp; Alexandretta|Aleppo &amp; Latakia (Alaouites)|Tripoli (Tripolitania)|Cyprus"/>
-          <attvalue for="Imp" value="17394.711067580804"/>
+          <attvalue for="Imp" value="145198.82468168464"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="145198.82468168464"/>
           <attvalue for="notes" value="Tuscany -> Tripoli (Syria)  (REP)  : 17394.711067580804&#xA;Tuscany -> Beirut  (REP)  : 84309.50048971597&#xA;Tuscany -> Aleppo &amp; Alexandretta  (REP)  : 8191.968658178257&#xA;Tuscany -> Aleppo &amp; Latakia (Alaouites)  (REP)  : 29751.224289911854&#xA;Tuscany -> Tripoli (Tripolitania)  (REP)  : 2123.4084231145935&#xA;Tuscany -> Cyprus  (REP)  : 3428.011753183154"/>
@@ -16622,7 +16601,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Tripoli (Syria)|Beirut|Aleppo &amp; Alexandretta|Aleppo &amp; Latakia (Alaouites)|Izmir (Smyrna)|Cyprus"/>
-          <attvalue for="Imp" value="8556.317335945152"/>
+          <attvalue for="Imp" value="213343.7806072478"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="213343.7806072478"/>
           <attvalue for="notes" value="France -> Tripoli (Syria)  (REP)  : 8556.317335945152&#xA;France -> Beirut  (REP)  : 51674.82859941234&#xA;France -> Aleppo &amp; Alexandretta  (REP)  : 7788.4427032321255&#xA;France -> Aleppo &amp; Latakia (Alaouites)  (REP)  : 31361.410381978454&#xA;France -> Izmir (Smyrna)  (REP)  : 107189.03036238982&#xA;France -> Cyprus  (REP)  : 6773.751224289912"/>
@@ -16632,7 +16611,6 @@
       <edge id="640->337" source="640" target="337" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="62276.19980411362"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="64646.4250734574"/>
           <attvalue for="notes" value="Tripoli (Syria) (REP)  -> Tuscany  : 2370.225269343781&#xA;Beirut (REP)  -> Tuscany  : 27255.631733594517&#xA;Aleppo &amp; Latakia (Alaouites) (REP)  -> Tuscany  : 16203.721841332028&#xA;Tripoli (Tripolitania) (REP)  -> Tuscany  : 6910.871694417238&#xA;Benghazi (REP)  -> Livorno  : 1563.1733594515183&#xA;Cyprus (REP)  -> Tuscany  : 10342.801175318316"/>
@@ -16644,7 +16622,6 @@
       <edge id="640->220" source="640" target="220" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="257269.34378060728"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="265755.1420176298"/>
           <attvalue for="notes" value="Tripoli (Syria) (REP)  -> France  : 8485.798237022527&#xA;Beirut (REP)  -> France  : 38170.42115572968&#xA;Aleppo &amp; Alexandretta (REP)  -> France  : 2558.2761998041137&#xA;Aleppo &amp; Latakia (Alaouites) (REP)  -> France  : 21762.977473065625&#xA;Izmir (Smyrna) (REP)  -> France  : 175565.1322233105&#xA;Cyprus (REP)  -> France  : 19212.536728697356"/>
@@ -16656,11 +16633,11 @@
       <edge id="651->640" source="651" target="640" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="ImpReportedBy" value="Beirut|Benghazi"/>
-          <attvalue for="Imp" value="547255.6317335946"/>
+          <attvalue for="ImpReportedBy" value="Beirut|Benghazi|Izmir (Smyrna)"/>
+          <attvalue for="Imp" value="137406.4642507346"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="547988.2468168463"/>
-          <attvalue for="notes" value="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies -> Beirut  (REP)  : 113167.48285994124&#xA;Egypt Arab Republic (Egypt) -> Benghazi  (REP)  : 732.615083251714&#xA;Alexandria &amp; Egypt Arab Republic (Egypt) (REP)  -> Turkey (Ottoman Empire)  : 434088.1488736533"/>
+          <attvalue for="value" value="571494.6131243879"/>
+          <attvalue for="notes" value="Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies -> Beirut  (REP)  : 113167.48285994124&#xA;Egypt Arab Republic (Egypt) -> Benghazi  (REP)  : 732.615083251714&#xA;Egypt Arab Republic (Egypt) &amp; Syria -> Izmir (Smyrna)  (REP)  : 23506.366307541626&#xA;Alexandria &amp; Egypt Arab Republic (Egypt) (REP)  -> Turkey (Ottoman Empire)  : 434088.1488736533"/>
           <attvalue for="ExpReportedBy" value="Alexandria &amp; Egypt Arab Republic (Egypt)"/>
           <attvalue for="Exp" value="434088.1488736533"/>
           <attvalue for="valueGeneratedBy" value="aggregation"/>
@@ -16670,12 +16647,12 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Alexandria &amp; Egypt Arab Republic (Egypt)"/>
-          <attvalue for="Imp" value="1884.4270323212538"/>
+          <attvalue for="Imp" value="515529.87267384917"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="605868.7561214495"/>
-          <attvalue for="notes" value="Beirut (REP)  -> Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies  : 88454.45641527914&#xA;Benghazi (REP)  -> Egypt Arab Republic (Egypt)  : 1884.4270323212538&#xA;Turkey (Ottoman Empire) -> Alexandria &amp; Egypt Arab Republic (Egypt)  (REP)  : 515529.87267384917"/>
-          <attvalue for="ExpReportedBy" value="Beirut|Benghazi"/>
-          <attvalue for="Exp" value="90338.8834476004"/>
+          <attvalue for="value" value="608532.8109696376"/>
+          <attvalue for="notes" value="Beirut (REP)  -> Egypt Arab Republic (Egypt) &amp; Egypt Arab Republic (Egypt) Dependencies  : 88454.45641527914&#xA;Benghazi (REP)  -> Egypt Arab Republic (Egypt)  : 1884.4270323212538&#xA;Izmir (Smyrna) (REP)  -> Egypt Arab Republic (Egypt) &amp; Syria  : 2664.054848188051&#xA;Turkey (Ottoman Empire) -> Alexandria &amp; Egypt Arab Republic (Egypt)  (REP)  : 515529.87267384917"/>
+          <attvalue for="ExpReportedBy" value="Beirut|Benghazi|Izmir (Smyrna)"/>
+          <attvalue for="Exp" value="93002.93829578845"/>
           <attvalue for="valueGeneratedBy" value="aggregation"/>
         </attvalues>
       </edge>
@@ -16683,7 +16660,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Tripoli (Tripolitania)|Benghazi|Izmir (Smyrna)"/>
-          <attvalue for="Imp" value="9523.996082272282"/>
+          <attvalue for="Imp" value="19827.619980411364"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="19827.619980411364"/>
           <attvalue for="notes" value="Malta -> Tripoli (Tripolitania)  (REP)  : 9523.996082272282&#xA;Malta -> Benghazi  (REP)  : 2350.6366307541625&#xA;Malta -> Izmir (Smyrna)  (REP)  : 7952.987267384917"/>
@@ -16693,7 +16670,6 @@
       <edge id="640->338" source="640" target="338" label="GENERATED_TRADE">
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
-          <attvalue for="Imp" value="10291.870714985309"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="10942.213516160627"/>
           <attvalue for="notes" value="Tripoli (Tripolitania) (REP)  -> Malta  : 650.3428011753183&#xA;Benghazi (REP)  -> Malta  : 7913.809990205681&#xA;Izmir (Smyrna) (REP)  -> Malta  : 2378.060724779628"/>

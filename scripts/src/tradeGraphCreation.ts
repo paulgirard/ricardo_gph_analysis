@@ -273,16 +273,11 @@ export function splitInformalUnknownEntities(graph: GraphEntityPartiteType) {
   const year = graph.getAttribute("year");
   graph
     // todo : apply to all undefined GPH status
-    .filterNodes(
-      (_, atts) =>
-        atts.type === "entity" &&
-        atts.entityType === "GPH" &&
-        (atts.gphStatus === "Informal" || atts.gphStatus === undefined),
-    )
+    .filterNodes((_, atts) => atts.type === "entity" && atts.entityType === "GPH" && atts.gphStatus === "Informal")
     .forEach((informalNode) => {
       //console.log("treating informal", informalNode, atts);
       const parts = GPH_informal_parts(informalNode, year);
-      //console.log(`found ${parts.length} parts`);
+      console.log(`found ${parts.length} parts for ${informalNode}`, parts);
       if (parts.length > 0) {
         parts.forEach((p) => {
           // TODO: remove from those the one which have a political link to another entity the year studied
