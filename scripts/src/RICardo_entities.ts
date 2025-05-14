@@ -1,5 +1,5 @@
 import { parse } from "csv/sync";
-import { readFileSync, writeFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
@@ -18,7 +18,7 @@ import {
   splitInformalUnknownEntities,
   tradeGraph,
 } from "./tradeGraphCreation";
-import { GraphEntityPartiteType, RICentity } from "./types";
+import { GraphEntityPartiteType, GraphType, RICentity } from "./types";
 import { statsEntityType } from "./utils";
 
 export const entitesTransformationGraph = async (startYear: number, endYear: number) => {
@@ -94,22 +94,28 @@ const applyRatioMethod = async (
   startYear: number,
   endYear: number,
   _tradeGraphsByYear?: Record<string, DirectedGraph>,
+  edgeKey?: string,
 ) => {
+  const graphFile = (year: number) => `../data/entity_networks/${year}.gexf`;
   const tradeGraphsByYear = _tradeGraphsByYear
     ? _tradeGraphsByYear
     : fromPairs(
         await Promise.all(
-          // TODO use an other format or deserialize sets in labels
-          range(startYear, endYear).map(async (year) => {
-            const graph = gexf.parse(DirectedGraph, await readFile(`../data/entity_networks/${year}.gexf`, "utf8"));
-            return [year, graph];
-          }),
+          range(conf.startDate, conf.endDate)
+            .filter((year) => existsSync(graphFile(year)))
+            .map(async (year) => {
+              const graph = gexf.parse(DirectedGraph, await readFile(graphFile(year), "utf8"));
+              graph.edges().forEach((e) => {
+                graph.updateEdgeAttribute(e, "labels", (l) => new Set(l));
+              });
+              return [year, graph as GraphType];
+            }),
         ),
       );
   range(startYear, endYear).forEach((year) => {
     console.log(`****** Compute ratio for ${year}`);
     try {
-      const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear);
+      const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear, edgeKey);
       console.log(`writing gexf for ${year}`);
       writeFileSync(`../data/entity_networks/${year}_ratios.gexf`, gexf.write(new_graph), "utf8");
     } catch (e) {
@@ -187,5 +193,13 @@ const applyRatioMethod = async (
 // - remove reporting from entities
 // - remove entities which are already cited in reporting trade
 
-entitesTransformationGraph(conf.startDate, conf.endDate + 1).catch((e) => console.log(e));
-//applyRatioMethod(conf.startDate, conf.endDate + 1);
+//entitesTransformationGraph(conf.startDate, conf.endDate + 1).catch((e) => console.log(e));
+applyRatioMethod(1833, 1834, undefined, "200->325");
+// Poland "2903->290"
+
+// "901->British East Indies" Problem with soveriegn resolution British East Indies in 1833 should yield Straits Settlements
+// "Cape Colony (Cape of Good Hope) & Mauritius->220" ratio decomposition should nt consider flow not with same reporter
+// informal custom list
+// log gph without status
+
+// export au format Gephi lite

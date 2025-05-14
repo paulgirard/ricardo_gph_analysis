@@ -118,7 +118,7 @@ export function resolveTradeFlow(
           ).join("|"),
         );
         const imp = graph.getEdgeAttribute(flow, "Imp");
-        graph.updateEdgeAttribute(e, "Imp", (v) => (exp ? (v || 0) + exp * ratio : v)) || undefined;
+        graph.updateEdgeAttribute(e, "Imp", (v) => (imp ? (v || 0) + imp * ratio : v)) || undefined;
         graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
           Array.from(
             new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),

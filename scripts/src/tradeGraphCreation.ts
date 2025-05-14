@@ -367,13 +367,14 @@ export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
 export function resolveOneToManyEntityTransform(
   year: number,
   tradeGraphsByYear: Record<string, GraphEntityPartiteType>,
+  edgeKey?: string,
 ) {
   const graph = tradeGraphsByYear[year].copy();
   if (!graph) {
     throw new Error(`No trade graph available for year ${year}`);
   } else {
     graph
-      .filterEdges((_, atts) => atts.status === "toTreat")
+      .filterEdges((e, atts) => (edgeKey ? e === edgeKey : atts.status === "toTreat"))
       .forEach((e) => {
         const edgeToTreatAtts = graph.getEdgeAttributes(e);
         console.log(
