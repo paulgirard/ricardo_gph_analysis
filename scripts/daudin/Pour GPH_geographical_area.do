@@ -116,6 +116,7 @@ tostring gph_code, replace
 sort gph_code geo_continent geo_name 
 order gph_code id_name gph_continent geo_name geo_continent   included partially_included
 replace included=1 if gph_continent==geo_name
+gen line_number=_n
 
 
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area_work.csv", replace
