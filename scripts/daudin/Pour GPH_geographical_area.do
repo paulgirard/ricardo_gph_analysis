@@ -94,11 +94,12 @@ save `GPHxgeographical_area'
 
 
 /// Importation du fichier de travail
-import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area.csv", clear 
-rename continent gph_continent
-rename ricname geo_name
-rename gph_name id_name
-capture drop ricnameperiodbeginendyear
+import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area.csv", encoding("utf-8") clear 
+*rename continent gph_continent
+*rename ricname geo_name
+*rename gph_name id_name
+*capture drop ricnameperiodbeginendyear
+
 
 merge 1:1 gph_code geo_name using `GPHxgeographical_area'
 
@@ -114,11 +115,11 @@ drop if strmatch(geo_name,"World*")==1
 drop if gph_continent != geo_continent & (geo_continent=="Africa" | geo_continent=="Asia" | geo_continent=="America" | geo_continent=="Europe" | geo_continent=="Oceania") 
 tostring gph_code, replace
 sort gph_code geo_continent geo_name 
-order gph_code id_name gph_continent geo_name geo_continent   included partially_included
-replace included=1 if gph_continent==geo_name
-gen line_number=_n
+order line_number gph_code id_name gph_continent geo_name geo_continent   included partially_included
+replace included=1 if gph_continent==geo_name & included==.
+replace line_number=_n
 
 
-export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area_work.csv", replace
+export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area.csv", replace
 
 
