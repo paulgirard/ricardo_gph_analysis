@@ -153,6 +153,8 @@ export const ricEntityToGPHEntity = (
           // treat group part by recursion if not already seen
           if (!graph.hasNode(nodeId(part))) ricEntityToGPHEntity(part.RICname, graph, RICentities, RICgroups);
           // for now we store all transformation steps, no shortcut to final (after recursion) solution
+          // consider group parts as cited
+          (graph as GraphEntityPartiteType).setNodeAttribute(nodeId(part), "cited", true);
           graph.addDirectedEdge(nodeId(RICentity), nodeId(part), { labels: new Set(["SPLIT"]) });
         });
       else console.log(`UNKNOWN GROUP ${RICname}`);
@@ -258,10 +260,24 @@ export function splitAreas(
               const autonomousMember = autonomousGPHEntity(member.GPH_code, year);
               if (
                 autonomousMember.entity.GPH_code !== n &&
-                graph.hasNode(autonomousMember.entity.GPH_code) &&
-                graph.degree(autonomousMember.entity.GPH_code) > 0
-              )
+                autonomousMember.status !== undefined
+                // opened question : should we restrict to autonomous or filter out discovered/unknown status
+                //autonomousMember.autonomous === true
+                //graph.degree(autonomousMember.entity.GPH_code) > 0
+              ) {
+                if (!graph.hasNode(autonomousMember.entity.GPH_code)) {
+                  graph.addNode(nodeId(autonomousMember.entity), {
+                    type: "entity",
+                    entityType: autonomousMember.autonomous ? "GPH-AUTONOMOUS" : "GPH",
+                    gphStatus: autonomousMember.status,
+                    label: autonomousMember.entity.GPH_name,
+                    reporting: false,
+                    ricType: "GPH_entity",
+                  });
+                }
+
                 addEdgeLabel(graph, n, autonomousMember.entity.GPH_code, "SPLIT_OTHER");
+              }
             }
           });
       } else console.warn(`colonial area not in geographical translation table: ${atts.label}`);

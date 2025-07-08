@@ -202,5 +202,8 @@ entitesTransformationGraph(conf.startDate, conf.endDate + 1)
 // "Cape Colony (Cape of Good Hope) & Mauritius->220" ratio decomposition should nt consider flow not with same reporter
 
 // TODO
-// log gph without status
-// export au format Gephi lite
+// log gph without status: log GPH entities sans status
+
+// tradeTotal entity : Imp + Export et mirror si besoin
+// duplicate application
+// export au format Gephi lite:

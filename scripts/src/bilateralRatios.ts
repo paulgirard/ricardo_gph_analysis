@@ -116,6 +116,9 @@ export function findBilateralRatios(
   direction: "Export" | "Import",
   tradeGraphsByYear: Record<string, GraphEntityPartiteType>,
 ) {
+  // TODO: filter out members for which we already have a reported trade flow (reportingGPHId) - (partnersGPHIds)
+  // TODO: remove reportingGPHId from partnersGPHIds
+
   const partnerRatios: Record<string, { ratio?: number; status?: "ok" | "in_a_group" }> = fromPairs(
     partnersGPHIds.map((p) => [p, {}]),
   );
