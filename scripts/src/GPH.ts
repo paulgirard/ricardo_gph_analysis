@@ -88,6 +88,7 @@ export function autonomousGPHEntity(
       case "Colony of":
       case "Dependency of":
       case "Protectorate of":
+      case "Vassal of":
         return { entity, status: status.status, autonomous: true };
       case "Informal":
         // to be treated as geographical area later
