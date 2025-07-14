@@ -116,7 +116,7 @@ drop if gph_continent != geo_continent & (geo_continent=="Africa" | geo_continen
 tostring gph_code, replace
 sort gph_code geo_continent geo_name 
 order line_number gph_code id_name gph_continent geo_name geo_continent   included partially_included
-replace included=1 if gph_continent==geo_name & included==.
+replace included="1" if gph_continent==geo_name & included==""
 replace line_number=_n
 
 
