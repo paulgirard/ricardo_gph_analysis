@@ -13,8 +13,10 @@ tempfile RIC_entities
 save `RIC_entities'
 
 ////***On va récupérer les infos dans "RICardo_RICentities + détails.csv"
-import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/daudin/RICardo_RICentities + détails.csv", delimiter(comma) clear 
-keep ricname /*totalnbflows nbflowsreporting*/ nbflowspartner /*bilateralperiodsreporting*/ bilateralperiodspartner
+*import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/daudin/RICardo_RICentities + détails.csv", delimiter(comma) clear 
+***RICardo_RICentities + détails.csv n’est pas mis à jour. on le remplace par RICardo_RICentities.csv, mis à jour
+import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_data/database_scripts/RICardo_RICentities.csv", delimiter(comma) clear 
+keep ricname /*totalnbflows nbflowsreporting*/ nbflowspartner /*bilateralperiodsreporting bilateralperiodspartner*/
 **Ils ne sont jamais reporting
 gen strlen = length(ricname)
 summarize strlen, meanonly
