@@ -1,257 +1,169 @@
-import async from "async";
+import { parallelize } from "@ouestware/async";
+import { stringify } from "csv/sync";
 import fs from "fs";
-import { MultiDirectedGraph } from "graphology";
-import { flatten, get, identity, isNaN, keyBy, keys, last, range, sortBy, sum, uniq } from "lodash";
+import { flatten, toPairs, values } from "lodash";
 
 import { DB } from "./DB";
-import { GPH_status } from "./GPH";
-import conf from "./configuration.json";
+import { EdgeAttributes, FlowValueImputationMethod, GraphType } from "./types";
+import { getTradeGraphsByYear } from "./utils";
 
 interface ComputedData {
   year: number;
-  nbFlowsIntraReportings: number;
-  nbFlowsDeadHands: number;
-  ratioFlowsDeadsHands: number;
-  valueFlowsIntraReporting: number;
-  valueFlowsDeadHands: number;
-  ratioValueDeadHands: number;
-  ratioValueIntraOnBestGuestReportingBilateral: number;
-  ratioValueBestGuessReportingBilateralOnBestGuess: number;
-  ratioValueBestGuessReportingBilateralOnFedericoTena: number;
-  partnersOnlyRatio: Record<string, number>;
-  reportingRatio: Record<string, number>;
+  bilaterals: Record<FlowStatType, FlowStat>;
+  nbReportingFT: number;
+  nbGPHAutonomousCited: number;
+  worldFT: number;
+  worldBilateral: number;
 }
-type NodeAttributes = Record<string, string | number>;
 
-const computeGraph = (year: number, done: (error: Error | null, data?: ComputedData) => void) => {
-  DB.get().all(
-    `SELECT * FROM flow_aggregated
-    WHERE
-      flow is not null and rate is not null AND
-      year = ${year} AND
-      (partner is not null AND (partner not LIKE 'world%' OR partner IN ('World_best_guess', 'World Federico Tena')))
-      `,
-    function (err, rows) {
-      console.log(year);
-      if (err) done(err);
+const headers: string[] = [
+  "year",
+  "nbGPHAutonomousCited",
+  "nbReportingFT",
+  "worldBilateral",
+  "worldFT",
+  ...flatten(
+    [
+      "ok",
+      "aggregation",
+      "split_by_mirror_ratio",
+      "split_by_years_ratio",
+      "split_to_one",
+      "ignore_internal",
+      "discard_collision",
+      "splitFailedParts",
+      "toTreat",
+    ].map((s) => [`${s}_flows`, `${s}_value`]),
+  ),
+];
 
-      const graph = new MultiDirectedGraph();
+// TODO : recode form netwtok data
+// priority exp on imp on mirror : premier alphabétique
 
-      //build bilateral trade network
-      rows.forEach((r) => {
-        const w = (r.flow * (r.unit || 1)) / r.rate;
-        if (w && w != 0) {
-          if (["WorldFedericoTena", "Worldbestguess"].includes(r.partner_slug)) {
-            // store total flows as nodes params
-            const p: NodeAttributes = {
-              type: r.reporting_type,
-              label: r.reporting,
-              continent: r.reporting_continent,
-            };
-            p[`${r.partner_slug}_${r.expimp}`] = w;
+// sum world de FT comparé
+// nombre d'entité FT
+// nombre GPH autonomous cited
+// 1850
 
-            graph.mergeNode(r.reporting_slug, p);
-          } else {
-            const reporting_GPH_status = GPH_status(r.reporting_GPH_code, "" + year);
-            graph.mergeNode(r.reporting_slug, {
-              type: r.reporting_type,
-              label: r.reporting,
-              GPH_status: reporting_GPH_status?.status || r.reporting_type,
-              part_of: r.reporting_parent_entity || reporting_GPH_status?.sovereign,
-              continent: r.reporting_continent,
-              reporting: 1,
-            });
-            const partner_GPH_status = GPH_status(r.partner_GPH_code, "" + year);
-            graph.mergeNode(r.partner_slug, {
-              type: r.partner_type,
-              label: r.partner,
-              GPH_status: partner_GPH_status?.status || r.partner_type,
-              part_of: r.partner_parent_entity || partner_GPH_status?.sovereign,
-              continent: r.partner_continent,
-            });
-            let source = r.reporting_slug;
-            let target = r.partner_slug;
-            // swap
-            if (r.expimp === "Imp") {
-              [source, target] = [target, source];
-            }
-            const edgeData = {
-              weight: w,
-              direction: r.expimp,
-              source_type: r.type,
-            };
-            graph.addEdge(source, target, edgeData);
+interface FlowStat {
+  nbFlows: number;
+  value: number;
+}
+
+type FlowStatType =
+  | Exclude<EdgeAttributes["status"], "ignore_resolved" | undefined>
+  | FlowValueImputationMethod
+  | "splitFailedParts";
+
+function getEdgeValue(edgeAtts: EdgeAttributes) {
+  return edgeAtts.Exp || edgeAtts.Imp;
+}
+
+async function graphQuality(graph: GraphType): Promise<ComputedData> {
+  const year = graph.getAttribute("year");
+  //FT world estimation + entities
+  const FTPromise = new Promise<{ nbReportingFT: number; worldFT: number }>((resolve, reject) => {
+    DB.get().all(
+      `SELECT count(reporting) as nbReportingFT, sum(flow*coalesce(unit,1)/rate) as worldFT FROM flow_joined
+      WHERE
+        flow is not null and rate is not null AND
+        year = ${year} AND
+        partner = 'World Federico Tena' AND
+        expimp  = "Exp"
+      GROUP BY year
+        `,
+      function (err, rows) {
+        if (err) reject(err);
+        const { nbReportingFT, worldFT } = rows[0];
+        resolve({ nbReportingFT, worldFT });
+      },
+    );
+  });
+  const { nbReportingFT, worldFT } = await FTPromise;
+  // bilateral flows
+  const bilaterals: Record<FlowStatType, FlowStat> = {
+    ok: { nbFlows: 0, value: 0 },
+    toTreat: { nbFlows: 0, value: 0 },
+    aggregation: { nbFlows: 0, value: 0 },
+    split_to_one: { nbFlows: 0, value: 0 },
+    split_by_years_ratio: { nbFlows: 0, value: 0 },
+    split_by_mirror_ratio: { nbFlows: 0, value: 0 },
+    ignore_internal: { nbFlows: 0, value: 0 },
+    discard_collision: { nbFlows: 0, value: 0 },
+    splitFailedParts: { nbFlows: 0, value: 0 },
+  };
+  const sumBilateralWorld = { nbFlows: 0, value: 0 };
+  graph.edges().forEach((e) => {
+    const edgeAtts = graph.getEdgeAttributes(e);
+    const value = getEdgeValue(edgeAtts);
+    if ((edgeAtts.labels.has("REPORTED_TRADE") || edgeAtts.labels.has("GENERATED_TRADE")) && edgeAtts.status) {
+      if (value && edgeAtts.status !== "ignore_resolved") {
+        // if generated_trade track the method used for resolution
+        let status: FlowStatType | undefined = edgeAtts.labels.has("GENERATED_TRADE")
+          ? edgeAtts.valueGeneratedBy
+          : edgeAtts.status;
+        // if restoftheworld => status = splitFailedParts
+        if (graph.source(e) === "restOfTheWorld" || graph.target(e) === "restOfTheWorld") status = "splitFailedParts";
+
+        if (status !== undefined) {
+          bilaterals[status].nbFlows += 1;
+          bilaterals[status].value += value;
+          // bilateral sum
+          if (
+            status !== "splitFailedParts" &&
+            status !== "toTreat" &&
+            status !== "ignore_internal" &&
+            status !== "discard_collision"
+          ) {
+            sumBilateralWorld.nbFlows += 1;
+            sumBilateralWorld.value += value;
           }
         }
-      });
+      }
+    }
+  });
+  const nbGPHAutonomousCited = graph.filterNodes((n, atts) => {
+    return atts.type === "entity" && atts.entityType === "GPH-AUTONOMOUS-CITED";
+  }).length;
+  return {
+    year: graph.getAttribute("year"),
+    bilaterals,
+    nbReportingFT,
+    worldFT,
+    nbGPHAutonomousCited,
+    worldBilateral: sumBilateralWorld.value,
+  };
+}
 
-      // analysis
+async function graphsQuality() {
+  //TODO do not load all the graphs at once.
+  const tradeGraphsByYear = await getTradeGraphsByYear(true);
+  const tasks = values(tradeGraphsByYear).map((graph) => async () => graphQuality(graph));
+  const qualityStats = await parallelize(tasks, 5);
+  const csvString = stringify(
+    qualityStats.map((data) => {
+      const bilateralsStats = toPairs(data.bilaterals).reduce((acc, [key, stats]) => {
+        return { ...acc, [`${key}_flows`]: stats.nbFlows, [`${key}_value`]: stats.value };
+      }, {});
 
-      // count flows to "dead hands"
-      // dead hands are trade partners who are not reporters the same year
-      // imperfections which breaks the ideal squared trade matrix
-
-      let nbFlowsIntraReportings = 0;
-      let valueFlowsIntraReporting = 0;
-      let nbFlowsDeadHands = 0;
-      let valueFlowsDeadHands = 0;
-      const deadHandsTypes = { groups: 0, informal: 0, others: 0 };
-      graph.forEachEdge((_e, eAtts, _src, _srcAtts, _trg, trgAtts) => {
-        if (eAtts.direction === "Exp") {
-          if (trgAtts.reporting === 1) {
-            // bilateral flow between two reportings
-            nbFlowsIntraReportings += 1;
-            valueFlowsIntraReporting += eAtts.weight;
-          } else {
-            nbFlowsDeadHands += 1;
-            if (trgAtts.type === "group") deadHandsTypes.groups += 1;
-            else if (trgAtts.GPH_status === "informal") deadHandsTypes.informal += 1;
-            else deadHandsTypes.others += 1;
-
-            valueFlowsDeadHands += eAtts.weight;
-          }
-        }
-      });
-      let worldTradeReportingBilateral = 0;
-      let worldTradeReporting = 0;
-      let worldTradeTena = 0;
-      let nbReportings = 0;
-      const partnersOnlyRatio: Record<string, number> = {};
-      const reportingRatio: Record<string, number> = {};
-      graph.forEachNode((n, atts) => {
-        worldTradeTena += atts.WorldFedericoTena_Exp || 0;
-        if (atts.reporting === 1) {
-          nbReportings += 1;
-          if (graph.degree(n) > 0 && atts.Worldbestguess_Exp) {
-            if (atts.WorldFedericoTena_Exp) reportingRatio[n] = atts.Worldbestguess_Exp / atts.WorldFedericoTena_Exp;
-            worldTradeReportingBilateral += atts.Worldbestguess_Exp || 0;
-          }
-        }
-        worldTradeReporting += atts.Worldbestguess_Exp || 0;
-      });
-      graph.forEachNode((n, atts) => {
-        if (atts.reporting !== 1 && graph.inDegree(n) > 0) {
-          // partner only trade partner aka dead hand
-          // how important if that dead hand
-          const totalTradePartner = sum(
-            graph.inboundEdges(n).map((e) => {
-              const { weight, direction } = graph.getEdgeAttributes(e);
-              if (direction) return weight;
-              else return 0;
-            }),
-          );
-          partnersOnlyRatio[atts.label] = (totalTradePartner / worldTradeReporting) * 100;
-        } else if (atts.reporting !== 1) {
-          console.log(`dead hand partner with no incoming flows ${n}`);
-        }
-      });
-      const data = {
-        year,
-        nbFlowsIntraReportings,
-        nbFlowsDeadHands,
-        ratioFlowsDeadsHands: nbFlowsDeadHands / (nbFlowsIntraReportings + nbFlowsDeadHands),
-        valueFlowsIntraReporting,
-        valueFlowsDeadHands,
-        ratioValueDeadHands: valueFlowsDeadHands / (valueFlowsDeadHands + valueFlowsIntraReporting),
-        ratioValueIntraOnBestGuestReportingBilateral: valueFlowsIntraReporting / worldTradeReportingBilateral,
-        ratioValueBestGuessReportingBilateralOnBestGuess: worldTradeReportingBilateral / worldTradeReporting,
-        ratioValueBestGuessReportingBilateralOnFedericoTena: worldTradeReportingBilateral / worldTradeTena,
-        reportingRatio,
-        partnersOnlyRatio,
+      return {
+        year: data.year,
+        nbGPHAutonomousCited: data.nbGPHAutonomousCited,
+        nbReportingFT: data.nbReportingFT,
+        worldBilateral: data.worldBilateral,
+        worldFT: data.worldFT,
+        ...bilateralsStats,
       };
-      done(null, data);
+    }),
+    {
+      header: true,
+      columns: headers,
     },
   );
-};
+  fs.writeFileSync("../data/tradeGraphsStats.csv", csvString);
+}
 
-// prepare list of years to compute from cnnfig
-const years = range(conf.startDate, conf.endDate);
-
-// throw computation in async mode
-async.map(years, computeGraph, (err, data) => {
-  if (err || data === undefined) throw new Error(err ? err.message : "No Data");
-  if (data !== undefined) {
-    const header = (variable: string) => `${variable},${years.join(",")}\n`;
-
-    let csv = header("Global ratios");
-    const variables = uniq(
-      flatten(
-        data.map((d) => {
-          return keys(d).filter((k) => !["year", "reportingRatio", "partnersOnlyRatio"].includes(k));
-        }),
-      ),
-    ) as (keyof ComputedData)[];
-
-    const dataByYear = keyBy(
-      data.filter((d): d is ComputedData => d !== undefined),
-      (d) => d.year,
-    );
-
-    const csvLine = (path: string[]) =>
-      `${last(path)},${years
-        .map((y) => {
-          const value = get(dataByYear[y], path) || "";
-          // reduce float precision
-          return value % 1 !== 0 ? value.toPrecision(3) : value;
-        })
-        .join(",")}\n`;
-
-    variables.forEach((variable) => {
-      csv += csvLine([variable]);
-    });
-    csv += header("Reportings (BestGuess/FT)");
-    // Reportings data: list and sort by average of logs
-    const reportings = sortBy(
-      uniq(
-        flatten(
-          data.map((d) => {
-            return keys(d?.reportingRatio);
-          }),
-        ),
-      ),
-      (r) => {
-        const logs = data
-          .map((d) =>
-            d?.reportingRatio[r] && !isNaN(d.reportingRatio[r]) ? Math.abs(Math.log(d?.reportingRatio[r])) : null,
-          )
-
-          .filter((log): log is number => log !== null);
-        if (logs.length > 0) return (-1 * sum(logs)) / logs.length;
-        else return null;
-      },
-    ).filter(identity);
-    reportings.forEach((reporting) => {
-      csv += csvLine(["reportingRatio", reporting]);
-    });
-    // Partner data: list and sort by average value
-    csv += header("Partners (percentage on total bilateral trade)");
-    const partners = sortBy(
-      uniq(
-        flatten(
-          data.map((d) => {
-            return keys(d?.partnersOnlyRatio);
-          }),
-        ),
-      ),
-      (p) => {
-        const values = data
-          .map((d) => d?.partnersOnlyRatio[p])
-          .filter((v): v is number => v !== undefined && !isNaN(v));
-        if (values.length > 0) return (-1 * sum(values)) / values.length;
-        else {
-          console.log(`no data for partner ${p}`);
-          return null;
-        }
-      },
-    ).filter(identity);
-    partners.forEach((partner) => {
-      csv += csvLine(["partnersOnlyRatio", partner]);
-    });
-
-    fs.writeFile(`../data/quality.csv`, csv, "utf8", (err) => {
-      if (err) console.log(`error : couldn't write quality CSV ${err}`);
-      else console.log(`writing to quality CSV`);
-    });
-  }
+graphsQuality().then(() => {
+  console.log("done");
+  DB.get().close();
 });
-DB.get().close();

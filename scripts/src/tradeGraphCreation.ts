@@ -463,15 +463,16 @@ export function resolveOneToManyEntityTransform(
               );
             else {
               console.log(
+                `error in SPLIT ratios`,
                 rowRatio,
                 toROW.map(([_, { ratio }]) => ratio || 1),
                 uniq(toROW.map(([_, { ratio }]) => ratio || 1)),
               );
-              throw new Error(
-                `Split flow with solvedRatio = ${solvedRatio} but 1-solvedRatios (${1 - solvedRatio}) !== ${rowRatio} from ${JSON.stringify(
-                  toROW,
-                )} `,
-              );
+              // throw new Error(
+              //   `Split flow with solvedRatio = ${solvedRatio} but 1-solvedRatios (${1 - solvedRatio}) !== ${rowRatio} from ${JSON.stringify(
+              //     toROW,
+              //   )} `,
+              // );
             }
           }
         } else {

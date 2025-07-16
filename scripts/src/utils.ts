@@ -1,4 +1,11 @@
+import { existsSync } from "fs";
+import { readFile } from "fs/promises";
+import { DirectedGraph } from "graphology";
+import gexf from "graphology-gexf";
+import { fromPairs, range } from "lodash";
+
 import { GPHEntity } from "./GPH";
+import conf from "./configuration.json";
 import { EdgeLabelType, EntityNodeAttributes, EntityType, GraphType, RICentity } from "./types";
 
 /**
@@ -40,3 +47,20 @@ export const addEdgeLabel = (graph: GraphType, source: string, target: string, l
     labels: new Set([...(atts.labels || []), label]),
   }));
 };
+
+export async function getTradeGraphsByYear(ratios?: boolean) {
+  const graphFile = (year: number) => `../data/entity_networks/${year}${ratios ? "_ratios" : ""}.gexf`;
+  return fromPairs(
+    await Promise.all(
+      range(conf.startDate, conf.endDate)
+        .filter((year) => existsSync(graphFile(year)))
+        .map(async (year) => {
+          const graph = gexf.parse(DirectedGraph, await readFile(graphFile(year), "utf8"));
+          graph.edges().forEach((e) => {
+            graph.updateEdgeAttribute(e, "labels", (l) => new Set(l));
+          });
+          return [year, graph as GraphType];
+        }),
+    ),
+  );
+}

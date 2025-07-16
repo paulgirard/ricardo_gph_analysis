@@ -1,9 +1,9 @@
 import { parse } from "csv/sync";
-import { existsSync, readFileSync, writeFileSync } from "fs";
-import { readFile, writeFile } from "fs/promises";
+import { readFileSync, writeFileSync } from "fs";
+import { writeFile } from "fs/promises";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { fromPairs, groupBy, keyBy, range, sortedUniq } from "lodash";
+import { groupBy, keyBy, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
@@ -18,8 +18,8 @@ import {
   splitInformalUnknownEntities,
   tradeGraph,
 } from "./tradeGraphCreation";
-import { GraphEntityPartiteType, GraphType, RICentity } from "./types";
-import { statsEntityType } from "./utils";
+import { GraphEntityPartiteType, RICentity } from "./types";
+import { getTradeGraphsByYear, statsEntityType } from "./utils";
 
 export const entitesTransformationGraph = async (startYear: number, endYear: number) => {
   const RICentities: Record<string, RICentity> = keyBy<RICentity>(
@@ -96,22 +96,7 @@ const applyRatioMethod = async (
   _tradeGraphsByYear?: Record<string, DirectedGraph>,
   edgeKey?: string,
 ) => {
-  const graphFile = (year: number) => `../data/entity_networks/${year}.gexf`;
-  const tradeGraphsByYear = _tradeGraphsByYear
-    ? _tradeGraphsByYear
-    : fromPairs(
-        await Promise.all(
-          range(conf.startDate, conf.endDate)
-            .filter((year) => existsSync(graphFile(year)))
-            .map(async (year) => {
-              const graph = gexf.parse(DirectedGraph, await readFile(graphFile(year), "utf8"));
-              graph.edges().forEach((e) => {
-                graph.updateEdgeAttribute(e, "labels", (l) => new Set(l));
-              });
-              return [year, graph as GraphType];
-            }),
-        ),
-      );
+  const tradeGraphsByYear = _tradeGraphsByYear ? _tradeGraphsByYear : await getTradeGraphsByYear();
   range(startYear, endYear).forEach((year) => {
     console.log(`****** Compute ratio for ${year}`);
     try {
@@ -195,7 +180,7 @@ const applyRatioMethod = async (
 
 entitesTransformationGraph(conf.startDate, conf.endDate + 1)
   .catch((e) => console.log(e))
-  .then(() => applyRatioMethod(1833, 1834));
+  .then(() => applyRatioMethod(conf.startDate, conf.endDate + 1));
 // Poland "2903->290"
 
 // "901->British East Indies" Problem with sovereign resolution British East Indies in 1833 should yield Straits Settlements
