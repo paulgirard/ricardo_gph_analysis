@@ -43,10 +43,14 @@ save `RIC_geographical_area'
 
 
 
+
+
 *=Pour repérer des soucis
 use `RIC_entities', clear
 rename ricname gph_name
 merge 1:1 gph_name using `GPH_entities'
+
+
 
 ***Problème 1 : "GPH_entity" dans Ricardo qui ne sont pas dans GeoPolHist
 tab type if _merge==1
@@ -101,9 +105,10 @@ import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/
 *rename ricname geo_name
 *rename gph_name id_name
 *capture drop ricnameperiodbeginendyear
+keep gph_code geo_name  included partially_included line_number 
 
 
-merge 1:1 gph_code geo_name using `GPHxgeographical_area'
+merge 1:1 gph_code geo_name using `GPHxgeographical_area', update
 
 
 
@@ -117,9 +122,9 @@ drop if strmatch(geo_name,"World*")==1
 drop if gph_continent != geo_continent & (geo_continent=="Africa" | geo_continent=="Asia" | geo_continent=="America" | geo_continent=="Europe" | geo_continent=="Oceania") 
 tostring gph_code, replace
 sort gph_code geo_continent geo_name 
-order line_number gph_code id_name gph_continent geo_name geo_continent   included partially_included
 replace included=1 if gph_continent==geo_name & included==.
 replace line_number=_n
+order line_number gph_code id_name gph_continent geo_name geo_continent   included partially_included
 
 
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/scripts/GPH_geographical_area.csv", replace
