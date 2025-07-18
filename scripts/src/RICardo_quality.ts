@@ -1,7 +1,7 @@
 import { parallelize } from "@ouestware/async";
 import { stringify } from "csv/sync";
 import fs from "fs";
-import { flatten, toPairs, values } from "lodash";
+import { difference, flatten, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
 import { EdgeAttributes, FlowValueImputationMethod, GraphType } from "./types";
@@ -14,6 +14,8 @@ interface ComputedData {
   nbGPHAutonomousCited: number;
   worldFT: number;
   worldBilateral: number;
+  inFTNotInBilateral: string[];
+  inBilateralNotInFT: string[];
 }
 
 const headers: string[] = [
@@ -35,6 +37,8 @@ const headers: string[] = [
       "toTreat",
     ].map((s) => [`${s}_flows`, `${s}_value`]),
   ),
+  "inFTNotInBilateral",
+  "inBilateralNotInFT",
 ];
 
 // TODO : recode form netwtok data
@@ -61,10 +65,12 @@ function getEdgeValue(edgeAtts: EdgeAttributes) {
 
 async function graphQuality(graph: GraphType): Promise<ComputedData> {
   const year = graph.getAttribute("year");
+  console.log(year);
   //FT world estimation + entities
-  const FTPromise = new Promise<{ nbReportingFT: number; worldFT: number }>((resolve, reject) => {
-    DB.get().all(
-      `SELECT count(reporting) as nbReportingFT, sum(flow*coalesce(unit,1)/rate) as worldFT FROM flow_joined
+  const FTPromise = new Promise<{ nbReportingFT: number; worldFT: number; reportingsFT: string[] }>(
+    (resolve, reject) => {
+      DB.get().all(
+        `SELECT count(distinct reporting) as nbReportingFT, group_concat(reporting, '|') as reportingsFT,  sum(flow*coalesce(unit,1)/rate) as worldFT FROM flow_joined
       WHERE
         flow is not null and rate is not null AND
         year = ${year} AND
@@ -72,14 +78,15 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         expimp  = "Exp"
       GROUP BY year
         `,
-      function (err, rows) {
-        if (err) reject(err);
-        const { nbReportingFT, worldFT } = rows[0];
-        resolve({ nbReportingFT, worldFT });
-      },
-    );
-  });
-  const { nbReportingFT, worldFT } = await FTPromise;
+        function (err, rows) {
+          if (err) reject(err);
+          const { nbReportingFT, worldFT, reportingsFT } = rows[0];
+          resolve({ nbReportingFT, worldFT, reportingsFT: sortBy(uniq(reportingsFT.split("|"))) });
+        },
+      );
+    },
+  );
+  const { nbReportingFT, worldFT, reportingsFT } = await FTPromise;
   // bilateral flows
   const bilaterals: Record<FlowStatType, FlowStat> = {
     ok: { nbFlows: 0, value: 0 },
@@ -122,9 +129,22 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       }
     }
   });
-  const nbGPHAutonomousCited = graph.filterNodes((n, atts) => {
-    return atts.type === "entity" && atts.entityType === "GPH-AUTONOMOUS-CITED";
-  }).length;
+  const GPHAutonomousCited = sortBy(
+    graph
+      .filterNodes((_, atts) => {
+        return atts.type === "entity" && atts.entityType === "GPH-AUTONOMOUS-CITED";
+      })
+      .map((id) => graph.getNodeAttribute(id, "label")),
+  );
+  const nbGPHAutonomousCited = GPHAutonomousCited.length;
+
+  const inFTNotInBilateral = difference(reportingsFT, GPHAutonomousCited);
+  const inBilateralNotInFT = difference(GPHAutonomousCited, reportingsFT);
+
+  console.log("inFTNotInBilateral", JSON.stringify(inFTNotInBilateral));
+  console.log("inBilateralNotInFT", JSON.stringify(inBilateralNotInFT));
+  console.log("bilateral", JSON.stringify(GPHAutonomousCited));
+
   return {
     year: graph.getAttribute("year"),
     bilaterals,
@@ -132,6 +152,8 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
     worldFT,
     nbGPHAutonomousCited,
     worldBilateral: sumBilateralWorld.value,
+    inFTNotInBilateral,
+    inBilateralNotInFT,
   };
 }
 
@@ -153,6 +175,8 @@ async function graphsQuality() {
         worldBilateral: data.worldBilateral,
         worldFT: data.worldFT,
         ...bilateralsStats,
+        inFTNotInBilateral: data.inFTNotInBilateral.join("|"),
+        inBilateralNotInFT: data.inBilateralNotInFT.join("|"),
       };
     }),
     {
