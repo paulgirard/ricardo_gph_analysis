@@ -73,3 +73,6 @@ Here are the steps of the algorithm. The one in italics is the only one that nec
 /assets/FTComparison.png
 size: contain
 
+
+---
+# Conclusion
