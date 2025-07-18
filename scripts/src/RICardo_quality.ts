@@ -141,10 +141,6 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   const inFTNotInBilateral = difference(reportingsFT, GPHAutonomousCited);
   const inBilateralNotInFT = difference(GPHAutonomousCited, reportingsFT);
 
-  console.log("inFTNotInBilateral", JSON.stringify(inFTNotInBilateral));
-  console.log("inBilateralNotInFT", JSON.stringify(inBilateralNotInFT));
-  console.log("bilateral", JSON.stringify(GPHAutonomousCited));
-
   return {
     year: graph.getAttribute("year"),
     bilaterals,
