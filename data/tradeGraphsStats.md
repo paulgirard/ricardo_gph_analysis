@@ -30,7 +30,7 @@ In theory we should have:
 - nbGPHAutonomousCited = nbReportingFT
 - worldBilateral = worldFT
 
-Our worldBilateral should be : ok_value + aggregation_value + split_by_years_ratio_value
+	Our worldBilateral should be : ok_value + aggregation_value + split_by_years_ratio_value
 
 The difference between worldBilateral and worldFT can be explained by discarded flows:
 
