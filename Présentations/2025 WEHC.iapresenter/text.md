@@ -1,7 +1,6 @@
 # Leveraging geopolitical history to deal with taxonomic diversity of trade partners in RICardo
 	Guillaume Daudin, Béatrice Dedinger, Youssef Ghallada, Paul Girard, 
-## WEHC 2025
-## Session "Disaggregated Bilateral Trade Data, 1870-2024""
+## WEHC 2025: "Disaggregated Bilateral Trade Data, 1870-2024""
 
 
 ---
@@ -67,6 +66,30 @@ Here are the steps of the algorithm. The one in italics is the only one that nec
 # Preliminary results
 
 
+---
+ 
+
+
+/assets/Capture d’écran 2025-07-19 à 08.07.55 --1850  original.png
+size: contain
+
+https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard/e461c39d958d6a2af4e43ee77f871386/raw/0da6c98863439bc2e1d98eb2fd74e8dce3e8761c/1850_original.json
+---
+
+
+
+/assets/Capture d’écran 2025-07-19 à 08.09.18 -- 1850 GPH links.png
+size: contain
+
+https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard/47a432089ec9c5942206c6764873babf/raw/019a80cdaac97a19f41deabd18148093db69640f/1850_GPH_links.json
+---
+
+
+
+/assets/Capture d’écran 2025-07-19 à 08.10.21 -- 1850 final.png
+size: contain
+
+https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard/7b82a68de1d8e4bae533185ae2537bb2/raw/d16e4e9476be101fc4792814cbb3c9cf90416a36/1850_final.json
 ---
 
 
