@@ -14,7 +14,7 @@
 size: contain
 RICardo is trying to gather a complete bilateral trade database from 1800 to 1938.
 RICardo has gathered more than c. 670,000 bilateral trade flows. Without the duplicates and the zero flows, RICardo offers a database and a web interface for c. 570,000 flows. 
-As many of you will now, there are no standardization of partner names in trade statistics. Some trade statistics also come from various reporting entities, that can be in some cases only ports.
+As many of you will know, there are no standardization of partner names in trade statistics. Some trade statistics also come from various reporting entities, that can be in some cases only ports.
 There are 442 different reporting entities and 2,069 partner entities, to be compared to between 90 and 140 entities in the Federico-Tena World Trade database
 In addition, **104 reporters are not partners (Guadeloupe & Guadeloupe Dependencies : 500 flows ; Port Simon 430 flows...)
 Among important partners British West Indies (2895 flows), British colonies (other) (2334 flows), French colonies (2080),... Norway&Sweden (1544), Africa (other) (1320), ... Asian Turkey (1099)
@@ -31,7 +31,7 @@ I do not think other trade databases tackle that issue, except maybe in non-syst
 	- Informal (eg "Germany" before 1870)
 ---
 # The solution
-First, we must decide what are we interested in.
+First, we must decide what are interested in.
 Most trade databases are about trade between autonomous geopolitical entities.
 "GPH identifies any form of human social
 community or territory that has been involved in an
@@ -51,7 +51,7 @@ The database GeoPolHist, extending the list of states and dependencies developpe
 /assets/Clipboard 2.png
 size: contain
 
-It also provides us with the way to identify colonies, dependants, parts of, etc
+It also provides us with the way to identify colonies, dependents, parts of, etc
 
 ---
 ## Algorithm
@@ -91,7 +91,7 @@ size: contain
 
 https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard/7b82a68de1d8e4bae533185ae2537bb2/raw/d16e4e9476be101fc4792814cbb3c9cf90416a36/1850_final.json
 ---
-
+ 
 
 /assets/FTComparison.png
 size: contain

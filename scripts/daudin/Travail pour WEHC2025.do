@@ -51,7 +51,7 @@ set more off
 
 *************
 
-import delimited "data/tradeGraphsStats.csv", clear
+import delimited "data/tradeGraphsStats.csv", clear delimiters (",") varnames(1)
 
 tempfile tradeGraphStat
 save `tradeGraphStat', replace
@@ -62,15 +62,15 @@ label variable nbgphautonomouscited "Number of trading entities"
 label variable nbreportingft "Number of trading entities in FT"
 
 gen ok_value_ratio = ok_value/worldft
-label variable ok_value_ratio "Not treated total value"
+label variable ok_value_ratio "No treatment needed total value"
 
 
 gen worldbilateral_ratio = worldbilateral/worldft
-label variable worldbilateral_ratio "Not treated, aggregated and splitted total value"
+label variable worldbilateral_ratio "No treatment needed, aggregated and splitted total value"
 
 gen aggregation_value_ratio = aggregation_value/worldft
 gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
-label variable ok_and_aggregatio_ratio "Not treated and aggregated total value"
+label variable ok_and_aggregatio_ratio "No treatment needed and aggregated total value"
 
 
 graph twoway (connected nbgphautonomouscited year, yaxis(2) msize(vsmall)) (connected nbreportingft year, yaxis(2) msize(vsmall))   ///
