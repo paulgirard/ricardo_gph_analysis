@@ -93,9 +93,21 @@ https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard
 ---
  
 
-/assets/FTComparison.png
+/assets/FTComparison_nbr_entities.png
 size: contain
 
 
 ---
+
+/assets/FTComparison_value.png
+size: contain
+
+---
 # Conclusion
+---
+
+
+/assets/FTComparison_nbr_flows.png
+size: contain
+
+

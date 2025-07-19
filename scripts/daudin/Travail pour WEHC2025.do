@@ -72,13 +72,54 @@ gen aggregation_value_ratio = aggregation_value/worldft
 gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
 label variable ok_and_aggregatio_ratio "No treatment needed and aggregated total value"
 
+gen ignored_value_ratio = (ignore_internal_value + discard_collision_value)/worldft
+label variable ignored_value_ratio "Non-pertinent value (duplicated and internal)"
 
-graph twoway (connected nbgphautonomouscited year, yaxis(2) msize(vsmall)) (connected nbreportingft year, yaxis(2) msize(vsmall))   ///
-(line ok_value_ratio year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_ratio year, yaxis(1) lpattern(longdash)) ///
- (line worldbilateral_ratio year, yaxis(1) lwidth(medthick)) ///
- , ///
-  yscale(axis(2) range(80 190)) ylabel( 80(20)180, axis(2) angle(horizontal)) ///
-  yscale(axis(1) range(0.4 1.3)) ylabel(0.4(0.2)1.2,axis(1) angle(horizontal)) yline(1,axis(1)) ytitle("Ratio to FT World Trade", axis(1)) ///
-  scheme(s1color) legend(rows(5))
+gen splitfailedparts_ratio = (splitfailedparts_value + totreat_flows)/worldft
+label variable splitfailedparts_ratio "Failed splits value"
 
-  graph export "figures/FTComparison.png", replace
+gen WB_and_failedsplit_ratio = worldbilateral_ratio + splitfailedparts_ratio
+label variable WB_and_failedsplit_ratio "Our bilateral trade and failed splits value"
+
+gen our_data_ratio = worldbilateral_ratio + splitfailedparts_ratio + ignored_value_ratio
+label variable our_data_ratio "idem, and internal or redundant value"
+
+
+graph twoway   (connected nbgphautonomouscited year, yaxis(2) msize(vsmall)) ///
+    (connected nbreportingft year, yaxis(2) msize(vsmall)) , ///
+     yscale(axis(2) range(80 190)) ylabel( 80(20)180, axis(2) angle(horizontal))  scheme(s1color) legend(rows(2))
+
+graph export "figures/FTComparison_nbr_entities.png", replace
+
+
+
+graph twoway  ///
+    (line ok_value_ratio year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_ratio year, yaxis(1) lpattern(longdash)) ///
+    (line worldbilateral_ratio year, yaxis(1) lwidth(medthick)) ///
+    (line WB_and_failedsplit_ratio year, yaxis(1) lpattern(longdash)) (line our_data_ratio year, yaxis(1) lpattern(longdash)), ///
+    yscale(axis(1) range(0.4 1.3)) ylabel(0.4(0.2)1.2,axis(1) angle(horizontal)) yline(1,axis(1)) ytitle("Ratio to FT World Trade", axis(1)) ///
+    scheme(s1color) legend(rows(5))
+
+graph export "figures/FTComparison_value.png", replace
+
+
+label variable ok_flows "No treatment needed"
+gen ok_and_aggregatio_flows= ok_flows+ aggregation_flows
+label variable ok_and_aggregatio_flows "No treatment needed and aggregated"
+gen worldbilateral_flows= ok_flows+ aggregation_flows + split_by_mirror_ratio_flows + split_by_years_ratio_flows + split_to_one_flows
+label variable worldbilateral_flows "No treatment needed, aggregated and splitted"
+
+gen WB_and_failedsplit_flows = worldbilateral_flows + splitfailedparts_flows + totreat_flows
+label variable WB_and_failedsplit_flows "Our bilateral trade and failed splits"
+
+gen our_data_flows = WB_and_failedsplit_flows + ignore_internal_flows
+label variable our_data_flows "idem, and internal or redundant"
+
+graph twoway  ///
+    (line ok_flows year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_flows year, lpattern(longdash)) ///
+    (line worldbilateral_flows year, yaxis(1) lwidth(medthick)) ///
+    (line WB_and_failedsplit_flows year, yaxis(1) lpattern(longdash)) (line our_data_flows year, lpattern(longdash)), ///
+    yscale(log) ylabel(,angle(horizontal)) ytitle("Number of flows") ///
+    scheme(s1color) legend(rows(5))
+
+graph export "figures/FTComparison_nbr_flows.png", replace
