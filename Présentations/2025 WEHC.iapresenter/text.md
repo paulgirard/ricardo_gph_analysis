@@ -23,17 +23,17 @@ I do not think other trade databases tackle that issue, except maybe in non-syst
 
 ---
 ### The different situations (both for partners and reporting)
-	- Groups (eg. Norway & Seweden -- 1544 flows, partner)
-	- Localities (eg Port Simon -- 430 flows, reporter)
-	- Parts of (eg Asian Turkey -- 1099 flows, partner)
-	- Geographical areas (eg Africa (other) 1320 flows, partner)
-	- Colonial areas (eg British West Indies, 2895 flows, partner)
-	- Informal (eg "Germany" before 1870)
+	- Groups (e.g. Norway & Sweden -- 1544 flows, partner)
+	- Localities (e.g. Port Simon -- 430 flows, reporter)
+	- Parts of (e.g. Asian Turkey -- 1099 flows, partner)
+	- Geographical areas (e.g. Africa (other) 1320 flows, partner)
+	- Colonial areas (e.g. British West Indies, 2895 flows, partner)
+	- Informal (e.g. Germany before 1870)
 ---
 # The solution
-First, we must decide what are interested in.
+First, we must decide what are the trading entities we are interested in.
 Most trade databases are about trade between autonomous geopolitical entities.
-"GPH identifies any form of human social
+GeoPolHis identifies any form of human social
 community or territory that has been involved in an
 international or intra-national conflict during the
 post-Napoleonic period and is also geographically
@@ -51,7 +51,7 @@ The database GeoPolHist, extending the list of states and dependencies developpe
 /assets/Clipboard 2.png
 size: contain
 
-It also provides us with the way to identify colonies, dependents, parts of, etc
+It also provides us with the way to identify colonies, dependents, parts of, etc.
 
 ---
 ## Algorithm
@@ -72,6 +72,8 @@ Here are the steps of the algorithm. The one in italics is the only one that nec
 
 /assets/Capture d’écran 2025-07-19 à 08.07.55 --1850  original.png
 size: contain
+
+Attract attention to the clusters
 
 https://gephi.org/gephi-lite/?file=https://gist.githubusercontent.com/paulgirard/e461c39d958d6a2af4e43ee77f871386/raw/0da6c98863439bc2e1d98eb2fd74e8dce3e8761c/1850_original.json
 ---
@@ -104,7 +106,15 @@ size: contain
 
 ---
 # Conclusion
+
+Problem : Increase the scope of existing bilateral trade databases by integrating the fringe of the trading system, with changing political status, in an harmonizedd way between reporters and through time.
+Solution : Use a database of geopolitical entities that tracks the status of all.
+Results: We are indeed able to cover a larger share of world trade in that way.
+
+What for: For use, we would like to assess the effect of late 19th-century colonisation on trade flows, which requires tracking trade with regions of evolving status. I am sure researchers will have ideas...
+
 ---
+
 
 
 /assets/FTComparison_nbr_flows.png
