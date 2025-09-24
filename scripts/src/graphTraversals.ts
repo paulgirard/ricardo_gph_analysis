@@ -1,5 +1,6 @@
 import { flatten, identity, pick, uniq } from "lodash";
 
+import { computeTradeValue } from "./tradeGraphCreation";
 import { EntityResolutionLabelType, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
 
 export interface AutonomousResolutionType {
@@ -124,12 +125,7 @@ export function resolveTradeFlow(
             new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
           ).join("|"),
         );
-        // TODO: value should be generated at the end of the process
-        graph.updateEdgeAttribute(
-          e,
-          "value",
-          (v) => (v as number) + (graph.getEdgeAttribute(flow, "value") as number) * ratio,
-        ) || undefined;
+        graph.setEdgeAttribute(e, "value", computeTradeValue(graph.getEdgeAttributes(e)));
 
         graph.setEdgeAttribute(flow, "status", "ignore_resolved");
         graph.setEdgeAttribute(flow, "aggregatedIn", e);
@@ -182,13 +178,17 @@ export function resolveTradeFlow(
         // one the two should be undefined, if we have to redirect the edge there should be no mirror
         Exp: atts.Exp ? atts.Exp * ratio : undefined,
         Imp: atts.Imp ? atts.Imp * ratio : undefined,
-        // TODO: value should be generated at the end of the process
-        value: atts.value ? atts.value * ratio : undefined,
+        value: undefined,
         valueGeneratedBy: generatedByMethod,
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(flow, graph),
         status: "ok",
       });
+      graph.setEdgeAttribute(
+        `${newExporter}->${newImporter}`,
+        "value",
+        computeTradeValue(graph.getEdgeAttributes(`${newExporter}->${newImporter}`)),
+      );
       // state the edge as resolved
       graph.setEdgeAttribute(flow, "status", "ignore_resolved");
     }

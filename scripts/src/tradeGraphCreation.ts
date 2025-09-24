@@ -342,6 +342,21 @@ export function flagAutonomousCited(graph: GraphEntityPartiteType) {
 }
 
 /**
+ * compute trade value from trade flow attributes
+ */
+export function computeTradeValue(atts: EdgeAttributes) {
+  //options are:
+  // exp first
+  // imp first
+  // average
+  // max
+  // Select one side depending on reporter quality
+
+  // exp first OR imp if exp not available
+  return atts.Exp || atts.Imp;
+}
+
+/**
  * flag trade flows that need treatment
  * @param graph
  */
@@ -357,11 +372,8 @@ export function flagFlowsToTreat(graph: GraphEntityPartiteType) {
         graph.setEdgeAttribute(e, "status", "ok");
       else graph.setEdgeAttribute(e, "status", "toTreat");
     }
-    // average import/export
-    const values = [];
-    if (atts.Exp) values.push(atts.Exp);
-    if (atts.Imp) values.push(atts.Imp);
-    if (values.length > 0) graph.setEdgeAttribute(e, "value", sum(values) / values.length);
+    // make sure value is the one we want
+    graph.setEdgeAttribute(e, "value", computeTradeValue(atts));
   });
 }
 
