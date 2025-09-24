@@ -155,7 +155,7 @@ export const ricEntityToGPHEntity = (
           // for now we store all transformation steps, no shortcut to final (after recursion) solution
           // consider group parts as cited
           (graph as GraphEntityPartiteType).setNodeAttribute(nodeId(part), "cited", true);
-          graph.addDirectedEdge(nodeId(RICentity), nodeId(part), { labels: new Set(["SPLIT"]) });
+          addEdgeLabel(graph, nodeId(RICentity), nodeId(part), "SPLIT");
         });
       else console.log(`UNKNOWN GROUP ${RICname}`);
       break;
