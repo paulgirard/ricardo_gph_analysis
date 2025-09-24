@@ -1,6 +1,6 @@
 import { parse } from "csv/sync";
 import { readFileSync } from "fs";
-import { groupBy, keyBy } from "lodash";
+import { groupBy, keyBy, sortBy } from "lodash";
 
 import conf from "./configuration.json";
 
@@ -54,18 +54,54 @@ const gphInformalPartsF = readFileSync(`./GPH_informal.csv`);
 export const gphInformalParts = parse(gphInformalPartsF, { columns: true }) as GPHStatusInTime[];
 export const gphInformalPartsByCode = groupBy(gphInformalParts, (g) => g.sovereign_GPH_code);
 
+const gphStatusF = readFileSync(`${conf.pathToGeoPolHist}/data/GeoPolHist_status.csv`);
+const gphStatus = sortBy(
+  parse(gphStatusF, { columns: true }) as {
+    GPH_status: GPHStatusType;
+    slug: string;
+    group: string;
+    priority_order: number;
+  }[],
+  (s) => s.priority_order * -1,
+);
+const priorityByStatus = gphStatus.map((s) => s.GPH_status);
+
 export function GPH_status(GPH_code: string, year: string, sovereignCode?: boolean) {
   if (GPHInTime && GPHInTime[GPH_code] && GPHInTime[GPH_code].years && year in GPHInTime[GPH_code].years) {
+    const status = sortBy(GPHInTime[GPH_code].years[year], (s) => priorityByStatus.indexOf(s.status))[0];
     return {
-      status: GPHInTime[GPH_code].years[year][0].status,
+      status: status.status,
       sovereign: sovereignCode
-        ? GPHInTime[GPH_code].years[year][0].sovereign
-        : GPHInTime[GPH_code].years[year][0].sovereign
-          ? GPHInTime[GPHInTime[GPH_code].years[year][0].sovereign].name
+        ? status.sovereign
+        : status.sovereign
+          ? GPHInTime[status.sovereign].name
           : GPHInTime[GPH_code].name,
     };
   }
   return null;
+}
+
+function checkDissolved(gphCode: string, year: number) {
+  let firstKnownPastStatus: {
+    status: GPHStatusType;
+    sovereign: string;
+  } | null = null;
+  let pastYear = year - 1;
+  while (firstKnownPastStatus === null && pastYear >= 1816) {
+    const pastStatus = GPH_status(gphCode, pastYear + "", true);
+    if (pastStatus !== null) {
+      console.log(`found pastStatus ${JSON.stringify(pastStatus)} ${pastYear}`);
+      firstKnownPastStatus = pastStatus;
+    }
+    pastYear -= 1;
+  }
+  if (firstKnownPastStatus !== null && firstKnownPastStatus.status === "Dissolved into") {
+    console.log("replace dissolved", gphCode, year, firstKnownPastStatus.sovereign);
+    return autonomousGPHEntity(firstKnownPastStatus.sovereign, year);
+  } else {
+    // we don't log missing status here. Missing status can be searched when looking at the network
+    return { entity: GPHEntitiesByCode[gphCode], autonomous: false };
+  }
 }
 
 export function autonomousGPHEntity(
@@ -77,10 +113,11 @@ export function autonomousGPHEntity(
     throw new Error(`${gphCode} is not a known GPH code`);
   } else {
     const status = GPH_status(gphCode, year + "", true);
+
     switch (status?.status) {
       case undefined:
-        //console.warn(`${entity.GPH_name} (${gphCode}) has no known status in ${year}`);
-        return { entity, autonomous: false };
+        // check if dissolved into
+        return checkDissolved(gphCode, year);
       case "Sovereign":
       case "Associated state of":
       case "Sovereign (limited)":
@@ -95,7 +132,7 @@ export function autonomousGPHEntity(
         return { entity, status: status.status, autonomous: false };
       default: {
         if (status && status.sovereign) {
-          return autonomousGPHEntity(status?.sovereign, year);
+          return autonomousGPHEntity(status.sovereign, year);
         } else {
           // console.warn(
           //   `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,

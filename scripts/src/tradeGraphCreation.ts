@@ -59,6 +59,10 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             entityType: r.reporting_type === "GPH_entity" ? "GPH" : "RIC",
             ricParent: r.reporting_parent_entity,
             type: "entity",
+            gphStatus:
+              reporting.type === "GPH_entity" && reporting.GPH_code
+                ? GPH_status(reporting.GPH_code, graph.getAttribute("year") + "")?.status
+                : undefined,
           });
           const partner = RICentities[r.partner];
           if (partner) {
@@ -69,6 +73,10 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
               entityType: r.partner_type === "GPH_entity" ? "GPH" : "RIC",
               ricParent: r.partner_parent_entity,
               type: "entity",
+              gphStatus:
+                partner.type === "GPH_entity" && partner.GPH_code
+                  ? GPH_status(partner.GPH_code, graph.getAttribute("year") + "")?.status
+                  : undefined,
             });
             const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
             const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
@@ -129,6 +137,10 @@ export const ricEntityToGPHEntity = (
       ricType: RICentity.type,
       entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
       type: "entity",
+      gphStatus:
+        RICentity.type === "GPH_entity" && RICentity.GPH_code
+          ? GPH_status(RICentity.GPH_code, graph.getAttribute("year") + "")?.status
+          : undefined,
     });
   }
 
