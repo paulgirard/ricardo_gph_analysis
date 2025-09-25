@@ -8188,11 +8188,11 @@
       <edge id="380->West Indies" source="380" target="West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="80.71763357401345"/>
+          <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
           <attvalue for="Exp" value="80.71763357401345"/>
-          <attvalue for="notes" value="Sweden (REP)  -> United Kingdom  : 544844.0266245907"/>
         </attvalues>
       </edge>
       <edge id="380->140" source="380" target="140" label="REPORTED_TRADE">
@@ -8453,7 +8453,6 @@
           <attvalue for="Imp" value="140778.5136129507"/>
           <attvalue for="status" value="ignore_resolved"/>
           <attvalue for="value" value="140778.5136129507"/>
-          <attvalue for="notes" value="United States of America -> Hamburg  (REP)  : 256499.63208241353"/>
         </attvalues>
       </edge>
       <edge id="41->248" source="41" target="248" label="REPORTED_TRADE">
@@ -8715,6 +8714,8 @@
           <attvalue for="Imp" value="16269.315673289184"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="16269.315673289184"/>
+          <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
+          <attvalue for="Exp" value="5777.445756219264"/>
         </attvalues>
       </edge>
       <edge id="235->248" source="235" target="248" label="REPORTED_TRADE">
@@ -8839,7 +8840,6 @@
           <attvalue for="value" value="220690.21339220015"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
           <attvalue for="Exp" value="220690.21339220015"/>
-          <attvalue for="notes" value="Hamburg (REP)  -> United States of America  : 234121.412803532"/>
         </attvalues>
       </edge>
       <edge id="248->140" source="248" target="140" label="REPORTED_TRADE">
@@ -10372,11 +10372,10 @@
       <edge id="750->America" source="750" target="America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="425761"/>
           <attvalue for="ExpReportedBy" value="India"/>
           <attvalue for="Exp" value="425761"/>
-          <attvalue for="notes" value="India (REP)  -> United Kingdom  : 6390487"/>
         </attvalues>
       </edge>
       <edge id="America->750" source="America" target="750" label="REPORTED_TRADE">
@@ -10384,9 +10383,8 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="117302"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="toTreat"/>
           <attvalue for="value" value="117302"/>
-          <attvalue for="notes" value="United Kingdom (REP)  -> India  (REP)  : 5848879"/>
         </attvalues>
       </edge>
       <edge id="750->Arabia &amp; Persian Gulf" source="750" target="Arabia &amp; Persian Gulf" label="REPORTED_TRADE">
@@ -15067,6 +15065,7 @@
           <attvalue for="aggregatedIn" value="365->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Exp" value="236248.05491990846"/>
+          <attvalue for="notes" value="Russia (USSR) -> Hamburg  (REP)  : 16269.315673289184"/>
         </attvalues>
       </edge>
       <edge id="365->390" source="365" target="390" label="REPORTED_TRADE">
@@ -27413,9 +27412,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sweden"/>
-          <attvalue for="Imp" value="453265.02827685804"/>
+          <attvalue for="Imp" value="453410.32001729123"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="453265.02827685804"/>
+          <attvalue for="value" value="453410.32001729123"/>
           <attvalue for="notes" value="Hanover &amp; Hanse Towns &amp; Mecklenburg Schwerin -> Sweden  (REP)  : 419328.1064169998&#xA;Italy -> Sweden  (REP)  : 6860.998853791143&#xA;West Indies -> Sweden  (REP)  : 14529.17404332242&#xA;Australia &amp; East Indies -> Sweden  (REP)  : 78780.41036823712"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27424,10 +27423,10 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="574582.0171859289"/>
+          <attvalue for="value" value="574662.7348195029"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
-          <attvalue for="Exp" value="574582.0171859289"/>
-          <attvalue for="notes" value="Sweden (REP)  -> Hanover &amp; Hanse Towns &amp; Mecklenburg Schwerin  : 523130.98319318116&#xA;Sweden (REP)  -> Italy  : 20098.690759929348&#xA;Sweden (REP)  -> Gibraltar &amp; Malta  : 3793.728777978632&#xA;Sweden (REP)  -> Barbary Coast  : 20502.278927799416&#xA;Sweden (REP)  -> Argentina (La Plata) &amp; Southern America (other)  : 5488.7990830329145&#xA;Sweden (REP)  -> Australia &amp; East Indies  : 29542.65388808892"/>
+          <attvalue for="Exp" value="574662.7348195029"/>
+          <attvalue for="notes" value="Sweden (REP)  -> Hanover &amp; Hanse Towns &amp; Mecklenburg Schwerin  : 523130.98319318116&#xA;Sweden (REP)  -> Italy  : 20098.690759929348&#xA;Sweden (REP)  -> Gibraltar &amp; Malta  : 3793.728777978632&#xA;Sweden (REP)  -> Barbary Coast  : 20502.278927799416&#xA;Sweden (REP)  -> West Indies  : 80.71763357401345&#xA;Sweden (REP)  -> Argentina (La Plata) &amp; Southern America (other)  : 5488.7990830329145&#xA;Sweden (REP)  -> Australia &amp; East Indies  : 29542.65388808892"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
       </edge>
@@ -27468,9 +27467,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
-          <attvalue for="Imp" value="169526.04856512143"/>
+          <attvalue for="Imp" value="265255.43782192783"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="169526.04856512143"/>
+          <attvalue for="value" value="265255.43782192783"/>
           <attvalue for="notes" value="Western America -> Hamburg  (REP)  : 140778.5136129507&#xA;Puerto Rico &amp; St. Thomas -> Hamburg  (REP)  : 72710.81677704194&#xA;British East Indies -> Hamburg  (REP)  : 22142.752023546727&#xA;Western Africa -> Hamburg  (REP)  : 36938.18984547461&#xA;Canary Is. &amp; Cape Colony (Cape of Good Hope) &amp; Madeira Isles -> Hamburg  (REP)  : 23732.15599705666&#xA;Gulf of Mexico -> Hamburg  (REP)  : 14593.81898454746&#xA;Pacific Islands -> Hamburg  (REP)  : 2413.5393671817515&#xA;Eastern Africa -> Hamburg  (REP)  : 3920.5298013245033&#xA;Australia -> Hamburg  (REP)  : 228.10890360559236&#xA;Italy -> Hamburg  (REP)  : 112881.53053715968&#xA;Greece &amp; Turkey (Ottoman Empire) -> Hamburg  (REP)  : 27359.087564385576&#xA;East Frisia &amp; Oldenburg -> Hamburg  (REP)  : 15993.74540103017&#xA;Norway &amp; Sweden -> Hamburg  (REP)  : 5342.89919058131&#xA;Denmark &amp; Holstein &amp; Schleswig -> Hamburg  (REP)  : 7047.093451066961"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27611,9 +27610,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="147891.12582781457"/>
+          <attvalue for="value" value="262650.03679175867"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
-          <attvalue for="Exp" value="147891.12582781457"/>
+          <attvalue for="Exp" value="262650.03679175867"/>
           <attvalue for="notes" value="Hamburg (REP)  -> Western America  : 220690.21339220015&#xA;Hamburg (REP)  -> Gulf of Mexico  : 347490.8020603385&#xA;Hamburg (REP)  -> Puerto Rico &amp; St. Thomas  : 73129.50699043414&#xA;Hamburg (REP)  -> British Northern America  : 21514.348785871964&#xA;Hamburg (REP)  -> British East Indies  : 17448.123620309052&#xA;Hamburg (REP)  -> Western Africa  : 18694.628403237675&#xA;Hamburg (REP)  -> Australia  : 11174.39293598234&#xA;Hamburg (REP)  -> Norway &amp; Sweden  : 108874.90802060338&#xA;Hamburg (REP)  -> East Frisia &amp; Oldenburg  : 34114.790286975716&#xA;Hamburg (REP)  -> Denmark &amp; Holstein &amp; Schleswig  : 18208.97718910964&#xA;Hamburg (REP)  -> Italy  : 821.1920529801324"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27820,8 +27819,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="281797.998474447"/>
           <attvalue for="ExpReportedBy" value="Finland|Russia (USSR)"/>
-          <attvalue for="Exp" value="286522.95957284514"/>
+          <attvalue for="Exp" value="281797.998474447"/>
           <attvalue for="notes" value="Finland (REP)  -> Norway &amp; Sweden  : 28832.951945080094&#xA;Russia (USSR) (REP)  -> Hanse Towns  : 236248.05491990846&#xA;Russia (USSR) (REP)  -> Southern America &amp; West Indies  : 15345.080091533182&#xA;Russia (USSR) (REP)  -> Europe (other)  : 50274.90465293669&#xA;Russia (USSR) (REP)  -> Asia (other)  : undefined"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27830,8 +27830,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Finland|Russia (USSR)"/>
-          <attvalue for="Imp" value="1211673.958810069"/>
+          <attvalue for="Imp" value="1248783.5972540048"/>
           <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="1248783.5972540048"/>
           <attvalue for="notes" value="Norway &amp; Sweden -> Finland  (REP)  : 69565.21739130435&#xA;Hanse Towns -> Russia (USSR)  (REP)  : 1126579.2524790238&#xA;Southern America &amp; West Indies -> Russia (USSR)  (REP)  : 618493.9740655988&#xA;Europe (other) -> Russia (USSR)  (REP)  : 23245.308924485125&#xA;Asia (other) -> Russia (USSR)  (REP)  : undefined"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27950,9 +27951,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Netherlands"/>
-          <attvalue for="Imp" value="92277.36741000584"/>
+          <attvalue for="Imp" value="92059.65756284975"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="92277.36741000584"/>
+          <attvalue for="value" value="92059.65756284975"/>
           <attvalue for="notes" value="British East Indies &amp; Canary Is. &amp; Cape Colony (Cape of Good Hope) &amp; Madagascar (Malagasy Republic) -> Netherlands  (REP)  : 78209.13722542387&#xA;Guinea Coast -> Netherlands  (REP)  : 7256.9949052033735&#xA;America (other) -> Netherlands  (REP)  : 13415.100643113672"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -27961,9 +27962,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="13657.91948550906"/>
+          <attvalue for="value" value="14411.993652384532"/>
           <attvalue for="ExpReportedBy" value="Netherlands"/>
-          <attvalue for="Exp" value="13657.91948550906"/>
+          <attvalue for="Exp" value="14411.993652384532"/>
           <attvalue for="notes" value="Netherlands (REP)  -> British East Indies &amp; Canary Is. &amp; Cape Colony (Cape of Good Hope) &amp; Madagascar (Malagasy Republic)  : 6330.744174392383&#xA;Netherlands (REP)  -> Guinea Coast  : 4435.730393385116&#xA;Netherlands (REP)  -> America (other)  : 7194.103399315125"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -28060,9 +28061,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="7.7615969840226775"/>
+          <attvalue for="value" value="7.762852866148041"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
-          <attvalue for="Exp" value="7.7615969840226775"/>
+          <attvalue for="Exp" value="7.762852866148041"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> Central America &amp; Guatemala  : 75146"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -28071,9 +28072,9 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="43.12438324286069"/>
+          <attvalue for="value" value="43.131361077730695"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
-          <attvalue for="Exp" value="43.12438324286069"/>
+          <attvalue for="Exp" value="43.131361077730695"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> Central America &amp; Guatemala  : 75146"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -28236,6 +28237,7 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="347039.71000036097"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
           <attvalue for="Exp" value="347039.71000036097"/>
           <attvalue for="notes" value="Belgium (REP)  -> Africa (other)  : 1155.900000001202&#xA;Belgium (REP)  -> Brazil &amp; Colombia (New Granada) (Gran Colombia)  : 75133.50000007813&#xA;Belgium (REP)  -> Cuba &amp; Puerto Rico  : 23040.940000023962&#xA;Belgium (REP)  -> Greece &amp; Ionian Is.  : 2157.680000002244&#xA;Belgium (REP)  -> Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal  : 12136.950000012623&#xA;Belgium (REP)  -> Haiti &amp; Venezuela  : 346.77000000036065&#xA;Belgium (REP)  -> Hanover &amp; Oldenburg  : 158165.65000016452&#xA;Belgium (REP)  -> India &amp; People's Republic of China (China) &amp; Singapore  : 1810.9100000018832&#xA;Belgium (REP)  -> Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany  : 20690.61000002152&#xA;Belgium (REP)  -> British America  : undefined&#xA;Belgium (REP)  -> Bavaria &amp; Frankfurt &amp; Saxony  : 5509.79000000573&#xA;Belgium (REP)  -> Norway &amp; Sweden  : 26547.170000027607&#xA;Belgium (REP)  -> Hanse Towns  : 20343.840000021155"/>
@@ -28248,6 +28250,7 @@
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="964213.250001003"/>
           <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="964213.250001003"/>
           <attvalue for="notes" value="Africa (other) -> Belgium  (REP)  : 5355.67000000557&#xA;Brazil &amp; Colombia (New Granada) (Gran Colombia) -> Belgium  (REP)  : 248364.3800002583&#xA;Cuba &amp; Puerto Rico -> Belgium  (REP)  : 387342.0900004028&#xA;Greece &amp; Ionian Is. -> Belgium  (REP)  : 423.83000000044075&#xA;Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal -> Belgium  (REP)  : 15527.590000016147&#xA;Haiti &amp; Venezuela -> Belgium  (REP)  : 90198.7300000938&#xA;Hanover &amp; Oldenburg -> Belgium  (REP)  : 16490.84000001715&#xA;India &amp; People's Republic of China (China) &amp; Singapore -> Belgium  (REP)  : 93743.49000009749&#xA;Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany -> Belgium  (REP)  : 8515.130000008856&#xA;British America -> Belgium  (REP)  : undefined&#xA;Bavaria &amp; Frankfurt &amp; Saxony -> Belgium  (REP)  : 29783.690000030972&#xA;Norway &amp; Sweden -> Belgium  (REP)  : 63805.68000006636&#xA;Hanse Towns -> Belgium  (REP)  : 4662.130000004849"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
@@ -28379,6 +28382,7 @@
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="3194085.5358755845"/>
           <attvalue for="status" value="ok"/>
+          <attvalue for="value" value="3194085.5358755845"/>
           <attvalue for="notes" value="Germany (Zollverein) -> France  (REP)  : 903271.4134233986&#xA;Hanse Towns -> France  (REP)  : 78545.34029768684&#xA;Kingdom of Sardinia &amp; Monaco -> France  (REP)  : 1547343.2038644308&#xA;Lucca &amp; Tuscany -> France  (REP)  : 235636.02089306051&#xA;Barbary Coast -> France  (REP)  : 231708.75387817615&#xA;Western Africa -> France  (REP)  : 145308.87955072065&#xA;Cape Colony (Cape of Good Hope) &amp; Mauritius -> France  (REP)  : undefined&#xA;Africa (other) -> France  (REP)  : 3927.2670148843417&#xA;Cochin China &amp; Oceania &amp; People's Republic of China (China) -> France  (REP)  : 54981.73820838078&#xA;Spanish West Indies -> France  (REP)  : 290617.7591014413&#xA;British West Indies -> France  (REP)  : undefined&#xA;Mayotte &amp; Nossi Be &amp; St. Marie de Madagascar -> France  (REP)  : undefined"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
