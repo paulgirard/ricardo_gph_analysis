@@ -52,7 +52,7 @@ export async function getTradeGraphsByYear(ratios?: boolean) {
   const graphFile = (year: number) => `../data/entity_networks/${year}${ratios ? "_ratios" : ""}.gexf`;
   return fromPairs(
     await Promise.all(
-      range(conf.startDate, conf.endDate)
+      range(conf.startDate, conf.endDate + 1)
         .filter((year) => existsSync(graphFile(year)))
         .map(async (year) => {
           const graph = gexf.parse(DirectedGraph, await readFile(graphFile(year), "utf8"));
