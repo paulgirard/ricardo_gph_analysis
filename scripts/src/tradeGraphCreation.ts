@@ -423,6 +423,22 @@ export function resolveOneToManyEntityTransform(
           (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length > 0) ||
           (autonomousImporters.autonomousIds.length === 1 && autonomousExporters.autonomousIds.length > 0)
         ) {
+          // case 1->1
+          if (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length === 1) {
+            resolveTradeFlow(
+              graph,
+              e,
+              autonomousExporters.autonomousIds[0],
+              autonomousImporters.autonomousIds[0],
+              // TODO: check that's ok...
+              // split resolving to 1-1 is considered an aggregation
+              new Set(["AGGREGATE_INTO"]),
+              1,
+            );
+
+            return;
+          }
+
           // case 1->n
           // theoretically the 1 side should be the reporter
           const oneEndEntity =
@@ -439,15 +455,7 @@ export function resolveOneToManyEntityTransform(
 
           const valueToSplit = splitSide === "Export" ? edgeToTreatAtts.Exp : edgeToTreatAtts.Imp;
 
-          if (valueToSplit === undefined) {
-            console.log(
-              `1->n where 1- entity ${oneEndEntity}-[${splitSide}]-${oneEndEntityLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
-            );
-            // ignore
-            //TODO redirect to rest of the world
-
-            return;
-          } else {
+          if (valueToSplit !== undefined) {
             console.log(
               `looking for ratios for ${year} ${oneEndEntityLabel} ${oneEndEntity} ${valueToSplit} to/from ${entitiesToSplitInto}`,
             );
@@ -455,58 +463,77 @@ export function resolveOneToManyEntityTransform(
             const ratios = findBilateralRatios(year, oneEndEntity, entitiesToSplitInto, splitSide, tradeGraphsByYear);
 
             // redirect
-            const solved = toPairs(ratios).filter(([_, { status }]) => status === "ok");
+            const solved = toPairs(ratios).filter(([_, { status, ratio }]) => status === "ok" && ratio !== undefined);
             let solvedRatio = 0;
-            solved.forEach(([partner, { ratio }]) => {
-              if (ratio !== undefined) {
-                solvedRatio += ratio;
-                resolveTradeFlow(
-                  graph,
-                  e,
-                  splitSide === "Export" ? oneEndEntity : partner,
-                  splitSide === "Export" ? partner : oneEndEntity,
-                  new Set(["SPLIT"]),
-                  ratio,
-                );
-              }
-            });
+            if (solved.length > 0)
+              solved.forEach(([partner, { ratio }]) => {
+                if (ratio !== undefined) {
+                  solvedRatio += ratio;
+                  resolveTradeFlow(
+                    graph,
+                    e,
+                    splitSide === "Export" ? oneEndEntity : partner,
+                    splitSide === "Export" ? partner : oneEndEntity,
+                    new Set(["SPLIT"]),
+                    ratio,
+                  );
+                }
+              });
 
-            const toROW = toPairs(ratios).filter(([_, { status }]) => status !== "ok");
+            const toROW = toPairs(ratios).filter(([_, { status, ratio }]) => status !== "ok" || ratio === undefined);
             // check data coherence: ratio in groups should be the same as the remaining ratio after solved cases
             // group ratio are actually duplicated by partner by the findBilateralRatios method. We need to deduplicate them before summing.
             // We could also just do not check and just use 1-solvedRatio
-            const rowRatio = Number(sum(uniq(toROW.map(([_, { ratio }]) => ratio || 1))).toFixed(2));
-            if (Number((1 - solvedRatio).toFixed(2)) === rowRatio)
-              resolveTradeFlow(
-                graph,
-                e,
-                splitSide === "Export" ? oneEndEntity : "restOfTheWorld",
-                splitSide === "Export" ? "restOfTheWorld" : oneEndEntity,
-                new Set(["SPLIT"]),
-                Number((1 - solvedRatio).toFixed(2)),
-              );
-            else {
+            const rowRatio = Number(sum(uniq(toROW.map(([_, { ratio }]) => ratio || 0))).toFixed(2));
+            resolveTradeFlow(
+              graph,
+              e,
+              splitSide === "Export" ? oneEndEntity : "restOfTheWorld",
+              splitSide === "Export" ? "restOfTheWorld" : oneEndEntity,
+              new Set(["SPLIT"]),
+              Number((1 - solvedRatio).toFixed(2)),
+            );
+            if (Number((1 - solvedRatio).toFixed(2)) !== rowRatio) {
               console.log(
-                `error in SPLIT ratios`,
+                `error in calculating the remaining SPLIT ratios to send to restOfTheWorld`,
                 rowRatio,
                 toROW.map(([_, { ratio }]) => ratio || 1),
                 uniq(toROW.map(([_, { ratio }]) => ratio || 1)),
               );
-              // throw new Error(
-              //   `Split flow with solvedRatio = ${solvedRatio} but 1-solvedRatios (${1 - solvedRatio}) !== ${rowRatio} from ${JSON.stringify(
-              //     toROW,
-              //   )} `,
-              // );
             }
+            // flag flow if failed or partial split
+            if (solvedRatio === 0) graph.setEdgeAttribute(e, "status", "split_failed_no_ratio");
+            if (solved.length > 0 && solved.length < entitiesToSplitInto.length)
+              graph.setEdgeAttribute(e, "status", "split_only_partial");
+          } else {
+            console.log(
+              `1->n where 1- entity ${oneEndEntity}-[${splitSide}]-${oneEndEntityLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
+            );
+            graph.setEdgeAttribute(
+              e,
+              "notes",
+              `1->n where 1- entity ${oneEndEntity}-[${splitSide}]-${oneEndEntityLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
+            );
+            // flag flow as error is done below
+            graph.setEdgeAttribute(e, "status", "split_failed_error");
           }
         } else {
-          // case n -> n["246",{}],["248",{}],["restOfTheWorld",{}]]
-          if (autonomousImporters.autonomousIds.length === 0 || autonomousExporters.autonomousIds.length === 0)
-            console.log(`Can"t resolve one partner`);
-          else
-            console.log(
-              `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`,
+          // case 1 -> 0
+          if (autonomousImporters.autonomousIds.length === 0 || autonomousExporters.autonomousIds.length === 0) {
+            graph.setEdgeAttribute(
+              e,
+              "notes",
+              `Couldn't resolve ${autonomousImporters.autonomousIds.length === 0 ? `importer ${graph.getNodeAttribute(graph.target(e), "label")}` : `exporter ${graph.getNodeAttribute(graph.source(e), "label")}`}`,
             );
+            console.log(`Can"t resolve one partner`);
+          } else {
+            // case n -> n
+            const message = `n->n case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`;
+            console.log(message);
+            graph.setEdgeAttribute(e, "notes", message);
+          }
+          // end of error logging, flag flow as couldn't split
+          graph.setEdgeAttribute(e, "status", "split_failed_error");
         }
       });
   }

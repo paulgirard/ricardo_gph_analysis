@@ -48,7 +48,15 @@ export interface EdgeAttributes {
   valueGeneratedBy?: FlowValueImputationMethod;
   ExpReportedBy?: string;
   ImpReportedBy?: string;
-  status?: "toTreat" | "ok" | "ignore_internal" | "ignore_resolved" | "discard_collision";
+  status?:
+    | "toTreat"
+    | "ok"
+    | "ignore_internal"
+    | "ignore_resolved"
+    | "discard_collision"
+    | "split_failed_no_ratio"
+    | "split_failed_error"
+    | "split_only_partial";
   value?: number;
   notes?: string;
   aggregatedIn?: string;
