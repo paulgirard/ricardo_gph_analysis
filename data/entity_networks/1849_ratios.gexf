@@ -7699,7 +7699,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Antigua and Barbuda (Antigua)"/>
           <attvalue for="Imp" value="24864"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="24864"/>
         </attvalues>
       </edge>
@@ -7708,7 +7708,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Antigua and Barbuda (Antigua)"/>
           <attvalue for="Imp" value="11336"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="11336"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -7746,7 +7746,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="British Virgin Is."/>
           <attvalue for="Imp" value="1961"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1961"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -7764,7 +7764,7 @@
       <edge id="1061->British West Indies" source="1061" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="4071"/>
           <attvalue for="ExpReportedBy" value="British Virgin Is."/>
           <attvalue for="Exp" value="4071"/>
@@ -7773,7 +7773,7 @@
       <edge id="1061->British Northern America" source="1061" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="74"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="British Virgin Is."/>
@@ -7796,7 +7796,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Canada (Province of Canada)"/>
           <attvalue for="Imp" value="48913"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="48913"/>
         </attvalues>
       </edge>
@@ -7805,7 +7805,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Canada (Province of Canada)"/>
           <attvalue for="Imp" value="3"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->20"/>
         </attvalues>
@@ -7846,10 +7846,11 @@
       <edge id="115->European America" source="115" target="European America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="14622.619542619543"/>
           <attvalue for="ExpReportedBy" value="Surinam (Dutch Guiana)"/>
           <attvalue for="Exp" value="14622.619542619543"/>
+          <attvalue for="notes" value="Couldn't resolve importer European America"/>
         </attvalues>
       </edge>
       <edge id="210->115" source="210" target="115" label="REPORTED_TRADE">
@@ -7879,8 +7880,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Surinam (Dutch Guiana)"/>
           <attvalue for="Imp" value="19651.64241164241"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="19651.64241164241"/>
+          <attvalue for="notes" value="Couldn't resolve exporter European America"/>
         </attvalues>
       </edge>
       <edge id="200->30" source="200" target="30" label="REPORTED_TRADE">
@@ -7897,7 +7899,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Bermuda"/>
           <attvalue for="Imp" value="4289"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="4289"/>
         </attvalues>
       </edge>
@@ -7906,7 +7908,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Bermuda"/>
           <attvalue for="Imp" value="8085"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="8085"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->30"/>
         </attvalues>
@@ -7932,7 +7934,7 @@
       <edge id="30->British West Indies" source="30" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="5286"/>
           <attvalue for="ExpReportedBy" value="Bermuda"/>
           <attvalue for="Exp" value="5286"/>
@@ -7941,7 +7943,7 @@
       <edge id="30->British Northern America" source="30" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1628"/>
           <attvalue for="aggregatedIn" value="30->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Bermuda"/>
@@ -8021,7 +8023,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sweden"/>
           <attvalue for="Imp" value="417437.00310043775"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="417437.00310043775"/>
         </attvalues>
       </edge>
@@ -8101,7 +8103,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sweden"/>
           <attvalue for="Imp" value="12612.855410356051"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="12612.855410356051"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->380"/>
         </attvalues>
@@ -8120,7 +8122,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sweden"/>
           <attvalue for="Imp" value="9702.196469504654"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="9702.196469504654"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->380"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> Sweden  (REP)  : 246859.27550236988"/>
@@ -8142,7 +8144,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sweden"/>
           <attvalue for="Imp" value="106966.71607628881"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="106966.71607628881"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->380"/>
           <attvalue for="notes" value="Denmark -> Sweden  (REP)  : 128230.69667195318"/>
@@ -8190,7 +8192,7 @@
       <edge id="380->Hanover &amp; Hanse Towns &amp; Mecklenburg Schwerin" source="380" target="Hanover &amp; Hanse Towns &amp; Mecklenburg Schwerin" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="297210.6185158259"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
           <attvalue for="Exp" value="297210.6185158259"/>
@@ -8270,7 +8272,7 @@
       <edge id="380->325" source="380" target="325" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="29025.73777126809"/>
           <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
@@ -8280,7 +8282,7 @@
       <edge id="380->Gibraltar &amp; Malta" source="380" target="Gibraltar &amp; Malta" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3072.3622153431406"/>
           <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
@@ -8299,7 +8301,7 @@
       <edge id="380->Barbary Coast" source="380" target="Barbary Coast" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="44064.142299000305"/>
           <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
@@ -8329,7 +8331,7 @@
       <edge id="380->Argentina (La Plata) &amp; Southern America (other)" source="380" target="Argentina (La Plata) &amp; Southern America (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1051.0712841963375"/>
           <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
@@ -8350,7 +8352,7 @@
       <edge id="380->Australia &amp; East Indies" source="380" target="Australia &amp; East Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="13097.965233831283"/>
           <attvalue for="aggregatedIn" value="380->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Sweden"/>
@@ -8381,7 +8383,7 @@
       <edge id="326->British Europe &amp; United Kingdom" source="326" target="British Europe &amp; United Kingdom" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="631774.2253799092"/>
           <attvalue for="ExpReportedBy" value="Trieste"/>
           <attvalue for="Exp" value="631774.2253799092"/>
@@ -8466,7 +8468,7 @@
       <edge id="326->Hanse Towns" source="326" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="107637.65541740674"/>
           <attvalue for="aggregatedIn" value="300->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Trieste"/>
@@ -8496,7 +8498,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Trieste"/>
           <attvalue for="Imp" value="1808920.4657588317"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1808920.4657588317"/>
         </attvalues>
       </edge>
@@ -8581,7 +8583,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Trieste"/>
           <attvalue for="Imp" value="30629.563844483913"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="30629.563844483913"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->300"/>
         </attvalues>
@@ -8609,7 +8611,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Trieste"/>
           <attvalue for="Imp" value="329938.8198144859"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="329938.8198144859"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->300"/>
         </attvalues>
@@ -8649,7 +8651,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Cap-Haïtien"/>
           <attvalue for="Imp" value="2762.976119992106"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2762.976119992106"/>
         </attvalues>
       </edge>
@@ -8667,7 +8669,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="St. Lucia"/>
           <attvalue for="Imp" value="17804"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="17804"/>
         </attvalues>
       </edge>
@@ -8676,7 +8678,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="St. Lucia"/>
           <attvalue for="Imp" value="3611"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3611"/>
         </attvalues>
       </edge>
@@ -8710,7 +8712,7 @@
       <edge id="56->British West Indies" source="56" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="4058"/>
           <attvalue for="ExpReportedBy" value="St. Lucia"/>
           <attvalue for="Exp" value="4058"/>
@@ -8719,7 +8721,7 @@
       <edge id="56->British Northern America" source="56" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1236"/>
           <attvalue for="aggregatedIn" value="1055->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="St. Lucia"/>
@@ -8986,8 +8988,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Cape Town"/>
           <attvalue for="Imp" value="70"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="70"/>
+          <attvalue for="notes" value="Couldn't resolve exporter Walvis Bay"/>
         </attvalues>
       </edge>
       <edge id="541->Cape Town" source="541" target="Cape Town" label="REPORTED_TRADE">
@@ -9703,7 +9706,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="152935"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="152935"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
           <attvalue for="notes" value="Cape Colony (Cape of Good Hope) -> India  (REP)  : 4667"/>
@@ -9712,7 +9715,7 @@
       <edge id="750->Africa Coast" source="750" target="Africa Coast" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="100354"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -9723,7 +9726,7 @@
       <edge id="750->America" source="750" target="America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="352843"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -9735,7 +9738,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="214510"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="214510"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -9743,7 +9746,7 @@
       <edge id="750->Arabia &amp; Persian Gulf" source="750" target="Arabia &amp; Persian Gulf" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="1002356"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -9755,7 +9758,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="933431"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="933431"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -9882,7 +9885,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="15637"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="15637"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -9890,7 +9893,7 @@
       <edge id="750->255" source="750" target="255" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="16944"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -9931,7 +9934,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="179506"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="179506"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -9939,7 +9942,7 @@
       <edge id="750->Mauritius &amp; Reunion (Bourbon I.)" source="750" target="Mauritius &amp; Reunion (Bourbon I.)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="356502"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -9951,7 +9954,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="3594"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="3594"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
           <attvalue for="notes" value="Spain -> India  (REP)  : 18520"/>
@@ -9960,7 +9963,7 @@
       <edge id="750->Mediterranean Sea" source="750" target="Mediterranean Sea" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="5797"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -10008,7 +10011,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="214049"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="214049"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -10094,7 +10097,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="India"/>
           <attvalue for="Imp" value="21973"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="21973"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->750"/>
         </attvalues>
@@ -10102,7 +10105,7 @@
       <edge id="750->British West Indies" source="750" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="17238"/>
           <attvalue for="aggregatedIn" value="750->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="India"/>
@@ -10139,7 +10142,7 @@
       <edge id="3361->Republic of St. Mark &amp; Trieste" source="3361" target="Republic of St. Mark &amp; Trieste" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="62127.49161239392"/>
           <attvalue for="ExpReportedBy" value="Moldavia"/>
           <attvalue for="Exp" value="62127.49161239392"/>
@@ -10195,7 +10198,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Moldavia"/>
           <attvalue for="Imp" value="1934.083283994474"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1934.083283994474"/>
         </attvalues>
       </edge>
@@ -10247,7 +10250,7 @@
       <edge id="3362->Republic of St. Mark &amp; Trieste" source="3362" target="Republic of St. Mark &amp; Trieste" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="25498.32247878429"/>
           <attvalue for="ExpReportedBy" value="Wallachia"/>
           <attvalue for="Exp" value="25498.32247878429"/>
@@ -10294,14 +10297,14 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Wallachia"/>
           <attvalue for="Imp" value="2052.49654627985"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2052.49654627985"/>
         </attvalues>
       </edge>
       <edge id="Alexandria->Barbary Coast" source="Alexandria" target="Barbary Coast" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="177619.89342806395"/>
           <attvalue for="ExpReportedBy" value="Alexandria"/>
           <attvalue for="Exp" value="177619.89342806395"/>
@@ -10310,7 +10313,7 @@
       <edge id="155->255" source="155" target="255" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="125681.06805117746"/>
           <attvalue for="ExpReportedBy" value="Chile"/>
           <attvalue for="Exp" value="125681.06805117746"/>
@@ -10319,8 +10322,9 @@
       <edge id="155->Northern America" source="155" target="Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="325315.77971444465"/>
+          <attvalue for="aggregatedIn" value="155->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Chile"/>
           <attvalue for="Exp" value="325315.77971444465"/>
           <attvalue for="notes" value="Chile (REP)  -> Mexico  : 817.1704060819582"/>
@@ -10329,7 +10333,7 @@
       <edge id="155->British Colonies &amp; United Kingdom" source="155" target="British Colonies &amp; United Kingdom" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="792760.8010383832"/>
           <attvalue for="aggregatedIn" value="155->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Chile"/>
@@ -10385,7 +10389,7 @@
       <edge id="155->Spain &amp; Spanish Colonies" source="155" target="Spain &amp; Spanish Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="415.5386612275172"/>
           <attvalue for="aggregatedIn" value="155->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Chile"/>
@@ -10442,7 +10446,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Chile"/>
           <attvalue for="Imp" value="156953.08733543483"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="156953.08733543483"/>
         </attvalues>
       </edge>
@@ -10451,8 +10455,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Chile"/>
           <attvalue for="Imp" value="200226.59002410533"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="200226.59002410533"/>
+          <attvalue for="aggregatedIn" value="restOfTheWorld->155"/>
           <attvalue for="notes" value="Mexico -> Chile  (REP)  : 23744.29816428704"/>
         </attvalues>
       </edge>
@@ -10461,7 +10466,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Chile"/>
           <attvalue for="Imp" value="821634.5262377156"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="821634.5262377156"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->155"/>
         </attvalues>
@@ -10517,7 +10522,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Chile"/>
           <attvalue for="Imp" value="28023.17819395513"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="28023.17819395513"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->155"/>
         </attvalues>
@@ -10608,7 +10613,7 @@
       <edge id="901->Pacific Islands" source="901" target="Pacific Islands" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="10160"/>
           <attvalue for="ExpReportedBy" value="New South Wales"/>
           <attvalue for="Exp" value="10160"/>
@@ -10658,7 +10663,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="New South Wales"/>
           <attvalue for="Imp" value="3202"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="3202"/>
           <attvalue for="notes" value="United Kingdom -> New South Wales  (REP)  : 1014387"/>
         </attvalues>
@@ -10802,7 +10807,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Netherlands"/>
           <attvalue for="Imp" value="65715.0103950104"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="65715.0103950104"/>
         </attvalues>
       </edge>
@@ -10820,7 +10825,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Netherlands"/>
           <attvalue for="Imp" value="3041.8295218295216"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="3041.8295218295216"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->210"/>
           <attvalue for="notes" value="Portugal -> Netherlands  (REP)  : 47450.89397089397"/>
@@ -10938,7 +10943,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Netherlands"/>
           <attvalue for="Imp" value="14897.463617463616"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="14897.463617463616"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->210"/>
         </attvalues>
@@ -11089,7 +11094,7 @@
       <edge id="210->British East Indies &amp; Canary Is. &amp; Cape Colony (Cape of Good Hope) &amp; Madagascar (Malagasy Republic)" source="210" target="British East Indies &amp; Canary Is. &amp; Cape Colony (Cape of Good Hope) &amp; Madagascar (Malagasy Republic)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="6525.987525987526"/>
           <attvalue for="ExpReportedBy" value="Netherlands"/>
           <attvalue for="Exp" value="6525.987525987526"/>
@@ -11107,7 +11112,7 @@
       <edge id="210->Guinea Coast" source="210" target="Guinea Coast" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="6677.754677754678"/>
           <attvalue for="aggregatedIn" value="210->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Netherlands"/>
@@ -11225,7 +11230,7 @@
       <edge id="210->America (other)" source="210" target="America (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="40634.428274428275"/>
           <attvalue for="aggregatedIn" value="210->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Netherlands"/>
@@ -11264,7 +11269,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="101.68251645940015"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="101.68251645940015"/>
           <attvalue for="notes" value="United Kingdom -> Hamburg  (REP)  : 6594596.927578639"/>
         </attvalues>
@@ -11301,7 +11306,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="15422.09217264082"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="15422.09217264082"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
         </attvalues>
@@ -11329,7 +11334,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="7271.397220190198"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="7271.397220190198"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
           <attvalue for="notes" value="United Kingdom -> Hamburg  (REP)  : 6594596.927578639"/>
@@ -11340,7 +11345,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="35283.10168251646"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="35283.10168251646"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
         </attvalues>
@@ -11379,7 +11384,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="37708.119970738844"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="37708.119970738844"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
           <attvalue for="notes" value="United Kingdom -> Hamburg  (REP)  : 6594596.927578639"/>
@@ -11531,8 +11536,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="8158.010241404536"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="8158.010241404536"/>
+          <attvalue for="notes" value="Couldn't resolve exporter Schleswig-Holstein"/>
         </attvalues>
       </edge>
       <edge id="Cuxhaven &amp; Heligoland->248" source="Cuxhaven &amp; Heligoland" target="248" label="REPORTED_TRADE">
@@ -11540,7 +11546,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="1852.9626920263352"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1852.9626920263352"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
         </attvalues>
@@ -11644,7 +11650,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Hamburg"/>
           <attvalue for="Imp" value="54948.792977322606"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="54948.792977322606"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->248"/>
         </attvalues>
@@ -11670,7 +11676,7 @@
       <edge id="248->900" source="248" target="900" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="15205.559619604974"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
           <attvalue for="Exp" value="15205.559619604974"/>
@@ -11706,7 +11712,7 @@
       <edge id="248->British East Indies" source="248" target="British East Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="28153.62106803219"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -11727,7 +11733,7 @@
       <edge id="248->Western Africa" source="248" target="Western Africa" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="19057.059253840525"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -11768,7 +11774,7 @@
       <edge id="248->Western America" source="248" target="Western America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="209262.6188734455"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -11806,7 +11812,7 @@
       <edge id="248->British West Indies &amp; Swedish West Indies" source="248" target="British West Indies &amp; Swedish West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1250.1828822238479"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -11864,7 +11870,7 @@
       <edge id="248->British Northern America" source="248" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="35183.61375274324"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -11929,16 +11935,17 @@
       <edge id="248->2555" source="248" target="2555" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="5836.137527432334"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
           <attvalue for="Exp" value="5836.137527432334"/>
+          <attvalue for="notes" value="Couldn't resolve importer Schleswig-Holstein"/>
         </attvalues>
       </edge>
       <edge id="248->Cuxhaven &amp; Heligoland" source="248" target="Cuxhaven &amp; Heligoland" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3294.07461594733"/>
           <attvalue for="aggregatedIn" value="248->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Hamburg"/>
@@ -12069,7 +12076,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Jamaica"/>
           <attvalue for="Imp" value="1913"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1913"/>
         </attvalues>
       </edge>
@@ -12078,7 +12085,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Jamaica"/>
           <attvalue for="Imp" value="114553"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="114553"/>
         </attvalues>
       </edge>
@@ -12112,7 +12119,7 @@
       <edge id="51->British West Indies" source="51" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1860"/>
           <attvalue for="ExpReportedBy" value="Jamaica"/>
           <attvalue for="Exp" value="1860"/>
@@ -12121,7 +12128,7 @@
       <edge id="51->British Northern America" source="51" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1597"/>
           <attvalue for="ExpReportedBy" value="Jamaica"/>
           <attvalue for="Exp" value="1597"/>
@@ -12160,7 +12167,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Nevis"/>
           <attvalue for="Imp" value="11759"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="11759"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12170,7 +12177,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Nevis"/>
           <attvalue for="Imp" value="547"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="547"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12198,7 +12205,7 @@
       <edge id="1076->British West Indies" source="1076" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="7976"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Nevis"/>
@@ -12208,7 +12215,7 @@
       <edge id="1076->British Northern America" source="1076" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="788"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Nevis"/>
@@ -12220,7 +12227,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Montserrat"/>
           <attvalue for="Imp" value="6997"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="6997"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12230,7 +12237,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Montserrat"/>
           <attvalue for="Imp" value="1030"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1030"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12238,7 +12245,7 @@
       <edge id="59->British West Indies" source="59" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="14873"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Montserrat"/>
@@ -12248,7 +12255,7 @@
       <edge id="59->British Northern America" source="59" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="38"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Montserrat"/>
@@ -12288,7 +12295,7 @@
       <edge id="Rio de Janeiro->Hanse Towns" source="Rio de Janeiro" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="315768.6994276692"/>
           <attvalue for="ExpReportedBy" value="Rio de Janeiro"/>
           <attvalue for="Exp" value="315768.6994276692"/>
@@ -12413,7 +12420,7 @@
       <edge id="Pernambuco->Hanse Towns" source="Pernambuco" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="8644.168146832444"/>
           <attvalue for="aggregatedIn" value="140->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Pernambuco"/>
@@ -12508,7 +12515,7 @@
       <edge id="Pernambuco->Africa" source="Pernambuco" target="Africa" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3591.8689559897375"/>
           <attvalue for="aggregatedIn" value="140->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Pernambuco"/>
@@ -12588,7 +12595,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Pernambuco"/>
           <attvalue for="Imp" value="39984.211565028614"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="39984.211565028614"/>
         </attvalues>
       </edge>
@@ -12654,7 +12661,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="St. Kitts"/>
           <attvalue for="Imp" value="8128"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="8128"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12664,7 +12671,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="St. Kitts"/>
           <attvalue for="Imp" value="5548"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="5548"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->1063"/>
         </attvalues>
@@ -12692,7 +12699,7 @@
       <edge id="1075->British West Indies" source="1075" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="12449"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="St. Kitts"/>
@@ -12702,7 +12709,7 @@
       <edge id="1075->British Northern America" source="1075" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1183"/>
           <attvalue for="aggregatedIn" value="1063->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="St. Kitts"/>
@@ -12743,7 +12750,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="1461704"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1461704"/>
         </attvalues>
       </edge>
@@ -12797,7 +12804,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="2430824"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2430824"/>
         </attvalues>
       </edge>
@@ -12940,7 +12947,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="1892856"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1892856"/>
         </attvalues>
       </edge>
@@ -13021,7 +13028,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="636355"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="636355"/>
         </attvalues>
       </edge>
@@ -13078,7 +13085,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="323623"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="323623"/>
           <attvalue for="notes" value="Colombia (New Granada) (Gran Colombia) -> United Kingdom  (REP)  : 113004"/>
         </attvalues>
@@ -13217,7 +13224,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="33973"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="33973"/>
         </attvalues>
       </edge>
@@ -13226,7 +13233,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="26889"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="26889"/>
         </attvalues>
       </edge>
@@ -13235,7 +13242,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="539875"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="539875"/>
         </attvalues>
       </edge>
@@ -13244,7 +13251,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="1107"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1107"/>
         </attvalues>
       </edge>
@@ -13253,8 +13260,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="8096"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="8096"/>
+          <attvalue for="notes" value="Couldn't resolve exporter Zimbabwe (Rhodesia) (Southern Rhodesia)"/>
         </attvalues>
       </edge>
       <edge id="Davis Strait &amp; Greenland->200" source="Davis Strait &amp; Greenland" target="200" label="REPORTED_TRADE">
@@ -13361,7 +13369,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="4409604"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="4409604"/>
           <attvalue for="notes" value="Guyana (British Guiana) -> United Kingdom  (REP)  : 1092187"/>
         </attvalues>
@@ -13435,7 +13443,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United Kingdom"/>
           <attvalue for="Imp" value="9238052"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="9238052"/>
         </attvalues>
       </edge>
@@ -13588,7 +13596,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="523563.09182999335"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="437936.54591499665"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
           <attvalue for="Exp" value="352310"/>
@@ -13597,7 +13605,7 @@
       <edge id="200->Denmark &amp; Faeroe Is. &amp; Iceland" source="200" target="Denmark &amp; Faeroe Is. &amp; Iceland" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1289"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -13662,7 +13670,7 @@
       <edge id="200->Hanse Towns" source="200" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="5386246"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -13896,7 +13904,7 @@
       <edge id="200->Moldavia &amp; Wallachia" source="200" target="Moldavia &amp; Wallachia" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="218577"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -13963,7 +13971,7 @@
       <edge id="200->Central America" source="200" target="Central America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="117933"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14097,7 +14105,7 @@
       <edge id="200->Eastern Africa" source="200" target="Eastern Africa" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="5489"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14107,7 +14115,7 @@
       <edge id="200->Western Africa" source="200" target="Western Africa" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="377425"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14118,7 +14126,7 @@
       <edge id="200->Pacific Islands" source="200" target="Pacific Islands" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="29314"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14228,7 +14236,7 @@
       <edge id="200->British West Indies" source="200" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="1820418"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14312,7 +14320,7 @@
       <edge id="200->British East Indies (other)" source="200" target="British East Indies (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="6149841"/>
           <attvalue for="aggregatedIn" value="200->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United Kingdom"/>
@@ -14439,118 +14447,131 @@
       <edge id="Denmark &amp; Holstein &amp; Schleswig->200" source="Denmark &amp; Holstein &amp; Schleswig" target="200" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="1010460.2510460251"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="1010460.2510460251"/>
+          <attvalue for="notes" value="1->n where 1- entity 200-[Import]-United Kingdom is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:1010460.2510460251,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:1010460.2510460251}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->Norway &amp; Sweden" source="Denmark &amp; Holstein &amp; Schleswig" target="Norway &amp; Sweden" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="510900.6826690156"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="510900.6826690156"/>
+          <attvalue for="notes" value="n->n case: Denmark &amp; Holstein &amp; Schleswig transform to 3 Norway &amp; Sweden transform to 2"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->276" source="Denmark &amp; Holstein &amp; Schleswig" target="276" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="45694.78088526756"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="45694.78088526756"/>
+          <attvalue for="notes" value="1->n where 1- entity 276-[Import]-Lübeck is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:45694.78088526756,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:45694.78088526756}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->West Indies (other)" source="Denmark &amp; Holstein &amp; Schleswig" target="West Indies (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="29398.81083461792"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="29398.81083461792"/>
+          <attvalue for="notes" value="n->n case: Denmark &amp; Holstein &amp; Schleswig transform to 3 West Indies (other) transform to 20"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->365" source="Denmark &amp; Holstein &amp; Schleswig" target="365" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="17727.37282536886"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="17727.37282536886"/>
+          <attvalue for="notes" value="1->n where 1- entity 365-[Import]-Russia (USSR) is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:17727.37282536886,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:17727.37282536886}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->Faeroe Is. &amp; Greenland &amp; Iceland" source="Denmark &amp; Holstein &amp; Schleswig" target="Faeroe Is. &amp; Greenland &amp; Iceland" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="63091.82999339352"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="63091.82999339352"/>
+          <attvalue for="notes" value="n->n case: Denmark &amp; Holstein &amp; Schleswig transform to 3 Faeroe Is. &amp; Greenland &amp; Iceland transform to 3"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->5" source="Denmark &amp; Holstein &amp; Schleswig" target="5" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="16736.401673640165"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="16736.401673640165"/>
+          <attvalue for="notes" value="1->n where 1- entity 5-[Import]-Virgin Islands (Danish West Indies) is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:16736.401673640165,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:16736.401673640165}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->248" source="Denmark &amp; Holstein &amp; Schleswig" target="248" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="5395.287381634001"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="5395.287381634001"/>
+          <attvalue for="notes" value="1->n where 1- entity 248-[Import]-Hamburg is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:5395.287381634001,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:5395.287381634001}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->Belgium &amp; Netherlands" source="Denmark &amp; Holstein &amp; Schleswig" target="Belgium &amp; Netherlands" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="32812.15591279454"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="32812.15591279454"/>
+          <attvalue for="notes" value="n->n case: Denmark &amp; Holstein &amp; Schleswig transform to 3 Belgium &amp; Netherlands transform to 2"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->280" source="Denmark &amp; Holstein &amp; Schleswig" target="280" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="20039.638846069145"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="20039.638846069145"/>
+          <attvalue for="notes" value="1->n where 1- entity 280-[Import]-Mecklenburg Schwerin is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:20039.638846069145,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:20039.638846069145}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->220" source="Denmark &amp; Holstein &amp; Schleswig" target="220" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="2092.0502092050206"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="2092.0502092050206"/>
+          <attvalue for="notes" value="1->n where 1- entity 220-[Import]-France is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:2092.0502092050206,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:2092.0502092050206}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->239" source="Denmark &amp; Holstein &amp; Schleswig" target="239" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="40629.81722087646"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="40629.81722087646"/>
+          <attvalue for="notes" value="1->n where 1- entity 239-[Import]-Prussia is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:40629.81722087646,&quot;ExpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Exp&quot;:40629.81722087646}"/>
         </attvalues>
       </edge>
       <edge id="Denmark &amp; Holstein &amp; Schleswig->East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China)" source="Denmark &amp; Holstein &amp; Schleswig" target="East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="13433.164501211186"/>
           <attvalue for="ExpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Exp" value="13433.164501211186"/>
+          <attvalue for="notes" value="n->n case: Denmark &amp; Holstein &amp; Schleswig transform to 3 East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China) transform to 36"/>
         </attvalues>
       </edge>
       <edge id="Norway &amp; Sweden->Denmark &amp; Holstein &amp; Schleswig" source="Norway &amp; Sweden" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14558,8 +14579,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="309293.1072451002"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="309293.1072451002"/>
+          <attvalue for="notes" value="n->n case: Norway &amp; Sweden transform to 2 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="276->Denmark &amp; Holstein &amp; Schleswig" source="276" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14567,8 +14589,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="411363.13587315567"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="411363.13587315567"/>
+          <attvalue for="notes" value="1->n where 1- entity 276-[Export]-Lübeck is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:411363.13587315567,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:411363.13587315567}"/>
         </attvalues>
       </edge>
       <edge id="West Indies (other)->Denmark &amp; Holstein &amp; Schleswig" source="West Indies (other)" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14576,8 +14599,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="298612.6403875798"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="298612.6403875798"/>
+          <attvalue for="notes" value="n->n case: West Indies (other) transform to 20 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="365->Denmark &amp; Holstein &amp; Schleswig" source="365" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14585,8 +14609,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="219885.48777802245"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="219885.48777802245"/>
+          <attvalue for="notes" value="1->n where 1- entity 365-[Export]-Russia (USSR) is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:219885.48777802245,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:219885.48777802245}"/>
         </attvalues>
       </edge>
       <edge id="Faeroe Is. &amp; Greenland &amp; Iceland->Denmark &amp; Holstein &amp; Schleswig" source="Faeroe Is. &amp; Greenland &amp; Iceland" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14594,8 +14619,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="133120.4580488879"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="133120.4580488879"/>
+          <attvalue for="notes" value="n->n case: Faeroe Is. &amp; Greenland &amp; Iceland transform to 3 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="5->Denmark &amp; Holstein &amp; Schleswig" source="5" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14603,8 +14629,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="173419.95155252147"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="173419.95155252147"/>
+          <attvalue for="notes" value="1->n where 1- entity 5-[Export]-Virgin Islands (Danish West Indies) is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:173419.95155252147,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:173419.95155252147}"/>
         </attvalues>
       </edge>
       <edge id="248->Denmark &amp; Holstein &amp; Schleswig" source="248" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14612,8 +14639,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="129046.46553622549"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="129046.46553622549"/>
+          <attvalue for="notes" value="1->n where 1- entity 248-[Export]-Hamburg is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:129046.46553622549,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:129046.46553622549}"/>
         </attvalues>
       </edge>
       <edge id="Belgium &amp; Netherlands->Denmark &amp; Holstein &amp; Schleswig" source="Belgium &amp; Netherlands" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14621,8 +14649,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="98766.7914556265"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="98766.7914556265"/>
+          <attvalue for="notes" value="n->n case: Belgium &amp; Netherlands transform to 2 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="280->Denmark &amp; Holstein &amp; Schleswig" source="280" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14630,8 +14659,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="105153.0499889892"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="105153.0499889892"/>
+          <attvalue for="notes" value="1->n where 1- entity 280-[Export]-Mecklenburg Schwerin is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:105153.0499889892,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:105153.0499889892}"/>
         </attvalues>
       </edge>
       <edge id="220->Denmark &amp; Holstein &amp; Schleswig" source="220" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14639,8 +14669,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="117154.81171548116"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="117154.81171548116"/>
+          <attvalue for="notes" value="1->n where 1- entity 220-[Export]-France is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:117154.81171548116,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:117154.81171548116}"/>
         </attvalues>
       </edge>
       <edge id="239->Denmark &amp; Holstein &amp; Schleswig" source="239" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14648,8 +14679,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="78286.72098656683"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="78286.72098656683"/>
+          <attvalue for="notes" value="1->n where 1- entity 239-[Export]-Prussia is not reporting. {&quot;label&quot;:&quot;REPORTED_TRADE&quot;,&quot;labels&quot;:{},&quot;ImpReportedBy&quot;:&quot;Denmark &amp; Holstein &amp; Schleswig&quot;,&quot;Imp&quot;:78286.72098656683,&quot;status&quot;:&quot;toTreat&quot;,&quot;value&quot;:78286.72098656683}"/>
         </attvalues>
       </edge>
       <edge id="East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China)->Denmark &amp; Holstein &amp; Schleswig" source="East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China)" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14657,8 +14689,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="35344.63774499009"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="35344.63774499009"/>
+          <attvalue for="notes" value="n->n case: East Indies &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; People's Republic of China (China) transform to 36 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="Bremen &amp; Hanover->Denmark &amp; Holstein &amp; Schleswig" source="Bremen &amp; Hanover" target="Denmark &amp; Holstein &amp; Schleswig" label="REPORTED_TRADE">
@@ -14666,8 +14699,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Denmark &amp; Holstein &amp; Schleswig"/>
           <attvalue for="Imp" value="30059.458269103718"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="30059.458269103718"/>
+          <attvalue for="notes" value="n->n case: Bremen &amp; Hanover transform to 2 Denmark &amp; Holstein &amp; Schleswig transform to 3"/>
         </attvalues>
       </edge>
       <edge id="230->615" source="230" target="615" label="REPORTED_TRADE">
@@ -14782,7 +14816,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Spain"/>
           <attvalue for="Imp" value="67474.63577498987"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="67474.63577498987"/>
         </attvalues>
       </edge>
@@ -15031,7 +15065,7 @@
       <edge id="230->Danish America" source="230" target="Danish America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="6148.472278429786"/>
           <attvalue for="aggregatedIn" value="230->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Spain"/>
@@ -15041,7 +15075,7 @@
       <edge id="230->French America" source="230" target="French America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3606.940509915014"/>
           <attvalue for="aggregatedIn" value="230->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Spain"/>
@@ -15053,7 +15087,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Spain"/>
           <attvalue for="Imp" value="2089.0327802509105"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2089.0327802509105"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->230"/>
         </attvalues>
@@ -15061,7 +15095,7 @@
       <edge id="230->British America" source="230" target="British America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="16555.12950222582"/>
           <attvalue for="aggregatedIn" value="230->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Spain"/>
@@ -15073,7 +15107,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Spain"/>
           <attvalue for="Imp" value="338106.70781060297"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="338106.70781060297"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->230"/>
         </attvalues>
@@ -15081,7 +15115,7 @@
       <edge id="230->British Asia" source="230" target="British Asia" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="114.46782679077296"/>
           <attvalue for="aggregatedIn" value="230->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Spain"/>
@@ -15093,7 +15127,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Spain"/>
           <attvalue for="Imp" value="1456.9000404694455"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1456.9000404694455"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->230"/>
         </attvalues>
@@ -15358,7 +15392,7 @@
       <edge id="2->Norway &amp; Sweden" source="2" target="Norway &amp; Sweden" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="150279.93038000911"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
           <attvalue for="Exp" value="150279.93038000911"/>
@@ -15394,7 +15428,7 @@
       <edge id="2->Hanse Towns" source="2" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="561569.7650325308"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15480,7 +15514,7 @@
       <edge id="2->British East Indies" source="2" target="British East Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="68990.51013219511"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15529,7 +15563,7 @@
       <edge id="2->British West Indies" source="2" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="815514.0690398243"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15540,7 +15574,7 @@
       <edge id="2->British America" source="2" target="British America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="748369.939082508"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15570,7 +15604,7 @@
       <edge id="2->French West Indies" source="2" target="French West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="37447.88860801459"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15704,7 +15738,7 @@
       <edge id="2->325" source="2" target="325" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="168134.35000621606"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15784,7 +15818,7 @@
       <edge id="2->Central America" source="2" target="Central America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="23306.120757531804"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15871,7 +15905,7 @@
       <edge id="2->West Indies (other)" source="2" target="West Indies (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="22031.61907919274"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15881,7 +15915,7 @@
       <edge id="2->Southern America (other)" source="2" target="Southern America (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="17656.748580663876"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15891,7 +15925,7 @@
       <edge id="2->Europe" source="2" target="Europe" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3851.4773527827274"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15901,7 +15935,7 @@
       <edge id="2->Asia (other)" source="2" target="Asia (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="71367.94993991131"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15911,7 +15945,7 @@
       <edge id="2->Africa (other)" source="2" target="Africa (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="140228.12979155444"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15921,7 +15955,7 @@
       <edge id="2->Pacific Islands" source="2" target="Pacific Islands" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="69756.7444366168"/>
           <attvalue for="aggregatedIn" value="2->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="United States of America"/>
@@ -15954,7 +15988,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="151640.21383282915"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="151640.21383282915"/>
         </attvalues>
       </edge>
@@ -15990,7 +16024,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="1604339.6460983797"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1604339.6460983797"/>
         </attvalues>
       </edge>
@@ -16066,7 +16100,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="421916.62177282333"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="421916.62177282333"/>
         </attvalues>
       </edge>
@@ -16105,7 +16139,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="206759.97679333636"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="206759.97679333636"/>
           <attvalue for="notes" value="Guyana (British Guiana) -> United States of America  (REP)  : 5287.804069454229"/>
         </attvalues>
@@ -16115,7 +16149,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="278852.5133645518"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="278852.5133645518"/>
         </attvalues>
       </edge>
@@ -16171,7 +16205,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="14808.545025071484"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="14808.545025071484"/>
         </attvalues>
       </edge>
@@ -16276,7 +16310,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="321349.3017280676"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="321349.3017280676"/>
         </attvalues>
       </edge>
@@ -16351,7 +16385,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="11606.854253864323"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="11606.854253864323"/>
           <attvalue for="aggregatedIn" value="1064->2"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> United States of America  (REP)  : 12079172.053955492"/>
@@ -16429,7 +16463,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="3348.1828353570095"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3348.1828353570095"/>
         </attvalues>
       </edge>
@@ -16447,7 +16481,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="43443.91032282127"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="43443.91032282127"/>
         </attvalues>
       </edge>
@@ -16456,7 +16490,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="102718.9092868095"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="102718.9092868095"/>
         </attvalues>
       </edge>
@@ -16465,7 +16499,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="United States of America"/>
           <attvalue for="Imp" value="17678.090423107205"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="17678.090423107205"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> United States of America  (REP)  : 12079172.053955492"/>
         </attvalues>
@@ -16500,7 +16534,7 @@
       <edge id="365->Hanse Towns" source="365" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="253713.71708511942"/>
           <attvalue for="aggregatedIn" value="365->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
@@ -16648,7 +16682,7 @@
       <edge id="365->Southern America &amp; West Indies" source="365" target="Southern America &amp; West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="2793.3251684017146"/>
           <attvalue for="aggregatedIn" value="365->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
@@ -16677,10 +16711,11 @@
       <edge id="365->Eurasian Steppe" source="365" target="Eurasian Steppe" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="238334.66013472137"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Exp" value="238334.66013472137"/>
+          <attvalue for="notes" value="Couldn't resolve importer Eurasian Steppe"/>
         </attvalues>
       </edge>
       <edge id="365->7030" source="365" target="7030" label="REPORTED_TRADE">
@@ -16723,7 +16758,7 @@
       <edge id="365->Europe (other)" source="365" target="Europe (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="53231.78199632578"/>
           <attvalue for="aggregatedIn" value="365->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
@@ -16733,7 +16768,7 @@
       <edge id="365->Asia (other)" source="365" target="Asia (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="365->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Exp" value="0"/>
@@ -16771,7 +16806,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="1058858.0832823026"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1058858.0832823026"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->365"/>
         </attvalues>
@@ -16918,7 +16953,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="824008.5731781996"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="824008.5731781996"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->365"/>
           <attvalue for="notes" value="United Kingdom (REP)  -> Russia (USSR)  (REP)  : 4196468.769136558"/>
@@ -16947,8 +16982,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="242808.02204531536"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="242808.02204531536"/>
+          <attvalue for="notes" value="Couldn't resolve exporter Eurasian Steppe"/>
         </attvalues>
       </edge>
       <edge id="7030->365" source="7030" target="365" label="REPORTED_TRADE">
@@ -16993,7 +17029,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="76399.41824862217"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="76399.41824862217"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->365"/>
         </attvalues>
@@ -17003,7 +17039,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Russia (USSR)"/>
           <attvalue for="Imp" value="0"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->365"/>
         </attvalues>
       </edge>
@@ -17019,7 +17055,7 @@
       <edge id="211->Africa (other)" source="211" target="Africa (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="272.2299999999875"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
           <attvalue for="Exp" value="272.2299999999875"/>
@@ -17030,7 +17066,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="1672.2699999999231"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1672.2699999999231"/>
         </attvalues>
       </edge>
@@ -17055,7 +17091,7 @@
       <edge id="211->Brazil &amp; Colombia (New Granada) (Gran Colombia)" source="211" target="Brazil &amp; Colombia (New Granada) (Gran Colombia)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="84002.39999999614"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17067,7 +17103,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="243295.83999998882"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="243295.83999998882"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17075,7 +17111,7 @@
       <edge id="211->Cuba &amp; Puerto Rico" source="211" target="Cuba &amp; Puerto Rico" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="91702.61999999579"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17087,7 +17123,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="460963.1699999788"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="460963.1699999788"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17189,7 +17225,7 @@
       <edge id="211->Greece &amp; Ionian Is." source="211" target="Greece &amp; Ionian Is." label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="8478.019999999611"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17201,7 +17237,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="2955.6399999998644"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2955.6399999998644"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17227,7 +17263,7 @@
       <edge id="211->Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal" source="211" target="Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="10850.309999999501"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17239,7 +17275,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="6455.739999999703"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="6455.739999999703"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17247,7 +17283,7 @@
       <edge id="211->Haiti &amp; Venezuela" source="211" target="Haiti &amp; Venezuela" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1205.5899999999447"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17259,7 +17295,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="82485.6899999962"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="82485.6899999962"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17267,7 +17303,7 @@
       <edge id="211->Hanover &amp; Oldenburg" source="211" target="Hanover &amp; Oldenburg" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="174499.429999992"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17279,7 +17315,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="38189.97999999824"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="38189.97999999824"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17287,7 +17323,7 @@
       <edge id="211->India &amp; People's Republic of China (China) &amp; Singapore" source="211" target="India &amp; People's Republic of China (China) &amp; Singapore" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="13650.389999999372"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17299,7 +17335,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="6689.0799999996925"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="6689.0799999996925"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17361,7 +17397,8 @@
       <edge id="211->Australia &amp; Oceania" source="211" target="Australia &amp; Oceania" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
+          <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
           <attvalue for="Exp" value="0"/>
           <attvalue for="notes" value="Belgium (REP)  -> France  (REP)  : 3138034.24756557"/>
@@ -17372,14 +17409,15 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="0"/>
-          <attvalue for="status" value="discard_collision"/>
+          <attvalue for="status" value="split_only_partial"/>
+          <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
           <attvalue for="notes" value="France (REP)  -> Belgium  (REP)  : 2372338.327224157"/>
         </attvalues>
       </edge>
       <edge id="211->Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany" source="211" target="Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="23061.76999999894"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17391,7 +17429,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="5016.809999999769"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="5016.809999999769"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17434,7 +17472,7 @@
       <edge id="211->British America" source="211" target="British America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
           <attvalue for="Exp" value="0"/>
@@ -17445,7 +17483,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="0"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
       </edge>
@@ -17506,7 +17544,7 @@
       <edge id="211->Bavaria &amp; Frankfurt &amp; Saxony" source="211" target="Bavaria &amp; Frankfurt &amp; Saxony" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2527.849999999884"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17518,7 +17556,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="16489.359999999244"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="16489.359999999244"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17526,7 +17564,7 @@
       <edge id="211->Norway &amp; Sweden" source="211" target="Norway &amp; Sweden" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="31034.219999998575"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17538,7 +17576,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="106364.14999999512"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="106364.14999999512"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17582,7 +17620,7 @@
       <edge id="211->Hanse Towns" source="211" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="23256.21999999893"/>
           <attvalue for="aggregatedIn" value="211->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
@@ -17594,7 +17632,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Belgium"/>
           <attvalue for="Imp" value="2566.739999999882"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2566.739999999882"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->211"/>
         </attvalues>
@@ -17635,7 +17673,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Dominica"/>
           <attvalue for="Imp" value="11017"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="11017"/>
         </attvalues>
       </edge>
@@ -17644,7 +17682,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Dominica"/>
           <attvalue for="Imp" value="3784"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3784"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->54"/>
         </attvalues>
@@ -17670,7 +17708,7 @@
       <edge id="54->British West Indies" source="54" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="4206"/>
           <attvalue for="ExpReportedBy" value="Dominica"/>
           <attvalue for="Exp" value="4206"/>
@@ -17679,7 +17717,7 @@
       <edge id="54->British Northern America" source="54" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="157"/>
           <attvalue for="aggregatedIn" value="54->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Dominica"/>
@@ -17709,7 +17747,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Bahamas"/>
           <attvalue for="Imp" value="1119"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1119"/>
         </attvalues>
       </edge>
@@ -17718,7 +17756,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Bahamas"/>
           <attvalue for="Imp" value="421"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="421"/>
         </attvalues>
       </edge>
@@ -17752,7 +17790,7 @@
       <edge id="31->British West Indies" source="31" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3232"/>
           <attvalue for="ExpReportedBy" value="Bahamas"/>
           <attvalue for="Exp" value="3232"/>
@@ -17761,7 +17799,7 @@
       <edge id="31->British Northern America" source="31" target="British Northern America" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1852"/>
           <attvalue for="aggregatedIn" value="31->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="Bahamas"/>
@@ -17866,7 +17904,7 @@
       <edge id="66->French Colonies" source="66" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1796.131833432011"/>
           <attvalue for="ExpReportedBy" value="Martinique"/>
           <attvalue for="Exp" value="1796.131833432011"/>
@@ -17886,7 +17924,7 @@
       <edge id="65->French Colonies" source="65" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="333.41227550819025"/>
           <attvalue for="ExpReportedBy" value="Guadeloupe"/>
           <attvalue for="Exp" value="333.41227550819025"/>
@@ -17906,7 +17944,7 @@
       <edge id="120->French Colonies" source="120" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="118.41326228537596"/>
           <attvalue for="ExpReportedBy" value="French Guiana"/>
           <attvalue for="Exp" value="118.41326228537596"/>
@@ -17926,7 +17964,7 @@
       <edge id="585->French Colonies" source="585" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1719.2026840339452"/>
           <attvalue for="ExpReportedBy" value="Reunion (Bourbon I.)"/>
           <attvalue for="Exp" value="1719.2026840339452"/>
@@ -17945,7 +17983,7 @@
       <edge id="Saint-Louis (Senegal)->French Colonies" source="Saint-Louis (Senegal)" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2776.001578843497"/>
           <attvalue for="ExpReportedBy" value="Saint-Louis (Senegal)"/>
           <attvalue for="Exp" value="2776.001578843497"/>
@@ -17975,7 +18013,7 @@
       <edge id="751->French Colonies" source="751" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="44836.11604499704"/>
           <attvalue for="ExpReportedBy" value="French India"/>
           <attvalue for="Exp" value="44836.11604499704"/>
@@ -17986,7 +18024,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Martinique"/>
           <attvalue for="Imp" value="43511.782119597396"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="43511.782119597396"/>
         </attvalues>
       </edge>
@@ -17995,7 +18033,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Guadeloupe"/>
           <attvalue for="Imp" value="58246.49694099072"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="58246.49694099072"/>
         </attvalues>
       </edge>
@@ -18004,7 +18042,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="Reunion (Bourbon I.)"/>
           <attvalue for="Imp" value="75395.02664298401"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="75395.02664298401"/>
         </attvalues>
       </edge>
@@ -18013,7 +18051,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Saint-Louis (Senegal)"/>
           <attvalue for="Imp" value="16947.621866982434"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="16947.621866982434"/>
         </attvalues>
       </edge>
@@ -18022,7 +18060,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Goree"/>
           <attvalue for="Imp" value="16584.527333728045"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="16584.527333728045"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->433"/>
         </attvalues>
@@ -18054,14 +18092,14 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="St. Pierre and Miquelon"/>
           <attvalue for="Imp" value="1020.5249654627985"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1020.5249654627985"/>
         </attvalues>
       </edge>
       <edge id="1029->French Colonies" source="1029" target="French Colonies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="107301.48016577856"/>
           <attvalue for="ExpReportedBy" value="St. Pierre and Miquelon"/>
           <attvalue for="Exp" value="107301.48016577856"/>
@@ -18072,7 +18110,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="French India"/>
           <attvalue for="Imp" value="24449.615156897573"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="24449.615156897573"/>
         </attvalues>
       </edge>
@@ -18144,7 +18182,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="1274916.1239392143"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1274916.1239392143"/>
         </attvalues>
       </edge>
@@ -18161,7 +18199,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="149990.13222814287"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="149990.13222814287"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18217,7 +18255,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="2739293.4675350306"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="2739293.4675350306"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18227,7 +18265,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="315768.6994276692"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="315768.6994276692"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18284,7 +18322,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="398657.9830274324"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="398657.9830274324"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
           <attvalue for="notes" value="Turkey (Ottoman Empire) -> France  (REP)  : 1227550.8190250641"/>
@@ -18295,7 +18333,7 @@
           <attvalue for="labels" value="REPORTED_TRADE|SPLIT_OTHER"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="177619.89342806395"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="177619.89342806395"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
           <attvalue for="notes" value="Senegal -> France  (REP)  : 177619.89342806395"/>
@@ -18306,7 +18344,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="3947.1087428458654"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3947.1087428458654"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18316,7 +18354,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="3947.1087428458654"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3947.1087428458654"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18344,7 +18382,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="90783.5010854549"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="90783.5010854549"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18465,7 +18503,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="469705.940398658"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="469705.940398658"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
@@ -18475,7 +18513,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="0"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
       </edge>
@@ -18521,7 +18559,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="0"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="aggregatedIn" value="restOfTheWorld->220"/>
         </attvalues>
       </edge>
@@ -18530,8 +18568,9 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="France"/>
           <attvalue for="Imp" value="3947.1087428458654"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_error"/>
           <attvalue for="value" value="3947.1087428458654"/>
+          <attvalue for="notes" value="Couldn't resolve exporter ***NA"/>
         </attvalues>
       </edge>
       <edge id="220->385" source="220" target="385" label="REPORTED_TRADE">
@@ -18555,7 +18594,7 @@
       <edge id="220->255" source="220" target="255" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1499901.3222814288"/>
           <attvalue for="ExpReportedBy" value="France"/>
           <attvalue for="Exp" value="1499901.3222814288"/>
@@ -18573,7 +18612,7 @@
       <edge id="220->Hanse Towns" source="220" target="Hanse Towns" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="521018.3540556542"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18630,7 +18669,7 @@
       <edge id="220->Kingdom of Sardinia &amp; Monaco" source="220" target="Kingdom of Sardinia &amp; Monaco" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="1799881.5867377145"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18640,7 +18679,7 @@
       <edge id="220->Lucca &amp; Tuscany" source="220" target="Lucca &amp; Tuscany" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="505229.9190842708"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18697,7 +18736,7 @@
       <edge id="220->Barbary Coast" source="220" target="Barbary Coast" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="90783.5010854549"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18708,7 +18747,7 @@
       <edge id="220->Western Africa" source="220" target="Western Africa" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_only_partial"/>
           <attvalue for="value" value="27629.761199921057"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18719,7 +18758,7 @@
       <edge id="220->Cape Colony (Cape of Good Hope) &amp; Mauritius" source="220" target="Cape Colony (Cape of Good Hope) &amp; Mauritius" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="118413.26228537595"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18729,7 +18768,7 @@
       <edge id="220->Africa (other)" source="220" target="Africa (other)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="3947.1087428458654"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18757,7 +18796,7 @@
       <edge id="220->Cochin China &amp; Oceania &amp; People's Republic of China (China)" source="220" target="Cochin China &amp; Oceania &amp; People's Republic of China (China)" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="23682.65245707519"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18881,7 +18920,7 @@
       <edge id="220->Spanish West Indies" source="220" target="Spanish West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="473653.0491415038"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18891,7 +18930,7 @@
       <edge id="220->British West Indies" source="220" target="British West Indies" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="39471.08742845865"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18938,7 +18977,7 @@
       <edge id="220->Mayotte &amp; Nossi Be &amp; St. Marie de Madagascar" source="220" target="Mayotte &amp; Nossi Be &amp; St. Marie de Madagascar" label="REPORTED_TRADE">
         <attvalues>
           <attvalue for="labels" value="REPORTED_TRADE"/>
-          <attvalue for="status" value="ignore_resolved"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="11841.326228537595"/>
           <attvalue for="aggregatedIn" value="220->restOfTheWorld"/>
           <attvalue for="ExpReportedBy" value="France"/>
@@ -18950,7 +18989,7 @@
           <attvalue for="labels" value="REPORTED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Sierra Leone"/>
           <attvalue for="Imp" value="44"/>
-          <attvalue for="status" value="toTreat"/>
+          <attvalue for="status" value="split_failed_no_ratio"/>
           <attvalue for="value" value="44"/>
         </attvalues>
       </edge>
@@ -27467,10 +27506,10 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="918857.4077507881"/>
+          <attvalue for="value" value="1227907.3984795106"/>
           <attvalue for="ExpReportedBy" value="Chile"/>
-          <attvalue for="Exp" value="918857.4077507881"/>
-          <attvalue for="notes" value="Chile (REP)  -> Germany (Zollverein)  : 125681.06805117746&#xA;Chile (REP)  -> British Colonies &amp; United Kingdom  : 792760.8010383832&#xA;Chile (REP)  -> Spain &amp; Spanish Colonies  : 415.5386612275172"/>
+          <attvalue for="Exp" value="1227907.3984795106"/>
+          <attvalue for="notes" value="Chile (REP)  -> Germany (Zollverein)  : 125681.06805117746&#xA;Chile (REP)  -> Northern America  : 325315.77971444465&#xA;Chile (REP)  -> British Colonies &amp; United Kingdom  : 792760.8010383832&#xA;Chile (REP)  -> Spain &amp; Spanish Colonies  : 415.5386612275172"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
       </edge>
@@ -27478,10 +27517,10 @@
         <attvalues>
           <attvalue for="labels" value="GENERATED_TRADE"/>
           <attvalue for="ImpReportedBy" value="Chile"/>
-          <attvalue for="Imp" value="1006610.7917671056"/>
+          <attvalue for="Imp" value="1202832.8499907288"/>
           <attvalue for="status" value="ok"/>
-          <attvalue for="value" value="1006610.7917671056"/>
-          <attvalue for="notes" value="Germany (Zollverein) -> Chile  (REP)  : 156953.08733543483&#xA;British Colonies &amp; United Kingdom -> Chile  (REP)  : 821634.5262377156&#xA;Spain &amp; Spanish Colonies -> Chile  (REP)  : 28023.17819395513"/>
+          <attvalue for="value" value="1202832.8499907288"/>
+          <attvalue for="notes" value="Germany (Zollverein) -> Chile  (REP)  : 156953.08733543483&#xA;Northern America -> Chile  (REP)  : 200226.59002410533&#xA;British Colonies &amp; United Kingdom -> Chile  (REP)  : 821634.5262377156&#xA;Spain &amp; Spanish Colonies -> Chile  (REP)  : 28023.17819395513"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
       </edge>
@@ -27879,7 +27918,7 @@
           <attvalue for="value" value="464541.0499999786"/>
           <attvalue for="ExpReportedBy" value="Belgium"/>
           <attvalue for="Exp" value="464541.0499999786"/>
-          <attvalue for="notes" value="Belgium (REP)  -> Africa (other)  : 272.2299999999875&#xA;Belgium (REP)  -> Brazil &amp; Colombia (New Granada) (Gran Colombia)  : 84002.39999999614&#xA;Belgium (REP)  -> Cuba &amp; Puerto Rico  : 91702.61999999579&#xA;Belgium (REP)  -> Greece &amp; Ionian Is.  : 8478.019999999611&#xA;Belgium (REP)  -> Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal  : 10850.309999999501&#xA;Belgium (REP)  -> Haiti &amp; Venezuela  : 1205.5899999999447&#xA;Belgium (REP)  -> Hanover &amp; Oldenburg  : 174499.429999992&#xA;Belgium (REP)  -> India &amp; People's Republic of China (China) &amp; Singapore  : 13650.389999999372&#xA;Belgium (REP)  -> Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany  : 23061.76999999894&#xA;Belgium (REP)  -> British America  : undefined&#xA;Belgium (REP)  -> Bavaria &amp; Frankfurt &amp; Saxony  : 2527.849999999884&#xA;Belgium (REP)  -> Norway &amp; Sweden  : 31034.219999998575&#xA;Belgium (REP)  -> Hanse Towns  : 23256.21999999893"/>
+          <attvalue for="notes" value="Belgium (REP)  -> Africa (other)  : 272.2299999999875&#xA;Belgium (REP)  -> Brazil &amp; Colombia (New Granada) (Gran Colombia)  : 84002.39999999614&#xA;Belgium (REP)  -> Cuba &amp; Puerto Rico  : 91702.61999999579&#xA;Belgium (REP)  -> Greece &amp; Ionian Is.  : 8478.019999999611&#xA;Belgium (REP)  -> Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal  : 10850.309999999501&#xA;Belgium (REP)  -> Haiti &amp; Venezuela  : 1205.5899999999447&#xA;Belgium (REP)  -> Hanover &amp; Oldenburg  : 174499.429999992&#xA;Belgium (REP)  -> India &amp; People's Republic of China (China) &amp; Singapore  : 13650.389999999372&#xA;Belgium (REP)  -> Australia &amp; Oceania  : undefined&#xA;Belgium (REP)  -> Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany  : 23061.76999999894&#xA;Belgium (REP)  -> British America  : undefined&#xA;Belgium (REP)  -> Bavaria &amp; Frankfurt &amp; Saxony  : 2527.849999999884&#xA;Belgium (REP)  -> Norway &amp; Sweden  : 31034.219999998575&#xA;Belgium (REP)  -> Hanse Towns  : 23256.21999999893"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
       </edge>
@@ -27890,7 +27929,7 @@
           <attvalue for="Imp" value="973144.4699999555"/>
           <attvalue for="status" value="ok"/>
           <attvalue for="value" value="973144.4699999555"/>
-          <attvalue for="notes" value="Africa (other) -> Belgium  (REP)  : 1672.2699999999231&#xA;Brazil &amp; Colombia (New Granada) (Gran Colombia) -> Belgium  (REP)  : 243295.83999998882&#xA;Cuba &amp; Puerto Rico -> Belgium  (REP)  : 460963.1699999788&#xA;Greece &amp; Ionian Is. -> Belgium  (REP)  : 2955.6399999998644&#xA;Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal -> Belgium  (REP)  : 6455.739999999703&#xA;Haiti &amp; Venezuela -> Belgium  (REP)  : 82485.6899999962&#xA;Hanover &amp; Oldenburg -> Belgium  (REP)  : 38189.97999999824&#xA;India &amp; People's Republic of China (China) &amp; Singapore -> Belgium  (REP)  : 6689.0799999996925&#xA;Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany -> Belgium  (REP)  : 5016.809999999769&#xA;British America -> Belgium  (REP)  : undefined&#xA;Bavaria &amp; Frankfurt &amp; Saxony -> Belgium  (REP)  : 16489.359999999244&#xA;Norway &amp; Sweden -> Belgium  (REP)  : 106364.14999999512&#xA;Hanse Towns -> Belgium  (REP)  : 2566.739999999882"/>
+          <attvalue for="notes" value="Africa (other) -> Belgium  (REP)  : 1672.2699999999231&#xA;Brazil &amp; Colombia (New Granada) (Gran Colombia) -> Belgium  (REP)  : 243295.83999998882&#xA;Cuba &amp; Puerto Rico -> Belgium  (REP)  : 460963.1699999788&#xA;Greece &amp; Ionian Is. -> Belgium  (REP)  : 2955.6399999998644&#xA;Gambia &amp; Guinea (French Guinea) (Rivieres du Sud) &amp; Senegal -> Belgium  (REP)  : 6455.739999999703&#xA;Haiti &amp; Venezuela -> Belgium  (REP)  : 82485.6899999962&#xA;Hanover &amp; Oldenburg -> Belgium  (REP)  : 38189.97999999824&#xA;India &amp; People's Republic of China (China) &amp; Singapore -> Belgium  (REP)  : 6689.0799999996925&#xA;Australia &amp; Oceania -> Belgium  (REP)  : undefined&#xA;Lucca &amp; Modena &amp; Papal States &amp; Parma &amp; Tuscany -> Belgium  (REP)  : 5016.809999999769&#xA;British America -> Belgium  (REP)  : undefined&#xA;Bavaria &amp; Frankfurt &amp; Saxony -> Belgium  (REP)  : 16489.359999999244&#xA;Norway &amp; Sweden -> Belgium  (REP)  : 106364.14999999512&#xA;Hanse Towns -> Belgium  (REP)  : 2566.739999999882"/>
           <attvalue for="valueGeneratedBy" value="split_by_years_ratio"/>
         </attvalues>
       </edge>
