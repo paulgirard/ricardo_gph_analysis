@@ -48,15 +48,16 @@ set more off
 
 
 
-
 *************
 
 import delimited "data/tradeGraphsStats.csv", clear delimiters (",") varnames(1)
 
 tempfile tradeGraphStat
 save `tradeGraphStat', replace
+sort year
 
 graph twoway (connected nbgphautonomouscited year, yaxis(1) ) (connected nbreportingft year, yaxis(1))
+
 
 label variable nbgphautonomouscited "Number of trading entities"
 label variable nbreportingft "Number of trading entities in FT"
@@ -67,10 +68,12 @@ label variable ok_value_ratio "No treatment needed total value"
 
 gen worldbilateral_ratio = worldbilateral/worldft
 label variable worldbilateral_ratio "No treatment needed, aggregated and splitted total value"
+blif
 
 gen aggregation_value_ratio = aggregation_value/worldft
 gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
 label variable ok_and_aggregatio_ratio "No treatment needed and aggregated total value"
+
 
 gen ignored_value_ratio = (ignore_internal_value + discard_collision_value)/worldft
 label variable ignored_value_ratio "Non-pertinent value (duplicated and internal)"
@@ -119,7 +122,7 @@ graph twoway  ///
     (line ok_flows year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_flows year, lpattern(longdash)) ///
     (line worldbilateral_flows year, yaxis(1) lwidth(medthick)) ///
     (line WB_and_failedsplit_flows year, yaxis(1) lpattern(longdash)) (line our_data_flows year, lpattern(longdash)), ///
-    yscale(log) ylabel(,angle(horizontal)) ytitle("Number of flows") ///
+    yscale(log) ylabel(,angle(horizontal)) ytitle("Number of flows") ylabel(500 1000 2000(2000)8000) ///
     scheme(s1color) legend(rows(5))
 
 graph export "figures/FTComparison_nbr_flows.png", replace
