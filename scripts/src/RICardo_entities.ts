@@ -7,6 +7,7 @@ import { groupBy, keyBy, max, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
+import { propagateReporting } from "./graphTraversals";
 import {
   aggregateIntoAutonomousEntities,
   flagAutonomousCited,
@@ -95,6 +96,7 @@ const applyRatioMethod = async (
       const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear, edgeKey);
       console.log(`writing gexf for ${year}`);
 
+      // flag partial aggregations
       new_graph.forEachEdge((e, atts, src, tgt, srcAtts, tgtAtts) => {
         // create the maxExpImp attribute
         new_graph.setEdgeAttribute(e, "maxExpImp", max([atts.Exp, atts.Imp]));
@@ -143,6 +145,14 @@ const applyRatioMethod = async (
           }
         }
       });
+
+      // flag reporters created by aggregations/split
+      new_graph
+        .filterNodes((n, atts) => atts.reporting)
+        .forEach((n) => {
+          propagateReporting(new_graph, n, "AGGREGATE_INTO");
+          propagateReporting(new_graph, n, "SPLIT");
+        });
 
       writeFileSync(`../data/entity_networks/${year}_ratios.gexf`, gexf.write(new_graph), "utf8");
     } catch (e) {

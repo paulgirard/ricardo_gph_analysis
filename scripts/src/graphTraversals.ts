@@ -263,3 +263,47 @@ export function findRelevantTradeFlowToEntity(
     else return acc;
   }, {});
 }
+
+export function propagateReporting(
+  graph: GraphEntityPartiteType,
+  fromReporting: string,
+  label: "AGGREGATE_INTO" | "SPLIT",
+) {
+  const reportingLabel = graph.getNodeAttribute(fromReporting, "label");
+  const propagationTargets = graph
+    .filterOutEdges(fromReporting, (_, atts) => atts.labels.has(label))
+    .map((e) => graph.target(e));
+  console.log(`propagate reporting from ${reportingLabel} to ${propagationTargets.join("|")}`);
+  propagationTargets.forEach((target) => {
+    const targetAtts = graph.getNodeAttributes(target);
+    // we propagate reporting status if
+    console.log(
+      targetAtts,
+      graph.filterEdges(
+        target,
+        (_, atts) =>
+          atts.labels.has("GENERATED_TRADE") && // has one generated trade edge
+          (atts.ExpReportedBy?.includes(reportingLabel) || atts.ImpReportedBy?.includes(reportingLabel)),
+      ).length,
+    );
+    if (
+      targetAtts.entityType === "GPH-AUTONOMOUS-CITED" &&
+      targetAtts.reporting !== true && // not already a normal reporter
+      graph.filterEdges(
+        target,
+        (_, atts) =>
+          atts.labels.has("GENERATED_TRADE") && // has one generated trade edge
+          (atts.ExpReportedBy?.includes(reportingLabel) || atts.ImpReportedBy?.includes(reportingLabel)),
+      ).length > 0
+    ) {
+      // which contains some trade value aggregated from the original reporter
+      graph.setNodeAttribute(
+        target,
+        label === "AGGREGATE_INTO" ? "reportingByAggregateInto" : "reportingBySplit",
+        true,
+      );
+      console.log(targetAtts.label, label === "AGGREGATE_INTO" ? "reportingByAggregateInto" : "reportingBySplit");
+    } // traverse one step further
+    else propagateReporting(graph, target, label);
+  });
+}

@@ -16,6 +16,8 @@ export type EntityType = "RIC" | "GPH" | "GPH-AUTONOMOUS" | "GPH-AUTONOMOUS-CITE
 export interface EntityNodeAttributes {
   label: string;
   reporting: boolean;
+  reportingByAggregateInto?: boolean;
+  reportingBySplit?: boolean;
   ricType: RICType;
   entityType: EntityType;
   cited?: boolean;
