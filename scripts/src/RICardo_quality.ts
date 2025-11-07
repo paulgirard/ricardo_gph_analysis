@@ -129,7 +129,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       if (value && edgeAtts.status !== "ignore_resolved") {
         // if generated_trade track the method used for resolution
         const ok =
-          edgeAtts.status === "ok" && graph.source(e) === "restOfTheWorld" && graph.target(e) === "restOfTheWorld";
+          edgeAtts.status === "ok" && graph.source(e) !== "restOfTheWorld" && graph.target(e) !== "restOfTheWorld";
         let status: FlowStatType | undefined = edgeAtts.labels.has("GENERATED_TRADE")
           ? edgeAtts.valueGeneratedBy
           : edgeAtts.status;
