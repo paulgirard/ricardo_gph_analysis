@@ -1,5 +1,5 @@
 import { DirectedGraph } from "graphology";
-import { sum, toPairs, uniq } from "lodash";
+import { max, sum, toPairs, uniq } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
@@ -353,7 +353,7 @@ export function computeTradeValue(atts: EdgeAttributes) {
   // Select one side depending on reporter quality
 
   // exp first OR imp if exp not available
-  return atts.Exp || atts.Imp;
+  return max([atts.Exp, atts.Imp]);
 }
 
 /**
@@ -373,7 +373,7 @@ export function flagFlowsToTreat(graph: GraphEntityPartiteType) {
       else graph.setEdgeAttribute(e, "status", "toTreat");
     }
     // make sure value is the one we want
-    graph.setEdgeAttribute(e, "value", computeTradeValue(atts));
+    graph.setEdgeAttribute(e, "maxExpImp", computeTradeValue(atts));
   });
 }
 
@@ -493,12 +493,12 @@ export function resolveOneToManyEntityTransform(
               new Set(["SPLIT"]),
               Number((1 - solvedRatio).toFixed(2)),
             );
-            if (Number((1 - solvedRatio).toFixed(2)) !== rowRatio) {
+            if (solved.length > 0 && Number((1 - solvedRatio).toFixed(2)) !== rowRatio) {
               console.log(
                 `error in calculating the remaining SPLIT ratios to send to restOfTheWorld`,
                 rowRatio,
-                toROW.map(([_, { ratio }]) => ratio || 1),
-                uniq(toROW.map(([_, { ratio }]) => ratio || 1)),
+                toROW.map(([_, { ratio }]) => ratio),
+                uniq(toROW.map(([_, { ratio }]) => ratio)),
               );
             }
             // flag flow if failed or partial split

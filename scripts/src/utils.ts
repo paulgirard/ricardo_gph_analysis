@@ -21,7 +21,7 @@ export const nodeId = (entity: RICentity | GPHEntity) => {
 export const statsEntityType = (graph: GraphType) => {
   return {
     nodes: graph
-      .filterNodes((n, atts) => {
+      .filterNodes((_, atts) => {
         atts.type === "entity";
       })
       .reduce((acc: Partial<Record<EntityType, number>>, n) => {

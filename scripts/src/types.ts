@@ -44,7 +44,11 @@ export interface EdgeAttributes {
   labels: Set<EdgeLabelType>;
   label?: string;
   Exp?: number;
+  partialExp?: string;
+  aggregatedExp?: string;
   Imp?: number;
+  partialImp?: string;
+  aggregatedImp?: string;
   valueGeneratedBy?: FlowValueImputationMethod;
   ExpReportedBy?: string;
   ImpReportedBy?: string;
@@ -57,7 +61,7 @@ export interface EdgeAttributes {
     | "split_failed_no_ratio"
     | "split_failed_error"
     | "split_only_partial";
-  value?: number;
+  maxExpImp?: number;
   notes?: string;
   aggregatedIn?: string;
 }

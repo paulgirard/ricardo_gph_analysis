@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { writeFile } from "fs/promises";
 import { DirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { groupBy, keyBy, range, sortedUniq } from "lodash";
+import { groupBy, keyBy, max, range, sortedUniq } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
@@ -32,62 +32,54 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
     (r) => r.RICname_group,
   );
 
-  const yearTradeGraphs = (
-    await Promise.all(
-      range(startYear, endYear, 1).map(async (year) => {
-        try {
-          const graph = await tradeGraph(year, RICentities);
-          console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
+  await Promise.all(
+    range(startYear, endYear, 1).map(async (year) => {
+      try {
+        const graph = await tradeGraph(year, RICentities);
+        console.log("step 0:", JSON.stringify(statsEntityType(graph), null, 2));
 
-          //STEP 1 RIC => GPH (but areas)
-          const notGphRicNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "RIC");
-          notGphRicNodes.forEach((n) => {
-            ricEntityToGPHEntity(n, graph, RICentities, RICgroups);
-          });
-          console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
+        //STEP 1 RIC => GPH (but areas)
+        const notGphRicNodes = (graph as GraphEntityPartiteType).filterNodes((_, atts) => atts.entityType === "RIC");
+        notGphRicNodes.forEach((n) => {
+          ricEntityToGPHEntity(n, graph, RICentities, RICgroups);
+        });
+        console.log("step 1:", JSON.stringify(statsEntityType(graph), null, 2));
 
-          // STEP 2 GPH => GPH autonomous
-          // (subEntity) -[AGGREGATE_INTO]-> (autonomous_entity)
-          aggregateIntoAutonomousEntities(graph as GraphEntityPartiteType);
-          console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
+        // STEP 2 GPH => GPH autonomous
+        // (subEntity) -[AGGREGATE_INTO]-> (autonomous_entity)
+        aggregateIntoAutonomousEntities(graph as GraphEntityPartiteType);
+        console.log("step 2:", JSON.stringify(statsEntityType(graph), null, 2));
 
-          // STEP 3 OTHERs
+        // STEP 3 OTHERs
 
-          // for all areas
-          // (area_entity) -[SPLIT_OTHER]-> (member_entity)
-          splitAreas(graph as GraphEntityPartiteType, RICentities, GPHEntities);
-          splitInformalUnknownEntities(graph as GraphEntityPartiteType);
+        // for all areas
+        // (area_entity) -[SPLIT_OTHER]-> (member_entity)
+        splitAreas(graph as GraphEntityPartiteType, RICentities, GPHEntities);
+        splitInformalUnknownEntities(graph as GraphEntityPartiteType);
 
-          // Detect GPH Autonomous cited
-          flagAutonomousCited(graph as GraphEntityPartiteType);
-          // flag flows as toTreat or ok
-          flagFlowsToTreat(graph as GraphEntityPartiteType);
+        // Detect GPH Autonomous cited
+        flagAutonomousCited(graph as GraphEntityPartiteType);
+        // flag flows as toTreat or ok
+        flagFlowsToTreat(graph as GraphEntityPartiteType);
 
-          // STEP 4 treat trade data
-          resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
-          // GEXF preparation/generation
-          graph.forEachEdge((e, atts) => {
-            // simplify label for Gephi Lite
-            graph.setEdgeAttribute(e, "label", sortedUniq([...atts.labels]).join("|"));
-          });
-          // TODO layout
+        // STEP 4 treat trade data
+        resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
+        // GEXF preparation/generation
+        graph.forEachEdge((e, atts) => {
+          // simplify label for Gephi Lite
+          graph.setEdgeAttribute(e, "label", sortedUniq([...atts.labels]).join("|"));
+        });
+        // TODO layout
 
-          await writeFile(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
-          return graph;
-        } catch (error) {
-          console.log(`error in ${year}`);
-          console.log(error);
-          return null;
-        }
-      }),
-    )
-  ).filter((g): g is GraphEntityPartiteType => g !== null);
-
-  // await applyRatioMethod(
-  //   1833,
-  //   1834,
-  //   keyBy(yearTradeGraphs, (g) => g.getAttribute("year")),
-  // ).catch((e) => console.log(e));
+        await writeFile(`../data/entity_networks/${year}.gexf`, gexf.write(graph), "utf8");
+        return graph;
+      } catch (error) {
+        console.log(`error in ${year}`);
+        console.log(error);
+        return null;
+      }
+    }),
+  );
 };
 
 const applyRatioMethod = async (
@@ -102,6 +94,56 @@ const applyRatioMethod = async (
     try {
       const new_graph = resolveOneToManyEntityTransform(+year, tradeGraphsByYear, edgeKey);
       console.log(`writing gexf for ${year}`);
+
+      new_graph.forEachEdge((e, atts, src, tgt, srcAtts, tgtAtts) => {
+        // create the maxExpImp attribute
+        new_graph.setEdgeAttribute(e, "maxExpImp", max([atts.Exp, atts.Imp]));
+        // flag incomplete Imp or Exp
+        if (atts.labels.has("GENERATED_TRADE") && atts.valueGeneratedBy === "aggregation") {
+          //TODO: refacto to use same code form Exp/Imp
+          // in case of aggregation we check only the non reporter end
+          if (!srcAtts.reporting && atts.Exp !== undefined) {
+            // check that aggregation covers all aggregated_into declarations
+            const aggregatedExporters = atts.aggregatedExp?.split("|") || [];
+            const exportersToAggregate = new_graph
+              .filterEdges((_, atts, __, exporter) => {
+                return exporter === src && atts.labels.has("AGGREGATE_INTO");
+              })
+              .map((e) => new_graph.getNodeAttribute(new_graph.source(e), "label"));
+            if (aggregatedExporters.length > 0 && aggregatedExporters.length !== exportersToAggregate.length) {
+              // partial issue report
+              const missingAggregations = exportersToAggregate.filter((ita) => !aggregatedExporters.includes(ita));
+              const unexpectedAggregations = aggregatedExporters.filter((ita) => !exportersToAggregate.includes(ita));
+              new_graph.setEdgeAttribute(
+                e,
+                "partialExp",
+                `${missingAggregations.length > 1 ? `missing ${missingAggregations.join("|")}` : ""}${unexpectedAggregations.length > 1 ? ` unexpected: ${unexpectedAggregations.join("|")}` : ""}`,
+              );
+            }
+          }
+
+          if (!tgtAtts.reporting && atts.Imp !== undefined) {
+            // check that aggregation covers all aggregated_into declarations
+            const aggregatedImporters = atts.aggregatedImp?.split("|") || [];
+            const importersToAggregate = new_graph
+              .filterEdges((_, atts, __, importer) => {
+                return importer === tgt && atts.labels.has("AGGREGATE_INTO");
+              })
+              .map((e) => new_graph.getNodeAttribute(new_graph.source(e), "label"));
+            if (aggregatedImporters.length > 0 && aggregatedImporters.length !== importersToAggregate.length) {
+              // partial issue report
+              const missingAggregations = importersToAggregate.filter((ita) => !aggregatedImporters.includes(ita));
+              const unexpectedAggregations = aggregatedImporters.filter((ita) => !importersToAggregate.includes(ita));
+              new_graph.setEdgeAttribute(
+                e,
+                "partialImp",
+                `${missingAggregations.length > 1 ? `missing ${missingAggregations.join("|")}` : ""}${unexpectedAggregations.length > 1 ? ` unexpected: ${unexpectedAggregations.join("|")}` : ""}`,
+              );
+            }
+          }
+        }
+      });
+
       writeFileSync(`../data/entity_networks/${year}_ratios.gexf`, gexf.write(new_graph), "utf8");
     } catch (e) {
       console.log(e);

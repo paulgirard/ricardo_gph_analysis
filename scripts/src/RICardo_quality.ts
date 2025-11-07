@@ -17,6 +17,8 @@ interface FlowDataPoint {
   exporterType: string;
   valueFromImporter?: number;
   valueFromExporter?: number;
+  ExpReportedBy?: string;
+  ImpReportedBy?: string;
   status: EdgeAttributes["status"];
   notes?: string;
 }
@@ -160,6 +162,8 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         valueFromImporter: edgeAtts.Imp,
         status: edgeAtts.status,
         notes: edgeAtts.notes,
+        ExpReportedBy: edgeAtts.ExpReportedBy,
+        ImpReportedBy: edgeAtts.ImpReportedBy,
       });
     }
   });
@@ -235,7 +239,9 @@ async function graphsQuality() {
           "exporterLabel",
           "exporterType",
           "valueFromImporter",
+          "ImpReportedBy",
           "valueFromExporter",
+          "ExprReportedBy",
           "status",
           "notes",
         ],
