@@ -9,6 +9,7 @@ program define gravity_trade_estimation
 import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
+format value* %20.0gc
 
 keep if year==`year'
 tempfile tradeFlows
@@ -63,7 +64,6 @@ foreach trader in exporter importer  {
 }
 */
 
-
 //////All observations that include split in the status variable to be duplicated 
 /////for each term between "&" in the importer or exporter variable
 * --- expand observations with status containing "split" into parts between & ---
@@ -108,6 +108,8 @@ by __origid: egen success = max(pred_trade), missing
 by __origid: replace status ="ok thanks to gravity" if success!=. & strpos(status,"split")
 *br if status=="ok thanks to gravity"
 codebook __origid if status=="ok thanks to gravity"
+br if status=="ok thanks to gravity"
+
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
