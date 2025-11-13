@@ -68,7 +68,6 @@ label variable ok_value_ratio "No treatment needed total value"
 
 gen worldbilateral_ratio = worldbilateral/worldft
 label variable worldbilateral_ratio "No treatment needed, aggregated and splitted total value"
-blif
 
 gen aggregation_value_ratio = aggregation_value/worldft
 gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
