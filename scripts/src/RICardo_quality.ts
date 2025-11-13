@@ -4,7 +4,7 @@ import fs from "fs";
 import { difference, flatten, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
-import { EdgeAttributes, FlowValueImputationMethod, GraphType } from "./types";
+import { EdgeAttributes, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
 import { getTradeGraphsByYear } from "./utils";
 
 interface FlowDataPoint {
@@ -12,11 +12,19 @@ interface FlowDataPoint {
   importerId: string;
   importerLabel: string;
   importerType: string;
+  importerReporting: boolean;
+  importerReportingByAggregateInto?: boolean;
+  importerReportingBySplit?: boolean;
   exporterId: string;
   exporterLabel: string;
   exporterType: string;
+  exporterReporting: boolean;
+  exporterReportingByAggregateInto?: boolean;
+  exporterReportingBySplit?: boolean;
   valueFromImporter?: number;
+  partialImp?: string;
   valueFromExporter?: number;
+  partialExp?: string;
   ExpReportedBy?: string;
   ImpReportedBy?: string;
   status: EdgeAttributes["status"];
@@ -147,19 +155,29 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
           }
         }
       }
-      const importer = graph.getTargetAttributes(e);
-      const exporter = graph.getSourceAttributes(e);
+      const importer = (graph as GraphEntityPartiteType).getTargetAttributes(e);
+      const exporter = (graph as GraphEntityPartiteType).getSourceAttributes(e);
 
       flowData.push({
         year,
         importerId: graph.target(e),
         importerLabel: importer.label,
-        importerType: importer.type,
+        importerType: importer.entityType,
+        importerReporting: importer.reporting,
+        importerReportingByAggregateInto: importer.reportingByAggregateInto,
+        importerReportingBySplit: importer.reportingBySplit,
+
         exporterId: graph.source(e),
         exporterLabel: exporter.label,
-        exporterType: exporter.type,
+        exporterType: exporter.entityType,
+        exporterReporting: exporter.reporting,
+        exporterReportingByAggregateInto: exporter.reportingByAggregateInto,
+        exporterReportingBySplit: exporter.reportingBySplit,
+
         valueFromExporter: edgeAtts.Exp,
+        partialExp: edgeAtts.partialExp,
         valueFromImporter: edgeAtts.Imp,
+        partialImp: edgeAtts.partialImp,
         status: edgeAtts.status,
         notes: edgeAtts.notes,
         ExpReportedBy: edgeAtts.ExpReportedBy,
@@ -235,12 +253,20 @@ async function graphsQuality() {
           "importerId",
           "importerLabel",
           "importerType",
+          "importerReporting",
+          "importerReportingByAggregateInto",
+          "importerReportingBySplit",
           "exporterId",
           "exporterLabel",
           "exporterType",
+          "exporterReporting",
+          "exporterReportingByAggregateInto",
+          "exporterReportingBySplit",
           "valueFromImporter",
+          "partialImp",
           "ImpReportedBy",
           "valueFromExporter",
+          "partialExp",
           "ExprReportedBy",
           "status",
           "notes",
