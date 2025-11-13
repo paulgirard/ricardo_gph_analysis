@@ -9,14 +9,14 @@ program define gravity_trade_estimation
 import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
-format value* %20.0gc
+format value* %20.0fc
+
 
 keep if year==`year'
 tempfile tradeFlows
 save `tradeFlows', replace
 
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId   importerType exporterType) j(ExportsImports) string
-
 drop importerType exporterType
 drop if value==.
 drop if status =="ignore_internal" | status=="ignore_resolved"
@@ -26,13 +26,18 @@ gen ln_value=ln(value)
 encode importerLabel, gen(importer_lbl)
 encode exporterLabel, gen(exporter_lbl)
 
+tempfile tradeFlows_`year'
+save `tradeFlows_`year'', replace
+
+
+keep if status=="ok"
+keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
 regress ln_value i.importer_lbl i.exporter_lbl ///
     if ExportsImports=="FromImporter" & year==`year' & status=="ok"
 
 matrix b = e(b)
 local constant= b[1,1]
 local cnames : colnames b
-
 
 ////Create coefficient files for importer and exporter
 
@@ -64,6 +69,9 @@ foreach trader in exporter importer  {
 }
 */
 
+use `tradeFlows_`year'', clear
+
+*****"
 //////All observations that include split in the status variable to be duplicated 
 /////for each term between "&" in the importer or exporter variable
 * --- expand observations with status containing "split" into parts between & ---
