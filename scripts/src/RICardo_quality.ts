@@ -34,6 +34,9 @@ interface FlowDataPoint {
 interface ComputedData {
   year: number;
   bilaterals: Record<FlowStatType, FlowStat>;
+  nbReportingBilateral: number;
+  nbReportingByAggregation: number;
+  nbReportingBySplit: number;
   nbReportingFT: number;
   nbGPHAutonomousCited: number;
   GPHAutonomousCited: { id: string; label: string }[];
@@ -48,15 +51,20 @@ const headers: string[] = [
   "year",
   "nbGPHAutonomousCited",
   "nbReportingFT",
+  "nbReportingBilateral",
+  "nbReportingByAggregation",
+  "nbReportingBySplit",
   "worldBilateral",
   "worldFT",
   ...flatten(
     [
       "ok",
       "aggregation",
-      "split_by_mirror_ratio",
+      // mirror ratio has not been implemented yet
+      //"split_by_mirror_ratio",
       "split_by_years_ratio",
-      "split_to_one",
+      // split to one are counted into aggregation for technical reason
+      //"split_to_one",
       "ignore_internal",
       "discard_collision",
       "splitFailedParts",
@@ -130,14 +138,20 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   };
   const sumBilateralWorld = { nbFlows: 0, value: 0 };
   const flowData: FlowDataPoint[] = [];
+
+  // count Bilateral Reporters
+  const bilateralReporters = new Set<string>();
+  const bilateralReportersByAggregation = new Set<string>();
+  const bilateralReportersBySplit = new Set<string>();
+
   graph.edges().forEach((e) => {
     const edgeAtts = graph.getEdgeAttributes(e);
     const value = getEdgeValue(edgeAtts);
     if ((edgeAtts.labels.has("REPORTED_TRADE") || edgeAtts.labels.has("GENERATED_TRADE")) && edgeAtts.status) {
-      if (value && edgeAtts.status !== "ignore_resolved") {
+      let ok = false;
+      if (value !== undefined && edgeAtts.status !== "ignore_resolved") {
         // if generated_trade track the method used for resolution
-        const ok =
-          edgeAtts.status === "ok" && graph.source(e) !== "restOfTheWorld" && graph.target(e) !== "restOfTheWorld";
+        ok = edgeAtts.status === "ok" && graph.source(e) !== "restOfTheWorld" && graph.target(e) !== "restOfTheWorld";
         let status: FlowStatType | undefined = edgeAtts.labels.has("GENERATED_TRADE")
           ? edgeAtts.valueGeneratedBy
           : edgeAtts.status;
@@ -157,6 +171,15 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       }
       const importer = (graph as GraphEntityPartiteType).getTargetAttributes(e);
       const exporter = (graph as GraphEntityPartiteType).getSourceAttributes(e);
+      // count bilateral reporters
+      if (ok) {
+        if (importer.reporting) bilateralReporters.add(graph.target(e));
+        if (importer.reportingByAggregateInto) bilateralReportersByAggregation.add(graph.target(e));
+        if (importer.reportingBySplit) bilateralReportersBySplit.add(graph.target(e));
+        if (exporter.reporting) bilateralReporters.add(graph.source(e));
+        if (exporter.reportingByAggregateInto) bilateralReportersByAggregation.add(graph.source(e));
+        if (exporter.reportingBySplit) bilateralReportersBySplit.add(graph.source(e));
+      }
 
       flowData.push({
         year,
@@ -202,6 +225,9 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
     year: graph.getAttribute("year"),
     bilaterals,
     nbReportingFT,
+    nbReportingBilateral: bilateralReporters.size,
+    nbReportingByAggregation: bilateralReportersByAggregation.size,
+    nbReportingBySplit: bilateralReportersBySplit.size,
     worldFT,
     nbGPHAutonomousCited,
     worldBilateral: sumBilateralWorld.value,
@@ -232,6 +258,9 @@ async function graphsQuality() {
       year: qualityStats.year,
       nbGPHAutonomousCited: qualityStats.nbGPHAutonomousCited,
       nbReportingFT: qualityStats.nbReportingFT,
+      nbReportingBilateral: qualityStats.nbReportingBilateral,
+      nbReportingByAggregation: qualityStats.nbReportingByAggregation,
+      nbReportingBySplit: qualityStats.nbReportingBySplit,
       worldBilateral: qualityStats.worldBilateral,
       worldFT: qualityStats.worldFT,
       ...bilateralsStats,
