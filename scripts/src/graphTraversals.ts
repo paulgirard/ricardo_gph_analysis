@@ -170,22 +170,24 @@ export function resolveTradeFlow(
         graph.setEdgeAttribute(flow, "status", "discard_collision");
         graph.setEdgeAttribute(flow, "notes", aggregatedFlowNote(e, graph));
         // add mirror value into existing edge
-        graph.updateEdgeAttribute(e, "Exp", (v) =>
-          v !== undefined ? v : (graph.getEdgeAttribute(flow, "Exp") as number) * ratio || undefined,
-        );
-        graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
-          Array.from(
-            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
-          ).join("|"),
-        );
-        graph.updateEdgeAttribute(e, "Imp", (v) =>
-          v !== undefined ? v : (graph.getEdgeAttribute(flow, "Imp") as number) * ratio || undefined,
-        );
-        graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
-          Array.from(
-            new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
-          ).join("|"),
-        );
+        const existingExp = graph.getEdgeAttribute(e, "Exp");
+        if (existingExp === undefined) {
+          graph.setEdgeAttribute(e, "Exp", (graph.getEdgeAttribute(flow, "Exp") as number) * ratio || undefined);
+          graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
+            Array.from(
+              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
+            ).join("|"),
+          );
+        }
+        const existingImp = graph.getEdgeAttribute(e, "Imp");
+        if (existingImp === undefined) {
+          graph.setEdgeAttribute(e, "Imp", (graph.getEdgeAttribute(flow, "Imp") as number) * ratio || undefined);
+          graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
+            Array.from(
+              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
+            ).join("|"),
+          );
+        }
       }
       // throw new Error(
       //   `${newExporter}->${newImporter} can't be created as a ${[...labels].join(", ")} edge already exists`,

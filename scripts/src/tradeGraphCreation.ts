@@ -1,5 +1,5 @@
 import { DirectedGraph } from "graphology";
-import { max, sum, toPairs, uniq } from "lodash";
+import { flatten, max, sum, toPairs, uniq } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
@@ -54,10 +54,10 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
           graph.mergeNode(nodeId(reporting), {
             label: reporting.RICname,
             reporting: true,
-            ricType: r.reporting_type,
+            ricType: reporting.type,
             cited: true,
-            entityType: r.reporting_type === "GPH_entity" ? "GPH" : "RIC",
-            ricParent: r.reporting_parent_entity,
+            entityType: reporting.type === "GPH_entity" ? "GPH" : "RIC",
+            ricParent: reporting.parent_entity,
             type: "entity",
             gphStatus:
               reporting.type === "GPH_entity" && reporting.GPH_code
@@ -68,10 +68,10 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
           if (partner) {
             graph.mergeNode(nodeId(partner), {
               label: partner.RICname,
-              ricType: r.partner_type,
+              ricType: partner.type,
               cited: true,
-              entityType: r.partner_type === "GPH_entity" ? "GPH" : "RIC",
-              ricParent: r.partner_parent_entity,
+              entityType: partner.type === "GPH_entity" ? "GPH" : "RIC",
+              ricParent: partner.parent_entity,
               type: "entity",
               gphStatus:
                 partner.type === "GPH_entity" && partner.GPH_code
@@ -103,6 +103,14 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             );
         });
 
+        graph.forEachEdge((edge) => {
+          graph.setEdgeAttribute(
+            edge,
+            "maxExpImp",
+            max([graph.getEdgeAttribute(edge, "Exp"), graph.getEdgeAttribute(edge, "Imp")]),
+          );
+        });
+
         resolve(graph);
       },
     );
@@ -132,10 +140,11 @@ export const ricEntityToGPHEntity = (
   if (!graph.hasNode(nodeId(RICentity))) {
     graph.addNode(nodeId(RICentity), {
       label: RICentity.RICname,
-      reporting: false, // TODO: should we give reporting status to entity created from transforming a reporting ?
+      reporting: false,
       cited: false,
       ricType: RICentity.type,
       entityType: RICentity.type === "GPH_entity" ? "GPH" : "RIC",
+      ricParent: RICentity.parent_entity,
       type: "entity",
       gphStatus:
         RICentity.type === "GPH_entity" && RICentity.GPH_code
@@ -446,10 +455,21 @@ export function resolveOneToManyEntityTransform(
               ? autonomousImporters.autonomousIds[0]
               : autonomousExporters.autonomousIds[0];
           const splitSide = autonomousImporters.autonomousIds.length === 1 ? "Import" : "Export";
-          const entitiesToSplitInto =
+          let entitiesToSplitInto =
             autonomousImporters.autonomousIds.length === 1
               ? autonomousExporters.autonomousIds
               : autonomousImporters.autonomousIds;
+
+          // remove entities from split destination which are already reported by reporting
+          const reportedPartners = new Set(
+            flatten(
+              graph
+                .filterEdges(oneEndEntity, (_, atts) => atts.labels.has("REPORTED_TRADE"))
+                .map((e) => graph.extremities(e).filter((other) => other !== oneEndEntity)),
+            ),
+          );
+          //remove also the reporter
+          entitiesToSplitInto = entitiesToSplitInto.filter((e) => !reportedPartners.has(e) && e !== oneEndEntity);
 
           const oneEndEntityLabel = graph.getNodeAttribute(oneEndEntity, "label");
 
@@ -485,14 +505,33 @@ export function resolveOneToManyEntityTransform(
             // group ratio are actually duplicated by partner by the findBilateralRatios method. We need to deduplicate them before summing.
             // We could also just do not check and just use 1-solvedRatio
             const rowRatio = Number(sum(uniq(toROW.map(([_, { ratio }]) => ratio || 0))).toFixed(2));
-            resolveTradeFlow(
-              graph,
-              e,
-              splitSide === "Export" ? oneEndEntity : "restOfTheWorld",
-              splitSide === "Export" ? "restOfTheWorld" : oneEndEntity,
-              new Set(["SPLIT"]),
-              Number((1 - solvedRatio).toFixed(2)),
-            );
+            // we dont create flows to rest of the world for now
+            // instead we indicate the destinations to try to impute missing flow from gravity model
+
+            if (toROW.length === 1) {
+              const newPartner = toROW[0][0];
+              resolveTradeFlow(
+                graph,
+                e,
+                splitSide === "Export" ? oneEndEntity : newPartner,
+                splitSide === "Export" ? newPartner : oneEndEntity,
+                new Set(["SPLIT"]),
+                Number((1 - solvedRatio).toFixed(2)),
+              );
+            }
+            if (toROW.length > 1) {
+              graph.setEdgeAttribute(e, "splitToGPHCodes", toROW.map((r) => r[0]).join("|"));
+              graph.setEdgeAttribute(e, "valueToSplit", Number((1 - solvedRatio).toFixed(2)) * valueToSplit);
+            }
+            // redirect to rest of the world will be moved later in the part where we import gravity model results
+            // resolveTradeFlow(
+            //   graph,
+            //   e,
+            //   splitSide === "Export" ? oneEndEntity : "restOfTheWorld",
+            //   splitSide === "Export" ? "restOfTheWorld" : oneEndEntity,
+            //   new Set(["SPLIT"]),
+            //   Number((1 - solvedRatio).toFixed(2)),
+            // );
             if (solved.length > 0 && Number((1 - solvedRatio).toFixed(2)) !== rowRatio) {
               console.log(
                 `error in calculating the remaining SPLIT ratios to send to restOfTheWorld`,

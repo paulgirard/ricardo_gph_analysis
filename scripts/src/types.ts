@@ -29,7 +29,6 @@ export interface EntityNodeAttributes {
 export interface ResolutionNodeAttributes {
   label: string;
   type: "resolution";
-  value?: number;
 }
 
 export type EntityResolutionLabelType = "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
@@ -66,6 +65,8 @@ export interface EdgeAttributes {
   maxExpImp?: number;
   notes?: string;
   aggregatedIn?: string;
+  splitToGPHCodes?: string;
+  valueToSplit?: number;
 }
 export type GraphAttributes = { year: number };
 export type GraphType = DirectedGraph<EntityNodeAttributes | ResolutionNodeAttributes, EdgeAttributes, GraphAttributes>;

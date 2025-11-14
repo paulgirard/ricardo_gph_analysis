@@ -29,6 +29,8 @@ interface FlowDataPoint {
   ImpReportedBy?: string;
   status: EdgeAttributes["status"];
   notes?: string;
+  splitToGPHCodes?: string;
+  valueToSplit?: number;
 }
 
 interface ComputedData {
@@ -152,9 +154,10 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       if (value !== undefined && edgeAtts.status !== "ignore_resolved") {
         // if generated_trade track the method used for resolution
         ok = edgeAtts.status === "ok" && graph.source(e) !== "restOfTheWorld" && graph.target(e) !== "restOfTheWorld";
-        let status: FlowStatType | undefined = edgeAtts.labels.has("GENERATED_TRADE")
-          ? edgeAtts.valueGeneratedBy
-          : edgeAtts.status;
+        let status: FlowStatType | undefined =
+          edgeAtts.labels.has("GENERATED_TRADE") && !edgeAtts.labels.has("REPORTED_TRADE")
+            ? edgeAtts.valueGeneratedBy
+            : edgeAtts.status;
         // if restoftheworld => status = splitFailedParts
         if (graph.source(e) === "restOfTheWorld" || graph.target(e) === "restOfTheWorld") status = "splitFailedParts";
 
@@ -205,6 +208,9 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         notes: edgeAtts.notes,
         ExpReportedBy: edgeAtts.ExpReportedBy,
         ImpReportedBy: edgeAtts.ImpReportedBy,
+
+        splitToGPHCodes: edgeAtts.splitToGPHCodes,
+        valueToSplit: edgeAtts.valueToSplit,
       });
     }
   });
@@ -297,6 +303,8 @@ async function graphsQuality() {
           "valueFromExporter",
           "partialExp",
           "ExprReportedBy",
+          "splitToGPHCodes",
+          "valueToSplit",
           "status",
           "notes",
         ],
