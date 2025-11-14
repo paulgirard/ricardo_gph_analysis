@@ -25,7 +25,7 @@ import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 format value* %20.0fc
-
+blif
 
 keep if year==`year'
 tempfile tradeFlows
@@ -184,5 +184,6 @@ export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_ana
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
-
-gravity_trade_estimation 1870
+foreach year of numlist 1833(1)1938 {
+	gravity_trade_estimation `year'
+}
