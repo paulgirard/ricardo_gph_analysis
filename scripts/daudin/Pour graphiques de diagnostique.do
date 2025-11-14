@@ -86,13 +86,15 @@ label variable WB_and_failedsplit_ratio "Our bilateral trade and failed splits v
 gen our_data_ratio = worldbilateral_ratio + splitfailedparts_ratio + ignored_value_ratio
 label variable our_data_ratio "idem, and internal or redundant value"
 
+gen nbrreportingRIC = nbreportingbyaggregation + nbreportingbilateral + nbreportingbysplit
+label variable nbrreportingRIC "Number of reporting entities in RICardo (incl. aggreg. and split.)"
 
-graph twoway   (connected nbgphautonomouscited year, yaxis(2) msize(vsmall)) ///
+
+graph twoway   (connected nbgphautonomouscited year, yaxis(2) msize(vsmall)) (connected nbrreportingRIC year, yaxis(2) msize(vsmall)) ///
     (connected nbreportingft year, yaxis(2) msize(vsmall)) , ///
-     yscale(axis(2) range(80 190)) ylabel( 80(20)180, axis(2) angle(horizontal))  scheme(s1color) legend(rows(2))
+     yscale(axis(2) range(0 190)) ylabel( 0(20)180, axis(2) angle(horizontal))  scheme(s1color) legend(rows(3))
 
 graph export "figures/FTComparison_nbr_entities.png", replace
-
 
 
 graph twoway  ///
@@ -108,7 +110,7 @@ graph export "figures/FTComparison_value.png", replace
 label variable ok_flows "No treatment needed"
 gen ok_and_aggregatio_flows= ok_flows+ aggregation_flows
 label variable ok_and_aggregatio_flows "No treatment needed and aggregated"
-gen worldbilateral_flows= ok_flows+ aggregation_flows + split_by_mirror_ratio_flows + split_by_years_ratio_flows + split_to_one_flows
+gen worldbilateral_flows= ok_flows+ aggregation_flows + /*split_by_mirror_ratio_flows + */ split_by_years_ratio_flows /*+ split_to_one_flows*/
 label variable worldbilateral_flows "No treatment needed, aggregated and splitted"
 
 gen WB_and_failedsplit_flows = worldbilateral_flows + splitfailedparts_flows + totreat_flows
