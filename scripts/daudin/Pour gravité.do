@@ -25,13 +25,15 @@ import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 format value* %20.0fc
-blif
 
 keep if year==`year'
 tempfile tradeFlows
 save `tradeFlows', replace
-
-reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId   importerType exporterType) j(ExportsImports) string
+replace valueFromImporter=valueToSplit if valueFromImporter!=. & valueToSplit!=.
+replace valueFromExporter=valueToSplit if valueFromExporter!=. & valueToSplit!=.
+drop valueToSplit
+ 
+reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
 
 drop importerType exporterType
 drop if value==.
