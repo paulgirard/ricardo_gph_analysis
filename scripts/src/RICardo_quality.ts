@@ -8,6 +8,7 @@ import { EdgeAttributes, FlowValueImputationMethod, GraphEntityPartiteType, Grap
 import { getTradeGraphsByYear } from "./utils";
 
 interface FlowDataPoint {
+  id: string;
   year: number;
   importerId: string;
   importerLabel: string;
@@ -50,6 +51,7 @@ interface ComputedData {
 }
 
 const headers: string[] = [
+  "id",
   "year",
   "nbGPHAutonomousCited",
   "nbReportingFT",
@@ -185,6 +187,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       }
 
       flowData.push({
+        id: e,
         year,
         importerId: graph.target(e),
         importerLabel: importer.label,
