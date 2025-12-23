@@ -28,8 +28,7 @@ export function findBilateralRatiosInOneYear(
 
       console.log(year, reportingGPHId, partnersByTradeEdges);
       const tradeValues = mapValues(partnersByTradeEdges, (_, edge) => {
-        const { Exp, Imp } = graph.getEdgeAttributes(edge);
-        const value = direction === "Export" ? Exp : Imp;
+        const { value } = graph.getEdgeAttributes(edge);
         if (value === undefined) throw new Error(`Edge ${edge} is not reported by ${reportingGPHId}`);
         return value;
       });
@@ -64,7 +63,7 @@ export function findBilateralRatiosInOneYear(
           }
           return undefined;
         })
-        .filter((gr) => gr !== undefined);
+        .filter((gr): gr is { partners: string[]; value: number } => gr !== undefined);
 
       // compute ratios
       const total = sum(values(ratios)) + sum(groupRatios.map((gr) => gr.value));

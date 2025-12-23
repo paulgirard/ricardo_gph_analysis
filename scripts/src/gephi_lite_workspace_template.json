@@ -1,0 +1,159 @@
+{
+  "type": "gephi-lite",
+  "version": "1.0.2",
+  "graphDataset": {
+    "metadata": { "title": "******" },
+    "nodeFields": [
+      { "id": "label", "itemType": "nodes", "type": "text" },
+      { "id": "reporting", "itemType": "nodes", "type": "boolean" },
+      { "id": "reportingBySplit", "itemType": "nodes", "type": "boolean" },
+      { "id": "ricType", "itemType": "nodes", "type": "category" },
+      { "id": "cited", "itemType": "nodes", "type": "boolean" },
+      { "id": "entityType", "itemType": "nodes", "type": "category" },
+      { "id": "type", "itemType": "nodes", "type": "text" },
+      { "id": "gphStatus", "itemType": "nodes", "type": "category" },
+      { "id": "totalBilateralTrade", "itemType": "nodes", "type": "number" },
+      { "id": "ricParent", "itemType": "nodes", "type": "text" },
+      {
+        "id": "reportingByAggregateInto",
+        "itemType": "nodes",
+        "type": "boolean"
+      }
+    ],
+    "edgeFields": [
+      { "id": "maxExpImp", "itemType": "edges", "type": "number" },
+      {
+        "id": "labels",
+        "itemType": "edges",
+        "type": "keywords",
+        "label": "",
+        "format": "",
+        "separator": "|"
+      },
+      { "id": "status", "itemType": "edges", "type": "keywords", "separator": "|" },
+      { "id": "importerValue", "itemType": "edges", "type": "number" },
+      {
+        "id": "importerPartial",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      {
+        "id": "importerGeneratedFrom",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      { "id": "importerValueGeneratedBy", "itemType": "edges", "type": "category" },
+      { "id": "importerReportedBy", "itemType": "edges", "type": "category" },
+      {
+        "id": "importerOriginalReporters",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      { "id": "importerStatus", "itemType": "edges", "type": "keywords", "separator": "|" },
+      { "id": "importerNotes", "itemType": "edges", "type": "text" },
+      { "id": "importerMergedIn", "itemType": "edges", "type": "keywords", "separator": "|" },
+      { "id": "importerValueToSplit", "itemType": "edges", "type": "number" },
+      { "id": "exporterValue", "itemType": "edges", "type": "number" },
+      {
+        "id": "exporterPartial",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      {
+        "id": "exporterGeneratedFrom",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      { "id": "exporterValueGeneratedBy", "itemType": "edges", "type": "category" },
+      { "id": "exporterReportedBy", "itemType": "edges", "type": "category" },
+      {
+        "id": "exporterOriginalReporters",
+        "itemType": "edges",
+        "type": "keywords",
+        "separator": "|"
+      },
+      { "id": "exporterStatus", "itemType": "edges", "type": "keywords", "separator": "|" },
+      { "id": "exporterNotes", "itemType": "edges", "type": "text" },
+      { "id": "exporterMergedIn", "itemType": "edges", "type": "keywords", "separator": "|" },
+      { "id": "exporterValueToSplit", "itemType": "edges", "type": "number" },
+
+      { "id": "type", "itemType": "edges", "type": "category" }
+    ],
+    "fullGraph": {
+      "options": { "type": "directed", "multi": true, "allowSelfLoops": true },
+      "attributes": {}
+    }
+  },
+  "filters": { "filters": [] },
+  "appearance": {
+    "showEdges": { "value": true },
+    "nodesSize": {
+      "type": "ranking",
+      "field": {
+        "id": "totalBilateralTrade",
+        "itemType": "nodes",
+        "type": "number"
+      },
+      "missingSize": 2,
+      "minSize": 2,
+      "maxSize": 10
+    },
+    "edgesSize": { "type": "fixed", "value": 1 },
+    "backgroundColor": "#FFFFFF00",
+    "layoutGridColor": "#666666",
+    "nodesColor": {
+      "type": "partition",
+      "field": { "id": "ricType", "itemType": "nodes", "type": "category" },
+      "colorPalette": {
+        "GPH_entity": "#986ec1",
+        "locality": "#7ba647",
+        "group": "#cc546b",
+        "colonial_area": "#c1803d",
+        "geographical_area": "#4fae9b"
+      },
+      "missingColor": "#999999"
+    },
+    "edgesColor": {
+      "type": "partition",
+      "field": { "id": "type", "itemType": "edges", "type": "category" },
+      "colorPalette": { "trade": "#AC9F6EFF", "resolution": "#AFBBF6FF", "trade&resolution": "#AAA" },
+      "missingColor": "#cccccc"
+    },
+    "nodesLabel": {
+      "type": "field",
+      "field": { "id": "label", "itemType": "nodes", "type": "text" },
+      "missingValue": null
+    },
+    "edgesLabel": { "type": "none" },
+    "nodesLabelSize": {
+      "type": "item",
+      "value": 14,
+      "zoomCorrelation": 0,
+      "density": 1.3,
+      "sizeCorrelation": 10
+    },
+    "edgesLabelSize": {
+      "type": "fixed",
+      "value": 14,
+      "zoomCorrelation": 0,
+      "density": 1
+    },
+    "nodesLabelEllipsis": {
+      "type": "ellipsis",
+      "enabled": false,
+      "maxLength": 25
+    },
+    "edgesLabelEllipsis": {
+      "type": "ellipsis",
+      "enabled": false,
+      "maxLength": 25
+    },
+    "nodesImage": { "type": "none" },
+    "edgesZIndex": { "type": "none" }
+  }
+}

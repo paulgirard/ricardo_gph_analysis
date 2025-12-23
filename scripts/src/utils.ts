@@ -1,12 +1,20 @@
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
-import { DirectedGraph } from "graphology";
-import gexf from "graphology-gexf";
+import { MultiDirectedGraph } from "graphology";
 import { fromPairs, range } from "lodash";
 
 import { GPHEntity } from "./GPH";
 import conf from "./configuration.json";
-import { EdgeLabelType, EntityNodeAttributes, EntityType, GraphType, RICentity } from "./types";
+import { resolutionEdgeKey } from "./tradeGraphCreation";
+import {
+  EdgeLabelType,
+  EntityNodeAttributes,
+  EntityResolutionLabelType,
+  EntityType,
+  GraphResolutionPartiteType,
+  GraphType,
+  RICentity,
+} from "./types";
 
 /**
  * UTILS
@@ -41,26 +49,61 @@ export const statsEntityType = (graph: GraphType) => {
   };
 };
 
-export const addEdgeLabel = (graph: GraphType, source: string, target: string, label: EdgeLabelType) => {
-  graph.updateDirectedEdge(source, target, (atts) => ({
-    ...atts,
-    labels: new Set([...(atts.labels || []), label]),
-  }));
+export const addResolutionEdge = (
+  graph: GraphResolutionPartiteType,
+  source: string,
+  target: string,
+  label: EntityResolutionLabelType,
+) => {
+  const edgeKey = resolutionEdgeKey(source, target);
+  const existingResolution = graph.hasEdge(edgeKey);
+  if (existingResolution)
+    graph.mergeEdgeAttributes(edgeKey, {
+      labels: new Set([...(graph.getEdgeAttribute(edgeKey, "labels") || []), label]),
+    });
+  else
+    graph.addDirectedEdgeWithKey(resolutionEdgeKey(source, target), source, target, {
+      type: "resolution",
+      labels: new Set<EntityResolutionLabelType>([label]),
+    });
 };
 
+export function hasResolutionEdge(
+  graph: GraphResolutionPartiteType,
+  source: string,
+  target: string,
+  label: EntityResolutionLabelType,
+) {
+  const edgeKey = resolutionEdgeKey(source, target);
+  return graph.hasEdge(edgeKey) && graph.getEdgeAttribute(edgeKey, "labels").has(label);
+}
+
 export async function getTradeGraphsByYear(ratios?: boolean) {
-  const graphFile = (year: number) => `../data/entity_networks/${year}${ratios ? "_ratios" : ""}.gexf`;
+  const graphFile = (year: number) => `../data/entity_networks/${year}${ratios ? "_ratios" : ""}.json`;
   return fromPairs(
     await Promise.all(
       range(conf.startDate, conf.endDate + 1)
         .filter((year) => existsSync(graphFile(year)))
         .map(async (year) => {
-          const graph = gexf.parse(DirectedGraph, await readFile(graphFile(year), "utf8"));
+          const graph = new MultiDirectedGraph();
+          graph.import(
+            JSON.parse((await readFile(graphFile(year))).toString(), (key, value) =>
+              key === "labels" ? new Set(value) : value,
+            ),
+          );
+
           graph.edges().forEach((e) => {
-            graph.updateEdgeAttribute(e, "labels", (l) => new Set(l));
+            console.log(graph.getEdgeAttributes(e));
+            graph.updateEdgeAttribute(e, "labels", (l) => new Set(Array.from(l)));
           });
           return [year, graph as GraphType];
         }),
     ),
   );
+}
+
+export function setReplacer(_: string, value: unknown) {
+  if (value instanceof Set) {
+    return Array.from(value);
+  } else return value;
 }

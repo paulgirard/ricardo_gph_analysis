@@ -4,7 +4,7 @@ import fs from "fs";
 import { difference, flatten, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
-import { EdgeAttributes, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
+import { FlowValueImputationMethod, GraphEntityPartiteType, GraphType, TradeEdgeAttributes } from "./types";
 import { getTradeGraphsByYear } from "./utils";
 
 interface FlowDataPoint {
@@ -28,7 +28,7 @@ interface FlowDataPoint {
   partialExp?: string;
   ExpReportedBy?: string;
   ImpReportedBy?: string;
-  status: EdgeAttributes["status"];
+  status: TradeEdgeAttributes["status"];
   notes?: string;
   splitToGPHCodes?: string;
   valueToSplit?: number;
@@ -93,11 +93,11 @@ interface FlowStat {
 }
 
 type FlowStatType =
-  | Exclude<EdgeAttributes["status"], "ignore_resolved" | undefined>
+  | Exclude<TradeEdgeAttributes["status"], "ignore_resolved" | undefined>
   | FlowValueImputationMethod
   | "splitFailedParts";
 
-function getEdgeValue(edgeAtts: EdgeAttributes) {
+function getEdgeValue(edgeAtts: TradeEdgeAttributes) {
   return edgeAtts.Exp || edgeAtts.Imp;
 }
 

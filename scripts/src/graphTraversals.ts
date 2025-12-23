@@ -1,6 +1,6 @@
-import { flatten, identity, pick, sortBy, uniq } from "lodash";
+import { flatten, identity, sortBy, uniq } from "lodash";
 
-import { computeTradeValue } from "./tradeGraphCreation";
+import { tradeEdgeKey } from "./tradeGraphCreation";
 import { EntityResolutionLabelType, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
 
 export interface AutonomousResolutionType {
@@ -10,23 +10,27 @@ export interface AutonomousResolutionType {
 
 function getEntityAutonomousResolutionEdges(
   entityNodeId: string,
-  graph: GraphEntityPartiteType,
+  graph: GraphType,
   limitToResolutionTypes: Set<EntityResolutionLabelType>,
 ) {
   return (
     graph
       // only traverse aggregate and split edges
-      .filterOutboundEdges(entityNodeId, (_, atts) => atts.labels.intersection(limitToResolutionTypes).size > 0)
+      .filterOutboundEdges(
+        entityNodeId,
+        (_, atts) => atts.type === "resolution" && atts.labels.intersection(limitToResolutionTypes).size > 0,
+      )
   );
 }
 
 export function resolveAutonomous(
   entityId: string,
-  graph: GraphEntityPartiteType,
+  graph: GraphType,
   limitToResolutionTypes: Set<EntityResolutionLabelType> = new Set(["AGGREGATE_INTO", "SPLIT", "SPLIT_OTHER"]),
 ): AutonomousResolutionType {
   if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
     return { autonomousIds: [entityId], traversedLabels: new Set() };
+
   const traversedLabels = new Set<EntityResolutionLabelType>();
   const autonomousEntities = flatten(
     // only traverse aggregate and split edges
@@ -78,122 +82,102 @@ export function resolveAutonomous(
   return autonomousEntities;
 }
 
-const aggregatedFlowNote = (flow: string, graph: GraphType) => {
+const aggregatedFlowNote = (flow: string, graph: GraphEntityPartiteType) => {
   const flowAttributes = graph.getEdgeAttributes(flow);
   const exporter = graph.getNodeAttribute(graph.source(flow), "label");
   const importer = graph.getNodeAttribute(graph.target(flow), "label");
-  return `${exporter}${flowAttributes.ExpReportedBy === exporter ? " (REP) " : ""} -> ${importer} ${flowAttributes.ImpReportedBy === importer ? " (REP) " : ""} : ${graph.getEdgeAttribute(flow, "Exp")}->${graph.getEdgeAttribute(flow, "Imp")}`;
+  const reporter = flowAttributes.reportedBy === graph.target(flow) ? exporter : importer;
+  const partner = flowAttributes.reportedBy === graph.source(flow) ? exporter : importer;
+  const edgeDirection = flowAttributes.reportedBy === graph.source(flow) ? "->" : "<-";
+  return `${reporter} (REP) ${edgeDirection} ${partner} ${flowAttributes.value}`;
 };
 
-export function resolveTradeFlow(
-  graph: GraphType,
-  flow: string,
+export function generateTradeFlow(
+  graph: GraphEntityPartiteType,
+  originalFlow: string,
   newExporter: string,
   newImporter: string,
   entitiesResolutionLabels: Set<EntityResolutionLabelType>,
-  ratio: number = 1,
+  newValue: number | undefined,
+  valueReportedBy: "importer" | "exporter",
 ) {
+  if (newValue === undefined) throw new Error(`can't generate trade flow from to impute trade flow`);
+  if (graph.getEdgeAttribute(originalFlow, "type") !== "trade")
+    throw new Error(`trying to apply trade transformation to a resolution edge ${originalFlow}`);
   // internal trade flows case => source = target
   if (newExporter === newImporter) {
-    graph.setEdgeAttribute(flow, "status", "ignore_internal");
+    graph.setEdgeAttribute(originalFlow, "status", "ignore_internal");
     return;
   } else {
     const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
       ? "aggregation"
       : "split_by_years_ratio";
+
     // first check if trade flow does not already exist
-    if (graph.hasDirectedEdge(newExporter, newImporter)) {
-      const e = graph.edge(newExporter, newImporter) as string;
-      const labels = graph.getEdgeAttribute(e, "labels");
+    const idEdge = tradeEdgeKey(
+      valueReportedBy === "importer" ? newImporter : newExporter,
+      valueReportedBy === "importer" ? newExporter : newImporter,
+      valueReportedBy === "importer" ? "Imp" : "Exp",
+    );
+    // collision with to_impute => discard to_impute and do as if there were no edge at all
+    if (graph.hasEdge(idEdge) && !graph.getEdgeAttribute(idEdge, "labels").has("TO_IMPUTE")) {
+      const eAtts = graph.getEdgeAttributes(idEdge);
+      const labels = graph.getEdgeAttribute(idEdge, "labels");
 
-      if (
-        (labels.has("GENERATED_TRADE") && graph.getEdgeAttribute(e, `valueGeneratedBy`) === generatedByMethod) ||
-        (labels.has("REPORTED_TRADE") && graph.getEdgeAttribute(e, "maxExpImp") === undefined)
-      ) {
-        // should we restrict to aggregation method?
+      if (labels.has("GENERATED_TRADE")) {
         // update value by summing
-        const exp = graph.getEdgeAttribute(flow, "Exp");
-        graph.updateEdgeAttribute(e, "Exp", (v) => (exp ? (v || 0) + exp * ratio : v));
-        graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
-          sortBy(
-            Array.from(
-              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
-            ),
-          ).join("|"),
+        graph.updateEdgeAttribute(idEdge, "value", (v) => (v || 0) + newValue);
+        // add original reporters
+        graph.updateEdgeAttribute(
+          idEdge,
+          `originalReporters`,
+          (v) =>
+            new Set([...(v || []), ...(graph.getEdgeAttribute(originalFlow, `reportedBy`) || [])].filter(identity)),
         );
-        graph.updateEdgeAttribute(e, "aggregatedExp", (aggregatedExp) =>
-          sortBy(
-            Array.from(
-              new Set(
-                [
-                  ...(aggregatedExp ? aggregatedExp.split("|") : []),
-                  graph.getNodeAttribute(graph.source(flow), "label"),
-                ].filter(identity),
-              ),
-            ),
-          ).join("|"),
-        );
-        const imp = graph.getEdgeAttribute(flow, "Imp");
-        graph.updateEdgeAttribute(e, "Imp", (v) => (imp ? (v || 0) + imp * ratio : v)) || undefined;
-        graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
-          sortBy(
-            Array.from(
-              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
-            ),
-          ).join("|"),
-        );
-        graph.updateEdgeAttribute(e, "aggregatedImp", (aggregatedImp) =>
-          sortBy(
-            Array.from(
-              new Set(
-                [
-                  ...(aggregatedImp ? aggregatedImp.split("|") : []),
-                  graph.getNodeAttribute(graph.target(flow), "label"),
-                ].filter(identity),
-              ),
-            ),
-          ).join("|"),
-        );
-        graph.setEdgeAttribute(e, "maxExpImp", computeTradeValue(graph.getEdgeAttributes(e)));
 
-        graph.setEdgeAttribute(flow, "status", "ignore_resolved");
-        graph.setEdgeAttribute(flow, "aggregatedIn", e);
-        graph.setEdgeAttribute(e, "labels", graph.getEdgeAttribute(e, "labels").union(new Set(["GENERATED_TRADE"])));
+        graph.updateEdgeAttribute(idEdge, `generatedFrom`, (generatedFrom) =>
+          sortBy(
+            Array.from(
+              new Set(
+                [
+                  ...(generatedFrom ? generatedFrom.split("|") : []),
+                  graph.getNodeAttribute(
+                    valueReportedBy === "exporter" ? graph.source(originalFlow) : graph.target(originalFlow),
+                    "label",
+                  ),
+                ].filter(identity),
+              ),
+            ),
+          ).join("|"),
+        );
+
+        graph.updateEdgeAttribute(idEdge, "valueGeneratedBy", (v) => sortBy(uniq([...(v || []), generatedByMethod])));
+
+        // indicate in the original flow where the information has been merged
+        graph.updateEdgeAttribute(originalFlow, "mergedIn", (v) => sortBy(uniq([...(v || []), idEdge])));
+
+        graph.setEdgeAttribute(
+          idEdge,
+          "labels",
+          graph.getEdgeAttribute(idEdge, "labels").union(new Set(["GENERATED_TRADE"])),
+        );
+
         // add reporters in notes
-        graph.updateEdgeAttribute(e, "notes", (notes) => `${notes}\n${aggregatedFlowNote(flow, graph)}`);
+        graph.updateEdgeAttribute(idEdge, "notes", (notes) => `${notes}\n${aggregatedFlowNote(originalFlow, graph)}`);
+
+        return { status: "merged", with: idEdge };
       }
 
       // COLLISION with reported_trade
       // TODO: should we check that reported_trade is ok?
-      if (labels.has("REPORTED_TRADE") && graph.getEdgeAttribute(e, "maxExpImp") !== undefined) {
-        // collision: we keep the reported trade and discard the incoming flow
-        graph.setEdgeAttribute(flow, "status", "discard_collision");
-        graph.setEdgeAttribute(flow, "notes", aggregatedFlowNote(e, graph));
-        // add mirror value into existing edge
-        const existingExp = graph.getEdgeAttribute(e, "Exp");
-        if (existingExp === undefined) {
-          graph.setEdgeAttribute(e, "Exp", (graph.getEdgeAttribute(flow, "Exp") as number) * ratio || undefined);
-          graph.updateEdgeAttribute(e, "ExpReportedBy", (v) =>
-            Array.from(
-              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ExpReportedBy")].filter(identity)),
-            ).join("|"),
-          );
-        }
-        const existingImp = graph.getEdgeAttribute(e, "Imp");
-        if (existingImp === undefined) {
-          graph.setEdgeAttribute(e, "Imp", (graph.getEdgeAttribute(flow, "Imp") as number) * ratio || undefined);
-          graph.updateEdgeAttribute(e, "ImpReportedBy", (v) =>
-            Array.from(
-              new Set([...(v ? v.split("|") : []), graph.getEdgeAttribute(flow, "ImpReportedBy")].filter(identity)),
-            ).join("|"),
-          );
-        }
+      if (labels.has("REPORTED_TRADE")) {
+        return { status: "collision", with: idEdge };
       }
-      // throw new Error(
-      //   `${newExporter}->${newImporter} can't be created as a ${[...labels].join(", ")} edge already exists`,
-      // );
+      throw new Error(`merged with wrong edge ${JSON.stringify(eAtts, null, 2)}`);
     } else {
-      // re-route the edge
+      if (graph.hasEdge(idEdge) && graph.getEdgeAttribute(idEdge, "labels").has("TO_IMPUTE")) graph.dropEdge(idEdge);
+
+      // create a new edge
       if ((newExporter === "restOfTheWorld" || newImporter === "restOfTheWorld") && !graph.hasNode("restOfTheWorld"))
         graph.addNode("restOfTheWorld", {
           type: "entity",
@@ -202,28 +186,27 @@ export function resolveTradeFlow(
           ricType: "geographical_area",
           reporting: false,
         });
-      const atts = graph.getEdgeAttributes(flow);
-      graph.addDirectedEdgeWithKey(`${newExporter}->${newImporter}`, newExporter, newImporter, {
+
+      graph.addDirectedEdgeWithKey(idEdge, newExporter, newImporter, {
         // reuse direction and value from original flow
-        ...pick(atts, ["ExpReportedBy", "ImpReportedBy"]),
-        // one the two should be undefined, if we have to redirect the edge there should be no mirror
-        Exp: atts.Exp ? atts.Exp * ratio : undefined,
-        Imp: atts.Imp ? atts.Imp * ratio : undefined,
-        //value: undefined,
-        valueGeneratedBy: generatedByMethod,
+        value: newValue,
+        valueGeneratedBy: [generatedByMethod],
+        reportedBy: valueReportedBy === "exporter" ? newExporter : newImporter,
+        originalReporters: new Set([graph.getEdgeAttribute(originalFlow, `reportedBy`)]),
+        generatedFrom: graph.getNodeAttribute(
+          valueReportedBy === "exporter" ? graph.source(originalFlow) : graph.target(originalFlow),
+          "label",
+        ),
         labels: new Set(["GENERATED_TRADE"]),
-        notes: aggregatedFlowNote(flow, graph),
+        notes: aggregatedFlowNote(originalFlow, graph),
         status: "ok",
+        type: "trade",
       });
-      graph.setEdgeAttribute(
-        `${newExporter}->${newImporter}`,
-        "maxExpImp",
-        computeTradeValue(graph.getEdgeAttributes(`${newExporter}->${newImporter}`)),
-      );
+
       // state the edge as resolved
-      graph.setEdgeAttribute(flow, "status", "ignore_resolved");
+      graph.setEdgeAttribute(originalFlow, "status", "ignore_resolved");
+      return { status: "created", with: null };
     }
-    return;
   }
 }
 
@@ -233,13 +216,14 @@ export function findRelevantTradeFlowToEntity(
   partners: string[],
   direction: "Export" | "Import",
 ) {
-  const tradeFlows = graph.filterEdges(reporting, (_, attributes, source, target) => {
+  const tradeFlows = graph.filterEdges(reporting, (_, attributes) => {
     return (
       // Keep only REPORTED_TRADE and GENERATED_TRADE
+      attributes.type === "trade" &&
       (attributes.labels.has("REPORTED_TRADE") || attributes.labels.has("GENERATED_TRADE")) &&
       // tests to make sure we have a reported value discard mirror flow only
-      (direction === "Export" ? source : target) === reporting &&
-      (direction === "Export" ? attributes.Exp !== undefined : attributes.Imp !== undefined) &&
+      attributes.reportedBy === reporting &&
+      attributes.value !== undefined &&
       // keep only status
       (attributes.status === "ok" || attributes.status === "toTreat")
     );
@@ -285,7 +269,7 @@ export function propagateReporting(
         target,
         (_, atts) =>
           atts.labels.has("GENERATED_TRADE") && // has one generated trade edge
-          (atts.ExpReportedBy?.includes(reportingLabel) || atts.ImpReportedBy?.includes(reportingLabel)),
+          atts.reportedBy === target,
       ).length,
     );
     if (
@@ -295,7 +279,7 @@ export function propagateReporting(
         target,
         (_, atts) =>
           atts.labels.has("GENERATED_TRADE") && // has one generated trade edge
-          (atts.ExpReportedBy?.includes(reportingLabel) || atts.ImpReportedBy?.includes(reportingLabel)),
+          atts.reportedBy === target,
       ).length > 0
     ) {
       // which contains some trade value aggregated from the original reporter
