@@ -447,9 +447,10 @@ export function resolveEntityTransform(
         if (autonomousReporterIds.length !== 1) {
           // we can't split reporting side
           graph.setEdgeAttribute(e, "status", "split_failed_error");
-          throw new Error(
+          console.log(
             `we can't split reporting side for reporter ${graph.getNodeAttribute(edgeToTreatAtts.reportedBy, "label")} ${autonomousReporterIds}`,
           );
+          return;
           //  const message = `n->n or 0->0 case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`;
           //   console.log(message);
           //   graph.setEdgeAttribute(e, "notes", message);
@@ -515,6 +516,7 @@ export function resolveEntityTransform(
             // check data coherence: ratio in groups should be the same as the remaining ratio after solved cases
             // group ratio are actually duplicated by partner by the findBilateralRatios method. We need to deduplicate them before summing.
             // We could also just do not check and just use 1-solvedRatio
+            //TODO: failedRatio calculus is bad
             const failedRatio = Number(sum(uniq(failed.map(([_, { ratio }]) => ratio || 0))).toFixed(2));
             // we dont create flows to rest of the world for now
             // instead we indicate the destinations to try to impute missing flow from gravity model
@@ -562,8 +564,8 @@ export function resolveEntityTransform(
                     reportedBy: valueReportedBy === "importer" ? target : source,
                     originalReporters: new Set([edgeToTreatAtts.reportedBy]),
                     value: undefined,
-                    valueToSplit: valueToSplit * failedRatio,
-                    //originalReportedTradeFlowId: e,
+                    valueToSplit: valueToSplit * (1 - solvedRatio),
+                    originalReportedTradeFlowId: e,
                     type: "trade",
                   });
                 }

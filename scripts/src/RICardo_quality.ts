@@ -1,7 +1,7 @@
 import { parallelize } from "@ouestware/async";
 import { stringify } from "csv/sync";
 import fs from "fs";
-import { difference, flatten, sortBy, toPairs, uniq, values } from "lodash";
+import { difference, flatten, keys, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
 import { FlowValueImputationMethod, GraphEntityPartiteType, GraphType, TradeEdgeAttributes } from "./types";
@@ -22,16 +22,15 @@ interface FlowDataPoint {
   exporterReporting: boolean;
   exporterReportingByAggregateInto?: boolean;
   exporterReportingBySplit?: boolean;
-  valueFromImporter?: number;
-  partialImp?: string;
-  valueFromExporter?: number;
-  partialExp?: string;
-  ExpReportedBy?: string;
-  ImpReportedBy?: string;
+  value?: number;
+  partial?: string;
+  reportedBy?: string;
+
   status: TradeEdgeAttributes["status"];
   notes?: string;
-  splitToGPHCodes?: string;
+
   valueToSplit?: number;
+  originalReportedTradeFlowId?: string;
 }
 
 interface ComputedData {
@@ -50,36 +49,7 @@ interface ComputedData {
   flowData: FlowDataPoint[];
 }
 
-const headers: string[] = [
-  "id",
-  "year",
-  "nbGPHAutonomousCited",
-  "nbReportingFT",
-  "nbReportingBilateral",
-  "nbReportingByAggregation",
-  "nbReportingBySplit",
-  "worldBilateral",
-  "worldFT",
-  ...flatten(
-    [
-      "ok",
-      "aggregation",
-      // mirror ratio has not been implemented yet
-      //"split_by_mirror_ratio",
-      "split_by_years_ratio",
-      // split to one are counted into aggregation for technical reason
-      //"split_to_one",
-      "ignore_internal",
-      "discard_collision",
-      "splitFailedParts",
-      "toTreat",
-    ].map((s) => [`${s}_flows`, `${s}_value`]),
-  ),
-  "inFTNotInBilateral",
-  "inBilateralNotInFT",
-] as const;
-
-// TODO : recode form netwtok data
+// TODO : recode form network data
 // priority exp on imp on mirror : premier alphabétique
 
 // sum world de FT comparé
@@ -96,10 +66,6 @@ type FlowStatType =
   | Exclude<TradeEdgeAttributes["status"], "ignore_resolved" | undefined>
   | FlowValueImputationMethod
   | "splitFailedParts";
-
-function getEdgeValue(edgeAtts: TradeEdgeAttributes) {
-  return edgeAtts.Exp || edgeAtts.Imp;
-}
 
 async function graphQuality(graph: GraphType): Promise<ComputedData> {
   const year = graph.getAttribute("year");
@@ -126,20 +92,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   );
   const { nbReportingFT, worldFT, reportingsFT } = await FTPromise;
   // bilateral flows
-  const bilaterals: Record<FlowStatType, FlowStat> = {
-    ok: { nbFlows: 0, value: 0 },
-    toTreat: { nbFlows: 0, value: 0 },
-    aggregation: { nbFlows: 0, value: 0 },
-    split_to_one: { nbFlows: 0, value: 0 },
-    split_by_years_ratio: { nbFlows: 0, value: 0 },
-    split_by_mirror_ratio: { nbFlows: 0, value: 0 },
-    ignore_internal: { nbFlows: 0, value: 0 },
-    discard_collision: { nbFlows: 0, value: 0 },
-    splitFailedParts: { nbFlows: 0, value: 0 },
-    split_only_partial: { nbFlows: 0, value: 0 },
-    split_failed_no_ratio: { nbFlows: 0, value: 0 },
-    split_failed_error: { nbFlows: 0, value: 0 },
-  };
+  const bilaterals: Record<string, FlowStat> = {};
   const sumBilateralWorld = { nbFlows: 0, value: 0 };
   const flowData: FlowDataPoint[] = [];
 
@@ -148,24 +101,27 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   const bilateralReportersByAggregation = new Set<string>();
   const bilateralReportersBySplit = new Set<string>();
 
-  graph.edges().forEach((e) => {
-    const edgeAtts = graph.getEdgeAttributes(e);
-    const value = getEdgeValue(edgeAtts);
-    if ((edgeAtts.labels.has("REPORTED_TRADE") || edgeAtts.labels.has("GENERATED_TRADE")) && edgeAtts.status) {
+  (graph as GraphEntityPartiteType).edges().forEach((e) => {
+    const edgeAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(e);
+    const value = edgeAtts.value;
+    if (edgeAtts.type === "trade") {
       let ok = false;
-      if (value !== undefined && edgeAtts.status !== "ignore_resolved") {
+      if (value !== undefined) {
+        // && edgeAtts.status !== "ignore_resolved") {
         // if generated_trade track the method used for resolution
         ok = edgeAtts.status === "ok" && graph.source(e) !== "restOfTheWorld" && graph.target(e) !== "restOfTheWorld";
-        let status: FlowStatType | undefined =
+        const status: string | undefined =
           edgeAtts.labels.has("GENERATED_TRADE") && !edgeAtts.labels.has("REPORTED_TRADE")
-            ? edgeAtts.valueGeneratedBy
+            ? sortBy(uniq(edgeAtts.valueGeneratedBy)).join("|")
             : edgeAtts.status;
         // if restoftheworld => status = splitFailedParts
-        if (graph.source(e) === "restOfTheWorld" || graph.target(e) === "restOfTheWorld") status = "splitFailedParts";
+        // if (graph.source(e) === "restOfTheWorld" || graph.target(e) === "restOfTheWorld") status = "splitFailedParts";
 
         if (status !== undefined) {
-          bilaterals[status].nbFlows += 1;
-          bilaterals[status].value += value;
+          bilaterals[status] = {
+            nbFlows: (bilaterals[status]?.nbFlows || 0) + 1,
+            value: (bilaterals[status]?.nbFlows || 0) + value,
+          };
 
           // bilateral sum
           if (ok) {
@@ -203,17 +159,16 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         exporterReportingByAggregateInto: exporter.reportingByAggregateInto,
         exporterReportingBySplit: exporter.reportingBySplit,
 
-        valueFromExporter: edgeAtts.Exp,
-        partialExp: edgeAtts.partialExp,
-        valueFromImporter: edgeAtts.Imp,
-        partialImp: edgeAtts.partialImp,
+        value: edgeAtts.value,
+        partial: edgeAtts.partial,
+        reportedBy: edgeAtts.reportedBy,
+
         status: edgeAtts.status,
         notes: edgeAtts.notes,
-        ExpReportedBy: edgeAtts.ExpReportedBy,
-        ImpReportedBy: edgeAtts.ImpReportedBy,
 
-        splitToGPHCodes: edgeAtts.splitToGPHCodes,
+        // to impute special fields
         valueToSplit: edgeAtts.valueToSplit,
+        originalReportedTradeFlowId: edgeAtts.originalReportedTradeFlowId,
       });
     }
   });
@@ -276,41 +231,55 @@ async function graphsQuality() {
       inFTNotInBilateral: qualityStats.inFTNotInBilateral.join("|"),
       inBilateralNotInFT: qualityStats.inBilateralNotInFT.join("|"),
     };
+    const headers: string[] = [
+      "id",
+      "year",
+      "nbGPHAutonomousCited",
+      "nbReportingFT",
+      "nbReportingBilateral",
+      "nbReportingByAggregation",
+      "nbReportingBySplit",
+      "worldBilateral",
+      "worldFT",
+      ...flatten([keys(bilateralsStats)].map((s) => [`${s}_flows`, `${s}_value`])),
+      "inFTNotInBilateral",
+      "inBilateralNotInFT",
+    ] as const;
     statsStream.write(
       stringify([stats], {
         header: firstLine,
         columns: headers,
       }),
     );
+    const columns: (keyof FlowDataPoint)[] = [
+      "year",
+      "importerId",
+      "importerLabel",
+      "importerType",
+      "importerReporting",
+      "importerReportingByAggregateInto",
+      "importerReportingBySplit",
+      "exporterId",
+      "exporterLabel",
+      "exporterType",
+      "exporterReporting",
+      "exporterReportingByAggregateInto",
+      "exporterReportingBySplit",
 
+      "value",
+      "reportedBy",
+      "partial",
+
+      "valueToSplit",
+      "originalReportedTradeFlowId",
+
+      "status",
+      "notes",
+    ];
     flowStream.write(
       stringify(qualityStats.flowData, {
         header: firstLine,
-        columns: [
-          "year",
-          "importerId",
-          "importerLabel",
-          "importerType",
-          "importerReporting",
-          "importerReportingByAggregateInto",
-          "importerReportingBySplit",
-          "exporterId",
-          "exporterLabel",
-          "exporterType",
-          "exporterReporting",
-          "exporterReportingByAggregateInto",
-          "exporterReportingBySplit",
-          "valueFromImporter",
-          "partialImp",
-          "ImpReportedBy",
-          "valueFromExporter",
-          "partialExp",
-          "ExprReportedBy",
-          "splitToGPHCodes",
-          "valueToSplit",
-          "status",
-          "notes",
-        ],
+        columns,
       }),
     );
 

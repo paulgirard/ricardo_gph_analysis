@@ -93,7 +93,6 @@ export async function getTradeGraphsByYear(ratios?: boolean) {
           );
 
           graph.edges().forEach((e) => {
-            console.log(graph.getEdgeAttributes(e));
             graph.updateEdgeAttribute(e, "labels", (l) => new Set(Array.from(l)));
           });
           return [year, graph as GraphType];
