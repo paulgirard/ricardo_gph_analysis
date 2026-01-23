@@ -1,7 +1,7 @@
 import { parallelize } from "@ouestware/async";
 import { stringify } from "csv/sync";
 import fs from "fs";
-import { difference, keys, sortBy, toPairs, uniq, values } from "lodash";
+import { difference, flatten, keys, omit, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
 import { FlowValueImputationMethod, GraphEntityPartiteType, GraphType, TradeEdgeAttributes } from "./types";
@@ -207,8 +207,6 @@ async function graphsQuality() {
   const tradeGraphsByYear = await getTradeGraphsByYear(true);
   // prepare out streams
   const GPHAutonomousCited: Record<string, { id: string; label: string; years: number[] }> = {};
-  const statsStream = fs.createWriteStream("../data/tradeGraphsStats.csv", { flags: "w" });
-  let firstLine = true;
 
   const tasks = values(tradeGraphsByYear).map((graph) => async () => {
     const qualityStats = await graphQuality(graph);
@@ -231,28 +229,7 @@ async function graphsQuality() {
       inFTNotInBilateral: qualityStats.inFTNotInBilateral.join("|"),
       inBilateralNotInFT: qualityStats.inBilateralNotInFT.join("|"),
     };
-    const headers: string[] = [
-      "id",
-      "year",
-      "nbGPHAutonomousCited",
-      "nbReportingFT",
-      "nbReportingBilateral",
-      "nbReportingByAggregation",
-      "nbReportingBySplit",
-      "worldBilateral",
-      "worldFT",
-      ...sortBy(keys(bilateralsStats)),
-      "inFTNotInBilateral",
-      "inBilateralNotInFT",
-    ] as const;
-    console.log(headers);
-    console.log(stats);
-    statsStream.write(
-      stringify([stats], {
-        header: firstLine,
-        columns: headers,
-      }),
-    );
+
     const columns: (keyof FlowDataPoint)[] = [
       "year",
       "importerId",
@@ -294,10 +271,31 @@ async function graphsQuality() {
       };
     });
 
-    firstLine = false;
+    return stats;
   });
-  await parallelize(tasks, 5);
-  statsStream.end();
+  const stats = await parallelize(tasks, 5);
+
+  const headers: string[] = [
+    "id",
+    "year",
+    "nbGPHAutonomousCited",
+    "nbReportingFT",
+    "nbReportingBilateral",
+    "nbReportingByAggregation",
+    "nbReportingBySplit",
+    "worldBilateral",
+    "worldFT",
+    "inFTNotInBilateral",
+    "inBilateralNotInFT",
+  ];
+  const flowStatsHeaders = sortBy(uniq(flatten(stats.map((s) => keys(omit(s, headers))))));
+  fs.writeFileSync(
+    "../data/tradeGraphsStats.csv",
+    stringify(stats, {
+      header: true,
+      columns: [...headers, ...flowStatsHeaders],
+    }),
+  );
 
   fs.writeFileSync(
     "../data/GPHAutonomousCited.csv",
