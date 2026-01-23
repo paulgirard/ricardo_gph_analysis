@@ -32434,7 +32434,7 @@
         "reportedBy": "350",
         "value": 27769.319727891158,
         "type": "trade",
-        "status": "split_failed_no_ratio"
+        "status": "split_only_partial"
       }
     },
     {
@@ -34825,7 +34825,10 @@
         "reportedBy": "155",
         "value": 128857.85536159601,
         "type": "trade",
-        "status": "split_failed_no_ratio"
+        "status": "split_only_partial",
+        "mergedIn": [
+          "155->2"
+        ]
       }
     },
     {
@@ -35287,7 +35290,10 @@
         "reportedBy": "155",
         "value": 237399.5779781316,
         "type": "trade",
-        "status": "split_failed_no_ratio"
+        "status": "split_only_partial",
+        "mergedIn": [
+          "155<-2"
+        ]
       }
     },
     {
@@ -51639,7 +51645,7 @@
       "source": "1024",
       "target": "20",
       "attributes": {
-        "value": 265295.9671332806,
+        "value": 233352.54981932178,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -51665,7 +51671,7 @@
       "source": "21",
       "target": "20",
       "attributes": {
-        "value": 43987.87710180979,
+        "value": 75931.29441576857,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -54747,7 +54753,7 @@
       "source": "200",
       "target": "850",
       "attributes": {
-        "value": 661132.0361702077,
+        "value": 661131.901197075,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -56537,19 +56543,22 @@
       "source": "155",
       "target": "2",
       "attributes": {
-        "value": 22269.134855169767,
+        "value": 54280.47306704355,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "155",
         "originalReporters": [
-          "155"
+          "155",
+          "1",
+          "5"
         ],
         "generatedFrom": "Chile",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "California (Great Bear Republic) (REP) -> Chile 22269.134855169767",
+        "notes": "California (Great Bear Republic) (REP) -> Chile 22269.134855169767\nNorthern America (REP) -> Chile 128857.85536159601",
         "status": "ok",
         "type": "trade"
       }
@@ -56559,19 +56568,22 @@
       "source": "2",
       "target": "155",
       "attributes": {
-        "value": 49160.75196623825,
+        "value": 108057.65503369366,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "155",
         "originalReporters": [
-          "155"
+          "155",
+          "1",
+          "5"
         ],
         "generatedFrom": "Chile",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "California (Great Bear Republic) (REP) <- Chile 49160.75196623825",
+        "notes": "California (Great Bear Republic) (REP) <- Chile 49160.75196623825\nNorthern America (REP) <- Chile 237399.5779781316",
         "status": "ok",
         "type": "trade"
       }
@@ -112702,7 +112714,7 @@
         "originalReporters": [
           "200"
         ],
-        "valueToSplit": 0.9638297923772541,
+        "valueToSplit": 1.0988029249716789,
         "originalReportedTradeFlowId": "200->Borneo",
         "type": "trade"
       }
@@ -112720,7 +112732,7 @@
         "originalReporters": [
           "200"
         ],
-        "valueToSplit": 0.9638297923772541,
+        "valueToSplit": 1.0988029249716789,
         "originalReportedTradeFlowId": "200->Borneo",
         "type": "trade"
       }
@@ -112738,7 +112750,7 @@
         "originalReporters": [
           "200"
         ],
-        "valueToSplit": 0.9638297923772541,
+        "valueToSplit": 1.0988029249716789,
         "originalReportedTradeFlowId": "200->Borneo",
         "type": "trade"
       }
@@ -112756,7 +112768,7 @@
         "originalReporters": [
           "200"
         ],
-        "valueToSplit": 0.9638297923772541,
+        "valueToSplit": 1.0988029249716789,
         "originalReportedTradeFlowId": "200->Borneo",
         "type": "trade"
       }
@@ -123666,16 +123678,20 @@
       "source": "2",
       "target": "350",
       "attributes": {
-        "labels": [
-          "TO_IMPUTE"
+        "value": 13056.231876124504,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
         ],
-        "status": "to_impute",
         "reportedBy": "350",
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
-        "originalReportedTradeFlowId": "350<-America",
+        "generatedFrom": "Greece",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "America (REP) <- Greece 27769.319727891158",
+        "status": "ok",
         "type": "trade"
       }
     },
@@ -123692,7 +123708,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123710,7 +123726,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123728,7 +123744,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123746,7 +123762,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123764,7 +123780,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123782,7 +123798,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123800,7 +123816,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123818,7 +123834,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123836,7 +123852,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123854,7 +123870,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123872,7 +123888,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123890,7 +123906,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123908,7 +123924,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123926,7 +123942,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123944,7 +123960,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123962,7 +123978,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123980,7 +123996,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -123998,7 +124014,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124016,7 +124032,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124034,7 +124050,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124052,7 +124068,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124070,7 +124086,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124088,7 +124104,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124106,7 +124122,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124124,7 +124140,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124142,7 +124158,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124160,7 +124176,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124178,7 +124194,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124196,7 +124212,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124214,7 +124230,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124232,7 +124248,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124250,7 +124266,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124268,7 +124284,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124286,7 +124302,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124304,7 +124320,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124322,7 +124338,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124340,7 +124356,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124358,7 +124374,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124376,7 +124392,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124394,7 +124410,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124412,7 +124428,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124430,7 +124446,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124448,7 +124464,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124466,7 +124482,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124484,7 +124500,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -124502,7 +124518,7 @@
         "originalReporters": [
           "350"
         ],
-        "valueToSplit": 27769.319727891158,
+        "valueToSplit": 14713.087851766652,
         "originalReportedTradeFlowId": "350<-America",
         "type": "trade"
       }
@@ -131318,7 +131334,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131336,7 +131352,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131354,7 +131370,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131372,7 +131388,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131390,7 +131406,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131408,7 +131424,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131426,7 +131442,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -131444,7 +131460,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 128857.85536159601,
+        "valueToSplit": 96846.51714972223,
         "originalReportedTradeFlowId": "155->Northern America",
         "type": "trade"
       }
@@ -132344,7 +132360,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132362,7 +132378,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132380,7 +132396,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132398,7 +132414,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132416,7 +132432,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132434,7 +132450,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132452,7 +132468,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }
@@ -132470,7 +132486,7 @@
         "originalReporters": [
           "155"
         ],
-        "valueToSplit": 237399.5779781316,
+        "valueToSplit": 178502.67491067617,
         "originalReportedTradeFlowId": "155<-Northern America",
         "type": "trade"
       }

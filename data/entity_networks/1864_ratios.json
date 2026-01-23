@@ -23793,7 +23793,10 @@
         "reportedBy": "800",
         "value": 703212.2628431101,
         "type": "trade",
-        "status": "split_failed_no_ratio"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "800<-827"
+        ]
       }
     },
     {
@@ -58330,19 +58333,22 @@
       "source": "827",
       "target": "800",
       "attributes": {
-        "value": 101120.92525844654,
+        "value": 793781.5938565258,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "800",
         "originalReporters": [
-          "800"
+          "800",
+          "8",
+          "0"
         ],
         "generatedFrom": "Thailand (Siam)",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Malaysia (British Malaya) (other) (REP) <- Thailand (Siam) 101120.92525844654",
+        "notes": "Malaysia (British Malaya) (other) (REP) <- Thailand (Siam) 101120.92525844654\nJakarta (Batavia) & Singapore (REP) <- Thailand (Siam) 703212.2628431101",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -110064,16 +110070,20 @@
       "source": "850",
       "target": "800",
       "attributes": {
-        "labels": [
-          "TO_IMPUTE"
+        "value": 10551.594245030841,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
         ],
-        "status": "to_impute",
         "reportedBy": "800",
         "originalReporters": [
           "800"
         ],
-        "valueToSplit": 703212.2628431101,
-        "originalReportedTradeFlowId": "800<-Jakarta (Batavia) & Singapore",
+        "generatedFrom": "Thailand (Siam)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Jakarta (Batavia) & Singapore (REP) <- Thailand (Siam) 703212.2628431101",
+        "status": "ok",
         "type": "trade"
       }
     },
