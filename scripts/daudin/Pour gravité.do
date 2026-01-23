@@ -21,11 +21,12 @@ save `GeoPolHist_entities', replace
 
 *************Importation des flux commerciaux
 
-import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows.csv", /*
+import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows_`year'.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 format value* %20.0fc
 
+/* Plus nécessaire avec le nouveau format des données (1 ligne par flux)
 keep if year==`year'
 tempfile tradeFlows
 save `tradeFlows', replace
@@ -34,7 +35,7 @@ replace valueFromExporter=valueToSplit if valueFromExporter!=. & valueToSplit!=.
 drop valueToSplit
  
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
-
+*/
 drop importerType exporterType
 drop if value==.
 drop if status =="ignore_internal" | status=="ignore_resolved"
@@ -46,8 +47,13 @@ encode exporterLabel, gen(exporter_lbl)
 
 tempfile tradeFlows_`year'
 save `tradeFlows_`year'', replace
+*'
+generate ExportsImports="Unknown"
+replace ExportsImports="Imports" if reportedBy==importerId 
+replace ExportsImports="Exports" if reportedBy==exporterId 
 
-
+tab ExportsImports
+blif
 keep if status=="ok"
 keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
 
