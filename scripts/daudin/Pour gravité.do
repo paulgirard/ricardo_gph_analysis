@@ -48,12 +48,11 @@ encode exporterLabel, gen(exporter_lbl)
 tempfile tradeFlows_`year'
 save `tradeFlows_`year'', replace
 *'
-generate ExportsImports="Unknown"
-replace ExportsImports="Imports" if reportedBy==importerId 
-replace ExportsImports="Exports" if reportedBy==exporterId 
+generate ExportsImports="FromUnknown"
+replace ExportsImports="FromImporter" if reportedBy==importerId 
+replace ExportsImports="FromExporter" if reportedBy==exporterId 
 
 tab ExportsImports
-blif
 keep if status=="ok"
 keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
 
@@ -91,6 +90,7 @@ foreach trader in exporter importer  {
 	tempfile `trader'_coefs
 	capture postclose handle
 	postfile handle str200 `trader'_part int `trader' double coefficient using ``trader'_coefs', replace
+	*'
 	local i = 1
 	foreach var_name of local cnames {
     	if strpos("`var_name'","`trader'_lbl") {
@@ -117,7 +117,7 @@ foreach trader in exporter importer  {
 
 use `tradeFlows_`year'', clear
 
-*****"
+*****'
 //////All observations that include split in the status variable to be duplicated 
 /////for each term between "&" in the importer or exporter variable
 * --- expand observations with status containing "split" into parts between & ---
@@ -192,6 +192,10 @@ export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_ana
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
+
+gravity_trade_estimation 1833
+
+/*
 foreach year of numlist 1833(1)1938 {
 	gravity_trade_estimation `year'
 }
