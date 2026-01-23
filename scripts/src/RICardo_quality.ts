@@ -120,7 +120,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         if (status !== undefined) {
           bilaterals[status] = {
             nbFlows: (bilaterals[status]?.nbFlows || 0) + 1,
-            value: (bilaterals[status]?.nbFlows || 0) + value,
+            value: (bilaterals[status]?.value || 0) + value,
           };
 
           // bilateral sum
