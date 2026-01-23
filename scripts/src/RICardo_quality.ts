@@ -1,7 +1,7 @@
 import { parallelize } from "@ouestware/async";
 import { stringify } from "csv/sync";
 import fs from "fs";
-import { difference, flatten, keys, sortBy, toPairs, uniq, values } from "lodash";
+import { difference, keys, sortBy, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
 import { FlowValueImputationMethod, GraphEntityPartiteType, GraphType, TradeEdgeAttributes } from "./types";
@@ -208,11 +208,11 @@ async function graphsQuality() {
   // prepare out streams
   const GPHAutonomousCited: Record<string, { id: string; label: string; years: number[] }> = {};
   const statsStream = fs.createWriteStream("../data/tradeGraphsStats.csv", { flags: "w" });
-  const flowStream = fs.createWriteStream("../data/tradeFlows.csv", { flags: "w" });
   let firstLine = true;
 
   const tasks = values(tradeGraphsByYear).map((graph) => async () => {
     const qualityStats = await graphQuality(graph);
+    const flowStream = fs.createWriteStream(`../data/tradeFlows_${qualityStats.year}.csv`, { flags: "w" });
     // BilateralStats
     const bilateralsStats = toPairs(qualityStats.bilaterals).reduce((acc, [key, stats]) => {
       return { ...acc, [`${key}_flows`]: stats.nbFlows, [`${key}_value`]: stats.value };
@@ -241,10 +241,12 @@ async function graphsQuality() {
       "nbReportingBySplit",
       "worldBilateral",
       "worldFT",
-      ...flatten([keys(bilateralsStats)].map((s) => [`${s}_flows`, `${s}_value`])),
+      ...sortBy(keys(bilateralsStats)),
       "inFTNotInBilateral",
       "inBilateralNotInFT",
     ] as const;
+    console.log(headers);
+    console.log(stats);
     statsStream.write(
       stringify([stats], {
         header: firstLine,
@@ -278,10 +280,11 @@ async function graphsQuality() {
     ];
     flowStream.write(
       stringify(qualityStats.flowData, {
-        header: firstLine,
+        header: true,
         columns,
       }),
     );
+    flowStream.end();
 
     // GPHAutonomousCited list
     qualityStats.GPHAutonomousCited.forEach((GPH) => {
@@ -295,7 +298,6 @@ async function graphsQuality() {
   });
   await parallelize(tasks, 5);
   statsStream.end();
-  flowStream.end();
 
   fs.writeFileSync(
     "../data/GPHAutonomousCited.csv",
