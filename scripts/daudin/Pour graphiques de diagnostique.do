@@ -78,14 +78,14 @@ gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
 label variable ok_and_aggregatio_ratio "No treatment needed and aggregated total value"
 
 
-gen ignored_value_ratio = (ignore_internal_value + discard_collision_value)/worldft
+gen ignored_value_ratio = (ignore_internal_value /*+ discard_collision_value*/)/worldft /*il n’y plus de discard_collision*/
 label variable ignored_value_ratio "Non-pertinent value (duplicated and internal)"
 
-gen splitfailedparts_ratio = (splitfailedparts_value + totreat_flows)/worldft
-label variable splitfailedparts_ratio "Failed splits value"
+gen splitfailedparts_ratio = (split_failed_error_value+ split_failed_no_ratio_value+ split_only_partial_value + totreat_flows)/worldft
+label variable splitfailedparts_ratio "To treat value"
 
 gen WB_and_failedsplit_ratio = worldbilateral_ratio + splitfailedparts_ratio
-label variable WB_and_failedsplit_ratio "Our bilateral trade and failed splits value"
+label variable WB_and_failedsplit_ratio "Our bilateral trade and to treat value"
 
 gen our_data_ratio = worldbilateral_ratio + splitfailedparts_ratio + ignored_value_ratio
 label variable our_data_ratio "idem, and internal or redundant value"
@@ -117,8 +117,8 @@ label variable ok_and_aggregatio_flows "No treatment needed and aggregated"
 gen worldbilateral_flows= ok_flows+ aggregation_flows + /*split_by_mirror_ratio_flows + */ split_by_years_ratio_flows /*+ split_to_one_flows*/
 label variable worldbilateral_flows "No treatment needed, aggregated and splitted"
 
-gen WB_and_failedsplit_flows = worldbilateral_flows + splitfailedparts_flows + totreat_flows
-label variable WB_and_failedsplit_flows "Our bilateral trade and failed splits"
+gen WB_and_failedsplit_flows = worldbilateral_flows + split_failed_error_flows + split_failed_no_ratio_flows + split_only_partial_flows + totreat_flows
+label variable WB_and_failedsplit_flows "Our bilateral trade and to treat"
 
 gen our_data_flows = WB_and_failedsplit_flows + ignore_internal_flows
 label variable our_data_flows "idem, and internal or redundant"
