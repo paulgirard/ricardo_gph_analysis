@@ -78,8 +78,8 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
       WHERE
         flow is not null and rate is not null AND
         year = ${year} AND
-        partner = 'World Federico Tena' AND
-        expimp  = "Exp"
+        partner = 'World Federico Tena'
+
       GROUP BY year
         `,
         function (err, rows) {
