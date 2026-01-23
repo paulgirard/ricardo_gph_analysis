@@ -56,7 +56,11 @@ tempfile tradeGraphStat
 save `tradeGraphStat', replace
 sort year
 
+rename aggregationsplit_by_years_ratio aggr_split_by_years_ratio_flows
+rename v15 aggr_split_by_years_ratio_value
+
 graph twoway (connected nbgphautonomouscited year, yaxis(1) ) (connected nbreportingft year, yaxis(1))
+
 
 
 label variable nbgphautonomouscited "Number of trading entities"
