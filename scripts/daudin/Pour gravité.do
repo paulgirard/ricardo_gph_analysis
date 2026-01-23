@@ -195,7 +195,7 @@ end
 
 gravity_trade_estimation 1833
 
-/*
-foreach year of numlist 1833(1)1938 {
+
+foreach year of numlist 1906(1)1938 {
 	gravity_trade_estimation `year'
 }
