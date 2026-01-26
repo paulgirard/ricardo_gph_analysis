@@ -59,6 +59,18 @@ sort year
 rename aggregationsplit_by_years_ratio aggr_split_by_years_ratio_flows
 rename v15 aggr_split_by_years_ratio_value
 
+
+replace ignore_internal_value =0 if ignore_internal_value==.
+replace split_failed_error_value =0 if split_failed_error_value==.
+replace split_failed_no_ratio_value =0 if split_failed_no_ratio_value==.
+replace totreat_value =0 if totreat_value==.
+
+replace ignore_internal_flows =0 if ignore_internal_flows==.
+replace split_failed_error_flows =0 if split_failed_error_flows==.
+replace split_failed_no_ratio_flows =0 if split_failed_no_ratio_flows==.
+replace totreat_flows =0 if totreat_flows==.
+
+
 graph twoway (connected nbgphautonomouscited year, yaxis(1) ) (connected nbreportingft year, yaxis(1))
 
 
@@ -75,14 +87,17 @@ label variable worldbilateral_ratio "No treatment needed, aggregated and splitte
 
 gen aggregation_value_ratio = aggregation_value/worldft
 gen ok_and_aggregatio_ratio= ok_value_ratio+ aggregation_value_ratio
-label variable ok_and_aggregatio_ratio "No treatment needed and aggregated total value"
+label variable ok_and_aggregatio_ratio "No treatment needed and pure aggregated total value"
 
 
 gen ignored_value_ratio = (ignore_internal_value /*+ discard_collision_value*/)/worldft /*il n’y plus de discard_collision*/
 label variable ignored_value_ratio "Non-pertinent value (duplicated and internal)"
 
-gen splitfailedparts_ratio = (split_failed_error_value+ split_failed_no_ratio_value+ split_only_partial_value + totreat_flows)/worldft
+
+
+gen splitfailedparts_ratio = (split_failed_error_value+ split_failed_no_ratio_value + totreat_flows)/worldft
 label variable splitfailedparts_ratio "To treat value"
+
 
 gen WB_and_failedsplit_ratio = worldbilateral_ratio + splitfailedparts_ratio
 label variable WB_and_failedsplit_ratio "Our bilateral trade and to treat value"
