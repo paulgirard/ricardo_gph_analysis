@@ -582,8 +582,10 @@ export function resolveEntityTransform(
 
             // flag flow if failed or partial split
             if (solved.length === 0) graph.setEdgeAttribute(e, "status", "split_failed_no_ratio");
-            if (solved.length > 0 && solved.length < autonomousPartnersIds.length)
+            if (solved.length > 0 && solved.length < autonomousPartnersIds.length) {
               graph.setEdgeAttribute(e, "status", "split_only_partial");
+              graph.setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
+            }
           } else {
             console.log(
               `1->n where 1- entity ${reporterId}-[${splitSide}]-${reporterLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
@@ -599,19 +601,11 @@ export function resolveEntityTransform(
         } else {
           // case 1 -> 0
 
-          // redirect to rest of the world
+          // Cases :
+          // - resolution du partner qui entre en collision avec un autre partner
+          // - GPH n'a pas trouvé d'entité autonome
 
-          generateTradeFlow(
-            graph,
-            e,
-            autonomousReporterIds[0],
-            "restOfTheWorld",
-            new Set(["SPLIT"]),
-            edgeToTreatAtts.value,
-            valueReportedBy,
-          );
-
-          graph.setEdgeAttribute(e, "status", "ignore_resolved");
+          graph.setEdgeAttribute(e, "status", "split_failed_error");
         }
       });
   }
