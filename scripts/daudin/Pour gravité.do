@@ -77,7 +77,7 @@ gen ln_distance=ln(distance_km)
 
 *****Régression de gravité
 
-regress ln_value ln_distance i.importer_lbl i.exporter_lbl ///
+regress ln_value ln_distance i.importerId i.exporterId ///
     if ExportsImports=="FromImporter" & year==`year' & status=="ok"
 
 matrix b = e(b)
@@ -85,31 +85,39 @@ local constant= b[1,1]
 local coef_distance= b[1,2]
 local cnames : colnames b
 
+display "cenames: `cnames'"
+
 
 ////Create coefficient files for importer and exporter
 
 foreach trader in exporter importer  {
 	tempfile `trader'_coefs
 	capture postclose handle
-	postfile handle str200 `trader'_part int `trader' double coefficient using ``trader'_coefs', replace
+	postfile handle /*str200 `trader'_part*/ int new`trader'Id double coefficient using ``trader'_coefs', replace
 	*'
 	local i = 1
 	foreach var_name of local cnames {
-    	if strpos("`var_name'","`trader'_lbl") {
+    	if strpos("`var_name'","`trader'Id") {
         	local coef = b[1,`i']
 			if regexm("`var_name'", "^([0-9]+)") {
     			local code = regexs(1)
 			}
 			*display "`code'"
-			*label dir
-			local lbl :  label `trader'_lbl  `code'
-        	post handle ("`lbl'") (`code')  (`coef')
+			label dir
+			*local lbl :  label `trader'Id  `code'
+        	post handle /*("`lbl'")*/ (`code')  (`coef')
     	}
     	local ++i
 	}
 	postclose handle
-
+	*use ``trader'_coefs', clear
+	*'
+	list
+	*blif 
 }
+
+
+
 /*
 foreach trader in exporter importer  {
 	use ``trader'_coefs', clear
@@ -118,67 +126,78 @@ foreach trader in exporter importer  {
 */
 
 use `tradeFlows_`year'', clear
-
 *****'
-
-keep if status=="to_impute"
-
-blif
-/*
+drop if status=="ok"
+drop if strpos(newPartners,"restOfTheWorld")!=0
 
 //////All observations that include split in the status variable to be duplicated 
 /////for each term between "&" in the importer or exporter variable
 * --- expand observations with status containing "split" into parts between & ---
-gen long __origid = _n
 // split importer into parts (creates importerLabel1 importerLabel2 ...)
-split importerLabel, parse(" & ") gen(importer_part)
+
+
+gen newImporter= newPartners if exporterReporting==1
+replace newImporter= string(newReporter) if importerReporting==1
+gen newExporter= newPartners if importerReporting==1
+replace newExporter= string(newReporter) if exporterReporting==1
+
+drop newPartners newReporter
+
+split newImporter, parse("|") gen(newimporterId)
 
 // reshape long on importer parts (keeps all other vars)
-reshape long importer_part, i(__origid) j(ipno) string
-drop if missing(importer_part)
+reshape long newimporterId, i(id) j(ipno) 
+drop if missing(newimporterId)
 
 // split exporter into parts (creates exporterLabel1 exporterLabel2 ...)
-split exporterLabel, parse(" & ") gen(exporter_part)
+split newExporter, parse("|") gen(newexporterId)
 
 // reshape long on exporter parts: include ipno so reshape produces cross-product
-reshape long exporter_part, i(__origid ipno) j(epno) string
-drop if missing(exporter_part)
+reshape long newexporterId, i(id ipno) j(epno) 
+drop if missing(newexporterId)
 
-*/
+destring newimporterId newexporterId, replace
+
 
 // replace original label vars with the part values
 *replace importerLabel = importer_part
 *replace exporterLabel = exporter_part
-gen importer_part = importerLabel
-gen exporter_part = exporterLabel
+*gen importer_part = importerLabel
+*gen exporter_part = exporterLabel
 
 
 ///Souci : les groupes ne sont pas réduits à des composants GPH** (ex : flux UK-Barbary Coast en 1833)
 
-merge m:1 importer_part using `importer_coefs'
+merge m:1 newimporterId using `importer_coefs'
+
 rename coefficient importer_coef
 drop _merge
-merge m:1 exporter_part using `exporter_coefs'
+merge m:1 newexporterId using `exporter_coefs'
 rename coefficient exporter_coef
 drop _merge
+
+
 sort originalReportedTradeFlowId
-drop importer_lbl-importer exporter
+*drop importer_lbl-importer exporter
+
 
 
 ***On vérifie que par originalReportedTradeFlowId on a bien les coeffcients pour toutes les parties
-bysort originalReportedTradeFlowId: egen ok_exp = min(!missing(exporter_coef))
-bysort originalReportedTradeFlowId: egen ok_imp = min(!missing(importer_coef))
+bysort id: egen ok_exp = min(!missing(exporter_coef))
+bysort id: egen ok_imp = min(!missing(importer_coef))
+
 drop if ok_exp==0 | ok_imp==0
 drop ok_exp ok_imp
 
 
+
 /////intégration de la distance
 foreach trader in importer exporter {
-	rename `trader'Label GPH_name
-	merge m:1 GPH_name using `GeoPolHist_entities', keep(1 3)
+	rename new`trader'Id GPH_code
+	merge m:1 GPH_code using `GeoPolHist_entities', keep(1 3)
 	drop if _merge!=3
-	drop _merge GPH_code continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
-	rename GPH_name `trader'Label
+	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
+	rename GPH_code new`trader'Id
 	rename lat `trader'_lat
 	rename lng `trader'_lng
 }
@@ -204,11 +223,12 @@ codebook originalReportedTradeFlowId if status=="ok thanks to gravity"
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace
-keep 
+keep id year importerReporting exporterReporting newimporterId newexporterId pred_trade
+export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
+
 
 gravity_trade_estimation 1833
 
@@ -216,6 +236,6 @@ foreach year of numlist 1834(1)1847 {
 	gravity_trade_estimation `year'
 }
 
-foreach year of numlist 1849(1)1938 {
+foreach year of numlist 1848(1)1938 {
 	gravity_trade_estimation `year'
 }
