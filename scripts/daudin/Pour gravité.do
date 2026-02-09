@@ -37,7 +37,7 @@ drop valueToSplit
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
 */
 drop importerType exporterType
-drop if value==.
+drop if value==. & status !="to_impute"
 drop if status =="ignore_internal" | status=="ignore_resolved"
 
 gen ln_value=ln(value)
@@ -47,6 +47,8 @@ encode exporterLabel, gen(exporter_lbl)
 
 tempfile tradeFlows_`year'
 save `tradeFlows_`year'', replace
+
+
 *'
 generate ExportsImports="FromUnknown"
 replace ExportsImports="FromImporter" if reportedBy==importerId 
@@ -118,6 +120,12 @@ foreach trader in exporter importer  {
 use `tradeFlows_`year'', clear
 
 *****'
+
+keep if status=="to_impute"
+
+blif
+/*
+
 //////All observations that include split in the status variable to be duplicated 
 /////for each term between "&" in the importer or exporter variable
 * --- expand observations with status containing "split" into parts between & ---
@@ -136,9 +144,13 @@ split exporterLabel, parse(" & ") gen(exporter_part)
 reshape long exporter_part, i(__origid ipno) j(epno) string
 drop if missing(exporter_part)
 
+*/
+
 // replace original label vars with the part values
-replace importerLabel = importer_part
-replace exporterLabel = exporter_part
+*replace importerLabel = importer_part
+*replace exporterLabel = exporter_part
+gen importer_part = importerLabel
+gen exporter_part = exporterLabel
 
 
 ///Souci : les groupes ne sont pas réduits à des composants GPH** (ex : flux UK-Barbary Coast en 1833)
@@ -149,24 +161,24 @@ drop _merge
 merge m:1 exporter_part using `exporter_coefs'
 rename coefficient exporter_coef
 drop _merge
-sort __origid
+sort originalReportedTradeFlowId
+drop importer_lbl-importer exporter
 
-***On vériefie que par __origid on a bien les coeffcients pour toutes les parties
-bysort __origid: egen ok_exp = min(!missing(exporter_coef))
-bysort __origid: egen ok_imp = min(!missing(importer_coef))
+
+***On vérifie que par originalReportedTradeFlowId on a bien les coeffcients pour toutes les parties
+bysort originalReportedTradeFlowId: egen ok_exp = min(!missing(exporter_coef))
+bysort originalReportedTradeFlowId: egen ok_imp = min(!missing(importer_coef))
 drop if ok_exp==0 | ok_imp==0
 drop ok_exp ok_imp
 
 
 /////intégration de la distance
-
-
 foreach trader in importer exporter {
-	rename `trader'_part GPH_name
+	rename `trader'Label GPH_name
 	merge m:1 GPH_name using `GeoPolHist_entities', keep(1 3)
 	drop if _merge!=3
 	drop _merge GPH_code continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
-	rename GPH_name `trader'_part
+	rename GPH_name `trader'Label
 	rename lat `trader'_lat
 	rename lng `trader'_lng
 }
@@ -177,25 +189,33 @@ gen ln_distance=ln(distance_km)
 ////estimation of the trade
 
 gen pred=exp(`constant' + `coef_distance'*ln_distance + importer_coef + exporter_coef)
-sort __origid
-egen sum_pred = total(pred), by(__origid)
-gen pred_trade =  value * pred/ sum_pred
+sort originalReportedTradeFlowId
+egen sum_pred = total(pred), by(originalReportedTradeFlowId)
+gen pred_trade =  valueToSplit * pred/ sum_pred
 
-by __origid: egen success = max(pred_trade), missing
-by __origid: replace status ="ok thanks to gravity" if success!=. & strpos(status,"split")
+by originalReportedTradeFlowId: egen success = max(pred_trade), missing
+
+drop pred sum_pred
+
+by originalReportedTradeFlowId: replace status ="ok thanks to gravity" if success!=.
 *br if status=="ok thanks to gravity"
-codebook __origid if status=="ok thanks to gravity"
+drop success
+codebook originalReportedTradeFlowId if status=="ok thanks to gravity"
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace
+keep 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
 
 gravity_trade_estimation 1833
 
+foreach year of numlist 1834(1)1847 {
+	gravity_trade_estimation `year'
+}
 
-foreach year of numlist 1906(1)1938 {
+foreach year of numlist 1849(1)1938 {
 	gravity_trade_estimation `year'
 }
