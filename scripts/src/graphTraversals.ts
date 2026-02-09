@@ -62,6 +62,8 @@ export function resolveAutonomous(
           //     ricType: "geographical_area",
           //     reporting: false,
           //   });
+
+          // TODO: failure
           return { autonomousIds: ["restOfTheWorld"], traversedLabels };
         }
       }

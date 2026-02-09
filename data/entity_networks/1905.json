@@ -3780,14 +3780,15 @@
     {
       "key": "930",
       "attributes": {
-        "label": "New Caledonia and Dependencies",
+        "label": "New Caledonia",
         "ricType": "GPH_entity",
         "cited": true,
         "entityType": "GPH-AUTONOMOUS-CITED",
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Colony of",
-        "totalBilateralTrade": 15203
+        "reporting": true,
+        "totalBilateralTrade": 112985.0015913431
       }
     },
     {
@@ -4488,7 +4489,7 @@
         "entityType": "RIC",
         "ricParent": "France",
         "type": "entity",
-        "totalBilateralTrade": 1083514.1444939526
+        "totalBilateralTrade": 1083505.7501591342
       }
     },
     {
@@ -6143,54 +6144,6 @@
       }
     },
     {
-      "key": "France (French produce)",
-      "attributes": {
-        "label": "France (French produce)",
-        "ricType": "locality",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "France",
-        "type": "entity",
-        "totalBilateralTrade": 4291255.569700828
-      }
-    },
-    {
-      "key": "French Colonies (French produce)",
-      "attributes": {
-        "label": "French Colonies (French produce)",
-        "ricType": "locality",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "French Colonies",
-        "type": "entity",
-        "totalBilateralTrade": 162675.04774029282
-      }
-    },
-    {
-      "key": "French Colonies (Foreign produce)",
-      "attributes": {
-        "label": "French Colonies (Foreign produce)",
-        "ricType": "locality",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "French Colonies",
-        "type": "entity",
-        "totalBilateralTrade": 37754.61489497135
-      }
-    },
-    {
-      "key": "France (Foreign produce)",
-      "attributes": {
-        "label": "France (Foreign produce)",
-        "ricType": "locality",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "France",
-        "type": "entity",
-        "totalBilateralTrade": 69501.90961171228
-      }
-    },
-    {
       "key": "438",
       "attributes": {
         "label": "Guinea (French Guinea) (Rivieres du Sud)",
@@ -6244,19 +6197,6 @@
         "type": "entity",
         "gphStatus": "Part of",
         "totalBilateralTrade": 115856.02323360917
-      }
-    },
-    {
-      "key": "New Caledonia",
-      "attributes": {
-        "label": "New Caledonia",
-        "reporting": true,
-        "ricType": "locality",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "New Caledonia and Dependencies",
-        "type": "entity",
-        "totalBilateralTrade": 112985.0015913431
       }
     },
     {
@@ -7645,6 +7585,15 @@
       }
     },
     {
+      "key": "10202",
+      "attributes": {
+        "label": "Alberta",
+        "gphStatus": "Part of",
+        "entityType": "GPH",
+        "type": "entity"
+      }
+    },
+    {
       "key": "690",
       "attributes": {
         "type": "entity",
@@ -7816,6 +7765,17 @@
         "entityType": "GPH",
         "gphStatus": "Discovered",
         "label": "St. Paul's Rocks",
+        "reporting": false,
+        "ricType": "GPH_entity"
+      }
+    },
+    {
+      "key": "10201",
+      "attributes": {
+        "type": "entity",
+        "entityType": "GPH",
+        "gphStatus": "Dissolved into",
+        "label": "Northwest Territories",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -42223,7 +42183,7 @@
         "reportedBy": "2",
         "value": 24252641.447435975,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "toTreat"
       }
     },
     {
@@ -42237,7 +42197,7 @@
         "reportedBy": "2",
         "value": 9481697.369231718,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "toTreat"
       }
     },
     {
@@ -70612,8 +70572,8 @@
       }
     },
     {
-      "key": "810<-France (French produce)",
-      "source": "France (French produce)",
+      "key": "810<-220",
+      "source": "220",
       "target": "810",
       "attributes": {
         "labels": [
@@ -70622,12 +70582,12 @@
         "reportedBy": "810",
         "value": 4291255.569700828,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
-      "key": "810<-French Colonies (French produce)",
-      "source": "French Colonies (French produce)",
+      "key": "810<-French Colonies",
+      "source": "French Colonies",
       "target": "810",
       "attributes": {
         "labels": [
@@ -70635,20 +70595,6 @@
         ],
         "reportedBy": "810",
         "value": 162675.04774029282,
-        "type": "trade",
-        "status": "toTreat"
-      }
-    },
-    {
-      "key": "810<-French Colonies (Foreign produce)",
-      "source": "French Colonies (Foreign produce)",
-      "target": "810",
-      "attributes": {
-        "labels": [
-          "REPORTED_TRADE"
-        ],
-        "reportedBy": "810",
-        "value": 37754.61489497135,
         "type": "trade",
         "status": "toTreat"
       }
@@ -70948,20 +70894,6 @@
       }
     },
     {
-      "key": "810<-France (Foreign produce)",
-      "source": "France (Foreign produce)",
-      "target": "810",
-      "attributes": {
-        "labels": [
-          "REPORTED_TRADE"
-        ],
-        "reportedBy": "810",
-        "value": 69501.90961171228,
-        "type": "trade",
-        "status": "ignore_resolved"
-      }
-    },
-    {
       "key": "433<-220",
       "source": "220",
       "target": "433",
@@ -71237,34 +71169,6 @@
       }
     },
     {
-      "key": "810<-220",
-      "source": "220",
-      "target": "810",
-      "attributes": {
-        "labels": [
-          "REPORTED_TRADE"
-        ],
-        "reportedBy": "810",
-        "value": 4291241.685232337,
-        "type": "trade",
-        "status": "ok"
-      }
-    },
-    {
-      "key": "810<-French Colonies",
-      "source": "French Colonies",
-      "target": "810",
-      "attributes": {
-        "labels": [
-          "REPORTED_TRADE"
-        ],
-        "reportedBy": "810",
-        "value": 162683.4420751114,
-        "type": "trade",
-        "status": "toTreat"
-      }
-    },
-    {
       "key": "1029<-220",
       "source": "220",
       "target": "1029",
@@ -71377,28 +71281,28 @@
       }
     },
     {
-      "key": "New Caledonia<-220",
+      "key": "930<-220",
       "source": "220",
-      "target": "New Caledonia",
+      "target": "930",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
         ],
-        "reportedBy": "New Caledonia",
+        "reportedBy": "930",
         "value": 229248.01082113304,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
-      "key": "New Caledonia<-French Colonies",
+      "key": "930<-French Colonies",
       "source": "French Colonies",
-      "target": "New Caledonia",
+      "target": "930",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
         ],
-        "reportedBy": "New Caledonia",
+        "reportedBy": "930",
         "value": 6907.861234882241,
         "type": "trade",
         "status": "toTreat"
@@ -71820,28 +71724,28 @@
       }
     },
     {
-      "key": "New Caledonia->220",
-      "source": "New Caledonia",
+      "key": "930->220",
+      "source": "930",
       "target": "220",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
         ],
-        "reportedBy": "New Caledonia",
+        "reportedBy": "930",
         "value": 112201.9812221515,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
-      "key": "New Caledonia->French Colonies",
-      "source": "New Caledonia",
+      "key": "930->French Colonies",
+      "source": "930",
       "target": "French Colonies",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
         ],
-        "reportedBy": "New Caledonia",
+        "reportedBy": "930",
         "value": 783.0203691915978,
         "type": "trade",
         "status": "toTreat"
@@ -83264,9 +83168,9 @@
       }
     },
     {
-      "key": "French Oceania (other) & New Caledonia-resolve-into-New Caledonia",
+      "key": "French Oceania (other) & New Caledonia-resolve-into-930",
       "source": "French Oceania (other) & New Caledonia",
-      "target": "New Caledonia",
+      "target": "930",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -85552,61 +85456,6 @@
       }
     },
     {
-      "key": "France (French produce)-resolve-into-220",
-      "source": "France (French produce)",
-      "target": "220",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "French Colonies (French produce)-resolve-into-French Colonies",
-      "source": "French Colonies (French produce)",
-      "target": "French Colonies",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "French Colonies (Foreign produce)-resolve-into-French Colonies",
-      "source": "French Colonies (Foreign produce)",
-      "target": "French Colonies",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "France (Foreign produce)-resolve-into-220",
-      "source": "France (Foreign produce)",
-      "target": "220",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "New Caledonia-resolve-into-930",
-      "source": "New Caledonia",
-      "target": "930",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
       "key": "Congo (Brazzaville) (French Congo) (Middle Congo) & French Western Africa (other) & Senegal-resolve-into-484",
       "source": "Congo (Brazzaville) (French Congo) (Middle Congo) & French Western Africa (other) & Senegal",
       "target": "484",
@@ -87312,9 +87161,9 @@
       }
     },
     {
-      "key": "10200-resolve-into-20",
+      "key": "10200-resolve-into-10202",
       "source": "10200",
-      "target": "20",
+      "target": "10202",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -87345,9 +87194,9 @@
       }
     },
     {
-      "key": "1019-resolve-into-20",
+      "key": "1019-resolve-into-10202",
       "source": "1019",
-      "target": "20",
+      "target": "10202",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -89215,6 +89064,17 @@
       }
     },
     {
+      "key": "America-resolve-into-10202",
+      "source": "America",
+      "target": "10202",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "America-resolve-into-1029",
       "source": "America",
       "target": "1029",
@@ -89262,6 +89122,17 @@
       "key": "America-resolve-into-1408",
       "source": "America",
       "target": "1408",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "America-resolve-into-10201",
+      "source": "America",
+      "target": "10201",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -103294,28 +103165,6 @@
       }
     },
     {
-      "key": "930<-220",
-      "source": "220",
-      "target": "930",
-      "attributes": {
-        "value": 229248.01082113304,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "930",
-        "originalReporters": [
-          "New Caledonia"
-        ],
-        "generatedFrom": "New Caledonia",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "France (REP) <- New Caledonia 229248.01082113304",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "430->220",
       "source": "430",
       "target": "220",
@@ -103359,28 +103208,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "France (REP) -> Mayotte 105445.57606619988",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "930->220",
-      "source": "930",
-      "target": "220",
-      "attributes": {
-        "value": 112201.9812221515,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "930",
-        "originalReporters": [
-          "New Caledonia"
-        ],
-        "generatedFrom": "New Caledonia",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "France (REP) -> New Caledonia 112201.9812221515",
         "status": "ok",
         "type": "trade"
       }

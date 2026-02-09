@@ -74,6 +74,8 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
         // flag flows as toTreat or ok
         flagFlowsToTreat(graph);
 
+        // TODO: STEP 3 AGGREGATION ?
+
         // STEP 4 treat trade data
         resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
 

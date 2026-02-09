@@ -113,33 +113,40 @@ export function autonomousGPHEntity(
     throw new Error(`${gphCode} is not a known GPH code`);
   } else {
     const status = GPH_status(gphCode, year + "", true);
-
-    switch (status?.status) {
-      case undefined:
-        // check if dissolved into
-        return checkDissolved(gphCode, year);
-      case "Sovereign":
-      case "Associated state of":
-      case "Sovereign (limited)":
-      case "Sovereign (unrecognized)":
-      case "Colony of":
-      case "Dependency of":
-      case "Protectorate of":
-      case "Vassal of":
-        return { entity, status: status.status, autonomous: true };
-      case "Informal":
-        // to be treated as geographical area later
-        return { entity, status: status.status, autonomous: false };
-      default: {
-        if (status && status.sovereign) {
-          return autonomousGPHEntity(status.sovereign, year);
-        } else {
-          // console.warn(
-          //   `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
-          // );
-          return { entity, status: status?.status, autonomous: false };
+    try {
+      switch (status?.status) {
+        case undefined:
+          // check if dissolved into
+          return checkDissolved(gphCode, year);
+        case "Sovereign":
+        case "Associated state of":
+        case "Sovereign (limited)":
+        case "Sovereign (unrecognized)":
+        case "Colony of":
+        case "Dependency of":
+        case "Protectorate of":
+        case "Vassal of":
+          return { entity, status: status.status, autonomous: true };
+        case "Informal":
+          // to be treated as geographical area later
+          return { entity, status: status.status, autonomous: false };
+        default: {
+          if (status && status.sovereign) {
+            console.log(gphCode, "sovereign", status.sovereign);
+            return autonomousGPHEntity(status.sovereign, year);
+          } else {
+            // console.warn(
+            //   `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
+            // );
+            return { entity, status: status?.status, autonomous: false };
+          }
         }
       }
+    } catch (error) {
+      if (error instanceof RangeError) {
+        return { entity, status: status?.status, autonomous: false };
+        // GPH overlapping year model can generate self llop in part of links
+      } else throw Error;
     }
   }
 }
