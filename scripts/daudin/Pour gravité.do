@@ -208,18 +208,18 @@ gen ln_distance=ln(distance_km)
 ////estimation of the trade
 
 gen pred=exp(`constant' + `coef_distance'*ln_distance + importer_coef + exporter_coef)
-sort originalReportedTradeFlowId
-egen sum_pred = total(pred), by(originalReportedTradeFlowId)
+sort id
+egen sum_pred = total(pred), by(id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
 
-by originalReportedTradeFlowId: egen success = max(pred_trade), missing
+by id: egen success = max(pred_trade), missing
 
 drop pred sum_pred
 
-by originalReportedTradeFlowId: replace status ="ok thanks to gravity" if success!=.
+by id: replace status ="ok thanks to gravity" if success!=.
 *br if status=="ok thanks to gravity"
 drop success
-codebook originalReportedTradeFlowId if status=="ok thanks to gravity"
+codebook id if status=="ok thanks to gravity"
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
