@@ -30,6 +30,8 @@ interface FlowDataPoint {
   notes?: string;
 
   valueToSplit?: number;
+  newReporter?: string;
+  newPartners?: string;
   originalReportedTradeFlowId?: string;
 }
 
@@ -104,7 +106,10 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   (graph as GraphEntityPartiteType).edges().forEach((e) => {
     const edgeAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(e);
     const value = edgeAtts.value;
-    if (edgeAtts.type === "trade") {
+    if (
+      edgeAtts.type === "trade" &&
+      (edgeAtts.labels.has("REPORTED_TRADE") || edgeAtts.labels.has("GENERATED_TRADE"))
+    ) {
       let ok = false;
       if (value !== undefined) {
         // && edgeAtts.status !== "ignore_resolved") {
@@ -169,6 +174,8 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
 
         // to impute special fields
         valueToSplit: edgeAtts.valueToSplit,
+        newPartners: edgeAtts.newPartners,
+        newReporter: edgeAtts.newReporter,
         originalReportedTradeFlowId: edgeAtts.originalReportedTradeFlowId,
       });
     }
@@ -232,6 +239,7 @@ async function graphsQuality() {
     };
 
     const columns: (keyof FlowDataPoint)[] = [
+      "id",
       "year",
       "importerId",
       "importerLabel",
@@ -251,6 +259,8 @@ async function graphsQuality() {
       "partial",
 
       "valueToSplit",
+      "newReporter",
+      "newPartners",
       "originalReportedTradeFlowId",
 
       "status",

@@ -81,9 +81,11 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
                   ? GPH_status(partner.GPH_code, graph.getAttribute("year") + "")?.status
                   : undefined,
             });
+            console.log(reporting, partner, r.expimp);
             const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
             const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
             // add trade value on directed edges: bilateral trade
+            console.log(from, to, reporting, partner, r.expimp);
             graph.mergeDirectedEdgeWithKey(tradeEdgeKey(nodeId(reporting), nodeId(partner), r.expimp), from, to, {
               labels: new Set(["REPORTED_TRADE"]),
               // add reported by attribute to trade flows
@@ -433,16 +435,16 @@ export function resolveEntityTransform(
               .map((e) => graph.extremities(e).filter((other) => other !== edgeToTreatAtts.reportedBy)),
           ),
         );
+        const autonomousReporterIds =
+          edgeToTreatAtts.reportedBy === graph.source(e)
+            ? autonomousExporters.autonomousIds
+            : autonomousImporters.autonomousIds;
         //remove also the reporter
         const autonomousPartnersIds = (
           edgeToTreatAtts.reportedBy === graph.source(e)
             ? autonomousImporters.autonomousIds
             : autonomousExporters.autonomousIds
-        ).filter((e) => !reportedPartners.has(e) && e !== edgeToTreatAtts.reportedBy);
-        const autonomousReporterIds =
-          edgeToTreatAtts.reportedBy === graph.source(e)
-            ? autonomousExporters.autonomousIds
-            : autonomousImporters.autonomousIds;
+        ).filter((e) => !reportedPartners.has(e) && e !== edgeToTreatAtts.reportedBy && e !== autonomousReporterIds[0]);
 
         if (autonomousReporterIds.length !== 1) {
           // we can't split reporting side
@@ -581,10 +583,14 @@ export function resolveEntityTransform(
             }
 
             // flag flow if failed or partial split
+
+            graph.setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
+            graph.setEdgeAttribute(e, "newReporter", reporterId);
+            graph.setEdgeAttribute(e, "newPartners", autonomousPartnersIds.join("|"));
+
             if (solved.length === 0) graph.setEdgeAttribute(e, "status", "split_failed_no_ratio");
             if (solved.length > 0 && solved.length < autonomousPartnersIds.length) {
               graph.setEdgeAttribute(e, "status", "split_only_partial");
-              graph.setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
             }
           } else {
             console.log(
