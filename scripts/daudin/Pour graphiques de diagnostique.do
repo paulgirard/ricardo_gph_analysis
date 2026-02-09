@@ -92,18 +92,19 @@ label variable ok_and_aggregatio_ratio "No treatment needed and pure aggregated 
 
 gen ignored_value_ratio = (ignore_internal_value /*+ discard_collision_value*/)/worldft /*il n’y plus de discard_collision*/
 label variable ignored_value_ratio "Non-pertinent value (duplicated and internal)"
+***En fait, c’es très faible***
 
 
 
 gen splitfailedparts_ratio = (split_failed_error_value+ split_failed_no_ratio_value + totreat_flows)/worldft
 label variable splitfailedparts_ratio "To treat value"
 
-
 gen WB_and_failedsplit_ratio = worldbilateral_ratio + splitfailedparts_ratio
 label variable WB_and_failedsplit_ratio "Our bilateral trade and to treat value"
 
 gen our_data_ratio = worldbilateral_ratio + splitfailedparts_ratio + ignored_value_ratio
 label variable our_data_ratio "idem, and internal or redundant value"
+****N’est plus que très faible
 
 gen nbrreportingRIC = nbreportingbyaggregation + nbreportingbilateral + nbreportingbysplit
 label variable nbrreportingRIC "Number of reporting entities in RICardo (incl. aggreg. and split.)"
@@ -119,9 +120,9 @@ graph export "figures/FTComparison_nbr_entities.png", replace
 graph twoway  ///
     (line ok_value_ratio year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_ratio year, yaxis(1) lpattern(longdash)) ///
     (line worldbilateral_ratio year, yaxis(1) lwidth(medthick)) ///
-    (line WB_and_failedsplit_ratio year, yaxis(1) lpattern(longdash)) (line our_data_ratio year, yaxis(1) lpattern(longdash)), ///
+    (line WB_and_failedsplit_ratio year, yaxis(1) lpattern(longdash)) /*(line our_data_ratio year, yaxis(1) lpattern(longdash))*/, ///
     yscale(axis(1) range(0.4 1.3)) ylabel(0.4(0.2)1.2,axis(1) angle(horizontal)) yline(1,axis(1)) ytitle("Ratio to FT World Trade", axis(1)) ///
-    scheme(s1color) legend(rows(5))
+    scheme(s1color) legend(rows(4))
 
 graph export "figures/FTComparison_value.png", replace
 
@@ -141,8 +142,8 @@ label variable our_data_flows "idem, and internal or redundant"
 graph twoway  ///
     (line ok_flows year, yaxis(1) lpattern(dash)) (line ok_and_aggregatio_flows year, lpattern(longdash)) ///
     (line worldbilateral_flows year, yaxis(1) lwidth(medthick)) ///
-    (line WB_and_failedsplit_flows year, yaxis(1) lpattern(longdash)) (line our_data_flows year, lpattern(longdash)), ///
+    (line WB_and_failedsplit_flows year, yaxis(1) lpattern(longdash)) /*(line our_data_flows year, lpattern(longdash))*/, ///
     yscale(log) ylabel(,angle(horizontal)) ytitle("Number of flows") ylabel(500 1000 2000(2000)8000) ///
-    scheme(s1color) legend(rows(5))
+    scheme(s1color) legend(rows(4))
 
 graph export "figures/FTComparison_nbr_flows.png", replace
