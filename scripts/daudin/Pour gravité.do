@@ -223,7 +223,8 @@ codebook originalReportedTradeFlowId if status=="ok thanks to gravity"
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year importerReporting exporterReporting newimporterId newexporterId pred_trade
+keep id year importerReporting exporterReporting newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel
+sort id
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
