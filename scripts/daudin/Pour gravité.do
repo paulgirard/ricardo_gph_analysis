@@ -45,22 +45,25 @@ gen ln_value=ln(value)
 encode importerLabel, gen(importer_lbl)
 encode exporterLabel, gen(exporter_lbl)
 
+generate CafFob="FromUnknown"
+replace CafFob="FromImporter" if reportedBy==importerId 
+replace CafFob="FromExporter" if reportedBy==exporterId 
+
+tab CafFob
+
 tempfile tradeFlows_`year'
 save `tradeFlows_`year'', replace
 
 
 *'
-generate ExportsImports="FromUnknown"
-replace ExportsImports="FromImporter" if reportedBy==importerId 
-replace ExportsImports="FromExporter" if reportedBy==exporterId 
 
-tab ExportsImports
 keep if status=="ok"
 keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
+destring exporterId importerId, replace
 
 *****Calcul de la distance
 
-destring exporterId importerId, replace
+
 
 foreach trader in importer exporter {
 	rename `trader'Id GPH_code
@@ -75,10 +78,12 @@ foreach trader in importer exporter {
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
 gen ln_distance=ln(distance_km)
 
+******
+
 *****Régression de gravité
 
 regress ln_value ln_distance i.importerId i.exporterId ///
-    if ExportsImports=="FromImporter" & year==`year' & status=="ok"
+    if CafFob=="FromImporter" & year==`year' & status=="ok"
 
 matrix b = e(b)
 local constant= b[1,1]
@@ -93,7 +98,7 @@ display "cenames: `cnames'"
 foreach trader in exporter importer  {
 	tempfile `trader'_coefs
 	capture postclose handle
-	postfile handle /*str200 `trader'_part*/ int new`trader'Id double coefficient using ``trader'_coefs', replace
+	postfile handle /*str200 `trader'_part*/ int new`trader'Id double coefficient str15 CafFob using ``trader'_coefs', replace
 	*'
 	local i = 1
 	foreach var_name of local cnames {
@@ -105,14 +110,14 @@ foreach trader in exporter importer  {
 			*display "`code'"
 			label dir
 			*local lbl :  label `trader'Id  `code'
-        	post handle /*("`lbl'")*/ (`code')  (`coef')
+        	post handle /*("`lbl'")*/ (`code')  (`coef') ("FromImporter")
     	}
     	local ++i
 	}
 	postclose handle
 	*use ``trader'_coefs', clear
 	*'
-	list
+	*list
 	*blif 
 }
 
@@ -166,16 +171,13 @@ destring newimporterId newexporterId, replace
 *gen exporter_part = exporterLabel
 
 
-///Souci : les groupes ne sont pas réduits à des composants GPH** (ex : flux UK-Barbary Coast en 1833)
-
-merge m:1 newimporterId using `importer_coefs'
+merge m:1 newimporterId CafFob using `importer_coefs'
 
 rename coefficient importer_coef
 drop _merge
-merge m:1 newexporterId using `exporter_coefs'
+merge m:1 newexporterId CafFob using `exporter_coefs'
 rename coefficient exporter_coef
 drop _merge
-
 
 sort originalReportedTradeFlowId
 *drop importer_lbl-importer exporter
@@ -223,8 +225,9 @@ codebook id if status=="ok thanks to gravity"
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year importerReporting exporterReporting newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel
-sort id
+keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel
+order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newexporterId    valueToSplit pred_trade
+sort id pred_trade
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
