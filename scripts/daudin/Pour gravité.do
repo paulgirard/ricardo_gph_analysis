@@ -1,30 +1,27 @@
-ssc install geodist
+*ssc install geodist
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
-
-
-
-
-
-***************Gravity trade estimation program ***************
-capture program drop gravity_trade_estimation
-program define gravity_trade_estimation
-	args year
-
 
 *************Importation des données de localisation
 
 import delimited "/Users/guillaumedaudin/Répertoires Git/GeoPolHist/data/GeoPolHist_entities.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
-tempfile GeoPolHist_entities
-save `GeoPolHist_entities', replace
+
+save GeoPolHist_entities_temp.dta, replace
+
+
 
 *************Importation des flux commerciaux
+
+capture program drop trade_importation
+program define trade_importation
+	args year
 
 import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows_`year'.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 format value* %20.0fc
+
 
 /* Plus nécessaire avec le nouveau format des données (1 ligne par flux)
 keep if year==`year'
@@ -51,23 +48,31 @@ replace CafFob="FromExporter" if reportedBy==exporterId
 
 tab CafFob
 
-tempfile tradeFlows_`year'
-save `tradeFlows_`year'', replace
 
 
+save tradeFlows_`year'_temp.dta, replace
 *'
 
+
+end
+***************Gravity trade estimation program ***************
+capture program drop gravity_trade_estimation
+program define gravity_trade_estimation
+	args year CafFob
+
+use tradeFlows_`year'_temp, clear
+*'
 keep if status=="ok"
-keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
-destring exporterId importerId, replace
+
 
 *****Calcul de la distance
 
-
+keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
+destring exporterId importerId, replace
 
 foreach trader in importer exporter {
 	rename `trader'Id GPH_code
-	merge m:1 GPH_code using `GeoPolHist_entities', keep(1 3)
+	merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(1 3)
 	assert _merge==3
 	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
 	rename GPH_code `trader'Id
@@ -78,12 +83,16 @@ foreach trader in importer exporter {
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
 gen ln_distance=ln(distance_km)
 
+
+
+
+
 ******
 
 *****Régression de gravité
 
 regress ln_value ln_distance i.importerId i.exporterId ///
-    if CafFob=="FromImporter" & year==`year' & status=="ok"
+    if CafFob=="`CafFob'" & year==`year' & status=="ok"
 
 matrix b = e(b)
 local constant= b[1,1]
@@ -110,7 +119,7 @@ foreach trader in exporter importer  {
 			*display "`code'"
 			label dir
 			*local lbl :  label `trader'Id  `code'
-        	post handle /*("`lbl'")*/ (`code')  (`coef') ("FromImporter")
+        	post handle /*("`lbl'")*/ (`code')  (`coef') ("`CafFob'")
     	}
     	local ++i
 	}
@@ -130,7 +139,7 @@ foreach trader in exporter importer  {
 }
 */
 
-use `tradeFlows_`year'', clear
+use tradeFlows_`year'_temp, clear
 *****'
 drop if status=="ok"
 drop if strpos(newPartners,"restOfTheWorld")!=0
@@ -196,7 +205,7 @@ drop ok_exp ok_imp
 /////intégration de la distance
 foreach trader in importer exporter {
 	rename new`trader'Id GPH_code
-	merge m:1 GPH_code using `GeoPolHist_entities', keep(1 3)
+	merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(1 3)
 	drop if _merge!=3
 	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
 	rename GPH_code new`trader'Id
@@ -228,18 +237,23 @@ keep if status=="ok thanks to gravity"
 keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel
 order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newexporterId    valueToSplit pred_trade
 sort id pred_trade
-export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'.csv", replace 
+export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'_`CafFob'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
 
+trade_importation 1833
+gravity_trade_estimation 1833 FromImporter
+gravity_trade_estimation 1833 FromExporter
+erase tradeFlows_1833_temp.dta
 
-gravity_trade_estimation 1833
+blif
 
-foreach year of numlist 1834(1)1847 {
-	gravity_trade_estimation `year'
+foreach year of numlist 1834(1)1938 {
+	trade_importation `year'
+	gravity_trade_estimation `year' FromImporter
+	gravity_trade_estimation `year' FromExporter
+	erase  tradeFlows_`year'_temp.dta
 }
 
-foreach year of numlist 1848(1)1938 {
-	gravity_trade_estimation `year'
-}
+erase GeoPolHist_entities_temp.dta
