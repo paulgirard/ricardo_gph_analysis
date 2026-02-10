@@ -231,11 +231,24 @@ by id: replace status ="ok thanks to gravity" if success!=.
 *br if status=="ok thanks to gravity"
 drop success
 codebook id if status=="ok thanks to gravity"
+///Récupération des labels
+rename newimporterId GPH_code
+merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
+drop _merge
+rename GPH_code newimporterId 
+rename GPH_name newimporterLabel
+
+rename newexporterId GPH_code
+merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
+drop _merge
+rename GPH_code newexporterId 
+rename GPH_name newexporterLabel
+
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel
-order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newexporterId    valueToSplit pred_trade
+keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
+order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
 sort id pred_trade
 export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'_`CafFob'.csv", replace 
 
@@ -247,7 +260,6 @@ gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
 erase tradeFlows_1833_temp.dta
 
-blif
 
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
