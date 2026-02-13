@@ -2,7 +2,7 @@ import { MultiDirectedGraph } from "graphology";
 import { flatten, sum, toPairs, uniq } from "lodash";
 
 import { DB } from "./DB";
-import { GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
+import { GPHEntitiesByCode, GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import { findBilateralRatios } from "./bilateralRatios";
 import { generateTradeFlow, resolveAutonomous } from "./graphTraversals";
@@ -66,6 +66,8 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
               reporting.type === "GPH_entity" && reporting.GPH_code
                 ? GPH_status(reporting.GPH_code, graph.getAttribute("year") + "")?.status
                 : undefined,
+            lat: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lat : undefined,
+            lng: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lng : undefined,
           });
           const partner = RICentities[r.partner];
           if (partner) {
@@ -80,6 +82,8 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
                 partner.type === "GPH_entity" && partner.GPH_code
                   ? GPH_status(partner.GPH_code, graph.getAttribute("year") + "")?.status
                   : undefined,
+              lat: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lat : undefined,
+              lng: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lng : undefined,
             });
             console.log(reporting, partner, r.expimp);
             const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
@@ -210,6 +214,8 @@ export function aggregateIntoAutonomousEntities(graph: GraphType) {
       gphStatus: targetStatus,
       entityType: autonomous ? "GPH-AUTONOMOUS" : "GPH",
       type: "entity",
+      lat: targetGPHEntity.GPH_code ? GPHEntitiesByCode[targetGPHEntity.GPH_code].lat : undefined,
+      lng: targetGPHEntity.GPH_code ? GPHEntitiesByCode[targetGPHEntity.GPH_code].lng : undefined,
     });
     if (nodeId(targetGPHEntity) !== n) {
       addResolutionEdge(graph as GraphResolutionPartiteType, n, nodeId(targetGPHEntity), "AGGREGATE_INTO");

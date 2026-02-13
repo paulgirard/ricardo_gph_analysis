@@ -25,6 +25,8 @@ export interface EntityNodeAttributes {
   ricParent?: string;
   totalBilateralTrade?: number;
   type: "entity";
+  lat?: number;
+  lng?: number;
 }
 export interface ResolutionNodeAttributes {
   label: string;
