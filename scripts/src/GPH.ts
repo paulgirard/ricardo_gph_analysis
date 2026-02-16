@@ -34,6 +34,8 @@ export interface GPHEntity {
   wikidata_alt2?: string;
   wikidata_alt3?: string;
   notes?: string;
+  lat?: number;
+  lng?: number;
 }
 export interface GPHStatusInTime {
   GPH_code: string;
