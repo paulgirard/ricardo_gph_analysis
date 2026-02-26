@@ -2,6 +2,28 @@
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
+
+************Importation des relations géopolitiques
+import delimited "$dirGeoPolHist/data/GeoPolHist_entities_status_over_time.csv", /*
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+
+replace start_year="1800" if start_year=="?"
+destring(start_year), gen(start_year_num)
+drop start_year
+rename start_year_num start_year
+
+///We keep only dependency relations, excluding those that lead to an aggregation in the network
+
+
+keep if GPH_status=="Associated state of" | GPH_status=="Colony of" | GPH_status=="Dependency of" ///
+		| GPH_status=="Protectorate of" | GPH_status=="Vassal of"
+
+
+gen dependency=1
+
+save GeoPolHist_entities_status_over_time_temp.dta, replace
+
+
 *************Importation des données de localisation
 
 import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
@@ -9,7 +31,6 @@ import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
 
 
 save GeoPolHist_entities_temp.dta, replace
-
 
 
 *************Importation des flux commerciaux
@@ -64,6 +85,7 @@ program define gravity_trade_estimation
 use tradeFlows_`year'_temp, clear
 *'
 keep if status=="ok"
+keep if CafFob=="`CafFob'"
 
 
 *****Calcul de la distance
@@ -84,24 +106,82 @@ foreach trader in importer exporter {
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
 gen ln_distance=ln(distance_km)
 
+save tradeFlows_`year'ok_temp, replace
+
+*****Calcul de le relation géopolitique
+
+use GeoPolHist_entities_status_over_time_temp.dta, clear
+
+keep if start_year<=`year' & end_year>=`year'
+
+keep GPH_code sovereign_GPH_code dependency
+
+////Pour rapports de subordination
+save GeoPolHist_dependency_`year'.dta, replace
+rename GPH_code importerId
+rename sovereign_GPH_code exporterId
+save GeoPolHist_dependency_`year'A.dta, replace
+rename importerId bibe
+rename exporterId importerId
+rename bibe exporterId
+save GeoPolHist_dependency_`year'B.dta, replace
+
+///Pour présence dans le même empire (ie partage du souverain)
+use GeoPolHist_dependency_`year'.dta, clear
+rename GPH_code importerId
+joinby sovereign_GPH_code using GeoPolHist_dependency_`year'.dta
+drop if GPH_code==importerId
+drop sovereign_GPH_code
+rename dependency common_empire
+rename GPH_code exporterId
 
 
+append using GeoPolHist_dependency_`year'A.dta
+append using GeoPolHist_dependency_`year'B.dta
 
+
+replace common_empire=0 if common_empire==.
+replace dependency =0 if dependency ==.
+
+
+replace common_empire=0 if common_empire==.
+replace dependency =0 if dependency ==.
+gen empire =1 if common_empire==1 | dependency==1
+replace empire=0 if empire==.
+collapse (max) common_empire dependency empire, by(importerId exporterId)
+
+
+gen newimporterId=importerId
+gen newexporterId=exporterId
+save GeoPolHist_dependency_`year'.dta, replace
+erase GeoPolHist_dependency_`year'A.dta
+erase GeoPolHist_dependency_`year'B.dta
+
+*******************************************
+
+use tradeFlows_`year'ok_temp, clear
+merge 1:1 importerId exporterId using GeoPolHist_dependency_`year'.dta, keep(1 3)
+replace common_empire=0 if common_empire==.
+replace dependency=0 if dependency==.
+replace empire=0 if empire==.
 
 ******
 
 *****Régression de gravité
 
-regress ln_value ln_distance i.importerId i.exporterId ///
-    if CafFob=="`CafFob'" & year==`year' & status=="ok"
+
+
+regress ln_value ln_distance empire i.importerId i.exporterId
+
+
 
 matrix b = e(b)
 local constant= b[1,1]
-local coef_distance= b[1,2]
+local coef_empire= b[1,2]
+local coef_distance= b[1,3]
 local cnames : colnames b
 
 display "cenames: `cnames'"
-
 
 ////Create coefficient files for importer and exporter
 
@@ -217,12 +297,22 @@ foreach trader in importer exporter {
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
 gen ln_distance=ln(distance_km)
 
+
+////intégration de la relation géopolitique
+
+merge m:1 newimporterId newexporterId using GeoPolHist_dependency_`year'.dta, keepusing(common_empire dependency empire) keep(1 3)
+replace common_empire=0 if common_empire==.
+replace dependency=0 if dependency==.
+replace empire=0 if empire==.
+drop _merge
+
 ////estimation of the trade
 
-gen pred=exp(`constant' + `coef_distance'*ln_distance + importer_coef + exporter_coef)
+gen pred=exp(`constant' + `coef_empire'*empire + `coef_distance'*ln_distance + importer_coef + exporter_coef)
 sort id
 egen sum_pred = total(pred), by(id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
+format pred_trade %20.0fc
 
 by id: egen success = max(pred_trade), missing
 
@@ -251,6 +341,7 @@ keep if status=="ok thanks to gravity"
 keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
 order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
 sort id pred_trade newimporterId newexporterId
+format value pred_trade %20.0fc
 export delimited using "results/gravity_`year'_`CafFob'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
@@ -260,6 +351,7 @@ trade_importation 1833
 gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
 erase tradeFlows_1833_temp.dta
+erase tradeFlows_1833ok_temp.dta
 
 
 foreach year of numlist 1834(1)1938 {
@@ -270,3 +362,4 @@ foreach year of numlist 1834(1)1938 {
 }
 
 erase GeoPolHist_entities_temp.dta
+erase GeoPolHist_entities_status_over_time_temp.dta
