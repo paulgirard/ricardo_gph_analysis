@@ -1,9 +1,10 @@
 *ssc install geodist
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
+global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 *************Importation des données de localisation
 
-import delimited "/Users/guillaumedaudin/Répertoires Git/GeoPolHist/data/GeoPolHist_entities.csv", /*
+import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 
@@ -17,7 +18,7 @@ capture program drop trade_importation
 program define trade_importation
 	args year
 
-import delimited "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/data/tradeFlows_`year'.csv", /*
+import delimited "data/tradeFlows_`year'.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 format value* %20.0fc
@@ -249,8 +250,8 @@ rename GPH_name newexporterLabel
 keep if status=="ok thanks to gravity"
 keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
 order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
-sort id pred_trade
-export delimited using "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis/results/gravity_`year'_`CafFob'.csv", replace 
+sort id pred_trade newimporterId newexporterId
+export delimited using "results/gravity_`year'_`CafFob'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
