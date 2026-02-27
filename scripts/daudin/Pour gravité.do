@@ -15,6 +15,9 @@ rename start_year_num start_year
 ///We keep only dependency relations, excluding those that lead to an aggregation in the network
 
 
+/////Mieux faire la jointure avec les statuts
+
+
 keep if GPH_status=="Associated state of" | GPH_status=="Colony of" | GPH_status=="Dependency of" ///
 		| GPH_status=="Protectorate of" | GPH_status=="Vassal of"
 
@@ -211,7 +214,7 @@ foreach trader in exporter importer  {
 	*blif 
 }
 
-
+////Exporter les coefficient et les diagnostics de la régression pour chaque année et chaque CafFob
 
 /*
 foreach trader in exporter importer  {
