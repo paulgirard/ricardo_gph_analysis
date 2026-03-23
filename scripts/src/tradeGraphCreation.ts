@@ -40,7 +40,8 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             flow is not null and rate is not null AND
             year = ${year} AND
             (partner is not null AND (partner not LIKE 'world%')) AND
-            reporting != partner
+            reporting != partner AND
+            flow != 0
     `,
       function (err, rows) {
         console.log(year);
