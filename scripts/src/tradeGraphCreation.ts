@@ -64,7 +64,7 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             type: "entity",
             gphStatus:
               reporting.type === "GPH_entity" && reporting.GPH_code
-                ? GPH_status(reporting.GPH_code, graph.getAttribute("year") + "")?.status
+                ? GPH_status(reporting.GPH_code, graph.getAttribute("year") + "")?.GPH_status
                 : undefined,
             lat: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lat : undefined,
             lng: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lng : undefined,
@@ -80,7 +80,7 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
               type: "entity",
               gphStatus:
                 partner.type === "GPH_entity" && partner.GPH_code
-                  ? GPH_status(partner.GPH_code, graph.getAttribute("year") + "")?.status
+                  ? GPH_status(partner.GPH_code, graph.getAttribute("year") + "")?.GPH_status
                   : undefined,
               lat: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lat : undefined,
               lng: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lng : undefined,
@@ -159,7 +159,7 @@ export const ricEntityToGPHEntity = (
       type: "entity",
       gphStatus:
         RICentity.type === "GPH_entity" && RICentity.GPH_code
-          ? GPH_status(RICentity.GPH_code, graph.getAttribute("year") + "")?.status
+          ? GPH_status(RICentity.GPH_code, graph.getAttribute("year") + "")?.GPH_status
           : undefined,
     });
   }
@@ -282,7 +282,7 @@ export function splitAreas(graph: GraphType, RICentities: Record<string, RICenti
             if (
               atts.ricType === "geographical_area" ||
               (memberStatus !== null &&
-                memberStatus.status === "Colony of" &&
+                memberStatus.GPH_status === "Colony of" &&
                 memberStatus.sovereign === colonialEmpire)
             ) {
               // /!\ Could Danish Europe contain Danemark?

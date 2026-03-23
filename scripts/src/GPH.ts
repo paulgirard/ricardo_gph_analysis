@@ -57,37 +57,31 @@ export const gphInformalParts = parse(gphInformalPartsF, { columns: true }) as G
 export const gphInformalPartsByCode = groupBy(gphInformalParts, (g) => g.sovereign_GPH_code);
 
 const gphStatusF = readFileSync(`${conf.pathToGeoPolHist}/data/GeoPolHist_status.csv`);
-const gphStatus = sortBy(
-  parse(gphStatusF, { columns: true }) as {
-    GPH_status: GPHStatusType;
-    slug: string;
-    group: string;
-    priority_order: number;
-  }[],
+const _gphStatusFullMetadata = sortBy(
+  parse(gphStatusF, { columns: true }) as GPHStatusMetadataType[],
   (s) => s.priority_order * -1,
 );
-const priorityByStatus = gphStatus.map((s) => s.GPH_status);
+const priorityByStatus = _gphStatusFullMetadata.map((s) => s.GPH_status);
+const gphStatusFullMetadata = keyBy(_gphStatusFullMetadata, (s) => s.GPH_status);
 
 export function GPH_status(GPH_code: string, year: string, sovereignCode?: boolean) {
   if (GPHInTime && GPHInTime[GPH_code] && GPHInTime[GPH_code].years && year in GPHInTime[GPH_code].years) {
     const status = sortBy(GPHInTime[GPH_code].years[year], (s) => priorityByStatus.indexOf(s.status))[0];
-    return {
-      status: status.status,
-      sovereign: sovereignCode
-        ? status.sovereign
-        : status.sovereign
-          ? GPHInTime[status.sovereign].name
-          : GPHInTime[GPH_code].name,
-    };
+    if (status && gphStatusFullMetadata[status.status] !== undefined)
+      return {
+        ...gphStatusFullMetadata[status.status],
+        sovereign: sovereignCode
+          ? status.sovereign
+          : status.sovereign
+            ? GPHInTime[status.sovereign].name
+            : GPHInTime[GPH_code].name,
+      };
   }
   return null;
 }
 
 function checkDissolved(gphCode: string, year: number) {
-  let firstKnownPastStatus: {
-    status: GPHStatusType;
-    sovereign: string;
-  } | null = null;
+  let firstKnownPastStatus: ReturnType<typeof GPH_status> | null = null;
   let pastYear = year - 1;
   while (firstKnownPastStatus === null && pastYear >= 1816) {
     const pastStatus = GPH_status(gphCode, pastYear + "", true);
@@ -97,7 +91,7 @@ function checkDissolved(gphCode: string, year: number) {
     }
     pastYear -= 1;
   }
-  if (firstKnownPastStatus !== null && firstKnownPastStatus.status === "Dissolved into") {
+  if (firstKnownPastStatus !== null && firstKnownPastStatus.GPH_status === "Dissolved into") {
     console.log("replace dissolved", gphCode, year, firstKnownPastStatus.sovereign);
     return autonomousGPHEntity(firstKnownPastStatus.sovereign, year);
   } else {
@@ -115,38 +109,32 @@ export function autonomousGPHEntity(
     throw new Error(`${gphCode} is not a known GPH code`);
   } else {
     const status = GPH_status(gphCode, year + "", true);
+
     try {
-      switch (status?.status) {
+      switch (status?.group) {
         case undefined:
           // check if dissolved into
           return checkDissolved(gphCode, year);
-        case "Sovereign":
-        case "Associated state of":
-        case "Sovereign (limited)":
-        case "Sovereign (unrecognized)":
-        case "Colony of":
-        case "Dependency of":
-        case "Protectorate of":
-        case "Vassal of":
-          return { entity, status: status.status, autonomous: true };
-        case "Informal":
-          // to be treated as geographical area later
-          return { entity, status: status.status, autonomous: false };
+        case "Sovereign (all)":
+        case "Non sovereign":
+          return { entity, status: status.GPH_status, autonomous: true };
         default: {
+          // Informal
+          if (status?.GPH_status === "Informal") {
+            // to be treated as geographical area later
+            return { entity, status: status.GPH_status, autonomous: false };
+          }
+          // Part of
           if (status && status.sovereign) {
-            console.log(gphCode, "sovereign", status.sovereign);
             return autonomousGPHEntity(status.sovereign, year);
           } else {
-            // console.warn(
-            //   `GPH_code ${gphCode} of status ${status?.status} does not have any sovereign ${status?.sovereign}`,
-            // );
-            return { entity, status: status?.status, autonomous: false };
+            return { entity, status: status?.GPH_status, autonomous: false };
           }
         }
       }
     } catch (error) {
       if (error instanceof RangeError) {
-        return { entity, status: status?.status, autonomous: false };
+        return { entity, status: status?.GPH_status, autonomous: false };
         // GPH overlapping year model can generate self llop in part of links
       } else throw Error;
     }
@@ -195,3 +183,10 @@ export type GPHStatusType =
   | "Unknown"
   | "Informal"
   | "International";
+
+interface GPHStatusMetadataType {
+  GPH_status: GPHStatusType;
+  slug: string;
+  group: "Sovereign (all)" | "Non sovereign" | "Miscellaneous" | "Part of" | "";
+  priority_order: number;
+}
