@@ -290,7 +290,6 @@ export function propagateReporting(
         label === "AGGREGATE_INTO" ? "reportingByAggregateInto" : "reportingBySplit",
         true,
       );
-      console.log(targetAtts.label, label === "AGGREGATE_INTO" ? "reportingByAggregateInto" : "reportingBySplit");
     } // traverse one step further
     else propagateReporting(graph, target, label);
   });

@@ -215,6 +215,7 @@ export function aggregateIntoAutonomousEntities(graph: GraphType) {
       label: targetGPHEntity.GPH_name,
       gphStatus: targetStatus,
       entityType: autonomous ? "GPH-AUTONOMOUS" : "GPH",
+      ricType: "GPH_entity",
       type: "entity",
       lat: targetGPHEntity.GPH_code ? GPHEntitiesByCode[targetGPHEntity.GPH_code].lat : undefined,
       lng: targetGPHEntity.GPH_code ? GPHEntitiesByCode[targetGPHEntity.GPH_code].lng : undefined,
