@@ -84,7 +84,7 @@ export function resolveAutonomous(
   return autonomousEntities;
 }
 
-const aggregatedFlowNote = (flow: string, graph: GraphEntityPartiteType) => {
+export const aggregatedFlowNote = (flow: string, graph: GraphEntityPartiteType) => {
   const flowAttributes = graph.getEdgeAttributes(flow);
   const exporter = graph.getNodeAttribute(graph.source(flow), "label");
   const importer = graph.getNodeAttribute(graph.target(flow), "label");

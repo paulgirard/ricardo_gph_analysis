@@ -5,7 +5,7 @@ import { difference, flatten, keys, omit, sortBy, toPairs, uniq, values } from "
 
 import { DB } from "./DB";
 import { FlowValueImputationMethod, GraphEntityPartiteType, GraphType, TradeEdgeAttributes } from "./types";
-import { getTradeGraphsByYear } from "./utils";
+import { GraphSerializationType, getTradeGraphsByYear } from "./utils";
 
 interface FlowDataPoint {
   id: string;
@@ -210,9 +210,9 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
   };
 }
 
-async function graphsQuality() {
+async function graphsQuality(graphSerialization: GraphSerializationType = "ratios") {
   //TODO do not load all the graphs at once.
-  const tradeGraphsByYear = await getTradeGraphsByYear(true);
+  const tradeGraphsByYear = await getTradeGraphsByYear(graphSerialization);
   // prepare out streams
   const GPHAutonomousCited: Record<string, { id: string; label: string; years: number[] }> = {};
 

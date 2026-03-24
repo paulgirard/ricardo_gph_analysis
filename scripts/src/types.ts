@@ -42,7 +42,8 @@ export type FlowValueImputationMethod =
   | "aggregation"
   | "split_to_one"
   | "split_by_years_ratio"
-  | "split_by_mirror_ratio";
+  | "split_by_mirror_ratio"
+  | "split_by_gravity";
 
 type tradeEdgeStatus =
   | "toTreat"
