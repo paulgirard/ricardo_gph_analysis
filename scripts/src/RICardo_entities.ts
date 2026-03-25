@@ -1,7 +1,6 @@
 import { parse } from "csv/sync";
 import { readFileSync, writeFileSync } from "fs";
 import { writeFile } from "fs/promises";
-import { DirectedGraph } from "graphology";
 import { groupBy, keyBy, range } from "lodash";
 
 import { GPHEntities } from "./GPH";
@@ -82,10 +81,13 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
 const applyRatioMethod = async (
   startYear: number,
   endYear: number,
-  _tradeGraphsByYear?: Record<string, DirectedGraph>,
+  _tradeGraphsByYear?: Record<number, GraphEntityPartiteType>,
   edgeKey?: string,
 ) => {
-  const tradeGraphsByYear = _tradeGraphsByYear ? _tradeGraphsByYear : await getTradeGraphsByYear();
+  const tradeGraphsByYear = (_tradeGraphsByYear ? _tradeGraphsByYear : await getTradeGraphsByYear()) as Record<
+    number,
+    GraphEntityPartiteType
+  >;
   range(startYear, endYear).forEach((year) => {
     console.log(`****** Compute ratio for ${year}`);
     try {

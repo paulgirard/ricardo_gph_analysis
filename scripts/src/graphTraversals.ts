@@ -1,7 +1,14 @@
 import { flatten, identity, sortBy, uniq } from "lodash";
 
 import { tradeEdgeKey } from "./tradeGraphCreation";
-import { EntityResolutionLabelType, FlowValueImputationMethod, GraphEntityPartiteType, GraphType } from "./types";
+import {
+  EntityResolutionLabelType,
+  FlowValueImputationMethod,
+  GraphEntityPartiteType,
+  GraphResolutionPartiteType,
+  GraphType,
+  ResolutionEdgeAttributes,
+} from "./types";
 
 export interface AutonomousResolutionType {
   autonomousIds: string[];
@@ -293,4 +300,23 @@ export function propagateReporting(
     } // traverse one step further
     else propagateReporting(graph, target, label);
   });
+}
+
+function isResolutionEdge(_eId: string, ieAtts: ResolutionEdgeAttributes) {
+  return (["SPLIT_OTHER", "SPLIT", "AGGREGATE_INTO"] as EntityResolutionLabelType[]).some(
+    (resolutionLabel: EntityResolutionLabelType) => ieAtts.labels.has(resolutionLabel),
+  );
+}
+
+export function resolutionOrigins(toEntityId: string, graph: GraphResolutionPartiteType): string[] {
+  return uniq(
+    flatten(
+      graph.filterInboundEdges(toEntityId, isResolutionEdge).map((e) => {
+        // recursivity
+        const origins = resolutionOrigins(graph.source(e), graph);
+        // we trace all possible origins as we don't know which one could be a duplicate in reported trade
+        return [graph.source(e), ...origins];
+      }),
+    ),
+  );
 }
