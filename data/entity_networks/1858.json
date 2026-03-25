@@ -1375,12 +1375,12 @@
         "label": "Aden",
         "ricType": "GPH_entity",
         "cited": true,
-        "entityType": "GPH",
+        "entityType": "GPH-AUTONOMOUS-CITED",
         "ricParent": "",
         "type": "entity",
-        "gphStatus": "Part of",
-        "lat": "22.8",
-        "lng": "83",
+        "gphStatus": "Dependency of",
+        "lat": "12.8",
+        "lng": "45.033333333333",
         "totalBilateralTrade": 637392
       }
     },
@@ -1980,14 +1980,15 @@
       }
     },
     {
-      "key": "St. Vincent",
+      "key": "57",
       "attributes": {
-        "label": "St. Vincent",
-        "ricType": "locality",
+        "label": "St. Vincent and the Grenadines",
+        "ricType": "GPH_entity",
         "cited": true,
-        "entityType": "RIC",
-        "ricParent": "St. Vincent and the Grenadines",
+        "entityType": "GPH",
+        "ricParent": "",
         "type": "entity",
+        "gphStatus": "Part of",
         "lat": "32.32",
         "lng": "-64.74",
         "totalBilateralTrade": 2105
@@ -4709,12 +4710,12 @@
         "label": "Turks and Caicos Is.",
         "ricType": "GPH_entity",
         "cited": true,
-        "entityType": "GPH",
+        "entityType": "GPH-AUTONOMOUS-CITED",
         "ricParent": "",
         "type": "entity",
-        "gphStatus": "Part of",
-        "lat": "32.32",
-        "lng": "-64.74",
+        "gphStatus": "Colony of",
+        "lat": "21.78",
+        "lng": "-71.8",
         "totalBilateralTrade": 496
       }
     },
@@ -5644,19 +5645,6 @@
       }
     },
     {
-      "key": "57",
-      "attributes": {
-        "label": "St. Vincent and the Grenadines",
-        "reporting": false,
-        "cited": false,
-        "ricType": "GPH_entity",
-        "entityType": "GPH",
-        "ricParent": "",
-        "type": "entity",
-        "gphStatus": "Part of"
-      }
-    },
-    {
       "key": "World (other)",
       "attributes": {
         "label": "World (other)",
@@ -6228,18 +6216,6 @@
         "type": "entity",
         "lat": "1.5",
         "lng": "10"
-      }
-    },
-    {
-      "key": "827",
-      "attributes": {
-        "label": "Straits Settlements",
-        "gphStatus": "Colony of",
-        "entityType": "GPH-AUTONOMOUS-CITED",
-        "ricType": "GPH_entity",
-        "type": "entity",
-        "lat": "1.3666666666667",
-        "lng": "103.8"
       }
     },
     {
@@ -13048,7 +13024,7 @@
         "reportedBy": "200",
         "value": 25976,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -14480,7 +14456,7 @@
         "reportedBy": "200",
         "value": 36899,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -15045,8 +15021,8 @@
       }
     },
     {
-      "key": "54<-St. Vincent",
-      "source": "St. Vincent",
+      "key": "54<-57",
+      "source": "57",
       "target": "54",
       "attributes": {
         "labels": [
@@ -15270,9 +15246,9 @@
       }
     },
     {
-      "key": "54->St. Vincent",
+      "key": "54->57",
       "source": "54",
-      "target": "St. Vincent",
+      "target": "57",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
@@ -22195,7 +22171,7 @@
         "reportedBy": "750",
         "value": 611416,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -22209,7 +22185,7 @@
         "reportedBy": "750",
         "value": 166368,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -23198,7 +23174,10 @@
         "reportedBy": "561",
         "value": 11439,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "561<-750"
+        ]
       }
     },
     {
@@ -29477,8 +29456,8 @@
       }
     },
     {
-      "key": "59<-St. Vincent",
-      "source": "St. Vincent",
+      "key": "59<-57",
+      "source": "57",
       "target": "59",
       "attributes": {
         "labels": [
@@ -29640,9 +29619,9 @@
       }
     },
     {
-      "key": "59->St. Vincent",
+      "key": "59->57",
       "source": "59",
-      "target": "St. Vincent",
+      "target": "57",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
@@ -29857,8 +29836,8 @@
       }
     },
     {
-      "key": "58<-St. Vincent",
-      "source": "St. Vincent",
+      "key": "58<-57",
+      "source": "57",
       "target": "58",
       "attributes": {
         "labels": [
@@ -30211,9 +30190,9 @@
       }
     },
     {
-      "key": "58->St. Vincent",
+      "key": "58->57",
       "source": "58",
-      "target": "St. Vincent",
+      "target": "57",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
@@ -36855,8 +36834,8 @@
       }
     },
     {
-      "key": "30<-St. Vincent",
-      "source": "St. Vincent",
+      "key": "30<-57",
+      "source": "57",
       "target": "30",
       "attributes": {
         "labels": [
@@ -36944,7 +36923,7 @@
         "reportedBy": "30",
         "value": 496,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -37126,7 +37105,7 @@
         "reportedBy": "30",
         "value": 167,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -37830,17 +37809,6 @@
       "key": "Panama (Atlantic Coast)-resolve-into-95",
       "source": "Panama (Atlantic Coast)",
       "target": "95",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "St. Vincent-resolve-into-57",
-      "source": "St. Vincent",
-      "target": "57",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -40511,19 +40479,8 @@
       }
     },
     {
-      "key": "830-resolve-into-827",
+      "key": "830-resolve-into-750",
       "source": "830",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "681-resolve-into-750",
-      "source": "681",
       "target": "750",
       "attributes": {
         "type": "resolution",
@@ -40580,6 +40537,17 @@
       "key": "58-resolve-into-1063",
       "source": "58",
       "target": "1063",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "AGGREGATE_INTO"
+        ]
+      }
+    },
+    {
+      "key": "57-resolve-into-1055",
+      "source": "57",
+      "target": "1055",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -40775,17 +40743,6 @@
       }
     },
     {
-      "key": "1032-resolve-into-31",
-      "source": "1032",
-      "target": "31",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
       "key": "205-resolve-into-200",
       "source": "205",
       "target": "200",
@@ -40874,17 +40831,6 @@
       }
     },
     {
-      "key": "57-resolve-into-1055",
-      "source": "57",
-      "target": "1055",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
       "key": "438-resolve-into-433",
       "source": "438",
       "target": "433",
@@ -40896,9 +40842,9 @@
       }
     },
     {
-      "key": "8271-resolve-into-827",
+      "key": "8271-resolve-into-750",
       "source": "8271",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -40907,9 +40853,9 @@
       }
     },
     {
-      "key": "8272-resolve-into-827",
+      "key": "8272-resolve-into-750",
       "source": "8272",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -41493,6 +41439,17 @@
       "key": "Pacific Islands-resolve-into-9900",
       "source": "Pacific Islands",
       "target": "9900",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "British West Indies-resolve-into-1032",
+      "source": "British West Indies",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -42821,6 +42778,17 @@
       }
     },
     {
+      "key": "America-resolve-into-1032",
+      "source": "America",
+      "target": "1032",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "America-resolve-into-1044",
       "source": "America",
       "target": "1044",
@@ -43165,17 +43133,6 @@
       "key": "British East Indies-resolve-into-8231",
       "source": "British East Indies",
       "target": "8231",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "British East Indies-resolve-into-827",
-      "source": "British East Indies",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -45879,6 +45836,17 @@
       }
     },
     {
+      "key": "British America-resolve-into-1032",
+      "source": "British America",
+      "target": "1032",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "British America-resolve-into-1048",
       "source": "British America",
       "target": "1048",
@@ -46245,17 +46213,6 @@
       "key": "British Asia-resolve-into-780",
       "source": "British Asia",
       "target": "780",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "British Asia-resolve-into-827",
-      "source": "British Asia",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -48827,17 +48784,6 @@
       }
     },
     {
-      "key": "British Colonies-resolve-into-827",
-      "source": "British Colonies",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "British Colonies-resolve-into-901",
       "source": "British Colonies",
       "target": "901",
@@ -48951,6 +48897,17 @@
       "key": "British Colonies-resolve-into-1028",
       "source": "British Colonies",
       "target": "1028",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "British Colonies-resolve-into-1032",
+      "source": "British Colonies",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -49256,20 +49213,9 @@
       }
     },
     {
-      "key": "West Indies-resolve-into-31",
+      "key": "West Indies-resolve-into-1032",
       "source": "West Indies",
-      "target": "31",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "West Indies-resolve-into-51",
-      "source": "West Indies",
-      "target": "51",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -49421,6 +49367,17 @@
       }
     },
     {
+      "key": "West Indies-resolve-into-31",
+      "source": "West Indies",
+      "target": "31",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "West Indies-resolve-into-40",
       "source": "West Indies",
       "target": "40",
@@ -49457,6 +49414,17 @@
       "key": "West Indies-resolve-into-5",
       "source": "West Indies",
       "target": "5",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "West Indies-resolve-into-51",
+      "source": "West Indies",
+      "target": "51",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -51368,9 +51336,9 @@
       }
     },
     {
-      "key": "World-resolve-into-750",
+      "key": "World-resolve-into-681",
       "source": "World",
-      "target": "750",
+      "target": "681",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -51533,6 +51501,17 @@
       }
     },
     {
+      "key": "World-resolve-into-750",
+      "source": "World",
+      "target": "750",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "World-resolve-into-751",
       "source": "World",
       "target": "751",
@@ -51657,17 +51636,6 @@
       "key": "World-resolve-into-824",
       "source": "World",
       "target": "824",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "World-resolve-into-827",
-      "source": "World",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -52020,6 +51988,17 @@
       "key": "World-resolve-into-1029",
       "source": "World",
       "target": "1029",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "World-resolve-into-1032",
+      "source": "World",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -57022,17 +57001,6 @@
       }
     },
     {
-      "key": "East Indies-resolve-into-827",
-      "source": "East Indies",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "East Indies-resolve-into-8223",
       "source": "East Indies",
       "target": "8223",
@@ -57231,9 +57199,9 @@
       }
     },
     {
-      "key": "Arabia-resolve-into-750",
+      "key": "Arabia-resolve-into-681",
       "source": "Arabia",
-      "target": "750",
+      "target": "681",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -58364,9 +58332,9 @@
       }
     },
     {
-      "key": "Asia-resolve-into-750",
+      "key": "Asia-resolve-into-681",
       "source": "Asia",
-      "target": "750",
+      "target": "681",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -58540,6 +58508,17 @@
       }
     },
     {
+      "key": "Asia-resolve-into-750",
+      "source": "Asia",
+      "target": "750",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "Asia-resolve-into-751",
       "source": "Asia",
       "target": "751",
@@ -58664,17 +58643,6 @@
       "key": "Asia-resolve-into-824",
       "source": "Asia",
       "target": "824",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "Asia-resolve-into-827",
-      "source": "Asia",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -60960,17 +60928,6 @@
       }
     },
     {
-      "key": "820-resolve-into-827",
-      "source": "820",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "200<-365",
       "source": "365",
       "target": "200",
@@ -61287,8 +61244,8 @@
       }
     },
     {
-      "key": "200<-827",
-      "source": "827",
+      "key": "200<-750",
+      "source": "750",
       "target": "200",
       "attributes": {
         "value": 763189,
@@ -61304,28 +61261,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Singapore (REP) <- United Kingdom 763189",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "200<-750",
-      "source": "750",
-      "target": "200",
-      "attributes": {
-        "value": 25976,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "generatedFrom": "United Kingdom",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Aden (REP) <- United Kingdom 25976",
         "status": "ok",
         "type": "trade"
       }
@@ -61673,9 +61608,9 @@
       }
     },
     {
-      "key": "200->827",
+      "key": "200->750",
       "source": "200",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 960335,
         "valueGeneratedBy": [
@@ -61690,28 +61625,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Singapore (REP) -> United Kingdom 960335",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "200->750",
-      "source": "200",
-      "target": "750",
-      "attributes": {
-        "value": 36899,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "generatedFrom": "United Kingdom",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Aden (REP) -> United Kingdom 36899",
         "status": "ok",
         "type": "trade"
       }
@@ -62135,7 +62048,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbados (REP) <- Dominica 23270\nSt. Vincent (REP) <- Dominica 1825\nSt. Lucia (REP) <- Dominica 160\nGrenada (REP) <- Dominica 5",
+        "notes": "Barbados (REP) <- Dominica 23270\nSt. Vincent and the Grenadines (REP) <- Dominica 1825\nSt. Lucia (REP) <- Dominica 160\nGrenada (REP) <- Dominica 5",
         "status": "ok",
         "type": "trade"
       }
@@ -62205,7 +62118,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbados (REP) -> Dominica 560\nSt. Vincent (REP) -> Dominica 56\nSt. Lucia (REP) -> Dominica 32",
+        "notes": "Barbados (REP) -> Dominica 560\nSt. Vincent and the Grenadines (REP) -> Dominica 56\nSt. Lucia (REP) -> Dominica 32",
         "status": "ok",
         "type": "trade"
       }
@@ -62917,8 +62830,8 @@
       }
     },
     {
-      "key": "248<-827",
-      "source": "827",
+      "key": "248<-750",
+      "source": "750",
       "target": "248",
       "attributes": {
         "value": 32094.33962264151,
@@ -63377,28 +63290,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Argentina (La Plata) (REP) <- Bahia 94401.52057957169",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "901->827",
-      "source": "901",
-      "target": "827",
-      "attributes": {
-        "value": 1000,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "901",
-        "originalReporters": [
-          "901"
-        ],
-        "generatedFrom": "New South Wales",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Singapore (REP) -> New South Wales 1000",
         "status": "ok",
         "type": "trade"
       }
@@ -64004,50 +63895,6 @@
       }
     },
     {
-      "key": "750<-827",
-      "source": "827",
-      "target": "750",
-      "attributes": {
-        "value": 888773,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Malacca & Penang & Singapore (REP) <- India 888773",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "750->827",
-      "source": "750",
-      "target": "827",
-      "attributes": {
-        "value": 1472226,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Malacca & Penang & Singapore (REP) -> India 1472226",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "750->651",
       "source": "750",
       "target": "651",
@@ -64111,7 +63958,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tobago (REP) <- British Virgin Is. 5\nBarbados (REP) <- Montserrat 7911\nSt. Vincent (REP) <- Montserrat 125\nBarbados (REP) <- Antigua and Barbuda (Antigua) 14130\nGrenada (REP) <- Antigua and Barbuda (Antigua) 128\nSt. Vincent (REP) <- Antigua and Barbuda (Antigua) 131\nSt. Lucia (REP) <- Antigua and Barbuda (Antigua) 132\nTobago (REP) <- Antigua and Barbuda (Antigua) 1",
+        "notes": "Tobago (REP) <- British Virgin Is. 5\nBarbados (REP) <- Montserrat 7911\nSt. Vincent and the Grenadines (REP) <- Montserrat 125\nBarbados (REP) <- Antigua and Barbuda (Antigua) 14130\nGrenada (REP) <- Antigua and Barbuda (Antigua) 128\nSt. Vincent and the Grenadines (REP) <- Antigua and Barbuda (Antigua) 131\nSt. Lucia (REP) <- Antigua and Barbuda (Antigua) 132\nTobago (REP) <- Antigua and Barbuda (Antigua) 1",
         "status": "ok",
         "type": "trade"
       }
@@ -64226,7 +64073,7 @@
       "source": "750",
       "target": "561",
       "attributes": {
-        "value": 84769,
+        "value": 96208,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -64241,7 +64088,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) <- Cape Colony (Cape of Good Hope) 47540\nMumbai (Bombay) (REP) <- Cape Colony (Cape of Good Hope) 34515\nBimlipatam (REP) <- Cape Colony (Cape of Good Hope) 143\nCoringa (India) (REP) <- Cape Colony (Cape of Good Hope) 2571",
+        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) <- Cape Colony (Cape of Good Hope) 47540\nMumbai (Bombay) (REP) <- Cape Colony (Cape of Good Hope) 34515\nBimlipatam (REP) <- Cape Colony (Cape of Good Hope) 143\nCoringa (India) (REP) <- Cape Colony (Cape of Good Hope) 2571\nSingapore (REP) <- Cape Colony (Cape of Good Hope) 11439",
         "status": "ok",
         "type": "trade"
       }
@@ -64267,28 +64114,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Mawlamyine (REP) <- Cape Colony (Cape of Good Hope) 409\nArakan (REP) <- Cape Colony (Cape of Good Hope) 195",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "561<-827",
-      "source": "827",
-      "target": "561",
-      "attributes": {
-        "value": 11439,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "561",
-        "originalReporters": [
-          "561"
-        ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Singapore (REP) <- Cape Colony (Cape of Good Hope) 11439",
         "status": "ok",
         "type": "trade"
       }
@@ -66646,7 +66471,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbados (REP) -> Montserrat 2957\nSt. Vincent (REP) -> Montserrat 16\nBarbados (REP) -> Antigua and Barbuda (Antigua) 5623\nSt. Vincent (REP) -> Antigua and Barbuda (Antigua) 23",
+        "notes": "Barbados (REP) -> Montserrat 2957\nSt. Vincent and the Grenadines (REP) -> Montserrat 16\nBarbados (REP) -> Antigua and Barbuda (Antigua) 5623\nSt. Vincent and the Grenadines (REP) -> Antigua and Barbuda (Antigua) 23",
         "status": "ok",
         "type": "trade"
       }
@@ -66926,9 +66751,9 @@
       }
     },
     {
-      "key": "1063->31",
+      "key": "1063->1032",
       "source": "1063",
-      "target": "31",
+      "target": "1032",
       "attributes": {
         "value": 486,
         "valueGeneratedBy": [
@@ -68482,7 +68307,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbados (REP) <- Bermuda 2002\nSt. Vincent (REP) <- Bermuda 24",
+        "notes": "Barbados (REP) <- Bermuda 2002\nSt. Vincent and the Grenadines (REP) <- Bermuda 24",
         "status": "ok",
         "type": "trade"
       }
@@ -68507,28 +68332,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Antigua and Barbuda (Antigua) (REP) <- Bermuda 13\nSt. Kitts (REP) <- Bermuda 26\nNevis (REP) <- Bermuda 890",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "30<-31",
-      "source": "31",
-      "target": "30",
-      "attributes": {
-        "value": 496,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "30",
-        "originalReporters": [
-          "30"
-        ],
-        "generatedFrom": "Bermuda",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Turks and Caicos Is. (REP) <- Bermuda 496",
         "status": "ok",
         "type": "trade"
       }
@@ -68683,28 +68486,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Barbados (REP) -> Bermuda 462",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "30->31",
-      "source": "30",
-      "target": "31",
-      "attributes": {
-        "value": 167,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "30",
-        "originalReporters": [
-          "30"
-        ],
-        "generatedFrom": "Bermuda",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Turks and Caicos Is. (REP) -> Bermuda 167",
         "status": "ok",
         "type": "trade"
       }

@@ -2659,12 +2659,12 @@
         "label": "Aden",
         "ricType": "GPH_entity",
         "cited": true,
-        "entityType": "GPH",
+        "entityType": "GPH-AUTONOMOUS-CITED",
         "ricParent": "",
         "type": "entity",
-        "gphStatus": "Part of",
-        "lat": "22.8",
-        "lng": "83",
+        "gphStatus": "Dependency of",
+        "lat": "12.8",
+        "lng": "45.033333333333",
         "totalBilateralTrade": 154842
       }
     },
@@ -5734,18 +5734,6 @@
       }
     },
     {
-      "key": "827",
-      "attributes": {
-        "label": "Straits Settlements",
-        "gphStatus": "Colony of",
-        "entityType": "GPH-AUTONOMOUS-CITED",
-        "ricType": "GPH_entity",
-        "type": "entity",
-        "lat": "1.3666666666667",
-        "lng": "103.8"
-      }
-    },
-    {
       "key": "815",
       "attributes": {
         "label": "Vietnam",
@@ -5812,6 +5800,17 @@
         "entityType": "GPH-AUTONOMOUS",
         "gphStatus": "Colony of",
         "label": "Vancouver",
+        "reporting": false,
+        "ricType": "GPH_entity"
+      }
+    },
+    {
+      "key": "1032",
+      "attributes": {
+        "type": "entity",
+        "entityType": "GPH-AUTONOMOUS",
+        "gphStatus": "Colony of",
+        "label": "Turks and Caicos Is.",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -11622,7 +11621,10 @@
         "reportedBy": "Cape Town",
         "value": 25,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "561<-750"
+        ]
       }
     },
     {
@@ -11638,7 +11640,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "561<-827"
+          "561<-750"
         ]
       }
     },
@@ -12776,7 +12778,10 @@
         "reportedBy": "Cape Town",
         "value": 33,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "561->750"
+        ]
       }
     },
     {
@@ -13891,7 +13896,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "827->850"
+          "750->850"
         ]
       }
     },
@@ -13992,7 +13997,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "827->850"
+          "750->850"
         ]
       }
     },
@@ -14049,10 +14054,7 @@
         "reportedBy": "830",
         "value": 26527.93641918607,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827->750"
-        ]
+        "status": "ignore_resolved"
       }
     },
     {
@@ -14066,10 +14068,7 @@
         "reportedBy": "830",
         "value": 78131.43496146012,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827->750"
-        ]
+        "status": "ignore_resolved"
       }
     },
     {
@@ -14295,7 +14294,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "827<-850"
+          "750<-850"
         ]
       }
     },
@@ -14396,7 +14395,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "827<-850"
+          "750<-850"
         ]
       }
     },
@@ -14453,10 +14452,7 @@
         "reportedBy": "830",
         "value": 24314.269739206837,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827<-750"
-        ]
+        "status": "ignore_resolved"
       }
     },
     {
@@ -14470,10 +14466,7 @@
         "reportedBy": "830",
         "value": 39222.49291105875,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827<-750"
-        ]
+        "status": "ignore_resolved"
       }
     },
     {
@@ -17289,7 +17282,7 @@
         "reportedBy": "200",
         "value": 17184,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -19382,7 +19375,7 @@
         "reportedBy": "750",
         "value": 154842,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -19396,7 +19389,7 @@
         "reportedBy": "750",
         "value": 56219,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ok"
       }
     },
     {
@@ -19494,7 +19487,10 @@
         "reportedBy": "750",
         "value": 22562,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "750->850"
+        ]
       }
     },
     {
@@ -19508,7 +19504,10 @@
         "reportedBy": "750",
         "value": 7066,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "750<-850"
+        ]
       }
     },
     {
@@ -36943,9 +36942,9 @@
       }
     },
     {
-      "key": "8272-resolve-into-827",
+      "key": "8272-resolve-into-750",
       "source": "8272",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -36954,9 +36953,9 @@
       }
     },
     {
-      "key": "830-resolve-into-827",
+      "key": "830-resolve-into-750",
       "source": "830",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -37133,17 +37132,6 @@
       "key": "1014-resolve-into-2",
       "source": "1014",
       "target": "2",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
-      "key": "681-resolve-into-750",
-      "source": "681",
-      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -37339,9 +37327,9 @@
       }
     },
     {
-      "key": "8271-resolve-into-827",
+      "key": "8271-resolve-into-750",
       "source": "8271",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -37515,6 +37503,17 @@
       }
     },
     {
+      "key": "British West Indies-resolve-into-1032",
+      "source": "British West Indies",
+      "target": "1032",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "British West Indies-resolve-into-1048",
       "source": "British West Indies",
       "target": "1048",
@@ -37592,20 +37591,9 @@
       }
     },
     {
-      "key": "West Indies-resolve-into-31",
+      "key": "West Indies-resolve-into-1032",
       "source": "West Indies",
-      "target": "31",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "West Indies-resolve-into-51",
-      "source": "West Indies",
-      "target": "51",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -37757,6 +37745,17 @@
       }
     },
     {
+      "key": "West Indies-resolve-into-31",
+      "source": "West Indies",
+      "target": "31",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "West Indies-resolve-into-40",
       "source": "West Indies",
       "target": "40",
@@ -37793,6 +37792,17 @@
       "key": "West Indies-resolve-into-5",
       "source": "West Indies",
       "target": "5",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "West Indies-resolve-into-51",
+      "source": "West Indies",
+      "target": "51",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -39330,17 +39340,6 @@
       }
     },
     {
-      "key": "British Colonies-resolve-into-827",
-      "source": "British Colonies",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "British Colonies-resolve-into-901",
       "source": "British Colonies",
       "target": "901",
@@ -39443,6 +39442,17 @@
       "key": "British Colonies-resolve-into-1028",
       "source": "British Colonies",
       "target": "1028",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
+      "key": "British Colonies-resolve-into-1032",
+      "source": "British Colonies",
+      "target": "1032",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -40606,6 +40616,17 @@
       }
     },
     {
+      "key": "America-resolve-into-1032",
+      "source": "America",
+      "target": "1032",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "America-resolve-into-1044",
       "source": "America",
       "target": "1044",
@@ -41255,17 +41276,6 @@
       }
     },
     {
-      "key": "British East Indies-resolve-into-827",
-      "source": "British East Indies",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "Western America-resolve-into-2",
       "source": "Western America",
       "target": "2",
@@ -41530,6 +41540,17 @@
       }
     },
     {
+      "key": "British America-resolve-into-1032",
+      "source": "British America",
+      "target": "1032",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "British America-resolve-into-1048",
       "source": "British America",
       "target": "1048",
@@ -41599,17 +41620,6 @@
       "key": "British Asia-resolve-into-780",
       "source": "British Asia",
       "target": "780",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "British Asia-resolve-into-827",
-      "source": "British Asia",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -42179,17 +42189,6 @@
       }
     },
     {
-      "key": "East Indies-resolve-into-827",
-      "source": "East Indies",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "East Indies-resolve-into-8223",
       "source": "East Indies",
       "target": "8223",
@@ -42388,9 +42387,9 @@
       }
     },
     {
-      "key": "Arabia-resolve-into-750",
+      "key": "Arabia-resolve-into-681",
       "source": "Arabia",
-      "target": "750",
+      "target": "681",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -44896,9 +44895,9 @@
       }
     },
     {
-      "key": "Asia-resolve-into-750",
+      "key": "Asia-resolve-into-681",
       "source": "Asia",
-      "target": "750",
+      "target": "681",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -45072,6 +45071,17 @@
       }
     },
     {
+      "key": "Asia-resolve-into-750",
+      "source": "Asia",
+      "target": "750",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "SPLIT_OTHER"
+        ]
+      }
+    },
+    {
       "key": "Asia-resolve-into-751",
       "source": "Asia",
       "target": "751",
@@ -45196,17 +45206,6 @@
       "key": "Asia-resolve-into-824",
       "source": "Asia",
       "target": "824",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
-      "key": "Asia-resolve-into-827",
-      "source": "Asia",
-      "target": "827",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -49494,17 +49493,6 @@
       }
     },
     {
-      "key": "820-resolve-into-827",
-      "source": "820",
-      "target": "827",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "561<-200",
       "source": "200",
       "target": "561",
@@ -49620,7 +49608,7 @@
       "source": "750",
       "target": "561",
       "attributes": {
-        "value": 42905,
+        "value": 46420,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -49652,7 +49640,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) <- Cape Town 32853\nMumbai (Bombay) (REP) <- Cape Town 423\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Simon 711\nMumbai (Bombay) (REP) <- Port Simon 313\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Elizabeth 8605",
+        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) <- Cape Town 32853\nMumbai (Bombay) (REP) <- Cape Town 423\nPenang (REP) <- Cape Town 25\nSingapore (REP) <- Cape Town 3490\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Simon 711\nMumbai (Bombay) (REP) <- Port Simon 313\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Elizabeth 8605",
         "status": "ok",
         "type": "trade"
       }
@@ -49849,37 +49837,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Manila (REP) <- Cape Town 1616",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "561<-827",
-      "source": "827",
-      "target": "561",
-      "attributes": {
-        "value": 3515,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "561",
-        "originalReporters": [
-          "Cape Town",
-          "C",
-          "a",
-          "p",
-          "e",
-          " ",
-          "T",
-          "o",
-          "w",
-          "n"
-        ],
-        "generatedFrom": "Cape Town",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Penang (REP) <- Cape Town 25\nSingapore (REP) <- Cape Town 3490",
         "status": "ok",
         "type": "trade"
       }
@@ -50581,7 +50538,7 @@
       "source": "561",
       "target": "750",
       "attributes": {
-        "value": 4087,
+        "value": 4120,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -50611,7 +50568,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) -> Cape Town 3742\nMumbai (Bombay) (REP) -> Cape Town 145\nMumbai (Bombay) (REP) -> Port Elizabeth 200",
+        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) -> Cape Town 3742\nMumbai (Bombay) (REP) -> Cape Town 145\nSingapore (REP) -> Cape Town 33\nMumbai (Bombay) (REP) -> Port Elizabeth 200",
         "status": "ok",
         "type": "trade"
       }
@@ -50919,28 +50876,6 @@
       }
     },
     {
-      "key": "561->827",
-      "source": "561",
-      "target": "827",
-      "attributes": {
-        "value": 33,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "561",
-        "originalReporters": [
-          "Cape Town"
-        ],
-        "generatedFrom": "Cape Town",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Singapore (REP) -> Cape Town 33",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "561->850",
       "source": "561",
       "target": "850",
@@ -51073,15 +51008,15 @@
       }
     },
     {
-      "key": "827->2",
-      "source": "827",
+      "key": "750->2",
+      "source": "750",
       "target": "2",
       "attributes": {
         "value": 64215.98306641639,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51095,15 +51030,15 @@
       }
     },
     {
-      "key": "827->300",
-      "source": "827",
+      "key": "750->300",
+      "source": "750",
       "target": "300",
       "attributes": {
         "value": 14163.984184671912,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51117,15 +51052,15 @@
       }
     },
     {
-      "key": "827->211",
-      "source": "827",
+      "key": "750->211",
+      "source": "750",
       "target": "211",
       "attributes": {
         "value": 4700.786772634689,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51139,106 +51074,42 @@
       }
     },
     {
-      "key": "827->561",
-      "source": "827",
-      "target": "561",
-      "attributes": {
-        "value": 1955.6292184192657,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Cape Colony (Cape of Good Hope) (REP) -> Singapore 1955.6292184192657",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->850",
-      "source": "827",
+      "key": "750->850",
+      "source": "750",
       "target": "850",
       "attributes": {
-        "value": 211118.2954590838,
+        "value": 233680.2954590838,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830",
           "8",
           "3",
-          "0"
+          "0",
+          "7",
+          "5"
         ],
-        "generatedFrom": "Singapore",
+        "generatedFrom": "India|Singapore",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sulawesi (Celebes) (REP) -> Singapore 67550.3015296138\nIndonesia (Dutch East Indies) (other) & Java (REP) -> Singapore 111653.14109988417\nSumatra (REP) -> Singapore 31914.852829585845",
+        "notes": "Sulawesi (Celebes) (REP) -> Singapore 67550.3015296138\nIndonesia (Dutch East Indies) (other) & Java (REP) -> Singapore 111653.14109988417\nSumatra (REP) -> Singapore 31914.852829585845\nJakarta (Batavia) & Java & Sumatra (REP) -> India 22562",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "827->780",
-      "source": "827",
-      "target": "780",
-      "attributes": {
-        "value": 6207.276648428451,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Sri Lanka (Ceylon) (REP) -> Singapore 6207.276648428451",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->710",
-      "source": "827",
-      "target": "710",
-      "attributes": {
-        "value": 482818.28347777465,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "People's Republic of China (China) (REP) -> Singapore 482818.28347777465",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->815",
-      "source": "827",
+      "key": "750->815",
+      "source": "750",
       "target": "815",
       "attributes": {
         "value": 88836.49506769438,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51252,37 +51123,15 @@
       }
     },
     {
-      "key": "827->390",
-      "source": "827",
-      "target": "390",
-      "attributes": {
-        "value": 1255.800950517193,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Denmark (REP) -> Singapore 1255.800950517193",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->230",
-      "source": "827",
+      "key": "750->230",
+      "source": "750",
       "target": "230",
       "attributes": {
         "value": 7365.50980470466,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51296,59 +51145,15 @@
       }
     },
     {
-      "key": "827->220",
-      "source": "827",
-      "target": "220",
-      "attributes": {
-        "value": 32635.648388513917,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "France (REP) -> Singapore 32635.648388513917",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->200",
-      "source": "827",
-      "target": "200",
-      "attributes": {
-        "value": 243028.8749550701,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "United Kingdom (REP) -> Singapore 243028.8749550701",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->840",
-      "source": "827",
+      "key": "750->840",
+      "source": "750",
       "target": "840",
       "attributes": {
         "value": 37053.55645193498,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51362,15 +51167,15 @@
       }
     },
     {
-      "key": "827->590",
-      "source": "827",
+      "key": "750->590",
+      "source": "750",
       "target": "590",
       "attributes": {
         "value": 4049.4828068213583,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51384,15 +51189,15 @@
       }
     },
     {
-      "key": "827->775",
-      "source": "827",
+      "key": "750->775",
+      "source": "750",
       "target": "775",
       "attributes": {
         "value": 49.163305243819636,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51406,15 +51211,37 @@
       }
     },
     {
-      "key": "827->800",
-      "source": "827",
+      "key": "750->restOfTheWorld",
+      "source": "750",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 111977.87451575542,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "830"
+        ],
+        "generatedFrom": "Singapore",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Malaysia (British Malaya) (other) (REP) -> Singapore 111977.87451575542",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "750->800",
+      "source": "750",
       "target": "800",
       "attributes": {
         "value": 40419.74519749191,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51428,15 +51255,15 @@
       }
     },
     {
-      "key": "827->380",
-      "source": "827",
+      "key": "750->380",
+      "source": "750",
       "target": "380",
       "attributes": {
         "value": 1809.0578697232318,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51450,15 +51277,15 @@
       }
     },
     {
-      "key": "827->640",
-      "source": "827",
+      "key": "750->640",
+      "source": "750",
       "target": "640",
       "attributes": {
         "value": 74.44386756659611,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51472,40 +51299,15 @@
       }
     },
     {
-      "key": "827->750",
-      "source": "827",
-      "target": "750",
-      "attributes": {
-        "value": 272328.76712328766,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830",
-          "8",
-          "3",
-          "0"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Kolkata (Calcutta) (REP) -> Singapore 167669.39574264147\nCoromandel Coast Posts (REP) -> Singapore 26527.93641918607\nMalabar Coast (REP) -> Singapore 78131.43496146012",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-2",
+      "key": "750<-2",
       "source": "2",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 24729.222413035663,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51519,106 +51321,42 @@
       }
     },
     {
-      "key": "827<-211",
-      "source": "211",
-      "target": "827",
-      "attributes": {
-        "value": 7569.9508766324525,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Belgium (REP) <- Singapore 7569.9508766324525",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-850",
+      "key": "750<-850",
       "source": "850",
-      "target": "827",
+      "target": "750",
       "attributes": {
-        "value": 311527.41722912254,
+        "value": 318593.41722912254,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830",
           "8",
           "3",
-          "0"
+          "0",
+          "7",
+          "5"
         ],
-        "generatedFrom": "Singapore",
+        "generatedFrom": "India|Singapore",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sulawesi (Celebes) (REP) <- Singapore 55226.646431566754\nIndonesia (Dutch East Indies) (other) & Java (REP) <- Singapore 199822.03762131074\nSumatra (REP) <- Singapore 56478.733176245056",
+        "notes": "Sulawesi (Celebes) (REP) <- Singapore 55226.646431566754\nIndonesia (Dutch East Indies) (other) & Java (REP) <- Singapore 199822.03762131074\nSumatra (REP) <- Singapore 56478.733176245056\nJakarta (Batavia) & Java & Sumatra (REP) <- India 7066",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "827<-780",
-      "source": "780",
-      "target": "827",
-      "attributes": {
-        "value": 6853.788090578697,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Sri Lanka (Ceylon) (REP) <- Singapore 6853.788090578697",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-710",
-      "source": "710",
-      "target": "827",
-      "attributes": {
-        "value": 230522.86433164263,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "People's Republic of China (China) (REP) <- Singapore 230522.86433164263",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-815",
+      "key": "750<-815",
       "source": "815",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 79627.3812851951,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51632,103 +51370,15 @@
       }
     },
     {
-      "key": "827<-230",
-      "source": "230",
-      "target": "827",
-      "attributes": {
-        "value": 692.5196693158672,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Spain (REP) <- Singapore 692.5196693158672",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-220",
-      "source": "220",
-      "target": "827",
-      "attributes": {
-        "value": 6214.545309317465,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "France (REP) <- Singapore 6214.545309317465",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-200",
-      "source": "200",
-      "target": "827",
-      "attributes": {
-        "value": 587583.2101921003,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "United Kingdom (REP) <- Singapore 587583.2101921003",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-210",
-      "source": "210",
-      "target": "827",
-      "attributes": {
-        "value": 322.8164064060066,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Netherlands (REP) <- Singapore 322.8164064060066",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-840",
+      "key": "750<-840",
       "source": "840",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 48275.57011062742,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51742,15 +51392,15 @@
       }
     },
     {
-      "key": "827<-590",
+      "key": "750<-590",
       "source": "590",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 1486.7207156835336,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51764,15 +51414,15 @@
       }
     },
     {
-      "key": "827<-775",
+      "key": "750<-775",
       "source": "775",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 3732.4973042054394,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51786,15 +51436,37 @@
       }
     },
     {
-      "key": "827<-800",
+      "key": "750<-restOfTheWorld",
+      "source": "restOfTheWorld",
+      "target": "750",
+      "attributes": {
+        "value": 54135.26898039059,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "830"
+        ],
+        "generatedFrom": "Singapore",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Malaysia (British Malaya) (other) (REP) <- Singapore 54135.26898039059",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "750<-800",
       "source": "800",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 60488.91728902911,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51808,15 +51480,15 @@
       }
     },
     {
-      "key": "827<-380",
+      "key": "750<-380",
       "source": "380",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 1978.7132073964615,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51830,15 +51502,15 @@
       }
     },
     {
-      "key": "827<-640",
+      "key": "750<-640",
       "source": "640",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 17087.74312073166,
         "valueGeneratedBy": [
           "aggregation"
         ],
-        "reportedBy": "827",
+        "reportedBy": "750",
         "originalReporters": [
           "830"
         ],
@@ -51847,31 +51519,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Turkey (Ottoman Empire) (REP) <- Singapore 17087.74312073166",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827<-750",
-      "source": "750",
-      "target": "827",
-      "attributes": {
-        "value": 511612.005271776,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "830",
-          "8",
-          "3",
-          "0"
-        ],
-        "generatedFrom": "Singapore",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Kolkata (Calcutta) (REP) <- Singapore 448075.2426215104\nCoromandel Coast Posts (REP) <- Singapore 24314.269739206837\nMalabar Coast (REP) <- Singapore 39222.49291105875",
         "status": "ok",
         "type": "trade"
       }
@@ -52433,8 +52080,8 @@
       }
     },
     {
-      "key": "200<-827",
-      "source": "827",
+      "key": "200<-750",
+      "source": "750",
       "target": "200",
       "attributes": {
         "value": 523081,
@@ -52795,9 +52442,9 @@
       }
     },
     {
-      "key": "200->827",
+      "key": "200->750",
       "source": "200",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 608886,
         "valueGeneratedBy": [
@@ -52812,28 +52459,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "Singapore (REP) -> United Kingdom 608886",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "200->750",
-      "source": "200",
-      "target": "750",
-      "attributes": {
-        "value": 17184,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "generatedFrom": "United Kingdom",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Aden (REP) -> United Kingdom 17184",
         "status": "ok",
         "type": "trade"
       }
@@ -53430,94 +53055,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "United States of America (REP) <- New Zealand (North Island) 3605\nUnited States of America (REP) <- New Zealand (South Island) 951",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "750->850",
-      "source": "750",
-      "target": "850",
-      "attributes": {
-        "value": 22562,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Jakarta (Batavia) & Java & Sumatra (REP) -> India 22562",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "750<-850",
-      "source": "850",
-      "target": "750",
-      "attributes": {
-        "value": 7066,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Jakarta (Batavia) & Java & Sumatra (REP) <- India 7066",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "750<-827",
-      "source": "827",
-      "target": "750",
-      "attributes": {
-        "value": 599453,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Malacca & Penang & Singapore (REP) <- India 599453",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "750->827",
-      "source": "750",
-      "target": "827",
-      "attributes": {
-        "value": 694154,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "750",
-        "originalReporters": [
-          "750"
-        ],
-        "generatedFrom": "India",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Malacca & Penang & Singapore (REP) -> India 694154",
         "status": "ok",
         "type": "trade"
       }
@@ -54531,8 +54068,8 @@
       }
     },
     {
-      "key": "248<-827",
-      "source": "827",
+      "key": "248<-750",
+      "source": "750",
       "target": "248",
       "attributes": {
         "value": 43116.94152923538,
@@ -54776,9 +54313,9 @@
       }
     },
     {
-      "key": "248->827",
+      "key": "248->750",
       "source": "248",
-      "target": "827",
+      "target": "750",
       "attributes": {
         "value": 69353.07346326836,
         "valueGeneratedBy": [
