@@ -47,6 +47,7 @@ import delimited "data/tradeFlows_`year'.csv", /*
 
 format value* %20.0fc
 
+capture noisily tostring(reportedBy), replace
 
 /* Plus nécessaire avec le nouveau format des données (1 ligne par flux)
 keep if year==`year'
@@ -69,6 +70,7 @@ encode exporterLabel, gen(exporter_lbl)
 
 generate CafFob="FromUnknown"
 replace CafFob="FromImporter" if reportedBy==importerId 
+
 replace CafFob="FromExporter" if reportedBy==exporterId 
 
 tab CafFob
@@ -211,7 +213,6 @@ foreach trader in exporter importer  {
 	*use ``trader'_coefs', clear
 	*'
 	*list
-	*blif 
 }
 
 ////Exporter les coefficient et les diagnostics de la régression pour chaque année et chaque CafFob
