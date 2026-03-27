@@ -62,6 +62,7 @@ reshape long value, i(year status notes importerLabel importerId exporterLabel e
 drop importerType exporterType
 drop if value==. & status !="to_impute"
 drop if status =="ignore_internal" | status=="ignore_resolved"
+drop if status=="ignore_duplicate"
 
 gen ln_value=ln(value)
 
@@ -356,6 +357,7 @@ gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
 erase tradeFlows_1833_temp.dta
 erase tradeFlows_1833ok_temp.dta
+erase GeoPolHist_dependency_1833.dta
 
 
 foreach year of numlist 1834(1)1938 {
@@ -363,6 +365,8 @@ foreach year of numlist 1834(1)1938 {
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
 	erase  tradeFlows_`year'_temp.dta
+	erase  tradeFlows_`year'ok_temp.dta
+	erase GeoPolHist_dependency_`year'.dta
 }
 
 erase GeoPolHist_entities_temp.dta
