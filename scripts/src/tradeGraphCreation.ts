@@ -15,7 +15,7 @@ import {
   RICentity,
   TradeEdgeAttributes,
 } from "./types";
-import { addResolutionEdge, hasResolutionEdge, nodeId, setReplacer } from "./utils";
+import { addResolutionEdge, hasResolutionEdge, nodeId } from "./utils";
 
 export function tradeEdgeKey(reporter: string, partner: string, direction: "Exp" | "Imp") {
   return `${reporter}${direction === "Exp" ? "->" : "<-"}${partner}`;
@@ -572,43 +572,42 @@ export function resolveEntityTransform(
               );
               // mark flow as solved
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
-              return;
             }
             //create flow trade to be imputed by gravity model
-            failed
-              // TODO: decide what to do with ROW partner
-              .filter(([newPartner]) => newPartner !== "restOfTheWorld")
-              .forEach(([newPartner, _]) => {
-                const source = splitSide === "Export" ? reporterId : newPartner;
-                const target = splitSide === "Export" ? newPartner : reporterId;
+            // failed
+            //   // TODO: decide what to do with ROW partner
+            //   .filter(([newPartner]) => newPartner !== "restOfTheWorld")
+            //   .forEach(([newPartner, _]) => {
+            //     const source = splitSide === "Export" ? reporterId : newPartner;
+            //     const target = splitSide === "Export" ? newPartner : reporterId;
 
-                const newEdgeKey = tradeEdgeKey(reporterId, newPartner, splitSide === "Export" ? "Exp" : "Imp");
-                if (graph.hasEdge(newEdgeKey)) {
-                  if (
-                    graph.getEdgeAttribute(newEdgeKey, "type") === "trade" &&
-                    ((graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("REPORTED_TRADE") ||
-                      (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("GENERATED_TRADE") ||
-                      (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("TO_IMPUTE"))
-                  )
-                    // ignore to impute as trade already exists
-                    return;
-                  else
-                    throw new Error(
-                      `${newEdgeKey} already exist but should be imputed from ${JSON.stringify({ id: e, ...edgeToTreatAtts }, setReplacer, 2)} ${JSON.stringify(graph.getEdgeAttributes(newEdgeKey), setReplacer, 2)}`,
-                    );
-                } else {
-                  graph.addDirectedEdgeWithKey(newEdgeKey, source, target, {
-                    labels: new Set(["TO_IMPUTE"]),
-                    status: "to_impute",
-                    reportedBy: valueReportedBy === "importer" ? target : source,
-                    originalReporters: new Set([edgeToTreatAtts.reportedBy]),
-                    value: undefined,
-                    valueToSplit: valueToSplit * (1 - solvedRatio),
-                    originalReportedTradeFlowId: e,
-                    type: "trade",
-                  });
-                }
-              });
+            //     const newEdgeKey = tradeEdgeKey(reporterId, newPartner, splitSide === "Export" ? "Exp" : "Imp");
+            //     if (graph.hasEdge(newEdgeKey)) {
+            //       if (
+            //         graph.getEdgeAttribute(newEdgeKey, "type") === "trade" &&
+            //         ((graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("REPORTED_TRADE") ||
+            //           (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("GENERATED_TRADE") ||
+            //           (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("TO_IMPUTE"))
+            //       )
+            //         // ignore to impute as trade already exists
+            //         return;
+            //       else
+            //         throw new Error(
+            //           `${newEdgeKey} already exist but should be imputed from ${JSON.stringify({ id: e, ...edgeToTreatAtts }, setReplacer, 2)} ${JSON.stringify(graph.getEdgeAttributes(newEdgeKey), setReplacer, 2)}`,
+            //         );
+            //     } else {
+            //       graph.addDirectedEdgeWithKey(newEdgeKey, source, target, {
+            //         labels: new Set(["TO_IMPUTE"]),
+            //         status: "to_impute",
+            //         reportedBy: valueReportedBy === "importer" ? target : source,
+            //         originalReporters: new Set([edgeToTreatAtts.reportedBy]),
+            //         value: undefined,
+            //         valueToSplit: valueToSplit * (1 - solvedRatio),
+            //         originalReportedTradeFlowId: e,
+            //         type: "trade",
+            //       });
+            //     }
+            //   });
 
             if (solved.length > 0 && Number((1 - solvedRatio).toFixed(2)) !== failedRatio) {
               console.log(
@@ -618,17 +617,17 @@ export function resolveEntityTransform(
                 uniq(failed.map(([_, { ratio }]) => ratio)),
               );
             }
+            if (failed.length >= 1) {
+              // flag flow if failed or partial split
+              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
+              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newReporter", reporterId);
+              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newPartners", failed.map((f) => f[0]).join("|"));
 
-            // flag flow if failed or partial split
-
-            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
-            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newReporter", reporterId);
-            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newPartners", autonomousPartnersIds.join("|"));
-
-            if (solved.length === 0)
-              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_no_ratio");
-            if (solved.length > 0 && solved.length < autonomousPartnersIds.length) {
-              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_only_partial");
+              if (solved.length === 0)
+                (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_no_ratio");
+              if (solved.length > 0 && solved.length < autonomousPartnersIds.length) {
+                (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_only_partial");
+              }
             }
           } else {
             console.log(
