@@ -50,6 +50,7 @@ type tradeEdgeStatus =
   | "ok"
   | "ignore_internal"
   | "ignore_resolved"
+  | "ignore_duplicate"
   | "discard_collision"
   | "split_failed_no_ratio"
   | "split_failed_error"
