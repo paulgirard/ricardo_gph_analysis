@@ -227,7 +227,8 @@ foreach trader in exporter importer  {
 
 use tradeFlows_`year'_temp, clear
 *****'
-drop if status=="ok"
+tab status
+keep if strmatch(status,"split_*")
 drop if strpos(newPartners,"restOfTheWorld")!=0
 
 //////All observations that include split in the status variable to be duplicated 
