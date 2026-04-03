@@ -402,6 +402,60 @@ export function flagFlowsToTreat(graph: GraphEntityPartiteType) {
   });
 }
 
+/**
+ * aggregateReported: aggregate all flows from part of reporters into their sovereign reporters
+ * We need to do the pre-aggregation at once before treating split/aggregations in general as we need to have the set of partners for all reporters in order to transform areas
+ * @param graph
+ */
+export function aggregateReporters(graph: GraphType) {
+  graph
+    .filterNodes((_, atts) => atts.reporting && atts.entityType !== "GPH-AUTONOMOUS-CITED")
+    .forEach((badReporter) => {
+      const autonomousReporters = resolveAutonomous(badReporter, graph as GraphEntityPartiteType);
+      const allreportedFlows = (graph as GraphEntityPartiteType).filterEdges(badReporter, (_, eAtts) => {
+        return eAtts.labels.has("REPORTED_TRADE") && eAtts.reportedBy === badReporter;
+      });
+
+      if (autonomousReporters.autonomousIds.length === 1) {
+        const autonomousReporter = autonomousReporters.autonomousIds[0];
+        // check if autonomousReporter is not already reporting
+        if (graph.getNodeAttribute(autonomousReporter, "reporting") === true) {
+          //mark all trade flows as to ignore_duplicate as the autonomous already reports trade
+          allreportedFlows.forEach((e) => {
+            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_duplicate");
+          });
+          return;
+        }
+        // move all reported trade flows from badReporter to autonomousReporter
+        allreportedFlows.forEach((e) => {
+          const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(e);
+
+          const originalPartner = graph.source(e) === badReporter ? graph.target(e) : graph.source(e);
+          const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
+
+          const newPartner =
+            autonomousPartners.autonomousIds.length === 1 ? autonomousPartners.autonomousIds[0] : originalPartner;
+          const result = generateTradeFlow(
+            graph as GraphEntityPartiteType,
+            e,
+            graph.source(e) === badReporter ? autonomousReporter : newPartner,
+            graph.target(e) === badReporter ? autonomousReporter : newPartner,
+            new Set(["AGGREGATE_INTO"]),
+            edgeToTreatAtts.value,
+            badReporter === graph.source(e) ? "exporter" : "importer",
+          );
+          if (result.with !== null && autonomousPartners.autonomousIds.length > 1) {
+            // mark the new flow as to_treat if the many partners to treat
+            (graph as GraphEntityPartiteType).setEdgeAttribute(result.with, "status", "toTreat");
+          }
+          (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
+        });
+      } else {
+        // multiple reporters destination we can't treat those cases if areas but could work for straight flows in ratio
+      }
+    });
+}
+
 export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
   graph
     .filterEdges((_, atts) => atts.status === "toTreat")

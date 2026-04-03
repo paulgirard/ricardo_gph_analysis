@@ -116,7 +116,7 @@ export function generateTradeFlow(
   // internal trade flows case => source = target
   if (newExporter === newImporter) {
     graph.setEdgeAttribute(originalFlow, "status", "ignore_internal");
-    return;
+    return { status: "error", with: null };
   } else {
     const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
       ? "aggregation"
@@ -128,8 +128,8 @@ export function generateTradeFlow(
       valueReportedBy === "importer" ? newExporter : newImporter,
       valueReportedBy === "importer" ? "Imp" : "Exp",
     );
-    // collision with to_impute => discard to_impute and do as if there were no edge at all
-    if (graph.hasEdge(idEdge) && !graph.getEdgeAttribute(idEdge, "labels").has("TO_IMPUTE")) {
+    // collision
+    if (graph.hasEdge(idEdge)) {
       const eAtts = graph.getEdgeAttributes(idEdge);
       const labels = graph.getEdgeAttribute(idEdge, "labels");
 
@@ -184,8 +184,6 @@ export function generateTradeFlow(
       }
       throw new Error(`merged with wrong edge ${JSON.stringify(eAtts, null, 2)}`);
     } else {
-      if (graph.hasEdge(idEdge) && graph.getEdgeAttribute(idEdge, "labels").has("TO_IMPUTE")) graph.dropEdge(idEdge);
-
       // create a new edge
       if ((newExporter === "restOfTheWorld" || newImporter === "restOfTheWorld") && !graph.hasNode("restOfTheWorld"))
         graph.addNode("restOfTheWorld", {

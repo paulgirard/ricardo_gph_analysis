@@ -8,6 +8,7 @@ import conf from "./configuration.json";
 import { propagateReporting } from "./graphTraversals";
 import {
   aggregateIntoAutonomousEntities,
+  aggregateReporters,
   flagAutonomousCited,
   flagFlowsToTreat,
   resolveEntityTransform,
@@ -65,6 +66,9 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
         // TODO: STEP 3 AGGREGATION ?
 
         // STEP 4 treat trade data
+        aggregateReporters(graph as GraphEntityPartiteType);
+
+        // TODO transform OneToOne to resolve oneSided
         resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
 
         await writeFile(`../data/entity_networks/${year}.json`, JSON.stringify(graph.export(), setReplacer, 2), "utf8");
@@ -72,7 +76,7 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
       } catch (error) {
         console.log(`error in ${year}`);
         console.log(error);
-        return null;
+        throw error;
       }
     }),
   );
