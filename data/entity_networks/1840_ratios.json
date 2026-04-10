@@ -10854,8 +10854,8 @@
         "reportedBy": "220",
         "value": 1908472.8241421813,
         "type": "trade",
-        "status": "split_only_partial",
-        "valueToSplit": 1195563.0220844292,
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 1908472.8241421813,
         "newReporter": "220",
         "newPartners": "241|242|243|245|247|254|258|259|261|262|264|266|267|268|269|270|271|272|273|275|277"
       }
@@ -11379,7 +11379,7 @@
         "reportedBy": "220",
         "value": 15903.940201184843,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -12075,7 +12075,7 @@
         "reportedBy": "220",
         "value": 147111.4468609598,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -12218,8 +12218,8 @@
         "reportedBy": "220",
         "value": 552661.9219911733,
         "type": "trade",
-        "status": "split_only_partial",
-        "valueToSplit": 544026.5794600612,
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 552661.9219911733,
         "newReporter": "220",
         "newPartners": "246|248|276"
       }
@@ -15060,7 +15060,7 @@
         "reportedBy": "248",
         "value": 139238.99646137332,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -17502,7 +17502,7 @@
         "reportedBy": "210",
         "value": 434177.5674923462,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -29233,7 +29233,7 @@
         "reportedBy": "2",
         "value": 160889.63140858305,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -33033,7 +33033,7 @@
         "reportedBy": "365",
         "value": 206109.5400617585,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -33092,7 +33092,7 @@
         "reportedBy": "365",
         "value": 388073.4601007639,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -33134,7 +33134,7 @@
         "reportedBy": "365",
         "value": 340800.91012514225,
         "type": "trade",
-        "status": "ignore_resolved"
+        "status": "split_failed_error"
       }
     },
     {
@@ -55013,7 +55013,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Tobago 58729\nUnited Kingdom (REP) <- St. Lucia 75878",
+        "notes": "1049<-200 58729\n56<-200 75878",
         "status": "ok",
         "type": "trade"
       }
@@ -55037,9 +55037,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British West Indies (REP) <- Tobago 34469\nBritish West Indies (REP) <- St. Lucia 13815",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "1049<-British West Indies 34469\n56<-British West Indies 13815",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 48284,
+        "newReporter": "1055",
+        "newPartners": "30|31|51|54|1048|1063"
       }
     },
     {
@@ -55061,9 +55064,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Northern America (REP) <- Tobago 9442\nBritish Northern America (REP) <- St. Lucia 7912",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "1049<-British Northern America 9442\n56<-British Northern America 7912",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 17354,
+        "newReporter": "1055",
+        "newPartners": "21|1022|1023|1024|1025|1026"
       }
     },
     {
@@ -55085,7 +55091,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Tobago 111651\nUnited Kingdom (REP) -> St. Lucia 75514",
+        "notes": "1049->200 111651\n56->200 75514",
         "status": "ok",
         "type": "trade"
       }
@@ -55109,9 +55115,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British West Indies (REP) -> Tobago 1081\nBritish West Indies (REP) -> St. Lucia 10214",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "1049->British West Indies 1081\n56->British West Indies 10214",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 11295,
+        "newReporter": "1055",
+        "newPartners": "30|31|51|54|1048|1063"
       }
     },
     {
@@ -55140,7 +55149,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Cape Town 19859\nUnited States of America (REP) <- Port Simon 44",
+        "notes": "Cape Town<-2 19859\nPort Simon<-2 44",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55163,7 +55172,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Puerto Rico (REP) <- Cape Town 19903",
+        "notes": "Cape Town<-6 19903",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55186,7 +55195,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cuba (REP) <- Cape Town 35815",
+        "notes": "Cape Town<-40 35815",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55218,7 +55227,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Dominican Republic (Santo Domingo) (REP) <- Cape Town 38666\nDominican Republic (Santo Domingo) (REP) <- Port Simon 7020",
+        "notes": "Cape Town<-42 38666\nPort Simon<-42 7020",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55257,7 +55266,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Cape Town 509346\nUnited Kingdom (REP) <- Port Simon 1672\nUnited Kingdom (REP) <- Port Elizabeth 63906",
+        "notes": "Cape Town<-200 509346\nPort Simon<-200 1672\nPort Elizabeth<-200 63906",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -55289,7 +55298,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Cape Town 216219\nNetherlands (REP) <- Port Simon 5700",
+        "notes": "Cape Town<-210 216219\nPort Simon<-210 5700",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55312,7 +55321,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Cape Town 4738",
+        "notes": "Cape Town<-220 4738",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55335,7 +55344,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hamburg (REP) <- Cape Town 27151",
+        "notes": "Cape Town<-248 27151",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55367,7 +55376,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) <- Cape Town 1633\nSweden (REP) <- Port Simon 6",
+        "notes": "Cape Town<-380 1633\nPort Simon<-380 6",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55390,7 +55399,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Madeira Isles (REP) <- Cape Town 28",
+        "notes": "Cape Town<-401 28",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55429,7 +55438,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mozambique (Portuguese East Africa) (REP) <- Cape Town 2155\nQuelimane (REP) <- Port Simon 5236\nMozambique (Portuguese East Africa) (REP) <- Port Elizabeth 4823",
+        "notes": "Cape Town<-541 2155\nPort Simon<-Quelimane 5236\nPort Elizabeth<-541 4823",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -55452,7 +55461,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Reunion (Bourbon I.) (REP) <- Cape Town 2466",
+        "notes": "Cape Town<-585 2466",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55491,7 +55500,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mauritius (REP) <- Cape Town 24455\nMauritius (REP) <- Port Simon 19\nMauritius (REP) <- Port Elizabeth 17635",
+        "notes": "Cape Town<-590 24455\nPort Simon<-590 19\nPort Elizabeth<-590 17635",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -55514,7 +55523,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) <- Cape Town 13428",
+        "notes": "Cape Town<-710 13428",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55546,7 +55555,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sri Lanka (Ceylon) (REP) <- Cape Town 233\nSri Lanka (Ceylon) (REP) <- Port Simon 4",
+        "notes": "Cape Town<-780 233\nPort Simon<-780 4",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55578,7 +55587,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "New South Wales (REP) <- Cape Town 304\nNew South Wales (REP) <- Port Simon 7",
+        "notes": "Cape Town<-901 304\nPort Simon<-901 7",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55601,7 +55610,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "South Australia (REP) <- Cape Town 18",
+        "notes": "Cape Town<-903 18",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55624,7 +55633,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "St. Helena (REP) <- Cape Town 1702",
+        "notes": "Cape Town<-4050 1702",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55647,7 +55656,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Crozet Is. (REP) <- Cape Town 2702",
+        "notes": "Cape Town<-9974 2702",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55670,7 +55679,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Naples (REP) <- Cape Town 3366",
+        "notes": "Cape Town<-Naples 3366",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55713,7 +55722,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chennai (Madras) & Kolkata (Calcutta) (REP) <- Cape Town 27080\nMumbai (Bombay) (REP) <- Cape Town 153\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Simon 515\nMumbai (Bombay) (REP) <- Port Simon 10\nChennai (Madras) & Kolkata (Calcutta) (REP) <- Port Elizabeth 1622",
+        "notes": "Cape Town<-Chennai (Madras) & Kolkata (Calcutta) 27080\nCape Town<-Mumbai (Bombay) 153\nPort Simon<-Chennai (Madras) & Kolkata (Calcutta) 515\nPort Simon<-Mumbai (Bombay) 10\nPort Elizabeth<-Chennai (Madras) & Kolkata (Calcutta) 1622",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -55736,7 +55745,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Manila (REP) <- Cape Town 761",
+        "notes": "Cape Town<-Manila 761",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55774,7 +55783,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Java (REP) <- Cape Town 161799\nPadang (REP) <- Cape Town 518\nJakarta (Batavia) (REP) <- Cape Town 4\nPadang (REP) <- Port Simon 11173\nJakarta (Batavia) (REP) <- Port Simon 13",
+        "notes": "Cape Town<-Java 161799\nCape Town<-Padang 518\nCape Town<-Jakarta (Batavia) 4\nPort Simon<-Padang 11173\nPort Simon<-Jakarta (Batavia) 13",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55797,7 +55806,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mawlamyine (REP) <- Cape Town 1282",
+        "notes": "Cape Town<-Mawlamyine 1282",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55833,7 +55842,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Durban (Port Natal) (REP) <- Cape Town 1675\nDurban (Port Natal) (REP) <- Port Elizabeth 90",
+        "notes": "Cape Town<-Durban (Port Natal) 1675\nPort Elizabeth<-Durban (Port Natal) 90",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon"
@@ -55856,7 +55865,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ambriz (REP) <- Cape Town 2400",
+        "notes": "Cape Town<-Ambriz 2400",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55879,7 +55888,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "La Guaira (REP) <- Cape Town 111307",
+        "notes": "Cape Town<-La Guaira 111307",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55917,7 +55926,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bahia (REP) <- Cape Town 6163\nRio de Janeiro (REP) <- Cape Town 115478\nRio de Janeiro (REP) <- Port Simon 1536",
+        "notes": "Cape Town<-Bahia 6163\nCape Town<-Rio de Janeiro 115478\nPort Simon<-Rio de Janeiro 1536",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -55940,7 +55949,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Port-au-Prince (REP) <- Cape Town 7583",
+        "notes": "Cape Town<-Port-au-Prince 7583",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55963,7 +55972,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Punta Arenas (REP) <- Cape Town 10550",
+        "notes": "Cape Town<-Punta Arenas 10550",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -55986,7 +55995,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Cape Town 5462",
+        "notes": "Cape Town->2 5462",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56029,7 +56038,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Cape Town 83666\nIreland (REP) -> Cape Town 13078\nUnited Kingdom (REP) -> Port Simon 202\nUnited Kingdom (REP) -> Port Elizabeth 48023",
+        "notes": "Cape Town->200 83666\nCape Town->205 13078\nPort Simon->200 202\nPort Elizabeth->200 48023",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -56052,7 +56061,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Cape Town 220",
+        "notes": "Cape Town->210 220",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56091,7 +56100,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mauritius (REP) -> Cape Town 23590\nMauritius (REP) -> Port Simon 136\nMauritius (REP) -> Port Elizabeth 11860",
+        "notes": "Cape Town->590 23590\nPort Simon->590 136\nPort Elizabeth->590 11860",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -56114,7 +56123,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sri Lanka (Ceylon) (REP) -> Cape Town 534",
+        "notes": "Cape Town->780 534",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56152,7 +56161,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Singapore (REP) -> Cape Town 135\nChennai (Madras) & Kolkata (Calcutta) (REP) -> Cape Town 3395\nMumbai (Bombay) (REP) -> Cape Town 740\nMumbai (Bombay) (REP) -> Port Simon 60",
+        "notes": "Cape Town->830 135\nCape Town->Chennai (Madras) & Kolkata (Calcutta) 3395\nCape Town->Mumbai (Bombay) 740\nPort Simon->Mumbai (Bombay) 60",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Elizabeth"
@@ -56175,7 +56184,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "New South Wales (REP) -> Cape Town 14640",
+        "notes": "Cape Town->901 14640",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56198,7 +56207,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "South Australia (REP) -> Cape Town 5567",
+        "notes": "Cape Town->903 5567",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56221,7 +56230,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tasmania (REP) -> Cape Town 7405",
+        "notes": "Cape Town->906 7405",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56257,7 +56266,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "St. Helena (REP) -> Cape Town 11986\nSt. Helena (REP) -> Port Elizabeth 484",
+        "notes": "Cape Town->4050 11986\nPort Elizabeth->4050 484",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon"
@@ -56280,7 +56289,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Java (REP) -> Cape Town 1184",
+        "notes": "Cape Town->Java 1184",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56303,7 +56312,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Swan River (REP) -> Cape Town 1766",
+        "notes": "Cape Town->Swan River 1766",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56339,7 +56348,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Durban (Port Natal) (REP) -> Cape Town 2341\nDurban (Port Natal) (REP) -> Port Elizabeth 738",
+        "notes": "Cape Town->Durban (Port Natal) 2341\nPort Elizabeth->Durban (Port Natal) 738",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon"
@@ -56362,7 +56371,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Rio de Janeiro (REP) -> Cape Town 1851",
+        "notes": "Cape Town->Rio de Janeiro 1851",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56385,7 +56394,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Gothenburg (REP) -> Cape Town 20",
+        "notes": "Cape Town->Gothenburg 20",
         "status": "ok",
         "type": "trade",
         "partial": "missing Seal Island|Port Simon|Port Elizabeth"
@@ -56408,7 +56417,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Manila 101375.69082740249",
+        "notes": "Manila<-2 101375.69082740249",
         "status": "ok",
         "type": "trade"
       }
@@ -56430,7 +56439,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Manila 272712.8145998171",
+        "notes": "Manila<-200 272712.8145998171",
         "status": "ok",
         "type": "trade"
       }
@@ -56452,7 +56461,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Manila 31.807880402369687",
+        "notes": "Manila<-210 31.807880402369687",
         "status": "ok",
         "type": "trade"
       }
@@ -56474,7 +56483,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Manila 1598.3459902190768",
+        "notes": "Manila<-211 1598.3459902190768",
         "status": "ok",
         "type": "trade"
       }
@@ -56496,7 +56505,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Manila 61751.02381615045",
+        "notes": "Manila<-220 61751.02381615045",
         "status": "ok",
         "type": "trade"
       }
@@ -56518,7 +56527,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) <- Manila 37159.556280068384",
+        "notes": "Manila<-230 37159.556280068384",
         "status": "ok",
         "type": "trade"
       }
@@ -56540,7 +56549,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) <- Manila 2357.7591348256533",
+        "notes": "Manila<-390 2357.7591348256533",
         "status": "ok",
         "type": "trade"
       }
@@ -56562,7 +56571,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) <- Manila 144880.91924774362",
+        "notes": "Manila<-710 144880.91924774362",
         "status": "ok",
         "type": "trade"
       }
@@ -56584,9 +56593,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) <- Manila 32352.59035426027",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Manila<-Hanse Towns 32352.59035426027",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 32352.59035426027,
+        "newReporter": "840",
+        "newPartners": "246|248|276"
       }
     },
     {
@@ -56606,7 +56618,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Manila 195932.56729354698",
+        "notes": "Manila->2 195932.56729354698",
         "status": "ok",
         "type": "trade"
       }
@@ -56628,7 +56640,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Manila 344610.5522643235",
+        "notes": "Manila->200 344610.5522643235",
         "status": "ok",
         "type": "trade"
       }
@@ -56650,7 +56662,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Manila 8691.503319947517",
+        "notes": "Manila->210 8691.503319947517",
         "status": "ok",
         "type": "trade"
       }
@@ -56672,7 +56684,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Manila 5005.765178322929",
+        "notes": "Manila->211 5005.765178322929",
         "status": "ok",
         "type": "trade"
       }
@@ -56694,7 +56706,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Manila 9363.444793447577",
+        "notes": "Manila->220 9363.444793447577",
         "status": "ok",
         "type": "trade"
       }
@@ -56716,7 +56728,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) -> Manila 112790.7439068029",
+        "notes": "Manila->230 112790.7439068029",
         "status": "ok",
         "type": "trade"
       }
@@ -56738,7 +56750,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal (REP) -> Manila 7498.707804858654",
+        "notes": "Manila->235 7498.707804858654",
         "status": "ok",
         "type": "trade"
       }
@@ -56760,7 +56772,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) -> Manila 5804.938173432468",
+        "notes": "Manila->380 5804.938173432468",
         "status": "ok",
         "type": "trade"
       }
@@ -56782,7 +56794,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) -> Manila 6083.257126953203",
+        "notes": "Manila->390 6083.257126953203",
         "status": "ok",
         "type": "trade"
       }
@@ -56804,7 +56816,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) -> Manila 11025.406544471392",
+        "notes": "Manila->710 11025.406544471392",
         "status": "ok",
         "type": "trade"
       }
@@ -56826,9 +56838,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Manila 24786.290803546577",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Manila->Hanse Towns 24786.290803546577",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 24786.290803546577,
+        "newReporter": "840",
+        "newPartners": "246|248|276"
       }
     },
     {
@@ -56848,7 +56863,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Java 6639.895033994672",
+        "notes": "Java<-2 6639.895033994672",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56871,7 +56886,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Java 320742.7140073953",
+        "notes": "Java<-200 320742.7140073953",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56894,7 +56909,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Java 1283288.934833605",
+        "notes": "Java<-210 1283288.934833605",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56917,7 +56932,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Java 6162.776827959127",
+        "notes": "Java<-211 6162.776827959127",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56940,7 +56955,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Java 25724.623275416485",
+        "notes": "Java<-220 25724.623275416485",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56963,7 +56978,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) <- Java 24770.386863345393",
+        "notes": "Java<-380 24770.386863345393",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -56986,7 +57001,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cape Colony (Cape of Good Hope) (REP) <- Java 2385.5910301777267",
+        "notes": "Java<-561 2385.5910301777267",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57009,7 +57024,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) <- Java 55902.34980716473",
+        "notes": "Java<-710 55902.34980716473",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57032,7 +57047,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Japan (REP) <- Java 71488.21120432587",
+        "notes": "Java<-740 71488.21120432587",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57055,7 +57070,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Dutch government (REP) <- Java 879328.85372351",
+        "notes": "Java<-Dutch government 879328.85372351",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57078,8 +57093,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bremen & Hamburg (REP) <- Java 22941.433740209137",
-        "status": "ok",
+        "notes": "Java<-Bremen & Hamburg 22941.433740209137",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
@@ -57101,9 +57116,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark & Madeira Isles & Spain (REP) <- Java 2027.7523756510675",
-        "status": "ok",
+        "notes": "Java<-Denmark & Madeira Isles & Spain 2027.7523756510675",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 2027.7523756510675,
+        "newReporter": "850",
+        "newPartners": "230|235|390",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
     },
@@ -57124,9 +57142,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Asia (other) (REP) <- Java 63615.76080473937",
-        "status": "ok",
+        "notes": "Java<-Asia (other) 63615.76080473937",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 63615.76080473937,
+        "newReporter": "850",
+        "newPartners": "365|630|640|651|652|670|672|674|678|681|690|692|694|696|698|700|705|720|721|730|741|750|751|752|775|780|781|790|800|811|815|835|840|860|6306|6800|6821|6822|6823|6825|6826|6828|6832|6833|6844|6846|7001|7002|7003|7010|7020|7030|7070|7121|7411|7501|7504|7505|7511|7512|7513|7514|7515|7516|7517|7519|7521|7522|7523|7526|7527|7528|7529|7531|7532|7533|7534|7535|7537|7538|7539|7541|7542|7543|7544|7545|7546|7549|7552|7553|7570|7573|7574|7577|7579|7581|7582|7584|7585|7586|7587|7588|7691|7693|7694|7702|7703|7704|7706|7707|7709|7750|7751|7752|7755|7756|7757|7758|7760|7762|7766|7767|7768|7769|7770|7771|7772|7773|7774|7775|7776|7777|7778|7779|7780|7782|7783|7784|7785|7786|7787|7788|7792|7793|7794|7795|7796|7797|8002|8124|8171|8201|8202|8203|8210|8221|8223|8401|8501|8502|8503|8510|8520|8521|8522|8523|8531|8532|8533|8536|8541|8550|8551|8560|8571|8572|8573|8574",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
     },
@@ -57147,9 +57168,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Australia & Western Australia (REP) <- Java 2425.3508806806885",
-        "status": "ok",
+        "notes": "Java<-Australia & Western Australia 2425.3508806806885",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 2425.3508806806885,
+        "newReporter": "850",
+        "newPartners": "901|902|903|906",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
     },
@@ -57170,7 +57194,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Java 4810.941910858415",
+        "notes": "Java->2 4810.941910858415",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57193,7 +57217,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Java 217605.66180271163",
+        "notes": "Java->200 217605.66180271163",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57216,7 +57240,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Java 4798258.51854797",
+        "notes": "Java->210 4798258.51854797",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57239,7 +57263,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Java 12126.754403403444",
+        "notes": "Java->211 12126.754403403444",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57262,7 +57286,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Java 29581.32877420381",
+        "notes": "Java->220 29581.32877420381",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57285,7 +57309,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) -> Java 32563.317561925967",
+        "notes": "Java->380 32563.317561925967",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57308,7 +57332,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cape Colony (Cape of Good Hope) (REP) -> Java 58089.141584827645",
+        "notes": "Java->561 58089.141584827645",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57331,7 +57355,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) -> Java 104329.84771977257",
+        "notes": "Java->710 104329.84771977257",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57354,7 +57378,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Japan (REP) -> Java 34233.23128305037",
+        "notes": "Java->740 34233.23128305037",
         "status": "ok",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
@@ -57377,8 +57401,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bremen & Hamburg (REP) -> Java 30853.6439902986",
-        "status": "ok",
+        "notes": "Java->Bremen & Hamburg 30853.6439902986",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
@@ -57400,9 +57424,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Asia (other) (REP) -> Java 34909.14874160073",
-        "status": "ok",
+        "notes": "Java->Asia (other) 34909.14874160073",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 34909.14874160073,
+        "newReporter": "850",
+        "newPartners": "365|630|640|651|652|670|672|674|678|681|690|692|694|696|698|700|705|720|721|730|741|750|751|752|775|780|781|790|800|811|815|835|840|860|6306|6800|6821|6822|6823|6825|6826|6828|6832|6833|6844|6846|7001|7002|7003|7010|7020|7030|7070|7121|7411|7501|7504|7505|7511|7512|7513|7514|7515|7516|7517|7519|7521|7522|7523|7526|7527|7528|7529|7531|7532|7533|7534|7535|7537|7538|7539|7541|7542|7543|7544|7545|7546|7549|7552|7553|7570|7573|7574|7577|7579|7581|7582|7584|7585|7586|7587|7588|7691|7693|7694|7702|7703|7704|7706|7707|7709|7750|7751|7752|7755|7756|7757|7758|7760|7762|7766|7767|7768|7769|7770|7771|7772|7773|7774|7775|7776|7777|7778|7779|7780|7782|7783|7784|7785|7786|7787|7788|7792|7793|7794|7795|7796|7797|8002|8124|8171|8201|8202|8203|8210|8221|8223|8401|8501|8502|8503|8510|8520|8521|8522|8523|8531|8532|8533|8536|8541|8550|8551|8560|8571|8572|8573|8574",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
     },
@@ -57423,9 +57450,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Australia & Western Australia (REP) -> Java 40634.56721402727",
-        "status": "ok",
+        "notes": "Java->Australia & Western Australia 40634.56721402727",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 40634.56721402727,
+        "newReporter": "850",
+        "newPartners": "901|902|903|906",
         "partial": "missing Padang|Jakarta (Batavia)|Sumatra|Indonesia (Dutch East Indies) (other)|Sulawesi (Celebes)"
       }
     },
@@ -57457,7 +57487,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Rio de Janeiro 518866.04906365555\nUnited States of America (REP) <- Pernambuco 62224.1660371357\nUnited States of America (REP) <- Pará 41330.36459782911",
+        "notes": "Rio de Janeiro<-2 518866.04906365555\nPernambuco<-2 62224.1660371357\nPará<-2 41330.36459782911",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57480,7 +57510,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chile (REP) <- Rio de Janeiro 21867.91777662916",
+        "notes": "Rio de Janeiro<-155 21867.91777662916",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -57514,7 +57544,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Rio de Janeiro 1611466.7408850542\nUnited Kingdom (REP) <- Pernambuco 643632.4599419506\nUnited Kingdom (REP) <- Pará 30137.966681245278",
+        "notes": "Rio de Janeiro<-200 1611466.7408850542\nPernambuco<-200 643632.4599419506\nPará<-200 30137.966681245278",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57537,7 +57567,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Rio de Janeiro 30217.4863822512",
+        "notes": "Rio de Janeiro<-210 30217.4863822512",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -57560,7 +57590,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Rio de Janeiro 60434.9727645024",
+        "notes": "Rio de Janeiro<-211 60434.9727645024",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -57594,7 +57624,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Rio de Janeiro 465190.2508846567\nFrance (REP) <- Pernambuco 131406.30591228977\nFrance (REP) <- Pará 23140.232992723948",
+        "notes": "Rio de Janeiro<-220 465190.2508846567\nPernambuco<-220 131406.30591228977\nPará<-220 23140.232992723948",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57628,7 +57658,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) <- Rio de Janeiro 117291.55898373823\nSpain (REP) <- Pernambuco 22345.035982664704\nSpain (REP) <- Pará 2683.7899089499424",
+        "notes": "Rio de Janeiro<-230 117291.55898373823\nPernambuco<-230 22345.035982664704\nPará<-230 2683.7899089499424",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57662,7 +57692,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal (REP) <- Rio de Janeiro 163015.38706214464\nPortugal (REP) <- Pernambuco 92719.97137290763\nPortugal (REP) <- Pará 28030.694604588287",
+        "notes": "Rio de Janeiro<-235 163015.38706214464\nPernambuco<-235 92719.97137290763\nPará<-235 28030.694604588287",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57696,7 +57726,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) <- Rio de Janeiro 55663.79070414695\nAustria-Hungary (Austrian Empire) (REP) <- Pernambuco 10297.801280267186\nAustria-Hungary (Austrian Empire) (REP) <- Pará 5188.660490636556",
+        "notes": "Rio de Janeiro<-300 55663.79070414695\nPernambuco<-300 10297.801280267186\nPará<-300 5188.660490636556",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57719,9 +57749,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Italy (REP) <- Rio de Janeiro 79519.70100592422",
-        "status": "ok",
+        "notes": "Rio de Janeiro<-325 79519.70100592422",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 79519.70100592422,
+        "newReporter": "140",
+        "newPartners": "329|335|337",
         "partial": "missing Bahia|Pernambuco|Pará"
       }
     },
@@ -57752,7 +57785,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) <- Rio de Janeiro 47711.82060355453\nSweden (REP) <- Pernambuco 3220.547890739931",
+        "notes": "Rio de Janeiro<-380 47711.82060355453\nPernambuco<-380 3220.547890739931",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pará"
@@ -57779,7 +57812,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) <- Rio de Janeiro 33000.67591745855\nDenmark (REP) <- Pará 298.19887877221583",
+        "notes": "Rio de Janeiro<-390 33000.67591745855\nPará<-390 298.19887877221583",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco"
@@ -57812,9 +57845,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) <- Rio de Janeiro 318078.80402369687\nHanse Towns (REP) <- Pernambuco 85165.59977734483",
-        "status": "split_failed_error",
+        "notes": "Rio de Janeiro<-Hanse Towns 318078.80402369687\nPernambuco<-Hanse Towns 85165.59977734483",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 403244.4038010417,
+        "newReporter": "140",
+        "newPartners": "246|276",
         "partial": "missing Bahia|Pará"
       }
     },
@@ -57845,7 +57881,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Montevideo (REP) <- Rio de Janeiro 171364.95566776668\nMontevideo (REP) <- Pernambuco 10774.919486302731",
+        "notes": "Rio de Janeiro<-Montevideo 171364.95566776668\nPernambuco<-Montevideo 10774.919486302731",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pará"
@@ -57868,7 +57904,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Switzerland (by France and Hamburg) (REP) <- Rio de Janeiro 55663.79070414695",
+        "notes": "Rio de Janeiro<-Switzerland (by France and Hamburg) 55663.79070414695",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -57902,7 +57938,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Rio de Janeiro 924814.1226988987\nUnited States of America (REP) -> Pernambuco 54510.75503956105\nUnited States of America (REP) -> Pará 74128.26527772256",
+        "notes": "Rio de Janeiro->2 924814.1226988987\nPernambuco->2 54510.75503956105\nPará->2 74128.26527772256",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57936,7 +57972,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Rio de Janeiro 920838.1376486025\nUnited Kingdom (REP) -> Pernambuco 209295.85304759254\nUnited Kingdom (REP) -> Pará 26539.70021072721",
+        "notes": "Rio de Janeiro->200 920838.1376486025\nPernambuco->200 209295.85304759254\nPará->200 26539.70021072721",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -57959,7 +57995,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Rio de Janeiro 8349.568605622044",
+        "notes": "Rio de Janeiro->210 8349.568605622044",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -57982,7 +58018,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Rio de Janeiro 112520.37692338276",
+        "notes": "Rio de Janeiro->211 112520.37692338276",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco|Pará"
@@ -58016,7 +58052,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Rio de Janeiro 183690.50932368494\nFrance (REP) -> Pernambuco 42423.76048666057\nFrance (REP) -> Pará 51067.55198600453",
+        "notes": "Rio de Janeiro->220 183690.50932368494\nPernambuco->220 42423.76048666057\nPará->220 51067.55198600453",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -58050,7 +58086,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) -> Rio de Janeiro 12325.553655918255\nSpain (REP) -> Pernambuco 50097.411633732256\nSpain (REP) -> Pará 2930.3009820683073",
+        "notes": "Rio de Janeiro->230 12325.553655918255\nPernambuco->230 50097.411633732256\nPará->230 2930.3009820683073",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -58084,7 +58120,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal (REP) -> Rio de Janeiro 219474.37477635083\nPortugal (REP) -> Pernambuco 124289.29267225956\nPortugal (REP) -> Pará 55568.36706293984",
+        "notes": "Rio de Janeiro->235 219474.37477635083\nPernambuco->235 124289.29267225956\nPará->235 55568.36706293984",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -58118,7 +58154,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) -> Rio de Janeiro 454852.68975388655\nAustria-Hungary (Austrian Empire) (REP) -> Pernambuco 168860.08508608007\nAustria-Hungary (Austrian Empire) (REP) -> Pará 1987.9925251481054",
+        "notes": "Rio de Janeiro->300 454852.68975388655\nPernambuco->300 168860.08508608007\nPará->300 1987.9925251481054",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -58141,9 +58177,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Italy (REP) -> Rio de Janeiro 46519.02508846567",
-        "status": "ok",
+        "notes": "Rio de Janeiro->325 46519.02508846567",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 46519.02508846567,
+        "newReporter": "140",
+        "newPartners": "329|335|337",
         "partial": "missing Bahia|Pernambuco|Pará"
       }
     },
@@ -58174,7 +58213,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sweden (REP) -> Rio de Janeiro 67591.74585503558\nSweden (REP) -> Pernambuco 17971.452427338874",
+        "notes": "Rio de Janeiro->380 67591.74585503558\nPernambuco->380 17971.452427338874",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pará"
@@ -58201,7 +58240,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) -> Rio de Janeiro 103773.2098127311\nDenmark (REP) -> Pará 1490.994393861079",
+        "notes": "Rio de Janeiro->390 103773.2098127311\nPará->390 1490.994393861079",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pernambuco"
@@ -58234,9 +58273,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Rio de Janeiro 568963.4606973878\nHanse Towns (REP) -> Pernambuco 45485.26897538865",
-        "status": "split_failed_error",
+        "notes": "Rio de Janeiro->Hanse Towns 568963.4606973878\nPernambuco->Hanse Towns 45485.26897538865",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 614448.7296727764,
+        "newReporter": "140",
+        "newPartners": "246|276",
         "partial": "missing Bahia|Pará"
       }
     },
@@ -58267,7 +58309,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Montevideo (REP) -> Rio de Janeiro 95423.64120710906\nMontevideo (REP) -> Pernambuco 9383.324718699057",
+        "notes": "Rio de Janeiro->Montevideo 95423.64120710906\nPernambuco->Montevideo 9383.324718699057",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Pará"
@@ -58290,9 +58332,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Azores (Western Isles) & Western Africa (REP) -> Rio de Janeiro 19879.925251481054",
-        "status": "ok",
+        "notes": "Rio de Janeiro->Azores (Western Isles) & Western Africa 19879.925251481054",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 19879.925251481054,
+        "newReporter": "140",
+        "newPartners": "402|432|433|450|451|600|4041|4042|4044|4341|4348|4361|4381|4383|4391|4521|4535|4781|4792|4793",
         "partial": "missing Bahia|Pernambuco|Pará"
       }
     },
@@ -58313,7 +58358,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cocos (Keeling) Is. (REP) <- Port Simon 6",
+        "notes": "Port Simon<-9002 6",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cape Town|Seal Island|Port Elizabeth"
@@ -58336,7 +58381,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Lombok (REP) <- Port Elizabeth 555",
+        "notes": "Port Elizabeth<-8510 555",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cape Town|Seal Island|Port Simon"
@@ -58359,7 +58404,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tenerife (REP) <- Port Elizabeth 33",
+        "notes": "Port Elizabeth<-Tenerife 33",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cape Town|Seal Island|Port Simon"
@@ -58382,7 +58427,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Singapore 516241.89893046004",
+        "notes": "830<-200 516241.89893046004",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58405,7 +58450,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) <- Singapore 238161.50451274303",
+        "notes": "830<-710 238161.50451274303",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58428,7 +58473,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sri Lanka (Ceylon) (REP) <- Singapore 993.9962625740527",
+        "notes": "830<-780 993.9962625740527",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58451,7 +58496,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Thailand (Siam) (REP) <- Singapore 103812.96966323406",
+        "notes": "830<-800 103812.96966323406",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58474,7 +58519,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cochin China (REP) <- Singapore 35744.105602162934",
+        "notes": "830<-8151 35744.105602162934",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58497,7 +58542,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bali (REP) <- Singapore 30376.525784263053",
+        "notes": "830<-8501 30376.525784263053",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58520,7 +58565,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Riau (REP) <- Singapore 34948.9085921037",
+        "notes": "830<-8532 34948.9085921037",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58543,9 +58588,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "America (REP) <- Singapore 2743.4296847043856",
-        "status": "ok",
+        "notes": "830<-America 2743.4296847043856",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 2743.4296847043856,
+        "newReporter": "750",
+        "newPartners": "2|3|5|6|7|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|90|91|93|94|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1163|1164|1168|10200|10210",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58566,9 +58614,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Arabia (REP) <- Singapore 2226.551628165878",
-        "status": "ok",
+        "notes": "830<-Arabia 2226.551628165878",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 2226.551628165878,
+        "newReporter": "750",
+        "newPartners": "651|670|678|681|690|692|696|698|6800",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58589,9 +58640,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Europe (other) (REP) <- Singapore 33517.553973997055",
-        "status": "ok",
+        "notes": "830<-Europe (other) 33517.553973997055",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 33517.553973997055,
+        "newReporter": "750",
+        "newPartners": "11|210|211|212|220|221|223|225|230|231|232|235|239|240|241|242|243|244|245|246|247|248|250|251|252|253|254|257|258|259|261|262|264|266|267|268|269|270|271|272|273|274|275|276|277|280|300|324|327|329|331|335|337|338|341|342|350|365|380|385|390|395|640|2003|2004|2101|2111|2246|2247|2248|2249|2333|2901|2902|2903|3327|3349|3361|3362|3504|3654|3761|3762",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58612,9 +58666,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Borneo (REP) <- Singapore 54828.83384358475",
-        "status": "ok",
+        "notes": "830<-Borneo 54828.83384358475",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 54828.83384358475,
+        "newReporter": "750",
+        "newPartners": "835|8401",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58638,7 +58695,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sulawesi (Celebes) (REP) <- Singapore 79082.34265039164\nIndonesia (Dutch East Indies) (other) (REP) <- Singapore 30575.325036777864\nJava (REP) <- Singapore 186473.69885889228\nSumatra (REP) <- Singapore 63337.44185121864",
+        "notes": "830<-Sulawesi (Celebes) 79082.34265039164\n830<-Indonesia (Dutch East Indies) (other) 30575.325036777864\n830<-Java 186473.69885889228\n830<-Sumatra 63337.44185121864",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58664,7 +58721,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Malaysia (British Malaya) (West) (REP) <- Singapore 10258.041429764224\nMalaysia (British Malaya) (East) (REP) <- Singapore 80712.49652101308",
+        "notes": "830<-Malaysia (British Malaya) (West) 10258.041429764224\n830<-Malaysia (British Malaya) (East) 80712.49652101308",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58687,9 +58744,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cape Colony (Cape of Good Hope) & Mauritius & New South Wales (REP) <- Singapore 6202.536678462089",
-        "status": "ok",
+        "notes": "830<-Cape Colony (Cape of Good Hope) & Mauritius & New South Wales 6202.536678462089",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 6202.536678462089,
+        "newReporter": "750",
+        "newPartners": "561|590|901",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58710,7 +58770,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Manila (REP) <- Singapore 67194.14735000597",
+        "notes": "830<-Manila 67194.14735000597",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58733,7 +58793,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Singapore 313387.1416643473",
+        "notes": "830->200 313387.1416643473",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58756,7 +58816,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "People's Republic of China (China) (REP) -> Singapore 321855.98982147826",
+        "notes": "830->710 321855.98982147826",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58779,7 +58839,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sri Lanka (Ceylon) (REP) -> Singapore 1113.275814082939",
+        "notes": "830->780 1113.275814082939",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58802,7 +58862,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Thailand (Siam) (REP) -> Singapore 88942.78557512624",
+        "notes": "830->800 88942.78557512624",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58825,7 +58885,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cochin China (REP) -> Singapore 43020.158244205006",
+        "notes": "830->8151 43020.158244205006",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58848,7 +58908,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bali (REP) -> Singapore 25525.824022901674",
+        "notes": "830->8501 25525.824022901674",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58871,7 +58931,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Riau (REP) -> Singapore 33954.91232952964",
+        "notes": "830->8532 33954.91232952964",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -58894,9 +58954,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "America (REP) -> Singapore 119.27955150888633",
-        "status": "ok",
+        "notes": "830->America 119.27955150888633",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 119.27955150888633,
+        "newReporter": "750",
+        "newPartners": "2|3|5|6|7|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|90|91|93|94|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1163|1164|1168|10200|10210",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58917,9 +58980,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Arabia (REP) -> Singapore 9025.486064172399",
-        "status": "ok",
+        "notes": "830->Arabia 9025.486064172399",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 9025.486064172399,
+        "newReporter": "750",
+        "newPartners": "651|670|678|681|690|692|696|698|6800",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58940,9 +59006,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Europe (other) (REP) -> Singapore 34113.95173154149",
-        "status": "ok",
+        "notes": "830->Europe (other) 34113.95173154149",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 34113.95173154149,
+        "newReporter": "750",
+        "newPartners": "11|210|211|212|220|221|223|225|230|231|232|235|239|240|241|242|243|244|245|246|247|248|250|251|252|253|254|257|258|259|261|262|264|266|267|268|269|270|271|272|273|274|275|276|277|280|300|324|327|329|331|335|337|338|341|342|350|365|380|385|390|395|640|2003|2004|2101|2111|2246|2247|2248|2249|2333|2901|2902|2903|3327|3349|3361|3362|3504|3654|3761|3762",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58963,9 +59032,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Borneo (REP) -> Singapore 55743.31040515288",
-        "status": "ok",
+        "notes": "830->Borneo 55743.31040515288",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 55743.31040515288,
+        "newReporter": "750",
+        "newPartners": "835|8401",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -58989,7 +59061,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sulawesi (Celebes) (REP) -> Singapore 76537.71221820205\nIndonesia (Dutch East Indies) (other) (REP) -> Singapore 21311.27986958769\nJava (REP) -> Singapore 76418.43266669317\nSumatra (REP) -> Singapore 55146.91264760844",
+        "notes": "830->Sulawesi (Celebes) 76537.71221820205\n830->Indonesia (Dutch East Indies) (other) 21311.27986958769\n830->Java 76418.43266669317\n830->Sumatra 55146.91264760844",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -59015,7 +59087,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Malaysia (British Malaya) (West) (REP) -> Singapore 4969.9813128702635\nMalaysia (British Malaya) (East) (REP) -> Singapore 81308.89427855752",
+        "notes": "830->Malaysia (British Malaya) (West) 4969.9813128702635\n830->Malaysia (British Malaya) (East) 81308.89427855752",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -59038,9 +59110,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cape Colony (Cape of Good Hope) & Mauritius & New South Wales (REP) -> Singapore 26599.33998648165",
-        "status": "ok",
+        "notes": "830->Cape Colony (Cape of Good Hope) & Mauritius & New South Wales 26599.33998648165",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 26599.33998648165,
+        "newReporter": "750",
+        "newPartners": "561|590|901",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
       }
     },
@@ -59061,7 +59136,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Manila (REP) -> Singapore 129378.5535366387",
+        "notes": "830->Manila 129378.5535366387",
         "status": "ok",
         "type": "trade",
         "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Chennai (Madras)"
@@ -59091,7 +59166,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- British Virgin Is. 1260\nUnited States of America (REP) <- Nevis 7941\nUnited States of America (REP) <- St. Kitts 22135\nUnited States of America (REP) <- Antigua and Barbuda (Antigua) 49289\nUnited States of America (REP) <- Montserrat 1024",
+        "notes": "1061<-2 1260\n1076<-2 7941\n1075<-2 22135\n58<-2 49289\n59<-2 1024",
         "status": "ok",
         "type": "trade"
       }
@@ -59119,7 +59194,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- British Virgin Is. 2366\nUnited Kingdom (REP) <- Nevis 2099\nUnited Kingdom (REP) <- Montserrat 9876",
+        "notes": "1061<-200 2366\n1076<-200 2099\n59<-200 9876",
         "status": "ok",
         "type": "trade",
         "partial": "missing St. Kitts|Antigua and Barbuda (Antigua)"
@@ -59149,9 +59224,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British West Indies (REP) <- British Virgin Is. 6859\nBritish West Indies (REP) <- Nevis 18010\nBritish West Indies (REP) <- St. Kitts 28688\nBritish West Indies (REP) <- Antigua and Barbuda (Antigua) 22680\nBritish West Indies (REP) <- Montserrat 15797",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "1061<-British West Indies 6859\n1076<-British West Indies 18010\n1075<-British West Indies 28688\n58<-British West Indies 22680\n59<-British West Indies 15797",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 92034,
+        "newReporter": "1063",
+        "newPartners": "30|31|51|54|1048|1055"
       }
     },
     {
@@ -59178,7 +59256,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> British Virgin Is. 12090\nUnited Kingdom (REP) -> Nevis 41326\nUnited Kingdom (REP) -> St. Kitts 263583\nUnited Kingdom (REP) -> Antigua and Barbuda (Antigua) 401624\nUnited Kingdom (REP) -> Montserrat 23767",
+        "notes": "1061->200 12090\n1076->200 41326\n1075->200 263583\n58->200 401624\n59->200 23767",
         "status": "ok",
         "type": "trade"
       }
@@ -59207,9 +59285,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British West Indies (REP) -> British Virgin Is. 1542\nBritish West Indies (REP) -> Nevis 17246\nBritish West Indies (REP) -> St. Kitts 13365\nBritish West Indies (REP) -> Antigua and Barbuda (Antigua) 286\nBritish West Indies (REP) -> Montserrat 7393",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "1061->British West Indies 1542\n1076->British West Indies 17246\n1075->British West Indies 13365\n58->British West Indies 286\n59->British West Indies 7393",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 39832,
+        "newReporter": "1063",
+        "newPartners": "30|31|51|54|1048|1055"
       }
     },
     {
@@ -59235,9 +59316,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Northern America (REP) <- Nevis 3357\nBritish Northern America (REP) <- St. Kitts 9640\nBritish Northern America (REP) <- Antigua and Barbuda (Antigua) 19510\nBritish Northern America (REP) <- Montserrat 2321",
-        "status": "split_failed_error",
+        "notes": "1076<-British Northern America 3357\n1075<-British Northern America 9640\n58<-British Northern America 19510\n59<-British Northern America 2321",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 34828,
+        "newReporter": "1063",
+        "newPartners": "21|1022|1023|1024|1025|1026",
         "partial": ""
       }
     },
@@ -59262,9 +59346,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Colonies (other) (REP) <- Nevis 491\nBritish Colonies (other) (REP) <- St. Kitts 9110",
-        "status": "split_failed_error",
+        "notes": "1076<-British Colonies (other) 491\n1075<-British Colonies (other) 9110",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 9601,
+        "newReporter": "1063",
+        "newPartners": "110|231|338|451|561|590|750|780|901|902|903|906|920|1163|2249|4044|4050|4383|5614|7501|9004|9620",
         "partial": "missing British Virgin Is.|Antigua and Barbuda (Antigua)|Montserrat"
       }
     },
@@ -59285,7 +59372,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- St. Lucia 1836",
+        "notes": "56<-2 1836",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -59310,7 +59397,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> St. Kitts 38\nUnited States of America (REP) -> Montserrat 328",
+        "notes": "1075->2 38\n59->2 328",
         "status": "ok",
         "type": "trade",
         "partial": "missing British Virgin Is.|Nevis|Antigua and Barbuda (Antigua)"
@@ -59335,9 +59422,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Northern America (REP) -> St. Kitts 1465\nBritish Northern America (REP) -> Antigua and Barbuda (Antigua) 42",
-        "status": "split_failed_error",
+        "notes": "1075->British Northern America 1465\n58->British Northern America 42",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 1507,
+        "newReporter": "1063",
+        "newPartners": "21|1022|1023|1024|1025|1026",
         "partial": "missing British Virgin Is.|Nevis|Montserrat"
       }
     },
@@ -59358,9 +59448,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Colonies (other) (REP) -> St. Kitts 93",
-        "status": "ok",
+        "notes": "1075->British Colonies (other) 93",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 93,
+        "newReporter": "1063",
+        "newPartners": "110|231|338|451|561|590|750|780|901|902|903|906|920|1163|2249|4044|4050|4383|5614|7501|9004|9620",
         "partial": "missing British Virgin Is.|Nevis|Antigua and Barbuda (Antigua)|Montserrat"
       }
     },
@@ -59381,7 +59474,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hamburg (REP) <- Pará 656.0375332988748",
+        "notes": "Pará<-248 656.0375332988748",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Rio de Janeiro|Pernambuco"
@@ -59404,7 +59497,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) <- Pará 3478.9869190091845",
+        "notes": "Pará<-324 3478.9869190091845",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Rio de Janeiro|Pernambuco"
@@ -59427,7 +59520,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hamburg (REP) -> Pará 3478.9869190091845",
+        "notes": "Pará->248 3478.9869190091845",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Rio de Janeiro|Pernambuco"
@@ -59450,7 +59543,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) -> Pará 2735.477714603793",
+        "notes": "Pará->324 2735.477714603793",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia|Rio de Janeiro|Pernambuco"
@@ -59479,7 +59572,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Porto 20078.724503995865\nUnited States of America (REP) <- Lisbon 16738.897061747048",
+        "notes": "Porto<-2 20078.724503995865\nLisbon<-2 16738.897061747048",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59508,7 +59601,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Brazil (REP) <- Porto 218639.41791578862\nBrazil (REP) <- Lisbon 432189.57496719813",
+        "notes": "Porto<-140 218639.41791578862\nLisbon<-140 432189.57496719813",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59537,7 +59630,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Porto 901475.0904536599\nUnited Kingdom (REP) <- Lisbon 927875.6311876267",
+        "notes": "Porto<-200 901475.0904536599\nLisbon<-200 927875.6311876267",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59566,7 +59659,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Porto 13359.309768995268\nNetherlands (REP) <- Lisbon 58844.57874438392",
+        "notes": "Porto<-210 13359.309768995268\nLisbon<-210 58844.57874438392",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59595,7 +59688,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Porto 14552.105284084131\nFrance (REP) <- Lisbon 92918.77062542245",
+        "notes": "Porto<-220 14552.105284084131\nLisbon<-220 92918.77062542245",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59624,7 +59717,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) <- Porto 1272.3152160947875\nSpain (REP) <- Lisbon 4930.221462367302",
+        "notes": "Porto<-230 1272.3152160947875\nLisbon<-230 4930.221462367302",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59647,7 +59740,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Prussia (REP) <- Porto 24571.587610830582",
+        "notes": "Porto<-239 24571.587610830582",
         "status": "ok",
         "type": "trade",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
@@ -59670,7 +59763,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hamburg (REP) <- Porto 17812.413025327023",
+        "notes": "Porto<-248 17812.413025327023",
         "status": "ok",
         "type": "trade",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
@@ -59699,7 +59792,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Trieste (REP) <- Porto 2942.2289372191963\nTrieste (REP) <- Lisbon 3737.4259472784383",
+        "notes": "Porto<-326 2942.2289372191963\nLisbon<-326 3737.4259472784383",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59728,7 +59821,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) <- Porto 103932.24921474296\nRussia (USSR) (REP) <- Lisbon 39282.732296926566",
+        "notes": "Porto<-365 103932.24921474296\nLisbon<-365 39282.732296926566",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59757,7 +59850,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) <- Porto 2226.551628165878\nDenmark (REP) <- Lisbon 27513.81654804978",
+        "notes": "Porto<-390 2226.551628165878\nLisbon<-390 27513.81654804978",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59786,8 +59879,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) <- Porto 28110.21430559421\nNorway & Sweden (REP) <- Lisbon 46598.54478947159",
-        "status": "split_failed_error",
+        "notes": "Porto<-Norway & Sweden 28110.21430559421\nLisbon<-Norway & Sweden 46598.54478947159",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
       }
@@ -59815,7 +59908,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Genoa (REP) <- Porto 4492.863106834719\nGenoa (REP) <- Lisbon 53158.92012246034",
+        "notes": "Porto<-Genoa 4492.863106834719\nLisbon<-Genoa 53158.92012246034",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59844,7 +59937,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Porto 26599.33998648165\nUnited States of America (REP) -> Lisbon 834.9568605622043",
+        "notes": "Porto->2 26599.33998648165\nLisbon->2 834.9568605622043",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59873,7 +59966,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Brazil (REP) -> Porto 140034.19347143255\nBrazil (REP) -> Lisbon 215299.5904735398",
+        "notes": "Porto->140 140034.19347143255\nLisbon->140 215299.5904735398",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59896,7 +59989,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Argentina (La Plata) (REP) -> Porto 2425.3508806806885",
+        "notes": "Porto->160 2425.3508806806885",
         "status": "ok",
         "type": "trade",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
@@ -59925,7 +60018,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Porto 754005.8049381734\nUnited Kingdom (REP) -> Lisbon 102699.69384915112",
+        "notes": "Porto->200 754005.8049381734\nLisbon->200 102699.69384915112",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59954,7 +60047,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Porto 2862.7092362132717\nNetherlands (REP) -> Lisbon 13319.549918492306",
+        "notes": "Porto->210 2862.7092362132717\nLisbon->210 13319.549918492306",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -59983,7 +60076,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Porto 3061.5084887280823\nFrance (REP) -> Lisbon 24412.548208818735",
+        "notes": "Porto->220 3061.5084887280823\nLisbon->220 24412.548208818735",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60012,7 +60105,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) -> Porto 198.79925251481055\nSpain (REP) -> Lisbon 318.0788040236969",
+        "notes": "Porto->230 198.79925251481055\nLisbon->230 318.0788040236969",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60035,7 +60128,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hamburg (REP) -> Porto 18011.212277841834",
+        "notes": "Porto->248 18011.212277841834",
         "status": "ok",
         "type": "trade",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
@@ -60064,7 +60157,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Trieste (REP) -> Porto 954.2364120710906\nTrieste (REP) -> Lisbon 119.27955150888633",
+        "notes": "Porto->326 954.2364120710906\nLisbon->326 119.27955150888633",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60093,7 +60186,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) -> Porto 3737.4259472784383\nRussia (USSR) (REP) -> Lisbon 11252.037692338277",
+        "notes": "Porto->365 3737.4259472784383\nLisbon->365 11252.037692338277",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60122,7 +60215,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) -> Porto 1073.5159635799769\nDenmark (REP) -> Lisbon 1391.5947676036737",
+        "notes": "Porto->390 1073.5159635799769\nLisbon->390 1391.5947676036737",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60151,7 +60244,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) -> Porto 2942.2289372191963\nNorway & Sweden (REP) -> Lisbon 4373.583555325832",
+        "notes": "Porto->Norway & Sweden 2942.2289372191963\nLisbon->Norway & Sweden 4373.583555325832",
         "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60180,7 +60273,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Genoa (REP) -> Porto 1868.7129736392192\nGenoa (REP) -> Lisbon 9502.604270207945",
+        "notes": "Porto->Genoa 1868.7129736392192\nLisbon->Genoa 9502.604270207945",
         "status": "ok",
         "type": "trade",
         "partial": "missing Madeira Isles|Azores (Western Isles)"
@@ -60203,9 +60296,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portuguese Africa (REP) -> Porto 10377.320981273111",
-        "status": "ok",
+        "notes": "Porto->Portuguese Africa 10377.320981273111",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 10377.320981273111,
+        "newReporter": "235",
+        "newPartners": "402|403|540|541",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -60226,8 +60322,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portuguese Colonies (other) (REP) -> Porto 715.6773090533179",
-        "status": "ok",
+        "notes": "Porto->Portuguese Colonies (other) 715.6773090533179",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Lisbon|Madeira Isles|Azores (Western Isles)"
       }
@@ -60249,7 +60345,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Trieste 480497.7933282971",
+        "notes": "326<-2 480497.7933282971",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60272,7 +60368,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Haiti (REP) <- Trieste 40396.008111009505",
+        "notes": "326<-41 40396.008111009505",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60295,7 +60391,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mexico (REP) <- Trieste 30416.285634766013",
+        "notes": "326<-70 30416.285634766013",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60318,7 +60414,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Brazil (REP) <- Trieste 838018.3690509323",
+        "notes": "326<-140 838018.3690509323",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60346,7 +60442,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Trieste 139119.71690986442\nNetherlands (REP) <- Republic of St. Mark 32205.47890739931\nNetherlands (REP) <- Fiume 79.51970100592422",
+        "notes": "326<-210 139119.71690986442\n3261<-210 32205.47890739931\n3343<-210 79.51970100592422",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -60369,7 +60465,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Trieste 3339.827442248817",
+        "notes": "326<-211 3339.827442248817",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60396,7 +60492,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Trieste 219116.53612182417\nFrance (REP) <- Republic of St. Mark 68665.26181861556",
+        "notes": "326<-220 219116.53612182417\n3261<-220 68665.26181861556",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60419,7 +60515,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) <- Trieste 115701.16496361974",
+        "notes": "326<-230 115701.16496361974",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60446,7 +60542,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal (REP) <- Trieste 33915.15247902668\nPortugal (REP) <- Republic of St. Mark 36221.22380819848",
+        "notes": "326<-235 33915.15247902668\n3261<-235 36221.22380819848",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60473,7 +60569,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) <- Trieste 47035.90314500417\nKingdom of Sardinia (REP) <- Republic of St. Mark 9939.962625740527",
+        "notes": "326<-324 47035.90314500417\n3261<-324 9939.962625740527",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60501,7 +60597,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Papal States (REP) <- Trieste 180947.07963898056\nPapal States (REP) <- Republic of St. Mark 60236.173511987596\nPapal States (REP) <- Fiume 4015.744900799173",
+        "notes": "326<-327 180947.07963898056\n3261<-327 60236.173511987596\n3343<-327 4015.744900799173",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -60529,7 +60625,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Two Sicilies (REP) <- Trieste 609876.3468649358\nTwo Sicilies (REP) <- Republic of St. Mark 53357.71937497515\nTwo Sicilies (REP) <- Fiume 3538.6266947636277",
+        "notes": "326<-329 609876.3468649358\n3261<-329 53357.71937497515\n3343<-329 3538.6266947636277",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -60552,7 +60648,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) <- Trieste 28309.01355810902",
+        "notes": "326<-337 28309.01355810902",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60579,7 +60675,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) <- Trieste 162299.70975309133\nGreece (REP) <- Republic of St. Mark 72164.12866287623",
+        "notes": "326<-350 162299.70975309133\n3261<-350 72164.12866287623",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60606,7 +60702,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) <- Trieste 113395.09363444794\nRussia (USSR) (REP) <- Republic of St. Mark 57771.06278080394",
+        "notes": "326<-365 113395.09363444794\n3261<-365 57771.06278080394",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60629,7 +60725,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Egypt Arab Republic (Egypt) (REP) <- Trieste 290207.14882112044",
+        "notes": "326<-651 290207.14882112044",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60656,9 +60752,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Levant (REP) <- Trieste 818019.1642479424\nLevant (REP) <- Republic of St. Mark 21390.799570593615",
-        "status": "split_failed_error",
+        "notes": "326<-Levant 818019.1642479424\n3261<-Levant 21390.799570593615",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 839409.963818536,
+        "newReporter": "300",
+        "newPartners": "640|652",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -60679,9 +60778,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) <- Trieste 3300.067591745855",
-        "status": "ok",
+        "notes": "326<-Barbary Coast 3300.067591745855",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 3300.067591745855,
+        "newReporter": "300",
+        "newPartners": "600|615|616|6062|6064",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -60702,8 +60804,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Gibraltar & Ionian Is. & Malta & United Kingdom (REP) <- Trieste 645938.5312711224",
-        "status": "ok",
+        "notes": "326<-Gibraltar & Ionian Is. & Malta & United Kingdom 645938.5312711224",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
@@ -60725,9 +60827,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) <- Trieste 3459.1069937577035",
-        "status": "ok",
+        "notes": "326<-Hanse Towns 3459.1069937577035",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 3459.1069937577035,
+        "newReporter": "300",
+        "newPartners": "246|248|276",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -60752,8 +60857,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) <- Trieste 13876.187825533776\nNorway & Sweden (REP) <- Republic of St. Mark 40316.48841000358",
-        "status": "split_failed_error",
+        "notes": "326<-Norway & Sweden 13876.187825533776\n3261<-Norway & Sweden 40316.48841000358",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
       }
@@ -60775,7 +60880,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Trieste 63456.721402727526",
+        "notes": "326->2 63456.721402727526",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60798,7 +60903,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Brazil (REP) -> Trieste 33358.51457198521",
+        "notes": "326->140 33358.51457198521",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60821,7 +60926,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Chile (REP) -> Trieste 7633.891296568725",
+        "notes": "326->155 7633.891296568725",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60849,7 +60954,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Trieste 41032.165719056895\nNetherlands (REP) -> Republic of St. Mark 12643.632459941951\nNetherlands (REP) -> Fiume 3339.827442248817",
+        "notes": "326->210 41032.165719056895\n3261->210 12643.632459941951\n3343->210 3339.827442248817",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -60872,7 +60977,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Trieste 10059.242177249414",
+        "notes": "326->211 10059.242177249414",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60900,7 +61005,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Trieste 152956.14488489524\nFrance (REP) -> Republic of St. Mark 8707.407260148702\nFrance (REP) -> Fiume 148582.5613295694",
+        "notes": "326->220 152956.14488489524\n3261->220 8707.407260148702\n3343->220 148582.5613295694",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -60923,7 +61028,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) -> Trieste 23498.071647250606",
+        "notes": "326->230 23498.071647250606",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -60950,7 +61055,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal (REP) -> Trieste 6043.497276450241\nPortugal (REP) -> Republic of St. Mark 1351.8349171007117",
+        "notes": "326->235 6043.497276450241\n3261->235 1351.8349171007117",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -60973,7 +61078,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Prussia (REP) -> Trieste 23100.473142220984",
+        "notes": "326->239 23100.473142220984",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -61001,7 +61106,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) -> Trieste 42702.079440181304\nKingdom of Sardinia (REP) -> Republic of St. Mark 8309.80875511908\nKingdom of Sardinia (REP) -> Fiume 35942.90485467775",
+        "notes": "326->324 42702.079440181304\n3261->324 8309.80875511908\n3343->324 35942.90485467775",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -61029,7 +61134,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Papal States (REP) -> Trieste 308138.84139795636\nPapal States (REP) -> Republic of St. Mark 102500.89459663632\nPapal States (REP) -> Fiume 1351.8349171007117",
+        "notes": "326->327 308138.84139795636\n3261->327 102500.89459663632\n3343->327 1351.8349171007117",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -61057,7 +61162,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Two Sicilies (REP) -> Trieste 239314.54017732895\nTwo Sicilies (REP) -> Republic of St. Mark 26798.13923899646\nTwo Sicilies (REP) -> Fiume 1431.3546181066358",
+        "notes": "326->329 239314.54017732895\n3261->329 26798.13923899646\n3343->329 1431.3546181066358",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Lombardy-Venetia|Modena"
@@ -61080,7 +61185,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) -> Trieste 30893.40384080156",
+        "notes": "326->337 30893.40384080156",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -61107,7 +61212,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) -> Trieste 474056.69754681725\nGreece (REP) -> Republic of St. Mark 9780.92322372868",
+        "notes": "326->350 474056.69754681725\n3261->350 9780.92322372868",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
@@ -61130,7 +61235,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) -> Trieste 26837.899089499424",
+        "notes": "326->365 26837.899089499424",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -61153,7 +61258,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Denmark (REP) -> Trieste 4413.343405828794",
+        "notes": "326->390 4413.343405828794",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -61176,7 +61281,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Egypt Arab Republic (Egypt) (REP) -> Trieste 79957.0593614568",
+        "notes": "326->651 79957.0593614568",
         "status": "ok",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
@@ -61203,9 +61308,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Levant (REP) -> Trieste 591586.8156335732\nLevant (REP) -> Republic of St. Mark 65802.55258240229",
-        "status": "split_failed_error",
+        "notes": "326->Levant 591586.8156335732\n3261->Levant 65802.55258240229",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 657389.3682159755,
+        "newReporter": "300",
+        "newPartners": "640|652",
         "partial": "missing Austria|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -61226,9 +61334,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) -> Trieste 2544.630432189575",
-        "status": "ok",
+        "notes": "326->Barbary Coast 2544.630432189575",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 2544.630432189575,
+        "newReporter": "300",
+        "newPartners": "600|615|616|6062|6064",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -61249,8 +61360,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Gibraltar & Ionian Is. & Malta & United Kingdom (REP) -> Trieste 509959.84255099203",
-        "status": "ok",
+        "notes": "326->Gibraltar & Ionian Is. & Malta & United Kingdom 509959.84255099203",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
@@ -61272,9 +61383,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Trieste 48666.05701562562",
-        "status": "ok",
+        "notes": "326->Hanse Towns 48666.05701562562",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 48666.05701562562,
+        "newReporter": "300",
+        "newPartners": "246|248|276",
         "partial": "missing Austria|Republic of St. Mark|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -61295,7 +61409,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Newfoundland and Labrador (Newfoundland) (REP) <- Lisbon 19323.287344439585",
+        "notes": "Lisbon<-21 19323.287344439585",
         "status": "ok",
         "type": "trade",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
@@ -61318,7 +61432,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Lisbon 8230.289054113156",
+        "notes": "Lisbon<-211 8230.289054113156",
         "status": "ok",
         "type": "trade",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
@@ -61341,9 +61455,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) <- Lisbon 44650.31211482645",
-        "status": "ok",
+        "notes": "Lisbon<-Hanse Towns 44650.31211482645",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 44650.31211482645,
+        "newReporter": "235",
+        "newPartners": "246|276",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61364,9 +61481,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) <- Lisbon 3618.146395769552",
-        "status": "ok",
+        "notes": "Lisbon<-Barbary Coast 3618.146395769552",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 3618.146395769552,
+        "newReporter": "235",
+        "newPartners": "600|615|616|640|6062|6064",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61387,9 +61507,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portuguese Africa (REP) <- Lisbon 49540.773726690786",
-        "status": "ok",
+        "notes": "Lisbon<-Portuguese Africa 49540.773726690786",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 49540.773726690786,
+        "newReporter": "235",
+        "newPartners": "402|403|540|541",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61410,9 +61533,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portuguese Asia (REP) <- Lisbon 168025.12822551787",
-        "status": "ok",
+        "notes": "Lisbon<-Portuguese Asia 168025.12822551787",
+        "status": "split_only_partial",
         "type": "trade",
+        "valueToSplit": 167388.32481589218,
+        "newReporter": "235",
+        "newPartners": "752|860",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61433,7 +61559,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Lisbon 477.1182060355453",
+        "notes": "Lisbon->211 477.1182060355453",
         "status": "ok",
         "type": "trade",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
@@ -61456,9 +61582,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Lisbon 993.9962625740527",
-        "status": "ok",
+        "notes": "Lisbon->Hanse Towns 993.9962625740527",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 993.9962625740527,
+        "newReporter": "235",
+        "newPartners": "246|276",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61479,9 +61608,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) -> Lisbon 318.0788040236969",
-        "status": "ok",
+        "notes": "Lisbon->Barbary Coast 318.0788040236969",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 318.0788040236969,
+        "newReporter": "235",
+        "newPartners": "600|615|616|640|6062|6064",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
     },
@@ -61502,8 +61634,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portuguese Africa & Portuguese Asia (REP) -> Lisbon 21987.197328138045",
-        "status": "ok",
+        "notes": "Lisbon->Portuguese Africa & Portuguese Asia 21987.197328138045",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Porto|Madeira Isles|Azores (Western Isles)"
       }
@@ -61537,7 +61669,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Trabzon 86915.03319947518\nUnited Kingdom (REP) <- Izmir (Smyrna) 209772.9712536281",
+        "notes": "Trabzon<-200 86915.03319947518\nIzmir (Smyrna)<-200 209772.9712536281",
         "status": "ok",
         "type": "trade",
         "partial": "missing Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61572,7 +61704,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) <- Trabzon 48904.6161186434\nRussia (Black Sea) (REP) <- Izmir (Smyrna) 53158.92012246034",
+        "notes": "Trabzon<-365 48904.6161186434\nIzmir (Smyrna)<-Russia (Black Sea) 53158.92012246034",
         "status": "ok",
         "type": "trade",
         "partial": "missing Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61595,7 +61727,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Iran (Persia) (REP) <- Trabzon 413462.68538030295",
+        "notes": "Trabzon<-630 413462.68538030295",
         "status": "ok",
         "type": "trade",
         "partial": "missing Izmir (Smyrna)|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61618,9 +61750,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) <- Trabzon 48904.6161186434",
-        "status": "ok",
+        "notes": "Trabzon<-Hanse Towns 48904.6161186434",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 48904.6161186434,
+        "newReporter": "640",
+        "newPartners": "246|248|276",
         "partial": "missing Izmir (Smyrna)|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
     },
@@ -61653,7 +61788,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Trabzon 755.4371595562801\nUnited Kingdom (REP) -> Izmir (Smyrna) 483002.6639099837",
+        "notes": "Trabzon->200 755.4371595562801\nIzmir (Smyrna)->200 483002.6639099837",
         "status": "ok",
         "type": "trade",
         "partial": "missing Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61688,7 +61823,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) -> Trabzon 15585.861397161147\nRussia (Black Sea) (REP) -> Izmir (Smyrna) 42781.59914118723",
+        "notes": "Trabzon->365 15585.861397161147\nIzmir (Smyrna)->Russia (Black Sea) 42781.59914118723",
         "status": "ok",
         "type": "trade",
         "partial": "missing Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61711,7 +61846,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Iran (Persia) (REP) -> Trabzon 1209932.01065564",
+        "notes": "Trabzon->630 1209932.01065564",
         "status": "ok",
         "type": "trade",
         "partial": "missing Izmir (Smyrna)|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61734,7 +61869,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Izmir (Smyrna) 89897.02198719732",
+        "notes": "Izmir (Smyrna)<-2 89897.02198719732",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61757,7 +61892,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Izmir (Smyrna) 17136.49556677667",
+        "notes": "Izmir (Smyrna)<-210 17136.49556677667",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61780,7 +61915,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Izmir (Smyrna) 77929.30698580573",
+        "notes": "Izmir (Smyrna)<-220 77929.30698580573",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61803,7 +61938,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) <- Izmir (Smyrna) 238519.3431672697",
+        "notes": "Izmir (Smyrna)<-300 238519.3431672697",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61826,7 +61961,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) <- Izmir (Smyrna) 35465.7866486422",
+        "notes": "Izmir (Smyrna)<-350 35465.7866486422",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61849,8 +61984,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia & Tuscany (REP) <- Izmir (Smyrna) 18210.011530356645",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)<-Kingdom of Sardinia & Tuscany 18210.011530356645",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -61872,8 +62007,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta (REP) <- Izmir (Smyrna) 15546.101546658185",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)<-Ionian Is. & Malta 15546.101546658185",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -61895,8 +62030,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Egypt Arab Republic (Egypt) & Syria (REP) <- Izmir (Smyrna) 8786.926961154626",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)<-Egypt Arab Republic (Egypt) & Syria 8786.926961154626",
+        "status": "ignore_resolved",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -61918,7 +62053,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Izmir (Smyrna) 95662.20031012683",
+        "notes": "Izmir (Smyrna)->2 95662.20031012683",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61941,7 +62076,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) -> Izmir (Smyrna) 82978.80799968193",
+        "notes": "Izmir (Smyrna)->210 82978.80799968193",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61964,7 +62099,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Izmir (Smyrna) 228062.50248499066",
+        "notes": "Izmir (Smyrna)->220 228062.50248499066",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -61987,7 +62122,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) -> Izmir (Smyrna) 241183.25315096814",
+        "notes": "Izmir (Smyrna)->300 241183.25315096814",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -62010,7 +62145,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) -> Izmir (Smyrna) 6918.213987515407",
+        "notes": "Izmir (Smyrna)->350 6918.213987515407",
         "status": "ok",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
@@ -62033,8 +62168,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia & Tuscany (REP) -> Izmir (Smyrna) 72402.687765894",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)->Kingdom of Sardinia & Tuscany 72402.687765894",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -62056,8 +62191,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta (REP) -> Izmir (Smyrna) 15625.621247664109",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)->Ionian Is. & Malta 15625.621247664109",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -62079,8 +62214,8 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Egypt Arab Republic (Egypt) & Syria (REP) -> Izmir (Smyrna) 8786.926961154626",
-        "status": "ok",
+        "notes": "Izmir (Smyrna)->Egypt Arab Republic (Egypt) & Syria 8786.926961154626",
+        "status": "split_failed_error",
         "type": "trade",
         "partial": "missing Trabzon|Archipelago|European Turkey|Asian Turkey|Palestine"
       }
@@ -62102,7 +62237,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) <- Alexandria 7884.378354737386",
+        "notes": "Alexandria<-211 7884.378354737386",
         "status": "ok",
         "type": "trade"
       }
@@ -62124,7 +62259,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Alexandria 178291.1216253827",
+        "notes": "Alexandria<-220 178291.1216253827",
         "status": "ok",
         "type": "trade"
       }
@@ -62146,7 +62281,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) <- Alexandria 200520.8540415888",
+        "notes": "Alexandria<-300 200520.8540415888",
         "status": "ok",
         "type": "trade"
       }
@@ -62168,7 +62303,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) <- Alexandria 165723.0328813964",
+        "notes": "Alexandria<-337 165723.0328813964",
         "status": "ok",
         "type": "trade"
       }
@@ -62190,7 +62325,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) <- Alexandria 42304.48093515168",
+        "notes": "Alexandria<-350 42304.48093515168",
         "status": "ok",
         "type": "trade"
       }
@@ -62212,7 +62347,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Turkey (Ottoman Empire) (REP) <- Alexandria 186911.0572144249",
+        "notes": "Alexandria<-640 186911.0572144249",
         "status": "ok",
         "type": "trade"
       }
@@ -62234,7 +62369,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Syria (REP) <- Alexandria 29780.12802671862",
+        "notes": "Alexandria<-652 29780.12802671862",
         "status": "ok",
         "type": "trade"
       }
@@ -62256,9 +62391,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta & United Kingdom (REP) <- Alexandria 436936.9011172518",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Alexandria<-Ionian Is. & Malta & United Kingdom 436936.9011172518",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 436936.9011172518,
+        "newReporter": "651",
+        "newPartners": "200|338|3349"
       }
     },
     {
@@ -62278,9 +62416,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) <- Alexandria 71074.70875909507",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Alexandria<-Barbary Coast 71074.70875909507",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 71074.70875909507,
+        "newReporter": "651",
+        "newPartners": "600|615|616|6062|6064"
       }
     },
     {
@@ -62300,7 +62441,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium (REP) -> Alexandria 7908.234265039164",
+        "notes": "Alexandria->211 7908.234265039164",
         "status": "ok",
         "type": "trade"
       }
@@ -62322,7 +62463,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Alexandria 107077.25338952725",
+        "notes": "Alexandria->220 107077.25338952725",
         "status": "ok",
         "type": "trade"
       }
@@ -62344,7 +62485,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) -> Alexandria 158328.694684108",
+        "notes": "Alexandria->300 158328.694684108",
         "status": "ok",
         "type": "trade"
       }
@@ -62366,7 +62507,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) -> Alexandria 6759.174585503559",
+        "notes": "Alexandria->324 6759.174585503559",
         "status": "ok",
         "type": "trade"
       }
@@ -62388,7 +62529,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) -> Alexandria 156693.57083217366",
+        "notes": "Alexandria->337 156693.57083217366",
         "status": "ok",
         "type": "trade"
       }
@@ -62410,7 +62551,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) -> Alexandria 25199.793248777383",
+        "notes": "Alexandria->350 25199.793248777383",
         "status": "ok",
         "type": "trade"
       }
@@ -62432,7 +62573,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Turkey (Ottoman Empire) (REP) -> Alexandria 296628.3646773488",
+        "notes": "Alexandria->640 296628.3646773488",
         "status": "ok",
         "type": "trade"
       }
@@ -62454,7 +62595,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Syria (REP) -> Alexandria 95149.29823863863",
+        "notes": "Alexandria->652 95149.29823863863",
         "status": "ok",
         "type": "trade"
       }
@@ -62476,9 +62617,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta & United Kingdom (REP) -> Alexandria 171105.9202417399",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Alexandria->Ionian Is. & Malta & United Kingdom 171105.9202417399",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 171105.9202417399,
+        "newReporter": "651",
+        "newPartners": "200|338|3349"
       }
     },
     {
@@ -62498,9 +62642,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Barbary Coast (REP) -> Alexandria 40745.89479543557",
-        "status": "ok",
-        "type": "trade"
+        "notes": "Alexandria->Barbary Coast 40745.89479543557",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 40745.89479543557,
+        "newReporter": "651",
+        "newPartners": "600|615|616|6062|6064"
       }
     },
     {
@@ -62520,9 +62667,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & United Kingdom (REP) <- Republic of St. Mark 193550.95224841955",
-        "status": "ok",
+        "notes": "3261<-Ionian Is. & United Kingdom 193550.95224841955",
+        "status": "ignore_resolved",
         "type": "trade",
+        "mergedIn": [
+          "300<-200"
+        ],
         "partial": "missing Austria|Trieste|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -62543,9 +62693,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "America (REP) <- Republic of St. Mark 47513.02135103972",
-        "status": "ok",
+        "notes": "3261<-America 47513.02135103972",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 47513.02135103972,
+        "newReporter": "300",
+        "newPartners": "3|5|6|7|10|21|30|31|40|42|51|54|65|66|68|80|89|90|91|93|94|100|101|110|120|130|135|145|150|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1163|1164|1168|10200|10210",
         "partial": "missing Austria|Trieste|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -62566,9 +62719,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & United Kingdom (REP) -> Republic of St. Mark 83376.40650471154",
-        "status": "ok",
+        "notes": "3261->Ionian Is. & United Kingdom 83376.40650471154",
+        "status": "ignore_resolved",
         "type": "trade",
+        "mergedIn": [
+          "300->200"
+        ],
         "partial": "missing Austria|Trieste|Fiume|Lombardy-Venetia|Modena"
       }
     },
@@ -62589,9 +62745,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta & United Kingdom (REP) <- Fiume 477.1182060355453",
-        "status": "ok",
+        "notes": "3343<-Ionian Is. & Malta & United Kingdom 477.1182060355453",
+        "status": "ignore_resolved",
         "type": "trade",
+        "mergedIn": [
+          "300<-200"
+        ],
         "partial": "missing Austria|Trieste|Republic of St. Mark|Lombardy-Venetia|Modena"
       }
     },
@@ -62612,9 +62771,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. & Malta & United Kingdom (REP) -> Fiume 34591.069937577035",
-        "status": "ok",
+        "notes": "3343->Ionian Is. & Malta & United Kingdom 34591.069937577035",
+        "status": "ignore_resolved",
         "type": "trade",
+        "mergedIn": [
+          "300->200"
+        ],
         "partial": "missing Austria|Trieste|Republic of St. Mark|Lombardy-Venetia|Modena"
       }
     },
@@ -62635,7 +62797,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) <- Sicily 40555.04751302135",
+        "notes": "3291<-2 40555.04751302135",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62658,7 +62820,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Sicily 242773.64717108663",
+        "notes": "3291<-200 242773.64717108663",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62681,7 +62843,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Sicily 133235.25903542602",
+        "notes": "3291<-220 133235.25903542602",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62704,9 +62866,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Germany (Zollverein) (REP) <- Sicily 87749.99006003738",
-        "status": "ok",
+        "notes": "3291<-255 87749.99006003738",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 87749.99006003738,
+        "newReporter": "329",
+        "newPartners": "241|242|243|245|247|254|258|259|261|262|264|266|267|268|269|270|271|272|273|275|277",
         "partial": ""
       }
     },
@@ -62727,9 +62892,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Italy (REP) <- Sicily 97371.8738817542",
-        "status": "ok",
+        "notes": "3291<-325 97371.8738817542",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 97371.8738817542,
+        "newReporter": "329",
+        "newPartners": "324|335|337",
         "partial": ""
       }
     },
@@ -62750,9 +62918,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Baltic Ports (REP) <- Sicily 15824.42050017892",
-        "status": "ok",
+        "notes": "3291<-Baltic Ports 15824.42050017892",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 15824.42050017892,
+        "newReporter": "329",
+        "newPartners": "239|257|280|365|380|390|2247|2248|2901",
         "partial": ""
       }
     },
@@ -62773,7 +62944,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United States of America (REP) -> Sicily 230249.29426265357",
+        "notes": "3291->2 230249.29426265357",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62796,7 +62967,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Sicily 438392.1116456602",
+        "notes": "3291->200 438392.1116456602",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62819,7 +62990,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) -> Sicily 278637.0323247585",
+        "notes": "3291->220 278637.0323247585",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62842,9 +63013,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Germany (Zollverein) (REP) -> Sicily 123613.3752137092",
-        "status": "ok",
+        "notes": "3291->255 123613.3752137092",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 123613.3752137092,
+        "newReporter": "329",
+        "newPartners": "241|242|243|245|247|254|258|259|261|262|264|266|267|268|269|270|271|272|273|275|277",
         "partial": ""
       }
     },
@@ -62865,9 +63039,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Italy (REP) -> Sicily 94429.64494453502",
-        "status": "ok",
+        "notes": "3291->325 94429.64494453502",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 94429.64494453502,
+        "newReporter": "329",
+        "newPartners": "324|335|337",
         "partial": ""
       }
     },
@@ -62888,9 +63065,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Baltic Ports (REP) -> Sicily 39242.9724464236",
-        "status": "ok",
+        "notes": "3291->Baltic Ports 39242.9724464236",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 39242.9724464236,
+        "newReporter": "329",
+        "newPartners": "239|257|280|365|380|390|2247|2248|2901",
         "partial": ""
       }
     },
@@ -62911,9 +63091,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Argentina (La Plata) & Brazil (REP) -> Sicily 34750.10933958888",
-        "status": "ok",
+        "notes": "3291->Argentina (La Plata) & Brazil 34750.10933958888",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 34750.10933958888,
+        "newReporter": "329",
+        "newPartners": "140|160",
         "partial": ""
       }
     },
@@ -62934,7 +63117,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) <- Patras 24213.748956303923",
+        "notes": "Patras<-200 24213.748956303923",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62957,7 +63140,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Patras 477.1182060355453",
+        "notes": "Patras<-210 477.1182060355453",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -62980,7 +63163,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (REP) <- Patras 159.03940201184844",
+        "notes": "Patras<-220 159.03940201184844",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63003,7 +63186,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) <- Patras 47473.261500536755",
+        "notes": "Patras<-300 47473.261500536755",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63026,7 +63209,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Papal States (REP) <- Patras 1550.6341696155223",
+        "notes": "Patras<-327 1550.6341696155223",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63049,7 +63232,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) <- Patras 6600.13518349171",
+        "notes": "Patras<-337 6600.13518349171",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63072,7 +63255,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Malta (REP) <- Patras 3180.7880402369688",
+        "notes": "Patras<-338 3180.7880402369688",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63095,7 +63278,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Russia (USSR) (REP) <- Patras 39.75985050296211",
+        "notes": "Patras<-365 39.75985050296211",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63118,7 +63301,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Turkey (Ottoman Empire) (REP) <- Patras 4333.82370482287",
+        "notes": "Patras<-640 4333.82370482287",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63141,7 +63324,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. (REP) <- Patras 12643.632459941951",
+        "notes": "Patras<-3349 12643.632459941951",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63164,7 +63347,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "United Kingdom (REP) -> Patras 28666.85221263568",
+        "notes": "Patras->200 28666.85221263568",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63187,7 +63370,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) -> Patras 17693.13347381814",
+        "notes": "Patras->300 17693.13347381814",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63210,7 +63393,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Papal States (REP) -> Patras 278.31895352073474",
+        "notes": "Patras->327 278.31895352073474",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63233,7 +63416,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) -> Patras 1312.0750665977496",
+        "notes": "Patras->337 1312.0750665977496",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63256,7 +63439,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Malta (REP) -> Patras 39.75985050296211",
+        "notes": "Patras->338 39.75985050296211",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63279,7 +63462,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Turkey (Ottoman Empire) (REP) -> Patras 79.51970100592422",
+        "notes": "Patras->640 79.51970100592422",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63302,7 +63485,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. (REP) -> Patras 2465.110731183651",
+        "notes": "Patras->3349 2465.110731183651",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63325,7 +63508,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Netherlands (REP) <- Ancona 1749.4334221303327",
+        "notes": "3271<-210 1749.4334221303327",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63356,7 +63539,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) <- Ancona 2743.4296847043856\nSpain (REP) <- Civitavecchia 6083.257126953203",
+        "notes": "3271<-230 2743.4296847043856\nCivitavecchia<-230 6083.257126953203",
         "status": "ok",
         "type": "trade"
       }
@@ -63378,7 +63561,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) <- Ancona 339429.84374378755",
+        "notes": "3271<-300 339429.84374378755",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63409,7 +63592,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) <- Ancona 1471.1144686095981\nKingdom of Sardinia (REP) <- Civitavecchia 121903.70164208183",
+        "notes": "3271<-324 1471.1144686095981\nCivitavecchia<-324 121903.70164208183",
         "status": "ok",
         "type": "trade"
       }
@@ -63439,7 +63622,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Two Sicilies (REP) <- Ancona 63695.2805057453\nTwo Sicilies (REP) <- Civitavecchia 19561.84644745736",
+        "notes": "3271<-329 63695.2805057453\nCivitavecchia<-329 19561.84644745736",
         "status": "ok",
         "type": "trade"
       }
@@ -63469,7 +63652,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) <- Ancona 5765.178322929506\nTuscany (REP) <- Civitavecchia 70494.21494175182",
+        "notes": "3271<-337 5765.178322929506\nCivitavecchia<-337 70494.21494175182",
         "status": "ok",
         "type": "trade"
       }
@@ -63491,7 +63674,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) <- Ancona 7156.77309053318",
+        "notes": "3271<-350 7156.77309053318",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63514,7 +63697,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. (REP) <- Ancona 1033.7561130770148",
+        "notes": "3271<-3349 1033.7561130770148",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63545,9 +63728,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Colonies & United Kingdom (REP) <- Ancona 136336.52737465707\nBritish Colonies & United Kingdom (REP) <- Civitavecchia 57969.86203331876",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "3271<-British Colonies & United Kingdom 136336.52737465707\nCivitavecchia<-British Colonies & United Kingdom 57969.86203331876",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 194306.38940797583,
+        "newReporter": "327",
+        "newPartners": "21|30|31|51|54|110|200|231|338|451|561|590|750|780|901|902|903|906|920|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|5614|7501|9004|9620"
       }
     },
     {
@@ -63567,9 +63753,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France & French Colonies (REP) <- Ancona 8230.289054113156",
-        "status": "ok",
+        "notes": "3271<-France & French Colonies 8230.289054113156",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 8230.289054113156,
+        "newReporter": "327",
+        "newPartners": "65|66|120|433|585|751|1029|5801",
         "partial": ""
       }
     },
@@ -63590,9 +63779,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) <- Ancona 3816.9456482843625",
-        "status": "ok",
+        "notes": "3271<-Norway & Sweden 3816.9456482843625",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 3816.9456482843625,
+        "newReporter": "327",
+        "newPartners": "380|385",
         "partial": ""
       }
     },
@@ -63613,7 +63805,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) (REP) -> Ancona 114309.57019601607",
+        "notes": "3271->300 114309.57019601607",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63644,7 +63836,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia (REP) -> Ancona 2942.2289372191963\nKingdom of Sardinia (REP) -> Civitavecchia 15466.581845652261",
+        "notes": "3271->324 2942.2289372191963\nCivitavecchia->324 15466.581845652261",
         "status": "ok",
         "type": "trade"
       }
@@ -63674,7 +63866,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Two Sicilies (REP) -> Ancona 24213.748956303923\nTwo Sicilies (REP) -> Civitavecchia 7117.013240030217",
+        "notes": "3271->329 24213.748956303923\nCivitavecchia->329 7117.013240030217",
         "status": "ok",
         "type": "trade"
       }
@@ -63704,7 +63896,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Tuscany (REP) -> Ancona 5804.938173432468\nTuscany (REP) -> Civitavecchia 18607.610035386268",
+        "notes": "3271->337 5804.938173432468\nCivitavecchia->337 18607.610035386268",
         "status": "ok",
         "type": "trade"
       }
@@ -63726,7 +63918,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Greece (REP) -> Ancona 14631.624985090057",
+        "notes": "3271->350 14631.624985090057",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63749,7 +63941,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ionian Is. (REP) -> Ancona 11570.116496361974",
+        "notes": "3271->3349 11570.116496361974",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63780,9 +63972,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "British Colonies & United Kingdom (REP) -> Ancona 86636.71424595444\nBritish Colonies & United Kingdom (REP) -> Civitavecchia 7872.450399586498",
-        "status": "split_failed_error",
-        "type": "trade"
+        "notes": "3271->British Colonies & United Kingdom 86636.71424595444\nCivitavecchia->British Colonies & United Kingdom 7872.450399586498",
+        "status": "split_failed_no_ratio",
+        "type": "trade",
+        "valueToSplit": 94509.16464554094,
+        "newReporter": "327",
+        "newPartners": "21|30|31|51|54|110|200|231|338|451|561|590|750|780|901|902|903|906|920|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|5614|7501|9004|9620"
       }
     },
     {
@@ -63802,9 +63997,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France & French Colonies (REP) -> Ancona 36817.62156574291",
-        "status": "ok",
+        "notes": "3271->France & French Colonies 36817.62156574291",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 36817.62156574291,
+        "newReporter": "327",
+        "newPartners": "65|66|120|433|585|751|1029|5801",
         "partial": ""
       }
     },
@@ -63825,9 +64023,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Algeria (Regency of Algiers) & France (REP) <- Civitavecchia 149815.11669516124",
-        "status": "ok",
+        "notes": "Civitavecchia<-Algeria (Regency of Algiers) & France 149815.11669516124",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 149815.11669516124,
+        "newReporter": "327",
+        "newPartners": "220|615",
         "partial": ""
       }
     },
@@ -63848,7 +64049,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (REP) -> Civitavecchia 9820.683074231642",
+        "notes": "Civitavecchia->230 9820.683074231642",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63871,9 +64072,12 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Algeria (Regency of Algiers) & France (REP) -> Civitavecchia 54828.83384358475",
-        "status": "ok",
+        "notes": "Civitavecchia->Algeria (Regency of Algiers) & France 54828.83384358475",
+        "status": "split_failed_no_ratio",
         "type": "trade",
+        "valueToSplit": 54828.83384358475,
+        "newReporter": "327",
+        "newPartners": "220|615",
         "partial": ""
       }
     },
@@ -63894,7 +64098,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Alexandria (REP) -> Civitavecchia 874.7167110651664",
+        "notes": "Civitavecchia->Alexandria 874.7167110651664",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -63917,7 +64121,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cayenne (REP) -> France 103375.61130770149",
+        "notes": "220->Cayenne 103375.61130770149",
         "status": "ok",
         "type": "trade",
         "partial": "missing France (Atlantic Coast)|France (Mediterranean Coast)"
@@ -63940,7 +64144,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Cayenne (REP) <- France 83495.68605622042",
+        "notes": "220<-Cayenne 83495.68605622042",
         "status": "ok",
         "type": "trade",
         "partial": "missing France (Atlantic Coast)|France (Mediterranean Coast)"
@@ -63963,7 +64167,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Colombia (New Granada) (Gran Colombia) (other) (REP) -> France 11927.955150888632",
+        "notes": "220->Colombia (New Granada) (Gran Colombia) (other) 11927.955150888632",
         "status": "ok",
         "type": "trade",
         "partial": "missing France (Atlantic Coast)|France (Mediterranean Coast)"
@@ -63986,7 +64190,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Colombia (New Granada) (Gran Colombia) (other) (REP) <- France 11927.955150888632",
+        "notes": "220<-Colombia (New Granada) (Gran Colombia) (other) 11927.955150888632",
         "status": "ok",
         "type": "trade",
         "partial": "missing France (Atlantic Coast)|France (Mediterranean Coast)"
@@ -64009,7 +64213,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria (REP) -> Hamburg 170211.9200031808",
+        "notes": "248->305 170211.9200031808",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64032,7 +64236,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria (REP) <- Hamburg 394139.3980358634",
+        "notes": "248<-305 394139.3980358634",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64057,7 +64261,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Balearic Islands & Spain (REP) -> United Kingdom 404252\nCanary Is. (REP) -> United Kingdom 45872",
+        "notes": "200->Balearic Islands & Spain 404252\n200->410 45872",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -64080,7 +64284,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria (REP) -> Netherlands 3419.3471432547412",
+        "notes": "210->305 3419.3471432547412",
         "status": "ok",
         "type": "trade"
       }
@@ -64102,7 +64306,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria (REP) <- Netherlands 49739.5729792056",
+        "notes": "210<-305 49739.5729792056",
         "status": "ok",
         "type": "trade"
       }
@@ -64124,7 +64328,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) & Lombardy-Venetia (REP) -> Tuscany 111327.5814082939",
+        "notes": "337->Austria-Hungary (Austrian Empire) & Lombardy-Venetia 111327.5814082939",
         "status": "ok",
         "type": "trade"
       }
@@ -64146,7 +64350,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Austria-Hungary (Austrian Empire) & Lombardy-Venetia (REP) <- Tuscany 188859.28988907003",
+        "notes": "337<-Austria-Hungary (Austrian Empire) & Lombardy-Venetia 188859.28988907003",
         "status": "ok",
         "type": "trade"
       }
@@ -64168,7 +64372,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sumatra (REP) <- Kingdom of Sardinia 54152.91638503439",
+        "notes": "324<-Sumatra 54152.91638503439",
         "status": "ok",
         "type": "trade",
         "partial": "missing Genoa|Sardinia|Nice|Imperia (Porto Maurizio)|Kingdom of Sardinia (continental)|Piedmont"
@@ -64191,7 +64395,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Swedish West Indies (REP) <- United States of America 12017.33319411089",
+        "notes": "2<-Swedish West Indies 12017.33319411089",
         "status": "ok",
         "type": "trade"
       }
@@ -64213,7 +64417,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sicily (REP) <- United States of America 135642.68560091886",
+        "notes": "2<-3291 135642.68560091886",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64236,7 +64440,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Fiume & Republic of St. Mark & Trieste (REP) <- United States of America 77971.18095436985",
+        "notes": "2<-Fiume & Republic of St. Mark & Trieste 77971.18095436985",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64259,7 +64463,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Montevideo (REP) <- United States of America 103247.78114232015",
+        "notes": "2<-Montevideo 103247.78114232015",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64282,7 +64486,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Swedish West Indies (REP) -> United States of America 20613.970972120707",
+        "notes": "2->Swedish West Indies 20613.970972120707",
         "status": "ok",
         "type": "trade"
       }
@@ -64304,7 +64508,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "France (Atlantic Coast) (REP) -> United States of America 3703402.5268873344\nFrance (Mediterranean Coast) (REP) -> United States of America 246180.01461835648",
+        "notes": "2->France (Atlantic Coast) 3703402.5268873344\n2->France (Mediterranean Coast) 246180.01461835648",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64327,7 +64531,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spain (Atlantic Coast) (REP) -> United States of America 28784.588075597785\nSpain (Mediterranean Coast) (REP) -> United States of America 45021.196616894646\nCanary Is. & Tenerife (REP) -> United States of America 2467.578573666075",
+        "notes": "2->Spain (Atlantic Coast) 28784.588075597785\n2->Spain (Mediterranean Coast) 45021.196616894646\n2->Canary Is. & Tenerife 2467.578573666075",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64350,7 +64554,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Sicily (REP) -> United States of America 63321.9170930354",
+        "notes": "2->3291 63321.9170930354",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64373,7 +64577,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Fiume & Republic of St. Mark & Trieste (REP) -> United States of America 332119.8705231283",
+        "notes": "2->Fiume & Republic of St. Mark & Trieste 332119.8705231283",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64396,7 +64600,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Montevideo (REP) -> United States of America 17145.66148063068",
+        "notes": "2->Montevideo 17145.66148063068",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -64419,7 +64623,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Havana (REP) -> Uruguay 169325.87173472228",
+        "notes": "165->Havana 169325.87173472228",
         "status": "ok",
         "type": "trade"
       }
@@ -64441,7 +64645,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Antwerp (REP) -> Uruguay 127110.92998290327",
+        "notes": "165->Antwerp 127110.92998290327",
         "status": "ok",
         "type": "trade"
       }
@@ -64463,7 +64667,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Genoa (REP) -> Uruguay 35388.85133791897",
+        "notes": "165->Genoa 35388.85133791897",
         "status": "ok",
         "type": "trade"
       }
@@ -64485,7 +64689,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Amsterdam (REP) -> Uruguay 20478.78811975667",
+        "notes": "165->Amsterdam 20478.78811975667",
         "status": "ok",
         "type": "trade"
       }
@@ -64507,7 +64711,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Havana (REP) <- Uruguay 9785.972724742554",
+        "notes": "165<-Havana 9785.972724742554",
         "status": "ok",
         "type": "trade"
       }
@@ -64529,7 +64733,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Genoa (REP) <- Uruguay 14659.377360741124",
+        "notes": "165<-Genoa 14659.377360741124",
         "status": "ok",
         "type": "trade"
       }
@@ -64551,7 +64755,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Java & Sumatra (REP) -> Belgium 28570.4743350165",
+        "notes": "211->Java & Sumatra 28570.4743350165",
         "status": "ok",
         "type": "trade"
       }
@@ -64573,7 +64777,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Java & Sumatra (REP) <- Belgium 19027.593336249054",
+        "notes": "211<-Java & Sumatra 19027.593336249054",
         "status": "ok",
         "type": "trade"
       }
@@ -64595,7 +64799,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Piedmont & Sardinia (REP) -> Belgium 8125.323048785337",
+        "notes": "211->Piedmont & Sardinia 8125.323048785337",
         "status": "ok",
         "type": "trade"
       }
@@ -64617,7 +64821,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Piedmont & Sardinia (REP) <- Belgium 2331.8754721482246",
+        "notes": "211<-Piedmont & Sardinia 2331.8754721482246",
         "status": "ok",
         "type": "trade"
       }
@@ -64639,7 +64843,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Singapore (REP) -> Belgium 1008.5881277086398",
+        "notes": "211->830 1008.5881277086398",
         "status": "ok",
         "type": "trade"
       }
@@ -64661,7 +64865,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Singapore (REP) <- Belgium 6470.5975905530595",
+        "notes": "211<-830 6470.5975905530595",
         "status": "ok",
         "type": "trade"
       }
@@ -64683,7 +64887,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Archipelago & Turkey (Ottoman Empire) (REP) -> Belgium 62742.475448292316",
+        "notes": "211->Archipelago & Turkey (Ottoman Empire) 62742.475448292316",
         "status": "ok",
         "type": "trade"
       }
@@ -64705,7 +64909,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Archipelago & Turkey (Ottoman Empire) (REP) <- Belgium 6209.574172001114",
+        "notes": "211<-Archipelago & Turkey (Ottoman Empire) 6209.574172001114",
         "status": "ok",
         "type": "trade"
       }
@@ -64730,7 +64934,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "European Turkey (REP) -> Russia (USSR) 724321.9567690558\nAsian Turkey (REP) -> Russia (USSR) 60597.26962457338",
+        "notes": "365->European Turkey 724321.9567690558\n365->Asian Turkey 60597.26962457338",
         "status": "ok",
         "type": "trade",
         "partial": "missing Russia (Black Sea)|Finland"
@@ -64756,7 +64960,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "European Turkey (REP) <- Russia (USSR) 640425.6460263287\nAsian Turkey (REP) <- Russia (USSR) 43518.121241670735",
+        "notes": "365<-European Turkey 640425.6460263287\n365<-Asian Turkey 43518.121241670735",
         "status": "ok",
         "type": "trade",
         "partial": "missing Russia (Black Sea)|Finland"
@@ -64779,29 +64983,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Germany (Zollverein) (REP) -> France 1936304.7194942548",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220<-239",
-      "source": "239",
-      "target": "220",
-      "attributes": {
-        "value": 712909.8020577522,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Germany (Zollverein) (REP) <- France 1908472.8241421813",
+        "notes": "220->255 1936304.7194942548",
         "status": "ok",
         "type": "trade"
       }
@@ -64823,7 +65005,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ecuador & Guatemala (REP) <- France 31807.880402369687",
+        "notes": "220<-Ecuador & Guatemala 31807.880402369687",
         "status": "ok",
         "type": "trade"
       }
@@ -64845,51 +65027,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Ecuador & Guatemala (REP) <- France 31807.880402369687",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220->90",
-      "source": "220",
-      "target": "90",
-      "attributes": {
-        "value": 10602.626800789894,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Ecuador & Guatemala (REP) -> France 15903.940201184843",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220->130",
-      "source": "220",
-      "target": "130",
-      "attributes": {
-        "value": 5301.313400394947,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Ecuador & Guatemala (REP) -> France 15903.940201184843",
+        "notes": "220<-Ecuador & Guatemala 31807.880402369687",
         "status": "ok",
         "type": "trade"
       }
@@ -64911,7 +65049,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mexico & Texas (REP) -> France 413502.44523080596",
+        "notes": "220->Mexico & Texas 413502.44523080596",
         "status": "ok",
         "type": "trade"
       }
@@ -64933,51 +65071,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mexico & Texas (REP) -> France 413502.44523080596",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220<-7",
-      "source": "7",
-      "target": "220",
-      "attributes": {
-        "value": 2372.7652719509647,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Mexico & Texas (REP) <- France 147111.4468609598",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220<-70",
-      "source": "70",
-      "target": "220",
-      "attributes": {
-        "value": 144738.68158900886,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Mexico & Texas (REP) <- France 147111.4468609598",
+        "notes": "220->Mexico & Texas 413502.44523080596",
         "status": "ok",
         "type": "trade"
       }
@@ -64999,29 +65093,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanover & Hanse Towns (REP) -> France 719653.2941036142",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220<-240",
-      "source": "240",
-      "target": "220",
-      "attributes": {
-        "value": 8635.342531112083,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Hanover & Hanse Towns (REP) <- France 552661.9219911733",
+        "notes": "220->Hanover & Hanse Towns 719653.2941036142",
         "status": "ok",
         "type": "trade"
       }
@@ -65043,7 +65115,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bremen & Lübeck (REP) -> Hamburg 161385.2331915232",
+        "notes": "248->Bremen & Lübeck 161385.2331915232",
         "status": "ok",
         "type": "trade"
       }
@@ -65065,51 +65137,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bremen & Lübeck (REP) -> Hamburg 161385.2331915232",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "248<-246",
-      "source": "246",
-      "target": "248",
-      "attributes": {
-        "value": 139145.66752446126,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "248",
-        "originalReporters": [
-          "248"
-        ],
-        "generatedFrom": "Hamburg",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Bremen & Lübeck (REP) <- Hamburg 139238.99646137332",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "248<-276",
-      "source": "276",
-      "target": "248",
-      "attributes": {
-        "value": 93.32893691205273,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "248",
-        "originalReporters": [
-          "248"
-        ],
-        "generatedFrom": "Hamburg",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Bremen & Lübeck (REP) <- Hamburg 139238.99646137332",
+        "notes": "248->Bremen & Lübeck 161385.2331915232",
         "status": "ok",
         "type": "trade"
       }
@@ -65131,7 +65159,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Palestine & Syria (REP) -> United Kingdom 223030",
+        "notes": "200->Palestine & Syria 223030",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -65154,7 +65182,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "East India Company & Sri Lanka (Ceylon) (REP) -> United Kingdom 6023192",
+        "notes": "200->East India Company & Sri Lanka (Ceylon) 6023192",
         "status": "ok",
         "type": "trade"
       }
@@ -65176,7 +65204,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "East India Company & Sri Lanka (Ceylon) (REP) -> United Kingdom 6023192",
+        "notes": "200->East India Company & Sri Lanka (Ceylon) 6023192",
         "status": "ok",
         "type": "trade"
       }
@@ -65198,7 +65226,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Netherlands 627728.5197407658",
+        "notes": "210->Hanse Towns 627728.5197407658",
         "status": "ok",
         "type": "trade"
       }
@@ -65220,7 +65248,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Netherlands 627728.5197407658",
+        "notes": "210->Hanse Towns 627728.5197407658",
         "status": "ok",
         "type": "trade"
       }
@@ -65242,7 +65270,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Hanse Towns (REP) -> Netherlands 627728.5197407658",
+        "notes": "210->Hanse Towns 627728.5197407658",
         "status": "ok",
         "type": "trade"
       }
@@ -65264,73 +65292,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Kingdom of Sardinia & Papal States & Two Sicilies (REP) -> Netherlands 661603.9123692896",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "210<-246",
-      "source": "246",
-      "target": "210",
-      "attributes": {
-        "value": 100966.26605603301,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "210",
-        "originalReporters": [
-          "210"
-        ],
-        "generatedFrom": "Netherlands",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Hanse Towns (REP) <- Netherlands 434177.5674923462",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "210<-248",
-      "source": "248",
-      "target": "210",
-      "attributes": {
-        "value": 327471.728004232,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "210",
-        "originalReporters": [
-          "210"
-        ],
-        "generatedFrom": "Netherlands",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Hanse Towns (REP) <- Netherlands 434177.5674923462",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "210<-276",
-      "source": "276",
-      "target": "210",
-      "attributes": {
-        "value": 5739.573432081298,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "210",
-        "originalReporters": [
-          "210"
-        ],
-        "generatedFrom": "Netherlands",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Hanse Towns (REP) <- Netherlands 434177.5674923462",
+        "notes": "210->Kingdom of Sardinia & Papal States & Two Sicilies 661603.9123692896",
         "status": "ok",
         "type": "trade"
       }
@@ -65352,30 +65314,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Spanish West Indies (other) (REP) <- United States of America 396519.16048867075",
-        "status": "ok",
-        "type": "trade",
-        "partial": ""
-      }
-    },
-    {
-      "key": "2->6",
-      "source": "2",
-      "target": "6",
-      "attributes": {
-        "value": 160889.63140858305,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "2",
-        "originalReporters": [
-          "2"
-        ],
-        "generatedFrom": "United States of America",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "Spanish West Indies (other) (REP) -> United States of America 160889.63140858305",
+        "notes": "2<-Spanish West Indies (other) 396519.16048867075",
         "status": "ok",
         "type": "trade",
         "partial": ""
@@ -65398,7 +65337,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) -> Russia (USSR) 228897.77344384853",
+        "notes": "365->Norway & Sweden 228897.77344384853",
         "status": "ok",
         "type": "trade"
       }
@@ -65420,7 +65359,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) -> Russia (USSR) 228897.77344384853",
+        "notes": "365->Norway & Sweden 228897.77344384853",
         "status": "ok",
         "type": "trade"
       }
@@ -65442,7 +65381,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium & Netherlands (REP) -> Russia (USSR) 593632.2119291403",
+        "notes": "365->Belgium & Netherlands 593632.2119291403",
         "status": "ok",
         "type": "trade"
       }
@@ -65464,7 +65403,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium & Netherlands (REP) -> Russia (USSR) 593632.2119291403",
+        "notes": "365->Belgium & Netherlands 593632.2119291403",
         "status": "ok",
         "type": "trade"
       }
@@ -65486,7 +65425,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal & Spain (REP) -> Russia (USSR) 148680.80611084026",
+        "notes": "365->Portugal & Spain 148680.80611084026",
         "status": "ok",
         "type": "trade"
       }
@@ -65508,139 +65447,341 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal & Spain (REP) -> Russia (USSR) 148680.80611084026",
+        "notes": "365->Portugal & Spain 148680.80611084026",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-380",
+      "key": "850<-246",
+      "source": "246",
+      "target": "850",
+      "attributes": {
+        "value": 1814.1580652170255,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "850",
+        "originalReporters": [
+          "850"
+        ],
+        "generatedFrom": "Indonesia (Dutch East Indies)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "850<-Bremen & Hamburg 22941.433740209137",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "850<-248",
+      "source": "248",
+      "target": "850",
+      "attributes": {
+        "value": 21127.27567499211,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "850",
+        "originalReporters": [
+          "850"
+        ],
+        "generatedFrom": "Indonesia (Dutch East Indies)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "850<-Bremen & Hamburg 22941.433740209137",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "235<-380",
       "source": "380",
-      "target": "365",
+      "target": "235",
       "attributes": {
-        "value": 22886.55225747025,
+        "value": 2576.809858996605,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "235",
         "originalReporters": [
-          "365"
+          "235"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Portugal",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) <- Russia (USSR) 206109.5400617585",
+        "notes": "235<-Norway & Sweden 74708.7590950658",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-385",
+      "key": "235<-385",
       "source": "385",
-      "target": "365",
+      "target": "235",
       "attributes": {
-        "value": 183222.98780428825,
+        "value": 72131.9492360692,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "235",
         "originalReporters": [
-          "365"
+          "235"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Portugal",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Norway & Sweden (REP) <- Russia (USSR) 206109.5400617585",
+        "notes": "235<-Norway & Sweden 74708.7590950658",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-210",
-      "source": "210",
-      "target": "365",
+      "key": "300<-200",
+      "source": "200",
+      "target": "300",
       "attributes": {
-        "value": 370607.37522981747,
+        "value": 839966.6017255775,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "300",
         "originalReporters": [
-          "365"
+          "300",
+          "3",
+          "0"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Austria-Hungary (Austrian Empire)",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium & Netherlands (REP) <- Russia (USSR) 388073.4601007639",
+        "notes": "300<-Gibraltar & Ionian Is. & Malta & United Kingdom 645938.5312711224\n300<-Ionian Is. & United Kingdom 193550.95224841955\n300<-Ionian Is. & Malta & United Kingdom 477.1182060355453",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-211",
-      "source": "211",
-      "target": "365",
+      "key": "300<-380",
+      "source": "380",
+      "target": "300",
       "attributes": {
-        "value": 17466.08487094642,
+        "value": 43869.648627998184,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "300",
         "originalReporters": [
-          "365"
+          "300"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Austria-Hungary (Austrian Empire)",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Belgium & Netherlands (REP) <- Russia (USSR) 388073.4601007639",
+        "notes": "300<-Norway & Sweden 54192.67623553735",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-230",
-      "source": "230",
-      "target": "365",
+      "key": "300<-385",
+      "source": "385",
+      "target": "300",
       "attributes": {
-        "value": 179727.34484355536,
+        "value": 10323.027607539163,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "300",
         "originalReporters": [
-          "365"
+          "300"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Austria-Hungary (Austrian Empire)",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal & Spain (REP) <- Russia (USSR) 340800.91012514225",
+        "notes": "300<-Norway & Sweden 54192.67623553735",
         "status": "ok",
         "type": "trade"
       }
     },
     {
-      "key": "365<-235",
-      "source": "235",
-      "target": "365",
+      "key": "300->200",
+      "source": "300",
+      "target": "200",
       "attributes": {
-        "value": 161073.56528158687,
+        "value": 627927.3189932806,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "365",
+        "reportedBy": "300",
         "originalReporters": [
-          "365"
+          "300",
+          "3",
+          "0"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "generatedFrom": "Austria-Hungary (Austrian Empire)",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Portugal & Spain (REP) <- Russia (USSR) 340800.91012514225",
+        "notes": "300->Gibraltar & Ionian Is. & Malta & United Kingdom 509959.84255099203\n300->Ionian Is. & United Kingdom 83376.40650471154\n300->Ionian Is. & Malta & United Kingdom 34591.069937577035",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "235<-721",
+      "source": "721",
+      "target": "235",
+      "attributes": {
+        "value": 636.8034096256767,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "235",
+        "originalReporters": [
+          "235"
+        ],
+        "generatedFrom": "Portugal",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "235<-Portuguese Asia 168025.12822551787",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-324",
+      "source": "324",
+      "target": "640",
+      "attributes": {
+        "value": 8124.891978697631,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Kingdom of Sardinia & Tuscany 18210.011530356645",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-337",
+      "source": "337",
+      "target": "640",
+      "attributes": {
+        "value": 10085.119551659014,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Kingdom of Sardinia & Tuscany 18210.011530356645",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-338",
+      "source": "338",
+      "target": "640",
+      "attributes": {
+        "value": 13883.939746072088,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Ionian Is. & Malta 15546.101546658185",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-3349",
+      "source": "3349",
+      "target": "640",
+      "attributes": {
+        "value": 1662.1618005860953,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Ionian Is. & Malta 15546.101546658185",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-651",
+      "source": "651",
+      "target": "640",
+      "attributes": {
+        "value": 5581.731183509255,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Egypt Arab Republic (Egypt) & Syria 8786.926961154626",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "640<-652",
+      "source": "652",
+      "target": "640",
+      "attributes": {
+        "value": 3205.1957776453705,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "640",
+        "originalReporters": [
+          "640"
+        ],
+        "generatedFrom": "Turkey (Ottoman Empire)",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "640<-Egypt Arab Republic (Egypt) & Syria 8786.926961154626",
         "status": "ok",
         "type": "trade"
       }
