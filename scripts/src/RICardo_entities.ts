@@ -8,7 +8,6 @@ import conf from "./configuration.json";
 import { propagateReporting } from "./graphTraversals";
 import {
   aggregateIntoAutonomousEntities,
-  aggregateReporters,
   flagAutonomousCited,
   flagFlowsToTreat,
   resolveEntityTransform,
@@ -17,6 +16,7 @@ import {
   splitAreas,
   splitInformalUnknownEntities,
   tradeGraph,
+  treatReporters,
 } from "./tradeGraphCreation";
 import { GraphEntityPartiteType, RICentity } from "./types";
 import { exportGephLiteFile, getTradeGraphsByYear, setReplacer, statsEntityType } from "./utils";
@@ -63,12 +63,6 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
         // flag flows as toTreat or ok
         flagFlowsToTreat(graph);
 
-        // TODO: STEP 3 AGGREGATION ?
-
-        // STEP 4 treat trade data
-        aggregateReporters(graph as GraphEntityPartiteType);
-
-        // TODO transform OneToOne to resolve oneSided
         resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
 
         await writeFile(`../data/entity_networks/${year}.json`, JSON.stringify(graph.export(), setReplacer, 2), "utf8");
@@ -96,8 +90,11 @@ const applyRatioMethod = async (
     console.log(`****** Compute ratio for ${year}`);
     try {
       const new_graph = resolveEntityTransform(+year, tradeGraphsByYear, edgeKey);
-      console.log(`writing gexf for ${year}`);
 
+      // TODO: transform aggregate part of reporters method
+      treatReporters(new_graph as GraphEntityPartiteType);
+
+      console.log(`writing gexf for ${year}`);
       // flag partial aggregations
       (new_graph as GraphEntityPartiteType).forEachEdge((e, atts) => {
         // flag incomplete aggregations

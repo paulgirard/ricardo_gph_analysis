@@ -34,7 +34,7 @@ export interface ResolutionNodeAttributes {
 }
 
 export type EntityResolutionLabelType = "AGGREGATE_INTO" | "SPLIT" | "SPLIT_OTHER";
-export type TradeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "TO_IMPUTE";
+export type TradeLabelType = "REPORTED_TRADE" | "GENERATED_TRADE" | "TRADE_FROM_TO_AGGREGATE_REPORTER";
 
 export type EdgeLabelType = TradeLabelType | EntityResolutionLabelType;
 
@@ -45,17 +45,15 @@ export type FlowValueImputationMethod =
   | "split_by_mirror_ratio"
   | "split_by_gravity";
 
-type tradeEdgeStatus =
-  | "toTreat"
-  | "ok"
-  | "ignore_internal"
-  | "ignore_resolved"
-  | "ignore_duplicate"
-  | "discard_collision"
-  | "split_failed_no_ratio"
-  | "split_failed_error"
-  | "split_only_partial"
-  | "to_impute";
+export type TradeEdgeStatus =
+  | "toTreat" // trade flows which includes one trading partner to aggregate/split
+  | "ok" // trade flows which are good to include in calculations
+  | "ignore_internal" // flows to ignore as they describe internal trade
+  | "ignore_resolved" // flows successfully transformed and thus should be ignored
+  | "ignore_duplicate" // flows to ignore as their transformation leads to a duplicated trade flow
+  | "split_failed_no_ratio" // flows we couldn't split by the ratio method
+  | "split_failed_error" // an error occurred in the ratio method attempt (splitting reporter, no more partners after areas dis-ambiguisation)
+  | "split_only_partial"; // flows we could only split partially by the ratio method
 
 export interface TradeEdgeAttributes {
   labels: Set<EdgeLabelType>;
@@ -72,7 +70,7 @@ export interface TradeEdgeAttributes {
   reportedBy: string;
   originalReporters?: Set<string>;
 
-  status?: tradeEdgeStatus;
+  status?: TradeEdgeStatus;
   notes?: string;
   mergedIn?: string[];
   valueToSplit?: number;
@@ -102,7 +100,7 @@ export type GraphResolutionPartiteType = MultiDirectedGraph<
 export type TradeVizEdgeAttribute =
   | {
       labels: Set<EdgeLabelType | EntityResolutionLabelType>;
-      status: Set<tradeEdgeStatus>;
+      status: Set<TradeEdgeStatus>;
 
       maxExpImp?: number;
       //TODO: add a combiend status ?
@@ -114,7 +112,7 @@ export type TradeVizEdgeAttribute =
       importerReportedBy: string;
       importerOriginalReporters?: Set<string>;
 
-      importerStatus?: tradeEdgeStatus;
+      importerStatus?: TradeEdgeStatus;
       importerNotes?: string;
       importerMergedIn?: string[];
       importerValueToSplit?: number;
@@ -126,7 +124,7 @@ export type TradeVizEdgeAttribute =
       exporterReportedBy: string;
       exporterOriginalReporters?: Set<string>;
 
-      exporterStatus?: tradeEdgeStatus;
+      exporterStatus?: TradeEdgeStatus;
       exporterNotes?: string;
       exporterMergedIn?: string[];
       exporterValueToSplit?: number;

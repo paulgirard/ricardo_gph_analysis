@@ -91,14 +91,9 @@ export function resolveAutonomous(
   return autonomousEntities;
 }
 
-export const aggregatedFlowNote = (flow: string, graph: GraphEntityPartiteType) => {
+export const aggregatedFlowNote = (flow: string, newValue: number, graph: GraphEntityPartiteType) => {
   const flowAttributes = graph.getEdgeAttributes(flow);
-  const exporter = graph.getNodeAttribute(graph.source(flow), "label");
-  const importer = graph.getNodeAttribute(graph.target(flow), "label");
-  const reporter = flowAttributes.reportedBy === graph.target(flow) ? exporter : importer;
-  const partner = flowAttributes.reportedBy === graph.source(flow) ? exporter : importer;
-  const edgeDirection = flowAttributes.reportedBy === graph.source(flow) ? "->" : "<-";
-  return `${reporter} (REP) ${edgeDirection} ${partner} ${flowAttributes.value}`;
+  return `${flow} ${newValue !== flowAttributes.value ? `${newValue} (ratio on ${flowAttributes.value})` : flowAttributes.value}`;
 };
 
 export function generateTradeFlow(
@@ -109,14 +104,14 @@ export function generateTradeFlow(
   entitiesResolutionLabels: Set<EntityResolutionLabelType>,
   newValue: number | undefined,
   valueReportedBy: "importer" | "exporter",
-) {
+): { newEdgeId: string | null; status: "internal" | "collision" | "created" | "merged" } {
   if (newValue === undefined) throw new Error(`can't generate trade flow from to impute trade flow`);
   if (graph.getEdgeAttribute(originalFlow, "type") !== "trade")
     throw new Error(`trying to apply trade transformation to a resolution edge ${originalFlow}`);
   // internal trade flows case => source = target
   if (newExporter === newImporter) {
     graph.setEdgeAttribute(originalFlow, "status", "ignore_internal");
-    return { status: "error", with: null };
+    return { status: "internal", newEdgeId: null };
   } else {
     const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
       ? "aggregation"
@@ -140,8 +135,7 @@ export function generateTradeFlow(
         graph.updateEdgeAttribute(
           idEdge,
           `originalReporters`,
-          (v) =>
-            new Set([...(v || []), ...(graph.getEdgeAttribute(originalFlow, `reportedBy`) || [])].filter(identity)),
+          (v) => new Set([...(v || []), graph.getEdgeAttribute(originalFlow, `reportedBy`)].filter(identity)),
         );
 
         graph.updateEdgeAttribute(idEdge, `generatedFrom`, (generatedFrom) =>
@@ -172,15 +166,19 @@ export function generateTradeFlow(
         );
 
         // add reporters in notes
-        graph.updateEdgeAttribute(idEdge, "notes", (notes) => `${notes}\n${aggregatedFlowNote(originalFlow, graph)}`);
+        graph.updateEdgeAttribute(
+          idEdge,
+          "notes",
+          (notes) => `${notes}\n${aggregatedFlowNote(originalFlow, newValue, graph)}`,
+        );
 
-        return { status: "merged", with: idEdge };
+        return { status: "merged", newEdgeId: idEdge };
       }
 
       // COLLISION with reported_trade
       // TODO: should we check that reported_trade is ok?
       if (labels.has("REPORTED_TRADE")) {
-        return { status: "collision", with: idEdge };
+        return { status: "collision", newEdgeId: null };
       }
       throw new Error(`merged with wrong edge ${JSON.stringify(eAtts, null, 2)}`);
     } else {
@@ -205,14 +203,15 @@ export function generateTradeFlow(
           "label",
         ),
         labels: new Set(["GENERATED_TRADE"]),
-        notes: aggregatedFlowNote(originalFlow, graph),
+        notes: aggregatedFlowNote(originalFlow, newValue, graph),
         status: "ok",
         type: "trade",
       });
 
       // state the edge as resolved
       graph.setEdgeAttribute(originalFlow, "status", "ignore_resolved");
-      return { status: "created", with: null };
+      graph.setEdgeAttribute(originalFlow, "mergedIn", [idEdge]);
+      return { status: "created", newEdgeId: idEdge };
     }
   }
 }
@@ -315,6 +314,21 @@ export function resolutionOrigins(toEntityId: string, graph: GraphResolutionPart
         // we trace all possible origins as we don't know which one could be a duplicate in reported trade
         return [graph.source(e), ...origins];
       }),
+    ),
+  );
+}
+/**
+ * tradingPartners identified the trading partners of one reporter
+ */
+export function tradingPartners(entityId: string, graph: GraphEntityPartiteType) {
+  return new Set(
+    flatten(
+      graph
+        .filterEdges(
+          entityId, //,
+          (_, atts) => atts.type === "trade" && atts.labels.has("REPORTED_TRADE") && atts.reportedBy === entityId, // ignore internal trade, i.e. loop
+        )
+        .map((e) => graph.extremities(e).filter((other) => other !== entityId)),
     ),
   );
 }

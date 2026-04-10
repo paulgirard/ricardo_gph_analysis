@@ -1,11 +1,11 @@
 import { MultiDirectedGraph } from "graphology";
-import { flatten, sortBy, sum, toPairs, uniq } from "lodash";
+import { flatten, fromPairs, identity, sortBy, sum, toPairs, uniq, values } from "lodash";
 
 import { DB } from "./DB";
 import { GPHEntitiesByCode, GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import { findBilateralRatios } from "./bilateralRatios";
-import { generateTradeFlow, resolutionOrigins, resolveAutonomous } from "./graphTraversals";
+import { generateTradeFlow, resolutionOrigins, resolveAutonomous, tradingPartners } from "./graphTraversals";
 import {
   EntityNodeAttributes,
   GraphAttributes,
@@ -14,6 +14,7 @@ import {
   GraphType,
   RICentity,
   TradeEdgeAttributes,
+  TradeEdgeStatus,
 } from "./types";
 import { addResolutionEdge, hasResolutionEdge, nodeId, setReplacer } from "./utils";
 
@@ -403,17 +404,23 @@ export function flagFlowsToTreat(graph: GraphEntityPartiteType) {
 }
 
 /**
- * aggregateReported: aggregate all flows from part of reporters into their sovereign reporters
- * We need to do the pre-aggregation at once before treating split/aggregations in general as we need to have the set of partners for all reporters in order to transform areas
+ * treatReporters: aggregate/split all flows from non autonomous reporters into their sovereign reporters
  * @param graph
  */
-export function aggregateReporters(graph: GraphType) {
+export function treatReporters(graph: GraphType) {
+  const tradeFlowStatusToKeep: TradeEdgeStatus[] = ["ok", "toTreat", "split_failed_no_ratio", "split_only_partial"];
   graph
     .filterNodes((_, atts) => atts.reporting && atts.entityType !== "GPH-AUTONOMOUS-CITED")
     .forEach((badReporter) => {
       const autonomousReporters = resolveAutonomous(badReporter, graph as GraphEntityPartiteType);
       const allreportedFlows = (graph as GraphEntityPartiteType).filterEdges(badReporter, (_, eAtts) => {
-        return eAtts.labels.has("REPORTED_TRADE") && eAtts.reportedBy === badReporter;
+        // we consider both reported_trade and generated_trade but discard the ignore ones
+        return (
+          eAtts.type === "trade" &&
+          eAtts.reportedBy === badReporter &&
+          eAtts.status !== undefined &&
+          tradeFlowStatusToKeep.includes(eAtts.status)
+        );
       });
 
       if (autonomousReporters.autonomousIds.length === 1) {
@@ -427,28 +434,175 @@ export function aggregateReporters(graph: GraphType) {
           return;
         }
         // move all reported trade flows from badReporter to autonomousReporter
-        allreportedFlows.forEach((e) => {
-          const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(e);
+        allreportedFlows.forEach((edgeToTreat) => {
+          const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(edgeToTreat);
 
-          const originalPartner = graph.source(e) === badReporter ? graph.target(e) : graph.source(e);
-          const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
-
-          const newPartner =
-            autonomousPartners.autonomousIds.length === 1 ? autonomousPartners.autonomousIds[0] : originalPartner;
-          const result = generateTradeFlow(
-            graph as GraphEntityPartiteType,
-            e,
-            graph.source(e) === badReporter ? autonomousReporter : newPartner,
-            graph.target(e) === badReporter ? autonomousReporter : newPartner,
-            new Set(["AGGREGATE_INTO"]),
-            edgeToTreatAtts.value,
-            badReporter === graph.source(e) ? "exporter" : "importer",
-          );
-          if (result.with !== null && autonomousPartners.autonomousIds.length > 1) {
-            // mark the new flow as to_treat if the many partners to treat
-            (graph as GraphEntityPartiteType).setEdgeAttribute(result.with, "status", "toTreat");
+          const originalPartner =
+            graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
+          // finding the partners depends on trad status
+          let partnerIds = [originalPartner];
+          switch (edgeToTreatAtts.status) {
+            case "split_failed_no_ratio":
+            case "split_only_partial":
+              if (edgeToTreatAtts.newPartners) partnerIds = edgeToTreatAtts.newPartners?.split("|");
+              break;
+            case "toTreat":
+              partnerIds = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType).autonomousIds;
+              break;
+            // default just use the value defined before switch block
           }
-          (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
+          if (partnerIds.length === 1) {
+            // easy case just reroute trade flow
+            const newPartner = partnerIds[0];
+            generateTradeFlow(
+              graph as GraphEntityPartiteType,
+              edgeToTreat,
+              graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+              graph.target(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+              new Set(["AGGREGATE_INTO"]),
+              edgeToTreatAtts.value,
+              badReporter === graph.source(edgeToTreat) ? "exporter" : "importer",
+            );
+
+            // TODO: whould we check generateTradeFlow result.status?
+            (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
+          } else {
+            // here we have a failed split to handle with a reporter aggregation on top
+            // our solve attempt is to look for ratio by looking at other part of reporter for the same reporter which would report trade to:
+            // - all partners directly
+            // - some partners directly but no one with unsolved trade figures
+            const siblingAggregationReporters = graph
+              .filterInboundEdges(
+                autonomousReporter,
+                (_, inEdgeAtts, source) =>
+                  // filter incoming AGGREGATE_INTO edges coming from reporters
+                  inEdgeAtts.labels.has("AGGREGATE_INTO") &&
+                  graph.getNodeAttribute(source, "reporting") &&
+                  source !== badReporter,
+                // keep the reporter
+              )
+              .map((e) => graph.source(e));
+
+            // TODO : should we consider cases of SPLIT of one?
+            const tradeValuesByPartnersIdList = siblingAggregationReporters
+              .map((siblingReporter) => {
+                const okTradePartners = new Set(
+                  graph
+                    .filterEdges(siblingReporter, (_, eAtts) => {
+                      return (
+                        eAtts.type === "trade" &&
+                        eAtts.labels.has("REPORTED_TRADE") &&
+                        eAtts.reportedBy === siblingReporter
+                      );
+                    })
+                    .map((e) => graph.extremities(e).filter((n) => n !== siblingReporter)[0]),
+                );
+                const unsolvedTradePartners = new Set(
+                  flatten(
+                    graph
+                      .filterEdges(siblingReporter, (_, eAtts) => {
+                        return (
+                          eAtts.type === "trade" &&
+                          eAtts.status !== "ok" &&
+                          !eAtts.status?.startsWith("ignore") &&
+                          eAtts.reportedBy === siblingReporter
+                        );
+                      })
+                      .map((e) => (graph as GraphEntityPartiteType).getEdgeAttribute(e, "newPartners")?.split("|"))
+                      .filter(identity),
+                  ),
+                );
+                console.log(siblingReporter, "ok", okTradePartners, "unsolved", unsolvedTradePartners);
+                // We can compute a ratio if we have some ok flows BUT non unsolved flows.
+                if (
+                  partnerIds.some((p) => okTradePartners.has(p)) &&
+                  !partnerIds.some((p) => unsolvedTradePartners.has(p))
+                ) {
+                  const tradeValuesByPartnersId: Record<string, number> = fromPairs(
+                    partnerIds.map((p) => {
+                      const edgeKey = tradeEdgeKey(
+                        siblingReporter,
+                        p,
+                        graph.source(edgeToTreat) === badReporter ? "Exp" : "Imp",
+                      );
+
+                      if (graph.hasEdge(edgeKey)) {
+                        return [p, (graph as GraphEntityPartiteType).getEdgeAttribute(edgeKey, "value") || 0];
+                      }
+                      // we assume that unreported trade is of negligible value i.e. count as 0
+                      else return [p, 0];
+                    }),
+                  );
+                  return tradeValuesByPartnersId;
+                }
+                return null;
+              })
+              .filter((r) => r !== null);
+            console.log(tradeValuesByPartnersIdList);
+            if (tradeValuesByPartnersIdList.length > 0) {
+              //weighted average ratio among partners
+              const sibblingReportersTradeToPartnersTotals = tradeValuesByPartnersIdList.map((valuesForOneReporter) =>
+                sum(values(valuesForOneReporter)),
+              );
+              const totalShareTradeOfSibblings = sum(sibblingReportersTradeToPartnersTotals);
+              const ratios = fromPairs(
+                partnerIds.map((p) => {
+                  return [
+                    p,
+                    sum(tradeValuesByPartnersIdList.map((tradeValuesByPartnersId) => tradeValuesByPartnersId[p])) /
+                      totalShareTradeOfSibblings,
+                  ];
+                }),
+              );
+              // split the trade flow
+              partnerIds.forEach((newPartner) => {
+                console.log(
+                  `ratio for reporter ${badReporter}-${newPartner} value ${(edgeToTreatAtts.value || 0) * ratios[newPartner]}`,
+                );
+                generateTradeFlow(
+                  graph as GraphEntityPartiteType,
+                  edgeToTreat,
+                  graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+                  graph.target(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+                  new Set(["AGGREGATE_INTO"]),
+                  (edgeToTreatAtts.value || 0) * ratios[newPartner],
+                  badReporter === graph.source(edgeToTreat) ? "exporter" : "importer",
+                );
+              });
+              // TODO: whould we check generateTradeFlow result.status?
+              (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
+            } else {
+              // change toTreat to split_failed
+              if (edgeToTreatAtts.status === "toTreat") {
+                (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "split_failed_no_ratio");
+                // add partner list
+                (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "newPartners", partnerIds.join("|"));
+              }
+              // we can't split the flow let's flag it as a future aggregation to reporter
+              (graph as GraphEntityPartiteType).updateEdgeAttribute(edgeToTreat, "labels", (labels) => {
+                return (labels || new Set()).add("TRADE_FROM_TO_AGGREGATE_REPORTER");
+              });
+            }
+          }
+
+          // if (result.newEdgeId !== null) {
+          //   if (autonomousPartners.autonomousIds.length > 1) {
+          //     // mark the new flow as to_treat if the many partners to treat
+          //     (graph as GraphEntityPartiteType).setEdgeAttribute(result.newEdgeId, "status", "toTreat");
+          //   }
+          //   (graph as GraphEntityPartiteType).updateEdgeAttribute(
+          //     result.newEdgeId,
+          //     "labels",
+          //     (labels) => new Set([...(labels || []), "GENERATED_TRADE_FROM_AGGREGATED_REPORTER"]),
+          //   );
+          // }
+          // switch (result.status) {
+          //   case "internal":
+          //     (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_internal");
+          //     break;
+          //   default:
+          //     (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
+          // }
         });
       } else {
         // multiple reporters destination we can't treat those cases if areas but could work for straight flows in ratio
@@ -458,21 +612,27 @@ export function aggregateReporters(graph: GraphType) {
 
 export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
   graph
-    .filterEdges((_, atts) => atts.status === "toTreat")
+    .filterEdges(
+      (_, atts) =>
+        atts.status === "toTreat" && graph.getNodeAttribute(atts.reportedBy, "entityType") === "GPH-AUTONOMOUS-CITED",
+    )
     .forEach((e) => {
       const edgeToTreatAtts = graph.getEdgeAttributes(e);
-      const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
-      const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
+      // we only treat partner side
+      const originalPartner = edgeToTreatAtts.reportedBy === graph.source(e) ? graph.target(e) : graph.source(e);
+      const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
 
-      if (autonomousExporters.autonomousIds.length === 1 && autonomousImporters.autonomousIds.length === 1) {
-        // case of simple resolution 1:1
-
+      if (autonomousPartners.autonomousIds.length === 1) {
         generateTradeFlow(
           graph,
           e,
-          autonomousExporters.autonomousIds[0],
-          autonomousImporters.autonomousIds[0],
-          autonomousExporters.traversedLabels.union(autonomousImporters.traversedLabels),
+          edgeToTreatAtts.reportedBy === graph.source(e)
+            ? edgeToTreatAtts.reportedBy
+            : autonomousPartners.autonomousIds[0],
+          edgeToTreatAtts.reportedBy === graph.target(e)
+            ? edgeToTreatAtts.reportedBy
+            : autonomousPartners.autonomousIds[0],
+          autonomousPartners.traversedLabels,
           edgeToTreatAtts.value,
           edgeToTreatAtts.reportedBy === graph.source(e) ? "exporter" : "importer",
         );
@@ -495,43 +655,29 @@ export function resolveEntityTransform(
       .filterEdges((e, atts) => (edgeKey ? e === edgeKey : atts.type === "trade" && atts.status === "toTreat"))
       .forEach((e) => {
         const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(e);
-        const valueReportedBy = edgeToTreatAtts.reportedBy === graph.source(e) ? "exporter" : "importer";
+
+        const reporterId = edgeToTreatAtts.reportedBy;
+        const valueReportedBy = reporterId === graph.source(e) ? "exporter" : "importer";
+        const originalPartner = reporterId === graph.source(e) ? graph.target(e) : graph.source(e);
+        const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
+
+        // early exit condition : we don't treat reporting aggregation
+        if (autonomousPartners.autonomousIds.length === 1 && originalPartner === autonomousPartners.autonomousIds[0]) {
+          // nothing to do on partner side
+          return;
+        }
+
         console.log(
           `treating flow (${graph.source(e)}: ${graph.getNodeAttribute(graph.source(e), "label")})->(${graph.target(e)}:${graph.getNodeAttribute(graph.target(e), "label")})`,
         );
 
-        const autonomousExporters = resolveAutonomous(graph.source(e), graph as GraphEntityPartiteType);
-        const autonomousImporters = resolveAutonomous(graph.target(e), graph as GraphEntityPartiteType);
-
         // remove entities from split destination which are already reported by reporting
-        const reportedPartners = new Set(
-          flatten(
-            graph
-              .filterEdges(
-                edgeToTreatAtts.reportedBy,
-                (_, atts) =>
-                  atts.type === "trade" &&
-                  atts.labels.has("REPORTED_TRADE") &&
-                  atts.reportedBy === edgeToTreatAtts.reportedBy,
-              )
-              .map((e) => graph.extremities(e).filter((other) => other !== edgeToTreatAtts.reportedBy)),
-          ),
-        );
-        const autonomousReporterIds =
-          edgeToTreatAtts.reportedBy === graph.source(e)
-            ? autonomousExporters.autonomousIds
-            : autonomousImporters.autonomousIds;
+        const reportedPartners = tradingPartners(reporterId, graph as GraphEntityPartiteType);
+
         //remove also the reporter
-        const autonomousPartners =
-          edgeToTreatAtts.reportedBy === graph.source(e) ? autonomousImporters : autonomousExporters;
         const autonomousPartnersIds = autonomousPartners.autonomousIds
           // remove partners which are already reported or which are the reporter itself
-          .filter(
-            (partnerId) =>
-              !reportedPartners.has(partnerId) &&
-              partnerId !== edgeToTreatAtts.reportedBy &&
-              partnerId !== autonomousReporterIds[0],
-          )
+          .filter((partnerId) => !reportedPartners.has(partnerId) && partnerId !== reporterId)
           // remove partners which are indirect duplicates as included in more than one partner area for that reporting for that year
           // (reporting)-[:REPORTED_TRADE]->(area1)-[:SPLIT_OTHER]->(partner1)
           // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
@@ -540,7 +686,7 @@ export function resolveEntityTransform(
             const origins = resolutionOrigins(partnerId, graph as GraphResolutionPartiteType)
               // filter origins by the ones which are reported in the reporter trade
               .filter((o) => reportedPartners.has(o));
-            // if onlye one origin we don't have a duplication issue
+            // if only one origin we don't have a duplication issue
             if (origins.length === 1) return true;
             else {
               //to deduplicate sort origins by area size
@@ -549,36 +695,22 @@ export function resolveEntityTransform(
                 (o) => resolveAutonomous(o, graph).autonomousIds.length,
               );
               //check that the original partner is the smallest one
-              return (
-                originsByIncreasingAreaSize[0] ===
-                (edgeToTreatAtts.reportedBy === graph.source(e) ? graph.target(e) : graph.source(e))
-              );
+              // if the smallest (first) area is the original partner of the reported flow
+              return originsByIncreasingAreaSize[0] === originalPartner;
             }
           });
 
-        if (autonomousReporterIds.length !== 1) {
-          // we can't split reporting side
-          (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_error");
-          console.log(
-            `we can't split reporting side for reporter ${graph.getNodeAttribute(edgeToTreatAtts.reportedBy, "label")} ${autonomousReporterIds}`,
-          );
-          return;
-          //  const message = `n->n or 0->0 case: ${graph.source(e)} transform to ${autonomousExporters.autonomousIds.length} ${graph.target(e)} transform to ${autonomousImporters.autonomousIds.length}`;
-          //   console.log(message);
-          //   graph.setEdgeAttribute(e, "notes", message);
-        }
-        const reporterId = autonomousReporterIds[0];
         const reporterLabel = graph.getNodeAttribute(reporterId, "label");
 
         if (autonomousPartnersIds.length > 0) {
-          // case 1->1
+          // case 1->1 : normally it should already be done
           if (autonomousPartnersIds.length === 1) {
             generateTradeFlow(
               graph as GraphEntityPartiteType,
               e,
-              autonomousExporters.autonomousIds[0],
-              autonomousImporters.autonomousIds[0],
-              autonomousExporters.traversedLabels.union(autonomousImporters.traversedLabels),
+              valueReportedBy === "exporter" ? reporterId : autonomousPartnersIds[0],
+              valueReportedBy === "importer" ? reporterId : autonomousPartnersIds[0],
+              autonomousPartners.traversedLabels,
               edgeToTreatAtts.value,
               valueReportedBy,
             );
@@ -589,21 +721,19 @@ export function resolveEntityTransform(
 
           // case 1->n
 
-          const splitSide = autonomousImporters.autonomousIds.length === 1 ? "Import" : "Export";
-
-          const valueToSplit = edgeToTreatAtts.value;
-
           // check the 1 side is the reporter side
-          if (
-            valueToSplit !== undefined &&
-            ((valueReportedBy === "importer" && autonomousImporters.autonomousIds.length === 1) ||
-              (valueReportedBy === "exporter" && autonomousExporters.autonomousIds.length === 1))
-          ) {
+          if (edgeToTreatAtts.value !== undefined && autonomousPartnersIds.length > 1) {
             console.log(
-              `looking for ratios for ${year} ${reporterLabel} ${reporterId} ${valueToSplit} to/from ${autonomousPartnersIds}`,
+              `looking for ratios for ${year} ${reporterLabel} ${reporterId} ${edgeToTreatAtts.value} to/from ${autonomousPartnersIds}`,
             );
             // we need to find the percentages to split the value of the flow among the destinations
-            const ratios = findBilateralRatios(year, reporterId, autonomousPartnersIds, splitSide, tradeGraphsByYear);
+            const ratios = findBilateralRatios(
+              year,
+              reporterId,
+              autonomousPartnersIds,
+              valueReportedBy === "exporter" ? "Import" : "Export",
+              tradeGraphsByYear,
+            );
 
             // redirect
             const solved = toPairs(ratios).filter(([_, { status, ratio }]) => status === "ok" && ratio !== undefined);
@@ -615,10 +745,10 @@ export function resolveEntityTransform(
                   generateTradeFlow(
                     graph as GraphEntityPartiteType,
                     e,
-                    splitSide === "Export" ? reporterId : partner,
-                    splitSide === "Export" ? partner : reporterId,
+                    valueReportedBy === "exporter" ? reporterId : partner,
+                    valueReportedBy === "exporter" ? partner : reporterId,
                     new Set(["SPLIT"]),
-                    ratio * valueToSplit,
+                    ratio * (edgeToTreatAtts.value || 0),
                     valueReportedBy,
                   );
                 }
@@ -630,59 +760,33 @@ export function resolveEntityTransform(
             // We could also just do not check and just use 1-solvedRatio
             //TODO: failedRatio calculus is bad
             const failedRatio = Number(sum(uniq(failed.map(([_, { ratio }]) => ratio || 0))).toFixed(2));
-            // we dont create flows to rest of the world for now
-            // instead we indicate the destinations to try to impute missing flow from gravity model
+
             if (failed.length === 1) {
               const newPartner = failed[0][0];
               generateTradeFlow(
                 graph as GraphEntityPartiteType,
                 e,
-                splitSide === "Export" ? reporterId : newPartner,
-                splitSide === "Export" ? newPartner : reporterId,
+                valueReportedBy === "exporter" ? reporterId : newPartner,
+                valueReportedBy === "exporter" ? newPartner : reporterId,
                 new Set(["SPLIT"]),
-                (1 - solvedRatio) * valueToSplit,
+                (1 - solvedRatio) * (edgeToTreatAtts.value || 0),
                 valueReportedBy,
               );
               // mark flow as solved
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
             }
-            //create flow trade to be imputed by gravity model
+
             failed
               // TODO: decide what to do with ROW partner
               .filter(([newPartner]) => newPartner !== "restOfTheWorld")
               .forEach(([newPartner, _]) => {
-                // const source = splitSide === "Export" ? reporterId : newPartner;
-                // const target = splitSide === "Export" ? newPartner : reporterId;
-
-                const newEdgeKey = tradeEdgeKey(reporterId, newPartner, splitSide === "Export" ? "Exp" : "Imp");
+                const newEdgeKey = tradeEdgeKey(reporterId, newPartner, valueReportedBy === "exporter" ? "Exp" : "Imp");
                 if (graph.hasEdge(newEdgeKey)) {
-                  // if (
-                  //   graph.getEdgeAttribute(newEdgeKey, "type") === "trade" &&
-                  //   ((graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("REPORTED_TRADE") ||
-                  //     (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("GENERATED_TRADE") ||
-                  //     (graph as GraphEntityPartiteType).getEdgeAttribute(newEdgeKey, "labels").has("TO_IMPUTE"))
-                  // )
-                  //   // ignore to impute as trade already exists
-                  //   return;
-                  // else
-
                   // Let's make sure we don't have any duplicates in our future imputations
                   throw new Error(
                     `${newEdgeKey} already exist but should be imputed from ${JSON.stringify({ id: e, ...edgeToTreatAtts }, setReplacer, 2)} ${JSON.stringify(graph.getEdgeAttributes(newEdgeKey), setReplacer, 2)}`,
                   );
                 }
-                //  else {
-                //   graph.addDirectedEdgeWithKey(newEdgeKey, source, target, {
-                //     labels: new Set(["TO_IMPUTE"]),
-                //     status: "to_impute",
-                //     reportedBy: valueReportedBy === "importer" ? target : source,
-                //     originalReporters: new Set([edgeToTreatAtts.reportedBy]),
-                //     value: undefined,
-                //     valueToSplit: valueToSplit * (1 - solvedRatio),
-                //     originalReportedTradeFlowId: e,
-                //     type: "trade",
-                //   });
-                // }
               });
 
             if (solved.length > 0 && Number((1 - solvedRatio).toFixed(2)) !== failedRatio) {
@@ -695,8 +799,12 @@ export function resolveEntityTransform(
             }
             if (failed.length >= 1) {
               // flag flow if failed or partial split
-              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "valueToSplit", valueToSplit * (1 - solvedRatio));
-              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newReporter", reporterId);
+              (graph as GraphEntityPartiteType).setEdgeAttribute(
+                e,
+                "valueToSplit",
+                (edgeToTreatAtts.value || 0) * (1 - solvedRatio),
+              );
+              //(graph as GraphEntityPartiteType).setEdgeAttribute(e, "newReporter", reporterId);
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newPartners", failed.map((f) => f[0]).join("|"));
 
               if (solved.length === 0)
@@ -706,16 +814,17 @@ export function resolveEntityTransform(
               }
             }
           } else {
-            console.log(
-              `1->n where 1- entity ${reporterId}-[${splitSide}]-${reporterLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
-            );
-            (graph as GraphEntityPartiteType).setEdgeAttribute(
-              e,
-              "notes",
-              `1->n where 1- entity ${reporterId}-[${splitSide}]-${reporterLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
-            );
-            // flag flow as error is done below
-            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_error");
+            throw new Error(`empty value for flow ${e}`);
+            // console.log(
+            //   `1->n where 1- entity ${reporterId}-[${splitSide}]-${reporterLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
+            // );
+            // (graph as GraphEntityPartiteType).setEdgeAttribute(
+            //   e,
+            //   "notes",
+            //   `1->n where 1- entity ${reporterId}-[${splitSide}]-${reporterLabel} is not reporting. ${JSON.stringify(edgeToTreatAtts)}`,
+            // );
+            // // flag flow as error is done below
+            // (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_error");
           }
         } else {
           // case 1 -> 0
@@ -724,7 +833,13 @@ export function resolveEntityTransform(
           // - resolution du partner qui entre en collision avec un autre partner
           // - GPH n'a pas trouvé d'entité autonome
 
+          // TODO : decide what to do with those cases?
+
+          console.log(
+            `couldn't find autonomous partners for ${edgeToTreatAtts.reportedBy === graph.source(e) ? graph.target(e) : graph.source(e)}. Original partners ${autonomousPartners.autonomousIds} but after filtering ${autonomousPartnersIds}`,
+          );
           (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_error");
+          //throw new Error(`Empty partner lists`);
         }
       });
   }

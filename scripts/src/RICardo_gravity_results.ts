@@ -84,7 +84,7 @@ async function readGravityResults() {
               value: gr.pred_trade,
               valueGeneratedBy: ["split_by_gravity"],
               originalReportedTradeFlowId: originalFlowId,
-              notes: aggregatedFlowNote(originalFlowId, graph as GraphEntityPartiteType),
+              notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
             });
           });
         });
