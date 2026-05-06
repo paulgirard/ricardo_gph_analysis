@@ -15995,7 +15995,10 @@
         "reportedBy": "Mosul",
         "value": 80474.82928378593,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "Mosul->640"
+        ]
       }
     },
     {
@@ -16043,7 +16046,10 @@
         "reportedBy": "Mosul",
         "value": 25170.716214070195,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "Mosul->640"
+        ]
       }
     },
     {
@@ -16057,7 +16063,10 @@
         "reportedBy": "Mosul",
         "value": 2024.7737017627442,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "Mosul->640"
+        ]
       }
     },
     {
@@ -16090,7 +16099,10 @@
         "reportedBy": "Mosul",
         "value": 101397.49086866762,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "Mosul<-640"
+        ]
       }
     },
     {
@@ -16138,7 +16150,10 @@
         "reportedBy": "Mosul",
         "value": 11314.911862791807,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "Mosul<-640"
+        ]
       }
     },
     {
@@ -22883,10 +22898,10 @@
         "reportedBy": "200",
         "value": 11659600,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "200<-775"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 11659600,
+        "newPartners": "750|775",
+        "notes": "gravity results to be aggregated for partners: 750"
       }
     },
     {
@@ -24712,10 +24727,10 @@
         "reportedBy": "200",
         "value": 11804164,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "200->775"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 11804164,
+        "newPartners": "750|775",
+        "notes": "gravity results to be aggregated for partners: 750"
       }
     },
     {
@@ -40782,7 +40797,10 @@
         "reportedBy": "59",
         "value": 1859,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "59<-1063"
+        ]
       }
     },
     {
@@ -40796,7 +40814,10 @@
         "reportedBy": "59",
         "value": 90,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "59<-1063"
+        ]
       }
     },
     {
@@ -40827,7 +40848,10 @@
         "reportedBy": "59",
         "value": 51,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "59<-1063"
+        ]
       }
     },
     {
@@ -40957,7 +40981,10 @@
         "reportedBy": "59",
         "value": 262,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "59->1063"
+        ]
       }
     },
     {
@@ -40971,7 +40998,10 @@
         "reportedBy": "59",
         "value": 3,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "59->1063"
+        ]
       }
     },
     {
@@ -61666,7 +61696,7 @@
       "source": "Mosul",
       "target": "640",
       "attributes": {
-        "value": 38748.61044942036,
+        "value": 146418.92964903923,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -61678,7 +61708,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mosul->Baghdad 38748.61044942036",
+        "notes": "Mosul->6525 80474.82928378593\nMosul->Baghdad 38748.61044942036\nMosul->Kurdistan 25170.716214070195\nMosul->Istanbul (Constantinople) 2024.7737017627442",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""
@@ -61689,7 +61719,7 @@
       "source": "640",
       "target": "Mosul",
       "attributes": {
-        "value": 8337.303477846594,
+        "value": 121049.70620930602,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -61701,7 +61731,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Mosul<-Baghdad 8337.303477846594",
+        "notes": "Mosul<-6525 101397.49086866762\nMosul<-Baghdad 8337.303477846594\nMosul<-Istanbul (Constantinople) 11314.911862791807",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""
@@ -62057,52 +62087,6 @@
         "notes": "200<-Cuba & Puerto Rico 2745415.8156241174 (ratio on 2961338)",
         "status": "ok",
         "type": "trade"
-      }
-    },
-    {
-      "key": "200<-775",
-      "source": "775",
-      "target": "200",
-      "attributes": {
-        "value": 11659600,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "generatedFrom": "United Kingdom",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "200<-Bago (Pegu) & Bengal 11659600",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
-      }
-    },
-    {
-      "key": "200->775",
-      "source": "200",
-      "target": "775",
-      "attributes": {
-        "value": 11804164,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "generatedFrom": "United Kingdom",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "200->Bago (Pegu) & Bengal 11804164",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
       }
     },
     {
@@ -63020,7 +63004,7 @@
       "source": "1063",
       "target": "59",
       "attributes": {
-        "value": 6542,
+        "value": 8542,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -63032,7 +63016,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "59<-58 6542",
+        "notes": "59<-58 6542\n59<-1075 1859\n59<-1076 90\n59<-Redonda 51",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""
@@ -63069,7 +63053,7 @@
       "source": "59",
       "target": "1063",
       "attributes": {
-        "value": 4827,
+        "value": 5092,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -63081,7 +63065,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "59->58 4827",
+        "notes": "59->58 4827\n59->1075 262\n59->1076 3",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""

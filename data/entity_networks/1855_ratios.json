@@ -14956,7 +14956,7 @@
         "type": "trade",
         "status": "split_failed_no_ratio",
         "valueToSplit": 2691,
-        "newPartners": "11|395"
+        "newPartners": "11|390|395"
       }
     },
     {
@@ -16257,7 +16257,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "200->561"
+          "200->restOfTheWorld"
         ]
       }
     },
@@ -16420,7 +16420,7 @@
         "type": "trade",
         "status": "split_failed_no_ratio",
         "valueToSplit": 3087009,
-        "newPartners": "11|395"
+        "newPartners": "11|390|395"
       }
     },
     {
@@ -17640,7 +17640,7 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "200<-561"
+          "200<-restOfTheWorld"
         ]
       }
     },
@@ -22283,7 +22283,7 @@
         "type": "trade",
         "status": "split_failed_no_ratio",
         "valueToSplit": 31472.610000031473,
-        "newPartners": "327|332|335|337"
+        "newPartners": "327|332|335|337|restOfTheWorld"
       }
     },
     {
@@ -22299,7 +22299,7 @@
         "type": "trade",
         "status": "split_failed_no_ratio",
         "valueToSplit": 36435.75000003644,
-        "newPartners": "327|332|335|337"
+        "newPartners": "327|332|335|337|restOfTheWorld"
       }
     },
     {
@@ -28962,7 +28962,10 @@
         "reportedBy": "248",
         "value": 3028.636021100226,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-68"
+        ]
       }
     },
     {
@@ -35388,10 +35391,9 @@
         "reportedBy": "220",
         "value": 650922.8021432824,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "220<-337"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 650922.8021432824,
+        "newPartners": "337|restOfTheWorld"
       }
     },
     {
@@ -36186,10 +36188,9 @@
         "reportedBy": "220",
         "value": 662829.9265727326,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "220->337"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 662829.9265727326,
+        "newPartners": "337|restOfTheWorld"
       }
     },
     {
@@ -55732,9 +55733,9 @@
       "source": "200",
       "target": "561",
       "attributes": {
-        "value": 791313,
+        "value": 775663.7997244251,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -55744,10 +55745,31 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200->Cape Colony (Cape of Good Hope) & South Africa (other) 791313",
+        "notes": "200->Cape Colony (Cape of Good Hope) & South Africa (other) 775663.7997244251 (ratio on 791313)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
+      }
+    },
+    {
+      "key": "200->restOfTheWorld",
+      "source": "200",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 15649.200275574893,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "200",
+        "originalReporters": [
+          "200"
+        ],
+        "generatedFrom": "United Kingdom",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "200->Cape Colony (Cape of Good Hope) & South Africa (other) 15649.200275574893 (ratio on 791313)",
+        "status": "ok",
+        "type": "trade"
       }
     },
     {
@@ -55931,9 +55953,9 @@
       "source": "561",
       "target": "200",
       "attributes": {
-        "value": 949640,
+        "value": 151480.410074555,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -55943,10 +55965,31 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200<-Cape Colony (Cape of Good Hope) & South Africa (other) 949640",
+        "notes": "200<-Cape Colony (Cape of Good Hope) & South Africa (other) 151480.410074555 (ratio on 949640)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
+      }
+    },
+    {
+      "key": "200<-restOfTheWorld",
+      "source": "restOfTheWorld",
+      "target": "200",
+      "attributes": {
+        "value": 798159.589925445,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "200",
+        "originalReporters": [
+          "200"
+        ],
+        "generatedFrom": "United Kingdom",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "200<-Cape Colony (Cape of Good Hope) & South Africa (other) 798159.589925445 (ratio on 949640)",
+        "status": "ok",
+        "type": "trade"
       }
     },
     {
@@ -56596,6 +56639,28 @@
       }
     },
     {
+      "key": "248<-68",
+      "source": "68",
+      "target": "248",
+      "attributes": {
+        "value": 3028.636021100226,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "248",
+        "originalReporters": [
+          "248"
+        ],
+        "generatedFrom": "Hamburg",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "248<-Curacao & Jamaica 3028.636021100226",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
       "key": "248<-2249",
       "source": "2249",
       "target": "248",
@@ -56921,50 +56986,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "230->British America 789.0631241998976 (ratio on 33527.5353283458)",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220<-337",
-      "source": "337",
-      "target": "220",
-      "attributes": {
-        "value": 650922.8021432824,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "220<-Lucca & Tuscany 650922.8021432824",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "220->337",
-      "source": "220",
-      "target": "337",
-      "attributes": {
-        "value": 662829.9265727326,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "220",
-        "originalReporters": [
-          "220"
-        ],
-        "generatedFrom": "France",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "220->Lucca & Tuscany 662829.9265727326",
         "status": "ok",
         "type": "trade"
       }

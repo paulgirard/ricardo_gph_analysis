@@ -11944,7 +11944,10 @@
         "reportedBy": "248",
         "value": 21781.263744319014,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-255"
+        ]
       }
     },
     {
@@ -11958,7 +11961,10 @@
         "reportedBy": "248",
         "value": 107.51111762693641,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-255"
+        ]
       }
     },
     {
@@ -11972,7 +11978,10 @@
         "reportedBy": "248",
         "value": 503398.81737770606,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-255"
+        ]
       }
     },
     {
@@ -11986,7 +11995,10 @@
         "reportedBy": "248",
         "value": 9758.099985339393,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-255"
+        ]
       }
     },
     {
@@ -12000,7 +12012,10 @@
         "reportedBy": "248",
         "value": 4071.7392366710646,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-255"
+        ]
       }
     },
     {
@@ -12031,7 +12046,10 @@
         "reportedBy": "248",
         "value": 25442.99467331281,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-365"
+        ]
       }
     },
     {
@@ -12045,7 +12063,10 @@
         "reportedBy": "248",
         "value": 10003.420808288129,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "248<-365"
+        ]
       }
     },
     {
@@ -12281,8 +12302,11 @@
         "value": 5.864242779651077,
         "type": "trade",
         "status": "ignore_resolved",
+        "valueToSplit": 5.864242779651077,
+        "newPartners": "360|640",
         "mergedIn": [
-          "248<-360"
+          "255<-360",
+          "255<-640"
         ]
       }
     },
@@ -18362,10 +18386,9 @@
         "reportedBy": "827",
         "value": 95635,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827<-824"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 95635,
+        "newPartners": "824|restOfTheWorld"
       }
     },
     {
@@ -18601,10 +18624,9 @@
         "reportedBy": "827",
         "value": 101521,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "827->824"
-        ]
+        "status": "split_failed_no_ratio",
+        "valueToSplit": 101521,
+        "newPartners": "824|restOfTheWorld"
       }
     },
     {
@@ -24407,7 +24429,10 @@
         "reportedBy": "1061",
         "value": 9,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "1061<-1063"
+        ]
       }
     },
     {
@@ -24489,7 +24514,10 @@
         "reportedBy": "1061",
         "value": 4,
         "type": "trade",
-        "status": "split_failed_error"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "1061->1063"
+        ]
       }
     },
     {
@@ -25720,7 +25748,8 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "200<-616"
+          "200<-616",
+          "200<-640"
         ]
       }
     },
@@ -27144,7 +27173,8 @@
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
-          "200->616"
+          "200->616",
+          "200->640"
         ]
       }
     },
@@ -60990,9 +61020,10 @@
       "source": "640",
       "target": "200",
       "attributes": {
-        "value": 6555714,
+        "value": 6967499.847528425,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -61002,7 +61033,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200<-European Turkey 3924341\n200<-Asian Turkey 2631373",
+        "notes": "200<-European Turkey 3924341\n200<-Asian Turkey 2631373\n200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 411785.8475284249 (ratio on 416673)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -61151,9 +61182,10 @@
       "source": "750",
       "target": "200",
       "attributes": {
-        "value": 15167649,
+        "value": 29296678.221159123,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -61163,7 +61195,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200<-Mumbai (Bombay) & Sindh 11005567\n200<-Chennai (Madras) 4162082",
+        "notes": "200<-Mumbai (Bombay) & Sindh 11005567\n200<-Chennai (Madras) 4162082\n200<-Bengal & Myanmar (Burma) 14129029.221159125 (ratio on 14969646)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -61310,9 +61342,10 @@
       "source": "200",
       "target": "640",
       "attributes": {
-        "value": 5889905,
+        "value": 6011079.432584932,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -61322,7 +61355,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200->European Turkey 3630365\n200->Asian Turkey 2259540",
+        "notes": "200->European Turkey 3630365\n200->Asian Turkey 2259540\n200->Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 121174.43258493234 (ratio on 122557)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -61471,9 +61504,10 @@
       "source": "200",
       "target": "750",
       "attributes": {
-        "value": 10126068,
+        "value": 21061382.909464344,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -61483,7 +61517,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200->Mumbai (Bombay) & Sindh 7693659\n200->Chennai (Madras) 2432409",
+        "notes": "200->Mumbai (Bombay) & Sindh 7693659\n200->Chennai (Madras) 2432409\n200->Bengal & Myanmar (Burma) 10935314.909464344 (ratio on 14120338)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Scotland|Ireland"
@@ -62152,9 +62186,10 @@
       "source": "2",
       "target": "640",
       "attributes": {
-        "value": 809977.730581273,
+        "value": 875214.5571862309,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "2",
         "originalReporters": [
@@ -62164,7 +62199,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "2->Asian Turkey 97604.80029692558\n2->European Turkey 712372.9302843474",
+        "notes": "2->Asian Turkey 97604.80029692558\n2->European Turkey 712372.9302843474\n2->Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 65236.82660495789 (ratio on 65310.22537476545)",
         "status": "ok",
         "type": "trade",
         "partial": "missing United States of America (other)|San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|California (Great Bear Republic)"
@@ -62243,9 +62278,10 @@
       "source": "640",
       "target": "2",
       "attributes": {
-        "value": 80317.33921685877,
+        "value": 117317.92622132915,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_years_ratio"
         ],
         "reportedBy": "2",
         "originalReporters": [
@@ -62255,7 +62291,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "2<-Asian Turkey 65376.415035981605\n2<-European Turkey 14940.924180877166",
+        "notes": "2<-Asian Turkey 65376.415035981605\n2<-European Turkey 14940.924180877166\n2<-Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 37000.58700447038 (ratio on 39266.75876858362)",
         "status": "ok",
         "type": "trade",
         "partial": "missing United States of America (other)|San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|California (Great Bear Republic)"
@@ -63255,7 +63291,7 @@
       "source": "255",
       "target": "248",
       "attributes": {
-        "value": 28955.187411425497,
+        "value": 568072.6188730879,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -63267,7 +63303,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-Prussia (Baltic Ports) 28955.187411425497",
+        "notes": "248<-Prussia (Baltic Ports) 28955.187411425497\n248<-2555 21781.263744319014\n248<-280 107.51111762693641\n248<-Bremen (Weser) 503398.81737770606\n248<-257 9758.099985339393\n248<-East Frisia 4071.7392366710646",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""
@@ -63278,7 +63314,7 @@
       "source": "365",
       "target": "248",
       "attributes": {
-        "value": 27076.18628744563,
+        "value": 62522.601769046574,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -63290,7 +63326,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-Russia (White Sea) 27076.18628744563",
+        "notes": "248<-Russia (White Sea) 27076.18628744563\n248<-Russia (Baltic Sea) 25442.99467331281\n248<-Russia (Black Sea) 10003.420808288129",
         "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
@@ -63347,32 +63383,6 @@
         "type": "trade",
         "mergedIn": [
           "255<-350"
-        ],
-        "partial": ""
-      }
-    },
-    {
-      "key": "248<-360",
-      "source": "360",
-      "target": "248",
-      "attributes": {
-        "value": 5.864242779651077,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "248",
-        "originalReporters": [
-          "248"
-        ],
-        "generatedFrom": "Hamburg",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "248<-European Turkey & Romania 5.864242779651077",
-        "status": "ignore_resolved",
-        "type": "trade",
-        "mergedIn": [
-          "255<-360"
         ],
         "partial": ""
       }
@@ -63877,50 +63887,6 @@
       }
     },
     {
-      "key": "827<-824",
-      "source": "824",
-      "target": "827",
-      "attributes": {
-        "value": 95635,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "827"
-        ],
-        "generatedFrom": "Straits Settlements",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "827<-Dutch Borneo & Sarawak 95635",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "827->824",
-      "source": "827",
-      "target": "824",
-      "attributes": {
-        "value": 101521,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "827",
-        "originalReporters": [
-          "827"
-        ],
-        "generatedFrom": "Straits Settlements",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "827->Dutch Borneo & Sarawak 101521",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "211<-710",
       "source": "710",
       "target": "211",
@@ -64101,6 +64067,29 @@
       }
     },
     {
+      "key": "1061<-1063",
+      "source": "1063",
+      "target": "1061",
+      "attributes": {
+        "value": 9,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1061",
+        "originalReporters": [
+          "1061"
+        ],
+        "generatedFrom": "British Virgin Is.",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "1061<-58 9",
+        "status": "ignore_resolved",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
       "key": "1061<-5",
       "source": "5",
       "target": "1061",
@@ -64183,7 +64172,7 @@
       "source": "1061",
       "target": "1063",
       "attributes": {
-        "value": 24,
+        "value": 28,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -64195,7 +64184,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1061->54 24",
+        "notes": "1061->54 24\n1061->1075 4",
         "status": "ignore_resolved",
         "type": "trade",
         "partial": ""
@@ -64258,9 +64247,9 @@
       "source": "616",
       "target": "200",
       "attributes": {
-        "value": 416673,
+        "value": 4887.152471575032,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -64270,10 +64259,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 416673",
+        "notes": "200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 4887.152471575032 (ratio on 416673)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
       }
     },
     {
@@ -64281,9 +64269,9 @@
       "source": "775",
       "target": "200",
       "attributes": {
-        "value": 14969646,
+        "value": 840616.778840875,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -64293,10 +64281,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200<-Bengal & Myanmar (Burma) 14969646",
+        "notes": "200<-Bengal & Myanmar (Burma) 840616.778840875 (ratio on 14969646)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
       }
     },
     {
@@ -64304,9 +64291,9 @@
       "source": "200",
       "target": "616",
       "attributes": {
-        "value": 122557,
+        "value": 1382.5674150676582,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -64316,10 +64303,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200->Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 122557",
+        "notes": "200->Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 1382.5674150676582 (ratio on 122557)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
       }
     },
     {
@@ -64327,9 +64313,9 @@
       "source": "200",
       "target": "775",
       "attributes": {
-        "value": 14120338,
+        "value": 3185023.090535655,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "200",
         "originalReporters": [
@@ -64339,10 +64325,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "200->Bengal & Myanmar (Burma) 14120338",
+        "notes": "200->Bengal & Myanmar (Burma) 3185023.090535655 (ratio on 14120338)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing Scotland|Ireland"
+        "type": "trade"
       }
     },
     {
@@ -64788,9 +64773,9 @@
       "source": "2",
       "target": "651",
       "attributes": {
-        "value": 65310.22537476545,
+        "value": 73.39876980755837,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "2",
         "originalReporters": [
@@ -64800,10 +64785,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "2->Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 65310.22537476545",
+        "notes": "2->Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 73.39876980755837 (ratio on 65310.22537476545)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing United States of America (other)|San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|California (Great Bear Republic)"
+        "type": "trade"
       }
     },
     {
@@ -64901,9 +64885,9 @@
       "source": "651",
       "target": "2",
       "attributes": {
-        "value": 39266.75876858362,
+        "value": 2266.171764113237,
         "valueGeneratedBy": [
-          "aggregation"
+          "split_by_years_ratio"
         ],
         "reportedBy": "2",
         "originalReporters": [
@@ -64913,10 +64897,9 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "2<-Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 39266.75876858362",
+        "notes": "2<-Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 2266.171764113237 (ratio on 39266.75876858362)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing United States of America (other)|San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|California (Great Bear Republic)"
+        "type": "trade"
       }
     },
     {
@@ -65457,34 +65440,11 @@
       }
     },
     {
-      "key": "255<-360",
-      "source": "360",
-      "target": "255",
-      "attributes": {
-        "value": 5.864242779651077,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "255",
-        "originalReporters": [
-          "248"
-        ],
-        "generatedFrom": "Hamburg",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "248<-360 5.864242779651077",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Schleswig|Holstein|Bremen|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Lübeck|Prussia|Bavaria|Saxony|Saxe Lauenburg"
-      }
-    },
-    {
       "key": "255<-365",
       "source": "365",
       "target": "255",
       "attributes": {
-        "value": 395608.01584147447,
+        "value": 431054.4313230754,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -65497,7 +65457,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-365 27076.18628744563\n246<-365 368531.8295540288",
+        "notes": "248<-365 62522.601769046574\n246<-365 368531.8295540288",
         "status": "ok",
         "type": "trade",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Schleswig|Holstein|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Lübeck|Prussia|Bavaria|Saxony|Saxe Lauenburg"
@@ -65603,7 +65563,7 @@
       "source": "640",
       "target": "255",
       "attributes": {
-        "value": 59868.722447719236,
+        "value": 59874.58669049889,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -65616,7 +65576,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-640 51529.101304794014\n246<-640 8339.621142925222",
+        "notes": "248<-640 51529.101304794014\n248<-European Turkey & Romania 5.864242779651077\n246<-640 8339.621142925222",
         "status": "ok",
         "type": "trade",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Schleswig|Holstein|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Lübeck|Prussia|Bavaria|Saxony|Saxe Lauenburg"
@@ -65803,6 +65763,29 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-9601 51719.200508234375",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Schleswig|Holstein|Bremen|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Lübeck|Prussia|Bavaria|Saxony|Saxe Lauenburg"
+      }
+    },
+    {
+      "key": "255<-360",
+      "source": "360",
+      "target": "255",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "generatedFrom": "Hamburg",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "248<-European Turkey & Romania 0 (ratio on 5.864242779651077)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Schleswig|Holstein|Bremen|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Lübeck|Prussia|Bavaria|Saxony|Saxe Lauenburg"
