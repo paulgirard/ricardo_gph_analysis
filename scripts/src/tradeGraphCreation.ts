@@ -16,7 +16,7 @@ import {
   TradeEdgeAttributes,
   TradeEdgeStatus,
 } from "./types";
-import { addResolutionEdge, hasResolutionEdge, nodeId, setReplacer } from "./utils";
+import { addResolutionEdge, hasResolutionEdge, nodeId } from "./utils";
 
 export function tradeEdgeKey(reporter: string, partner: string, direction: "Exp" | "Imp") {
   return `${reporter}${direction === "Exp" ? "->" : "<-"}${partner}`;
@@ -691,7 +691,7 @@ export function resolveEntityTransform(
           // (reporting)-[:REPORTED_TRADE]->(area1)-[:SPLIT_OTHER]->(partner1)
           // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
           .filter((partnerId) => {
-            //if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
+            if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
             const origins = resolutionOrigins(partnerId, graph as GraphResolutionPartiteType)
               // filter origins by the ones which are reported in the reporter trade
               .filter((o) => reportedPartners.has(o));
@@ -785,16 +785,14 @@ export function resolveEntityTransform(
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
             }
 
+            const toAggregateAfterGravity: string[] = [];
             failed
               // TODO: decide what to do with ROW partner
               .filter(([newPartner]) => newPartner !== "restOfTheWorld")
               .forEach(([newPartner, _]) => {
                 const newEdgeKey = tradeEdgeKey(reporterId, newPartner, valueReportedBy === "exporter" ? "Exp" : "Imp");
                 if (graph.hasEdge(newEdgeKey)) {
-                  // Let's make sure we don't have any duplicates in our future imputations
-                  throw new Error(
-                    `${newEdgeKey} already exist but should be imputed from ${JSON.stringify({ id: e, ...edgeToTreatAtts }, setReplacer, 2)} ${JSON.stringify(graph.getEdgeAttributes(newEdgeKey), setReplacer, 2)}`,
-                  );
+                  toAggregateAfterGravity.push(newPartner);
                 }
               });
 
@@ -820,6 +818,14 @@ export function resolveEntityTransform(
                 (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_failed_no_ratio");
               if (solved.length > 0 && solved.length < autonomousPartnersIds.length) {
                 (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "split_only_partial");
+              }
+              if (toAggregateAfterGravity.length) {
+                (graph as GraphEntityPartiteType).updateEdgeAttribute(
+                  e,
+                  "notes",
+                  (n) =>
+                    `${n ? `${n}\n` : ""}gravity results to be aggregated for partners: ${toAggregateAfterGravity.join("|")}`,
+                );
               }
             }
           } else {
