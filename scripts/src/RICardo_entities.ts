@@ -32,7 +32,7 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
     (r) => r.RICname_group,
   );
 
-  await Promise.all(
+  const results = await Promise.allSettled(
     range(startYear, endYear, 1).map(async (year) => {
       try {
         const graph = await tradeGraph(year, RICentities);
@@ -70,10 +70,18 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
       } catch (error) {
         console.log(`error in ${year}`);
         console.log(error);
-        throw error;
+        throw new Error(`error in ${year}: ${error}`);
       }
     }),
   );
+
+  if (results.some((r) => r.status === "rejected")) {
+    console.error(`ERRORS in years: 
+      ${results
+        .filter((r) => r.status === "rejected")
+        .map((r) => r.reason)
+        .join("\n")}`);
+  }
 };
 
 const applyRatioMethod = async (

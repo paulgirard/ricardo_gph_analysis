@@ -584,25 +584,6 @@ export function treatReporters(graph: GraphType) {
               });
             }
           }
-
-          // if (result.newEdgeId !== null) {
-          //   if (autonomousPartners.autonomousIds.length > 1) {
-          //     // mark the new flow as to_treat if the many partners to treat
-          //     (graph as GraphEntityPartiteType).setEdgeAttribute(result.newEdgeId, "status", "toTreat");
-          //   }
-          //   (graph as GraphEntityPartiteType).updateEdgeAttribute(
-          //     result.newEdgeId,
-          //     "labels",
-          //     (labels) => new Set([...(labels || []), "GENERATED_TRADE_FROM_AGGREGATED_REPORTER"]),
-          //   );
-          // }
-          // switch (result.status) {
-          //   case "internal":
-          //     (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_internal");
-          //     break;
-          //   default:
-          //     (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_resolved");
-          // }
         });
       } else {
         // multiple reporters destination we can't treat those cases if areas but could work for straight flows in ratio
@@ -696,7 +677,7 @@ export function resolveEntityTransform(
               // filter origins by the ones which are reported in the reporter trade
               .filter((o) => reportedPartners.has(o));
             // if only one origin we don't have a duplication issue
-            if (origins.length === 1) return true;
+            if (origins.length <= 1) return true;
             else {
               //to deduplicate sort origins by area size
               const originsByIncreasingAreaSize = sortBy(

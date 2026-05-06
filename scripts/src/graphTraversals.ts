@@ -306,6 +306,8 @@ function isResolutionEdge(_eId: string, ieAtts: ResolutionEdgeAttributes) {
 }
 
 export function resolutionOrigins(toEntityId: string, graph: GraphResolutionPartiteType): string[] {
+  // special case of RestOfTheWorld Todo: remove this entity
+  if (!graph.hasNode(toEntityId)) return [];
   return uniq(
     flatten(
       graph.filterInboundEdges(toEntityId, isResolutionEdge).map((e) => {
