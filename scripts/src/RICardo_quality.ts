@@ -234,22 +234,17 @@ async function graphsQuality(graphSerialization: GraphSerializationType = "ratio
       "importerId",
       "importerLabel",
       "importerType",
-      "importerReporting",
-      "importerReportingByAggregateInto",
-      "importerReportingBySplit",
+
       "exporterId",
       "exporterLabel",
       "exporterType",
-      "exporterReporting",
-      "exporterReportingByAggregateInto",
-      "exporterReportingBySplit",
 
       "value",
       "reportedBy",
       "partial",
 
       "valueToSplit",
-      "newReporter",
+      "newReporters",
       "newPartners",
       "originalReportedTradeFlowId",
 
