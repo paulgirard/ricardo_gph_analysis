@@ -13,15 +13,11 @@ interface FlowDataPoint {
   importerId: string;
   importerLabel: string;
   importerType: string;
-  importerReporting: boolean;
-  importerReportingByAggregateInto?: boolean;
-  importerReportingBySplit?: boolean;
+
   exporterId: string;
   exporterLabel: string;
   exporterType: string;
-  exporterReporting: boolean;
-  exporterReportingByAggregateInto?: boolean;
-  exporterReportingBySplit?: boolean;
+
   value?: number;
   partial?: string;
   reportedBy?: string;
@@ -30,7 +26,7 @@ interface FlowDataPoint {
   notes?: string;
 
   valueToSplit?: number;
-  newReporter?: string;
+  newReporters?: string;
   newPartners?: string;
   originalReportedTradeFlowId?: string;
 }
@@ -154,16 +150,10 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         importerId: graph.target(e),
         importerLabel: importer.label,
         importerType: importer.entityType,
-        importerReporting: importer.reporting,
-        importerReportingByAggregateInto: importer.reportingByAggregateInto,
-        importerReportingBySplit: importer.reportingBySplit,
 
         exporterId: graph.source(e),
         exporterLabel: exporter.label,
         exporterType: exporter.entityType,
-        exporterReporting: exporter.reporting,
-        exporterReportingByAggregateInto: exporter.reportingByAggregateInto,
-        exporterReportingBySplit: exporter.reportingBySplit,
 
         value: edgeAtts.value,
         partial: edgeAtts.partial,
@@ -175,7 +165,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         // to impute special fields
         valueToSplit: edgeAtts.valueToSplit,
         newPartners: edgeAtts.newPartners,
-        newReporter: edgeAtts.newReporter,
+        newReporters: edgeAtts.newReporter,
         originalReportedTradeFlowId: edgeAtts.originalReportedTradeFlowId,
       });
     }
