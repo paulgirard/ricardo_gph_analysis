@@ -76,6 +76,10 @@ replace CafFob="FromExporter" if reportedBy==exporterId
 
 tab CafFob
 
+gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
+replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLabel
+assert reportedByIX!=""
+
 
 
 save tradeFlows_`year'_temp.dta, replace
@@ -238,11 +242,11 @@ drop if strpos(newPartners,"restOfTheWorld")!=0
 
 /* This methods moved the newPartners to Importers or Exports and then split and generated new flows. 
 gen newImporter= newPartners if exporterReporting==1
-replace newImporter= string(newReporter) if importerReporting==1
+replace newImporter= string(newReporters) if importerReporting==1
 gen newExporter= newPartners if importerReporting==1
-replace newExporter= string(newReporter) if exporterReporting==1
+replace newExporter= string(newReporters) if exporterReporting==1
 
-drop newPartners newReporter
+drop newPartners newReporters
 
 split newImporter, parse("|") gen(newimporterId)
 
@@ -269,35 +273,25 @@ destring newimporterId newexporterId, replace
 
 /// New method : we split first Partners and Reporters
 split newPartners, parse("|") gen(newPartnerId)
-reshape long newPartnerId, i(id importerReporting exporterReporting newReporter) j(partner_no)
-drop if (newPartnerId=="" & newReporter=="") | (partner_no!=1 & newReporter!="" & newPartners =="") 
+reshape long newPartnerId, i(id reportedByIX newReporters) j(partner_no)
+drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
 
-split newReporter,parse ("|") gen(newReporterId)
-reshape long newReporterId, i(id partner_no importerReporting exporterReporting) j(reporter_no)
-drop if newReporterId=="" & reporter_no !=1
-
-blif
+split newReporters,parse ("|") gen(newReportersId)
+reshape long newReportersId, i(id partner_no reportedByIX ) j(reporter_no)
+drop if newReportersId=="" & reporter_no !=1
 
 
-gen newimporterId=newPartnerId if exporterReporting==1 & partner_no!=.
-replace newimporterId=importerId if importerReporting==1 & partner_no!=.
+gen newimporterId=newPartnerId if reportedByIX=="X" & partner_no!=.
+replace newimporterId=importerId if reportedByIX=="I" & partner_no!=.
 
-gen newexporterId=newPartnerId if importerReporting==1 & partner_no!=.
-replace newexporterId=exporterId if exporterReporting==1 & partner_no!=.
+gen newexporterId=newPartnerId if reportedByIX=="I" & partner_no!=.
+replace newexporterId=exporterId if reportedByIX=="X" & partner_no!=.
 
-replace newimporterId=newReporterId if importerReporting==1 & reporter_no!=.
-replace newimporterId=importerId if exporterReporting==1 & reporter_no!=.
+replace newimporterId=newReportersId if reportedByIX=="I" & reporter_no!=.
+replace newimporterId=importerId if reportedByIX=="X" & reporter_no!=.
 
-replace newexporterId=newReporterId if exporterReporting==1 & reporter_no!=.
-replace newexporterId=exporterId if importerReporting==1 & reporter_no!=.
-
-
-
-
-blif
-
-
-
+replace newexporterId=newReportersId if reportedByIX=="X" & reporter_no!=.
+replace newexporterId=exporterId if reportedByIX=="I" & reporter_no!=.
 
 merge m:1 newimporterId CafFob using `importer_coefs'
 
@@ -392,7 +386,7 @@ erase tradeFlows_1835_temp.dta
 erase tradeFlows_1835ok_temp.dta
 erase GeoPolHist_dependency_1835.dta
 
-
+/*
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
