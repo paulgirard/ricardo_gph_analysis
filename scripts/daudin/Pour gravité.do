@@ -232,11 +232,11 @@ keep if strmatch(status,"split_*")
 drop if strpos(newPartners,"restOfTheWorld")!=0
 
 //////All observations that include split in the status variable to be duplicated 
-/////for each term between "&" in the importer or exporter variable
-* --- expand observations with status containing "split" into parts between & ---
+/////for each term between "|" in the importer or exporter variable
+* --- expand observations with status containing "split" into parts between | ---
 // split importer into parts (creates importerLabel1 importerLabel2 ...)
 
-
+/* This methods moved the newPartners to Importers or Exports and then split and generated new flows. 
 gen newImporter= newPartners if exporterReporting==1
 replace newImporter= string(newReporter) if importerReporting==1
 gen newExporter= newPartners if importerReporting==1
@@ -265,6 +265,38 @@ destring newimporterId newexporterId, replace
 *replace exporterLabel = exporter_part
 *gen importer_part = importerLabel
 *gen exporter_part = exporterLabel
+*/
+
+/// New method : we split first Partners and Reporters
+split newPartners, parse("|") gen(newPartnerId)
+reshape long newPartnerId, i(id importerReporting exporterReporting newReporter) j(partner_no)
+drop if (newPartnerId=="" & newReporter=="") | (partner_no!=1 & newReporter!="" & newPartners =="") 
+
+split newReporter,parse ("|") gen(newReporterId)
+reshape long newReporterId, i(id partner_no importerReporting exporterReporting) j(reporter_no)
+drop if newReporterId=="" & reporter_no !=1
+
+blif
+
+
+gen newimporterId=newPartnerId if exporterReporting==1 & partner_no!=.
+replace newimporterId=importerId if importerReporting==1 & partner_no!=.
+
+gen newexporterId=newPartnerId if importerReporting==1 & partner_no!=.
+replace newexporterId=exporterId if exporterReporting==1 & partner_no!=.
+
+replace newimporterId=newReporterId if importerReporting==1 & reporter_no!=.
+replace newimporterId=importerId if exporterReporting==1 & reporter_no!=.
+
+replace newexporterId=newReporterId if exporterReporting==1 & reporter_no!=.
+replace newexporterId=exporterId if importerReporting==1 & reporter_no!=.
+
+
+
+
+blif
+
+
 
 
 merge m:1 newimporterId CafFob using `importer_coefs'
@@ -353,12 +385,12 @@ export delimited using "results/gravity_`year'_`CafFob'.csv", replace
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
 
-trade_importation 1833
-gravity_trade_estimation 1833 FromImporter
-gravity_trade_estimation 1833 FromExporter
-erase tradeFlows_1833_temp.dta
-erase tradeFlows_1833ok_temp.dta
-erase GeoPolHist_dependency_1833.dta
+trade_importation 1835
+gravity_trade_estimation 1835 FromImporter
+gravity_trade_estimation 18335 FromExporter
+erase tradeFlows_1835_temp.dta
+erase tradeFlows_1835ok_temp.dta
+erase GeoPolHist_dependency_1835.dta
 
 
 foreach year of numlist 1834(1)1938 {
