@@ -11034,6 +11034,60 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "20|21"
+    },
+    {
+      "key": "402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld"
+    },
+    {
+      "key": "10|10210|1029|2|20|21|3"
+    },
+    {
+      "key": "1081|1103|160|80|90|91|92|93|94"
+    },
+    {
+      "key": "101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68"
+    },
+    {
+      "key": "4|901|902|903|904|905|906"
+    },
+    {
+      "key": "720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld"
+    },
+    {
+      "key": "901|902|903|904|905|906"
+    },
+    {
+      "key": "1081|1103|70|80|90|91|92|93|94"
+    },
+    {
+      "key": "5|6"
+    },
+    {
+      "key": "41|42"
+    },
+    {
+      "key": "1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|30|31|65|66|68"
+    },
+    {
+      "key": "160|165"
+    },
+    {
+      "key": "402|4042|432|433|4341|4344|4345|4347|4348|4361|437|4381|4383|4391|450|451|452|4521|4792|4793|4794|600|restOfTheWorld"
+    },
+    {
+      "key": "500|511|520|5221|5222|530|5331|541|561|restOfTheWorld"
+    },
+    {
+      "key": "720|750|780|8201|8202|8210|8218|8231"
+    },
+    {
+      "key": "9004|9007|9253|930|9462|950|955|960|9602|9603|9610|9620|970|9810|9820|9900|restOfTheWorld"
+    },
+    {
+      "key": "40|6"
     }
   ],
   "edges": [
@@ -11060,15 +11114,18 @@
       "target": "1049",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1049",
         "value": 345,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 345,
-        "newPartners": "20|21"
+        "newPartners": "20|21",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-20|21"
+        ]
       }
     },
     {
@@ -11264,15 +11321,18 @@
       "target": "Africa",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 18453.845543297088,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 18453.845543297088,
-        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld"
+        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255->402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld"
+        ]
       }
     },
     {
@@ -11281,15 +11341,18 @@
       "target": "Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 2561909.675371061,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 2561909.675371061,
-        "newPartners": "2|3|10|20|21|1029|10210"
+        "newPartners": "2|3|10|20|21|1029|10210",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255->10|10210|1029|2|20|21|3"
+        ]
       }
     },
     {
@@ -11298,18 +11361,18 @@
       "target": "Central America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 77982.37955393286,
         "type": "trade",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "mergedIn": [
-          "246->100"
+          "255->1081|1103|160|80|90|91|92|93|94"
         ],
         "valueToSplit": 3169.5109275761397,
-        "newPartners": "80|90|91|92|93|94|160|1081|1103"
+        "newPartners": "80|90|91|92|93|94|160|1081|1103",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level"
       }
     },
     {
@@ -11318,15 +11381,18 @@
       "target": "Southern America & West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 186324.31145328993,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 186324.31145328993,
-        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163"
+        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255->101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68"
+        ]
       }
     },
     {
@@ -11352,15 +11418,18 @@
       "target": "Australia & Hawaii (Sandwich Is.)",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 38098.26176680689,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 38098.26176680689,
-        "newPartners": "4|901|902|903|904|905|906"
+        "newPartners": "4|901|902|903|904|905|906",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255->4|901|902|903|904|905|906"
+        ]
       }
     },
     {
@@ -11488,15 +11557,18 @@
       "target": "East Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 8929.280101595365,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 8929.280101595365,
-        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld"
+        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255->720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld"
+        ]
       }
     },
     {
@@ -11626,15 +11698,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 48416.54099531709,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 48416.54099531709,
-        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld"
+        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld"
+        ]
       }
     },
     {
@@ -11643,15 +11718,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 7313080.403206604,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 7313080.403206604,
-        "newPartners": "2|3|10|20|21|1029|10210"
+        "newPartners": "2|3|10|20|21|1029|10210",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-10|10210|1029|2|20|21|3"
+        ]
       }
     },
     {
@@ -11660,18 +11738,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 193467.73553456622,
         "type": "trade",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "mergedIn": [
-          "246<-100"
+          "255<-1081|1103|160|80|90|91|92|93|94"
         ],
         "valueToSplit": 64206.39761161774,
-        "newPartners": "80|90|91|92|93|94|160|1081|1103"
+        "newPartners": "80|90|91|92|93|94|160|1081|1103",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level"
       }
     },
     {
@@ -11680,15 +11758,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 1960076.1965235337,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1960076.1965235337,
-        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163"
+        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68"
+        ]
       }
     },
     {
@@ -11714,15 +11795,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 51789.82458925311,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 51789.82458925311,
-        "newPartners": "4|901|902|903|904|905|906"
+        "newPartners": "4|901|902|903|904|905|906",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-4|901|902|903|904|905|906"
+        ]
       }
     },
     {
@@ -11867,15 +11951,18 @@
       "target": "246",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "246",
         "value": 989562.6637034685,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 989562.6637034685,
-        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld"
+        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld"
+        ]
       }
     },
     {
@@ -15759,15 +15846,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 28355.192326514632,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 28355.192326514632,
-        "newPartners": "20|21"
+        "newPartners": "20|21",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-20|21"
+        ]
       }
     },
     {
@@ -15793,15 +15883,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 387371.5376333562,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 387371.5376333562,
-        "newPartners": "70|80|90|91|92|93|94|1081|1103"
+        "newPartners": "70|80|90|91|92|93|94|1081|1103",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-1081|1103|70|80|90|91|92|93|94"
+        ]
       }
     },
     {
@@ -15810,15 +15903,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 76108.93608691396,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 76108.93608691396,
-        "newPartners": "5|6"
+        "newPartners": "5|6",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-5|6"
+        ]
       }
     },
     {
@@ -15827,15 +15923,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 488458.451600274,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 488458.451600274,
-        "newPartners": "41|42"
+        "newPartners": "41|42",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-41|42"
+        ]
       }
     },
     {
@@ -15878,15 +15977,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 9369.188607223256,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 9369.188607223256,
-        "newPartners": "30|31|65|66|68|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087"
+        "newPartners": "30|31|65|66|68|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|30|31|65|66|68"
+        ]
       }
     },
     {
@@ -15946,15 +16048,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 473982.57805618085,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 473982.57805618085,
-        "newPartners": "160|165"
+        "newPartners": "160|165",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-160|165"
+        ]
       }
     },
     {
@@ -16014,15 +16119,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 288733.4834100029,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 288733.4834100029,
-        "newPartners": "402|432|433|437|450|451|452|600|4042|4341|4344|4345|4347|4348|4361|4381|4383|4391|4521|4792|4793|4794|restOfTheWorld"
+        "newPartners": "402|432|433|437|450|451|452|600|4042|4341|4344|4345|4347|4348|4361|4381|4383|4391|4521|4792|4793|4794|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-402|4042|432|433|4341|4344|4345|4347|4348|4361|437|4381|4383|4391|450|451|452|4521|4792|4793|4794|600|restOfTheWorld"
+        ]
       }
     },
     {
@@ -16031,15 +16139,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 54285.99393168249,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 54285.99393168249,
-        "newPartners": "500|511|520|530|541|561|5221|5222|5331|restOfTheWorld"
+        "newPartners": "500|511|520|530|541|561|5221|5222|5331|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-500|511|520|5221|5222|530|5331|541|561|restOfTheWorld"
+        ]
       }
     },
     {
@@ -16065,15 +16176,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 281255.7502202212,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 281255.7502202212,
-        "newPartners": "720|750|780|8201|8202|8210|8218|8231"
+        "newPartners": "720|750|780|8201|8202|8210|8218|8231",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-720|750|780|8201|8202|8210|8218|8231"
+        ]
       }
     },
     {
@@ -16167,15 +16281,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 6877.263384555153,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 6877.263384555153,
-        "newPartners": "901|902|903|904|905|906"
+        "newPartners": "901|902|903|904|905|906",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-901|902|903|904|905|906"
+        ]
       }
     },
     {
@@ -16215,15 +16332,18 @@
       "target": "248",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "248",
         "value": 116660.4678477048,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 116660.4678477048,
-        "newPartners": "930|950|955|960|970|9004|9007|9253|9462|9602|9603|9610|9620|9810|9820|9900|restOfTheWorld"
+        "newPartners": "930|950|955|960|970|9004|9007|9253|9462|9602|9603|9610|9620|9810|9820|9900|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "255<-9004|9007|9253|930|9462|950|955|960|9602|9603|9610|9620|970|9810|9820|9900|restOfTheWorld"
+        ]
       }
     },
     {
@@ -35104,15 +35224,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 492,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 492,
-        "newPartners": "20|21"
+        "newPartners": "20|21",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-20|21"
+        ]
       }
     },
     {
@@ -35447,15 +35570,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 12,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 12,
-        "newPartners": "6|40"
+        "newPartners": "6|40",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-40|6"
+        ]
       }
     },
     {
@@ -40418,15 +40544,18 @@
       "target": "53",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "53",
         "value": 70137,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 70137,
-        "newPartners": "20|21"
+        "newPartners": "20|21",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-20|21"
+        ]
       }
     },
     {
@@ -40777,15 +40906,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "53",
         "value": 73848,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 73848,
-        "newPartners": "20|21"
+        "newPartners": "20|21",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055->20|21"
+        ]
       }
     },
     {
@@ -63647,6 +63779,29 @@
       }
     },
     {
+      "key": "1055<-20|21",
+      "source": "20|21",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21",
+        "valueToSplit": 70974,
+        "value": 70974,
+        "originalReportedTradeFlowId": "1049<-British Northern America|53<-British Northern America|56<-British Northern America",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "1049",
+          "53",
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 1049 to/from area British Northern America\nFrom a flow part-of reporter 53 to/from area British Northern America\nFrom a flow part-of reporter 56 to/from area British Northern America"
+      }
+    },
+    {
       "key": "1055->66",
       "source": "1055",
       "target": "66",
@@ -64608,6 +64763,27 @@
       }
     },
     {
+      "key": "1055->20|21",
+      "source": "1055",
+      "target": "20|21",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21",
+        "valueToSplit": 73848,
+        "value": 73848,
+        "originalReportedTradeFlowId": "53->British Northern America",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "notes": "From a flow part-of reporter 53 to/from area British Northern America"
+      }
+    },
+    {
       "key": "1055->31",
       "source": "1055",
       "target": "31",
@@ -65459,6 +65635,132 @@
       }
     },
     {
+      "key": "255<-402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld",
+      "source": "402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld",
+        "valueToSplit": 48416.54099531709,
+        "value": 48416.54099531709,
+        "originalReportedTradeFlowId": "246<-Africa",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Africa"
+      }
+    },
+    {
+      "key": "255<-10|10210|1029|2|20|21|3",
+      "source": "10|10210|1029|2|20|21|3",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "2|3|10|20|21|1029|10210",
+        "valueToSplit": 7313080.403206604,
+        "value": 7313080.403206604,
+        "originalReportedTradeFlowId": "246<-Northern America",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Northern America"
+      }
+    },
+    {
+      "key": "255<-1081|1103|160|80|90|91|92|93|94",
+      "source": "1081|1103|160|80|90|91|92|93|94",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "80|90|91|92|93|94|160|1081|1103",
+        "valueToSplit": 64206.39761161774,
+        "value": 193467.73553456622,
+        "originalReportedTradeFlowId": "246<-Central America",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Central America"
+      }
+    },
+    {
+      "key": "255<-101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68",
+      "source": "101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163",
+        "valueToSplit": 1960076.1965235337,
+        "value": 1960076.1965235337,
+        "originalReportedTradeFlowId": "246<-Southern America & West Indies",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Southern America & West Indies"
+      }
+    },
+    {
+      "key": "255<-4|901|902|903|904|905|906",
+      "source": "4|901|902|903|904|905|906",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "4|901|902|903|904|905|906",
+        "valueToSplit": 51789.82458925311,
+        "value": 51789.82458925311,
+        "originalReportedTradeFlowId": "246<-Australia & Hawaii (Sandwich Is.)",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Australia & Hawaii (Sandwich Is.)"
+      }
+    },
+    {
+      "key": "255<-720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld",
+      "source": "720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld",
+        "valueToSplit": 989562.6637034685,
+        "value": 989562.6637034685,
+        "originalReportedTradeFlowId": "246<-East Indies",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area East Indies"
+      }
+    },
+    {
       "key": "255<-380",
       "source": "380",
       "target": "255",
@@ -65852,6 +66154,132 @@
       }
     },
     {
+      "key": "255->402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld",
+      "source": "255",
+      "target": "402|403|4042|4050|4051|4060|4070|411|4114|432|4321|4328|433|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|437|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|451|4515|452|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|481|4821|4822|483|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|500|5001|5002|5003|5018|5102|5104|511|516|517|520|5203|5212|5221|5222|530|5306|5307|5309|5321|5322|5323|5324|5331|5332|540|5403|541|5511|5512|5513|5516|5517|5522|5606|561|5611|562|5621|563|564|5641|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6066|6067|615|616|6251|651|698|restOfTheWorld",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "402|403|411|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|562|563|564|572|580|585|590|600|615|616|651|698|4042|4050|4051|4060|4070|4114|4321|4328|4331|4332|4333|4335|4336|4337|4341|4342|4343|4344|4345|4347|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4515|4521|4526|4531|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4791|4792|4793|4794|4795|4821|4822|4831|4832|4841|4842|4901|4902|4904|4905|4908|4910|5001|5002|5003|5018|5102|5104|5203|5212|5221|5222|5306|5307|5309|5321|5322|5323|5324|5331|5332|5403|5511|5512|5513|5516|5517|5522|5606|5611|5621|5641|5796|5801|5803|5811|5813|5814|5901|5902|5903|6066|6067|6251|restOfTheWorld",
+        "valueToSplit": 18453.845543297088,
+        "value": 18453.845543297088,
+        "originalReportedTradeFlowId": "246->Africa",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Africa"
+      }
+    },
+    {
+      "key": "255->10|10210|1029|2|20|21|3",
+      "source": "255",
+      "target": "10|10210|1029|2|20|21|3",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "2|3|10|20|21|1029|10210",
+        "valueToSplit": 2561909.675371061,
+        "value": 2561909.675371061,
+        "originalReportedTradeFlowId": "246->Northern America",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Northern America"
+      }
+    },
+    {
+      "key": "255->1081|1103|160|80|90|91|92|93|94",
+      "source": "255",
+      "target": "1081|1103|160|80|90|91|92|93|94",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "80|90|91|92|93|94|160|1081|1103",
+        "valueToSplit": 3169.5109275761397,
+        "value": 77982.37955393286,
+        "originalReportedTradeFlowId": "246->Central America",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Central America"
+      }
+    },
+    {
+      "key": "255->101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68",
+      "source": "255",
+      "target": "101|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|110|115|1163|120|130|135|140|145|150|155|165|30|31|40|41|42|5|51|6|65|66|68",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "5|6|30|31|40|41|42|51|65|66|68|101|110|115|120|130|135|140|145|150|155|165|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|1163",
+        "valueToSplit": 186324.31145328993,
+        "value": 186324.31145328993,
+        "originalReportedTradeFlowId": "246->Southern America & West Indies",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Southern America & West Indies"
+      }
+    },
+    {
+      "key": "255->4|901|902|903|904|905|906",
+      "source": "255",
+      "target": "4|901|902|903|904|905|906",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "4|901|902|903|904|905|906",
+        "valueToSplit": 38098.26176680689,
+        "value": 38098.26176680689,
+        "originalReportedTradeFlowId": "246->Australia & Hawaii (Sandwich Is.)",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area Australia & Hawaii (Sandwich Is.)"
+      }
+    },
+    {
+      "key": "255->720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld",
+      "source": "255",
+      "target": "720|721|750|751|752|7531|7588|760|761|775|780|781|790|800|811|815|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|824|827|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "720|721|750|751|752|760|761|775|780|781|790|800|811|815|824|827|835|840|850|860|7531|7588|8151|8201|8202|8203|8210|8218|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld",
+        "valueToSplit": 8929.280101595365,
+        "value": 8929.280101595365,
+        "originalReportedTradeFlowId": "246->East Indies",
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "notes": "From a flow part-of reporter 246 to/from area East Indies"
+      }
+    },
+    {
       "key": "255->380",
       "source": "255",
       "target": "380",
@@ -66197,6 +66625,27 @@
       }
     },
     {
+      "key": "255<-901|902|903|904|905|906",
+      "source": "901|902|903|904|905|906",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "901|902|903|904|905|906",
+        "valueToSplit": 6877.263384555153,
+        "value": 6877.263384555153,
+        "originalReportedTradeFlowId": "248<-900",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area 900"
+      }
+    },
+    {
       "key": "255<-2249",
       "source": "2249",
       "target": "255",
@@ -66263,6 +66712,216 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|Bremen|Lübeck|Schleswig-Holstein|Mecklenburg Schwerin|Oldenburg|Prussia|Schleswig|Holstein|Saxe Lauenburg|Bavaria|Saxony"
+      }
+    },
+    {
+      "key": "255<-20|21",
+      "source": "20|21",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21",
+        "valueToSplit": 28355.192326514632,
+        "value": 28355.192326514632,
+        "originalReportedTradeFlowId": "248<-British Northern America",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area British Northern America"
+      }
+    },
+    {
+      "key": "255<-1081|1103|70|80|90|91|92|93|94",
+      "source": "1081|1103|70|80|90|91|92|93|94",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "70|80|90|91|92|93|94|1081|1103",
+        "valueToSplit": 387371.5376333562,
+        "value": 387371.5376333562,
+        "originalReportedTradeFlowId": "248<-Central America & Mexico (other)",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Central America & Mexico (other)"
+      }
+    },
+    {
+      "key": "255<-5|6",
+      "source": "5|6",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "5|6",
+        "valueToSplit": 76108.93608691396,
+        "value": 76108.93608691396,
+        "originalReportedTradeFlowId": "248<-Puerto Rico & St. Thomas",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Puerto Rico & St. Thomas"
+      }
+    },
+    {
+      "key": "255<-41|42",
+      "source": "41|42",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "41|42",
+        "valueToSplit": 488458.451600274,
+        "value": 488458.451600274,
+        "originalReportedTradeFlowId": "248<-Dominican Republic (Santo Domingo) & Haiti",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Dominican Republic (Santo Domingo) & Haiti"
+      }
+    },
+    {
+      "key": "255<-1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|30|31|65|66|68",
+      "source": "1032|1033|1044|1048|1053|1054|1055|1063|1064|1087|30|31|65|66|68",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "30|31|65|66|68|1032|1033|1044|1048|1053|1054|1055|1063|1064|1087",
+        "valueToSplit": 9369.188607223256,
+        "value": 9369.188607223256,
+        "originalReportedTradeFlowId": "248<-West Indies (other)",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area West Indies (other)"
+      }
+    },
+    {
+      "key": "255<-160|165",
+      "source": "160|165",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "160|165",
+        "valueToSplit": 473982.57805618085,
+        "value": 473982.57805618085,
+        "originalReportedTradeFlowId": "248<-Argentina (La Plata) & Uruguay",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Argentina (La Plata) & Uruguay"
+      }
+    },
+    {
+      "key": "255<-402|4042|432|433|4341|4344|4345|4347|4348|4361|437|4381|4383|4391|450|451|452|4521|4792|4793|4794|600|restOfTheWorld",
+      "source": "402|4042|432|433|4341|4344|4345|4347|4348|4361|437|4381|4383|4391|450|451|452|4521|4792|4793|4794|600|restOfTheWorld",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "402|432|433|437|450|451|452|600|4042|4341|4344|4345|4347|4348|4361|4381|4383|4391|4521|4792|4793|4794|restOfTheWorld",
+        "valueToSplit": 288733.4834100029,
+        "value": 288733.4834100029,
+        "originalReportedTradeFlowId": "248<-Western Africa",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Western Africa"
+      }
+    },
+    {
+      "key": "255<-500|511|520|5221|5222|530|5331|541|561|restOfTheWorld",
+      "source": "500|511|520|5221|5222|530|5331|541|561|restOfTheWorld",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "500|511|520|530|541|561|5221|5222|5331|restOfTheWorld",
+        "valueToSplit": 54285.99393168249,
+        "value": 54285.99393168249,
+        "originalReportedTradeFlowId": "248<-Cape Colony (Cape of Good Hope) & Eastern Africa",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Cape Colony (Cape of Good Hope) & Eastern Africa"
+      }
+    },
+    {
+      "key": "255<-720|750|780|8201|8202|8210|8218|8231",
+      "source": "720|750|780|8201|8202|8210|8218|8231",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "720|750|780|8201|8202|8210|8218|8231",
+        "valueToSplit": 281255.7502202212,
+        "value": 281255.7502202212,
+        "originalReportedTradeFlowId": "248<-British East Indies",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area British East Indies"
+      }
+    },
+    {
+      "key": "255<-9004|9007|9253|930|9462|950|955|960|9602|9603|9610|9620|970|9810|9820|9900|restOfTheWorld",
+      "source": "9004|9007|9253|930|9462|950|955|960|9602|9603|9610|9620|970|9810|9820|9900|restOfTheWorld",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "930|950|955|960|970|9004|9007|9253|9462|9602|9603|9610|9620|9810|9820|9900|restOfTheWorld",
+        "valueToSplit": 116660.4678477048,
+        "value": 116660.4678477048,
+        "originalReportedTradeFlowId": "248<-Pacific Islands (other)",
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "notes": "From a flow part-of reporter 248 to/from area Pacific Islands (other)"
       }
     },
     {
@@ -66447,6 +67106,27 @@
         "status": "ok",
         "type": "trade",
         "partial": ""
+      }
+    },
+    {
+      "key": "1055<-40|6",
+      "source": "40|6",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "6|40",
+        "valueToSplit": 12,
+        "value": 12,
+        "originalReportedTradeFlowId": "56<-Spanish West Indies",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area Spanish West Indies"
       }
     },
     {

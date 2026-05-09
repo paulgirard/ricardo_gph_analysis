@@ -11136,6 +11136,12 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "65|66"
+    },
+    {
+      "key": "1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960"
     }
   ],
   "edges": [
@@ -14849,15 +14855,18 @@
       "target": "55",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "55",
         "value": 104,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 104,
-        "newPartners": "65|66"
+        "newPartners": "65|66",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-65|66"
+        ]
       }
     },
     {
@@ -28252,15 +28261,18 @@
       "target": "5812",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "5812",
         "value": 26475.823127087642,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 26475.823127087642,
-        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151"
+        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "581<-1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960"
+        ]
       }
     },
     {
@@ -29890,15 +29902,18 @@
       "target": "French Colonies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "5812",
         "value": 7867.544138698902,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 7867.544138698902,
-        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151"
+        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "581->1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960"
+        ]
       }
     },
     {
@@ -39042,15 +39057,17 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 1513,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1513,
-        "newPartners": "5|6|31|40|41|42|65|66|68|93|1032|1033|1044|1087"
+        "newPartners": "5|6|31|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "mergedIn": [
+          "1055<-1087"
+        ]
       }
     },
     {
@@ -39416,15 +39433,17 @@
       "target": "West Indies (other)",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 263,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 263,
-        "newPartners": "5|6|31|40|41|42|65|66|68|93|1032|1033|1044|1087"
+        "newPartners": "5|6|31|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "mergedIn": [
+          "1055->1087"
+        ]
       }
     },
     {
@@ -50486,15 +50505,29 @@
       "target": "57",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "57",
         "value": 287,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 287,
-        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087"
+        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "mergedIn": [
+          "1055<-1032",
+          "1055<-1033",
+          "1055<-1044",
+          "1055<-1087",
+          "1055<-40",
+          "1055<-41",
+          "1055<-42",
+          "1055<-5",
+          "1055<-6",
+          "1055<-65",
+          "1055<-66",
+          "1055<-68",
+          "1055<-93"
+        ]
       }
     },
     {
@@ -50678,15 +50711,29 @@
       "target": "West Indies (other)",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "57",
         "value": 1,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1,
-        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087"
+        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "mergedIn": [
+          "1055->1032",
+          "1055->1033",
+          "1055->1044",
+          "1055->1087",
+          "1055->40",
+          "1055->41",
+          "1055->42",
+          "1055->5",
+          "1055->6",
+          "1055->65",
+          "1055->66",
+          "1055->68",
+          "1055->93"
+        ]
       }
     },
     {
@@ -111970,22 +112017,23 @@
       "source": "5",
       "target": "1055",
       "attributes": {
-        "value": 59,
+        "value": 165.841046277666,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55"
+          "55",
+          "56",
+          "57"
         ],
-        "generatedFrom": "Grenada",
+        "generatedFrom": "Grenada|St. Lucia|St. Vincent and the Grenadines",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-5 59",
+        "notes": "55<-5 59\n56<-West Indies (other) 89.80583501006036 (ratio on 1513)\n57<-West Indies (other) 17.035211267605632 (ratio on 287)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing St. Lucia|St. Vincent and the Grenadines"
+        "type": "trade"
       }
     },
     {
@@ -112041,7 +112089,7 @@
       "source": "51",
       "target": "1055",
       "attributes": {
-        "value": 1641.1642079028823,
+        "value": 2027.3118904008343,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112055,7 +112103,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-51 226\n56<-51 1303\n57<-British West Indies 112.16420790288218 (ratio on 24693)",
+        "notes": "55<-51 226\n56<-51 1303\n57<-British West Indies 498.31189040083416 (ratio on 24693)",
         "status": "ok",
         "type": "trade"
       }
@@ -112065,7 +112113,7 @@
       "source": "52",
       "target": "1055",
       "attributes": {
-        "value": 31198.925895405395,
+        "value": 28097.296448321827,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112079,7 +112127,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-52 20165\n56<-52 1026\n57<-British West Indies 10007.925895405395 (ratio on 24693)",
+        "notes": "55<-52 20165\n56<-52 1026\n57<-British West Indies 6906.296448321828 (ratio on 24693)",
         "status": "ok",
         "type": "trade"
       }
@@ -112089,7 +112137,7 @@
       "source": "53",
       "target": "1055",
       "attributes": {
-        "value": 58458.51772721791,
+        "value": 61677.21857800889,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112103,7 +112151,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-53 24061\n56<-53 22456\n57<-British West Indies 11941.517727217912 (ratio on 24693)",
+        "notes": "55<-53 24061\n56<-53 22456\n57<-British West Indies 15160.218578008895 (ratio on 24693)",
         "status": "ok",
         "type": "trade"
       }
@@ -112113,22 +112161,23 @@
       "source": "68",
       "target": "1055",
       "attributes": {
-        "value": 935,
+        "value": 2628.1589537223344,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55"
+          "55",
+          "56",
+          "57"
         ],
-        "generatedFrom": "Grenada",
+        "generatedFrom": "Grenada|St. Lucia|St. Vincent and the Grenadines",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-68 935",
+        "notes": "55<-68 935\n56<-West Indies (other) 1423.1941649899397 (ratio on 1513)\n57<-West Indies (other) 269.96478873239437 (ratio on 287)",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing St. Lucia|St. Vincent and the Grenadines"
+        "type": "trade"
       }
     },
     {
@@ -112447,7 +112496,7 @@
       "source": "1063",
       "target": "1055",
       "attributes": {
-        "value": 1072.148671463601,
+        "value": 1359.0547335911413,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112461,9 +112510,30 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-1063 95\n56<-1063 930\n57<-British West Indies 47.14867146360091 (ratio on 24693)",
+        "notes": "55<-1063 95\n56<-1063 930\n57<-British West Indies 334.05473359114126 (ratio on 24693)",
         "status": "ok",
         "type": "trade"
+      }
+    },
+    {
+      "key": "1055<-65|66",
+      "source": "65|66",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66",
+        "valueToSplit": 104,
+        "value": 104,
+        "originalReportedTradeFlowId": "55<-French West Indies",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "55"
+        ],
+        "notes": "From a flow part-of reporter 55 to/from area French West Indies"
       }
     },
     {
@@ -112495,22 +112565,23 @@
       "source": "1055",
       "target": "5",
       "attributes": {
-        "value": 3,
+        "value": 267,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55"
+          "55",
+          "56",
+          "57"
         ],
-        "generatedFrom": "Grenada",
+        "generatedFrom": "Grenada|St. Lucia|St. Vincent and the Grenadines",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55->5 3",
+        "notes": "55->5 3\n56->West Indies (other) 263\n57->West Indies (other) 1",
         "status": "ok",
-        "type": "trade",
-        "partial": "missing St. Lucia|St. Vincent and the Grenadines"
+        "type": "trade"
       }
     },
     {
@@ -112566,7 +112637,7 @@
       "source": "1055",
       "target": "52",
       "attributes": {
-        "value": 17216.88152903414,
+        "value": 13429.022573798959,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112580,7 +112651,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55->52 2241\n56->52 275\n57->British West Indies 14700.88152903414 (ratio on 22481)",
+        "notes": "55->52 2241\n56->52 275\n57->British West Indies 10913.022573798959 (ratio on 22481)",
         "status": "ok",
         "type": "trade"
       }
@@ -112590,7 +112661,7 @@
       "source": "1055",
       "target": "53",
       "attributes": {
-        "value": 8715.285964400351,
+        "value": 12484.294038201813,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112604,7 +112675,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55->53 972\n56->53 1367\n57->British West Indies 6376.28596440035 (ratio on 22481)",
+        "notes": "55->53 972\n56->53 1367\n57->British West Indies 10145.294038201813 (ratio on 22481)",
         "status": "ok",
         "type": "trade"
       }
@@ -112755,7 +112826,7 @@
       "source": "1055",
       "target": "1063",
       "attributes": {
-        "value": 133.59964983950977,
+        "value": 362.9465560486205,
         "valueGeneratedBy": [
           "aggregation"
         ],
@@ -112769,7 +112840,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55->1063 10\n56->1063 58\n57->British West Indies 65.59964983950978 (ratio on 22481)",
+        "notes": "55->1063 10\n56->1063 58\n57->British West Indies 294.9465560486205 (ratio on 22481)",
         "status": "ok",
         "type": "trade"
       }
@@ -112867,6 +112938,294 @@
       }
     },
     {
+      "key": "1055<-6",
+      "source": "6",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-31",
+      "source": "31",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-British West Indies 0 (ratio on 24693)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-40",
+      "source": "40",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-41",
+      "source": "41",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-42",
+      "source": "42",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-65",
+      "source": "65",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-66",
+      "source": "66",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-93",
+      "source": "93",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-1032",
+      "source": "1032",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-1033",
+      "source": "1033",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-1044",
+      "source": "1044",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055<-1087",
+      "source": "1087",
+      "target": "1055",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56<-West Indies (other) 0 (ratio on 1513)\n57<-West Indies (other) 0 (ratio on 287)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
       "key": "1055->120",
       "source": "1055",
       "target": "120",
@@ -112936,9 +113295,9 @@
       }
     },
     {
-      "key": "1055<-31",
-      "source": "31",
-      "target": "1055",
+      "key": "1055->6",
+      "source": "1055",
+      "target": "6",
       "attributes": {
         "value": 0,
         "valueGeneratedBy": [
@@ -112946,16 +113305,305 @@
         ],
         "reportedBy": "1055",
         "originalReporters": [
+          "56",
           "57"
         ],
-        "generatedFrom": "St. Vincent and the Grenadines",
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "57<-British West Indies 0 (ratio on 24693)",
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Grenada|St. Lucia"
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->31",
+      "source": "1055",
+      "target": "31",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->British West Indies 0 (ratio on 22481)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->40",
+      "source": "1055",
+      "target": "40",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->41",
+      "source": "1055",
+      "target": "41",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->42",
+      "source": "1055",
+      "target": "42",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->65",
+      "source": "1055",
+      "target": "65",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->66",
+      "source": "1055",
+      "target": "66",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->68",
+      "source": "1055",
+      "target": "68",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->93",
+      "source": "1055",
+      "target": "93",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->1032",
+      "source": "1055",
+      "target": "1032",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->1033",
+      "source": "1055",
+      "target": "1033",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->1044",
+      "source": "1055",
+      "target": "1044",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
+      }
+    },
+    {
+      "key": "1055->1087",
+      "source": "1055",
+      "target": "1087",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56",
+          "57"
+        ],
+        "generatedFrom": "St. Lucia|St. Vincent and the Grenadines",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "56->West Indies (other) 0 (ratio on 263)\n57->West Indies (other) 0 (ratio on 1)",
+        "status": "ok",
+        "type": "trade",
+        "partial": ""
       }
     },
     {
@@ -112999,29 +113647,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "57->21 153.92472577236592",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Grenada|St. Lucia"
-      }
-    },
-    {
-      "key": "1055->31",
-      "source": "1055",
-      "target": "31",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "generatedFrom": "St. Vincent and the Grenadines",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->British West Indies 0 (ratio on 22481)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Grenada|St. Lucia"
@@ -113073,6 +113698,27 @@
       }
     },
     {
+      "key": "581<-1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960",
+      "source": "1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960",
+      "target": "581",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151",
+        "valueToSplit": 26475.823127087642,
+        "value": 26475.823127087642,
+        "originalReportedTradeFlowId": "5812<-French Colonies",
+        "reportedBy": "581",
+        "originalReporters": [
+          "5812"
+        ],
+        "notes": "From a flow part-of reporter 5812 to/from area French Colonies"
+      }
+    },
+    {
       "key": "581->220",
       "source": "581",
       "target": "220",
@@ -113092,6 +113738,27 @@
         "notes": "5812->220 107073.4054397964",
         "status": "ok",
         "type": "trade"
+      }
+    },
+    {
+      "key": "581->1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960",
+      "source": "581",
+      "target": "1029|120|430|481|482|484|522|580|581|585|615|65|66|751|810|8151|930|960",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|430|481|482|484|522|580|581|585|615|751|810|930|960|1029|8151",
+        "valueToSplit": 7867.544138698902,
+        "value": 7867.544138698902,
+        "originalReportedTradeFlowId": "5812->French Colonies",
+        "reportedBy": "581",
+        "originalReporters": [
+          "5812"
+        ],
+        "notes": "From a flow part-of reporter 5812 to/from area French Colonies"
       }
     }
   ]

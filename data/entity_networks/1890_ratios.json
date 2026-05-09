@@ -11143,6 +11143,15 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "210|211"
+    },
+    {
+      "key": "40|6"
+    },
+    {
+      "key": "1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605"
     }
   ],
   "edges": [
@@ -16884,15 +16893,18 @@
       "target": "310",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "310",
         "value": 31880.611418428714,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 31880.611418428714,
-        "newPartners": "210|211"
+        "newPartners": "210|211",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300<-210|211"
+        ]
       }
     },
     {
@@ -16901,15 +16913,18 @@
       "target": "Belgium & Netherlands",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "310",
         "value": 355899.6363887022,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 355899.6363887022,
-        "newPartners": "210|211"
+        "newPartners": "210|211",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300->210|211"
+        ]
       }
     },
     {
@@ -37727,15 +37742,18 @@
       "target": "5812",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "5812",
         "value": 2394.9256689791873,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 2394.9256689791873,
-        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605"
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "581<-1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605"
+        ]
       }
     },
     {
@@ -38077,15 +38095,18 @@
       "target": "French Colonies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "5812",
         "value": 1663.5877106045589,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1663.5877106045589,
-        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605"
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "581->1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605"
+        ]
       }
     },
     {
@@ -38185,15 +38206,18 @@
       "target": "French Colonies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "9606",
         "value": 117.02675916749256,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 117.02675916749256,
-        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605"
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "9601->1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605"
+        ]
       }
     },
     {
@@ -38894,15 +38918,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 404,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 404,
-        "newPartners": "6|40"
+        "newPartners": "6|40",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-40|6"
+        ]
       }
     },
     {
@@ -82501,6 +82528,27 @@
       }
     },
     {
+      "key": "300<-210|211",
+      "source": "210|211",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "210|211",
+        "valueToSplit": 31880.611418428714,
+        "value": 31880.611418428714,
+        "originalReportedTradeFlowId": "310<-Belgium & Netherlands",
+        "reportedBy": "300",
+        "originalReporters": [
+          "310"
+        ],
+        "notes": "From a flow part-of reporter 310 to/from area Belgium & Netherlands"
+      }
+    },
+    {
       "key": "300->140",
       "source": "300",
       "target": "140",
@@ -82777,6 +82825,27 @@
       }
     },
     {
+      "key": "300->210|211",
+      "source": "300",
+      "target": "210|211",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "210|211",
+        "valueToSplit": 355899.6363887022,
+        "value": 355899.6363887022,
+        "originalReportedTradeFlowId": "310->Belgium & Netherlands",
+        "reportedBy": "300",
+        "originalReporters": [
+          "310"
+        ],
+        "notes": "From a flow part-of reporter 310 to/from area Belgium & Netherlands"
+      }
+    },
+    {
       "key": "1055<-110",
       "source": "110",
       "target": "1055",
@@ -82990,6 +83059,27 @@
       }
     },
     {
+      "key": "1055<-40|6",
+      "source": "40|6",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "6|40",
+        "valueToSplit": 404,
+        "value": 404,
+        "originalReportedTradeFlowId": "56<-Spanish West Indies",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area Spanish West Indies"
+      }
+    },
+    {
       "key": "1055->100",
       "source": "1055",
       "target": "100",
@@ -83035,6 +83125,27 @@
       }
     },
     {
+      "key": "581<-1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "source": "1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "target": "581",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "valueToSplit": 2394.9256689791873,
+        "value": 2394.9256689791873,
+        "originalReportedTradeFlowId": "5812<-French Colonies",
+        "reportedBy": "581",
+        "originalReporters": [
+          "5812"
+        ],
+        "notes": "From a flow part-of reporter 5812 to/from area French Colonies"
+      }
+    },
+    {
       "key": "581->220",
       "source": "581",
       "target": "220",
@@ -83054,6 +83165,27 @@
         "notes": "5812->220 58466.95738354806",
         "status": "ok",
         "type": "trade"
+      }
+    },
+    {
+      "key": "581->1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "source": "581",
+      "target": "1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "valueToSplit": 1663.5877106045589,
+        "value": 1663.5877106045589,
+        "originalReportedTradeFlowId": "5812->French Colonies",
+        "reportedBy": "581",
+        "originalReporters": [
+          "5812"
+        ],
+        "notes": "From a flow part-of reporter 5812 to/from area French Colonies"
       }
     },
     {
@@ -83098,6 +83230,27 @@
         "notes": "9606->220 12075.044598612487",
         "status": "ok",
         "type": "trade"
+      }
+    },
+    {
+      "key": "9601->1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "source": "9601",
+      "target": "1029|120|432|433|484|522|5801|5802|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|432|433|484|522|585|615|751|810|930|1029|5801|5802|8151|9601|9602|9603|9605",
+        "valueToSplit": 117.02675916749256,
+        "value": 117.02675916749256,
+        "originalReportedTradeFlowId": "9606->French Colonies",
+        "reportedBy": "9601",
+        "originalReporters": [
+          "9606"
+        ],
+        "notes": "From a flow part-of reporter 9606 to/from area French Colonies"
       }
     }
   ]

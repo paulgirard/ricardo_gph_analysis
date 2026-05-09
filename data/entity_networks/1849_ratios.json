@@ -5678,12 +5678,12 @@
       }
     },
     {
-      "key": "1027",
+      "key": "1016",
       "attributes": {
         "type": "entity",
         "entityType": "GPH",
-        "gphStatus": "Part of",
-        "label": "British Columbia",
+        "gphStatus": "Dissolved into",
+        "label": "Oregon (Oregon Country)",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -5700,12 +5700,12 @@
       }
     },
     {
-      "key": "1016",
+      "key": "1027",
       "attributes": {
         "type": "entity",
         "entityType": "GPH",
-        "gphStatus": "Dissolved into",
-        "label": "Oregon (Oregon Country)",
+        "gphStatus": "Part of",
+        "label": "British Columbia",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -10790,6 +10790,33 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "1032|1048|1055|1063|30|31|51|54"
+    },
+    {
+      "key": "1022|1023|1024|1028|20|21"
+    },
+    {
+      "key": "600|6067|615|616"
+    },
+    {
+      "key": "200|2249|231|338"
+    },
+    {
+      "key": "246|248|276"
+    },
+    {
+      "key": "1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|70|91|restOfTheWorld"
+    },
+    {
+      "key": "110|1163|2249|231|338|4044|4050|420|4383|451|452|561|564|590|720|750|7501|780|8231|9004|901|902|903|906|920|9620"
+    },
+    {
+      "key": "402|403|4041|4042|4044|4050|4060|4070|411|4114|420|432|4321|4325|4326|4327|4328|433|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|437|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|4501|451|4515|452|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|481|4821|4822|483|4831|4832|4841|4842|4902|4904|4908|4910|500|5001|5002|5003|5013|5018|5102|5104|511|516|517|520|5203|5212|5221|530|5303|5306|5307|5309|5321|5322|5323|5324|5332|540|5403|541|5511|5512|5516|5517|5522|5606|561|5611|5618|5621|564|570|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6067|615|616|6251|651|698|restOfTheWorld"
+    },
+    {
+      "key": "1029|120|433|5801|585|615|65|66|751"
     }
   ],
   "edges": [
@@ -10816,15 +10843,18 @@
       "target": "58",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "58",
         "value": 24864,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 24864,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -10833,15 +10863,18 @@
       "target": "58",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "58",
         "value": 11336,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 11336,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -10901,15 +10934,18 @@
       "target": "1061",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1061",
         "value": 1961,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1961,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -10935,15 +10971,18 @@
       "target": "British West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1061",
         "value": 4071,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 4071,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -10952,15 +10991,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1061",
         "value": 74,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 74,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -11849,15 +11891,18 @@
       "target": "British Europe & United Kingdom",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "326",
         "value": 631774.2253799092,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 631774.2253799092,
-        "newPartners": "200|231|338|2249"
+        "newPartners": "200|231|338|2249",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300->200|2249|231|338"
+        ]
       }
     },
     {
@@ -12002,15 +12047,18 @@
       "target": "Hanse Towns",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "326",
         "value": 107637.65541740674,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 107637.65541740674,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300->246|248|276"
+        ]
       }
     },
     {
@@ -12053,15 +12101,18 @@
       "target": "326",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "326",
         "value": 1808920.4657588317,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1808920.4657588317,
-        "newPartners": "200|231|338|2249"
+        "newPartners": "200|231|338|2249",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300<-200|2249|231|338"
+        ]
       }
     },
     {
@@ -12206,15 +12257,18 @@
       "target": "326",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "326",
         "value": 30629.563844483913,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 30629.563844483913,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300<-246|248|276"
+        ]
       }
     },
     {
@@ -12257,15 +12311,18 @@
       "target": "326",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "326",
         "value": 329938.8198144859,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 329938.8198144859,
-        "newPartners": "5|6|30|31|40|41|42|51|54|65|66|68|70|91|1032|1048|1055|1058|1063|1064|1081|restOfTheWorld"
+        "newPartners": "5|6|30|31|40|41|42|51|54|65|66|68|70|91|1032|1048|1055|1058|1063|1064|1081|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "300<-1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|70|91|restOfTheWorld"
+        ]
       }
     },
     {
@@ -12325,15 +12382,18 @@
       "target": "Cap-Haïtien",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Cap-Haïtien",
         "value": 2762.976119992106,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 2762.976119992106,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "41<-246|248|276"
+        ]
       }
     },
     {
@@ -12359,15 +12419,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 17804,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 17804,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -12376,15 +12439,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 3611,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 3611,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -12393,15 +12459,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 30,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 30,
-        "newPartners": "110|231|338|420|451|452|561|564|590|720|750|780|901|902|903|906|920|1163|2249|4044|4050|4383|7501|8231|9004|9620"
+        "newPartners": "110|231|338|420|451|452|561|564|590|720|750|780|901|902|903|906|920|1163|2249|4044|4050|4383|7501|8231|9004|9620",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-110|1163|2249|231|338|4044|4050|420|4383|451|452|561|564|590|720|750|7501|780|8231|9004|901|902|903|906|920|9620"
+        ]
       }
     },
     {
@@ -12444,15 +12513,18 @@
       "target": "British West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 4058,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 4058,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055->1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -12461,15 +12533,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 1236,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1236,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055->1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -15115,18 +15190,18 @@
       "target": "Barbary Coast",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Alexandria",
         "value": 177619.89342806395,
         "type": "trade",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "mergedIn": [
-          "Alexandria->640"
+          "651->600|6067|615|616"
         ],
         "valueToSplit": 3434.3195155511676,
-        "newPartners": "600|615|616|6067"
+        "newPartners": "600|615|616|6067",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level"
       }
     },
     {
@@ -18164,15 +18239,18 @@
       "target": "1076",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1076",
         "value": 11759,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 11759,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -18181,15 +18259,18 @@
       "target": "1076",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1076",
         "value": 547,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 547,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -18232,15 +18313,18 @@
       "target": "British West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1076",
         "value": 7976,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 7976,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -18249,15 +18333,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1076",
         "value": 788,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 788,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -18266,15 +18353,18 @@
       "target": "59",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "59",
         "value": 6997,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 6997,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -18283,15 +18373,18 @@
       "target": "59",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "59",
         "value": 1030,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1030,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -18300,15 +18393,18 @@
       "target": "British West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "59",
         "value": 14873,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 14873,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -18317,15 +18413,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "59",
         "value": 38,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 38,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -18385,15 +18484,18 @@
       "target": "Hanse Towns",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Rio de Janeiro",
         "value": 315768.6994276692,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 315768.6994276692,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "140->246|248|276"
+        ]
       }
     },
     {
@@ -18606,15 +18708,18 @@
       "target": "Hanse Towns",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Pernambuco",
         "value": 8644.168146832444,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 8644.168146832444,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "140->246|248|276"
+        ]
       }
     },
     {
@@ -18776,15 +18881,18 @@
       "target": "Africa",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Pernambuco",
         "value": 3591.8689559897375,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 3591.8689559897375,
-        "newPartners": "402|403|411|420|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|564|570|572|580|585|590|600|615|616|651|698|4041|4042|4044|4050|4060|4070|4114|4321|4325|4326|4327|4328|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|4501|4515|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|4821|4822|4831|4832|4841|4842|4902|4904|4908|4910|5001|5002|5003|5013|5018|5102|5104|5203|5212|5221|5303|5306|5307|5309|5321|5322|5323|5324|5332|5403|5511|5512|5516|5517|5522|5606|5611|5618|5621|5796|5801|5803|5811|5813|5814|5901|5902|5903|6067|6251|restOfTheWorld"
+        "newPartners": "402|403|411|420|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|564|570|572|580|585|590|600|615|616|651|698|4041|4042|4044|4050|4060|4070|4114|4321|4325|4326|4327|4328|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|4501|4515|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|4821|4822|4831|4832|4841|4842|4902|4904|4908|4910|5001|5002|5003|5013|5018|5102|5104|5203|5212|5221|5303|5306|5307|5309|5321|5322|5323|5324|5332|5403|5511|5512|5516|5517|5522|5606|5611|5618|5621|5796|5801|5803|5811|5813|5814|5901|5902|5903|6067|6251|restOfTheWorld",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "140->402|403|4041|4042|4044|4050|4060|4070|411|4114|420|432|4321|4325|4326|4327|4328|433|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|437|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|4501|451|4515|452|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|481|4821|4822|483|4831|4832|4841|4842|4902|4904|4908|4910|500|5001|5002|5003|5013|5018|5102|5104|511|516|517|520|5203|5212|5221|530|5303|5306|5307|5309|5321|5322|5323|5324|5332|540|5403|541|5511|5512|5516|5517|5522|5606|561|5611|5618|5621|564|570|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6067|615|616|6251|651|698|restOfTheWorld"
+        ]
       }
     },
     {
@@ -18912,15 +19020,18 @@
       "target": "Pernambuco",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Pernambuco",
         "value": 39984.211565028614,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 39984.211565028614,
-        "newPartners": "246|248|276"
+        "newPartners": "246|248|276",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "140<-246|248|276"
+        ]
       }
     },
     {
@@ -19031,15 +19142,18 @@
       "target": "1075",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1075",
         "value": 8128,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 8128,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -19048,15 +19162,18 @@
       "target": "1075",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1075",
         "value": 5548,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 5548,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063<-1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -19099,15 +19216,18 @@
       "target": "British West Indies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1075",
         "value": 12449,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 12449,
-        "newPartners": "30|31|51|54|1032|1048|1055|1063"
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1032|1048|1055|1063|30|31|51|54"
+        ]
       }
     },
     {
@@ -19116,15 +19236,18 @@
       "target": "British Northern America",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "1075",
         "value": 1183,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 1183,
-        "newPartners": "20|21|1022|1023|1024|1028"
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1063->1022|1023|1024|1028|20|21"
+        ]
       }
     },
     {
@@ -27825,15 +27948,18 @@
       "target": "French Colonies",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Saint-Louis (Senegal)",
         "value": 2776.001578843497,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 2776.001578843497,
-        "newPartners": "65|66|120|433|585|615|751|1029|5801"
+        "newPartners": "65|66|120|433|585|615|751|1029|5801",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "433->1029|120|433|5801|585|615|65|66|751"
+        ]
       }
     },
     {
@@ -27937,15 +28063,18 @@
       "target": "Saint-Louis (Senegal)",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "Saint-Louis (Senegal)",
         "value": 16947.621866982434,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 16947.621866982434,
-        "newPartners": "65|66|120|433|585|615|751|1029|5801"
+        "newPartners": "65|66|120|433|585|615|751|1029|5801",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "433<-1029|120|433|5801|585|615|65|66|751"
+        ]
       }
     },
     {
@@ -27954,15 +28083,18 @@
       "target": "4338",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "4338",
         "value": 16584.527333728045,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 16584.527333728045,
-        "newPartners": "65|66|120|433|585|615|751|1029|5801"
+        "newPartners": "65|66|120|433|585|615|751|1029|5801",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "433<-1029|120|433|5801|585|615|65|66|751"
+        ]
       }
     },
     {
@@ -34265,9 +34397,9 @@
       }
     },
     {
-      "key": "America-resolve-into-1027",
+      "key": "America-resolve-into-1016",
       "source": "America",
-      "target": "1027",
+      "target": "1016",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -34331,9 +34463,9 @@
       }
     },
     {
-      "key": "America-resolve-into-1016",
+      "key": "America-resolve-into-1027",
       "source": "America",
-      "target": "1016",
+      "target": "1027",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -34848,9 +34980,9 @@
       }
     },
     {
-      "key": "Northern America-resolve-into-1027",
+      "key": "Northern America-resolve-into-1016",
       "source": "Northern America",
-      "target": "1027",
+      "target": "1016",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -34936,9 +35068,9 @@
       }
     },
     {
-      "key": "Northern America-resolve-into-1016",
+      "key": "Northern America-resolve-into-1027",
       "source": "Northern America",
-      "target": "1016",
+      "target": "1027",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -35739,9 +35871,9 @@
       }
     },
     {
-      "key": "Western America-resolve-into-1027",
+      "key": "Western America-resolve-into-1016",
       "source": "Western America",
-      "target": "1027",
+      "target": "1016",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -35761,9 +35893,9 @@
       }
     },
     {
-      "key": "Western America-resolve-into-1016",
+      "key": "Western America-resolve-into-1027",
       "source": "Western America",
-      "target": "1016",
+      "target": "1027",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -49022,6 +49154,55 @@
       }
     },
     {
+      "key": "1063<-1032|1048|1055|1063|30|31|51|54",
+      "source": "1032|1048|1055|1063|30|31|51|54",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "valueToSplit": 53709,
+        "value": 53709,
+        "originalReportedTradeFlowId": "58<-British West Indies|1061<-British West Indies|1076<-British West Indies|59<-British West Indies|1075<-British West Indies",
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1061",
+          "1076",
+          "59",
+          "1075"
+        ],
+        "notes": "From a flow part-of reporter 58 to/from area British West Indies\nFrom a flow part-of reporter 1061 to/from area British West Indies\nFrom a flow part-of reporter 1076 to/from area British West Indies\nFrom a flow part-of reporter 59 to/from area British West Indies\nFrom a flow part-of reporter 1075 to/from area British West Indies"
+      }
+    },
+    {
+      "key": "1063<-1022|1023|1024|1028|20|21",
+      "source": "1022|1023|1024|1028|20|21",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "valueToSplit": 18461,
+        "value": 18461,
+        "originalReportedTradeFlowId": "58<-British Northern America|1076<-British Northern America|59<-British Northern America|1075<-British Northern America",
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1076",
+          "59",
+          "1075"
+        ],
+        "notes": "From a flow part-of reporter 58 to/from area British Northern America\nFrom a flow part-of reporter 1076 to/from area British Northern America\nFrom a flow part-of reporter 59 to/from area British Northern America\nFrom a flow part-of reporter 1075 to/from area British Northern America"
+      }
+    },
+    {
       "key": "1063->200",
       "source": "1063",
       "target": "200",
@@ -49044,6 +49225,54 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing British Virgin Is.|Montserrat"
+      }
+    },
+    {
+      "key": "1063->1032|1048|1055|1063|30|31|51|54",
+      "source": "1063",
+      "target": "1032|1048|1055|1063|30|31|51|54",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "valueToSplit": 39369,
+        "value": 39369,
+        "originalReportedTradeFlowId": "1061->British West Indies|1076->British West Indies|59->British West Indies|1075->British West Indies",
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1061",
+          "1076",
+          "59",
+          "1075"
+        ],
+        "notes": "From a flow part-of reporter 1061 to/from area British West Indies\nFrom a flow part-of reporter 1076 to/from area British West Indies\nFrom a flow part-of reporter 59 to/from area British West Indies\nFrom a flow part-of reporter 1075 to/from area British West Indies"
+      }
+    },
+    {
+      "key": "1063->1022|1023|1024|1028|20|21",
+      "source": "1063",
+      "target": "1022|1023|1024|1028|20|21",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "valueToSplit": 2083,
+        "value": 2083,
+        "originalReportedTradeFlowId": "1061->British Northern America|1076->British Northern America|59->British Northern America|1075->British Northern America",
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1061",
+          "1076",
+          "59",
+          "1075"
+        ],
+        "notes": "From a flow part-of reporter 1061 to/from area British Northern America\nFrom a flow part-of reporter 1076 to/from area British Northern America\nFrom a flow part-of reporter 59 to/from area British Northern America\nFrom a flow part-of reporter 1075 to/from area British Northern America"
       }
     },
     {
@@ -49113,6 +49342,27 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing Egypt Arab Republic (Egypt) (other)|Suez Canal Zone"
+      }
+    },
+    {
+      "key": "651->600|6067|615|616",
+      "source": "651",
+      "target": "600|6067|615|616",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "600|615|616|6067",
+        "valueToSplit": 3434.3195155511676,
+        "value": 177619.89342806395,
+        "originalReportedTradeFlowId": "Alexandria->Barbary Coast",
+        "reportedBy": "651",
+        "originalReporters": [
+          "Alexandria"
+        ],
+        "notes": "From a flow part-of reporter Alexandria to/from area Barbary Coast"
       }
     },
     {
@@ -49358,6 +49608,69 @@
       }
     },
     {
+      "key": "300<-200|2249|231|338",
+      "source": "200|2249|231|338",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "200|231|338|2249",
+        "valueToSplit": 1808920.4657588317,
+        "value": 1808920.4657588317,
+        "originalReportedTradeFlowId": "326<-British Europe & United Kingdom",
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "notes": "From a flow part-of reporter 326 to/from area British Europe & United Kingdom"
+      }
+    },
+    {
+      "key": "300<-246|248|276",
+      "source": "246|248|276",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "246|248|276",
+        "valueToSplit": 30629.563844483913,
+        "value": 30629.563844483913,
+        "originalReportedTradeFlowId": "326<-Hanse Towns",
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "notes": "From a flow part-of reporter 326 to/from area Hanse Towns"
+      }
+    },
+    {
+      "key": "300<-1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|70|91|restOfTheWorld",
+      "source": "1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|70|91|restOfTheWorld",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "5|6|30|31|40|41|42|51|54|65|66|68|70|91|1032|1048|1055|1058|1063|1064|1081|restOfTheWorld",
+        "valueToSplit": 329938.8198144859,
+        "value": 329938.8198144859,
+        "originalReportedTradeFlowId": "326<-Mexico & West Indies",
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "notes": "From a flow part-of reporter 326 to/from area Mexico & West Indies"
+      }
+    },
+    {
       "key": "300->2",
       "source": "300",
       "target": "2",
@@ -49600,6 +49913,48 @@
       }
     },
     {
+      "key": "300->200|2249|231|338",
+      "source": "300",
+      "target": "200|2249|231|338",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "200|231|338|2249",
+        "valueToSplit": 631774.2253799092,
+        "value": 631774.2253799092,
+        "originalReportedTradeFlowId": "326->British Europe & United Kingdom",
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "notes": "From a flow part-of reporter 326 to/from area British Europe & United Kingdom"
+      }
+    },
+    {
+      "key": "300->246|248|276",
+      "source": "300",
+      "target": "246|248|276",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "246|248|276",
+        "valueToSplit": 107637.65541740674,
+        "value": 107637.65541740674,
+        "originalReportedTradeFlowId": "326->Hanse Towns",
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "notes": "From a flow part-of reporter 326 to/from area Hanse Towns"
+      }
+    },
+    {
       "key": "41<-2",
       "source": "2",
       "target": "41",
@@ -49666,6 +50021,27 @@
       }
     },
     {
+      "key": "41<-246|248|276",
+      "source": "246|248|276",
+      "target": "41",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "246|248|276",
+        "valueToSplit": 2762.976119992106,
+        "value": 2762.976119992106,
+        "originalReportedTradeFlowId": "Cap-Haïtien<-Hanse Towns",
+        "reportedBy": "41",
+        "originalReporters": [
+          "Cap-Haïtien"
+        ],
+        "notes": "From a flow part-of reporter Cap-Haïtien to/from area Hanse Towns"
+      }
+    },
+    {
       "key": "1055<-2",
       "source": "2",
       "target": "1055",
@@ -49710,6 +50086,69 @@
       }
     },
     {
+      "key": "1055<-1032|1048|1055|1063|30|31|51|54",
+      "source": "1032|1048|1055|1063|30|31|51|54",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "valueToSplit": 17804,
+        "value": 17804,
+        "originalReportedTradeFlowId": "56<-British West Indies",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area British West Indies"
+      }
+    },
+    {
+      "key": "1055<-1022|1023|1024|1028|20|21",
+      "source": "1022|1023|1024|1028|20|21",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "valueToSplit": 3611,
+        "value": 3611,
+        "originalReportedTradeFlowId": "56<-British Northern America",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area British Northern America"
+      }
+    },
+    {
+      "key": "1055<-110|1163|2249|231|338|4044|4050|420|4383|451|452|561|564|590|720|750|7501|780|8231|9004|901|902|903|906|920|9620",
+      "source": "110|1163|2249|231|338|4044|4050|420|4383|451|452|561|564|590|720|750|7501|780|8231|9004|901|902|903|906|920|9620",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "110|231|338|420|451|452|561|564|590|720|750|780|901|902|903|906|920|1163|2249|4044|4050|4383|7501|8231|9004|9620",
+        "valueToSplit": 30,
+        "value": 30,
+        "originalReportedTradeFlowId": "56<-British Colonies (other)",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area British Colonies (other)"
+      }
+    },
+    {
       "key": "1055->2",
       "source": "1055",
       "target": "2",
@@ -49751,6 +50190,48 @@
         "notes": "56->200 50571",
         "status": "ok",
         "type": "trade"
+      }
+    },
+    {
+      "key": "1055->1032|1048|1055|1063|30|31|51|54",
+      "source": "1055",
+      "target": "1032|1048|1055|1063|30|31|51|54",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "30|31|51|54|1032|1048|1055|1063",
+        "valueToSplit": 4058,
+        "value": 4058,
+        "originalReportedTradeFlowId": "56->British West Indies",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area British West Indies"
+      }
+    },
+    {
+      "key": "1055->1022|1023|1024|1028|20|21",
+      "source": "1055",
+      "target": "1022|1023|1024|1028|20|21",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "20|21|1022|1023|1024|1028",
+        "valueToSplit": 1236,
+        "value": 1236,
+        "originalReportedTradeFlowId": "56->British Northern America",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area British Northern America"
       }
     },
     {
@@ -51052,6 +51533,28 @@
       }
     },
     {
+      "key": "140->246|248|276",
+      "source": "140",
+      "target": "246|248|276",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "246|248|276",
+        "valueToSplit": 324412.86757450167,
+        "value": 324412.86757450167,
+        "originalReportedTradeFlowId": "Rio de Janeiro->Hanse Towns|Pernambuco->Hanse Towns",
+        "reportedBy": "140",
+        "originalReporters": [
+          "Rio de Janeiro",
+          "Pernambuco"
+        ],
+        "notes": "From a flow part-of reporter Rio de Janeiro to/from area Hanse Towns\nFrom a flow part-of reporter Pernambuco to/from area Hanse Towns"
+      }
+    },
+    {
       "key": "561<-211",
       "source": "211",
       "target": "561",
@@ -51374,6 +51877,27 @@
       }
     },
     {
+      "key": "140<-246|248|276",
+      "source": "246|248|276",
+      "target": "140",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "246|248|276",
+        "valueToSplit": 39984.211565028614,
+        "value": 39984.211565028614,
+        "originalReportedTradeFlowId": "Pernambuco<-Hanse Towns",
+        "reportedBy": "140",
+        "originalReporters": [
+          "Pernambuco"
+        ],
+        "notes": "From a flow part-of reporter Pernambuco to/from area Hanse Towns"
+      }
+    },
+    {
       "key": "140->155",
       "source": "140",
       "target": "155",
@@ -51558,6 +52082,27 @@
       }
     },
     {
+      "key": "140->402|403|4041|4042|4044|4050|4060|4070|411|4114|420|432|4321|4325|4326|4327|4328|433|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|437|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|4501|451|4515|452|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|481|4821|4822|483|4831|4832|4841|4842|4902|4904|4908|4910|500|5001|5002|5003|5013|5018|5102|5104|511|516|517|520|5203|5212|5221|530|5303|5306|5307|5309|5321|5322|5323|5324|5332|540|5403|541|5511|5512|5516|5517|5522|5606|561|5611|5618|5621|564|570|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6067|615|616|6251|651|698|restOfTheWorld",
+      "source": "140",
+      "target": "402|403|4041|4042|4044|4050|4060|4070|411|4114|420|432|4321|4325|4326|4327|4328|433|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|437|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|450|4501|451|4515|452|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|481|4821|4822|483|4831|4832|4841|4842|4902|4904|4908|4910|500|5001|5002|5003|5013|5018|5102|5104|511|516|517|520|5203|5212|5221|530|5303|5306|5307|5309|5321|5322|5323|5324|5332|540|5403|541|5511|5512|5516|5517|5522|5606|561|5611|5618|5621|564|570|572|5796|580|5801|5803|5811|5813|5814|585|590|5901|5902|5903|600|6067|615|616|6251|651|698|restOfTheWorld",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "402|403|411|420|432|433|437|450|451|452|481|483|500|511|516|517|520|530|540|541|561|564|570|572|580|585|590|600|615|616|651|698|4041|4042|4044|4050|4060|4070|4114|4321|4325|4326|4327|4328|4331|4332|4333|4334|4335|4336|4337|4341|4343|4345|4348|4349|4352|4354|4361|4362|4372|4373|4381|4382|4383|4391|4392|4394|4395|4396|4397|4501|4515|4521|4527|4528|4529|4534|4535|4711|4737|4741|4742|4744|4746|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|4821|4822|4831|4832|4841|4842|4902|4904|4908|4910|5001|5002|5003|5013|5018|5102|5104|5203|5212|5221|5303|5306|5307|5309|5321|5322|5323|5324|5332|5403|5511|5512|5516|5517|5522|5606|5611|5618|5621|5796|5801|5803|5811|5813|5814|5901|5902|5903|6067|6251|restOfTheWorld",
+        "valueToSplit": 3591.8689559897375,
+        "value": 3591.8689559897375,
+        "originalReportedTradeFlowId": "Pernambuco->Africa",
+        "reportedBy": "140",
+        "originalReporters": [
+          "Pernambuco"
+        ],
+        "notes": "From a flow part-of reporter Pernambuco to/from area Africa"
+      }
+    },
+    {
       "key": "433<-220",
       "source": "220",
       "target": "433",
@@ -51582,6 +52127,28 @@
       }
     },
     {
+      "key": "433<-1029|120|433|5801|585|615|65|66|751",
+      "source": "1029|120|433|5801|585|615|65|66|751",
+      "target": "433",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|433|585|615|751|1029|5801",
+        "valueToSplit": 33532.14920071048,
+        "value": 33532.14920071048,
+        "originalReportedTradeFlowId": "Saint-Louis (Senegal)<-French Colonies|4338<-French Colonies",
+        "reportedBy": "433",
+        "originalReporters": [
+          "Saint-Louis (Senegal)",
+          "4338"
+        ],
+        "notes": "From a flow part-of reporter Saint-Louis (Senegal) to/from area French Colonies\nFrom a flow part-of reporter 4338 to/from area French Colonies"
+      }
+    },
+    {
       "key": "433->220",
       "source": "433",
       "target": "220",
@@ -51603,6 +52170,27 @@
         "status": "ok",
         "type": "trade",
         "partial": ""
+      }
+    },
+    {
+      "key": "433->1029|120|433|5801|585|615|65|66|751",
+      "source": "433",
+      "target": "1029|120|433|5801|585|615|65|66|751",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "65|66|120|433|585|615|751|1029|5801",
+        "valueToSplit": 2776.001578843497,
+        "value": 2776.001578843497,
+        "originalReportedTradeFlowId": "Saint-Louis (Senegal)->French Colonies",
+        "reportedBy": "433",
+        "originalReporters": [
+          "Saint-Louis (Senegal)"
+        ],
+        "notes": "From a flow part-of reporter Saint-Louis (Senegal) to/from area French Colonies"
       }
     }
   ]

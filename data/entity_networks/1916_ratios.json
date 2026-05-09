@@ -11131,6 +11131,9 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "640|670|671|6800|6802|681|682|690|692|696|698|6982"
     }
   ],
   "edges": [
@@ -84722,15 +84725,18 @@
       "target": "56",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "56",
         "value": 17,
         "type": "trade",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "valueToSplit": 17,
-        "newPartners": "640|670|671|681|682|690|692|696|698|6800|6802|6982"
+        "newPartners": "640|670|671|681|682|690|692|696|698|6800|6802|6982",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
+        "mergedIn": [
+          "1055<-640|670|671|6800|6802|681|682|690|692|696|698|6982"
+        ]
       }
     },
     {
@@ -110833,6 +110839,27 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing Grenada|St. Vincent and the Grenadines"
+      }
+    },
+    {
+      "key": "1055<-640|670|671|6800|6802|681|682|690|692|696|698|6982",
+      "source": "640|670|671|6800|6802|681|682|690|692|696|698|6982",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "640|670|671|681|682|690|692|696|698|6800|6802|6982",
+        "valueToSplit": 17,
+        "value": 17,
+        "originalReportedTradeFlowId": "56<-Arabia",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "notes": "From a flow part-of reporter 56 to/from area Arabia"
       }
     },
     {
