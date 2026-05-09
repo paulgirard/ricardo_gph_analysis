@@ -30,9 +30,7 @@ save GeoPolHist_entities_status_over_time_temp.dta, replace
 *************Importation des données de localisation
 
 import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
-
-
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save GeoPolHist_entities_temp.dta, replace
 
 
@@ -43,7 +41,11 @@ program define trade_importation
 	args year
 
 import delimited "data/tradeFlows_`year'.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
+	*/stringcols(13)
+***To force newReporters to be a string even in empty
+
+
 
 format value* %20.0fc
 
@@ -276,22 +278,31 @@ split newPartners, parse("|") gen(newPartnerId)
 reshape long newPartnerId, i(id reportedByIX newReporters) j(partner_no)
 drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
 
-split newReporters,parse ("|") gen(newReportersId)
-reshape long newReportersId, i(id partner_no reportedByIX ) j(reporter_no)
-drop if newReportersId=="" & reporter_no !=1
+capture assert missing(newReporters)
+	if _rc==1 {
+		split newReporters,parse ("|") gen(newReportersId)
+		reshape long newReportersId, i(id partner_no reportedByIX ) j(reporter_no)
+		drop if newReportersId=="" & reporter_no !=1
+	}
 
 
-gen newimporterId=newPartnerId if reportedByIX=="X" & partner_no!=.
-replace newimporterId=importerId if reportedByIX=="I" & partner_no!=.
 
-gen newexporterId=newPartnerId if reportedByIX=="I" & partner_no!=.
-replace newexporterId=exporterId if reportedByIX=="X" & partner_no!=.
+gen newimporterId=newPartnerId if reportedByIX=="X" 
+capture assert missing(newReporters)
+if _rc==1 replace newimporterId=newReportersId if reportedByIX=="I"
 
-replace newimporterId=newReportersId if reportedByIX=="I" & reporter_no!=.
-replace newimporterId=importerId if reportedByIX=="X" & reporter_no!=.
+gen newexporterId=newPartnerId if reportedByIX=="I"
+capture assert missing(newReporters)
+if _rc==1  replace newexporterId=newReportersId if reportedByIX=="X" 
 
-replace newexporterId=newReportersId if reportedByIX=="X" & reporter_no!=.
-replace newexporterId=exporterId if reportedByIX=="I" & reporter_no!=.
+destring(importerId), gen(blif) force
+replace newimporterId=string(blif) if blif !=.
+destring(exporterId), gen(blouf) force
+replace newexporterId=string(blouf) if blouf !=. 
+drop blif blouf
+
+destring(newimporterId), replace
+destring(newexporterId), replace
 
 merge m:1 newimporterId CafFob using `importer_coefs'
 
@@ -370,8 +381,8 @@ rename GPH_name newexporterLabel
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year importerReporting exporterReporting CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
-order year id importerLabel exporterLabel importerReporting exporterReporting CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
+keep id year reportedByIX  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
+order year id importerLabel exporterLabel reportedByIX  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
 sort id pred_trade newimporterId newexporterId
 format value pred_trade %20.0fc
 export delimited using "results/gravity_`year'_`CafFob'.csv", replace 
@@ -379,14 +390,14 @@ export delimited using "results/gravity_`year'_`CafFob'.csv", replace
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
 
-trade_importation 1835
-gravity_trade_estimation 1835 FromImporter
-gravity_trade_estimation 18335 FromExporter
-erase tradeFlows_1835_temp.dta
-erase tradeFlows_1835ok_temp.dta
-erase GeoPolHist_dependency_1835.dta
+trade_importation 1833
+gravity_trade_estimation 1833 FromImporter
+gravity_trade_estimation 1833 FromExporter
+erase tradeFlows_1833_temp.dta
+erase tradeFlows_1833ok_temp.dta
+erase GeoPolHist_dependency_1833.dta
 
-/*
+
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
