@@ -7,6 +7,7 @@ import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./are
 import { findBilateralRatios } from "./bilateralRatios";
 import { generateTradeFlow, resolutionOrigins, resolveAutonomous, tradingPartners } from "./graphTraversals";
 import {
+  EdgeLabelType,
   EntityNodeAttributes,
   GraphAttributes,
   GraphEntityPartiteType,
@@ -447,9 +448,20 @@ export function treatReporters(graph: GraphType) {
               if (edgeToTreatAtts.newPartners) partnerIds = edgeToTreatAtts.newPartners?.split("|");
               break;
             case "toTreat":
-              partnerIds = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType).autonomousIds;
+              // eslint-disable-next-line no-case-declarations
+              const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
+              // filter the list of autonomous partners to avoid overlapping areas
+              partnerIds = filterTradePartners(originalPartner, autonomousPartners, badReporter, graph);
+              if (partnerIds.length === 0)
+                throw new Error(
+                  `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
+                );
               break;
             // default just use the value defined before switch block
+          }
+          if (partnerIds.length === 0) {
+            // no partners...$
+            throw new Error(`no partners for ${originalPartner} in ${edgeToTreat}`);
           }
           if (partnerIds.length === 1) {
             // easy case just reroute trade flow
@@ -572,16 +584,56 @@ export function treatReporters(graph: GraphType) {
               // TODO: whould we check generateTradeFlow result.status?
               (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
             } else {
-              // change toTreat to split_failed
-              if (edgeToTreatAtts.status === "toTreat") {
-                (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "split_failed_no_ratio");
-                // add partner list
-                (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "newPartners", partnerIds.join("|"));
-              }
-              // we can't split the flow let's flag it as a future aggregation to reporter
-              (graph as GraphEntityPartiteType).updateEdgeAttribute(edgeToTreat, "labels", (labels) => {
-                return (labels || new Set()).add("TRADE_FROM_TO_AGGREGATE_REPORTER");
-              });
+              // 3-1) pour les flux (part of) - (zones) qu’on arrive pas à décomposer on crée un nouveau flux (rapporteur agrégé) - (groupe des Partners)
+              // avec un split_failed_no_ratio avec comme newPartners les membres de la zone qui ne sont pas partenaire de (part of)
+
+              // we have to create a new flow as two part-of reporter can have the same area which are splitted into different set of partners
+              // if we create (newReporter)-(area) the area key will collide for tow different set of partners
+
+              // create a flow to be splitted by gravity model
+              // (autonomousReporter)-(group of partners)
+              const newPartnerGroupId = sortBy(partnerIds).join("|");
+              const newEdgeId = tradeEdgeKey(
+                autonomousReporter,
+                newPartnerGroupId,
+                graph.source(edgeToTreat) === badReporter ? "Exp" : "Imp",
+              );
+              (graph as GraphEntityPartiteType).updateDirectedEdgeWithKey(
+                newEdgeId,
+                graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartnerGroupId,
+                graph.target(edgeToTreat) === badReporter ? autonomousReporter : newPartnerGroupId,
+                (attributes: Partial<TradeEdgeAttributes> | undefined) => {
+                  const newAtts: TradeEdgeAttributes = {
+                    type: "trade",
+                    labels: new Set<EdgeLabelType>(["GENERATED_TRADE", "TRADE_FROM_TO_AGGREGATE_REPORTER"]),
+                    newPartners: partnerIds.join("|"),
+                    valueToSplit:
+                      (attributes?.valueToSplit || 0) + (edgeToTreatAtts.valueToSplit || edgeToTreatAtts.value || 0),
+                    value: (attributes?.value || 0) + (edgeToTreatAtts.value || 0),
+                    originalReportedTradeFlowId: [attributes?.originalReportedTradeFlowId, edgeToTreat]
+                      .filter(identity)
+                      .join("|"),
+                    reportedBy: uniq(sortBy([attributes?.reportedBy, autonomousReporter].filter(identity))).join("|"),
+                    originalReporters: new Set([...(attributes?.originalReporters || []), badReporter]),
+                    notes: [
+                      attributes?.notes,
+                      `From a flow part-of reporter ${badReporter} to/from area ${originalPartner}`,
+                    ]
+                      .filter(identity)
+                      .join("\n"),
+                  };
+                  return newAtts;
+                },
+              );
+
+              // change status of original flow to ignore_resolved
+              (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
+              (graph as GraphEntityPartiteType).updateEdgeAttribute(edgeToTreat, "notes", (notes) =>
+                [notes, `flow part-of reporter with an area which has been aggregated at the aggregated reporter level`]
+                  .filter(identity)
+                  .join("\n"),
+              );
+              (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "mergedIn", [newEdgeId]);
             }
           }
         });
@@ -631,6 +683,49 @@ export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
       }
     });
 }
+/**
+ * filterTradePartners
+ * For a given reporter, filter a list of autonomous partners yielded by an area decomposition to avoid duplicates in case of overlapping areas
+ * @param autonomousPartners
+ * @param reporterId
+ * @param graph
+ * @returns
+ */
+export function filterTradePartners(
+  originalPartner: string,
+  autonomousPartners: ReturnType<typeof resolveAutonomous>,
+  reporterId: string,
+  graph: GraphType,
+) {
+  if (autonomousPartners.autonomousIds.length === 1 && originalPartner === autonomousPartners.autonomousIds[0])
+    return autonomousPartners.autonomousIds;
+
+  // remove entities from split destination which are already reported by reporting
+  const reportedPartners = tradingPartners(reporterId, graph as GraphEntityPartiteType);
+  //remove also the reporter
+  const autonomousPartnersIds = autonomousPartners.autonomousIds
+    // remove partners which are already reported or which are the reporter itself
+    .filter((partnerId) => !reportedPartners.has(partnerId) && partnerId !== reporterId)
+    // remove partners which are indirect duplicates as included in more than one partner area for that reporting for that year
+    // (reporting)-[:REPORTED_TRADE]->(area1)-[:SPLIT_OTHER]->(partner1)
+    // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
+    .filter((partnerId) => {
+      if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
+      const origins = resolutionOrigins(partnerId, graph as GraphResolutionPartiteType)
+        // filter origins by the ones which are reported in the reporter trade
+        .filter((o) => reportedPartners.has(o));
+      // if only one origin we don't have a duplication issue
+      if (origins.length <= 1) return true;
+      else {
+        //to deduplicate sort origins by area size
+        const originsByIncreasingAreaSize = sortBy(origins, (o) => resolveAutonomous(o, graph).autonomousIds.length);
+        //check that the original partner is the smallest one
+        // if the smallest (first) area is the original partner of the reported flow
+        return originsByIncreasingAreaSize[0] === originalPartner;
+      }
+    });
+  return autonomousPartnersIds;
+}
 
 export function resolveEntityTransform(
   year: number,
@@ -661,34 +756,8 @@ export function resolveEntityTransform(
           `treating flow (${graph.source(e)}: ${graph.getNodeAttribute(graph.source(e), "label")})->(${graph.target(e)}:${graph.getNodeAttribute(graph.target(e), "label")})`,
         );
 
-        // remove entities from split destination which are already reported by reporting
-        const reportedPartners = tradingPartners(reporterId, graph as GraphEntityPartiteType);
-
-        //remove also the reporter
-        const autonomousPartnersIds = autonomousPartners.autonomousIds
-          // remove partners which are already reported or which are the reporter itself
-          .filter((partnerId) => !reportedPartners.has(partnerId) && partnerId !== reporterId)
-          // remove partners which are indirect duplicates as included in more than one partner area for that reporting for that year
-          // (reporting)-[:REPORTED_TRADE]->(area1)-[:SPLIT_OTHER]->(partner1)
-          // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
-          .filter((partnerId) => {
-            if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
-            const origins = resolutionOrigins(partnerId, graph as GraphResolutionPartiteType)
-              // filter origins by the ones which are reported in the reporter trade
-              .filter((o) => reportedPartners.has(o));
-            // if only one origin we don't have a duplication issue
-            if (origins.length <= 1) return true;
-            else {
-              //to deduplicate sort origins by area size
-              const originsByIncreasingAreaSize = sortBy(
-                origins,
-                (o) => resolveAutonomous(o, graph).autonomousIds.length,
-              );
-              //check that the original partner is the smallest one
-              // if the smallest (first) area is the original partner of the reported flow
-              return originsByIncreasingAreaSize[0] === originalPartner;
-            }
-          });
+        // filter the list of autonomous partners to avoid overlapping areas
+        const autonomousPartnersIds = filterTradePartners(originalPartner, autonomousPartners, reporterId, graph);
 
         const reporterLabel = graph.getNodeAttribute(reporterId, "label");
 

@@ -144,7 +144,13 @@ export function exportGephLiteFile(graph: GraphType, graphSerialization: GraphSe
     const importerData = edges.filter((edge) => edge.reportedBy === graph.target(edge.id))[0];
     const exporterData = edges.filter((edge) => edge.reportedBy === graph.source(edge.id))[0];
     const edgeId = importerData?.id || exporterData?.id;
-    fullGraphEdges.push({ source: graph.source(edgeId), target: graph.target(edgeId), key: edgeKey });
+    try {
+      fullGraphEdges.push({ source: graph.source(edgeId), target: graph.target(edgeId), key: edgeKey });
+    } catch (e) {
+      console.log(`${edgesIds} ${JSON.stringify(edgesIds.map((eid) => graph.getEdgeAttributes(eid)))}`);
+      throw e;
+    }
+
     const edgeData = {
       labels: edges
         .map((e) => e.labels)
