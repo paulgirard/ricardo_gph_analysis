@@ -84,6 +84,8 @@ replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLab
 assert reportedByIX!=""
 
 tab status, missing
+count if status !="ok"
+gen totreat_flows=r(N)
 
 save tradeFlows_`year'_temp.dta, replace
 *'
@@ -234,7 +236,7 @@ foreach trader in exporter importer  {
 
 use tradeFlows_`year'_temp, clear
 *****'
-tab status
+tab status, missing
 keep if strmatch(status,"split_*") | status==""
 drop if strpos(newPartners,"restOfTheWorld")!=0
 
@@ -319,6 +321,7 @@ sort originalReportedTradeFlowId
 
 
 
+
 ***On vérifie que par originalReportedTradeFlowId on a bien les coeffcients pour toutes les parties
 bysort id: egen ok_exp = min(!missing(exporter_coef))
 bysort id: egen ok_imp = min(!missing(importer_coef))
@@ -383,10 +386,16 @@ rename GPH_name newexporterLabel
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year reportedByIX  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel
-order year id importerLabel exporterLabel reportedByIX  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade
-sort id pred_trade newimporterId newexporterId
+keep id year reportedByIX  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows
+order year id importerLabel exporterLabel reportedByIX  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade 
+
+sort id pred_trade newimporterId newexporterId 
 format value pred_trade %20.0fc
+
+codebook id
+levelsof id
+generate treated_flows=r(r)
+
 export delimited using "results/gravity_`year'_`CafFob'.csv", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
