@@ -65,6 +65,7 @@ drop importerType exporterType
 drop if value==. & status !="to_impute"
 drop if status =="ignore_internal" | status=="ignore_resolved"
 drop if status=="ignore_duplicate"
+drop if status=="split_failed_error"
 
 gen ln_value=ln(value)
 
@@ -82,7 +83,7 @@ gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
 replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLabel
 assert reportedByIX!=""
 
-
+tab status, missing
 
 save tradeFlows_`year'_temp.dta, replace
 *'
@@ -234,7 +235,7 @@ foreach trader in exporter importer  {
 use tradeFlows_`year'_temp, clear
 *****'
 tab status
-keep if strmatch(status,"split_*")
+keep if strmatch(status,"split_*") | status==""
 drop if strpos(newPartners,"restOfTheWorld")!=0
 
 //////All observations that include split in the status variable to be duplicated 
@@ -295,6 +296,7 @@ gen newexporterId=newPartnerId if reportedByIX=="I"
 capture assert missing(newReporters)
 if _rc==1  replace newexporterId=newReportersId if reportedByIX=="X" 
 
+///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
 destring(importerId), gen(blif) force
 replace newimporterId=string(blif) if blif !=.
 destring(exporterId), gen(blouf) force
