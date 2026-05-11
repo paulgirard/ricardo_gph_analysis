@@ -1098,8 +1098,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Dissolved into",
-        "lat": "41.904",
-        "lng": "12.453",
+        "lat": "42.5",
+        "lng": "12.5",
         "totalBilateralTrade": 297794.9778138689
       }
     },
@@ -6049,6 +6049,18 @@
       }
     },
     {
+      "key": "328",
+      "attributes": {
+        "label": "Vatican City",
+        "gphStatus": "Part of",
+        "entityType": "GPH",
+        "ricType": "GPH_entity",
+        "type": "entity",
+        "lat": "41.904",
+        "lng": "12.453"
+      }
+    },
+    {
       "key": "6067",
       "attributes": {
         "label": "Captaincy-general of north Africa",
@@ -9305,17 +9317,6 @@
         "entityType": "GPH-AUTONOMOUS",
         "gphStatus": "Sovereign",
         "label": "Wuerttemberg",
-        "reporting": false,
-        "ricType": "GPH_entity"
-      }
-    },
-    {
-      "key": "328",
-      "attributes": {
-        "type": "entity",
-        "entityType": "GPH",
-        "gphStatus": "Part of",
-        "label": "Vatican City",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -13115,7 +13116,10 @@
         "reportedBy": "230",
         "value": 26846.499678869623,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "230<-restOfTheWorld"
+        ]
       }
     },
     {
@@ -16835,7 +16839,10 @@
         "reportedBy": "210",
         "value": 29590.583677250906,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "210->restOfTheWorld"
+        ]
       }
     },
     {
@@ -25974,7 +25981,10 @@
         "reportedBy": "211",
         "value": 941.0400000005627,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "211->restOfTheWorld"
+        ]
       }
     },
     {
@@ -27478,7 +27488,10 @@
         "reportedBy": "200",
         "value": 24974,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "200<-restOfTheWorld"
+        ]
       }
     },
     {
@@ -29236,7 +29249,10 @@
         "reportedBy": "200",
         "value": 10764,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "200->restOfTheWorld"
+        ]
       }
     },
     {
@@ -30738,7 +30754,10 @@
         "reportedBy": "325",
         "value": 245974.47813499926,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "325<-restOfTheWorld"
+        ]
       }
     },
     {
@@ -31046,7 +31065,10 @@
         "reportedBy": "325",
         "value": 703149.4362334298,
         "type": "trade",
-        "status": "toTreat"
+        "status": "ignore_resolved",
+        "mergedIn": [
+          "325->restOfTheWorld"
+        ]
       }
     },
     {
@@ -44231,6 +44253,17 @@
       "key": "246-resolve-into-255",
       "source": "246",
       "target": "255",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "AGGREGATE_INTO"
+        ]
+      }
+    },
+    {
+      "key": "327-resolve-into-328",
+      "source": "327",
+      "target": "328",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -57473,7 +57506,11 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Arakan",
+          "Bassein River",
+          "Rangoon"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57495,7 +57532,12 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Bimlipatam",
+          "Kolkata (Calcutta)",
+          "Kakinada",
+          "Chennai (Madras)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57517,7 +57559,10 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "8272",
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57539,7 +57584,11 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Ichaboe Island",
+          "Malgas I.",
+          "Sandwich Harbour"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57561,7 +57610,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "North Germany"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57583,7 +57634,10 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Sulawesi (Celebes)",
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57605,7 +57659,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Manila"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57627,7 +57683,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Pondicherry"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57649,7 +57707,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Gough I."
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57671,7 +57731,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Prince of Wales Bay"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57693,7 +57755,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Quelimane"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57715,7 +57779,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Arakan"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57737,7 +57803,10 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Kolkata (Calcutta)",
+          "Chennai (Madras)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57759,7 +57828,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57781,7 +57852,11 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Ichaboe Island",
+          "Angra Pequena",
+          "Sandwich Harbour"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57803,7 +57878,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "North Germany"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57825,7 +57902,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57847,7 +57926,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Gough I."
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57869,7 +57950,9 @@
         "originalReporters": [
           "561"
         ],
-        "generatedFrom": "Cape Colony (Cape of Good Hope)",
+        "originalPartners": [
+          "Prince of Wales Bay"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57891,7 +57974,9 @@
         "originalReporters": [
           "155"
         ],
-        "generatedFrom": "Chile",
+        "originalPartners": [
+          "1014"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57913,7 +57998,9 @@
         "originalReporters": [
           "155"
         ],
-        "generatedFrom": "Chile",
+        "originalPartners": [
+          "1014"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57935,11 +58022,38 @@
         "originalReporters": [
           "230"
         ],
-        "generatedFrom": "Spain",
+        "originalPartners": [
+          "246",
+          "248"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "230<-246 38890.810866219166\n230<-248 37015.56160978415",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "230<-restOfTheWorld",
+      "source": "restOfTheWorld",
+      "target": "230",
+      "attributes": {
+        "value": 26846.499678869623,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "230"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "230<-327 26846.499678869623",
         "status": "ok",
         "type": "trade"
       }
@@ -57957,7 +58071,10 @@
         "originalReporters": [
           "230"
         ],
-        "generatedFrom": "Spain",
+        "originalPartners": [
+          "6062",
+          "6064"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -57979,7 +58096,10 @@
         "originalReporters": [
           "230"
         ],
-        "generatedFrom": "Spain",
+        "originalPartners": [
+          "246",
+          "248"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58001,7 +58121,11 @@
         "originalReporters": [
           "230"
         ],
-        "generatedFrom": "Spain",
+        "originalPartners": [
+          "6063",
+          "6062",
+          "6064"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58023,7 +58147,9 @@
         "originalReporters": [
           "780"
         ],
-        "generatedFrom": "Sri Lanka (Ceylon)",
+        "originalPartners": [
+          "6514"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58045,7 +58171,9 @@
         "originalReporters": [
           "780"
         ],
-        "generatedFrom": "Sri Lanka (Ceylon)",
+        "originalPartners": [
+          "6514"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58067,7 +58195,12 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "246",
+          "248",
+          "280",
+          "257"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58089,7 +58222,9 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "1065"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58111,7 +58246,9 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "Moldavia & Wallachia"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58133,7 +58270,9 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58155,7 +58294,13 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "246",
+          "248",
+          "276",
+          "280",
+          "257"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58177,7 +58322,9 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "1065"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58199,7 +58346,9 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "Moldavia & Wallachia"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58221,11 +58370,37 @@
         "originalReporters": [
           "210"
         ],
-        "generatedFrom": "Netherlands",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "210->Java 2660516.887054662",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "210->restOfTheWorld",
+      "source": "210",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 29590.583677250906,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "210",
+        "originalReporters": [
+          "210"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "210->327 29590.583677250906",
         "status": "ok",
         "type": "trade"
       }
@@ -58243,7 +58418,9 @@
         "originalReporters": [
           "590"
         ],
-        "generatedFrom": "Mauritius",
+        "originalPartners": [
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58265,7 +58442,9 @@
         "originalReporters": [
           "590"
         ],
-        "generatedFrom": "Mauritius",
+        "originalPartners": [
+          "Pondicherry"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58287,7 +58466,9 @@
         "originalReporters": [
           "590"
         ],
-        "generatedFrom": "Mauritius",
+        "originalPartners": [
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58309,7 +58490,9 @@
         "originalReporters": [
           "590"
         ],
-        "generatedFrom": "Mauritius",
+        "originalPartners": [
+          "Pondicherry"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58331,7 +58514,9 @@
         "originalReporters": [
           "901"
         ],
-        "generatedFrom": "New South Wales",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58353,7 +58538,9 @@
         "originalReporters": [
           "901"
         ],
-        "generatedFrom": "New South Wales",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58375,7 +58562,11 @@
         "originalReporters": [
           "21"
         ],
-        "generatedFrom": "Newfoundland and Labrador (Newfoundland)",
+        "originalPartners": [
+          "Ontario (Upper Canada) & Quebec (Lower Canada)",
+          "1023",
+          "1022"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58397,7 +58588,11 @@
         "originalReporters": [
           "21"
         ],
-        "generatedFrom": "Newfoundland and Labrador (Newfoundland)",
+        "originalPartners": [
+          "Ontario (Upper Canada) & Quebec (Lower Canada)",
+          "1023",
+          "1022"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58419,7 +58614,9 @@
         "originalReporters": [
           "615"
         ],
-        "generatedFrom": "Algeria (Regency of Algiers)",
+        "originalPartners": [
+          "Russia (Black Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58441,7 +58638,9 @@
         "originalReporters": [
           "615"
         ],
-        "generatedFrom": "Algeria (Regency of Algiers)",
+        "originalPartners": [
+          "Russia (Black Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58463,7 +58662,9 @@
         "originalReporters": [
           "615"
         ],
-        "generatedFrom": "Algeria (Regency of Algiers)",
+        "originalPartners": [
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58485,7 +58686,9 @@
         "originalReporters": [
           "380"
         ],
-        "generatedFrom": "Sweden",
+        "originalPartners": [
+          "2555"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58507,7 +58710,9 @@
         "originalReporters": [
           "380"
         ],
-        "generatedFrom": "Sweden",
+        "originalPartners": [
+          "Hanse Towns & Mecklenburg Schwerin & Oldenburg"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58529,7 +58734,9 @@
         "originalReporters": [
           "380"
         ],
-        "generatedFrom": "Sweden",
+        "originalPartners": [
+          "2555"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58551,7 +58758,9 @@
         "originalReporters": [
           "380"
         ],
-        "generatedFrom": "Sweden",
+        "originalPartners": [
+          "Hanse Towns & Mecklenburg Schwerin & Oldenburg"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58573,7 +58782,9 @@
         "originalReporters": [
           "30"
         ],
-        "generatedFrom": "Bermuda",
+        "originalPartners": [
+          "53"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58595,7 +58806,9 @@
         "originalReporters": [
           "30"
         ],
-        "generatedFrom": "Bermuda",
+        "originalPartners": [
+          "Demerara"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58617,7 +58830,9 @@
         "originalReporters": [
           "30"
         ],
-        "generatedFrom": "Bermuda",
+        "originalPartners": [
+          "53"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58639,7 +58854,9 @@
         "originalReporters": [
           "30"
         ],
-        "generatedFrom": "Bermuda",
+        "originalPartners": [
+          "Demerara"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58661,11 +58878,37 @@
         "originalReporters": [
           "30"
         ],
-        "generatedFrom": "Bermuda",
+        "originalPartners": [
+          "St. Thomas"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "30<-St. Thomas 1000",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "211->restOfTheWorld",
+      "source": "211",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 941.0400000005627,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "211",
+        "originalReporters": [
+          "211"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "211->327 941.0400000005627",
         "status": "ok",
         "type": "trade"
       }
@@ -58683,7 +58926,9 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "Greece & Ionian Is."
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58705,7 +58950,9 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "Greece & Ionian Is."
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58727,7 +58974,9 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "Java & Sumatra"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58750,7 +58999,10 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "280",
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58773,7 +59025,10 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "280",
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58795,7 +59050,9 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "Archipelago & Turkey (Ottoman Empire)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58817,7 +59074,9 @@
         "originalReporters": [
           "211"
         ],
-        "generatedFrom": "Belgium",
+        "originalPartners": [
+          "Archipelago & Turkey (Ottoman Empire)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58839,7 +59098,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "St. Croix & St. Thomas"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58862,7 +59123,11 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "280",
+          "Kniphausen & Oldenburg",
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58884,7 +59149,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58906,7 +59173,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Portuguese Western Africa (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58928,11 +59197,37 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "413"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "200<-413 36905",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "200<-restOfTheWorld",
+      "source": "restOfTheWorld",
+      "target": "200",
+      "attributes": {
+        "value": 24974,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "200",
+        "originalReporters": [
+          "200"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "200<-327 24974",
         "status": "ok",
         "type": "trade"
       }
@@ -58950,7 +59245,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Croatia & Dalmatia & Illyria"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58972,7 +59269,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Moldavia & Wallachia"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -58994,7 +59293,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Morocco (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59016,7 +59317,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Madagascar (Malagasy Republic) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59038,7 +59341,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Gozo & Malta"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59060,7 +59365,10 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Mumbai (Bombay) & Sindh",
+          "Chennai (Madras)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59082,7 +59390,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "British Columbia & Vancouver"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59104,7 +59414,13 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Tortola & Virgin Gorda",
+          "1075",
+          "1076",
+          "58",
+          "59"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59126,7 +59442,13 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "56",
+          "57",
+          "53",
+          "55",
+          "1049"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59148,7 +59470,10 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Demerara",
+          "1114"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59170,7 +59495,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "St. Croix & St. Thomas"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59193,7 +59520,11 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "280",
+          "Kniphausen & Oldenburg",
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59215,7 +59546,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59237,11 +59570,37 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "413"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "200->413 19379",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "200->restOfTheWorld",
+      "source": "200",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 10764,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "200",
+        "originalReporters": [
+          "200"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "200->327 10764",
         "status": "ok",
         "type": "trade"
       }
@@ -59259,7 +59618,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Croatia & Dalmatia & Illyria"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59281,7 +59642,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Moldavia & Wallachia"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59303,7 +59666,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Morocco (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59325,7 +59690,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Madagascar (Malagasy Republic) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59347,7 +59714,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Gozo & Malta"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59369,7 +59738,10 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Mumbai (Bombay) & Sindh",
+          "Chennai (Madras)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59391,7 +59763,9 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "British Columbia & Vancouver"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59413,7 +59787,13 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Tortola & Virgin Gorda",
+          "1075",
+          "1076",
+          "58",
+          "59"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59435,7 +59815,13 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "56",
+          "57",
+          "53",
+          "55",
+          "1049"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59457,11 +59843,62 @@
         "originalReporters": [
           "200"
         ],
-        "generatedFrom": "United Kingdom",
+        "originalPartners": [
+          "Demerara",
+          "1114"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
         "notes": "200->Demerara 771401\n200->1114 75237",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "325<-restOfTheWorld",
+      "source": "restOfTheWorld",
+      "target": "325",
+      "attributes": {
+        "value": 245974.47813499926,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "325",
+        "originalReporters": [
+          "325"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "325<-327 245974.47813499926",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "325->restOfTheWorld",
+      "source": "325",
+      "target": "restOfTheWorld",
+      "attributes": {
+        "value": 703149.4362334298,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "325",
+        "originalReporters": [
+          "325"
+        ],
+        "originalPartners": [
+          "327"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "325->327 703149.4362334298",
         "status": "ok",
         "type": "trade"
       }
@@ -59479,7 +59916,9 @@
         "originalReporters": [
           "51"
         ],
-        "generatedFrom": "Jamaica",
+        "originalPartners": [
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59501,7 +59940,9 @@
         "originalReporters": [
           "51"
         ],
-        "generatedFrom": "Jamaica",
+        "originalPartners": [
+          "Hanse Towns"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59523,7 +59964,9 @@
         "originalReporters": [
           "220"
         ],
-        "generatedFrom": "France",
+        "originalPartners": [
+          "Colombia (New Granada) (Gran Colombia) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59545,7 +59988,9 @@
         "originalReporters": [
           "220"
         ],
-        "generatedFrom": "France",
+        "originalPartners": [
+          "Colombia (New Granada) (Gran Colombia) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59567,7 +60012,9 @@
         "originalReporters": [
           "220"
         ],
-        "generatedFrom": "France",
+        "originalPartners": [
+          "St. Thomas"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59589,7 +60036,9 @@
         "originalReporters": [
           "220"
         ],
-        "generatedFrom": "France",
+        "originalPartners": [
+          "St. Thomas"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59611,7 +60060,10 @@
         "originalReporters": [
           "2"
         ],
-        "generatedFrom": "United States of America",
+        "originalPartners": [
+          "246",
+          "248"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59633,7 +60085,10 @@
         "originalReporters": [
           "2"
         ],
-        "generatedFrom": "United States of America",
+        "originalPartners": [
+          "Russia (Baltic Sea) & Russia (White Sea)",
+          "Russia (Black Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59655,7 +60110,10 @@
         "originalReporters": [
           "2"
         ],
-        "generatedFrom": "United States of America",
+        "originalPartners": [
+          "246",
+          "248"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59677,7 +60135,10 @@
         "originalReporters": [
           "2"
         ],
-        "generatedFrom": "United States of America",
+        "originalPartners": [
+          "Russia (Baltic Sea) & Russia (White Sea)",
+          "Russia (Black Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59699,7 +60160,9 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "Finland & Russia (USSR)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59721,7 +60184,12 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "Germany (Zollverein) (Baltic Sea)",
+          "248",
+          "246",
+          "Germany (Zollverein) (North Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59743,7 +60211,11 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "2248",
+          "Altona",
+          "2247"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59765,7 +60237,9 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "Finland & Russia (USSR)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59787,7 +60261,12 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "Germany (Zollverein) (Baltic Sea)",
+          "248",
+          "246",
+          "Germany (Zollverein) (North Sea)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59809,7 +60288,11 @@
         "originalReporters": [
           "385"
         ],
-        "generatedFrom": "Norway",
+        "originalPartners": [
+          "2248",
+          "Altona",
+          "2247"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59832,7 +60315,10 @@
         "originalReporters": [
           "365"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "originalPartners": [
+          "Hanse Towns",
+          "Germany (Zollverein) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59855,7 +60341,10 @@
         "originalReporters": [
           "365"
         ],
-        "generatedFrom": "Russia (USSR)",
+        "originalPartners": [
+          "Hanse Towns",
+          "Germany (Zollverein) (other)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59877,7 +60366,9 @@
         "originalReporters": [
           "800"
         ],
-        "generatedFrom": "Thailand (Siam)",
+        "originalPartners": [
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59899,7 +60390,9 @@
         "originalReporters": [
           "800"
         ],
-        "generatedFrom": "Thailand (Siam)",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59921,7 +60414,9 @@
         "originalReporters": [
           "800"
         ],
-        "generatedFrom": "Thailand (Siam)",
+        "originalPartners": [
+          "830"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59943,7 +60438,9 @@
         "originalReporters": [
           "800"
         ],
-        "generatedFrom": "Thailand (Siam)",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59965,7 +60462,9 @@
         "originalReporters": [
           "800"
         ],
-        "generatedFrom": "Thailand (Siam)",
+        "originalPartners": [
+          "Ho Chi Minh City (Saigon)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -59987,7 +60486,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Singapore & Straits Settlements"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60009,7 +60510,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Singapore & Straits Settlements"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60031,7 +60534,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Russia and Siberia (Kiakhta)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60053,7 +60558,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Russia and Siberia (Kiakhta)"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60075,7 +60582,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60097,7 +60606,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "Java"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60119,7 +60630,9 @@
         "originalReporters": [
           "710"
         ],
-        "generatedFrom": "People's Republic of China (China)",
+        "originalPartners": [
+          "6514"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60141,7 +60654,9 @@
         "originalReporters": [
           "235"
         ],
-        "generatedFrom": "Portugal",
+        "originalPartners": [
+          "North German Confederation"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
@@ -60163,7 +60678,9 @@
         "originalReporters": [
           "235"
         ],
-        "generatedFrom": "Portugal",
+        "originalPartners": [
+          "North German Confederation"
+        ],
         "labels": [
           "GENERATED_TRADE"
         ],
