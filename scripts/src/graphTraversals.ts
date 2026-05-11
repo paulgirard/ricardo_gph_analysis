@@ -127,6 +127,7 @@ export function generateTradeFlow(
     if (graph.hasEdge(idEdge)) {
       const eAtts = graph.getEdgeAttributes(idEdge);
       const labels = graph.getEdgeAttribute(idEdge, "labels");
+      const originalReporter = graph.getEdgeAttribute(originalFlow, `reportedBy`);
 
       if (labels.has("GENERATED_TRADE")) {
         // update value by summing
@@ -134,24 +135,22 @@ export function generateTradeFlow(
         // add original reporters
         graph.updateEdgeAttribute(
           idEdge,
-          `originalReporters`,
-          (v) => new Set([...(v || []), graph.getEdgeAttribute(originalFlow, `reportedBy`)].filter(identity)),
+          "originalReporters",
+          (v) => new Set([...(v || []), originalReporter].filter(identity)),
         );
-
-        graph.updateEdgeAttribute(idEdge, `generatedFrom`, (generatedFrom) =>
-          sortBy(
-            Array.from(
-              new Set(
-                [
-                  ...(generatedFrom ? generatedFrom.split("|") : []),
-                  graph.getNodeAttribute(
-                    valueReportedBy === "exporter" ? graph.source(originalFlow) : graph.target(originalFlow),
-                    "label",
-                  ),
-                ].filter(identity),
-              ),
+        // add original partners
+        graph.updateEdgeAttribute(
+          idEdge,
+          "originalPartners",
+          (v) =>
+            new Set(
+              [
+                ...(v || []),
+                graph.source(originalFlow) === originalReporter
+                  ? graph.target(originalFlow)
+                  : graph.source(originalFlow),
+              ].filter(identity),
             ),
-          ).join("|"),
         );
 
         graph.updateEdgeAttribute(idEdge, "valueGeneratedBy", (v) => sortBy(uniq([...(v || []), generatedByMethod])));
@@ -198,10 +197,9 @@ export function generateTradeFlow(
         valueGeneratedBy: [generatedByMethod],
         reportedBy: valueReportedBy === "exporter" ? newExporter : newImporter,
         originalReporters: new Set([graph.getEdgeAttribute(originalFlow, `reportedBy`)]),
-        generatedFrom: graph.getNodeAttribute(
-          valueReportedBy === "exporter" ? graph.source(originalFlow) : graph.target(originalFlow),
-          "label",
-        ),
+        originalPartners: new Set([
+          valueReportedBy === "exporter" ? graph.target(originalFlow) : graph.source(originalFlow),
+        ]),
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(originalFlow, newValue, graph),
         status: "ok",

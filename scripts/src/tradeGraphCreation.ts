@@ -5,7 +5,13 @@ import { DB } from "./DB";
 import { GPHEntitiesByCode, GPHEntity, GPH_informal_parts, GPH_status, autonomousGPHEntity } from "./GPH";
 import { colonialAreasToGeographicalArea, geographicalAreasMembers } from "./areas";
 import { findBilateralRatios } from "./bilateralRatios";
-import { generateTradeFlow, resolutionOrigins, resolveAutonomous, tradingPartners } from "./graphTraversals";
+import {
+  generateTradeFlow,
+  propagateReporting,
+  resolutionOrigins,
+  resolveAutonomous,
+  tradingPartners,
+} from "./graphTraversals";
 import {
   EdgeLabelType,
   EntityNodeAttributes,
@@ -610,12 +616,13 @@ export function treatReporters(graph: GraphType) {
                     valueToSplit:
                       (attributes?.valueToSplit || 0) + (edgeToTreatAtts.valueToSplit || edgeToTreatAtts.value || 0),
                     value: (attributes?.value || 0) + (edgeToTreatAtts.value || 0),
-                    originalReportedTradeFlowId: [attributes?.originalReportedTradeFlowId, edgeToTreat]
+                    originalReportedTradeFlowIds: [attributes?.originalReportedTradeFlowIds, edgeToTreat]
                       .filter(identity)
                       .join("|"),
                     status: "split_failed_no_ratio",
                     reportedBy: uniq(sortBy([attributes?.reportedBy, autonomousReporter].filter(identity))).join("|"),
                     originalReporters: new Set([...(attributes?.originalReporters || []), badReporter]),
+                    originalPartners: new Set([...(attributes?.originalPartners || []), originalPartner]),
                     notes: [
                       attributes?.notes,
                       `From a flow part-of reporter ${badReporter} to/from area ${originalPartner}`,
@@ -910,4 +917,69 @@ export function resolveEntityTransform(
       });
   }
   return graph as GraphType;
+}
+
+function partialAggregations(
+  edgeId: string,
+  graph: GraphType,
+  aggregatedEntity: string,
+  aggregatedPartOfEntities: Set<string>,
+) {
+  const partOfEntities = new Set(
+    graph
+      .filterEdges((_, atts, __, aggregateDestination) => {
+        return (
+          atts.type === "resolution" && aggregateDestination === aggregatedEntity && atts.labels.has("AGGREGATE_INTO")
+        );
+      })
+      .map((e) => graph.source(e)),
+  );
+  if (partOfEntities.size > 0) {
+    if (aggregatedPartOfEntities.size > 0 && aggregatedPartOfEntities.size !== partOfEntities.size) {
+      // partial issue report
+      const missingAggregations = partOfEntities.difference(aggregatedPartOfEntities);
+      const unexpectedAggregations = aggregatedPartOfEntities.difference(partOfEntities);
+      (graph as GraphEntityPartiteType).setEdgeAttribute(
+        edgeId,
+        "partial",
+        `${missingAggregations.size > 0 ? `missing ${[...missingAggregations].join("|")}` : ""}${unexpectedAggregations.size > 0 ? ` unexpected: ${[...unexpectedAggregations].join("|")}` : ""}`,
+      );
+    }
+  }
+  // not an aggregated entity, nothing to do
+}
+
+/**
+ * flagPartialAggregations: flag aggregations which covers only a partial set of "toBeAggregated" entities
+ * @param graph
+ */
+export function flagPartialAggregations(graph: GraphType) {
+  (graph as GraphEntityPartiteType).forEachEdge((e, atts, source, target) => {
+    // flag incomplete aggregations
+    if (atts.type === "trade" && atts.labels.has("GENERATED_TRADE") && atts.valueGeneratedBy?.includes("aggregation")) {
+      const reporter = atts.reportedBy;
+      const partner = atts.reportedBy === source ? target : source;
+
+      // test aggregation on reporter side
+      if (atts.originalReporters && (atts.originalReporters.size > 1 || !atts.originalReporters.has(reporter))) {
+        partialAggregations(e, graph, reporter, atts.originalReporters);
+      }
+      // test aggregation on partner side
+      if (atts.originalPartners && (atts.originalPartners.size > 1 || !atts.originalPartners.has(partner))) {
+        partialAggregations(e, graph, partner, atts.originalPartners);
+      }
+    }
+  });
+}
+/**
+ * flagReporters: propagate reporting boolean flag to resulting entities from aggregated or splitted reporters
+ * @param graph
+ */
+export function flagReporters(graph: GraphType) {
+  graph
+    .filterNodes((_, atts) => atts.reporting)
+    .forEach((n) => {
+      propagateReporting(graph as GraphEntityPartiteType, n, "AGGREGATE_INTO");
+      propagateReporting(graph as GraphEntityPartiteType, n, "SPLIT");
+    });
 }

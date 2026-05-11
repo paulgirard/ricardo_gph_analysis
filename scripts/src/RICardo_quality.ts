@@ -28,7 +28,7 @@ interface FlowDataPoint {
   valueToSplit?: number;
   newReporters?: string;
   newPartners?: string;
-  originalReportedTradeFlowId?: string;
+  originalReportedTradeFlowIds?: string;
 }
 
 interface ComputedData {
@@ -166,7 +166,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         valueToSplit: edgeAtts.valueToSplit,
         newPartners: edgeAtts.newPartners,
         newReporters: edgeAtts.newReporter,
-        originalReportedTradeFlowId: edgeAtts.originalReportedTradeFlowId,
+        originalReportedTradeFlowIds: edgeAtts.originalReportedTradeFlowIds,
       });
     }
   });
@@ -246,7 +246,7 @@ async function graphsQuality(graphSerialization: GraphSerializationType = "ratio
       "valueToSplit",
       "newReporters",
       "newPartners",
-      "originalReportedTradeFlowId",
+      "originalReportedTradeFlowIds",
 
       "status",
       "notes",

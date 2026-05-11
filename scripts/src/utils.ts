@@ -20,6 +20,7 @@ import {
   GraphType,
   RICentity,
   TradeVizEdgeAttribute,
+  attributesStoredAsSets,
 } from "./types";
 
 /**
@@ -100,13 +101,9 @@ export async function getTradeGraphsByYear(
 
           graph.import(
             JSON.parse((await readFile(graphFile(year))).toString(), (key, value) =>
-              key === "labels" ? new Set(value) : value,
+              attributesStoredAsSets.includes(key) ? new Set(value) : value,
             ),
           );
-
-          graph.edges().forEach((e) => {
-            graph.updateEdgeAttribute(e, "labels", (l) => new Set(Array.from(l)));
-          });
 
           return [year, graph] as [number, GraphType];
         }),

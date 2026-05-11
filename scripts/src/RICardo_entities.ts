@@ -5,11 +5,12 @@ import { groupBy, keyBy, range } from "lodash";
 
 import { GPHEntities } from "./GPH";
 import conf from "./configuration.json";
-import { propagateReporting } from "./graphTraversals";
 import {
   aggregateIntoAutonomousEntities,
   flagAutonomousCited,
   flagFlowsToTreat,
+  flagPartialAggregations,
+  flagReporters,
   resolveEntityTransform,
   resolveOneToOneEntityTransform,
   ricEntityToGPHEntity,
@@ -104,42 +105,10 @@ const applyRatioMethod = async (
 
       console.log(`writing gexf for ${year}`);
       // flag partial aggregations
-      (new_graph as GraphEntityPartiteType).forEachEdge((e, atts) => {
-        // flag incomplete aggregations
-        if (
-          atts.type === "trade" &&
-          atts.labels.has("GENERATED_TRADE") &&
-          atts.valueGeneratedBy?.includes("aggregation")
-        ) {
-          const reporter = atts.reportedBy;
-          const aggregatedPartners = atts.generatedFrom?.split("|") || [];
-          const partnersToAggregate = new_graph
-            .filterEdges((_, atts, __, aggregateDestination) => {
-              return (
-                atts.type === "resolution" && aggregateDestination === reporter && atts.labels.has("AGGREGATE_INTO")
-              );
-            })
-            .map((e) => new_graph.getNodeAttribute(new_graph.source(e), "label"));
-          if (aggregatedPartners.length > 0 && aggregatedPartners.length !== partnersToAggregate.length) {
-            // partial issue report
-            const missingAggregations = partnersToAggregate.filter((ita) => !aggregatedPartners.includes(ita));
-            const unexpectedAggregations = aggregatedPartners.filter((ita) => !partnersToAggregate.includes(ita));
-            (new_graph as GraphEntityPartiteType).setEdgeAttribute(
-              e,
-              "partial",
-              `${missingAggregations.length > 1 ? `missing ${missingAggregations.join("|")}` : ""}${unexpectedAggregations.length > 1 ? ` unexpected: ${unexpectedAggregations.join("|")}` : ""}`,
-            );
-          }
-        }
-      });
+      flagPartialAggregations(new_graph);
 
       // flag reporters created by aggregations/split
-      new_graph
-        .filterNodes((_, atts) => atts.reporting)
-        .forEach((n) => {
-          propagateReporting(new_graph as GraphEntityPartiteType, n, "AGGREGATE_INTO");
-          propagateReporting(new_graph as GraphEntityPartiteType, n, "SPLIT");
-        });
+      flagReporters(new_graph);
 
       // export graph in graphology
       writeFileSync(
