@@ -74,15 +74,14 @@ encode exporterLabel, gen(exporter_lbl)
 
 generate CafFob="FromUnknown"
 replace CafFob="FromImporter" if reportedBy==importerId 
-
 replace CafFob="FromExporter" if reportedBy==exporterId 
-
+assert CafFob!=""
 tab CafFob
 
-gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
+/*gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
 replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLabel
 assert reportedByIX!=""
-
+*/
 tab status, missing
 count if status !="ok"
 gen totreat_flows=r(N)
@@ -278,25 +277,25 @@ destring newimporterId newexporterId, replace
 
 /// New method : we split first Partners and Reporters
 split newPartners, parse("|") gen(newPartnerId)
-reshape long newPartnerId, i(id reportedByIX newReporters) j(partner_no)
+reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
 drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
 
 capture assert missing(newReporters)
 	if _rc==1 {
 		split newReporters,parse ("|") gen(newReportersId)
-		reshape long newReportersId, i(id partner_no reportedByIX ) j(reporter_no)
+		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
 		drop if newReportersId=="" & reporter_no !=1
 	}
 
 
 
-gen newimporterId=newPartnerId if reportedByIX=="X" 
+gen newimporterId=newPartnerId if CafFob=="FromExporter" 
 capture assert missing(newReporters)
-if _rc==1 replace newimporterId=newReportersId if reportedByIX=="I"
+if _rc==1 replace newimporterId=newReportersId if CafFob=="FromImporter"
 
-gen newexporterId=newPartnerId if reportedByIX=="I"
+gen newexporterId=newPartnerId if CafFob=="FromImporter"
 capture assert missing(newReporters)
-if _rc==1  replace newexporterId=newReportersId if reportedByIX=="X" 
+if _rc==1  replace newexporterId=newReportersId if CafFob=="FromExporter"  
 
 ///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
 destring(importerId), gen(blif) force
@@ -386,36 +385,58 @@ rename GPH_name newexporterLabel
 
 ////exportation des résultats
 keep if status=="ok thanks to gravity"
-keep id year reportedByIX  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows
-order year id importerLabel exporterLabel reportedByIX  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade 
+keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows
+order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade 
 
 sort id pred_trade newimporterId newexporterId 
 format value pred_trade %20.0fc
 
-codebook id
-levelsof id
-generate treated_flows=r(r)
 
-export delimited using "results/gravity_`year'_`CafFob'.csv", replace 
+
+save "results/gravity_`year'_`CafFob'.dta", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 end
 
+capture program drop gravity_cleanup
+program define gravity_cleanup
+	args year
+
+use "results/gravity_`year'_FromImporter.dta", clear
+append using "results/gravity_`year'_FromExporter.dta"
+
+gen full_id=id+CafFob
+
+codebook full_id
+levelsof full_id
+generate treated_flows=r(r)
+order year id full_id
+export delimited using "results/gravity_`year'.csv", replace 
+
+erase "results/gravity_`year'_FromImporter.dta"
+erase "results/gravity_`year'_FromExporter.dta"
+
+erase  tradeFlows_`year'_temp.dta
+erase  tradeFlows_`year'ok_temp.dta
+erase GeoPolHist_dependency_`year'.dta
+
+end
+
+
+
+
 trade_importation 1833
 gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
-erase tradeFlows_1833_temp.dta
-erase tradeFlows_1833ok_temp.dta
-erase GeoPolHist_dependency_1833.dta
+gravity_cleanup 1833
+
 
 
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
-	erase  tradeFlows_`year'_temp.dta
-	erase  tradeFlows_`year'ok_temp.dta
-	erase GeoPolHist_dependency_`year'.dta
+	gravity_cleanup `year'
 }
 
 erase GeoPolHist_entities_temp.dta
