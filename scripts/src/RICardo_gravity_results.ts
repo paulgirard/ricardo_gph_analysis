@@ -1,9 +1,9 @@
 import { parse } from "csv-parse/sync";
 import { readFile, writeFile } from "fs/promises";
-import { groupBy, toPairs, values } from "lodash";
+import { groupBy, identity, sortBy, toPairs, uniq, values } from "lodash";
 
 import { aggregatedFlowNote } from "./graphTraversals";
-import { tradeEdgeKey } from "./tradeGraphCreation";
+import { flagPartialAggregations, flagReporters, tradeEdgeKey } from "./tradeGraphCreation";
 import { GraphEntityPartiteType } from "./types";
 import { exportGephLiteFile, getTradeGraphsByYear, setReplacer } from "./utils";
 
@@ -56,8 +56,8 @@ async function readGravityResults() {
         ).forEach(([originalFlowId, grs]) => {
           // for each group of rows having the same id
 
-          // add status to original flow :
-          (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "status", "ignore_resolved");
+          const originalFlowAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(originalFlowId);
+          const mergedIn: string[] = [];
 
           grs.forEach((gr) => {
             // insert the new trade flows with
@@ -65,32 +65,74 @@ async function readGravityResults() {
             const partner = gr.CafFob === "FromExporter" ? gr.newimporterId : gr.newexporterId;
             const expimp = gr.CafFob === "FromExporter" ? "Exp" : "Imp";
             const newFlowId = tradeEdgeKey(reporter, partner, expimp);
-            //console.log({ reporter, partner, expimp, newFlowId, ...gr });
+
             if (graph.hasEdge(newFlowId)) {
-              if ((graph as GraphEntityPartiteType).getEdgeAttribute(newFlowId, "status") === "to_impute")
-                graph.dropEdge(newFlowId);
-              else {
-                console.log(
-                  `${year} duplicated edge with gravity ${newFlowId} ${(graph as GraphEntityPartiteType).getEdgeAttribute(newFlowId, "status")}`,
+              const existingEdgeAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(newFlowId);
+              // a gravity imputed flow can collide with an existing flow when a part reporter trade with an area or a group
+              // which contains one partner which has reported trade with another part-of reporter of the same aggregated reporter
+              if (
+                existingEdgeAtts.labels.has("GENERATED_TRADE") &&
+                existingEdgeAtts.valueGeneratedBy?.includes("aggregation")
+              ) {
+                // merge as an aggregation
+                (graph as GraphEntityPartiteType).mergeDirectedEdgeWithKey(
+                  newFlowId,
+                  gr.newexporterId,
+                  gr.newimporterId,
+                  {
+                    value: (existingEdgeAtts.value || 0) + gr.pred_trade,
+                    status: "ok",
+                    originalReporters: new Set([
+                      ...(existingEdgeAtts.originalReporters || []),
+                      ...(originalFlowAtts.originalReporters || []),
+                    ]),
+                    originalPartners: new Set([
+                      ...(existingEdgeAtts.originalPartners || []),
+                      ...(originalFlowAtts.originalPartners || []),
+                    ]),
+                    valueGeneratedBy: uniq(sortBy([...existingEdgeAtts.valueGeneratedBy, "split_by_gravity"])),
+                    originalReportedTradeFlowIds: [existingEdgeAtts.originalReportedTradeFlowIds, originalFlowId]
+                      .filter(identity)
+                      .join("|"),
+                    notes: [
+                      existingEdgeAtts.notes,
+                      aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
+                    ].join("\n"),
+                  },
                 );
+              } else {
+                console.log(`${year} duplicated edge with gravity ${newFlowId} ${JSON.stringify(existingEdgeAtts)}`);
                 return;
               }
+            } else {
+              graph.addEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
+                type: "trade",
+                labels: new Set(["GENERATED_TRADE"]),
+                reportedBy: reporter,
+                originalReporters: originalFlowAtts.originalReporters,
+                originalPartners: originalFlowAtts.originalPartners,
+                status: "ok",
+                value: gr.pred_trade,
+                valueGeneratedBy: ["split_by_gravity"],
+                originalReportedTradeFlowIds: originalFlowId,
+                notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
+              });
             }
-            graph.addEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
-              type: "trade",
-              labels: new Set(["GENERATED_TRADE"]),
-              reportedBy: reporter,
-              status: "ok",
-              value: gr.pred_trade,
-              valueGeneratedBy: ["split_by_gravity"],
-              originalReportedTradeFlowId: originalFlowId,
-              notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
-            });
+            mergedIn.push(newFlowId);
           });
+
+          // add status to original flow :
+          (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "status", "ignore_resolved");
+          (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "mergedIn", mergedIn);
         });
         console.log(`${year}-${fileSuffix} done`);
       }),
     );
+    // flag partial aggregations
+    flagPartialAggregations(graph);
+    // flag reporters created by aggregations/split
+    flagReporters(graph);
+
     console.log(`${year} writing JSON`);
     // export graph in graphology
     await writeFile(
@@ -103,7 +145,9 @@ async function readGravityResults() {
 
     console.log(`${year} done`);
   });
-  await Promise.all(tasks);
+  const r = await Promise.allSettled(tasks);
+  const errors = r.filter((r) => r.status === "rejected");
+  if (errors.length > 0) console.log(errors);
 }
 
 readGravityResults()
