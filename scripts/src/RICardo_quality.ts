@@ -165,7 +165,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         // to impute special fields
         valueToSplit: edgeAtts.valueToSplit,
         newPartners: edgeAtts.newPartners,
-        newReporters: edgeAtts.newReporter,
+        newReporters: edgeAtts.newReporters,
         originalReportedTradeFlowIds: edgeAtts.originalReportedTradeFlowIds,
       });
     }

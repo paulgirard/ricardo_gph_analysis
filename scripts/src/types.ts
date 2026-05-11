@@ -74,7 +74,7 @@ export interface TradeEdgeAttributes {
   notes?: string;
   mergedIn?: string[];
   valueToSplit?: number;
-  newReporter?: string;
+  newReporters?: string;
   newPartners?: string;
   originalReportedTradeFlowIds?: string;
   type: "trade";

@@ -652,7 +652,7 @@ export function treatReporters(graph: GraphType) {
           (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "split_failed_error");
           (graph as GraphEntityPartiteType).setEdgeAttribute(
             edgeToTreat,
-            "newReporter",
+            "newReporters",
             autonomousReporters.autonomousIds.join("|"),
           );
         });
@@ -869,7 +869,7 @@ export function resolveEntityTransform(
                 "valueToSplit",
                 (edgeToTreatAtts.value || 0) * (1 - solvedRatio),
               );
-              //(graph as GraphEntityPartiteType).setEdgeAttribute(e, "newReporter", reporterId);
+
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "newPartners", failed.map((f) => f[0]).join("|"));
 
               if (solved.length === 0)
