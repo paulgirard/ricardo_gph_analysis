@@ -613,6 +613,7 @@ export function treatReporters(graph: GraphType) {
                     originalReportedTradeFlowId: [attributes?.originalReportedTradeFlowId, edgeToTreat]
                       .filter(identity)
                       .join("|"),
+                    status: "split_failed_no_ratio",
                     reportedBy: uniq(sortBy([attributes?.reportedBy, autonomousReporter].filter(identity))).join("|"),
                     originalReporters: new Set([...(attributes?.originalReporters || []), badReporter]),
                     notes: [
