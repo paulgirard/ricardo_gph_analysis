@@ -10,10 +10,9 @@ import { exportGephLiteFile, getTradeGraphsByYear, setReplacer } from "./utils";
 interface GravityResultsType {
   year: number;
   id: string;
+  full_id: string;
   importerLabel: string;
   exporterLabel: string;
-  importerReporting: string;
-  exporterReporting: string;
   CafFob: "FromExporter" | "FromImporter";
   newimporterId: string;
   newimporterLabel: string;
@@ -30,104 +29,97 @@ async function readGravityResults() {
     const year = graph.getAttribute("year");
     console.log(`Start ${year}...`);
     // read gravity results
-    await Promise.all(
-      ["FromExporter", "FromImporter"].map(async (fileSuffix) => {
-        console.log(`${year}-${fileSuffix}...`);
-        const csvString = await readFile(`../results/gravity_${year}_${fileSuffix}.csv`);
-        const gravityRows = parse<GravityResultsType>(csvString, {
-          columns: true,
-          cast: (v, ctx) => {
-            switch (ctx.column) {
-              case "year":
-              case "valueToSplit":
-              case "pred_trade":
-                return v ? parseInt(v) : undefined;
-              default:
-                return v;
-            }
-          },
-        });
 
-        toPairs(
-          groupBy(
-            gravityRows.filter((gr) => gr.newexporterId !== gr.newimporterId),
-            (gr) => gr.id,
-          ),
-        ).forEach(([originalFlowId, grs]) => {
-          // for each group of rows having the same id
+    console.log(`${year}...`);
+    const csvString = await readFile(`../results/gravity_${year}.csv`);
+    const gravityRows = parse<GravityResultsType>(csvString, {
+      columns: true,
+      cast: (v, ctx) => {
+        switch (ctx.column) {
+          case "year":
+          case "valueToSplit":
+          case "pred_trade":
+            return v ? parseInt(v) : undefined;
+          default:
+            return v;
+        }
+      },
+    });
 
-          const originalFlowAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(originalFlowId);
-          const mergedIn: string[] = [];
+    toPairs(
+      groupBy(
+        gravityRows.filter((gr) => gr.newexporterId !== gr.newimporterId),
+        (gr) => gr.id,
+      ),
+    ).forEach(([originalFlowId, grs]) => {
+      // for each group of rows having the same id
 
-          grs.forEach((gr) => {
-            // insert the new trade flows with
-            const reporter = gr.CafFob === "FromImporter" ? gr.newimporterId : gr.newexporterId;
-            const partner = gr.CafFob === "FromExporter" ? gr.newimporterId : gr.newexporterId;
-            const expimp = gr.CafFob === "FromExporter" ? "Exp" : "Imp";
-            const newFlowId = tradeEdgeKey(reporter, partner, expimp);
+      const originalFlowAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(originalFlowId);
+      const mergedIn: string[] = [];
 
-            if (graph.hasEdge(newFlowId)) {
-              const existingEdgeAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(newFlowId);
-              // a gravity imputed flow can collide with an existing flow when a part reporter trade with an area or a group
-              // which contains one partner which has reported trade with another part-of reporter of the same aggregated reporter
-              if (
-                existingEdgeAtts.labels.has("GENERATED_TRADE") &&
-                existingEdgeAtts.valueGeneratedBy?.includes("aggregation")
-              ) {
-                // merge as an aggregation
-                (graph as GraphEntityPartiteType).mergeDirectedEdgeWithKey(
-                  newFlowId,
-                  gr.newexporterId,
-                  gr.newimporterId,
-                  {
-                    value: (existingEdgeAtts.value || 0) + gr.pred_trade,
-                    status: "ok",
-                    originalReporters: new Set([
-                      ...(existingEdgeAtts.originalReporters || []),
-                      ...(originalFlowAtts.originalReporters || []),
-                    ]),
-                    originalPartners: new Set([
-                      ...(existingEdgeAtts.originalPartners || []),
-                      ...(originalFlowAtts.originalPartners || []),
-                    ]),
-                    valueGeneratedBy: uniq(sortBy([...existingEdgeAtts.valueGeneratedBy, "split_by_gravity"])),
-                    originalReportedTradeFlowIds: [existingEdgeAtts.originalReportedTradeFlowIds, originalFlowId]
-                      .filter(identity)
-                      .join("|"),
-                    notes: [
-                      existingEdgeAtts.notes,
-                      aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
-                    ].join("\n"),
-                  },
-                );
-              } else {
-                console.log(`${year} duplicated edge with gravity ${newFlowId} ${JSON.stringify(existingEdgeAtts)}`);
-                return;
-              }
-            } else {
-              graph.addEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
-                type: "trade",
-                labels: new Set(["GENERATED_TRADE"]),
-                reportedBy: reporter,
-                originalReporters: originalFlowAtts.originalReporters,
-                originalPartners: originalFlowAtts.originalPartners,
-                status: "ok",
-                value: gr.pred_trade,
-                valueGeneratedBy: ["split_by_gravity"],
-                originalReportedTradeFlowIds: originalFlowId,
-                notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
-              });
-            }
-            mergedIn.push(newFlowId);
+      grs.forEach((gr) => {
+        // insert the new trade flows with
+        const reporter = gr.CafFob === "FromImporter" ? gr.newimporterId : gr.newexporterId;
+        const partner = gr.CafFob === "FromExporter" ? gr.newimporterId : gr.newexporterId;
+        const expimp = gr.CafFob === "FromExporter" ? "Exp" : "Imp";
+        const newFlowId = tradeEdgeKey(reporter, partner, expimp);
+
+        if (graph.hasEdge(newFlowId)) {
+          const existingEdgeAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(newFlowId);
+          // a gravity imputed flow can collide with an existing flow when a part reporter trade with an area or a group
+          // which contains one partner which has reported trade with another part-of reporter of the same aggregated reporter
+          if (
+            existingEdgeAtts.labels.has("GENERATED_TRADE") &&
+            existingEdgeAtts.valueGeneratedBy?.includes("aggregation")
+          ) {
+            // merge as an aggregation
+            (graph as GraphEntityPartiteType).mergeDirectedEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
+              value: (existingEdgeAtts.value || 0) + gr.pred_trade,
+              status: "ok",
+              originalReporters: new Set([
+                ...(existingEdgeAtts.originalReporters || []),
+                ...(originalFlowAtts.originalReporters || []),
+              ]),
+              originalPartners: new Set([
+                ...(existingEdgeAtts.originalPartners || []),
+                ...(originalFlowAtts.originalPartners || []),
+              ]),
+              valueGeneratedBy: uniq(sortBy([...existingEdgeAtts.valueGeneratedBy, "split_by_gravity"])),
+              originalReportedTradeFlowIds: [existingEdgeAtts.originalReportedTradeFlowIds, originalFlowId]
+                .filter(identity)
+                .join("|"),
+              notes: [
+                existingEdgeAtts.notes,
+                aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
+              ].join("\n"),
+            });
+          } else {
+            console.log(`${year} duplicated edge with gravity ${newFlowId} ${JSON.stringify(existingEdgeAtts)}`);
+            return;
+          }
+        } else {
+          graph.addEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
+            type: "trade",
+            labels: new Set(["GENERATED_TRADE"]),
+            reportedBy: reporter,
+            originalReporters: originalFlowAtts.originalReporters,
+            originalPartners: originalFlowAtts.originalPartners,
+            status: "ok",
+            value: gr.pred_trade,
+            valueGeneratedBy: ["split_by_gravity"],
+            originalReportedTradeFlowIds: originalFlowId,
+            notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
           });
+        }
+        mergedIn.push(newFlowId);
+      });
 
-          // add status to original flow :
-          (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "status", "ignore_resolved");
-          (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "mergedIn", mergedIn);
-        });
-        console.log(`${year}-${fileSuffix} done`);
-      }),
-    );
+      // add status to original flow :
+      (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "status", "ignore_resolved");
+      (graph as GraphEntityPartiteType).setEdgeAttribute(originalFlowId, "mergedIn", mergedIn);
+    });
+    console.log(`${year} done`);
+
     // flag partial aggregations
     flagPartialAggregations(graph);
     // flag reporters created by aggregations/split
