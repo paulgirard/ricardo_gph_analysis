@@ -649,7 +649,7 @@ export function treatReporters(graph: GraphType) {
         // multiple reporters destination we can't treat those cases if areas but could work for straight flows in ratio
 
         allreportedFlows.forEach((edgeToTreat) => {
-          (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "split_failed_error");
+          (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "split_failed_no_ratio");
           (graph as GraphEntityPartiteType).setEdgeAttribute(
             edgeToTreat,
             "newReporters",
