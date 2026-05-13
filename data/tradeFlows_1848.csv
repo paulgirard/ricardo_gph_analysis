@@ -1,4 +1,4 @@
-id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterType,value,reportedBy,partial,valueToSplit,newReporters,newPartners,originalReportedTradeFlowId,status,notes
+id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterType,value,reportedBy,partial,valueToSplit,newReporters,newPartners,originalReportedTradeFlowIds,status,notes
 58<-200,1848,58,Antigua and Barbuda (Antigua),GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,73471,58,,,,,,ignore_resolved,
 58<-British West Indies,1848,58,Antigua and Barbuda (Antigua),GPH,British West Indies,British West Indies,RIC,48158,58,,48158,,30|31|51|54|1032|1048|1055|1063,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 58<-British Northern America,1848,58,Antigua and Barbuda (Antigua),GPH,British Northern America,British Northern America,RIC,10735,58,,10735,,20|21|1022|1023|1024,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
@@ -1217,91 +1217,91 @@ Java & Madura<-Dutch government,1848,Java & Madura,Java & Madura,RIC,Dutch gover
 451->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,451,Sierra Leone,GPH-AUTONOMOUS-CITED,51160,451,,,,,,ok,
 451->British Colonies (other),1848,British Colonies (other),British Colonies (other),RIC,451,Sierra Leone,GPH-AUTONOMOUS-CITED,4933,451,,4933,,30|31|51|54|110|231|338|420|452|561|564|590|720|750|780|901|902|903|906|920|1032|1048|1055|1063|1163|2249|4044|4050|4383|7501|8231|9004|9620,,split_failed_no_ratio,
 451->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,451,Sierra Leone,GPH-AUTONOMOUS-CITED,26444,451,,,,,,ok,
-248<-750,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,36787.711552612214,248,,,,,,ok,248<-830 36787.711552612214
+248<-750,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,36787.711552612214,248,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|8271|8272,,,,,ok,248<-830 36787.711552612214
 248<-246,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,79140.1766004415,248,,,,,,ok,248<-Bremen (Weser) 79140.1766004415
-248<-2248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,2248,Holstein,GPH-AUTONOMOUS-CITED,942307.8277185444,248,,,,,,ok,"248<-Altona 935401.0301692421
+248<-2248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,2248,Holstein,GPH-AUTONOMOUS-CITED,942307.8277185444,248, unexpected: Denmark & Holstein & Schleswig,,,,,ok,"248<-Altona 935401.0301692421
 248<-Denmark & Holstein & Schleswig 6906.797549302376 (ratio on 7047.093451066961)"
-248->750,1848,750,India,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,28463.5761589404,248,,,,,,ok,248->830 28463.5761589404
+248->750,1848,750,India,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,28463.5761589404,248,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|8271|8272,,,,,ok,248->830 28463.5761589404
 248->246,1848,246,Bremen,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,64062.54598969831,248,,,,,,ok,248->Bremen (Weser) 64062.54598969831
-248->300,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,1856.5121412803533,248,,,,,,ok,248->326 1856.5121412803533
-248->2248,1848,2248,Holstein,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,1579118.3006743558,248,,,,,,ok,"248->Altona 1561037.527593819
+248->300,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,1856.5121412803533,248,missing 3343|2903,,,,,ok,248->326 1856.5121412803533
+248->2248,1848,2248,Holstein,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,1579118.3006743558,248, unexpected: Denmark & Holstein & Schleswig,,,,,ok,"248->Altona 1561037.527593819
 248->Denmark & Holstein & Schleswig 18080.773080536965 (ratio on 18208.97718910964)"
 155->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,45349.827804966466,155,,,,,,ok,155->1014 45349.827804966466
-155->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,458.2200471270618,155,,,,,,ok,155->Sardinia 458.2200471270618
-155<-324,1848,155,Chile,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,8946.166394779772,155,,,,,,ok,155<-Sardinia 8946.166394779772
-750->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,12010,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,750->Jakarta (Batavia) & Java & Sumatra 12010
-750<-850,1848,750,India,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,3739,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,750<-Jakarta (Batavia) & Java & Sumatra 3739
-750->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,750,India,GPH-AUTONOMOUS-CITED,2672.798672658986,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,"750->Makran & Sonmiani 1488
+155->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,458.2200471270618,155,missing Piedmont|Genoa,,,,,ok,155->Sardinia 458.2200471270618
+155<-324,1848,155,Chile,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,8946.166394779772,155,missing Piedmont|Genoa,,,,,ok,155<-Sardinia 8946.166394779772
+750->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,12010,750,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Jakarta (Batavia) & Java & Sumatra,,,,,ok,750->Jakarta (Batavia) & Java & Sumatra 12010
+750<-850,1848,750,India,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,3739,750,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Jakarta (Batavia) & Java & Sumatra,,,,,ok,750<-Jakarta (Batavia) & Java & Sumatra 3739
+750->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,750,India,GPH-AUTONOMOUS-CITED,2672.798672658986,750,,,,,,ok,"750->Makran & Sonmiani 1488
 750->Arabia & Persian Gulf 1184.7986726589863 (ratio on 1089637)"
-750<-restOfTheWorld,1848,750,India,GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,6994.603467935508,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,"750<-Makran & Sonmiani 6738
+750<-restOfTheWorld,1848,750,India,GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,6994.603467935508,750,,,,,,ok,"750<-Makran & Sonmiani 6738
 750<-Arabia & Persian Gulf 256.6034679355079 (ratio on 912996)"
-750->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,9558,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,750->6514 9558
-750<-651,1848,750,India,GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,18796,750,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|Singapore|Malacca|Penang,,,,,ok,750<-Alexandria & Suez Canal Zone 18796
-3361->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,3361,Moldavia,GPH-AUTONOMOUS-CITED,57966.46113969289,3361,,,,,,ok,3361->Istanbul (Constantinople) 57966.46113969289
-3361<-640,1848,3361,Moldavia,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,29611.59329222794,3361,,,,,,ok,3361<-Istanbul (Constantinople) & Izmir (Smyrna) 29611.59329222794
+750->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,9558,750,missing Alexandria|Egypt Arab Republic (Egypt) (other),,,,,ok,750->6514 9558
+750<-651,1848,750,India,GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,18796,750,missing Alexandria|Egypt Arab Republic (Egypt) (other)|6514 unexpected: Alexandria & Suez Canal Zone,,,,,ok,750<-Alexandria & Suez Canal Zone 18796
+3361->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,3361,Moldavia,GPH-AUTONOMOUS-CITED,57966.46113969289,3361,missing Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|European Turkey|Asian Turkey|Archipelago|665|652,,,,,ok,3361->Istanbul (Constantinople) 57966.46113969289
+3361<-640,1848,3361,Moldavia,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,29611.59329222794,3361,missing Istanbul (Constantinople)|Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|European Turkey|Asian Turkey|Archipelago|665|652 unexpected: Istanbul (Constantinople) & Izmir (Smyrna),,,,,ok,3361<-Istanbul (Constantinople) & Izmir (Smyrna) 29611.59329222794
 210<-68,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,10030.819343522926,210,,,,,,ok,210<-1065 10030.819343522926
-210<-850,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,4238375.261003925,210,,,,,,ok,210<-Java 4238375.261003925
-210<-365,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,730517.4141819093,210,,,,,,ok,"210<-Russia (White Sea) 638045.6861271193
+210<-850,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,4238375.261003925,210,missing Jakarta (Batavia)|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,210<-Java 4238375.261003925
+210<-365,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,730517.4141819093,210,missing Russia (North Ports)|Russia (South Ports)|375,,,,,ok,"210<-Russia (White Sea) 638045.6861271193
 210<-Russia (Black Sea) 92471.72805478994"
-210<-324,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,11664.578635262673,210,,,,,,ok,210<-Sardinia 11664.578635262673
+210<-324,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,11664.578635262673,210,missing Piedmont|Genoa,,,,,ok,210<-Sardinia 11664.578635262673
 210->68,1848,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,10953.97978785601,210,,,,,,ok,210->1065 10953.97978785601
-210->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,720641.5267685625,210,,,,,,ok,210->Java 720641.5267685625
-210->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,291109.24580305687,210,,,,,,ok,210->Russia (White Sea) 291109.24580305687
-210->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,217340.68320387538,210,,,,,,ok,210->Sardinia 217340.68320387538
-200->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1925226,200,missing Scotland|Ireland,,,,,ok,"200->Russia (North Ports) 1692006
+210->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,720641.5267685625,210,missing Jakarta (Batavia)|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,210->Java 720641.5267685625
+210->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,291109.24580305687,210,missing Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|375,,,,,ok,210->Russia (White Sea) 291109.24580305687
+210->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,217340.68320387538,210,missing Piedmont|Genoa,,,,,ok,210->Sardinia 217340.68320387538
+200->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1925226,200,missing Russia (White Sea)|Russia (Black Sea)|375,,,,,ok,"200->Russia (North Ports) 1692006
 200->Russia (South Ports) 233220"
-200->257,1848,257,Oldenburg,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,11287,200,missing Scotland|Ireland,,,,,ok,200->Kniphausen & Oldenburg 11287
-200->230,1848,230,Spain,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,662710,200,missing Scotland|Ireland,,,,,ok,"200->Balearic Islands & Spain 616878
+200->257,1848,257,Oldenburg,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,11287,200,,,,,,ok,200->Kniphausen & Oldenburg 11287
+200->230,1848,230,Spain,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,662710,200,missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: Balearic Islands & Spain|Canary Is. & Spain,,,,,ok,"200->Balearic Islands & Spain 616878
 200->Canary Is. & Spain 45832"
-200->338,1848,338,Malta,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,379467,200,missing Scotland|Ireland,,,,,ok,200->Gozo & Malta 379467
-200->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,2922467,200,missing Scotland|Ireland,,,,,ok,"200->Turkey (Ottoman Empire) (other) 2664281
+200->338,1848,338,Malta,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,379467,200,,,,,,ok,200->Gozo & Malta 379467
+200->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,2922467,200,missing Istanbul (Constantinople)|Izmir (Smyrna)|European Turkey|Asian Turkey|Archipelago|665|652 unexpected: Palestine & Syria,,,,,ok,"200->Turkey (Ottoman Empire) (other) 2664281
 200->Palestine & Syria 258186"
-200->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,509876,200,missing Scotland|Ireland,,,,,ok,200->Egypt Arab Republic (Egypt) (other) 509876
-200->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,337235,200,missing Scotland|Ireland,,,,,ok,"200->Sumatra 392
+200->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,509876,200,missing Alexandria|6514,,,,,ok,200->Egypt Arab Republic (Egypt) (other) 509876
+200->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,337235,200,missing Jakarta (Batavia)|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,"200->Sumatra 392
 200->Java 336843"
-200->5,1848,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,175734,200,missing Scotland|Ireland,,,,,ok,"200->St. Croix 4074
+200->5,1848,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,175734,200,,,,,,ok,"200->St. Croix 4074
 200->St. Thomas 171660"
-200->165,1848,165,Uruguay,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,156759,200,missing Scotland|Ireland,,,,,ok,200->Montevideo 156759
-200->160,1848,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,449194,200,missing Scotland|Ireland,,,,,ok,200->1161 449194
-200->10,1848,10,Greenland,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,43,200,missing Scotland|Ireland,,,,,ok,200->Davis Strait & Greenland 43
+200->165,1848,165,Uruguay,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,156759,200,,,,,,ok,200->Montevideo 156759
+200->160,1848,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,449194,200,,,,,,ok,200->1161 449194
+200->10,1848,10,Greenland,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,43,200,,,,,,ok,200->Davis Strait & Greenland 43
 2->1064,1848,1064,St. Barthelemy,GPH-AUTONOMOUS,2,United States of America,GPH-AUTONOMOUS-CITED,15502.258726899383,2,,,,,,ok,2->Swedish West Indies 15502.258726899383
 2->220,1848,220,France,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,3157060.574948665,2,,,,,,ok,"2->France (Atlantic Coast) 2907556.0574948667
 2->France (Mediterranean Coast) 249504.51745379876"
-2->230,1848,230,Spain,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,482380.2874743326,2,,,,,,ok,"2->Spain (Atlantic Coast) 122750.92402464066
+2->230,1848,230,Spain,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,482380.2874743326,2,missing 410|2301 unexpected: Canary Is. & Tenerife,,,,,ok,"2->Spain (Atlantic Coast) 122750.92402464066
 2->Spain (Mediterranean Coast) 357592.19712525664
 2->Canary Is. & Tenerife 2037.1663244353183"
-2->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,3645.5852156057495,2,,,,,,ok,2->3291 3645.5852156057495
-2->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,36054.00410677618,2,,,,,,ok,2->Sardinia 36054.00410677618
-2->300,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,349382.9568788501,2,,,,,,ok,2->Austria-Hungary (Austrian Empire) & Trieste 349382.9568788501
+2->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,3645.5852156057495,2,missing Naples,,,,,ok,2->3291 3645.5852156057495
+2->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,36054.00410677618,2,missing Piedmont|Genoa,,,,,ok,2->Sardinia 36054.00410677618
+2->300,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,349382.9568788501,2,missing 326|3343|2903 unexpected: Austria-Hungary (Austrian Empire) & Trieste,,,,,ok,2->Austria-Hungary (Austrian Empire) & Trieste 349382.9568788501
 2->165,1848,165,Uruguay,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,69786.24229979466,2,,,,,,ok,2->Montevideo 69786.24229979466
 2<-1064,1848,2,United States of America,GPH-AUTONOMOUS-CITED,1064,St. Barthelemy,GPH-AUTONOMOUS,2830.5954825462013,2,,,,,,ok,2<-Swedish West Indies 2830.5954825462013
 2<-220,1848,2,United States of America,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,5769205.5441478435,2,,,,,,ok,"2<-France (Atlantic Coast) 5556409.445585215
 2<-France (Mediterranean Coast) 212796.09856262832"
-2<-230,1848,2,United States of America,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,252877.2073921971,2,,,,,,ok,"2<-Spain (Atlantic Coast) 56900.41067761807
+2<-230,1848,2,United States of America,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,252877.2073921971,2,missing 410|2301 unexpected: Canary Is. & Tenerife,,,,,ok,"2<-Spain (Atlantic Coast) 56900.41067761807
 2<-Spain (Mediterranean Coast) 188777.41273100616
 2<-Canary Is. & Tenerife 7199.383983572895"
-2<-329,1848,2,United States of America,GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,126905.3388090349,2,,,,,,ok,2<-3291 126905.3388090349
-2<-300,1848,2,United States of America,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,79222.3819301848,2,,,,,,ok,2<-Austria-Hungary (Austrian Empire) & Trieste 79222.3819301848
+2<-329,1848,2,United States of America,GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,126905.3388090349,2,missing Naples,,,,,ok,2<-3291 126905.3388090349
+2<-300,1848,2,United States of America,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,79222.3819301848,2,missing 326|3343|2903 unexpected: Austria-Hungary (Austrian Empire) & Trieste,,,,,ok,2<-Austria-Hungary (Austrian Empire) & Trieste 79222.3819301848
 2<-165,1848,2,United States of America,GPH-AUTONOMOUS-CITED,165,Uruguay,GPH-AUTONOMOUS-CITED,107405.3388090349,2,,,,,,ok,2<-Montevideo 107405.3388090349
-365->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,381348.28375286044,365,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|Finland,,,,,ok,365->Sardinia 381348.28375286044
-365->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,1014472.1586575133,365,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|Finland,,,,,ok,"365->European Turkey 941156.826849733
+365->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,381348.28375286044,365,missing Piedmont|Genoa,,,,,ok,365->Sardinia 381348.28375286044
+365->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,1014472.1586575133,365,missing Istanbul (Constantinople)|Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|Archipelago|665|652,,,,,ok,"365->European Turkey 941156.826849733
 365->Asian Turkey 73315.33180778033"
-365<-324,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,47601.52555301297,365,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|Finland,,,,,ok,365<-Sardinia 47601.52555301297
-365<-640,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,793478.7185354691,365,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|Finland,,,,,ok,"365<-European Turkey 661501.2967200611
+365<-324,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,47601.52555301297,365,missing Piedmont|Genoa,,,,,ok,365<-Sardinia 47601.52555301297
+365<-640,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,793478.7185354691,365,missing Istanbul (Constantinople)|Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|Archipelago|665|652,,,,,ok,"365<-European Turkey 661501.2967200611
 365<-Asian Turkey 131977.4218154081"
-211->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,7128.050000007413,211,,,,,,ok,211->Java & Sumatra 7128.050000007413
-211<-850,1848,211,Belgium,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,26084.810000027126,211,,,,,,ok,211<-Java & Sumatra 26084.810000027126
-211->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,120675.9600001255,211,,,,,,ok,211->Piedmont & Sardinia 120675.9600001255
-211<-324,1848,211,Belgium,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,10094.860000010498,211,,,,,,ok,211<-Piedmont & Sardinia 10094.860000010498
-211->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,62688.31000006519,211,,,,,,ok,211->Archipelago & Turkey (Ottoman Empire) 62688.31000006519
-211<-640,1848,211,Belgium,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,38684.12000004023,211,,,,,,ok,211<-Archipelago & Turkey (Ottoman Empire) 38684.12000004023
-616->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,3102.54094175863,616,,,,,,ok,616->Naples 3102.54094175863
-616<-329,1848,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,8168.715390959431,616,,,,,,ok,616<-Naples 8168.715390959431
-220<-100,1848,220,France,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,11781.801044653026,220,missing France (Atlantic Coast)|France (Mediterranean Coast),,,,,ok,220<-Colombia (New Granada) (Gran Colombia) (other) 11781.801044653026
-220->100,1848,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,58909.00522326513,220,missing France (Atlantic Coast)|France (Mediterranean Coast),,,,,ok,220->Colombia (New Granada) (Gran Colombia) (other) 58909.00522326513
+211->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,7128.050000007413,211,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Sumatra,,,,,ok,211->Java & Sumatra 7128.050000007413
+211<-850,1848,211,Belgium,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,26084.810000027126,211,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Sumatra,,,,,ok,211<-Java & Sumatra 26084.810000027126
+211->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,120675.9600001255,211,missing Sardinia|Piedmont|Genoa unexpected: Piedmont & Sardinia,,,,,ok,211->Piedmont & Sardinia 120675.9600001255
+211<-324,1848,211,Belgium,GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,10094.860000010498,211,missing Sardinia|Piedmont|Genoa unexpected: Piedmont & Sardinia,,,,,ok,211<-Piedmont & Sardinia 10094.860000010498
+211->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,62688.31000006519,211,missing Istanbul (Constantinople)|Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|European Turkey|Asian Turkey|Archipelago|665|652 unexpected: Archipelago & Turkey (Ottoman Empire),,,,,ok,211->Archipelago & Turkey (Ottoman Empire) 62688.31000006519
+211<-640,1848,211,Belgium,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,38684.12000004023,211,missing Istanbul (Constantinople)|Izmir (Smyrna)|Turkey (Ottoman Empire) (other)|European Turkey|Asian Turkey|Archipelago|665|652 unexpected: Archipelago & Turkey (Ottoman Empire),,,,,ok,211<-Archipelago & Turkey (Ottoman Empire) 38684.12000004023
+616->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,3102.54094175863,616,missing 3291,,,,,ok,616->Naples 3102.54094175863
+616<-329,1848,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,8168.715390959431,616,missing 3291,,,,,ok,616<-Naples 8168.715390959431
+220<-100,1848,220,France,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,11781.801044653026,220,,,,,,ok,220<-Colombia (New Granada) (Gran Colombia) (other) 11781.801044653026
+220->100,1848,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,58909.00522326513,220,,,,,,ok,220->Colombia (New Granada) (Gran Colombia) (other) 58909.00522326513
 248<-5,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,67598.29729187931,248,,,,,,ok,248<-Puerto Rico & St. Thomas 67598.29729187931 (ratio on 72710.81677704194)
 248<-6,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,5112.519485162637,248,,,,,,ok,248<-Puerto Rico & St. Thomas 5112.519485162637 (ratio on 72710.81677704194)
-248<-561,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,23732.15599705666,248,,,,,,ok,248<-Canary Is. & Cape Colony (Cape of Good Hope) & Madeira Isles 23732.15599705666
+248<-561,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,23732.15599705666,248,missing Cape Town|Port Simon|Port Elizabeth|Waterloo Bay|5614|562 unexpected: Canary Is. & Cape Colony (Cape of Good Hope) & Madeira Isles,,,,,ok,248<-Canary Is. & Cape Colony (Cape of Good Hope) & Madeira Isles 23732.15599705666
 248<-70,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,14220.331143255336,248,,,,,,ok,248<-Gulf of Mexico 14220.331143255336 (ratio on 14593.81898454746)
 248<-100,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,373.4878412921238,248,,,,,,ok,248<-Gulf of Mexico 373.4878412921238 (ratio on 14593.81898454746)
 248<-restOfTheWorld,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,1463.7898910284168,248,,,,,,ok,248<-Eastern Africa 1463.7898910284168 (ratio on 3920.5298013245033)
@@ -1323,8 +1323,8 @@ Java & Madura<-Dutch government,1848,Java & Madura,Java & Madura,RIC,Dutch gover
 326->615,1848,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,326,Trieste,GPH,8.760469969546875,326,,,,,,ignore_resolved,326->Algeria (Regency of Algiers) & France 8.760469969546875 (ratio on 86556.96500805089)
 326<-220,1848,326,Trieste,GPH,220,France,GPH-AUTONOMOUS-CITED,114948.5599487781,326,,,,,,ignore_resolved,326<-Algeria (Regency of Algiers) & France 114948.5599487781 (ratio on 177198.2877115815)
 326<-615,1848,326,Trieste,GPH,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,62249.72776280341,326,,,,,,ignore_resolved,326<-Algeria (Regency of Algiers) & France 62249.72776280341 (ratio on 177198.2877115815)
-3343->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,3343,Fiume,GPH,15434.159368495464,3343,,,,,,ignore_resolved,3343->Sardinia 15434.159368495464
-3343<-324,1848,3343,Fiume,GPH,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,39.27267014884342,3343,,,,,,ignore_resolved,3343<-Sardinia 39.27267014884342
+3343->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,3343,Fiume,GPH,15434.159368495464,3343,missing Piedmont|Genoa,,,,,ignore_resolved,3343->Sardinia 15434.159368495464
+3343<-324,1848,3343,Fiume,GPH,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,39.27267014884342,3343,missing Piedmont|Genoa,,,,,ignore_resolved,3343<-Sardinia 39.27267014884342
 155->239,1848,239,Prussia,GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,7.264474936146488,155,,,,,,ok,155->255 7.264474936146488 (ratio on 50825.44861337683)
 155<-239,1848,155,Chile,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,164.31189803883657,155,,,,,,ok,155<-255 164.31189803883657 (ratio on 121218.9595794816)
 40->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,58460.60528005244,40,,,,,,ok,40->Belgium & Germany (Zollverein) & Netherlands 58460.60528005244 (ratio on 803086.8318736991)
@@ -1333,45 +1333,45 @@ Java & Madura<-Dutch government,1848,Java & Madura,Java & Madura,RIC,Dutch gover
 40<-211,1848,40,Cuba,GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,99994.0311969208,40,,,,,,ok,40<-Belgium & Germany (Zollverein) & Netherlands 99994.0311969208 (ratio on 351804.57919333933)
 750<-775,1848,750,India,GPH-AUTONOMOUS-CITED,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,221537.40943976725,750,,,,,,ok,750<-Myanmar (Burma) & Thailand (Siam) 221537.40943976725 (ratio on 237130)
 750<-800,1848,750,India,GPH-AUTONOMOUS-CITED,800,Thailand (Siam),GPH-AUTONOMOUS-CITED,15592.590560232738,750,,,,,,ok,750<-Myanmar (Burma) & Thailand (Siam) 15592.590560232738 (ratio on 237130)
-Cape Town<-750,1848,Cape Town,Cape Town,RIC,750,India,GPH-AUTONOMOUS-CITED,45163,Cape Town,,,,,,ignore_resolved,"Cape Town<-Chennai (Madras) & Kolkata (Calcutta) 33348
+Cape Town<-750,1848,Cape Town,Cape Town,RIC,750,India,GPH-AUTONOMOUS-CITED,45163,Cape Town,missing Chennai (Madras)|Kolkata (Calcutta)|Bengal|8271|8272 unexpected: Chennai (Madras) & Kolkata (Calcutta),,,,,ignore_resolved,"Cape Town<-Chennai (Madras) & Kolkata (Calcutta) 33348
 Cape Town<-Mumbai (Bombay) 258
 Cape Town<-830 10370
 Cape Town<-Nagapattinam 75
 Cape Town<-Kalingapatnam 1112"
 Cape Town<-903,1848,Cape Town,Cape Town,RIC,903,South Australia,GPH-AUTONOMOUS-CITED,9641,Cape Town,,,,,,ignore_resolved,Cape Town<-Adelaide 9641
-Cape Town<-775,1848,Cape Town,Cape Town,RIC,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,460,Cape Town,,,,,,ignore_resolved,Cape Town<-Arakan 460
+Cape Town<-775,1848,Cape Town,Cape Town,RIC,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,460,Cape Town,missing Mawlamyine,,,,,ignore_resolved,Cape Town<-Arakan 460
 Cape Town<-840,1848,Cape Town,Cape Town,RIC,840,Philippines,GPH-AUTONOMOUS-CITED,2144,Cape Town,,,,,,ignore_resolved,Cape Town<-Manila 2144
-Cape Town<-235,1848,Cape Town,Cape Town,RIC,235,Portugal,GPH-AUTONOMOUS-CITED,282,Cape Town,,,,,,ignore_resolved,Cape Town<-401 282
-Cape Town<-561,1848,Cape Town,Cape Town,RIC,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,7752,Cape Town,,,,,,ignore_resolved,Cape Town<-Durban (Port Natal) 7752
+Cape Town<-235,1848,Cape Town,Cape Town,RIC,235,Portugal,GPH-AUTONOMOUS-CITED,282,Cape Town,missing Porto|400,,,,,ignore_resolved,Cape Town<-401 282
+Cape Town<-561,1848,Cape Town,Cape Town,RIC,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,7752,Cape Town,missing Cape Town|Port Simon|Port Elizabeth|Waterloo Bay|5614|562 unexpected: Durban (Port Natal),,,,,ignore_resolved,Cape Town<-Durban (Port Natal) 7752
 Cape Town<-restOfTheWorld,1848,Cape Town,Cape Town,RIC,restOfTheWorld,Rest Of The World,ROTW,616,Cape Town,,,,,,ignore_resolved,"Cape Town<-Angra Pequena 518
 Cape Town<-Possession I. 98"
 Cape Town<-1023,1848,Cape Town,Cape Town,RIC,1023,New Brunswick,GPH-AUTONOMOUS-CITED,1272,Cape Town,,,,,,ignore_resolved,Cape Town<-Saint John (New Brunswick) 1272
 Cape Town<-564,1848,Cape Town,Cape Town,RIC,564,Orange Free State (Orange River Colony),GPH-AUTONOMOUS-CITED,2,Cape Town,,,,,,ignore_resolved,Cape Town<-Alexander Bay 2
-Cape Town<-140,1848,Cape Town,Cape Town,RIC,140,Brazil,GPH-AUTONOMOUS-CITED,62210,Cape Town,,,,,,ignore_resolved,"Cape Town<-Pernambuco 32
+Cape Town<-140,1848,Cape Town,Cape Town,RIC,140,Brazil,GPH-AUTONOMOUS-CITED,62210,Cape Town,missing Pará,,,,,ignore_resolved,"Cape Town<-Pernambuco 32
 Cape Town<-Rio de Janeiro 60688
 Cape Town<-Santos 1490"
-Cape Town<-850,1848,Cape Town,Cape Town,RIC,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,99,Cape Town,,,,,,ignore_resolved,Cape Town<-Java 99
-Port Simon<-750,1848,Port Simon,Port Simon,RIC,750,India,GPH-AUTONOMOUS-CITED,36,Port Simon,,,,,,ignore_resolved,"Port Simon<-Chennai (Madras) & Kolkata (Calcutta) 7
+Cape Town<-850,1848,Cape Town,Cape Town,RIC,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,99,Cape Town,missing Jakarta (Batavia)|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ignore_resolved,Cape Town<-Java 99
+Port Simon<-750,1848,Port Simon,Port Simon,RIC,750,India,GPH-AUTONOMOUS-CITED,36,Port Simon,missing Chennai (Madras)|Kolkata (Calcutta)|Nagapattinam|Kalingapatnam|Bengal|8271|8272 unexpected: Chennai (Madras) & Kolkata (Calcutta),,,,,ignore_resolved,"Port Simon<-Chennai (Madras) & Kolkata (Calcutta) 7
 Port Simon<-Mumbai (Bombay) 16
 Port Simon<-830 13"
 Port Simon<-541,1848,Port Simon,Port Simon,RIC,541,Mozambique (Portuguese East Africa),GPH-AUTONOMOUS-CITED,620,Port Simon,,,,,,ignore_resolved,Port Simon<-Quelimane 620
-Port Elizabeth<-750,1848,Port Elizabeth,Port Elizabeth,RIC,750,India,GPH-AUTONOMOUS-CITED,450,Port Elizabeth,,,,,,ignore_resolved,Port Elizabeth<-Chennai (Madras) & Kolkata (Calcutta) 450
-Port Elizabeth<-775,1848,Port Elizabeth,Port Elizabeth,RIC,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,1268,Port Elizabeth,,,,,,ignore_resolved,Port Elizabeth<-Mawlamyine 1268
-Port Elizabeth<-561,1848,Port Elizabeth,Port Elizabeth,RIC,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,10708,Port Elizabeth,,,,,,ignore_resolved,"Port Elizabeth<-Cape Town 9972
+Port Elizabeth<-750,1848,Port Elizabeth,Port Elizabeth,RIC,750,India,GPH-AUTONOMOUS-CITED,450,Port Elizabeth,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|830|8271|8272 unexpected: Chennai (Madras) & Kolkata (Calcutta),,,,,ignore_resolved,Port Elizabeth<-Chennai (Madras) & Kolkata (Calcutta) 450
+Port Elizabeth<-775,1848,Port Elizabeth,Port Elizabeth,RIC,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,1268,Port Elizabeth,missing Arakan,,,,,ignore_resolved,Port Elizabeth<-Mawlamyine 1268
+Port Elizabeth<-561,1848,Port Elizabeth,Port Elizabeth,RIC,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,10708,Port Elizabeth,missing Port Simon|Port Elizabeth|Waterloo Bay|562 unexpected: Durban (Port Natal),,,,,ignore_resolved,"Port Elizabeth<-Cape Town 9972
 Port Elizabeth<-Durban (Port Natal) 523
 Port Elizabeth<-5614 213"
-Port Elizabeth<-140,1848,Port Elizabeth,Port Elizabeth,RIC,140,Brazil,GPH-AUTONOMOUS-CITED,8226,Port Elizabeth,,,,,,ignore_resolved,Port Elizabeth<-Rio de Janeiro 8226
-Cape Town->750,1848,750,India,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,4009,Cape Town,,,,,,ignore_resolved,"Cape Town->Chennai (Madras) & Kolkata (Calcutta) 3773
+Port Elizabeth<-140,1848,Port Elizabeth,Port Elizabeth,RIC,140,Brazil,GPH-AUTONOMOUS-CITED,8226,Port Elizabeth,missing Pernambuco|Santos|Pará,,,,,ignore_resolved,Port Elizabeth<-Rio de Janeiro 8226
+Cape Town->750,1848,750,India,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,4009,Cape Town,missing Chennai (Madras)|Kolkata (Calcutta)|Nagapattinam|Kalingapatnam|Bengal|8271|8272 unexpected: Chennai (Madras) & Kolkata (Calcutta),,,,,ignore_resolved,"Cape Town->Chennai (Madras) & Kolkata (Calcutta) 3773
 Cape Town->Mumbai (Bombay) 101
 Cape Town->830 135"
 Cape Town->903,1848,903,South Australia,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,5573,Cape Town,,,,,,ignore_resolved,Cape Town->Adelaide 5573
 Cape Town->902,1848,902,Western Australia,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,1220,Cape Town,,,,,,ignore_resolved,Cape Town->Swan River 1220
-Cape Town->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,6620,Cape Town,,,,,,ignore_resolved,Cape Town->Durban (Port Natal) 6620
+Cape Town->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,6620,Cape Town,missing Cape Town|Port Simon|Port Elizabeth|Waterloo Bay|5614|562 unexpected: Durban (Port Natal),,,,,ignore_resolved,Cape Town->Durban (Port Natal) 6620
 Cape Town->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,Cape Town,Cape Town,RIC,194,Cape Town,,,,,,ignore_resolved,Cape Town->Angra Pequena 194
-Cape Town->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,946,Cape Town,,,,,,ignore_resolved,Cape Town->Rio de Janeiro 946
-Port Simon->750,1848,750,India,GPH-AUTONOMOUS-CITED,Port Simon,Port Simon,RIC,60,Port Simon,,,,,,ignore_resolved,Port Simon->Chennai (Madras) & Kolkata (Calcutta) 60
-Port Elizabeth->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,Port Elizabeth,Port Elizabeth,RIC,329,Port Elizabeth,,,,,,ignore_resolved,Port Elizabeth->Durban (Port Natal) 329
-East London->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,East London,East London,RIC,51,East London,,,,,,ignore_resolved,East London->Durban (Port Natal) 51
+Cape Town->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,Cape Town,Cape Town,RIC,946,Cape Town,missing Pernambuco|Santos|Pará,,,,,ignore_resolved,Cape Town->Rio de Janeiro 946
+Port Simon->750,1848,750,India,GPH-AUTONOMOUS-CITED,Port Simon,Port Simon,RIC,60,Port Simon,missing Chennai (Madras)|Kolkata (Calcutta)|Mumbai (Bombay)|Nagapattinam|Kalingapatnam|Bengal|830|8271|8272 unexpected: Chennai (Madras) & Kolkata (Calcutta),,,,,ignore_resolved,Port Simon->Chennai (Madras) & Kolkata (Calcutta) 60
+Port Elizabeth->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,Port Elizabeth,Port Elizabeth,RIC,329,Port Elizabeth,missing Cape Town|Port Simon|Port Elizabeth|Waterloo Bay|5614|562 unexpected: Durban (Port Natal),,,,,ignore_resolved,Port Elizabeth->Durban (Port Natal) 329
+East London->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,East London,East London,RIC,51,East London,missing Cape Town|Port Simon|Port Elizabeth|Waterloo Bay|5614|562 unexpected: Durban (Port Natal),,,,,ignore_resolved,East London->Durban (Port Natal) 51
 200->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,200,United Kingdom,GPH-AUTONOMOUS-CITED,590,200,,,,,,ok,200->Red Sea (Africa) 590
 200->4050,1848,4050,St. Helena,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,30312,200,,,,,,ok,200->Ascension I. & St. Helena 30312 (ratio on 31728)
 200->4070,1848,4070,Ascension I.,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1416,200,,,,,,ok,200->Ascension I. & St. Helena 1416 (ratio on 31728)
@@ -1394,13 +1394,13 @@ East London->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,E
 291->615,1848,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,291,Danzig (Free City of Danzig),GPH,10171.621568550445,291,,,,,,ignore_resolved,291->Algeria (Regency of Algiers) & France 10171.621568550445
 291<-615,1848,291,Danzig (Free City of Danzig),GPH,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,30239.956014609434,291,,,,,,ignore_resolved,291<-Algeria (Regency of Algiers) & France 30239.956014609434
 Java & Madura->840,1848,840,Philippines,GPH-AUTONOMOUS-CITED,Java & Madura,Java & Madura,RIC,3040.769230769231,Java & Madura,,,,,,ignore_resolved,Java & Madura->Manila 3040.769230769231
-Java & Madura->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,Java & Madura,Java & Madura,RIC,521543.3846153846,Java & Madura,,,,,,ignore_resolved,Java & Madura->Indonesia (Dutch East Indies) (other) 521543.3846153846
+Java & Madura->850,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,Java & Madura,Java & Madura,RIC,521543.3846153846,Java & Madura,missing Jakarta (Batavia)|Java|Sumatra|Madura,,,,,ignore_resolved,Java & Madura->Indonesia (Dutch East Indies) (other) 521543.3846153846
 Java & Madura->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,Java & Madura,Java & Madura,RIC,27570.615384615383,Java & Madura,,,,,,ignore_resolved,Java & Madura->Dutch government 27570.615384615383
-Java & Madura<-324,1848,Java & Madura,Java & Madura,RIC,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,756.6923076923077,Java & Madura,,,,,,ignore_resolved,Java & Madura<-Genoa 756.6923076923077
+Java & Madura<-324,1848,Java & Madura,Java & Madura,RIC,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,756.6923076923077,Java & Madura,missing Sardinia|Piedmont,,,,,ignore_resolved,Java & Madura<-Genoa 756.6923076923077
 Java & Madura<-840,1848,Java & Madura,Java & Madura,RIC,840,Philippines,GPH-AUTONOMOUS-CITED,15451.846153846154,Java & Madura,,,,,,ignore_resolved,Java & Madura<-Manila 15451.846153846154
-Java & Madura<-850,1848,Java & Madura,Java & Madura,RIC,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,458792.8461538461,Java & Madura,,,,,,ignore_resolved,Java & Madura<-Indonesia (Dutch East Indies) (other) 458792.8461538461
+Java & Madura<-850,1848,Java & Madura,Java & Madura,RIC,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,458792.8461538461,Java & Madura,missing Jakarta (Batavia)|Java|Sumatra|Madura,,,,,ignore_resolved,Java & Madura<-Indonesia (Dutch East Indies) (other) 458792.8461538461
 Java & Madura<-restOfTheWorld,1848,Java & Madura,Java & Madura,RIC,restOfTheWorld,Rest Of The World,ROTW,776584.9230769231,Java & Madura,,,,,,ignore_resolved,Java & Madura<-Dutch government 776584.9230769231
-1063<-2,1848,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,69867,1063,missing British Virgin Is.|Montserrat,,,,,ok,"58<-2 41319
+1063<-2,1848,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,69867,1063,missing 1061|59,,,,,ok,"58<-2 41319
 1076<-2 1508
 1075<-2 27040"
 1063<-200,1848,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,122525,1063,,,,,,ok,"58<-200 73471
@@ -1417,9 +1417,9 @@ From a flow part-of reporter 59 to/from area British West Indies"
 From a flow part-of reporter 1076 to/from area British Northern America
 From a flow part-of reporter 1075 to/from area British Northern America
 From a flow part-of reporter 59 to/from area British Northern America"
-1063->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,424,1063,missing British Virgin Is.|St. Kitts|Montserrat,,,,,ok,"58->2 79
+1063->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,424,1063,missing 1061|1075|59,,,,,ok,"58->2 79
 1076->2 345"
-1063->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,247747,1063,,,,,,ok,"58->200 164265
+1063->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,247747,1063,missing 59,,,,,ok,"58->200 164265
 1061->200 1262
 1076->200 12509
 1075->200 69711"
@@ -1431,50 +1431,50 @@ From a flow part-of reporter 59 to/from area British West Indies"
 1063->1022|1023|1024|20|21,1848,1022|1023|1024|20|21,,,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,3117,1063,,3117,,20|21|1022|1023|1024,58->British Northern America|1076->British Northern America|59->British Northern America,split_failed_no_ratio,"From a flow part-of reporter 58 to/from area British Northern America
 From a flow part-of reporter 1076 to/from area British Northern America
 From a flow part-of reporter 59 to/from area British Northern America"
-300<-2,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,751803.4312353142,300,,,,,,ok,"326<-2 746652.0048698111
+300<-2,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,751803.4312353142,300,missing 1014 unexpected: 2|America,,,,,ok,"326<-2 746652.0048698111
 3343<-America 5151.426365503085 (ratio on 13274.162510309076)"
-300<-70,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,291911.05246050336,300,,,,,,ok,"326<-70 289910.85103876214
+300<-70,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,291911.05246050336,300,missing 2903,,,,,ok,"326<-70 289910.85103876214
 3343<-America 2000.2014217412043 (ratio on 13274.162510309076)"
-300<-140,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,140,Brazil,GPH-AUTONOMOUS-CITED,893527.7894063307,300,,,,,,ok,"326<-140 887405.2546832659
+300<-140,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,140,Brazil,GPH-AUTONOMOUS-CITED,893527.7894063307,300,missing Pernambuco|Rio de Janeiro|Santos|Pará unexpected: 140|America,,,,,ok,"326<-140 887405.2546832659
 3343<-America 6122.534723064786 (ratio on 13274.162510309076)"
-300<-210,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,173467.3840474414,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-210 173467.3840474414
-300<-211,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,46852.2954875702,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-211 46852.2954875702
-300<-220,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,114948.5599487781,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-220 114948.5599487781
-300<-327,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,327,Papal States,GPH-AUTONOMOUS-CITED,333896.24160546676,300,,,,,,ok,"326<-327 284962.49460000783
+300<-210,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,173467.3840474414,300,missing 3343|2903,,,,,ok,326<-210 173467.3840474414
+300<-211,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,46852.2954875702,300,missing 3343|2903,,,,,ok,326<-211 46852.2954875702
+300<-220,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,114948.5599487781,300,missing 3343|2903,,,,,ok,326<-220 114948.5599487781
+300<-327,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,327,Papal States,GPH-AUTONOMOUS-CITED,333896.24160546676,300,missing 2903,,,,,ok,"326<-327 284962.49460000783
 3343<-327 48933.7470054589"
-300<-329,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,619801.2802890468,300,,,,,,ok,"326<-329 592192.5931744099
+300<-329,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,619801.2802890468,300,missing 2903,,,,,ok,"326<-329 592192.5931744099
 3343<-329 27608.687114636923"
-300<-350,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,176177.19828771157,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-350 176177.19828771157
-300<-365,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,630915.4459411695,300,,,,,,ok,"326<-365 554058.830459883
+300<-350,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,176177.19828771157,300,missing 3343|2903,,,,,ok,326<-350 176177.19828771157
+300<-365,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,630915.4459411695,300,missing 2903,,,,,ok,"326<-365 554058.830459883
 3343<-365 76856.61548128657"
-300<-615,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,62249.72776280341,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-615 62249.72776280341
-300<-640,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,898597.9656756863,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-640 898597.9656756863
-300<-651,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,334878.05835918785,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-651 334878.05835918785
-300<-200,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1180025.9199622981,300,,,,,,ok,"326<-British Europe & United Kingdom 1175352.4722145859
+300<-615,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,62249.72776280341,300,missing 3343|2903,,,,,ok,326<-615 62249.72776280341
+300<-640,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,898597.9656756863,300,missing 3343|2903,,,,,ok,326<-640 898597.9656756863
+300<-651,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,334878.05835918785,300,missing 3343|2903,,,,,ok,326<-651 334878.05835918785
+300<-200,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1180025.9199622981,300,missing 2903,,,,,ok,"326<-British Europe & United Kingdom 1175352.4722145859
 3343<-200 4673.447747712366"
-300<-231,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,231,Gibraltar,GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
-300<-338,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,338,Malta,GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
-300<-2249,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2249,Heligoland,GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
+300<-231,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,231,Gibraltar,GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
+300<-338,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,338,Malta,GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
+300<-2249,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,2249,Heligoland,GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326<-British Europe & United Kingdom 0 (ratio on 1175352.4722145859)
 300<-380|385,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,380|385,,,45163.57067116993,300,,45163.57067116993,,380|385,326<-Norway & Sweden,split_failed_no_ratio,From a flow part-of reporter 326 to/from area Norway & Sweden
-300->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,70258.80689628088,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->2 70258.80689628088
-300->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,62757.72689785178,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->140 62757.72689785178
-300->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,85810.78427522288,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->210 85810.78427522288
-300->211,1848,211,Belgium,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,12802.890468522954,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->211 12802.890468522954
-300->220,1848,220,France,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,86548.20453808134,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->220 86548.20453808134
-300->327,1848,327,Papal States,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,447865.53037741035,300,,,,,,ok,"326->327 424144.83760750893
+300->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,70258.80689628088,300,missing 3343|2903,,,,,ok,326->2 70258.80689628088
+300->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,62757.72689785178,300,missing 3343|2903,,,,,ok,326->140 62757.72689785178
+300->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,85810.78427522288,300,missing 3343|2903,,,,,ok,326->210 85810.78427522288
+300->211,1848,211,Belgium,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,12802.890468522954,300,missing 3343|2903,,,,,ok,326->211 12802.890468522954
+300->220,1848,220,France,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,86548.20453808134,300,missing 3343|2903,,,,,ok,326->220 86548.20453808134
+300->327,1848,327,Papal States,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,447865.53037741035,300,missing 2903,,,,,ok,"326->327 424144.83760750893
 3343->327 23720.692769901423"
-300->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,217688.41063503906,300,,,,,,ok,"326->329 209009.15053214467
+300->329,1848,329,Two Sicilies,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,217688.41063503906,300,missing 2903,,,,,ok,"326->329 209009.15053214467
 3343->329 8679.260102894395"
-300->350,1848,350,Greece,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,123905.27431960098,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->350 123905.27431960098
-300->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,102108.94238699289,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->365 102108.94238699289
-300->615,1848,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,8.760469969546875,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->615 8.760469969546875
-300->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,580921.3368416919,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->640 580921.3368416919
-300->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,154655.77504614537,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->651 154655.77504614537
-300->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,673644.1110631111,300,,,,,,ok,"326->British Europe & United Kingdom 665671.759022896
+300->350,1848,350,Greece,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,123905.27431960098,300,missing 3343|2903,,,,,ok,326->350 123905.27431960098
+300->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,102108.94238699289,300,missing 3343|2903,,,,,ok,326->365 102108.94238699289
+300->615,1848,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,8.760469969546875,300,missing 3343|2903,,,,,ok,326->615 8.760469969546875
+300->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,580921.3368416919,300,missing 3343|2903,,,,,ok,326->640 580921.3368416919
+300->651,1848,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,154655.77504614537,300,missing 3343|2903,,,,,ok,326->651 154655.77504614537
+300->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,673644.1110631111,300,missing 2903,,,,,ok,"326->British Europe & United Kingdom 665671.759022896
 3343->200 7972.3520402152135"
-300->231,1848,231,Gibraltar,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
-300->338,1848,338,Malta,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
-300->2249,1848,2249,Heligoland,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing Fiume|Cracow (Free City of Cracow),,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
+300->231,1848,231,Gibraltar,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
+300->338,1848,338,Malta,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
+300->2249,1848,2249,Heligoland,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,0,300,missing 3343|2903,,,,,ok,326->British Europe & United Kingdom 0 (ratio on 665671.759022896)
 350<-200,1848,350,Greece,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,46930.84082786788,350,,,,,,ok,Patras<-200 46930.84082786788
 350<-220,1848,350,Greece,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,2356.360208930605,350,,,,,,ok,Patras<-220 2356.360208930605
 350<-300,1848,350,Greece,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,29886.50198326984,350,,,,,,ok,Patras<-300 29886.50198326984
@@ -1485,140 +1485,140 @@ From a flow part-of reporter 59 to/from area British Northern America"
 350->300,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,11310.529002866904,350,,,,,,ok,Patras->300 11310.529002866904
 350->640,1848,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,314.18136119074734,350,,,,,,ok,Patras->640 314.18136119074734
 350->3349,1848,3349,Ionian Is.,GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,1649.4521462514235,350,,,,,,ok,Patras->3349 1649.4521462514235
-300<-324,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,39.27267014884342,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-324 39.27267014884342
-300<-3,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,3,Alaska,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-5,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-6,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-10,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10,Greenland,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-20,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-21,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-30,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-31,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-40,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-41,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,41,Haiti,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-42,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-51,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-54,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,54,Dominica,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-65,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-66,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-68,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-80,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,80,Belize (British Honduras),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-90,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,90,Guatemala,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-91,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,91,Honduras,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-92,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,92,El Salvador,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-93,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,93,Nicaragua,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-94,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,94,Costa Rica,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-100,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-101,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,101,Venezuela,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-110,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-115,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-120,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,120,French Guiana,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-130,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,130,Ecuador,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-135,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,135,Peru,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-145,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,145,Bolivia,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-150,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,150,Paraguay,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-155,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-160,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-165,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,165,Uruguay,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1016,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1016,Oregon (Oregon Country),GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1019,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1019,Rupert's Land,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1020,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1020,San Juan Island,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1022,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1022,Nova Scotia,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1023,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1023,New Brunswick,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1024,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1024,Prince Edward Is.,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1029,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1032,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1032,Turks and Caicos Is.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1048,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1048,Trinidad,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1055,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1058,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1058,Barbuda,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1063,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1064,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1064,St. Barthelemy,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1071,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1071,Yucatan,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1072,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1072,Revillagigedo Is,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1081,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1081,Mosquito Coast,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1094,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1094,Cocos I.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1105,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1105,San Andres and Providincial Is.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1106,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1106,Malpelo I.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1111,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1111,Aves I.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1163,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1163,Falkland Is.,GPH-AUTONOMOUS-CITED,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-1168,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1168,Martin Garcia I.,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-10200,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10200,North-Western Territory,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-10210,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10210,Labrador,GPH-AUTONOMOUS,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300<-restOfTheWorld,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,0,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
-300->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,15434.159368495464,300,missing Trieste|Cracow (Free City of Cracow),,,,,ok,3343->324 15434.159368495464
+300<-324,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,39.27267014884342,300,missing 326|2903,,,,,ok,3343<-324 39.27267014884342
+300<-3,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,3,Alaska,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-5,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,0,300,missing St. Croix|St. Thomas unexpected: America,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-6,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-10,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10,Greenland,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-20,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-21,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-30,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-31,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-40,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-41,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,41,Haiti,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-42,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-51,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-54,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,54,Dominica,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-65,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-66,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-68,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-80,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,80,Belize (British Honduras),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-90,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,90,Guatemala,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-91,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,91,Honduras,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-92,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,92,El Salvador,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-93,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,93,Nicaragua,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-94,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,94,Costa Rica,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-100,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-101,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,101,Venezuela,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-110,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-115,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-120,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,120,French Guiana,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-130,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,130,Ecuador,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-135,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,135,Peru,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-145,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,145,Bolivia,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-150,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,150,Paraguay,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-155,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-160,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-165,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,165,Uruguay,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1016,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1016,Oregon (Oregon Country),GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1019,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1019,Rupert's Land,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1020,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1020,San Juan Island,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1022,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1022,Nova Scotia,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1023,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1023,New Brunswick,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1024,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1024,Prince Edward Is.,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1029,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1032,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1032,Turks and Caicos Is.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1048,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1048,Trinidad,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1055,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1058,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1058,Barbuda,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1063,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,300,missing 58|1061|1076|1075|59 unexpected: America,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1064,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1064,St. Barthelemy,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1071,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1071,Yucatan,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1072,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1072,Revillagigedo Is,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1081,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1081,Mosquito Coast,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1094,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1094,Cocos I.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1105,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1105,San Andres and Providincial Is.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1106,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1106,Malpelo I.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1111,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1111,Aves I.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1163,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1163,Falkland Is.,GPH-AUTONOMOUS-CITED,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-1168,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1168,Martin Garcia I.,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-10200,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10200,North-Western Territory,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-10210,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,10210,Labrador,GPH-AUTONOMOUS,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300<-restOfTheWorld,1848,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,0,300,missing 326|2903,,,,,ok,3343<-America 0 (ratio on 13274.162510309076)
+300->324,1848,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,15434.159368495464,300,missing 326|2903,,,,,ok,3343->324 15434.159368495464
 300->220|615,1848,220|615,,,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,41236.30365628559,300,,41236.30365628559,,220|615,3343->Algeria (Regency of Algiers) & France,split_failed_no_ratio,From a flow part-of reporter 3343 to/from area Algeria (Regency of Algiers) & France
-561<-2,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,22322,561,missing Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-2 17672
+561<-2,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,22322,561,missing Waterloo Bay|5614|562,,,,,ok,"Cape Town<-2 17672
 Port Simon<-2 223
 Port Elizabeth<-2 4427"
-561<-140,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,140,Brazil,GPH-AUTONOMOUS-CITED,70436,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-140 62210
+561<-140,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,140,Brazil,GPH-AUTONOMOUS-CITED,70436,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-140 62210
 Port Elizabeth<-140 8226"
-561<-200,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,817980,561,missing British Kaffraria|Natal,,,,,ok,"Cape Town<-200 546147
+561<-200,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,817980,561,missing 5614|562,,,,,ok,"Cape Town<-200 546147
 Port Simon<-200 2175
 Port Elizabeth<-200 269469
 Waterloo Bay<-200 189"
-561<-210,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,1082,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-210 1082
-561<-220,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,15484,561,missing Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-220 15481
+561<-210,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,1082,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-210 1082
+561<-220,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,15484,561,missing Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-220 15481
 Port Simon<-220 3"
-561<-235,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,282,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-235 282
-561<-246,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,665,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-246 585
+561<-235,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,282,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-235 282
+561<-246,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,665,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-246 585
 Port Elizabeth<-246 80"
-561<-248,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,13551,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-248 6827
+561<-248,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,13551,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-248 6827
 Port Elizabeth<-248 6724"
-561<-365,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,1629,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-365 1629
-561<-380,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,13098,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-380 12725
+561<-365,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,1629,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-365 1629
+561<-380,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,13098,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-380 12725
 Port Elizabeth<-380 373"
-561<-511,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,511,Zanzibar,GPH-AUTONOMOUS-CITED,237,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-511 237
-561<-564,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,564,Orange Free State (Orange River Colony),GPH-AUTONOMOUS-CITED,2,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-564 2
-561<-585,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,1351,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-585 1351
-561<-590,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,590,Mauritius,GPH-AUTONOMOUS-CITED,84877,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-590 61088
+561<-511,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,511,Zanzibar,GPH-AUTONOMOUS-CITED,237,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-511 237
+561<-564,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,564,Orange Free State (Orange River Colony),GPH-AUTONOMOUS-CITED,2,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-564 2
+561<-585,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,1351,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-585 1351
+561<-590,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,590,Mauritius,GPH-AUTONOMOUS-CITED,84877,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-590 61088
 Port Elizabeth<-590 23789"
-561<-710,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,4020,561,missing Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-710 3941
+561<-710,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,4020,561,missing Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-710 3941
 Port Simon<-710 79"
-561<-720,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,720,Hong Kong,GPH-AUTONOMOUS-CITED,2814,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-720 2814
-561<-750,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,45649,561,missing Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-750 45163
+561<-720,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,720,Hong Kong,GPH-AUTONOMOUS-CITED,2814,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-720 2814
+561<-750,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,45649,561,missing Waterloo Bay|5614|562,,,,,ok,"Cape Town<-750 45163
 Port Simon<-750 36
 Port Elizabeth<-750 450"
-561<-775,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,1728,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-775 460
+561<-775,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,1728,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-775 460
 Port Elizabeth<-775 1268"
-561<-780,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,780,Sri Lanka (Ceylon),GPH-AUTONOMOUS-CITED,768,561,missing Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-780 74
+561<-780,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,780,Sri Lanka (Ceylon),GPH-AUTONOMOUS-CITED,768,561,missing Waterloo Bay|5614|562,,,,,ok,"Cape Town<-780 74
 Port Simon<-780 23
 Port Elizabeth<-780 671"
-561<-840,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,2144,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-840 2144
-561<-850,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,99,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-850 99
-561<-903,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,903,South Australia,GPH-AUTONOMOUS-CITED,9641,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-903 9641
-561<-906,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,906,Tasmania,GPH-AUTONOMOUS-CITED,11673,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town<-906 11565
+561<-840,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,2144,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-840 2144
+561<-850,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,99,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-850 99
+561<-903,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,903,South Australia,GPH-AUTONOMOUS-CITED,9641,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-903 9641
+561<-906,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,906,Tasmania,GPH-AUTONOMOUS-CITED,11673,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town<-906 11565
 Port Elizabeth<-906 108"
-561<-1023,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1023,New Brunswick,GPH-AUTONOMOUS-CITED,1272,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-1023 1272
-561<-1024,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1024,Prince Edward Is.,GPH-AUTONOMOUS-CITED,815,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-1024 815
-561<-4050,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,4050,St. Helena,GPH-AUTONOMOUS-CITED,3004,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-4050 3004
-561<-8510,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,8510,Lombok,GPH-AUTONOMOUS-CITED,40,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-8510 40
-561<-9974,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,9974,Crozet Is.,GPH-AUTONOMOUS-CITED,5235,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-9974 5235
-561<-restOfTheWorld,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,616,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town<-restOfTheWorld 616
-561->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,13579,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town->2 6053
+561<-1023,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1023,New Brunswick,GPH-AUTONOMOUS-CITED,1272,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-1023 1272
+561<-1024,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1024,Prince Edward Is.,GPH-AUTONOMOUS-CITED,815,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-1024 815
+561<-4050,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,4050,St. Helena,GPH-AUTONOMOUS-CITED,3004,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-4050 3004
+561<-8510,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,8510,Lombok,GPH-AUTONOMOUS-CITED,40,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-8510 40
+561<-9974,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,9974,Crozet Is.,GPH-AUTONOMOUS-CITED,5235,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-9974 5235
+561<-restOfTheWorld,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,616,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town<-restOfTheWorld 616
+561->2,1848,2,United States of America,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,13579,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town->2 6053
 Port Elizabeth->2 7526"
-561->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,946,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->140 946
-561->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,232385,561,missing Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town->200 130850
+561->140,1848,140,Brazil,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,946,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->140 946
+561->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,232385,561,missing Waterloo Bay|5614|562,,,,,ok,"Cape Town->200 130850
 Port Simon->200 445
 Port Elizabeth->200 101090"
-561->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,895,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->210 895
-561->248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,2950,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->248 2950
-561->380,1848,380,Sweden,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,84,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->380 84
-561->585,1848,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1208,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->585 1208
-561->590,1848,590,Mauritius,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,34402,561,missing Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town->590 27280
+561->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,895,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->210 895
+561->248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,2950,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->248 2950
+561->380,1848,380,Sweden,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,84,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->380 84
+561->585,1848,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1208,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->585 1208
+561->590,1848,590,Mauritius,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,34402,561,missing Waterloo Bay|5614|562,,,,,ok,"Cape Town->590 27280
 Port Simon->590 272
 Port Elizabeth->590 6850"
-561->750,1848,750,India,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,4069,561,missing Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town->750 4009
+561->750,1848,750,India,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,4069,561,missing Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,"Cape Town->750 4009
 Port Simon->750 60"
-561->780,1848,780,Sri Lanka (Ceylon),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,129,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->780 129
-561->901,1848,901,New South Wales,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,200,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->901 200
-561->902,1848,902,Western Australia,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1220,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->902 1220
-561->903,1848,903,South Australia,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,5573,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->903 5573
-561->906,1848,906,Tasmania,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,50,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->906 50
-561->4050,1848,4050,St. Helena,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,21703,561,missing Port Simon|Waterloo Bay|British Kaffraria|Natal,,,,,ok,"Cape Town->4050 21603
+561->780,1848,780,Sri Lanka (Ceylon),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,129,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->780 129
+561->901,1848,901,New South Wales,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,200,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->901 200
+561->902,1848,902,Western Australia,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,1220,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->902 1220
+561->903,1848,903,South Australia,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,5573,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->903 5573
+561->906,1848,906,Tasmania,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,50,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->906 50
+561->4050,1848,4050,St. Helena,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,21703,561,missing Port Simon|Waterloo Bay|5614|562,,,,,ok,"Cape Town->4050 21603
 Port Elizabeth->4050 100"
-561->4070,1848,4070,Ascension I.,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,811,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->4070 811
-561->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,194,561,missing Port Simon|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Cape Town->restOfTheWorld 194
-561<-541,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,541,Mozambique (Portuguese East Africa),GPH-AUTONOMOUS-CITED,620,561,missing Cape Town|Port Elizabeth|Waterloo Bay|British Kaffraria|Natal,,,,,ok,Port Simon<-541 620
+561->4070,1848,4070,Ascension I.,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,811,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->4070 811
+561->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,194,561,missing Port Simon|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Cape Town->restOfTheWorld 194
+561<-541,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,541,Mozambique (Portuguese East Africa),GPH-AUTONOMOUS-CITED,620,561,missing Cape Town|Port Elizabeth|Waterloo Bay|5614|562,,,,,ok,Port Simon<-541 620
 restOfTheWorld->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,51,restOfTheWorld,,,,,,ok,East London->561 51
 restOfTheWorld->590,1848,590,Mauritius,GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,382,restOfTheWorld,,,,,,ok,East London->590 382
 1055<-2,1848,1055,Windward Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,6389,1055,,,,,,ok,56<-2 6389
@@ -1666,7 +1666,7 @@ Kaliningrad (Königsberg)<-210 36602.12857872207"
 239<-211,1848,239,Prussia,GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,12881.43580882064,239,missing East Frisia|Kaliningrad (Königsberg)|Klaipėda (Memel),,,,,ok,291<-211 12881.43580882064
 239<-220,1848,239,Prussia,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,19950.516435612455,239,missing East Frisia|Klaipėda (Memel),,,,,ok,"291<-220 7579.62533872678
 Kaliningrad (Königsberg)<-220 12370.891096885676"
-239<-365,1848,239,Prussia,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,279817.77481050935,239,missing East Frisia|Klaipėda (Memel),,,,,ok,"291<-365 21560.695911715036
+239<-365,1848,239,Prussia,GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,279817.77481050935,239,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|375 unexpected: 365|Congress Poland & Russia (USSR),,,,,ok,"291<-365 21560.695911715036
 Kaliningrad (Königsberg)<-Congress Poland & Russia (USSR) 258257.0788987943"
 239<-390,1848,239,Prussia,GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,4477.08439696815,239,missing East Frisia|Klaipėda (Memel),,,,,ok,"291<-390 2709.814240270196
 Kaliningrad (Königsberg)<-390 1767.2701566979538"
@@ -1677,17 +1677,17 @@ From a flow part-of reporter Kaliningrad (Königsberg) to/from area Hanse Towns"
 From a flow part-of reporter Kaliningrad (Königsberg) to/from area Norway & Sweden"
 239<-1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|91|restOfTheWorld,1848,239,Prussia,GPH-AUTONOMOUS-CITED,1032|1048|1055|1058|1063|1064|1081|30|31|40|41|42|5|51|54|6|65|66|68|91|restOfTheWorld,,,40254.4869025645,239,,40254.4869025645,,5|6|30|31|40|41|42|51|54|65|66|68|91|1032|1048|1055|1058|1063|1064|1081|restOfTheWorld,291<-West Indies,split_failed_no_ratio,From a flow part-of reporter 291 to/from area West Indies
 239<-2901|300,1848,239,Prussia,GPH-AUTONOMOUS-CITED,2901|300,,,488434.19864116557,239,,488434.19864116557,,300|2901,291<-Congress Poland & Cracow (Free City of Cracow),split_failed_no_ratio,From a flow part-of reporter 291 to/from area Congress Poland & Cracow (Free City of Cracow)
-239->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,1525861.0532930135,239,,,,,,ok,"291->200 847347.1311314456
+239->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,1525861.0532930135,239,missing East Frisia,,,,,ok,"291->200 847347.1311314456
 Kaliningrad (Königsberg)->200 312531.9090444959
 Klaipėda (Memel)->200 365982.0131170718"
-239->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,221615.67764992343,239,,,,,,ok,"291->210 105564.9373600911
+239->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,221615.67764992343,239,missing East Frisia,,,,,ok,"291->210 105564.9373600911
 Kaliningrad (Königsberg)->210 92958.41024231237
 Klaipėda (Memel)->210 23092.33004751993"
 239->211,1848,211,Belgium,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,667.6353925303381,239,missing East Frisia|Kaliningrad (Königsberg)|Klaipėda (Memel),,,,,ok,291->211 667.6353925303381
 239->230,1848,230,Spain,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,471.272041786121,239,missing East Frisia|Kaliningrad (Königsberg)|Klaipėda (Memel),,,,,ok,291->230 471.272041786121
-239->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,113380.19871971096,239,missing East Frisia|Klaipėda (Memel),,,,,ok,"291->365 2317.087538781762
+239->365,1848,365,Russia (USSR),GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,113380.19871971096,239,missing Russia (White Sea)|Russia (Black Sea)|Russia (North Ports)|Russia (South Ports)|375 unexpected: 365|Congress Poland & Russia (USSR),,,,,ok,"291->365 2317.087538781762
 Kaliningrad (Königsberg)->Congress Poland & Russia (USSR) 111063.11118092919"
-239->390,1848,390,Denmark,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,19479.244393826335,239,,,,,,ok,"291->390 5262.537799945018
+239->390,1848,390,Denmark,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,19479.244393826335,239,missing East Frisia,,,,,ok,"291->390 5262.537799945018
 Kaliningrad (Königsberg)->390 9189.80481482936
 Klaipėda (Memel)->390 5026.901779051957"
 239->615,1848,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,10171.621568550445,239,missing East Frisia|Kaliningrad (Königsberg)|Klaipėda (Memel),,,,,ok,291->615 10171.621568550445
@@ -1698,46 +1698,46 @@ From a flow part-of reporter Klaipėda (Memel) to/from area Hanse Towns"
 From a flow part-of reporter Kaliningrad (Königsberg) to/from area Norway & Sweden
 From a flow part-of reporter Klaipėda (Memel) to/from area Norway & Sweden"
 239->710|720|721|750|7501|7502|751|752|7531|7588|775|780|781|790|800|811|815|8201|8202|8203|8210|8221|8223|8224|8231|824|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld,1848,710|720|721|750|7501|7502|751|752|7531|7588|775|780|781|790|800|811|815|8201|8202|8203|8210|8221|8223|8224|8231|824|835|840|8401|850|8501|8510|8531|8560|860|restOfTheWorld,,,239,Prussia,GPH-AUTONOMOUS-CITED,3298.904292502847,239,,3298.904292502847,,710|720|721|750|751|752|775|780|781|790|800|811|815|824|835|840|850|860|7501|7502|7531|7588|8201|8202|8203|8210|8221|8223|8224|8231|8401|8501|8510|8531|8560|restOfTheWorld,291->East Indies,split_failed_no_ratio,From a flow part-of reporter 291 to/from area East Indies
-239<-2901,1848,239,Prussia,GPH-AUTONOMOUS-CITED,2901,Congress Poland,GPH-AUTONOMOUS-CITED,0,239,missing East Frisia|Klaipėda (Memel)|Danzig (Free City of Danzig),,,,,ok,Kaliningrad (Königsberg)<-Congress Poland & Russia (USSR) 0 (ratio on 258257.0788987943)
-239->220,1848,220,France,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,6401.445234261477,239,missing East Frisia|Danzig (Free City of Danzig),,,,,ok,"Kaliningrad (Königsberg)->220 1413.816125358363
+239<-2901,1848,239,Prussia,GPH-AUTONOMOUS-CITED,2901,Congress Poland,GPH-AUTONOMOUS-CITED,0,239,missing East Frisia|Klaipėda (Memel)|291,,,,,ok,Kaliningrad (Königsberg)<-Congress Poland & Russia (USSR) 0 (ratio on 258257.0788987943)
+239->220,1848,220,France,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,6401.445234261477,239,missing East Frisia|291,,,,,ok,"Kaliningrad (Königsberg)->220 1413.816125358363
 Klaipėda (Memel)->220 4987.629108903114"
-239->2901,1848,2901,Congress Poland,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,0,239,missing East Frisia|Klaipėda (Memel)|Danzig (Free City of Danzig),,,,,ok,Kaliningrad (Königsberg)->Congress Poland & Russia (USSR) 0 (ratio on 111063.11118092919)
-850<-200,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,259383.15384615384,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-200 259383.15384615384
-850<-210,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,637927,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-210 637927
-850<-211,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,21.76923076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-211 21.76923076923077
-850<-220,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,28532.30769230769,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-220 28532.30769230769
-850<-246,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,1197.8461538461538,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-246 1197.8461538461538
-850<-248,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,13949.846153846154,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-248 13949.846153846154
-850<-324,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,756.6923076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-324 756.6923076923077
-850<-380,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,8429.23076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-380 8429.23076923077
-850<-390,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,1840,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-390 1840
-850<-561,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,27.615384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-561 27.615384615384617
-850<-740,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,740,Japan,GPH-AUTONOMOUS-CITED,40140.769230769234,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-740 40140.769230769234
-850<-800,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,800,Thailand (Siam),GPH-AUTONOMOUS-CITED,18629.384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-800 18629.384615384617
-850<-840,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,15451.846153846154,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-840 15451.846153846154
-850<-902,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,902,Western Australia,GPH-AUTONOMOUS-CITED,1568.8461538461538,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-902 1568.8461538461538
+239->2901,1848,2901,Congress Poland,GPH-AUTONOMOUS-CITED,239,Prussia,GPH-AUTONOMOUS-CITED,0,239,missing East Frisia|Klaipėda (Memel)|291,,,,,ok,Kaliningrad (Königsberg)->Congress Poland & Russia (USSR) 0 (ratio on 111063.11118092919)
+850<-200,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,259383.15384615384,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-200 259383.15384615384
+850<-210,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,637927,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-210 637927
+850<-211,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,21.76923076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-211 21.76923076923077
+850<-220,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,28532.30769230769,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-220 28532.30769230769
+850<-246,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,1197.8461538461538,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-246 1197.8461538461538
+850<-248,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,13949.846153846154,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-248 13949.846153846154
+850<-324,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,756.6923076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-324 756.6923076923077
+850<-380,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,8429.23076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-380 8429.23076923077
+850<-390,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,1840,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-390 1840
+850<-561,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,27.615384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-561 27.615384615384617
+850<-740,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,740,Japan,GPH-AUTONOMOUS-CITED,40140.769230769234,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-740 40140.769230769234
+850<-800,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,800,Thailand (Siam),GPH-AUTONOMOUS-CITED,18629.384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-800 18629.384615384617
+850<-840,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,15451.846153846154,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-840 15451.846153846154
+850<-902,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,902,Western Australia,GPH-AUTONOMOUS-CITED,1568.8461538461538,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-902 1568.8461538461538
 850<-10|100|101|1016|1019|1020|10200|10210|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|110|1105|1106|1111|115|1163|1168|120|130|135|140|145|150|155|160|165|2|20|21|3|30|31|40|41|42|5|51|54|6|65|66|68|70|80|90|91|92|93|94|restOfTheWorld,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,10|100|101|1016|1019|1020|10200|10210|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|110|1105|1106|1111|115|1163|1168|120|130|135|140|145|150|155|160|165|2|20|21|3|30|31|40|41|42|5|51|54|6|65|66|68|70|80|90|91|92|93|94|restOfTheWorld,,,21727.53846153846,850,,21727.53846153846,,2|3|5|6|10|20|21|30|31|40|41|42|51|54|65|66|68|70|80|90|91|92|93|94|100|101|110|115|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|1105|1106|1111|1163|1168|10200|10210|restOfTheWorld,Java & Madura<-America,split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area America
 850<-585|590,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,585|590,,,1560.7692307692307,850,,1560.7692307692307,,585|590,Java & Madura<-Mauritius & Reunion (Bourbon I.),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Mauritius & Reunion (Bourbon I.)
 850<-750|780,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,750|780,,,8409.923076923076,850,,8409.923076923076,,750|780,Java & Madura<-Bengal & Sri Lanka (Ceylon),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Bengal & Sri Lanka (Ceylon)
 850<-630|640|670|690|692|696|698,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,630|640|670|690|692|696|698,,,4730,850,,4730,,630|640|670|690|692|696|698,Java & Madura<-Persian Gulf,split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Persian Gulf
 850<-710|721,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,710|721,,,60084.38461538462,850,,60084.38461538462,,710|721,Java & Madura<-Macao & People's Republic of China (China),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Macao & People's Republic of China (China)
-850<-restOfTheWorld,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,776584.9230769231,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura<-restOfTheWorld 776584.9230769231
-850->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,75372.61538461539,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->200 75372.61538461539
-850->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,2900734.846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->210 2900734.846153846
-850->211,1848,211,Belgium,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,25232.384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->211 25232.384615384617
-850->220,1848,220,France,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,90822.92307692308,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->220 90822.92307692308
-850->246,1848,246,Bremen,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,21015.53846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->246 21015.53846153846
-850->248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,42791.53846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->248 42791.53846153846
-850->380,1848,380,Sweden,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,50953.153846153844,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->380 50953.153846153844
-850->390,1848,390,Denmark,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,10829.76923076923,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->390 10829.76923076923
-850->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,2017.3076923076924,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->561 2017.3076923076924
-850->740,1848,740,Japan,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,12852.23076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->740 12852.23076923077
-850->800,1848,800,Thailand (Siam),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,5318.692307692308,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->800 5318.692307692308
-850->840,1848,840,Philippines,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,3040.769230769231,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->840 3040.769230769231
-850->902,1848,902,Western Australia,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,12791.384615384615,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->902 12791.384615384615
+850<-restOfTheWorld,1848,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,776584.9230769231,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura<-restOfTheWorld 776584.9230769231
+850->200,1848,200,United Kingdom,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,75372.61538461539,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->200 75372.61538461539
+850->210,1848,210,Netherlands,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,2900734.846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->210 2900734.846153846
+850->211,1848,211,Belgium,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,25232.384615384617,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->211 25232.384615384617
+850->220,1848,220,France,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,90822.92307692308,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->220 90822.92307692308
+850->246,1848,246,Bremen,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,21015.53846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->246 21015.53846153846
+850->248,1848,248,Hamburg,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,42791.53846153846,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->248 42791.53846153846
+850->380,1848,380,Sweden,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,50953.153846153844,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->380 50953.153846153844
+850->390,1848,390,Denmark,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,10829.76923076923,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->390 10829.76923076923
+850->561,1848,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,2017.3076923076924,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->561 2017.3076923076924
+850->740,1848,740,Japan,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,12852.23076923077,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->740 12852.23076923077
+850->800,1848,800,Thailand (Siam),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,5318.692307692308,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->800 5318.692307692308
+850->840,1848,840,Philippines,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,3040.769230769231,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->840 3040.769230769231
+850->902,1848,902,Western Australia,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,12791.384615384615,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->902 12791.384615384615
 850->10|100|101|1016|1019|1020|10200|10210|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|110|1105|1106|1111|115|1163|1168|120|130|135|140|145|150|155|160|165|2|20|21|3|30|31|40|41|42|5|51|54|6|65|66|68|70|80|90|91|92|93|94|restOfTheWorld,1848,10|100|101|1016|1019|1020|10200|10210|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|110|1105|1106|1111|115|1163|1168|120|130|135|140|145|150|155|160|165|2|20|21|3|30|31|40|41|42|5|51|54|6|65|66|68|70|80|90|91|92|93|94|restOfTheWorld,,,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,45628.153846153844,850,,45628.153846153844,,2|3|5|6|10|20|21|30|31|40|41|42|51|54|65|66|68|70|80|90|91|92|93|94|100|101|110|115|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1029|1032|1048|1055|1058|1063|1064|1071|1072|1081|1094|1105|1106|1111|1163|1168|10200|10210|restOfTheWorld,Java & Madura->America,split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area America
 850->585|590,1848,585|590,,,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,6976.846153846154,850,,6976.846153846154,,585|590,Java & Madura->Mauritius & Reunion (Bourbon I.),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Mauritius & Reunion (Bourbon I.)
 850->750|780,1848,750|780,,,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,17158.923076923078,850,,17158.923076923078,,750|780,Java & Madura->Bengal & Sri Lanka (Ceylon),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Bengal & Sri Lanka (Ceylon)
 850->630|640|670|690|692|696|698,1848,630|640|670|690|692|696|698,,,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,1039.3076923076924,850,,1039.3076923076924,,630|640|670|690|692|696|698,Java & Madura->Persian Gulf,split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Persian Gulf
 850->710|721,1848,710|721,,,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,154233.38461538462,850,,154233.38461538462,,710|721,Java & Madura->Macao & People's Republic of China (China),split_failed_no_ratio,From a flow part-of reporter Java & Madura to/from area Macao & People's Republic of China (China)
-850->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,27570.615384615383,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other),,,,,ok,Java & Madura->restOfTheWorld 27570.615384615383
+850->restOfTheWorld,1848,restOfTheWorld,Rest Of The World,ROTW,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,27570.615384615383,850,missing Jakarta (Batavia)|Java|Sumatra|Madura|Indonesia (Dutch East Indies) (other) unexpected: Java & Madura,,,,,ok,Java & Madura->restOfTheWorld 27570.615384615383
