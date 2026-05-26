@@ -4,7 +4,8 @@ import { readFile } from "fs/promises";
 import { MultiDirectedGraph } from "graphology";
 import { circular } from "graphology-layout";
 import forceAtlas2 from "graphology-layout-forceatlas2";
-import { capitalize, fromPairs, groupBy, mapKeys, mapValues, max, omit, range, sortBy } from "lodash";
+import type { EdgePredicate } from "graphology-types";
+import { capitalize, fromPairs, groupBy, keys, mapKeys, mapValues, max, omit, range, sortBy } from "lodash";
 
 import { GPHEntity } from "./GPH";
 import conf from "./configuration.json";
@@ -19,6 +20,7 @@ import {
   GraphResolutionPartiteType,
   GraphType,
   RICentity,
+  TradeEdgeAttributes,
   TradeVizEdgeAttribute,
   attributesStoredAsSets,
 } from "./types";
@@ -197,4 +199,22 @@ export function exportGephLiteFile(graph: GraphType, graphSerialization: GraphSe
     `../data/entity_networks/${year}_${graphSerialization}_gephi_lite.json`,
     JSON.stringify({ ...gephiLiteTemplate, graphDataset }),
   );
+}
+
+export function unMirroredTradeNetworkDensity(
+  graph: GraphEntityPartiteType,
+  edgeFilter: EdgePredicate<EntityNodeAttributes, TradeEdgeAttributes>,
+) {
+  const nodes = new Set<string>();
+  const edgesGroups = groupBy(graph.filterEdges(edgeFilter), (e) => {
+    // group mirrors
+    nodes.add(graph.source(e));
+    nodes.add(graph.target(e));
+    return `${graph.source(e)}->${graph.target(e)}`;
+  });
+  const nbEdges = keys(edgesGroups).length;
+  const nbNodes = nodes.size;
+
+  // directed graph density
+  return nbEdges / (nbNodes * (nbNodes - 1));
 }
