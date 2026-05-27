@@ -1,0 +1,33 @@
+figure {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+
+  /* legend */
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  svg {
+    flex-shrink: 0;
+    g[aria-label="y-axis label"] {
+      font-size: 0.9rem;
+    }
+  }
+}
+h2 {
+  font-size: 1.2rem;
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+body {
+  font-family: system-ui, sans-serif;
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+}
