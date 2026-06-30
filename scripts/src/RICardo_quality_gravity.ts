@@ -1,6 +1,6 @@
 import { graphsQuality } from "./qualityExport";
 
-graphsQuality("gravity", false)
+graphsQuality("gravity", true)
   .then(() => {
     console.log("done");
   })

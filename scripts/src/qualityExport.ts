@@ -281,7 +281,9 @@ export async function graphsQuality(
       generatedNetworkDensity: qualityStats.generatedNetworkDensity,
     };
     if (exportFlows) {
-      const flowStream = fs.createWriteStream(`../data/tradeFlows_${qualityStats.year}.csv`, { flags: "w" });
+      const flowStream = fs.createWriteStream(`../data/tradeFlows_${qualityStats.year}_${graphSerialization}.csv`, {
+        flags: "w",
+      });
 
       const columns: (keyof FlowDataPoint)[] = [
         "id",
