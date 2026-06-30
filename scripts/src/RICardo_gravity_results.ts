@@ -1,10 +1,15 @@
 import { parse } from "csv-parse/sync";
+import { stringify } from "csv/sync";
+import { mkdirSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-import { groupBy, identity, sortBy, toPairs, uniq, values } from "lodash";
+import { UndirectedGraph } from "graphology";
+import gexf from "graphology-gexf";
+import { camelCase, groupBy, identity, keys, mapKeys, max, pick, sortBy, sum, toPairs, uniq, values } from "lodash";
 
 import { aggregatedFlowNote } from "./graphTraversals";
+import { assignLouvainEdgeAmbiguity } from "./louvainEdgeAmbiguity";
 import { flagPartialAggregations, flagReporters, tradeEdgeKey } from "./tradeGraphCreation";
-import { GraphEntityPartiteType } from "./types";
+import { EntityNodeAttributes, GraphEntityPartiteType } from "./types";
 import { exportGephLiteFile, getTradeGraphsByYear, setReplacer } from "./utils";
 
 interface GravityResultsType {
@@ -21,6 +26,12 @@ interface GravityResultsType {
   valueToSplit: number;
   pred_trade: number;
 }
+
+type OkEdgeAttributes = {
+  proximity: number;
+  observedTradeValues: number[];
+};
+type OkNodeAttributes = EntityNodeAttributes;
 
 async function readGravityResults() {
   // read existing network file
@@ -134,6 +145,89 @@ async function readGravityResults() {
     );
     console.log(`${year} writing Gephi Lite`);
     exportGephLiteFile(graph, "gravity");
+
+    mkdirSync("../data/blocks/louvain/", { recursive: true });
+    // isolate CAF and FOB subgraphs
+    // FOB = reporter is exporter
+    // CAF = reporter is importer
+    const okEdges = {
+      fob: graph.filterEdges(
+        (_, atts, source) => atts.type === "trade" && atts.status === "ok" && atts.reportedBy === source,
+      ),
+      caf: graph.filterEdges(
+        (_, atts, __, target) => atts.type === "trade" && atts.status === "ok" && atts.reportedBy === target,
+      ),
+    };
+
+    const okGraphs = {
+      fob: UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<OkNodeAttributes, OkEdgeAttributes>,
+      caf: UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<OkNodeAttributes, OkEdgeAttributes>,
+    };
+
+    // iterate on Caf and Fob
+    toPairs(okEdges).map(([cafFob, edges]) => {
+      const okGraph = okGraphs[cafFob as "caf" | "fob"];
+      // total trade = sum of values
+      const totalBilateralTrade = sum(edges.map((e) => (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value")));
+      const weightedDegrees: Record<"in" | "out", Record<string, number>> = { in: {}, out: {} };
+      edges.forEach((e) => {
+        const value = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value");
+        if (value === undefined) {
+          throw new Error("ok flow can't have no value");
+        }
+        weightedDegrees.out[graph.source(e)] = (weightedDegrees.out[graph.source(e)] || 0) + value;
+        weightedDegrees.in[graph.target(e)] = (weightedDegrees.in[graph.target(e)] || 0) + value;
+      });
+      // group edges by pair of trade partners
+      const groupedEdges = groupBy(edges, (e) => sortBy([graph.source(e), graph.target(e)]).join("-"));
+      toPairs(groupedEdges).forEach(([groupKey, impExpCouple]) => {
+        const observations: number[] = [];
+
+        const proximities = impExpCouple.map((e) => {
+          const observed = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0;
+          if (observed) observations.push(observed);
+          const expected =
+            (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
+            (totalBilateralTrade * totalBilateralTrade);
+          const proximity = observed / expected - 1;
+          return proximity;
+        });
+        const maxProximity = max(proximities) || 0;
+        if (maxProximity > 0)
+          okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
+            proximity: Math.log(maxProximity),
+            observedTradeValues: observations,
+          });
+      });
+
+      // remove deprecated nodes
+      okGraph.filterNodes((n) => okGraph.degree(n) === 0).forEach((n) => okGraph.dropNode(n));
+
+      // compute Louvain + ambiguity metric
+      assignLouvainEdgeAmbiguity({ runs: 20, getEdgeWeight: "proximity", resolution: 1 }, okGraph);
+
+      // export as CSV
+      const csvData: Record<string, string | number | undefined>[] = [];
+      const nodeAttsToKeep = ["cited", "reporting", "label", "gphStatus", "community", "meanAmbiguityScore"];
+      okGraph.forEachEdge((e, atts, source, target, srcAtts, trgAtts) => {
+        csvData.push({
+          key: e,
+          source,
+          target,
+          ...atts,
+          observedTradeValues: atts.observedTradeValues.join("|"),
+          maxObservedTradeValue: max(atts.observedTradeValues),
+          ...mapKeys(pick(srcAtts, nodeAttsToKeep), (_, k) => camelCase(`source ${k}`)),
+          ...mapKeys(pick(trgAtts, nodeAttsToKeep), (_, k) => camelCase(`target ${k}`)),
+        });
+      });
+
+      const csvString = stringify(csvData, { columns: keys(csvData[0]), header: true });
+      writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.csv`, csvString);
+      // TODO: export for Gephi Lite
+      const gexfString = gexf.write(okGraph);
+      writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.gexf`, gexfString);
+    });
 
     console.log(`${year} done`);
   });
