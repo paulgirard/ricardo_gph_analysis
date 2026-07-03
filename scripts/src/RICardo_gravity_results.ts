@@ -152,28 +152,40 @@ async function readGravityResults() {
     // CAF = reporter is importer
     const okEdges = {
       fob: graph.filterEdges(
-        (_, atts, source) => atts.type === "trade" && atts.status === "ok" && atts.reportedBy === source,
+        (_, atts, source) =>
+          atts.type === "trade" &&
+          atts.status === "ok" &&
+          atts.reportedBy === source &&
+          !!atts.value &&
+          isFinite(atts.value),
       ),
       caf: graph.filterEdges(
-        (_, atts, __, target) => atts.type === "trade" && atts.status === "ok" && atts.reportedBy === target,
+        (_, atts, __, target) =>
+          atts.type === "trade" &&
+          atts.status === "ok" &&
+          atts.reportedBy === target &&
+          !!atts.value &&
+          isFinite(atts.value),
       ),
-    };
-
-    const okGraphs = {
-      fob: UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<OkNodeAttributes, OkEdgeAttributes>,
-      caf: UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<OkNodeAttributes, OkEdgeAttributes>,
     };
 
     // iterate on Caf and Fob
     toPairs(okEdges).map(([cafFob, edges]) => {
-      const okGraph = okGraphs[cafFob as "caf" | "fob"];
+      if (edges.length === 0) throw new Error(`No ${cafFob} flows for ${year}`);
+
+      const okGraph = UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<
+        OkNodeAttributes,
+        OkEdgeAttributes
+      >;
       // total trade = sum of values
-      const totalBilateralTrade = sum(edges.map((e) => (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value")));
+      const totalBilateralTrade = sum(
+        edges.map((e) => (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0),
+      );
       const weightedDegrees: Record<"in" | "out", Record<string, number>> = { in: {}, out: {} };
       edges.forEach((e) => {
         const value = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value");
-        if (value === undefined) {
-          throw new Error("ok flow can't have no value");
+        if (value === undefined || isNaN(value) || value === 0) {
+          throw new Error(`ok flow no value ${e} ${JSON.stringify(graph.getEdgeAttributes(e))}`);
         }
         weightedDegrees.out[graph.source(e)] = (weightedDegrees.out[graph.source(e)] || 0) + value;
         weightedDegrees.in[graph.target(e)] = (weightedDegrees.in[graph.target(e)] || 0) + value;
@@ -189,20 +201,26 @@ async function readGravityResults() {
           const expected =
             (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
             (totalBilateralTrade * totalBilateralTrade);
-          const proximity = observed / expected - 1;
+          if (expected === 0)
+            throw new Error(
+              `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
+            );
+          const proximity = expected !== 0 ? observed / expected - 1 : 0;
+
           return proximity;
         });
-        const maxProximity = max(proximities) || 0;
+        const maxProximity = max(proximities) || -1;
         if (maxProximity > 0)
           okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
             proximity: Math.log(maxProximity),
             observedTradeValues: observations,
           });
+        else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
       });
-
+      console.log(`${year} ${cafFob} ${edges.length} flows result in ${okGraph.size} flows ${okGraph.order} nodes`);
       // remove deprecated nodes
       okGraph.filterNodes((n) => okGraph.degree(n) === 0).forEach((n) => okGraph.dropNode(n));
-
+      console.log(`${year} ${cafFob} after filter out no-degree ${okGraph.size} flows ${okGraph.order} nodes`);
       // compute Louvain + ambiguity metric
       assignLouvainEdgeAmbiguity({ runs: 20, getEdgeWeight: "proximity", resolution: 1 }, okGraph);
 

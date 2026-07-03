@@ -32,9 +32,9 @@ function computeLouvainEdgeScores(
     });
   }
 
-  const coMembershipEdgeScores = mapValues(edgeScores, (v) => v / runs);
-  const bridgeNessEdgeScores = mapValues(coMembershipEdgeScores, (v) => 1 - v);
-  const ambiguityEdgeScores = mapValues(coMembershipEdgeScores, (v) => v * (1 - v) * 4);
+  const coMembershipEdgeScores = mapValues(edgeScores, (edgeScore) => edgeScore / runs);
+  const bridgeNessEdgeScores = mapValues(coMembershipEdgeScores, (coMemberShip) => 1 - coMemberShip);
+  const ambiguityEdgeScores = mapValues(coMembershipEdgeScores, (coMemberShip) => coMemberShip * (1 - coMemberShip) * 4);
   const nodes = graph.nodes();
   const meanAmbiguityNodeScores = zipObject(
     nodes,

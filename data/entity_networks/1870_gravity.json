@@ -1099,8 +1099,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Dissolved into",
-        "lat": "42.5",
-        "lng": "12.5",
+        "lat": "41.904",
+        "lng": "12.453",
         "totalBilateralTrade": 297794.9778138689
       }
     },
@@ -6054,18 +6054,6 @@
       }
     },
     {
-      "key": "328",
-      "attributes": {
-        "label": "Vatican City",
-        "gphStatus": "Part of",
-        "entityType": "GPH",
-        "ricType": "GPH_entity",
-        "type": "entity",
-        "lat": "41.904",
-        "lng": "12.453"
-      }
-    },
-    {
       "key": "6067",
       "attributes": {
         "label": "Captaincy-general of north Africa",
@@ -9324,6 +9312,17 @@
         "entityType": "GPH-AUTONOMOUS",
         "gphStatus": "Sovereign",
         "label": "Wuerttemberg",
+        "reporting": false,
+        "ricType": "GPH_entity"
+      }
+    },
+    {
+      "key": "328",
+      "attributes": {
+        "type": "entity",
+        "entityType": "GPH",
+        "gphStatus": "Part of",
+        "label": "Vatican City",
         "reporting": false,
         "ricType": "GPH_entity"
       }
@@ -13203,10 +13202,7 @@
         "reportedBy": "230",
         "value": 26846.499678869623,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "230<-restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -17051,10 +17047,7 @@
         "reportedBy": "210",
         "value": 29590.583677250906,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "210->restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -26825,10 +26818,7 @@
         "reportedBy": "211",
         "value": 941.0400000005627,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "211->restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -28423,10 +28413,7 @@
         "reportedBy": "200",
         "value": 24974,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "200<-restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -30232,10 +30219,7 @@
         "reportedBy": "200",
         "value": 10764,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "200->restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -31789,10 +31773,7 @@
         "reportedBy": "325",
         "value": 245974.47813499926,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "325<-restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -32131,10 +32112,7 @@
         "reportedBy": "325",
         "value": 703149.4362334298,
         "type": "trade",
-        "status": "ignore_resolved",
-        "mergedIn": [
-          "325->restOfTheWorld"
-        ]
+        "status": "split_failed_error"
       }
     },
     {
@@ -46425,17 +46403,6 @@
       }
     },
     {
-      "key": "327-resolve-into-328",
-      "source": "327",
-      "target": "328",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
       "key": "248-resolve-into-255",
       "source": "248",
       "target": "255",
@@ -60209,30 +60176,6 @@
       }
     },
     {
-      "key": "230<-restOfTheWorld",
-      "source": "restOfTheWorld",
-      "target": "230",
-      "attributes": {
-        "value": 26846.499678869623,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "230",
-        "originalReporters": [
-          "230"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "230<-327 26846.499678869623",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "230<-6067",
       "source": "6067",
       "target": "230",
@@ -60563,30 +60506,6 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing Sulawesi (Celebes)|Sumatra|851"
-      }
-    },
-    {
-      "key": "210->restOfTheWorld",
-      "source": "210",
-      "target": "restOfTheWorld",
-      "attributes": {
-        "value": 29590.583677250906,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "210",
-        "originalReporters": [
-          "210"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "210->327 29590.583677250906",
-        "status": "ok",
-        "type": "trade"
       }
     },
     {
@@ -61091,30 +61010,6 @@
       }
     },
     {
-      "key": "211->restOfTheWorld",
-      "source": "211",
-      "target": "restOfTheWorld",
-      "attributes": {
-        "value": 941.0400000005627,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "211",
-        "originalReporters": [
-          "211"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "211->327 941.0400000005627",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "211->350",
       "source": "211",
       "target": "350",
@@ -61416,30 +61311,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "200<-413 36905",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "200<-restOfTheWorld",
-      "source": "restOfTheWorld",
-      "target": "200",
-      "attributes": {
-        "value": 24974,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "200<-327 24974",
         "status": "ok",
         "type": "trade"
       }
@@ -61804,30 +61675,6 @@
       }
     },
     {
-      "key": "200->restOfTheWorld",
-      "source": "200",
-      "target": "restOfTheWorld",
-      "attributes": {
-        "value": 10764,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "200",
-        "originalReporters": [
-          "200"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "200->327 10764",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "200->300",
       "source": "200",
       "target": "300",
@@ -62079,54 +61926,6 @@
           "GENERATED_TRADE"
         ],
         "notes": "200->Demerara 771401\n200->1114 75237",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "325<-restOfTheWorld",
-      "source": "restOfTheWorld",
-      "target": "325",
-      "attributes": {
-        "value": 245974.47813499926,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "325",
-        "originalReporters": [
-          "325"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "325<-327 245974.47813499926",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "325->restOfTheWorld",
-      "source": "325",
-      "target": "restOfTheWorld",
-      "attributes": {
-        "value": 703149.4362334298,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "325",
-        "originalReporters": [
-          "325"
-        ],
-        "originalPartners": [
-          "327"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "325->327 703149.4362334298",
         "status": "ok",
         "type": "trade"
       }
