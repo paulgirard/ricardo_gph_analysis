@@ -140,3 +140,50 @@ ggplot(cor_par_annee, aes(year, cor)) +
   labs(x = "année", y = "corrélation même_bloc / log(value)",
        title = "Corrélation même_bloc ↔ commerce (IC 95%)") +
   theme_minimal()
+
+
+
+# ================= Avec Louvain=================
+
+library(ggplot2)
+dossier <- here("Louvain")
+annees  <- 1833:1938
+
+cor_comm <- data.frame(year = integer(), cor = numeric(),
+                       ic_bas = numeric(), ic_haut = numeric())
+
+for (year in annees) {
+  f <- file.path(dossier, paste0(year, "_fob.csv"))
+  if (!file.exists(f) || file.info(f)$size == 0) { 
+    message("Annee ", year, " : fichier absent ou vide -> sautee")
+    next 
+  }
+  
+  d <- tryCatch(read.csv(f, stringsAsFactors = FALSE),
+                error = function(e) NULL)
+  if (is.null(d) || nrow(d) == 0) {
+    message("Annee ", year, " : lecture impossible -> sautee")
+    next
+  }
+  
+  d$same_community <- as.integer(d$sourceCommunity == d$targetCommunity)
+  
+  ct <- tryCatch(cor.test(d$same_community, log1p(d$maxObservedTradeValue)),
+                 error = function(e) NULL)
+  if (is.null(ct)) { message("Annee ", year, " : cor.test impossible -> sautee"); next }
+  
+  cor_comm <- rbind(cor_comm, data.frame(
+    year = year, cor = ct$estimate,
+    ic_bas = ct$conf.int[1], ic_haut = ct$conf.int[2]))
+}
+
+# graphe : annee en x, correlation en y, avec IC
+ggplot(cor_comm, aes(year, cor)) +
+  geom_ribbon(aes(ymin = ic_bas, ymax = ic_haut), fill = "grey80", alpha = 0.5) +
+  geom_line() + geom_point() +
+  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  labs(x = "année", y = "corrélation same_community / log(maxObservedTradeValue)",
+       title = "Corrélation même communauté ↔ commerce (IC 95%)") +
+  theme_minimal()
+
+
