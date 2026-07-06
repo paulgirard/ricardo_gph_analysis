@@ -1,0 +1,132 @@
+library(here)
+library(ggplot2)
+library(maps)
+
+
+
+monde <- map_data("world")
+coord <- read.csv(here("GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
+coord <- coord[, c("GPH_code", "lat", "lng")]
+coord$GPH_code <- as.character(coord$GPH_code)
+if (!dir.exists(here("Cartes"))) dir.create(here("Cartes"))
+
+annees <- 1833:1938
+
+# ---- couleur fixe par pays ----
+tous_pays <- c()
+for (year in annees) {
+  f <- here("Pair_blocs_Intramax", paste0("paires_blocs_", year, ".csv"))
+  if (!file.exists(f) || file.info(f)$size == 0) next
+  d <- read.csv(f, stringsAsFactors = FALSE)
+  tous_pays <- c(tous_pays, d$exportateur, d$importateur)
+}
+tous_pays <- sort(unique(tous_pays))
+# ================= COULEURS =================
+
+# 1) Couleurs définies soi-même
+couleurs_top20 <- c(
+  "France"                                   = "#0055A4",
+  "United Kingdom"                           = "#CF142B",
+  "Russia (USSR)"                            = "deepskyblue",
+  "United States of America"                 = "#0A3161",
+  "Italy"                                    = "#008C45",
+  "Belgium"                                  = "#FFFF00",
+  "Spain"                                    = "#f6b511",
+  "Netherlands"                              = "#FF8C00",
+  "Mexico"                                   = "#006847",
+  "Brazil"                                   = "gold",
+  "Portugal"                                 = "#717910",
+  "Turkey (Ottoman Empire)"                  = "#A91101",
+  "Germany (Zollverein)"                     = "#000000",
+  "Argentina (La Plata)"                     = "#6CACE4",
+  "Colombia (New Granada) (Gran Colombia)"   = "darkslategray1",
+  "Hamburg"                                  = "gray33",
+  "India"                                    = "#CD5C5C",
+  "Austria-Hungary (Austrian Empire)"        = "coral",
+  "Chile"                                    = "purple",
+  "Canada (Province of Canada)"              = "#A38E6F"
+)
+
+# 2) LES AUTRES PAYS : palette bien separee automatiquement
+autres <- setdiff(tous_pays, names(couleurs_top20))
+n <- length(autres)
+# rainbow "espace" : on prend des teintes reparties + on melange pour eviter les voisins proches
+set.seed(1)
+couleurs_autres <- setNames(sample(grDevices::rainbow(n, s = 0.5, v = 0.9)), autres)
+
+# 3) fusion des deux
+couleur_pays <- c(couleurs_top20, couleurs_autres)
+# ---- cartes ----
+for (year in annees) {
+  f <- here("Pair_blocs_Intramax", paste0("paires_blocs_", year, ".csv"))
+  if (!file.exists(f) || file.info(f)$size == 0) next
+  d <- read.csv(f, stringsAsFactors = FALSE)
+  d <- d[!is.na(d$value), ]
+  
+  exp <- unique(d[, c("exportateur", "exporterId", "bloc_exp")]); names(exp) <- c("pays","gph","bloc")
+  imp <- unique(d[, c("importateur", "importerId", "bloc_imp")]); names(imp) <- c("pays","gph","bloc")
+  pays_bloc <- unique(rbind(exp, imp)); pays_bloc$gph <- as.character(pays_bloc$gph)
+  
+  vol_exp <- aggregate(value ~ exportateur, d, sum, na.rm=TRUE); names(vol_exp) <- c("pays","v1")
+  vol_imp <- aggregate(value ~ importateur, d, sum, na.rm=TRUE); names(vol_imp) <- c("pays","v2")
+  vol <- merge(vol_exp, vol_imp, by="pays", all=TRUE)
+  vol$v1[is.na(vol$v1)] <- 0; vol$v2[is.na(vol$v2)] <- 0
+  vol$total <- vol$v1 + vol$v2
+  
+  pays_bloc <- merge(pays_bloc, vol[,c("pays","total")], by="pays", all.x=TRUE)
+  pays_bloc$total[is.na(pays_bloc$total)] <- 0
+  
+  # gros_pays = plus gros pays du bloc
+  gros_pays <- do.call(rbind, lapply(split(pays_bloc, pays_bloc$bloc), function(b)
+    data.frame(bloc=b$bloc[1], gros_pays=b$pays[which.max(b$total)], stringsAsFactors=FALSE)))
+  pays_bloc <- merge(pays_bloc, gros_pays, by="bloc", all.x=TRUE)
+  
+  carte <- merge(pays_bloc, coord, by.x="gph", by.y="GPH_code", all.x=TRUE)
+  carte <- carte[!is.na(carte$lat) & !is.na(carte$lng), ]
+  
+  # ---- LEGENDE : on mappe la couleur sur le gros_pays (nom du plus gros pays) ----
+  carte$gros_pays <- factor(carte$gros_pays)
+  couleurs_presentes <- couleur_pays[levels(carte$gros_pays)]
+  
+  p <- ggplot() +
+    geom_polygon(data = monde, aes(long, lat, group = group),
+                 fill = "grey93", color = NA) +
+    geom_point(data = carte, aes(lng, lat, color = gros_pays), size = 2.5) +
+    geom_text(data = carte, aes(lng, lat, label = pays), size = 1.6, vjust = -0.8,
+              show.legend = FALSE) +
+    scale_color_manual(values = couleurs_presentes, name = "Bloc (plus gros pays (en part de commerce mondial) par bloc)") +
+    coord_quickmap() +
+    theme_void() +
+    theme(legend.position = "right", legend.text = element_text(size = 6),
+          legend.title = element_text(size = 7)) +
+    labs(title = paste("Blocs commerciaux", year))
+  
+  ggsave(here("Cartes", paste0("carte_blocs_", year, ".png")),
+         plot = p, width = 13, height = 7, dpi = 150)
+}
+
+
+annees <- 1833:1938
+annees <- annees[file.exists(sprintf(here("Cartes","carte_blocs_%d.png"), annees))]
+
+html <- paste0(
+  '<html><body style="text-align:center;font-family:sans-serif">',
+  '<input type="range" min="', min(annees), '" max="', max(annees),
+  '" value="', min(annees), '" id="s" style="width:80%"> <span id="y">', min(annees), '</span><br>',
+  '<img id="img" src="carte_blocs_', min(annees), '.png" style="max-width:95%">',
+  '<script>var s=document.getElementById("s");s.oninput=function(){',
+  'document.getElementById("y").innerText=s.value;',
+  'document.getElementById("img").src="carte_blocs_"+s.value+".png";}</script>',
+  '</body></html>')
+
+writeLines(html, here("Cartes", "diaporama.html"))
+
+
+#en gif
+library(magick)
+fichiers <- sprintf(here("Cartes","carte_blocs_%d.png"), 1833:1938)
+fichiers <- fichiers[file.exists(fichiers)]
+img <- image_read(fichiers)
+anim <- image_animate(image_join(img), fps = 2)
+image_write(anim, here("Cartes","blocs_animation.gif"))
+
