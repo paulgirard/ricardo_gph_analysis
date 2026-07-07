@@ -40,7 +40,7 @@ capture program drop trade_importation
 program define trade_importation
 	args year
 
-import delimited "data/tradeFlows_`year'.csv", /*
+import delimited "data/tradeFlows_`year'_ratios.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(13)
 ***To force newReporters to be a string even in empty
