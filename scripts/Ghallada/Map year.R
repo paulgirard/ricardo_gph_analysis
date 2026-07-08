@@ -2,20 +2,18 @@ library(here)
 library(ggplot2)
 library(maps)
 
-
-
 monde <- map_data("world")
-coord <- read.csv(here("GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
+coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
-if (!dir.exists(here("Cartes"))) dir.create(here("Cartes"))
+
 
 annees <- 1833:1938
 
 # ---- couleur fixe par pays ----
 tous_pays <- c()
 for (year in annees) {
-  f <- here("Pair_blocs_Intramax", paste0("paires_blocs_", year, ".csv"))
+  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
   tous_pays <- c(tous_pays, d$exportateur, d$importateur)
@@ -58,7 +56,7 @@ couleurs_autres <- setNames(sample(grDevices::rainbow(n, s = 0.5, v = 0.9)), aut
 couleur_pays <- c(couleurs_top20, couleurs_autres)
 # ---- cartes ----
 for (year in annees) {
-  f <- here("Pair_blocs_Intramax", paste0("paires_blocs_", year, ".csv"))
+  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
   d <- d[!is.na(d$value), ]
@@ -76,17 +74,26 @@ for (year in annees) {
   pays_bloc <- merge(pays_bloc, vol[,c("pays","total")], by="pays", all.x=TRUE)
   pays_bloc$total[is.na(pays_bloc$total)] <- 0
   
+
   # gros_pays = plus gros pays du bloc
   gros_pays <- do.call(rbind, lapply(split(pays_bloc, pays_bloc$bloc), function(b)
     data.frame(bloc=b$bloc[1], gros_pays=b$pays[which.max(b$total)], stringsAsFactors=FALSE)))
   pays_bloc <- merge(pays_bloc, gros_pays, by="bloc", all.x=TRUE)
+  
+  # ---- singletons : meme etiquette ----
+  taille_bloc <- table(pays_bloc$bloc)
+  pays_bloc$singleton <- as.logical(taille_bloc[as.character(pays_bloc$bloc)] == 1)
+  pays_bloc$gros_pays[pays_bloc$singleton] <- "bloc d'un seul pays"
   
   carte <- merge(pays_bloc, coord, by.x="gph", by.y="GPH_code", all.x=TRUE)
   carte <- carte[!is.na(carte$lat) & !is.na(carte$lng), ]
   
   # ---- LEGENDE : on mappe la couleur sur le gros_pays (nom du plus gros pays) ----
   carte$gros_pays <- factor(carte$gros_pays)
-  couleurs_presentes <- couleur_pays[levels(carte$gros_pays)]
+  niveaux <- levels(carte$gros_pays)
+  couleurs_presentes <- couleur_pays[niveaux]
+  names(couleurs_presentes) <- niveaux
+  couleurs_presentes["bloc d'un seul pays"] <- "darkgray"
   
   p <- ggplot() +
     geom_polygon(data = monde, aes(long, lat, group = group),
@@ -100,14 +107,14 @@ for (year in annees) {
     theme(legend.position = "right", legend.text = element_text(size = 6),
           legend.title = element_text(size = 7)) +
     labs(title = paste("Blocs commerciaux", year))
-  
-  ggsave(here("Cartes", paste0("carte_blocs_", year, ".png")),
+
+  ggsave(here("cartes", "Intramaxmap", paste0("carte_blocs_", year, ".png")),
          plot = p, width = 13, height = 7, dpi = 150)
 }
 
 
 annees <- 1833:1938
-annees <- annees[file.exists(sprintf(here("Cartes","carte_blocs_%d.png"), annees))]
+annees <- annees[file.exists(sprintf(here("cartes","Intramaxmap","carte_blocs_%d.png"), annees))]
 
 html <- paste0(
   '<html><body style="text-align:center;font-family:sans-serif">',
@@ -119,14 +126,14 @@ html <- paste0(
   'document.getElementById("img").src="carte_blocs_"+s.value+".png";}</script>',
   '</body></html>')
 
-writeLines(html, here("Cartes", "diaporama.html"))
+writeLines(html, here("cartes", "Intramaxmap", "diaporama.html"))
 
-
-#en gif
+# ---- gif ----
 library(magick)
-fichiers <- sprintf(here("Cartes","carte_blocs_%d.png"), 1833:1938)
+fichiers <- sprintf(here("cartes","Intramaxmap","carte_blocs_%d.png"), 1833:1938)
 fichiers <- fichiers[file.exists(fichiers)]
 img <- image_read(fichiers)
 anim <- image_animate(image_join(img), fps = 2)
-image_write(anim, here("Cartes","blocs_animation.gif"))
+image_write(anim, here("cartes","Intramaxmap","blocs_animation.gif"))
+
 
