@@ -29,7 +29,8 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
   M <- matrix(NA_real_, length(pays), length(pays), dimnames = list(pays, pays))
   M[cbind(match(df$exporterLabel, pays), match(df$importerLabel, pays))] <- df$value
   
-  garde <- rowSums(M, na.rm = TRUE) > 0 | colSums(M, na.rm = TRUE) > 0
+  #garde <- rowSums(M, na.rm = TRUE) > 0 | colSums(M, na.rm = TRUE) > 0 #enlève les vrais flux nuls
+  garde <- rowSums(!is.na(M)) > 0 | colSums(!is.na(M)) > 0 #garde les vrais flux nuls
   M <- M[garde, garde]
   M <- M / sum(M, na.rm = TRUE)
   
@@ -134,6 +135,8 @@ for (year in annees) {
 }
 
 
+
+
 # ---- graphe : annee en x, correlation en y ----
 p <-ggplot(cor_par_annee, aes(year, cor)) +
   geom_ribbon(aes(ymin = ic_bas, ymax = ic_haut), fill = "grey80", alpha = 0.5) +
@@ -155,8 +158,8 @@ write.csv(cor_par_annee,
 
 # ================= Avec Louvain=================
 
-library(ggplot2)
-dossier <- here("Louvain")
+
+dossier <- here("data", "blocks", "louvain")  
 annees  <- 1833:1938
 
 cor_comm <- data.frame(year = integer(), cor = numeric(),
@@ -188,12 +191,142 @@ for (year in annees) {
 }
 
 # graphe : annee en x, correlation en y, avec IC
-ggplot(cor_comm, aes(year, cor)) +
+p_louvain <- ggplot(cor_comm, aes(year, cor)) +
   geom_ribbon(aes(ymin = ic_bas, ymax = ic_haut), fill = "grey80", alpha = 0.5) +
   geom_line() + geom_point() +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
   labs(x = "année", y = "corrélation same_community / log(maxObservedTradeValue)",
        title = "Corrélation même communauté ↔ commerce (IC 95%)") +
   theme_minimal()
+
+ggsave(here("data", "blocks", "louvain", "correlation_louvain.png"),
+       plot = p_louvain, width = 9, height = 5, dpi = 150)
+write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm.csv"), row.names = FALSE)
+
+
+
+#Correlation Louvain mais avec les flux i==>j et j==>i
+
+dossier <- here("data", "blocks", "louvain")
+annees  <- 1833:1938
+cor_comm <- data.frame(year = integer(), cor = numeric(),
+                       ic_bas = numeric(), ic_haut = numeric())
+for (year in annees) {
+  f <- file.path(dossier, paste0(year, "_fob_enrichi.csv"))
+  if (!file.exists(f) || file.info(f)$size == 0) {
+    message("Annee ", year, " : fichier absent ou vide -> sautee")
+    next
+  }
+  
+  d <- tryCatch(read.csv(f, stringsAsFactors = FALSE),
+                error = function(e) NULL)
+  if (is.null(d) || nrow(d) == 0) {
+    message("Annee ", year, " : lecture impossible -> sautee")
+    next
+  }
+  
+  d$same_community <- as.integer(d$sourceCommunity == d$targetCommunity)
+  
+  # ---- empiler les deux sens comme observations distinctes (comme intramax) ----
+  # sens i->j : flux = export
+  obs_ij <- data.frame(same_community = d$same_community, value = d$export)
+  # sens j->i : flux = import (meme same_community, car symetrique)
+  obs_ji <- data.frame(same_community = d$same_community, value = d$import)
+  
+  obs <- rbind(obs_ij, obs_ji)
+  obs <- obs[!is.na(obs$value), ]          # on garde les flux observes (comme intramax ignore les NA, ici pas de flux non obs anyway)
+  
+  ct <- tryCatch(cor.test(obs$same_community, log1p(obs$value)),
+                 error = function(e) NULL)
+  if (is.null(ct)) { message("Annee ", year, " : cor.test impossible -> sautee"); next }
+  
+  cor_comm <- rbind(cor_comm, data.frame(
+    year = year, cor = ct$estimate,
+    ic_bas = ct$conf.int[1], ic_haut = ct$conf.int[2]))
+}
+
+# graphe
+p_louvain <- ggplot(cor_comm, aes(year, cor)) +
+  geom_ribbon(aes(ymin = ic_bas, ymax = ic_haut), fill = "grey80", alpha = 0.5) +
+  geom_line() + geom_point() +
+  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  labs(x = "année", y = "corrélation same_community / log(flux oriente)",
+       title = "Corrélation même communauté ↔ commerce (flux orientés, IC 95%)") +
+  theme_minimal()
+
+print(p_louvain)
+
+ggsave(here("data", "blocks", "louvain", "correlation_louvain_oriente.png"),
+       plot = p_louvain, width = 9, height = 5, dpi = 150)
+write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm_oriente.csv"), row.names = FALSE)
+
+
+
+
+
+
+
+
+
+#Corrélation entre Louvain et Intramax same blocs
+
+
+dossier_intra   <- here("data", "blocks", "Intramax")
+dossier_louvain <- here("data", "blocks", "louvain")
+annees <- 1833:1938
+
+cor_methodes <- data.frame(year = integer(), cor = numeric(),
+                           ic_bas = numeric(), ic_haut = numeric(), n = integer())
+
+for (year in annees) {
+  f_intra   <- file.path(dossier_intra,   paste0("paires_blocs_", year, ".csv"))
+  f_louvain <- file.path(dossier_louvain, paste0(year, "_fob.csv"))
+  if (!file.exists(f_intra) || !file.exists(f_louvain)) next
+  if (file.info(f_intra)$size == 0 || file.info(f_louvain)$size == 0) next
+  
+  # --- intramax : couple NON-ORIENTE + meme_bloc, deduplique ---
+  di <- read.csv(f_intra, stringsAsFactors = FALSE)
+  di$couple <- apply(di[, c("exporterId", "importerId")], 1,
+                     function(x) paste(sort(as.character(x)), collapse = "_"))
+  di <- unique(di[, c("couple", "meme_bloc")])
+  
+  # --- louvain : couple NON-ORIENTE + same_community, dedupliqué ---
+  dl <- read.csv(f_louvain, stringsAsFactors = FALSE)
+  dl$same_community <- as.integer(dl$sourceCommunity == dl$targetCommunity)
+  dl$couple <- apply(dl[, c("source", "target")], 1,
+                     function(x) paste(sort(as.character(x)), collapse = "_"))
+  dl <- unique(dl[, c("couple", "same_community")])
+  
+  # --- jointure sur les couples communs ---
+  m <- merge(di, dl, by = "couple")
+  if (nrow(m) < 4) next
+  
+  ct <- tryCatch(cor.test(m$meme_bloc, m$same_community), error = function(e) NULL)
+  if (is.null(ct)) next
+  
+  cor_methodes <- rbind(cor_methodes, data.frame(
+    year = year, cor = ct$estimate,
+    ic_bas = ct$conf.int[1], ic_haut = ct$conf.int[2], n = nrow(m)))
+  
+  cat(year, ": communs =", nrow(m), "\n")   # controle du nb de paires appariees
+}
+
+# --- graph ---
+p <- ggplot(cor_methodes, aes(year, cor)) +
+  geom_ribbon(aes(ymin = ic_bas, ymax = ic_haut), fill = "grey80", alpha = 0.5) +
+  geom_line() + geom_point() +
+  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  labs(x = "année",
+       y = "corrélation même_bloc (intramax) ↔ même_communauté (Louvain)",
+       title = "Similarité entre intramax et Louvain par année (IC 95%)") +
+  theme_minimal()
+
+print(p)
+
+# --- sauvegardes ---
+ggsave(here("data", "blocks", "corr_intramax_louvain.png"),
+       plot = p, width = 9, height = 5, dpi = 150)
+write.csv(cor_methodes, here("data", "blocks", "cor_intramax_louvain.csv"),
+          row.names = FALSE)
 
 
