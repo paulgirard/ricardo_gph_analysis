@@ -45,7 +45,7 @@ jobs:
       # Exécution du script de build
       - name: Build
         working-directory: ${{ env.HNR_2026_DIR }}
-        run: npm run build
+        run: npm run build --base ricardo_gph_analysis/HNR_2026
 
       - name: Wipe destination folder
         run: rm -rf ${{ env.PUBLIC_DIR }}/HNR_2026/*
