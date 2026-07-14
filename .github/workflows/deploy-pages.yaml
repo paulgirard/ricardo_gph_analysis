@@ -30,10 +30,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "npm"
+          cache-dependency-path: ${{ env.HNR_2026_DIR }}
           # Spécifie le dossier où se trouve package.json si ce n'est pas à la racine
-          working-directory: ${{ env.HNR_2026_DIR }}
 
       # Installation des dépendances avec cache automatique géré par setup-node
       - name: Install dependencies
