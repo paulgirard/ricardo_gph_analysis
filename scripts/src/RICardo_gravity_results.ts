@@ -196,7 +196,7 @@ async function readGravityResults() {
         const observations: number[] = [];
 
         const proximities = impExpCouple.map((e) => {
-          const observed = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0;
+          const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
           if (observed) observations.push(observed);
           const expected =
             (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
@@ -212,7 +212,7 @@ async function readGravityResults() {
         const maxProximity = max(proximities) || -1;
         if (maxProximity > 0)
           okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
-            proximity: Math.log(maxProximity),
+            proximity: maxProximity,
             observedTradeValues: observations,
           });
         else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
