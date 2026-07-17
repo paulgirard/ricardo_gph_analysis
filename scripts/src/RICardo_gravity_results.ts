@@ -206,13 +206,12 @@ async function readGravityResults() {
               `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
             );
           const proximity = expected !== 0 ? observed / expected - 1 : 0;
-
           return proximity;
         });
         const maxProximity = max(proximities) || -1;
         if (maxProximity > 0)
           okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
-            proximity: maxProximity,
+            proximity: Math.log(maxProximity + 1),
             observedTradeValues: observations,
           });
         else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
@@ -226,7 +225,15 @@ async function readGravityResults() {
 
       // export as CSV
       const csvData: Record<string, string | number | undefined>[] = [];
-      const nodeAttsToKeep = ["cited", "reporting", "label", "gphStatus", "community", "meanAmbiguityScore"];
+      const nodeAttsToKeep = [
+        "cited",
+        "reporting",
+        "label",
+        "gphStatus",
+        "community",
+        "meanAmbiguityScore",
+        "weighted",
+      ];
       okGraph.forEachEdge((e, atts, source, target, srcAtts, trgAtts) => {
         csvData.push({
           key: e,

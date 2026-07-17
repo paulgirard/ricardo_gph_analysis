@@ -13,16 +13,16 @@
       <attribute id="lng" title="lng" type="string"/>
       <attribute id="totalBilateralTrade" title="totalBilateralTrade" type="double"/>
       <attribute id="community" title="community" type="integer"/>
-      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="integer"/>
+      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="double"/>
       <attribute id="reportingByAggregateInto" title="reportingByAggregateInto" type="boolean"/>
       <attribute id="reportingBySplit" title="reportingBySplit" type="boolean"/>
     </attributes>
     <attributes class="edge">
       <attribute id="proximity" title="proximity" type="double"/>
       <attribute id="observedTradeValues" title="observedTradeValues" type="listdouble"/>
-      <attribute id="coMembershipScore" title="coMembershipScore" type="integer"/>
-      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="integer"/>
-      <attribute id="ambiguityScore" title="ambiguityScore" type="integer"/>
+      <attribute id="coMembershipScore" title="coMembershipScore" type="double"/>
+      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="double"/>
+      <attribute id="ambiguityScore" title="ambiguityScore" type="double"/>
       <attribute id="sourceCommunityId" title="sourceCommunityId" type="string"/>
     </attributes>
     <nodes>
@@ -38,7 +38,7 @@
           <attvalue for="lng" value="2"/>
           <attvalue for="totalBilateralTrade" value="25927528.81929417"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.2396774193548387"/>
         </attvalues>
         <viz:position x="100" y="0"/>
       </node>
@@ -54,7 +54,7 @@
           <attvalue for="lng" value="1"/>
           <attvalue for="totalBilateralTrade" value="0"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.17"/>
         </attvalues>
         <viz:position x="99.99754674281631" y="0.7004608613374859"/>
       </node>
@@ -70,7 +70,7 @@
           <attvalue for="lng" value="-2"/>
           <attvalue for="totalBilateralTrade" value="50339930"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.35444444444444445"/>
         </attvalues>
         <viz:position x="99.99018709163468" y="1.4008873544621725"/>
       </node>
@@ -100,8 +100,8 @@
           <attvalue for="lat" value="50.641111111111"/>
           <attvalue for="lng" value="4.6680555555556"/>
           <attvalue for="totalBilateralTrade" value="6170724.269780067"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.3045454545454545"/>
         </attvalues>
         <viz:position x="99.93867458867204" y="3.5016169778426884"/>
       </node>
@@ -116,7 +116,7 @@
           <attvalue for="lng" value="-53"/>
           <attvalue for="totalBilateralTrade" value="3356337.69037685"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.32181818181818184"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="99.87981398866886" y="4.901301621907156"/>
@@ -131,7 +131,7 @@
           <attvalue for="lat" value="-33"/>
           <attvalue for="lng" value="-71"/>
           <attvalue for="totalBilateralTrade" value="333840.9944886227"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="99.80135115942134" y="6.300024345497893"/>
@@ -146,8 +146,8 @@
           <attvalue for="lat" value="56"/>
           <attvalue for="lng" value="10"/>
           <attvalue for="totalBilateralTrade" value="380408.6583155537"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.20400000000000001"/>
         </attvalues>
         <viz:position x="99.70330149990062" y="7.697510637856595"/>
       </node>
@@ -163,7 +163,7 @@
           <attvalue for="lng" value="14.25"/>
           <attvalue for="totalBilateralTrade" value="1013412.2831175984"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.07285714285714286"/>
         </attvalues>
         <viz:position x="99.64693747217873" y="8.395704402592024"/>
       </node>
@@ -178,7 +178,7 @@
           <attvalue for="lng" value="29"/>
           <attvalue for="totalBilateralTrade" value="900723.9249321319"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.07285714285714286"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
           <attvalue for="reportingBySplit" value="true"/>
         </attvalues>
@@ -194,8 +194,8 @@
           <attvalue for="lat" value="40.2"/>
           <attvalue for="lng" value="-3.5"/>
           <attvalue for="totalBilateralTrade" value="1762203.1444654164"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.10714285714285714"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="99.51954484822181" y="9.790821885968953"/>
@@ -212,7 +212,7 @@
           <attvalue for="lng" value="7.685"/>
           <attvalue for="totalBilateralTrade" value="3944242.0427273083"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.031875"/>
         </attvalues>
         <viz:position x="99.29184316712755" y="11.879809782759354"/>
       </node>
@@ -227,8 +227,8 @@
           <attvalue for="lat" value="39.828175"/>
           <attvalue for="lng" value="-98.5795"/>
           <attvalue for="totalBilateralTrade" value="19948861.86123806"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.1296774193548387"/>
         </attvalues>
         <viz:position x="99.20619386492268" y="12.575018840358776"/>
       </node>
@@ -273,8 +273,8 @@
           <attvalue for="lat" value="19"/>
           <attvalue for="lng" value="-72.8"/>
           <attvalue for="totalBilateralTrade" value="684081.8566338402"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.17"/>
         </attvalues>
         <viz:position x="98.81496659960169" y="15.34934447849817"/>
       </node>
@@ -289,7 +289,7 @@
           <attvalue for="lng" value="55.5325"/>
           <attvalue for="totalBilateralTrade" value="714403.8082385805"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.255"/>
         </attvalues>
         <viz:position x="98.70502626379128" y="16.041128085776023"/>
       </node>
@@ -350,8 +350,8 @@
           <attvalue for="lat" value="53.6333333333333"/>
           <attvalue for="lng" value="11.4166666666667"/>
           <attvalue for="totalBilateralTrade" value="19649.91934532006"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.255"/>
         </attvalues>
         <viz:position x="98.08279613594463" y="19.487562755632776"/>
       </node>
@@ -365,8 +365,8 @@
           <attvalue for="lat" value="65"/>
           <attvalue for="lng" value="11"/>
           <attvalue for="totalBilateralTrade" value="598903.107235465"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.06333333333333334"/>
         </attvalues>
         <viz:position x="97.94388716277068" y="20.174116274237278"/>
       </node>
@@ -395,8 +395,8 @@
           <attvalue for="lat" value="38.7"/>
           <attvalue for="lng" value="-9.18333333333333"/>
           <attvalue for="totalBilateralTrade" value="757888.9185847774"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.21000000000000002"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="97.1774023905091" y="23.59136419610099"/>
@@ -411,7 +411,7 @@
           <attvalue for="lat" value="18.333333"/>
           <attvalue for="lng" value="-64.833333"/>
           <attvalue for="totalBilateralTrade" value="367525.47482238064"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="96.83737802329244" y="24.95039513863376"/>
@@ -442,8 +442,8 @@
           <attvalue for="lat" value="66.4166666666667"/>
           <attvalue for="lng" value="94.25"/>
           <attvalue for="totalBilateralTrade" value="13828854.887892375"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.18473684210526314"/>
         </attvalues>
         <viz:position x="96.29172873477994" y="26.979677115702426"/>
       </node>
@@ -473,7 +473,7 @@
           <attvalue for="lng" value="-14.283333"/>
           <attvalue for="totalBilateralTrade" value="121965.61356572372"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.275"/>
         </attvalues>
         <viz:position x="95.90432483068722" y="28.325968275948348"/>
       </node>
@@ -488,8 +488,8 @@
           <attvalue for="lat" value="61"/>
           <attvalue for="lng" value="15"/>
           <attvalue for="totalBilateralTrade" value="1789013.8320726887"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.19666666666666666"/>
         </attvalues>
         <viz:position x="95.70355972958095" y="28.99704562686571"/>
       </node>
@@ -504,7 +504,7 @@
           <attvalue for="lng" value="8.231973"/>
           <attvalue for="totalBilateralTrade" value="1264728.3314317188"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.17"/>
         </attvalues>
         <viz:position x="95.49809891956647" y="29.666700233573266"/>
       </node>
@@ -519,7 +519,7 @@
           <attvalue for="lng" value="11.016666666667"/>
           <attvalue for="totalBilateralTrade" value="1527206.2005744185"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.031875"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="95.07313072657055" y="31.001609858980324"/>
@@ -550,7 +550,7 @@
           <attvalue for="lat" value="8"/>
           <attvalue for="lng" value="-67"/>
           <attvalue for="totalBilateralTrade" value="79551.67801078019"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="94.40072010544918" y="32.99248465291215"/>
@@ -565,8 +565,8 @@
           <attvalue for="lat" value="53"/>
           <attvalue for="lng" value="13"/>
           <attvalue for="totalBilateralTrade" value="1291681.2617057136"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.34"/>
         </attvalues>
         <viz:position x="93.9292691038635" y="34.31169488110419"/>
       </node>
@@ -580,7 +580,7 @@
           <attvalue for="lat" value="15"/>
           <attvalue for="lng" value="-66"/>
           <attvalue for="totalBilateralTrade" value="200775.36150274737"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="93.18755803152945" y="36.2778035184096"/>
@@ -595,7 +595,7 @@
           <attvalue for="lat" value="36.14"/>
           <attvalue for="lng" value="-5.35"/>
           <attvalue for="totalBilateralTrade" value="72128.48971224781"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="92.13465960414369" y="38.87421381363967"/>
@@ -642,7 +642,7 @@
           <attvalue for="lat" value="17.0666666666667"/>
           <attvalue for="lng" value="-88.7"/>
           <attvalue for="totalBilateralTrade" value="41846.28167843789"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="90.41997610147166" y="42.71098127893218"/>
@@ -657,7 +657,7 @@
           <attvalue for="lat" value="5.733333"/>
           <attvalue for="lng" value="-59.316667"/>
           <attvalue for="totalBilateralTrade" value="7487.120897382634"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="90.11858415956037" y="43.343290012137246"/>
@@ -687,7 +687,7 @@
           <attvalue for="lat" value="12"/>
           <attvalue for="lng" value="123"/>
           <attvalue for="totalBilateralTrade" value="196420.70153512037"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="community" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
@@ -703,7 +703,7 @@
           <attvalue for="lat" value="22"/>
           <attvalue for="lng" value="-79.5"/>
           <attvalue for="totalBilateralTrade" value="2891437.7138560223"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="86.86401906110962" y="49.54434571725803"/>
@@ -718,7 +718,7 @@
           <attvalue for="lat" value="15.3"/>
           <attvalue for="lng" value="-23.7"/>
           <attvalue for="totalBilateralTrade" value="6060.240963855422"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="85.44194045464886" y="51.95839500354336"/>
@@ -733,7 +733,7 @@
           <attvalue for="lat" value="31"/>
           <attvalue for="lng" value="-100"/>
           <attvalue for="totalBilateralTrade" value="34424.1794765268"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="83.18342689826936" y="55.50240976264252"/>
@@ -748,7 +748,7 @@
           <attvalue for="lat" value="23"/>
           <attvalue for="lng" value="-102"/>
           <attvalue for="totalBilateralTrade" value="841769.0719627521"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="82.79261353738688" y="56.08371549432957"/>
@@ -763,7 +763,7 @@
           <attvalue for="lat" value="14.616666666667"/>
           <attvalue for="lng" value="-90.516666666667"/>
           <attvalue for="totalBilateralTrade" value="32325.301204819276"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="82.39773794502608" y="56.662269470458114"/>
@@ -779,8 +779,8 @@
           <attvalue for="lat" value="4"/>
           <attvalue for="lng" value="-73.25"/>
           <attvalue for="totalBilateralTrade" value="0"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.09333333333333332"/>
         </attvalues>
         <viz:position x="81.99881949581462" y="57.23804330419423"/>
       </node>
@@ -795,7 +795,7 @@
           <attvalue for="lng" value="-64"/>
           <attvalue for="totalBilateralTrade" value="470766.2716714885"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.48200000000000004"/>
         </attvalues>
         <viz:position x="81.59587776274351" y="57.81100874511203"/>
       </node>
@@ -824,7 +824,7 @@
           <attvalue for="lat" value="18.25"/>
           <attvalue for="lng" value="-66.5"/>
           <attvalue for="totalBilateralTrade" value="125530.15698154777"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="75.0828629019511" y="66.0497062707081"/>
@@ -854,7 +854,7 @@
           <attvalue for="lat" value="16.7"/>
           <attvalue for="lng" value="145.78"/>
           <attvalue for="totalBilateralTrade" value="192.33611111102934"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="community" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="64.0549089560605" y="76.79172246167421"/>
@@ -869,7 +869,7 @@
           <attvalue for="lat" value="-1"/>
           <attvalue for="lng" value="-78"/>
           <attvalue for="totalBilateralTrade" value="10355.470747924617"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="62.427184218475276" y="78.12071857422045"/>
@@ -885,8 +885,8 @@
           <attvalue for="lat" value="32.32"/>
           <attvalue for="lng" value="-64.74"/>
           <attvalue for="totalBilateralTrade" value="19213"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.42"/>
         </attvalues>
         <viz:position x="57.953807996467155" y="81.49451600389206"/>
       </node>
@@ -946,7 +946,7 @@
           <attvalue for="lng" value="12.453"/>
           <attvalue for="totalBilateralTrade" value="426281.6225360979"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.07000000000000002"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="42.869256140305424" y="90.34504346103822"/>
@@ -963,7 +963,7 @@
           <attvalue for="lng" value="-56"/>
           <attvalue for="totalBilateralTrade" value="970444.9777707832"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.18833333333333335"/>
         </attvalues>
         <viz:position x="42.235372777596666" y="90.64310942557877"/>
       </node>
@@ -979,7 +979,7 @@
           <attvalue for="lng" value="38.583333"/>
           <attvalue for="totalBilateralTrade" value="531573.3564149978"/>
           <attvalue for="community" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.10200000000000001"/>
         </attvalues>
         <viz:position x="37.092337127021956" y="92.86634765325569"/>
       </node>
@@ -994,8 +994,8 @@
           <attvalue for="lat" value="25"/>
           <attvalue for="lng" value="-77.4"/>
           <attvalue for="totalBilateralTrade" value="75693"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.42"/>
         </attvalues>
         <viz:position x="33.817766302578846" y="94.10822855789053"/>
       </node>
@@ -1116,7 +1116,7 @@
           <attvalue for="lat" value="52.233333"/>
           <attvalue for="lng" value="21.016667"/>
           <attvalue for="totalBilateralTrade" value="115253.00448430493"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="community" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="5.076200199032064" y="99.87107785309692"/>
@@ -1146,7 +1146,7 @@
           <attvalue for="lat" value="39.774722222222"/>
           <attvalue for="lng" value="64.428611111111"/>
           <attvalue for="totalBilateralTrade" value="132237.533632287"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="community" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="2.976543302942183" y="99.95569113345027"/>
@@ -1161,7 +1161,7 @@
           <attvalue for="lat" value="40.528611"/>
           <attvalue for="lng" value="70.9425"/>
           <attvalue for="totalBilateralTrade" value="4589.417040358744"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="community" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="1.5759845803216428" y="99.98758059180443"/>
@@ -1176,7 +1176,7 @@
           <attvalue for="lat" value="41.3783333333333"/>
           <attvalue for="lng" value="60.3638888888889"/>
           <attvalue for="totalBilateralTrade" value="82.33183856502242"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="community" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="0.875572049122837" y="99.99616679446665"/>
@@ -1340,8 +1340,8 @@
           <attvalue for="lat" value="52.374444444444"/>
           <attvalue for="lng" value="9.7386111111111"/>
           <attvalue for="totalBilateralTrade" value="7081.87433607428"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.095"/>
         </attvalues>
         <viz:position x="-23.421154301580223" y="97.21856577414404"/>
       </node>
@@ -1355,7 +1355,7 @@
           <attvalue for="lat" value="-12.265"/>
           <attvalue for="lng" value="-68.659"/>
           <attvalue for="totalBilateralTrade" value="24786.560176259984"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="-25.458783602486296" y="96.70496542309384"/>
@@ -1385,8 +1385,8 @@
           <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
           <attvalue for="lat" value="32"/>
           <attvalue for="lng" value="-6"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="community" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0.3433333333333333"/>
         </attvalues>
         <viz:position x="-46.31718793741748" y="88.62684752133492"/>
       </node>
@@ -1400,7 +1400,7 @@
           <attvalue for="gphStatus" value="Colony of"/>
           <attvalue for="lat" value="22.19"/>
           <attvalue for="lng" value="113.538055555556"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="community" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="-49.392156471133156" y="86.95064622606952"/>
@@ -1444,7 +1444,7 @@
           <attvalue for="lat" value="17.0833333333333"/>
           <attvalue for="lng" value="-61.8"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.42"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="-65.38976988846186" y="75.6582975881298"/>
@@ -1458,7 +1458,7 @@
           <attvalue for="lat" value="13.25"/>
           <attvalue for="lng" value="-61.2"/>
           <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="meanAmbiguityScore" value="0.42"/>
           <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
         <viz:position x="-65.9181224721938" y="75.19841175012183"/>
@@ -1483,7 +1483,7 @@
           <attvalue for="entityType" value="GPH-AUTONOMOUS"/>
           <attvalue for="type" value="entity"/>
           <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="community" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
         <viz:position x="-71.01956492725185" y="70.40043606075079"/>
@@ -1503,37 +1503,37 @@
     <edges>
       <edge id="220-615" source="615" target="220">
         <attvalues>
-          <attvalue for="proximity" value="8.431253783085378"/>
+          <attvalue for="proximity" value="2.2440290446563145"/>
           <attvalue for="observedTradeValues" value="0.0004457765460633583|0.008560935941444041"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="211-220" source="211" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.7779129821260993"/>
+          <attvalue for="proximity" value="1.3291717360258375"/>
           <attvalue for="observedTradeValues" value="0.031285408505537515|0.016918714490287978"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.15"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.85"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="140-220" source="140" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.4332051707725335"/>
+          <attvalue for="proximity" value="0.35991331429348855"/>
           <attvalue for="observedTradeValues" value="0.0021883575897655777|0.0010240683966923948"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.05"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
+          <attvalue for="ambiguityScore" value="0.19"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="155-220" source="155" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.6409693597011901"/>
+          <attvalue for="proximity" value="0.495287140209802"/>
           <attvalue for="observedTradeValues" value="0.0013778547787412895"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1543,27 +1543,27 @@
       </edge>
       <edge id="220-329" source="329" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.9268675276726066"/>
+          <attvalue for="proximity" value="1.3678420413045977"/>
           <attvalue for="observedTradeValues" value="0.005714044817721231|0.0008742083319707969"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="220-651" source="651" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.13641683354073186"/>
+          <attvalue for="proximity" value="0.1278801839300105"/>
           <attvalue for="observedTradeValues" value="0.0013373296381900752|0.003156057420988026"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="220-230" source="230" target="220">
         <attvalues>
-          <attvalue for="proximity" value="1.327133252664983"/>
+          <attvalue for="proximity" value="0.8446371463957273"/>
           <attvalue for="observedTradeValues" value="0.011184938792135174|0.004182356605447531"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1573,17 +1573,17 @@
       </edge>
       <edge id="220-324" source="324" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.595350835768039"/>
+          <attvalue for="proximity" value="1.279641576332992"/>
           <attvalue for="observedTradeValues" value="0.0320959113165618|0.009924931122116816"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-220" source="2" target="220">
         <attvalues>
-          <attvalue for="proximity" value="1.9043167893746107"/>
+          <attvalue for="proximity" value="1.0661981782631784"/>
           <attvalue for="observedTradeValues" value="0.04105196737838018|0.03802542498553584"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1593,7 +1593,7 @@
       </edge>
       <edge id="220-65" source="65" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.87430664481584"/>
+          <attvalue for="proximity" value="1.354366716425256"/>
           <attvalue for="observedTradeValues" value="0.006889273893706448"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -1603,27 +1603,27 @@
       </edge>
       <edge id="220-41" source="41" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.20122212931579742"/>
+          <attvalue for="proximity" value="0.1833394796311668"/>
           <attvalue for="observedTradeValues" value="0.002066782168111934"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.15"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.85"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="220-585" source="585" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.985246774257133"/>
+          <attvalue for="proximity" value="1.3825992361108368"/>
           <attvalue for="observedTradeValues" value="0.007335050439769807"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="220-750" source="750" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.470260208648223"/>
+          <attvalue for="proximity" value="1.2442295792303635"/>
           <attvalue for="observedTradeValues" value="0.00838870409410138"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1633,7 +1633,7 @@
       </edge>
       <edge id="220-850" source="850" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.17228814221211008"/>
+          <attvalue for="proximity" value="0.15895751606718786"/>
           <attvalue for="observedTradeValues" value="0.0021883575897655777|0.0004579340882287227"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1643,7 +1643,7 @@
       </edge>
       <edge id="220-66" source="66" target="220">
         <attvalues>
-          <attvalue for="proximity" value="2.8723444413918866"/>
+          <attvalue for="proximity" value="1.353860122428939"/>
           <attvalue for="observedTradeValues" value="0.004863016866145728"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -1653,27 +1653,27 @@
       </edge>
       <edge id="220-280" source="280" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.6399493834787569"/>
+          <attvalue for="proximity" value="0.49466537762734697"/>
           <attvalue for="observedTradeValues" value="0.0000810502811024288"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.15"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.85"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="220-385" source="385" target="220">
         <attvalues>
-          <attvalue for="proximity" value="1.1914210393015012"/>
+          <attvalue for="proximity" value="0.7845502097925255"/>
           <attvalue for="observedTradeValues" value="0.004538815741736013"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.05"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
+          <attvalue for="ambiguityScore" value="0.19"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="220-751" source="751" target="220">
         <attvalues>
-          <attvalue for="proximity" value="3.0915541787447847"/>
+          <attvalue for="proximity" value="1.4089248926780957"/>
           <attvalue for="observedTradeValues" value="0.000202625702756072"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -1683,7 +1683,7 @@
       </edge>
       <edge id="220-365" source="365" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.02726022577426712"/>
+          <attvalue for="proximity" value="0.02689528324560321"/>
           <attvalue for="observedTradeValues" value="0.00911815662402324|0.00892323952676448"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1693,7 +1693,7 @@
       </edge>
       <edge id="1029-220" source="1029" target="220">
         <attvalues>
-          <attvalue for="proximity" value="3.092893393512889"/>
+          <attvalue for="proximity" value="1.4092521511199718"/>
           <attvalue for="observedTradeValues" value="0.004944067147248156"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -1703,37 +1703,37 @@
       </edge>
       <edge id="220-433" source="433" target="220">
         <attvalues>
-          <attvalue for="proximity" value="3.0112356320432925"/>
+          <attvalue for="proximity" value="1.3890993315204736"/>
           <attvalue for="observedTradeValues" value="0.0012562793570876462"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.9"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.09999999999999998"/>
+          <attvalue for="ambiguityScore" value="0.35999999999999993"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="220-225" source="225" target="220">
         <attvalues>
-          <attvalue for="proximity" value="1.8020740909115305"/>
+          <attvalue for="proximity" value="1.0303598897178081"/>
           <attvalue for="observedTradeValues" value="0.0076592515641795205"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="220-337" source="337" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.45178739124616984"/>
+          <attvalue for="proximity" value="0.37279548091986137"/>
           <attvalue for="observedTradeValues" value="0.0047414414444920845|0.003525687227955652"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="101-220" source="101" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.8228644906936011"/>
+          <attvalue for="proximity" value="0.6004091597979718"/>
           <attvalue for="observedTradeValues" value="0.0003647262649609296"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1743,27 +1743,27 @@
       </edge>
       <edge id="2-5" source="5" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.4913642370104037"/>
+          <attvalue for="proximity" value="1.250292558690131"/>
           <attvalue for="observedTradeValues" value="0.0034614123261747618"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-68" source="68" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.928832250208275"/>
+          <attvalue for="proximity" value="1.3683422443755362"/>
           <attvalue for="observedTradeValues" value="0.0008186108231284176"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-211" source="211" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.2289261626601229"/>
+          <attvalue for="proximity" value="0.20614074957656645"/>
           <attvalue for="observedTradeValues" value="0.00051336193891533|0.005715284481770691"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1773,17 +1773,17 @@
       </edge>
       <edge id="2-200" source="200" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.4462866247884478"/>
+          <attvalue for="proximity" value="0.36899932317291484"/>
           <attvalue for="observedTradeValues" value="0.09455509283458938"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2-338" source="338" target="2">
         <attvalues>
-          <attvalue for="proximity" value="1.2552800724897968"/>
+          <attvalue for="proximity" value="0.8132741659030419"/>
           <attvalue for="observedTradeValues" value="0.00003608733645821227|0.000014749993762627898"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1793,7 +1793,7 @@
       </edge>
       <edge id="2-561" source="561" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.7827499850014104"/>
+          <attvalue for="proximity" value="0.5781571075130998"/>
           <attvalue for="observedTradeValues" value="0.000025748547784781604|0.00014907587969728602"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1803,27 +1803,27 @@
       </edge>
       <edge id="2-80" source="80" target="2">
         <attvalues>
-          <attvalue for="proximity" value="3.494426435214331"/>
+          <attvalue for="proximity" value="1.5028380591622057"/>
           <attvalue for="observedTradeValues" value="0.00043102820792327443"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="110-2" source="110" target="2">
         <attvalues>
-          <attvalue for="proximity" value="3.49442643521433"/>
+          <attvalue for="proximity" value="1.5028380591622057"/>
           <attvalue for="observedTradeValues" value="0.00007711940400589026"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-840" source="840" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.8280732437837381"/>
+          <attvalue for="proximity" value="0.6032625399446616"/>
           <attvalue for="observedTradeValues" value="0.000827034625075292|0.0003373178187037768"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1833,27 +1833,27 @@
       </edge>
       <edge id="2-40" source="40" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.3884256639500143"/>
+          <attvalue for="proximity" value="1.2203654076080839"/>
           <attvalue for="observedTradeValues" value="0.02502280418946629"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-402" source="402" target="2">
         <attvalues>
-          <attvalue for="proximity" value="3.49442643521433"/>
+          <attvalue for="proximity" value="1.5028380591622057"/>
           <attvalue for="observedTradeValues" value="0.00006242214833581673"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-41" source="41" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.7411243140024493"/>
+          <attvalue for="proximity" value="0.5545310620292541"/>
           <attvalue for="observedTradeValues" value="0.0027296841298827114"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1863,77 +1863,77 @@
       </edge>
       <edge id="2-7" source="7" target="2">
         <attvalues>
-          <attvalue for="proximity" value="3.3294859771463834"/>
+          <attvalue for="proximity" value="1.4654488229921432"/>
           <attvalue for="observedTradeValues" value="0.0003545785143591855"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-70" source="70" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.362018936590637"/>
+          <attvalue for="proximity" value="1.212541667507931"/>
           <attvalue for="observedTradeValues" value="0.007490291920152486"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-89" source="89" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.6940317730182004"/>
+          <attvalue for="proximity" value="1.3067184829902474"/>
           <attvalue for="observedTradeValues" value="0.0003329594910238495"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-2" source="100" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.792289999222343"/>
+          <attvalue for="proximity" value="1.3329700580567607"/>
           <attvalue for="observedTradeValues" value="0.0034560674805401946|0.0004087345413425209"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="140-2" source="140" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.48398689225237446"/>
+          <attvalue for="proximity" value="0.39473231199214664"/>
           <attvalue for="observedTradeValues" value="0.006828132303108765|0.0005788893937750234"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.25"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.75"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="160-2" source="160" target="2">
         <attvalues>
-          <attvalue for="proximity" value="0.759771903181587"/>
+          <attvalue for="proximity" value="0.5651842001861871"/>
           <attvalue for="observedTradeValues" value="0.0021629892757202927"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.25"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.75"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="155-2" source="155" target="2">
         <attvalues>
-          <attvalue for="proximity" value="1.6346517849401065"/>
+          <attvalue for="proximity" value="0.9687510233329013"/>
           <attvalue for="observedTradeValues" value="0.002015753542072779"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-710" source="710" target="2">
         <attvalues>
-          <attvalue for="proximity" value="1.813284736043213"/>
+          <attvalue for="proximity" value="1.034352745872271"/>
           <attvalue for="observedTradeValues" value="0.010194439327597823"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -1943,117 +1943,117 @@
       </edge>
       <edge id="100-200" source="200" target="100">
         <attvalues>
-          <attvalue for="proximity" value="1.2914998024383988"/>
+          <attvalue for="proximity" value="0.8292065387520691"/>
           <attvalue for="observedTradeValues" value="0.004067727192884366"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="100-230" source="230" target="100">
         <attvalues>
-          <attvalue for="proximity" value="4.476641134330344"/>
+          <attvalue for="proximity" value="1.70049198134896"/>
           <attvalue for="observedTradeValues" value="0.00030652608435830306|0.000518309952047185"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-130" source="130" target="100">
         <attvalues>
-          <attvalue for="proximity" value="88.79900955803922"/>
+          <attvalue for="proximity" value="4.497573945826831"/>
           <attvalue for="observedTradeValues" value="0.00010666419618782386"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-101" source="101" target="100">
         <attvalues>
-          <attvalue for="proximity" value="19.790889595262584"/>
+          <attvalue for="proximity" value="3.0345148905293935"/>
           <attvalue for="observedTradeValues" value="0.00010291967320089163"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-155" source="155" target="100">
         <attvalues>
-          <attvalue for="proximity" value="0.40192994633913304"/>
+          <attvalue for="proximity" value="0.3378498204161722"/>
           <attvalue for="observedTradeValues" value="0.000029123392257130225"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="200-30" source="200" target="30">
         <attvalues>
-          <attvalue for="proximity" value="0.634395503762782"/>
+          <attvalue for="proximity" value="0.491273013515767"/>
           <attvalue for="observedTradeValues" value="0.0004240314198506304"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2-30" source="2" target="30">
         <attvalues>
-          <attvalue for="proximity" value="7.978917325982433"/>
+          <attvalue for="proximity" value="2.1948793100101964"/>
           <attvalue for="observedTradeValues" value="0.00045891845118723704"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
+          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="sourceCommunityId" value="2"/>
+        </attvalues>
+      </edge>
+      <edge id="380-385" source="385" target="380">
+        <attvalues>
+          <attvalue for="proximity" value="2.921843528186221"/>
+          <attvalue for="observedTradeValues" value="0.001630050945513692"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
           <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
-      <edge id="380-385" source="385" target="380">
-        <attvalues>
-          <attvalue for="proximity" value="17.57550037233242"/>
-          <attvalue for="observedTradeValues" value="0.001630050945513692"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
-        </attvalues>
-      </edge>
       <edge id="365-380" source="365" target="380">
         <attvalues>
-          <attvalue for="proximity" value="4.0825238371128725"/>
+          <attvalue for="proximity" value="1.625807956546331"/>
           <attvalue for="observedTradeValues" value="0.0020403018059841674|0.0008665243770030279"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="239-380" source="239" target="380">
         <attvalues>
-          <attvalue for="proximity" value="1.4098645072308362"/>
+          <attvalue for="proximity" value="0.8795705248560572"/>
           <attvalue for="observedTradeValues" value="0.00041739147897429634"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="380-390" source="390" target="380">
         <attvalues>
-          <attvalue for="proximity" value="46.188477177875924"/>
+          <attvalue for="proximity" value="3.854149735200145"/>
           <attvalue for="observedTradeValues" value="0.001717698357988504"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="230-380" source="230" target="380">
         <attvalues>
-          <attvalue for="proximity" value="2.3216549873012617"/>
+          <attvalue for="proximity" value="1.2004631488744393"/>
           <attvalue for="observedTradeValues" value="0.00011189075611757341|0.0005055889970939877"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2063,17 +2063,17 @@
       </edge>
       <edge id="235-380" source="235" target="380">
         <attvalues>
-          <attvalue for="proximity" value="6.284309109330686"/>
+          <attvalue for="proximity" value="1.9857225977209454"/>
           <attvalue for="observedTradeValues" value="0.00019539782393994311|0.0016167099571501471"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="2-380" source="2" target="380">
         <attvalues>
-          <attvalue for="proximity" value="0.8005644279299218"/>
+          <attvalue for="proximity" value="0.5881001868211642"/>
           <attvalue for="observedTradeValues" value="0.0010783074030494334|0.0009806479791653294"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2083,27 +2083,27 @@
       </edge>
       <edge id="140-380" source="140" target="380">
         <attvalues>
-          <attvalue for="proximity" value="2.6211542146486977"/>
+          <attvalue for="proximity" value="1.2867928188433964"/>
           <attvalue for="observedTradeValues" value="0.0012130103854876445|0.00006333478944362598"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.75"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.25"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="165-200" source="200" target="165">
         <attvalues>
-          <attvalue for="proximity" value="0.42860607621667923"/>
+          <attvalue for="proximity" value="0.35669919699630004"/>
           <attvalue for="observedTradeValues" value="0.003172145901786858"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.95"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.050000000000000044"/>
+          <attvalue for="ambiguityScore" value="0.19000000000000017"/>
           <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="140-165" source="140" target="165">
         <attvalues>
-          <attvalue for="proximity" value="5.741492308859745"/>
+          <attvalue for="proximity" value="1.908281311226511"/>
           <attvalue for="observedTradeValues" value="0.0016494947958560794"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2113,27 +2113,27 @@
       </edge>
       <edge id="165-220" source="220" target="165">
         <attvalues>
-          <attvalue for="proximity" value="1.9264879860463613"/>
+          <attvalue for="proximity" value="1.0738030645113805"/>
           <attvalue for="observedTradeValues" value="0.0011316240247521109|0.001213824447938755"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.05"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
+          <attvalue for="ambiguityScore" value="0.19"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="165-230" source="230" target="165">
         <attvalues>
-          <attvalue for="proximity" value="4.517163552264776"/>
+          <attvalue for="proximity" value="1.707863878995851"/>
           <attvalue for="observedTradeValues" value="0.0008206340961620916|0.00018163367995054292"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.25"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.75"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="160-165" source="160" target="165">
         <attvalues>
-          <attvalue for="proximity" value="7.900021211620711"/>
+          <attvalue for="proximity" value="2.1860536600634237"/>
           <attvalue for="observedTradeValues" value="0.0003715344885735336"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2143,7 +2143,7 @@
       </edge>
       <edge id="200-338" source="200" target="338">
         <attvalues>
-          <attvalue for="proximity" value="1.9589655874988456"/>
+          <attvalue for="proximity" value="1.084839743576484"/>
           <attvalue for="observedTradeValues" value="0.00009823372242610493"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2153,17 +2153,17 @@
       </edge>
       <edge id="220-652" source="220" target="652">
         <attvalues>
-          <attvalue for="proximity" value="0.434878148063808"/>
+          <attvalue for="proximity" value="0.36107993136491734"/>
           <attvalue for="observedTradeValues" value="0.0015517886819871017"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="200-652" source="200" target="652">
         <attvalues>
-          <attvalue for="proximity" value="0.346806264449365"/>
+          <attvalue for="proximity" value="0.29773605965226974"/>
           <attvalue for="observedTradeValues" value="0.0040364255743226074"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2173,27 +2173,27 @@
       </edge>
       <edge id="200-31" source="200" target="31">
         <attvalues>
-          <attvalue for="proximity" value="0.22856708481481314"/>
+          <attvalue for="proximity" value="0.20584851858204867"/>
           <attvalue for="observedTradeValues" value="0.0005082155672123328"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2-31" source="2" target="31">
         <attvalues>
-          <attvalue for="proximity" value="10.038938996159528"/>
+          <attvalue for="proximity" value="2.401428930810195"/>
           <attvalue for="observedTradeValues" value="0.0008995951153956933"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="200-901" source="200" target="901">
         <attvalues>
-          <attvalue for="proximity" value="2.37853424605032"/>
+          <attvalue for="proximity" value="1.2174419604247004"/>
           <attvalue for="observedTradeValues" value="0.01135221115616187"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2203,7 +2203,7 @@
       </edge>
       <edge id="200-451" source="200" target="451">
         <attvalues>
-          <attvalue for="proximity" value="2.357042309706264"/>
+          <attvalue for="proximity" value="1.211060321346019"/>
           <attvalue for="observedTradeValues" value="0.0008731028081628169"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2213,47 +2213,47 @@
       </edge>
       <edge id="140-211" source="140" target="211">
         <attvalues>
-          <attvalue for="proximity" value="0.3176984360684172"/>
+          <attvalue for="proximity" value="0.2758866057036897"/>
           <attvalue for="observedTradeValues" value="0.003427769978104403|0.00001265443232517881"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-390" source="390" target="211">
         <attvalues>
-          <attvalue for="proximity" value="0.4589653669553515"/>
+          <attvalue for="proximity" value="0.37772753173687457"/>
           <attvalue for="observedTradeValues" value="0.0004124146293559766"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-41" source="41" target="211">
         <attvalues>
-          <attvalue for="proximity" value="2.9741448129841346"/>
+          <attvalue for="proximity" value="1.379809583572428"/>
           <attvalue for="observedTradeValues" value="0.002249764929991427"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-280" source="280" target="211">
         <attvalues>
-          <attvalue for="proximity" value="6.462615919110193"/>
+          <attvalue for="proximity" value="2.0099060121471806"/>
           <attvalue for="observedTradeValues" value="0.00012134929136936741"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-211" source="210" target="211">
         <attvalues>
-          <attvalue for="proximity" value="3.0169379727894183"/>
+          <attvalue for="proximity" value="1.3905199140802884"/>
           <attvalue for="observedTradeValues" value="0.011324402010828122"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2263,67 +2263,67 @@
       </edge>
       <edge id="211-239" source="239" target="211">
         <attvalues>
-          <attvalue for="proximity" value="5.736067289982961"/>
+          <attvalue for="proximity" value="1.9074762664956761"/>
           <attvalue for="observedTradeValues" value="0.009060152585100881"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="160-211" source="160" target="211">
         <attvalues>
-          <attvalue for="proximity" value="0.976607514721727"/>
+          <attvalue for="proximity" value="0.6813819987951393"/>
           <attvalue for="observedTradeValues" value="0.000877261901311331"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-365" source="365" target="211">
         <attvalues>
-          <attvalue for="proximity" value="0.24086628463708615"/>
+          <attvalue for="proximity" value="0.2158097523407474"/>
           <attvalue for="observedTradeValues" value="0.003868281903158753|0.0007424888297425435"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="239-365" source="239" target="365">
         <attvalues>
-          <attvalue for="proximity" value="1.7653007223725714"/>
+          <attvalue for="proximity" value="1.0171493894120636"/>
           <attvalue for="observedTradeValues" value="0.003792681800178588"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-390" source="390" target="365">
         <attvalues>
-          <attvalue for="proximity" value="0.08357333217639473"/>
+          <attvalue for="proximity" value="0.08026422053134684"/>
           <attvalue for="observedTradeValues" value="0.00031233620801468667"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="200-365" source="200" target="365">
         <attvalues>
-          <attvalue for="proximity" value="0.5250141854791943"/>
+          <attvalue for="proximity" value="0.4220037119696821"/>
           <attvalue for="observedTradeValues" value="0.036710493634193916"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.6"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.4"/>
+          <attvalue for="ambiguityScore" value="0.96"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="300-365" source="300" target="365">
         <attvalues>
-          <attvalue for="proximity" value="1.4849698863785892"/>
+          <attvalue for="proximity" value="0.9102605413176572"/>
           <attvalue for="observedTradeValues" value="0.005375483484801646|0.0015019832842496593"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2333,17 +2333,17 @@
       </edge>
       <edge id="2901-365" source="2901" target="365">
         <attvalues>
-          <attvalue for="proximity" value="11.206425107513407"/>
+          <attvalue for="proximity" value="2.501962461265578"/>
           <attvalue for="observedTradeValues" value="0.0011871376377567198"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-630" source="630" target="365">
         <attvalues>
-          <attvalue for="proximity" value="6.152050121800163"/>
+          <attvalue for="proximity" value="1.9673990459283348"/>
           <attvalue for="observedTradeValues" value="0.004740165757681532"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2353,37 +2353,37 @@
       </edge>
       <edge id="365-7030" source="7030" target="365">
         <attvalues>
-          <attvalue for="proximity" value="11.206425107513407"/>
+          <attvalue for="proximity" value="2.501962461265578"/>
           <attvalue for="observedTradeValues" value="8.480405763266535e-7"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-7020" source="7020" target="365">
         <attvalues>
-          <attvalue for="proximity" value="11.206425107513407"/>
+          <attvalue for="proximity" value="2.501962461265578"/>
           <attvalue for="observedTradeValues" value="0.0013620829582831914"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-7010" source="7010" target="365">
         <attvalues>
-          <attvalue for="proximity" value="11.20642510751341"/>
+          <attvalue for="proximity" value="2.501962461265578"/>
           <attvalue for="observedTradeValues" value="0.00004727225748560731"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-710" source="710" target="365">
         <attvalues>
-          <attvalue for="proximity" value="1.7854259637869254"/>
+          <attvalue for="proximity" value="1.0244008109788223"/>
           <attvalue for="observedTradeValues" value="0.003716439441959207"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2393,7 +2393,7 @@
       </edge>
       <edge id="300-3271" source="300" target="3271">
         <attvalues>
-          <attvalue for="proximity" value="29.85158512922397"/>
+          <attvalue for="proximity" value="3.429188130853891"/>
           <attvalue for="observedTradeValues" value="0.0025533270055698143"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2403,7 +2403,7 @@
       </edge>
       <edge id="3271-329" source="329" target="3271">
         <attvalues>
-          <attvalue for="proximity" value="3.8688302683168496"/>
+          <attvalue for="proximity" value="1.5828537169332373"/>
           <attvalue for="observedTradeValues" value="0.0002961172020077236"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2413,7 +2413,7 @@
       </edge>
       <edge id="3271-350" source="350" target="3271">
         <attvalues>
-          <attvalue for="proximity" value="2.1412869178534977"/>
+          <attvalue for="proximity" value="1.144632562406205"/>
           <attvalue for="observedTradeValues" value="0.00004020093942680468"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2423,7 +2423,7 @@
       </edge>
       <edge id="3271-337" source="337" target="3271">
         <attvalues>
-          <attvalue for="proximity" value="1.8063033948370273"/>
+          <attvalue for="proximity" value="1.0318680994408314"/>
           <attvalue for="observedTradeValues" value="0.0001176444830201754"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2433,7 +2433,7 @@
       </edge>
       <edge id="2-329" source="2" target="329">
         <attvalues>
-          <attvalue for="proximity" value="1.227010948928454"/>
+          <attvalue for="proximity" value="0.8006603047105871"/>
           <attvalue for="observedTradeValues" value="0.00027066741374156097|0.0007389537942535934"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2443,7 +2443,7 @@
       </edge>
       <edge id="300-329" source="300" target="329">
         <attvalues>
-          <attvalue for="proximity" value="16.221000022670143"/>
+          <attvalue for="proximity" value="2.846129570639187"/>
           <attvalue for="observedTradeValues" value="0.00095473178624606|0.005094536994114815"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2453,7 +2453,7 @@
       </edge>
       <edge id="300-324" source="300" target="324">
         <attvalues>
-          <attvalue for="proximity" value="2.9074915953149296"/>
+          <attvalue for="proximity" value="1.362895632400095"/>
           <attvalue for="observedTradeValues" value="0.005114556413547115|0.000998012636354757"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2463,7 +2463,7 @@
       </edge>
       <edge id="324-329" source="329" target="324">
         <attvalues>
-          <attvalue for="proximity" value="4.939076774285092"/>
+          <attvalue for="proximity" value="1.781553696090275"/>
           <attvalue for="observedTradeValues" value="0.005712666962942489"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2473,7 +2473,7 @@
       </edge>
       <edge id="324-337" source="337" target="324">
         <attvalues>
-          <attvalue for="proximity" value="3.3287503885701906"/>
+          <attvalue for="proximity" value="1.4652789064994785"/>
           <attvalue for="observedTradeValues" value="0.0028699904538370033|0.0014183799192925037"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2483,7 +2483,7 @@
       </edge>
       <edge id="324-365" source="365" target="324">
         <attvalues>
-          <attvalue for="proximity" value="1.2767530913491991"/>
+          <attvalue for="proximity" value="0.8227503452552278"/>
           <attvalue for="observedTradeValues" value="0.00437922773824533"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2493,7 +2493,7 @@
       </edge>
       <edge id="140-324" source="140" target="324">
         <attvalues>
-          <attvalue for="proximity" value="0.6528862357532321"/>
+          <attvalue for="proximity" value="0.5025229935746767"/>
           <attvalue for="observedTradeValues" value="0.0026529378010446995|0.00003825355282310168"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2503,7 +2503,7 @@
       </edge>
       <edge id="230-324" source="230" target="324">
         <attvalues>
-          <attvalue for="proximity" value="1.1494985789610985"/>
+          <attvalue for="proximity" value="0.7652345958519097"/>
           <attvalue for="observedTradeValues" value="0.0020972975989469985|0.00003699945332325874"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2513,7 +2513,7 @@
       </edge>
       <edge id="235-324" source="235" target="324">
         <attvalues>
-          <attvalue for="proximity" value="3.4171427266644274"/>
+          <attvalue for="proximity" value="1.4854930451248063"/>
           <attvalue for="observedTradeValues" value="0.0018135810899479468|0.0008508658510132974"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2523,7 +2523,7 @@
       </edge>
       <edge id="225-324" source="225" target="324">
         <attvalues>
-          <attvalue for="proximity" value="2.303046262195243"/>
+          <attvalue for="proximity" value="1.19484515242478"/>
           <attvalue for="observedTradeValues" value="0.0018328710568503248"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2533,7 +2533,7 @@
       </edge>
       <edge id="324-335" source="335" target="324">
         <attvalues>
-          <attvalue for="proximity" value="18.46460782337301"/>
+          <attvalue for="proximity" value="2.9685978330748624"/>
           <attvalue for="observedTradeValues" value="0.00001556165397166633"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2543,7 +2543,7 @@
       </edge>
       <edge id="324-327" source="327" target="324">
         <attvalues>
-          <attvalue for="proximity" value="4.872816244072758"/>
+          <attvalue for="proximity" value="1.7703342877949366"/>
           <attvalue for="observedTradeValues" value="0.0005144261341571155|0.0008418692698109278"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2553,7 +2553,7 @@
       </edge>
       <edge id="324-390" source="390" target="324">
         <attvalues>
-          <attvalue for="proximity" value="1.3056319244723835"/>
+          <attvalue for="proximity" value="0.8353547926594446"/>
           <attvalue for="observedTradeValues" value="0.00040213096968970044"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2563,7 +2563,7 @@
       </edge>
       <edge id="165-324" source="165" target="324">
         <attvalues>
-          <attvalue for="proximity" value="2.126926868613817"/>
+          <attvalue for="proximity" value="1.1400506911263724"/>
           <attvalue for="observedTradeValues" value="0.00026329183816123993"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2573,7 +2573,7 @@
       </edge>
       <edge id="120-220" source="120" target="220">
         <attvalues>
-          <attvalue for="proximity" value="3.019066877456458"/>
+          <attvalue for="proximity" value="1.3910497556511978"/>
           <attvalue for="observedTradeValues" value="0.000607877108268216"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2583,57 +2583,57 @@
       </edge>
       <edge id="1064-2" source="1064" target="2">
         <attvalues>
-          <attvalue for="proximity" value="3.49442643521433"/>
+          <attvalue for="proximity" value="1.5028380591622057"/>
           <attvalue for="observedTradeValues" value="0.00009846455214457908"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="136-2" source="136" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.3846329916603413"/>
+          <attvalue for="proximity" value="1.219245478524658"/>
           <attvalue for="observedTradeValues" value="0.0013553334604577618"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-5" source="5" target="100">
         <attvalues>
-          <attvalue for="proximity" value="9.758061014098693"/>
+          <attvalue for="proximity" value="2.3756553353444207"/>
           <attvalue for="observedTradeValues" value="0.0002895967068930332"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-68" source="68" target="100">
         <attvalues>
-          <attvalue for="proximity" value="19.830682362874963"/>
+          <attvalue for="proximity" value="3.036427013395711"/>
           <attvalue for="observedTradeValues" value="0.00011784710872293148"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="100-136" source="136" target="100">
         <attvalues>
-          <attvalue for="proximity" value="8.937221003525405"/>
+          <attvalue for="proximity" value="2.2962874044693966"/>
           <attvalue for="observedTradeValues" value="0.00010804407722359271"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="337-652" source="337" target="652">
         <attvalues>
-          <attvalue for="proximity" value="4.224697089372166"/>
+          <attvalue for="proximity" value="1.653396822844455"/>
           <attvalue for="observedTradeValues" value="0.0007127561720147588"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2643,7 +2643,7 @@
       </edge>
       <edge id="365-640" source="640" target="365">
         <attvalues>
-          <attvalue for="proximity" value="1.5025036595621373"/>
+          <attvalue for="proximity" value="0.9172916945686618"/>
           <attvalue for="observedTradeValues" value="0.007568023572429136|0.0006707316012631494"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2653,27 +2653,27 @@
       </edge>
       <edge id="220-240" source="240" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.0882610069709473"/>
+          <attvalue for="proximity" value="0.08458101577628259"/>
           <attvalue for="observedTradeValues" value="0.000026399234416219664"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.05"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
+          <attvalue for="ambiguityScore" value="0.19"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2-6" source="6" target="2">
         <attvalues>
-          <attvalue for="proximity" value="2.0861538640553454"/>
+          <attvalue for="proximity" value="1.1269256114327835"/>
           <attvalue for="observedTradeValues" value="0.005640442557748679"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="210-365" source="210" target="365">
         <attvalues>
-          <attvalue for="proximity" value="0.17839684874472939"/>
+          <attvalue for="proximity" value="0.16415491198138518"/>
           <attvalue for="observedTradeValues" value="0.0033875574609500973"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2683,17 +2683,17 @@
       </edge>
       <edge id="235-365" source="235" target="365">
         <attvalues>
-          <attvalue for="proximity" value="2.36736753281685"/>
+          <attvalue for="proximity" value="1.2141312915774685"/>
           <attvalue for="observedTradeValues" value="0.002284928147469842|0.0016472659131257627"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="300-70" source="70" target="300">
         <attvalues>
-          <attvalue for="proximity" value="1.0130948843272147"/>
+          <attvalue for="proximity" value="0.699673281327829"/>
           <attvalue for="observedTradeValues" value="0.0010517894978662185"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2703,7 +2703,7 @@
       </edge>
       <edge id="140-300" source="140" target="300">
         <attvalues>
-          <attvalue for="proximity" value="3.4807968545023256"/>
+          <attvalue for="proximity" value="1.4998008999185788"/>
           <attvalue for="observedTradeValues" value="0.007570177305247951|0.00003548949817512554"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2713,7 +2713,7 @@
       </edge>
       <edge id="235-300" source="235" target="300">
         <attvalues>
-          <attvalue for="proximity" value="4.24650564493279"/>
+          <attvalue for="proximity" value="1.6575622635578382"/>
           <attvalue for="observedTradeValues" value="0.0022674221389809967|0.00017381232782415855"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2723,7 +2723,7 @@
       </edge>
       <edge id="300-327" source="327" target="300">
         <attvalues>
-          <attvalue for="proximity" value="9.58579473613888"/>
+          <attvalue for="proximity" value="2.359512983123006"/>
           <attvalue for="observedTradeValues" value="0.002172147533545092"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2733,7 +2733,7 @@
       </edge>
       <edge id="300-337" source="337" target="300">
         <attvalues>
-          <attvalue for="proximity" value="1.5645673304519785"/>
+          <attvalue for="proximity" value="0.9417897823093112"/>
           <attvalue for="observedTradeValues" value="0.0004169631711314449|0.0021073073086631485"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2743,7 +2743,7 @@
       </edge>
       <edge id="300-350" source="350" target="300">
         <attvalues>
-          <attvalue for="proximity" value="8.194877311175391"/>
+          <attvalue for="proximity" value="2.218646514973834"/>
           <attvalue for="observedTradeValues" value="0.0019589447691051526|0.0012740293686490784"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2753,7 +2753,7 @@
       </edge>
       <edge id="300-640" source="640" target="300">
         <attvalues>
-          <attvalue for="proximity" value="3.2219655596352084"/>
+          <attvalue for="proximity" value="1.4403007920350195"/>
           <attvalue for="observedTradeValues" value="0.00813209890413109|0.0016720267740025548"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2763,7 +2763,7 @@
       </edge>
       <edge id="300-651" source="651" target="300">
         <attvalues>
-          <attvalue for="proximity" value="9.415444989527783"/>
+          <attvalue for="proximity" value="2.3432897996310134"/>
           <attvalue for="observedTradeValues" value="0.004825369010573649|0.003769405423230656"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2773,7 +2773,7 @@
       </edge>
       <edge id="230-840" source="230" target="840">
         <attvalues>
-          <attvalue for="proximity" value="16.097763188436893"/>
+          <attvalue for="proximity" value="2.838947647258793"/>
           <attvalue for="observedTradeValues" value="0.0003092740376395239|0.0009948516753917622"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2783,57 +2783,57 @@
       </edge>
       <edge id="721-840" source="721" target="840">
         <attvalues>
-          <attvalue for="proximity" value="312.71104393442783"/>
+          <attvalue for="proximity" value="5.748472319978364"/>
           <attvalue for="observedTradeValues" value="0.0011107120304792823"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="5"/>
+          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="750-840" source="750" target="840">
         <attvalues>
-          <attvalue for="proximity" value="35.40833757459689"/>
+          <attvalue for="proximity" value="3.5947978026609433"/>
           <attvalue for="observedTradeValues" value="0.0011489189306309493|0.0004668496191499898"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="840-850" source="850" target="840">
         <attvalues>
-          <attvalue for="proximity" value="6.375187605396794"/>
+          <attvalue for="proximity" value="1.9981213399222468"/>
           <attvalue for="observedTradeValues" value="0.00017972673754584943"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="840-9820" source="9820" target="840">
         <attvalues>
-          <attvalue for="proximity" value="312.7110439344278"/>
+          <attvalue for="proximity" value="5.748472319978364"/>
           <attvalue for="observedTradeValues" value="0.0000019811148318546013"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="5"/>
+          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="1063-2" source="2" target="1063">
         <attvalues>
-          <attvalue for="proximity" value="0.3174853439036409"/>
+          <attvalue for="proximity" value="0.27572487719969674"/>
           <attvalue for="observedTradeValues" value="0.00009667838090504572"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="1063-200" source="200" target="1063">
         <attvalues>
-          <attvalue for="proximity" value="2.143713038222091"/>
+          <attvalue for="proximity" value="1.1454045975712182"/>
           <attvalue for="observedTradeValues" value="0.0011709970606830415"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2843,77 +2843,77 @@
       </edge>
       <edge id="230-6" source="6" target="230">
         <attvalues>
-          <attvalue for="proximity" value="5.81250279588753"/>
+          <attvalue for="proximity" value="1.9187595703947873"/>
           <attvalue for="observedTradeValues" value="0.0012929951344270464"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
-        </attvalues>
-      </edge>
-      <edge id="230-40" source="40" target="230">
-        <attvalues>
-          <attvalue for="proximity" value="5.650518352227656"/>
-          <attvalue for="observedTradeValues" value="0.0051002105137919855"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
-        </attvalues>
-      </edge>
-      <edge id="200-600" source="200" target="600">
-        <attvalues>
-          <attvalue for="proximity" value="1.0936176329330007"/>
-          <attvalue for="observedTradeValues" value="0.0010215172178744613"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
-        </attvalues>
-      </edge>
-      <edge id="220-600" source="220" target="600">
-        <attvalues>
-          <attvalue for="proximity" value="2.1867165009595375"/>
-          <attvalue for="observedTradeValues" value="0.0005610705709315633"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
-        </attvalues>
-      </edge>
-      <edge id="235-600" source="235" target="600">
-        <attvalues>
-          <attvalue for="proximity" value="4.159369898919907"/>
-          <attvalue for="observedTradeValues" value="0.00007095952110517641"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
           <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
+      <edge id="230-40" source="40" target="230">
+        <attvalues>
+          <attvalue for="proximity" value="1.8946947993334053"/>
+          <attvalue for="observedTradeValues" value="0.0051002105137919855"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
+          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="sourceCommunityId" value="2"/>
+        </attvalues>
+      </edge>
+      <edge id="200-600" source="200" target="600">
+        <attvalues>
+          <attvalue for="proximity" value="0.7388934945010641"/>
+          <attvalue for="observedTradeValues" value="0.0010215172178744613"/>
+          <attvalue for="coMembershipScore" value="0.7"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.30000000000000004"/>
+          <attvalue for="ambiguityScore" value="0.8400000000000001"/>
+          <attvalue for="sourceCommunityId" value="1"/>
+        </attvalues>
+      </edge>
+      <edge id="220-600" source="220" target="600">
+        <attvalues>
+          <attvalue for="proximity" value="1.158991076649346"/>
+          <attvalue for="observedTradeValues" value="0.0005610705709315633"/>
+          <attvalue for="coMembershipScore" value="0.05"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
+          <attvalue for="ambiguityScore" value="0.19"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
+        </attvalues>
+      </edge>
+      <edge id="235-600" source="235" target="600">
+        <attvalues>
+          <attvalue for="proximity" value="1.6408144594246983"/>
+          <attvalue for="observedTradeValues" value="0.00007095952110517641"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
+          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="sourceCommunityId" value="1"/>
+        </attvalues>
+      </edge>
       <edge id="140-235" source="140" target="235">
         <attvalues>
-          <attvalue for="proximity" value="4.84194189215136"/>
+          <attvalue for="proximity" value="1.7650632573483584"/>
           <attvalue for="observedTradeValues" value="0.006372902552802874"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.75"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.25"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="200-235" source="200" target="235">
         <attvalues>
-          <attvalue for="proximity" value="0.8797276707207053"/>
+          <attvalue for="proximity" value="0.6311269103495895"/>
           <attvalue for="observedTradeValues" value="0.018608901390274345"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.7"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.30000000000000004"/>
+          <attvalue for="ambiguityScore" value="0.8400000000000001"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="235-248" source="248" target="235">
         <attvalues>
-          <attvalue for="proximity" value="7.602933650139558"/>
+          <attvalue for="proximity" value="2.1521032671997946"/>
           <attvalue for="observedTradeValues" value="0.00046162187601888314"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2923,17 +2923,17 @@
       </edge>
       <edge id="235-390" source="390" target="235">
         <attvalues>
-          <attvalue for="proximity" value="1.5909733887159452"/>
+          <attvalue for="proximity" value="0.9520336308656875"/>
           <attvalue for="observedTradeValues" value="0.0003071400402376539"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="140-160" source="160" target="140">
         <attvalues>
-          <attvalue for="proximity" value="2.7254665794889488"/>
+          <attvalue for="proximity" value="1.3151921002262592"/>
           <attvalue for="observedTradeValues" value="0.00013868930236733996"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2943,37 +2943,37 @@
       </edge>
       <edge id="140-200" source="200" target="140">
         <attvalues>
-          <attvalue for="proximity" value="1.3946229312873193"/>
+          <attvalue for="proximity" value="0.8732257785043656"/>
           <attvalue for="observedTradeValues" value="0.004741677336119233"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.95"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.050000000000000044"/>
+          <attvalue for="ambiguityScore" value="0.19000000000000017"/>
           <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="230-231" source="231" target="230">
         <attvalues>
-          <attvalue for="proximity" value="33.44785207525994"/>
+          <attvalue for="proximity" value="3.5394466464668266"/>
           <attvalue for="observedTradeValues" value="0.0010244755531347"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="230-5" source="5" target="230">
         <attvalues>
-          <attvalue for="proximity" value="2.697290792868205"/>
+          <attvalue for="proximity" value="1.3076003333038155"/>
           <attvalue for="observedTradeValues" value="0.00038065924080040397"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="2-640" source="2" target="640">
         <attvalues>
-          <attvalue for="proximity" value="0.33743395504283513"/>
+          <attvalue for="proximity" value="0.2907528191615954"/>
           <attvalue for="observedTradeValues" value="0.0012261286525175428|0.0005023341102022346"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -2983,7 +2983,7 @@
       </edge>
       <edge id="337-640" source="337" target="640">
         <attvalues>
-          <attvalue for="proximity" value="1.507150918301825"/>
+          <attvalue for="proximity" value="0.9191470161284737"/>
           <attvalue for="observedTradeValues" value="0.0005310819669236647"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -2993,7 +2993,7 @@
       </edge>
       <edge id="338-640" source="338" target="640">
         <attvalues>
-          <attvalue for="proximity" value="22.504599165822796"/>
+          <attvalue for="proximity" value="3.157196111185518"/>
           <attvalue for="observedTradeValues" value="0.00041761157338026435"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3003,7 +3003,7 @@
       </edge>
       <edge id="338-651" source="338" target="651">
         <attvalues>
-          <attvalue for="proximity" value="3.1604895709996628"/>
+          <attvalue for="proximity" value="1.4256327526852535"/>
           <attvalue for="observedTradeValues" value="0.00012225104667167643"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3013,7 +3013,7 @@
       </edge>
       <edge id="350-651" source="350" target="651">
         <attvalues>
-          <attvalue for="proximity" value="14.229348813842718"/>
+          <attvalue for="proximity" value="2.723224409186847"/>
           <attvalue for="observedTradeValues" value="0.0016287053987533067|0.00012198067305915533"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3023,7 +3023,7 @@
       </edge>
       <edge id="640-651" source="640" target="651">
         <attvalues>
-          <attvalue for="proximity" value="9.862368541506552"/>
+          <attvalue for="proximity" value="2.385304388470552"/>
           <attvalue for="observedTradeValues" value="0.007875372138739147|0.0015274735976563735"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3033,7 +3033,7 @@
       </edge>
       <edge id="200-750" source="200" target="750">
         <attvalues>
-          <attvalue for="proximity" value="0.030169117138484136"/>
+          <attvalue for="proximity" value="0.029722980160198875"/>
           <attvalue for="observedTradeValues" value="0.003616058291384861"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3043,7 +3043,7 @@
       </edge>
       <edge id="710-750" source="710" target="750">
         <attvalues>
-          <attvalue for="proximity" value="6.415296673605557"/>
+          <attvalue for="proximity" value="2.003544984716095"/>
           <attvalue for="observedTradeValues" value="0.0014426950036232327"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3053,7 +3053,7 @@
       </edge>
       <edge id="750-780" source="780" target="750">
         <attvalues>
-          <attvalue for="proximity" value="54.70138002005749"/>
+          <attvalue for="proximity" value="4.0200049225699015"/>
           <attvalue for="observedTradeValues" value="0.000039309386334677966"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3063,7 +3063,7 @@
       </edge>
       <edge id="750-800" source="800" target="750">
         <attvalues>
-          <attvalue for="proximity" value="82.71011436939821"/>
+          <attvalue for="proximity" value="4.427359810928327"/>
           <attvalue for="observedTradeValues" value="0.0008348178953550165"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3073,7 +3073,7 @@
       </edge>
       <edge id="750-815" source="815" target="750">
         <attvalues>
-          <attvalue for="proximity" value="82.7101143693982"/>
+          <attvalue for="proximity" value="4.427359810928327"/>
           <attvalue for="observedTradeValues" value="0.00015521128831115115"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3083,7 +3083,7 @@
       </edge>
       <edge id="750-850" source="850" target="750">
         <attvalues>
-          <attvalue for="proximity" value="42.109783639464595"/>
+          <attvalue for="proximity" value="3.7637499699448855"/>
           <attvalue for="observedTradeValues" value="0.003937017404550478"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3093,7 +3093,7 @@
       </edge>
       <edge id="750-8501" source="8501" target="750">
         <attvalues>
-          <attvalue for="proximity" value="82.71011436939821"/>
+          <attvalue for="proximity" value="4.427359810928327"/>
           <attvalue for="observedTradeValues" value="0.00021964626178758203"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3103,7 +3103,7 @@
       </edge>
       <edge id="750-8532" source="8532" target="750">
         <attvalues>
-          <attvalue for="proximity" value="82.7101143693982"/>
+          <attvalue for="proximity" value="4.427359810928327"/>
           <attvalue for="observedTradeValues" value="0.0002719236930986486"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3113,7 +3113,7 @@
       </edge>
       <edge id="750-restOfTheWorld" source="restOfTheWorld" target="750">
         <attvalues>
-          <attvalue for="proximity" value="6.736858797059165"/>
+          <attvalue for="proximity" value="2.04599576505299"/>
           <attvalue for="observedTradeValues" value="0.0008996581202369596"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3123,37 +3123,37 @@
       </edge>
       <edge id="136-230" source="136" target="230">
         <attvalues>
-          <attvalue for="proximity" value="5.13954110513784"/>
+          <attvalue for="proximity" value="1.8147500007890855"/>
           <attvalue for="observedTradeValues" value="0.0002553083854726507"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="160-230" source="160" target="230">
         <attvalues>
-          <attvalue for="proximity" value="7.048724224780591"/>
+          <attvalue for="proximity" value="2.0855135974772536"/>
           <attvalue for="observedTradeValues" value="0.0010273528381138362"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.25"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.75"/>
+          <attvalue for="ambiguityScore" value="0.75"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="1055-2" source="2" target="1055">
         <attvalues>
-          <attvalue for="proximity" value="1.367751760689528"/>
+          <attvalue for="proximity" value="0.8619408807367327"/>
           <attvalue for="observedTradeValues" value="0.0008614325966173858"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="coMembershipScore" value="0.3"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.7"/>
+          <attvalue for="ambiguityScore" value="0.84"/>
+          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="1055-200" source="200" target="1055">
         <attvalues>
-          <attvalue for="proximity" value="1.936808438348768"/>
+          <attvalue for="proximity" value="1.0773234265104321"/>
           <attvalue for="observedTradeValues" value="0.005423630388058132"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3163,7 +3163,7 @@
       </edge>
       <edge id="337-651" source="337" target="651">
         <attvalues>
-          <attvalue for="proximity" value="6.415147336473244"/>
+          <attvalue for="proximity" value="2.0035248454495678"/>
           <attvalue for="observedTradeValues" value="0.002597702034473394|0.0003647262649609296"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3173,7 +3173,7 @@
       </edge>
       <edge id="651-652" source="652" target="651">
         <attvalues>
-          <attvalue for="proximity" value="35.58396728612258"/>
+          <attvalue for="proximity" value="3.599610092142654"/>
           <attvalue for="observedTradeValues" value="0.0010480206597949554|0.0006021231741493988"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3183,7 +3183,7 @@
       </edge>
       <edge id="21-337" source="21" target="337">
         <attvalues>
-          <attvalue for="proximity" value="31.13446876748864"/>
+          <attvalue for="proximity" value="3.4699292474119416"/>
           <attvalue for="observedTradeValues" value="0.00026341341358289357"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3193,7 +3193,7 @@
       </edge>
       <edge id="225-337" source="225" target="337">
         <attvalues>
-          <attvalue for="proximity" value="3.8859916019901055"/>
+          <attvalue for="proximity" value="1.5863722540436715"/>
           <attvalue for="observedTradeValues" value="0.0017020559031510048"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3203,7 +3203,7 @@
       </edge>
       <edge id="327-337" source="327" target="337">
         <attvalues>
-          <attvalue for="proximity" value="11.78789629526578"/>
+          <attvalue for="proximity" value="2.5484991216296624"/>
           <attvalue for="observedTradeValues" value="0.0011549665057096104|0.000670650550982047"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3213,7 +3213,7 @@
       </edge>
       <edge id="329-337" source="329" target="337">
         <attvalues>
-          <attvalue for="proximity" value="0.7113581056335303"/>
+          <attvalue for="proximity" value="0.5372872691144407"/>
           <attvalue for="observedTradeValues" value="0.001033391084055967"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3223,7 +3223,7 @@
       </edge>
       <edge id="337-350" source="350" target="337">
         <attvalues>
-          <attvalue for="proximity" value="4.2204130343287245"/>
+          <attvalue for="proximity" value="1.6525765241146324"/>
           <attvalue for="observedTradeValues" value="0.00016615307625997904|0.00046887587617755054"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3233,7 +3233,7 @@
       </edge>
       <edge id="337-365" source="365" target="337">
         <attvalues>
-          <attvalue for="proximity" value="7.809847573046762"/>
+          <attvalue for="proximity" value="2.1758701382146186"/>
           <attvalue for="observedTradeValues" value="0.010637849394693779"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3243,7 +3243,7 @@
       </edge>
       <edge id="337-615" source="615" target="337">
         <attvalues>
-          <attvalue for="proximity" value="11.234148756678552"/>
+          <attvalue for="proximity" value="2.504231120030294"/>
           <attvalue for="observedTradeValues" value="0.00028772849791362223"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3253,7 +3253,7 @@
       </edge>
       <edge id="200-350" source="200" target="350">
         <attvalues>
-          <attvalue for="proximity" value="0.07112178081134357"/>
+          <attvalue for="proximity" value="0.06870649257501237"/>
           <attvalue for="observedTradeValues" value="0.002113507655167484"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3263,7 +3263,7 @@
       </edge>
       <edge id="338-350" source="338" target="350">
         <attvalues>
-          <attvalue for="proximity" value="12.21715747042265"/>
+          <attvalue for="proximity" value="2.5815157939380806"/>
           <attvalue for="observedTradeValues" value="0.00009957027033433377"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3273,7 +3273,7 @@
       </edge>
       <edge id="350-365" source="365" target="350">
         <attvalues>
-          <attvalue for="proximity" value="0.6454833293538675"/>
+          <attvalue for="proximity" value="0.49803415829789777"/>
           <attvalue for="observedTradeValues" value="0.0004287559870318483"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3283,7 +3283,7 @@
       </edge>
       <edge id="350-640" source="640" target="350">
         <attvalues>
-          <attvalue for="proximity" value="4.465180597196163"/>
+          <attvalue for="proximity" value="1.6983971672300038"/>
           <attvalue for="observedTradeValues" value="0.0013547554486270973|5.268268271657871e-7"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3293,7 +3293,7 @@
       </edge>
       <edge id="3349-350" source="3349" target="350">
         <attvalues>
-          <attvalue for="proximity" value="45.929009483235234"/>
+          <attvalue for="proximity" value="3.848636023323949"/>
           <attvalue for="observedTradeValues" value="0.0002671417265136053"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3303,7 +3303,7 @@
       </edge>
       <edge id="210-850" source="210" target="850">
         <attvalues>
-          <attvalue for="proximity" value="9.597251452903844"/>
+          <attvalue for="proximity" value="2.360594670598905"/>
           <attvalue for="observedTradeValues" value="0.008973481872255403"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3313,7 +3313,7 @@
       </edge>
       <edge id="561-850" source="561" target="850">
         <attvalues>
-          <attvalue for="proximity" value="15.815785167407011"/>
+          <attvalue for="proximity" value="2.8223180385657742"/>
           <attvalue for="observedTradeValues" value="0.000026341341358289357|0.00008191808686744391"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3323,7 +3323,7 @@
       </edge>
       <edge id="710-850" source="710" target="850">
         <attvalues>
-          <attvalue for="proximity" value="0.8148013945114609"/>
+          <attvalue for="proximity" value="0.5959760372179237"/>
           <attvalue for="observedTradeValues" value="0.0007132424737013734"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3333,7 +3333,7 @@
       </edge>
       <edge id="740-850" source="740" target="850">
         <attvalues>
-          <attvalue for="proximity" value="40.439627095251765"/>
+          <attvalue for="proximity" value="3.724237599244035"/>
           <attvalue for="observedTradeValues" value="0.0004927857091027671"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3343,7 +3343,7 @@
       </edge>
       <edge id="850-restOfTheWorld" source="restOfTheWorld" target="850">
         <attvalues>
-          <attvalue for="proximity" value="36.601612803079576"/>
+          <attvalue for="proximity" value="3.6270469431748653"/>
           <attvalue for="observedTradeValues" value="0.008832454383137176"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3353,17 +3353,17 @@
       </edge>
       <edge id="101-230" source="101" target="230">
         <attvalues>
-          <attvalue for="proximity" value="17.579147251606646"/>
+          <attvalue for="proximity" value="2.9220398362940436"/>
           <attvalue for="observedTradeValues" value="0.000351758219984541"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
+          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="140-561" source="140" target="561">
         <attvalues>
-          <attvalue for="proximity" value="0.31140922148628336"/>
+          <attvalue for="proximity" value="0.27110230061027796"/>
           <attvalue for="observedTradeValues" value="0.00046041199105845284"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3373,7 +3373,7 @@
       </edge>
       <edge id="200-561" source="200" target="561">
         <attvalues>
-          <attvalue for="proximity" value="1.6920054435512815"/>
+          <attvalue for="proximity" value="0.9902864339020124"/>
           <attvalue for="observedTradeValues" value="0.008576894766918697"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3383,7 +3383,7 @@
       </edge>
       <edge id="248-561" source="248" target="561">
         <attvalues>
-          <attvalue for="proximity" value="8.856486486190613"/>
+          <attvalue for="proximity" value="2.288129764967369"/>
           <attvalue for="observedTradeValues" value="0.00017021204394373327"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3393,7 +3393,7 @@
       </edge>
       <edge id="511-561" source="511" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504794"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.000002317561869127987"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3403,7 +3403,7 @@
       </edge>
       <edge id="561-580" source="580" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="5.150137486951082e-7"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3413,7 +3413,7 @@
       </edge>
       <edge id="561-590" source="590" target="561">
         <attvalues>
-          <attvalue for="proximity" value="60.39305341259537"/>
+          <attvalue for="proximity" value="4.117296692149988"/>
           <attvalue for="observedTradeValues" value="0.00041661522186942085"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3423,7 +3423,7 @@
       </edge>
       <edge id="561-710" source="710" target="561">
         <attvalues>
-          <attvalue for="proximity" value="0.2431986565450701"/>
+          <attvalue for="proximity" value="0.2176876199880222"/>
           <attvalue for="observedTradeValues" value="0.00021954006079375073"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3433,7 +3433,7 @@
       </edge>
       <edge id="561-750" source="750" target="561">
         <attvalues>
-          <attvalue for="proximity" value="3.4630264084340663"/>
+          <attvalue for="proximity" value="1.4958271028230088"/>
           <attvalue for="observedTradeValues" value="0.00036199286368281765|0.000003460892391231127"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3443,7 +3443,7 @@
       </edge>
       <edge id="561-775" source="775" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.00002684251658198904"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3453,7 +3453,7 @@
       </edge>
       <edge id="561-780" source="780" target="561">
         <attvalues>
-          <attvalue for="proximity" value="29.85789046634402"/>
+          <attvalue for="proximity" value="3.42939248641132"/>
           <attvalue for="observedTradeValues" value="0.000019766227674918252"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3463,7 +3463,7 @@
       </edge>
       <edge id="561-840" source="840" target="561">
         <attvalues>
-          <attvalue for="proximity" value="0.03322001728307389"/>
+          <attvalue for="proximity" value="0.03268015611601791"/>
           <attvalue for="observedTradeValues" value="0.000028212453153518026"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3473,7 +3473,7 @@
       </edge>
       <edge id="561-901" source="901" target="561">
         <attvalues>
-          <attvalue for="proximity" value="71.18273731595092"/>
+          <attvalue for="proximity" value="4.279200921963991"/>
           <attvalue for="observedTradeValues" value="0.00001023847332405875"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3483,7 +3483,7 @@
       </edge>
       <edge id="1023-561" source="1023" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.000008096016129487101"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3493,7 +3493,7 @@
       </edge>
       <edge id="1024-561" source="1024" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.000024102643438931063"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3503,7 +3503,7 @@
       </edge>
       <edge id="4050-561" source="4050" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504794"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.00002899527405153459"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3513,7 +3513,7 @@
       </edge>
       <edge id="561-7506" source="7506" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.000015574015760540073"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3523,7 +3523,7 @@
       </edge>
       <edge id="561-9974" source="9974" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504795"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="0.000005150137486951082"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3533,7 +3533,7 @@
       </edge>
       <edge id="541-561" source="541" target="561">
         <attvalues>
-          <attvalue for="proximity" value="91.22542896504794"/>
+          <attvalue for="proximity" value="4.524235894760054"/>
           <attvalue for="observedTradeValues" value="5.768153985385212e-7"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3543,7 +3543,7 @@
       </edge>
       <edge id="327-329" source="329" target="327">
         <attvalues>
-          <attvalue for="proximity" value="2.086055856256419"/>
+          <attvalue for="proximity" value="1.1268938536658326"/>
           <attvalue for="observedTradeValues" value="0.00023480266435373621"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3553,7 +3553,7 @@
       </edge>
       <edge id="327-616" source="616" target="327">
         <attvalues>
-          <attvalue for="proximity" value="15.59751030412999"/>
+          <attvalue for="proximity" value="2.8092527024352045"/>
           <attvalue for="observedTradeValues" value="0.000007091899596462519"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3563,17 +3563,17 @@
       </edge>
       <edge id="235-240" source="240" target="235">
         <attvalues>
-          <attvalue for="proximity" value="20.793766492811585"/>
+          <attvalue for="proximity" value="3.081623988209491"/>
           <attvalue for="observedTradeValues" value="0.00007294525299218592"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
+          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="327-350" source="327" target="350">
         <attvalues>
-          <attvalue for="proximity" value="0.3197409947033527"/>
+          <attvalue for="proximity" value="0.2774355012115517"/>
           <attvalue for="observedTradeValues" value="0.00003485162087404438"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3583,7 +3583,7 @@
       </edge>
       <edge id="248-640" source="248" target="640">
         <attvalues>
-          <attvalue for="proximity" value="37.091732788227326"/>
+          <attvalue for="proximity" value="3.6399972714018953"/>
           <attvalue for="observedTradeValues" value="0.0009608105573287422"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3593,7 +3593,7 @@
       </edge>
       <edge id="630-640" source="630" target="640">
         <attvalues>
-          <attvalue for="proximity" value="25.145127919339213"/>
+          <attvalue for="proximity" value="3.263662860316563"/>
           <attvalue for="observedTradeValues" value="0.0033498891682444843"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3603,7 +3603,7 @@
       </edge>
       <edge id="3361-640" source="3361" target="640">
         <attvalues>
-          <attvalue for="proximity" value="62.141050431725525"/>
+          <attvalue for="proximity" value="4.145371119540803"/>
           <attvalue for="observedTradeValues" value="0.000012968044976388608"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3613,7 +3613,7 @@
       </edge>
       <edge id="640-652" source="652" target="640">
         <attvalues>
-          <attvalue for="proximity" value="7.080465444123533"/>
+          <attvalue for="proximity" value="2.0894494753446646"/>
           <attvalue for="observedTradeValues" value="0.000012976150004498849|0.003042423119866404"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3623,7 +3623,7 @@
       </edge>
       <edge id="616-640" source="616" target="640">
         <attvalues>
-          <attvalue for="proximity" value="58.03183368737745"/>
+          <attvalue for="proximity" value="4.0780768524221305"/>
           <attvalue for="observedTradeValues" value="0.00010188020334575299"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3633,7 +3633,7 @@
       </edge>
       <edge id="211-6" source="6" target="211">
         <attvalues>
-          <attvalue for="proximity" value="0.0800458466825813"/>
+          <attvalue for="proximity" value="0.07700349086714546"/>
           <attvalue for="observedTradeValues" value="0.0007127687279190559"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3643,7 +3643,7 @@
       </edge>
       <edge id="130-220" source="130" target="220">
         <attvalues>
-          <attvalue for="proximity" value="0.873604119762369"/>
+          <attvalue for="proximity" value="0.627863912707302"/>
           <attvalue for="observedTradeValues" value="0.00008995230134708759"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3653,7 +3653,7 @@
       </edge>
       <edge id="230-385" source="385" target="230">
         <attvalues>
-          <attvalue for="proximity" value="1.231495578263718"/>
+          <attvalue for="proximity" value="0.8026720235766955"/>
           <attvalue for="observedTradeValues" value="0.000437339375116912"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3663,7 +3663,7 @@
       </edge>
       <edge id="300-338" source="338" target="300">
         <attvalues>
-          <attvalue for="proximity" value="1.1487052788207257"/>
+          <attvalue for="proximity" value="0.7648654648494588"/>
           <attvalue for="observedTradeValues" value="0.00012577665770631934"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3673,7 +3673,7 @@
       </edge>
       <edge id="300-3349" source="3349" target="300">
         <attvalues>
-          <attvalue for="proximity" value="2.6381561377617513"/>
+          <attvalue for="proximity" value="1.2914769977460796"/>
           <attvalue for="observedTradeValues" value="0.00016092119591727352"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3683,7 +3683,7 @@
       </edge>
       <edge id="300-380" source="380" target="300">
         <attvalues>
-          <attvalue for="proximity" value="0.15418519348677195"/>
+          <attvalue for="proximity" value="0.1433946348350161"/>
           <attvalue for="observedTradeValues" value="0.00039672539089481576"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3693,7 +3693,7 @@
       </edge>
       <edge id="324-338" source="338" target="324">
         <attvalues>
-          <attvalue for="proximity" value="1.0235491482815187"/>
+          <attvalue for="proximity" value="0.704852973786787"/>
           <attvalue for="observedTradeValues" value="0.00011253050408988115"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3703,7 +3703,7 @@
       </edge>
       <edge id="324-3349" source="3349" target="324">
         <attvalues>
-          <attvalue for="proximity" value="2.426080459608227"/>
+          <attvalue for="proximity" value="1.2314168846256424"/>
           <attvalue for="observedTradeValues" value="0.00014396694331023056"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3713,7 +3713,7 @@
       </edge>
       <edge id="231-324" source="231" target="324">
         <attvalues>
-          <attvalue for="proximity" value="2.2571647241707375"/>
+          <attvalue for="proximity" value="1.1808571004437374"/>
           <attvalue for="observedTradeValues" value="0.00020781834787345007"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3723,7 +3723,7 @@
       </edge>
       <edge id="327-615" source="615" target="327">
         <attvalues>
-          <attvalue for="proximity" value="6.313243069421438"/>
+          <attvalue for="proximity" value="1.9896868237265222"/>
           <attvalue for="observedTradeValues" value="0.00002167177854509015"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3733,17 +3733,17 @@
       </edge>
       <edge id="327-433" source="433" target="327">
         <attvalues>
-          <attvalue for="proximity" value="4.0997666892711795"/>
+          <attvalue for="proximity" value="1.6291947914821154"/>
           <attvalue for="observedTradeValues" value="0.00002564768468501639"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.95"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.050000000000000044"/>
+          <attvalue for="ambiguityScore" value="0.19000000000000017"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="327-585" source="585" target="327">
         <attvalues>
-          <attvalue for="proximity" value="4.899869821232035"/>
+          <attvalue for="proximity" value="1.7749302864702956"/>
           <attvalue for="observedTradeValues" value="0.00017437335503318974"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3753,17 +3753,17 @@
       </edge>
       <edge id="220-327" source="220" target="327">
         <attvalues>
-          <attvalue for="proximity" value="1.6151268552020874"/>
+          <attvalue for="proximity" value="0.9613126069338179"/>
           <attvalue for="observedTradeValues" value="0.001087245524870243"/>
-          <attvalue for="coMembershipScore" value="1"/>
-          <attvalue for="bridgeNessEdgeScore" value="0"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.85"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.15000000000000002"/>
+          <attvalue for="ambiguityScore" value="0.51"/>
           <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="337-338" source="338" target="337">
         <attvalues>
-          <attvalue for="proximity" value="4.958436588075537"/>
+          <attvalue for="proximity" value="1.7848081292290312"/>
           <attvalue for="observedTradeValues" value="0.0002080140530979542"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3773,7 +3773,7 @@
       </edge>
       <edge id="3349-337" source="3349" target="337">
         <attvalues>
-          <attvalue for="proximity" value="9.08799878983353"/>
+          <attvalue for="proximity" value="2.311346478701621"/>
           <attvalue for="observedTradeValues" value="0.0002661179042257363"/>
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
@@ -3783,7 +3783,7 @@
       </edge>
       <edge id="750-901" source="901" target="750">
         <attvalues>
-          <attvalue for="proximity" value="17.19211934327079"/>
+          <attvalue for="proximity" value="2.90098849719284"/>
           <attvalue for="observedTradeValues" value="0.000002842875892796997"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
@@ -3793,7 +3793,7 @@
       </edge>
       <edge id="590-750" source="590" target="750">
         <attvalues>
-          <attvalue for="proximity" value="6.556780403491592"/>
+          <attvalue for="proximity" value="2.0224452269279487"/>
           <attvalue for="observedTradeValues" value="0.00005649700823185337"/>
           <attvalue for="coMembershipScore" value="0"/>
           <attvalue for="bridgeNessEdgeScore" value="1"/>
