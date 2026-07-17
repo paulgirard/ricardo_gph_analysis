@@ -1,6 +1,10 @@
+rm(list = ls(all = TRUE))
+gc()
 library(here)
 library(ggplot2)
 library(maps)
+
+setwd("/Users/youssef/Desktop/ricardo_gph_analysis/")
 
 monde <- map_data("world")
 coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)

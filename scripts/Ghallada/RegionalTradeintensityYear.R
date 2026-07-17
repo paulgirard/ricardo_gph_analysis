@@ -1,4 +1,3 @@
-
 rm(list = ls(all = TRUE))
 gc()
 
@@ -87,13 +86,7 @@ ggsave("data/blocks/Intramax/tibi_intrabloc_moyen.png",
 write.csv(resultats_intra, "data/blocks/Intramax/tibi_intrabloc_moyen.csv", row.names = FALSE)
 
 #####Louvain method#####
-rm(list = ls(all = TRUE))
-gc()
-library(dplyr)
-library(readxl)
-library(tidyverse)
-library(ggplot2)
-setwd("~/Desktop/ricardo_gph_analysis")
+
 annees <- 1833:1938
 resultats_louvain <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 for (year in annees) {
@@ -187,14 +180,14 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
   geom_line() + geom_point(size = 1) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
   coord_cartesian(ylim = c(-1, 1)) +
+  scale_x_continuous(breaks = seq(1835, 1935, 5)) +
   scale_color_manual(values = c("Intramax" = "#0055A4", "Louvain" = "#CF142B")) +
   labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
        title = "Commerce intra-bloc moyen : Intramax vs Louvain",
        color = "Méthode") +
   theme_minimal() +
-  theme(legend.position = "bottom")
-
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1))
 print(p_combine)
-
 ggsave("data/blocks/tibi_comparaison_intramax_louvain.png",
        plot = p_combine, width = 10, height = 5, dpi = 150)
