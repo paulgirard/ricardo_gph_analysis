@@ -52,3 +52,57 @@ img.tiny-logo {
 h1 + p {
   opacity: 1 !important;
 }
+
+figure {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+
+  /* legend */
+  > div {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start !important;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  svg {
+    flex-shrink: 0;
+    g[aria-label="y-axis label"] {
+      font-size: 0.9rem;
+    }
+  }
+  .plot-d6a7b5 text,
+  .plot-d6a7b5-swatches {
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    margin-bottom: 0.5em;
+  }
+  .plot-d6a7b5-swatch > svg {
+    margin-right: 0.5em;
+    overflow: visible;
+  }
+  .plot-d6a7b5-swatches-wrap {
+    display: flex;
+    align-items: center;
+    min-height: 33px;
+    flex-wrap: wrap;
+  }
+  .plot-d6a7b5-swatches-wrap .plot-d6a7b5-swatch {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1em;
+  }
+  .plot-d6a7b5 {
+    --plot-background: white;
+    display: block;
+    height: auto;
+    height: intrinsic;
+    max-width: 100%;
+  }
+  .plot-d6a7b5 text,
+  .plot-d6a7b5 tspan {
+    white-space: pre;
+  }
+}

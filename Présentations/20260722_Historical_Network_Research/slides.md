@@ -273,12 +273,26 @@ scale: 0.5
 
 ---
 
-# evaluation
+# How much trade do we normalize?
+
+<ShareTotalReportedValue />
 
 ---
 
-# What for?
+# Which method had the most impact?
 
-- quantification in the long run
-- trade block analysis
-- effect of colonization
+<ShareGeneratedTradeValue />
+
+---
+
+# Trade Network density gain!
+
+<TradeNetworkDensity />
+
+---
+
+# Great! But what was that for?
+
+- Trade quantification in the long run
+- Trade block analysis
+- Study the effect of colonization
