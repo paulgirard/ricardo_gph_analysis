@@ -267,14 +267,13 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 
 ---
 layout: iframe
-url: https://lite.gephi.org/
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_examples_gephi_lite.json
+scale: 0.5
 ---
 
 ---
 
 # evaluation
-
-Figure 3
 
 ---
 
