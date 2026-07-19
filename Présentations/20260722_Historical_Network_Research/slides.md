@@ -46,18 +46,66 @@ scale: 0.8
 ![Bilateral trade data model](./images/Bilateral%20Trade%20Data%20model.svg)
 
 ---
+layout: statement
+---
 
-# RICentities heterogeneity
+# Sources are not the data we expect them to be!
 
-- TODO: RICentities type and numbers
-- TODO: Source anomalies (Italy, Germany ??)
+Not yet...
+
+---
+layout: image
+image: ./images/sweden_1840_table_12.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: ./images/USA_export_1831_1832.png
+backgroundSize: contain
+---
 
 ---
 
-# Reduce trade data heterogeneity with GeoPolitical data
+# Trade partners heterogeneity
+
+<small>
+
+| Partners’ type    |  % Total value   | % flow number | examples                                                         |
+| ----------------- | :--------------: | :-----------: | :--------------------------------------------------------------- |
+| GPH_entity        |      87.18       |     81.24     | _United Kingdom, Sierra Leone, Belgium..._                       |
+| group             |       6.45       |     5.14      | _Fiume & Republic of St. Mark & Trieste, Belgium & Luxemburg..._ |
+| locality          |       4.57       |     6.47      | _Conakry, Sumatra, British Colonies (other)..._                  |
+| colonial_area     |       1.39       |     4.97      | _French Colonies, Portuguese Colonies, British West Indies..._   |
+| geographical_area |       0.41       |     2.18      | _America, Arabia, Borneo, Africa..._                             |
+| Total             | £480,756,915,469 |    468448     |                                                                  |
+
+</small>
+
+---
+
+# Trade reporters heterogeneity
+
+<small>
+
+| Reporters' type   |  % Total value   | % flow number | examples                                                                   |
+| ----------------- | :--------------: | :-----------: | :------------------------------------------------------------------------- |
+| GPH_entity        |      96.98       |     95.59     | _Gambia, Singapore, Penang, Malacca..._                                    |
+| group             |       1.42       |     1.79      | _Fiume & Republic of St. Mark & Trieste, Belgium & Luxemburg..._           |
+| geographical_area |       0.94       |     0.06      | _Levant_                                                                   |
+| locality          |       0.64       |     2.51      | _Saint-Louis (Senegal), Kaliningrad (Königsberg), Bahia, Rio de Janeiro.._ |
+| colonial_area     |       0.01       |     0.06      | _British Northern America..._                                              |
+| Total             | £480,756,915,469 |    468448     |                                                                            |
+
+</small>
+
+---
+
+# Let's reduce trade data heterogeneity with GeoPolitical data
 
 Our goal is to reduce trading entities heterogeneity by:
 
+- identifying non-autonomous or informal entities
 - aggregating non-autonomous entities to their sovereign
 - splitting trade of groups, geographical and colonial areas
 
@@ -123,6 +171,14 @@ By using the GeoPolHist dataset:
 - Add Geopolitical resolutions edges (aggregate into, split into)
 
 ---
+
+TODO: trade network 1850
+
+---
+
+TODO: GPH network 1850
+
+---
 layout: image
 image: ./images/multilayer_data_model_1.png
 backgroundSize: contain
@@ -151,7 +207,7 @@ backgroundSize: contain
 
 ---
 
-# Aggregating trade
+# Aggregating trade partners
 
 Simple task: sum the trade figure to build the new trade edge.
 
@@ -161,44 +217,58 @@ But #2: do not create internal trade flows, discard trade flows between part of 
 
 ---
 
-# Splitting trade
+# Splitting trade partners
 
 Difficult task: how to decide the ratios to split one trade value into many?
 
-We look into adjacent years (+/- 10-years window) network for split trade flows with the same set of partners for the same reporter.
+We look into **adjacent years** (+/- 10-years window) networks  
+for _dissociated_ trade flows with the **same set of partners** for the same reporter.
 
-If we find one, we calculate split ratios for that year and reapply those on the original trade value.
+If we find one compatible year, we calculate **split ratios** for that year and reapply those **on the original trade value**.
 
-But #1: partial ratios
-But #2: special case of areas
-
----
-
-# Reporters aggregations
+This process support partial split.  
+If a set of partners from a group is found as one + another group, the one found will be split, the rest will stay as a group.
 
 ---
 
-# Reporters split
+# Special cases: Areas
 
-We don't do that. Yet.
+Areas (geographical or colonial) are implicit groups.
+
+The composition of the group is to be defined.
+
+We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter.
+
+---
+
+# Aggregating trade reporters
+
+Because of the importance of reporter context, we need to make sure reporters are aggregated before we can split their partners.
+
+---
+
+# Splitting trade reporters
+
+We don't do that, yet.
 
 ---
 
 # Gravity model
 
-- theoritical régression (anderson and van wincoop 2003)
-- effets fixes importateurs exportateur
-- distance à vol d'oiseau
-- lien géopolitique
+We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
 
-- geolocalisation variable
-- infer missing ratios to use on the source value
+We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables.
+
+The inferred values are used to compute a ratio which is then applied on the original values.
+
+<small>
+Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, février 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
+</small>
 
 ---
-
-# An example from 1850
-
-Figure 2
+layout: iframe
+url: https://lite.gephi.org/
+---
 
 ---
 
