@@ -171,12 +171,16 @@ By using the GeoPolHist dataset:
 - Add Geopolitical resolutions edges (aggregate into, split into)
 
 ---
-
-TODO: trade network 1850
-
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
+scale: 0.5
 ---
 
-TODO: GPH network 1850
+---
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
+scale: 0.5
+---
 
 ---
 layout: image
