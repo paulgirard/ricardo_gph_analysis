@@ -48,7 +48,7 @@ scale: 0.8
 
 # Bilateral trade data model
 
-![Bilateral trade data model](./images/Bilateral%20Trade%20Data%20model.svg)
+![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
 
 ---
 layout: statement
@@ -60,13 +60,13 @@ Not yet...
 
 ---
 layout: image
-image: ./images/sweden_1840_table_12.png
+image: /images/sweden_1840_table_12.png
 backgroundSize: contain
 ---
 
 ---
 layout: image
-image: ./images/USA_export_1831_1832.png
+image: /images/USA_export_1831_1832.png
 backgroundSize: contain
 ---
 
@@ -189,19 +189,19 @@ scale: 0.5
 
 ---
 layout: image
-image: ./images/multilayer_data_model_1.png
+image: /images/multilayer_data_model_1.png
 backgroundSize: contain
 ---
 
 ---
 layout: image
-image: ./images/multilayer_data_model_2.png
+image: /images/multilayer_data_model_2.png
 backgroundSize: contain
 ---
 
 ---
 layout: image
-image: ./images/multilayer_data_model_3.png
+image: /images/multilayer_data_model_3.png
 backgroundSize: contain
 ---
 
