@@ -1,3 +1,8 @@
+---
+favicon: "/favicon.ico"
+pwa: build
+---
+
 # Harmonizing Historical Trade Using Geopolitical Data
 
 ## A Multilayer Network Approach to Bilateral Flows
@@ -35,7 +40,7 @@ Girard, Paul, et al. « RICardo Project : Exploring XIX Century International
 
 ---
 layout: iframe
-url: https://ricardo.medialab.sciences-po.fr
+url: https://ricardo.medialab.sciences-po.fr/
 scale: 0.8
 ---
 
