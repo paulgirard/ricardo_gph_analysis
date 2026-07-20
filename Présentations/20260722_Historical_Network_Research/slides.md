@@ -380,5 +380,16 @@ layout: center
 # Great! But what was that for?
 
 - Trade quantification in the long run
-- Trade block analysis
-- Study the effect of colonization
+- Trade block analysis: on going work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Kohl et Brouwer 2014) methods
+- Study the effect of colonization: work in progress...
+
+<small>
+<p class="csl-bib-body">
+  <div class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</div>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.63744%2Ff3L9hsFcGqVc&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Cluster%20Ambiguity%20in%20Networks%20as%20Substantive%20Knowledge&amp;rft.btitle=Computational%20Humanities%20Research%202025&amp;rft.publisher=Anthology%20of%20Computers%20and%20the%20Humanities&amp;rft.aufirst=Mathieu&amp;rft.aulast=Jacomy&amp;rft.au=Mathieu%20Jacomy&amp;rft.au=Tommaso%20Elli&amp;rft.au=Andrea%20Benedetti&amp;rft.au=Guillaume%20Plique&amp;rft.au=Benjamin%20Ooghe-Tabanou&amp;rft.au=Paul%20Girard&amp;rft.au=Alexis%20Jacomy&amp;rft.au=Taylor%20Arnold&amp;rft.au=Margherita%20Fantoli&amp;rft.au=Ruben%20Ros&amp;rft.date=2025&amp;rft.pages=119-130&amp;rft.spage=119&amp;rft.epage=130&amp;rft.issn=3070-8931&amp;rft.language=en"></span>
+
+  <div class="csl-entry">Kohl, Tristan, et Aleid E. Brouwer. «&nbsp;The Development of Trade Blocs in an Era of Globalisation&nbsp;». <i>Environment and Planning A: Economy and Space</i>, vol. 46, n<sup>o</sup> 7, juillet 2014, p. 1535‑53. <i>DOI.org (Crossref)</i>, <a href="https://doi.org/10.1068/a46261">https://doi.org/10.1068/a46261</a>.</div>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.1068%2Fa46261&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=The%20Development%20of%20Trade%20Blocs%20in%20an%20Era%20of%20Globalisation&amp;rft.jtitle=Environment%20and%20Planning%20A%3A%20Economy%20and%20Space&amp;rft.stitle=Environ%20Plan%20A&amp;rft.volume=46&amp;rft.issue=7&amp;rft.aufirst=Tristan&amp;rft.aulast=Kohl&amp;rft.au=Tristan%20Kohl&amp;rft.au=Aleid%20E%20Brouwer&amp;rft.date=2014-07&amp;rft.pages=1535-1553&amp;rft.spage=1535&amp;rft.epage=1553&amp;rft.issn=0308-518X%2C%201472-3409&amp;rft.language=en"></span>
+</p>
+
+</small>
