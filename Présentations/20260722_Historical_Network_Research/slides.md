@@ -45,6 +45,8 @@ scale: 0.8
 ---
 
 ---
+layout: center
+---
 
 # Bilateral trade data model
 
@@ -71,6 +73,8 @@ backgroundSize: contain
 ---
 
 ---
+layout: center
+---
 
 # Trade partners heterogeneity
 
@@ -87,6 +91,8 @@ backgroundSize: contain
 
 </small>
 
+---
+layout: center
 ---
 
 # Trade reporters heterogeneity
@@ -105,6 +111,8 @@ backgroundSize: contain
 </small>
 
 ---
+layout: center
+---
 
 # Let's reduce trade data heterogeneity with GeoPolitical data
 
@@ -114,6 +122,8 @@ Our goal is to reduce trading entities heterogeneity by:
 - aggregating non-autonomous entities to their sovereign
 - splitting trade of groups, geographical and colonial areas
 
+---
+layout: center
 ---
 
 # GeoPolHist
@@ -165,6 +175,8 @@ Claimed by
 Neutral or demilitarized zone of
 
 ---
+layout: center
+---
 
 # Multilayer networks bridging trade and politics
 
@@ -206,24 +218,71 @@ backgroundSize: contain
 ---
 
 ---
+layout: center
+---
 
 # Harmonization process
 
+1. Autonomous trade entity resolution
 1. Trade partner aggregation
 1. Trade partner splits with year ratio method
 1. Reporters aggregation
 1. Gravity model
 
 ---
+layout: center
+---
+
+# Autonomous trade entity resolution
+
+## Add Geopolitical resolution edges
+
+From RICardo:
+
+- Locality -[ **AGGREGATE_INTO** ]-> parent entity
+- Group -[ **SPLIT_INTO** ]-> members
+
+From additional data edited for this paper:
+
+- Geographical Area -[ **SPLIT_INTO** ]-> members
+
+From GPH:
+
+- `Part of` GPH entity -[ **AGGREGATE_INTO** ]-> sovereign
+- Colonial Area -[ **SPLIT_INTO** ]-> colonies  
+  _(reusing geographical area data table)_
+
+layout: center
+
+---
+layout: center
+---
+
+# Autonomous trade entity resolution
+
+## Resolution graph traversals
+
+Then for each non autonomous entity (source: GPH) we traverse the resolution following resolution edges until finding an autonomous entity.
+
+This traversal allows to traverse multiple non-autonomous until finding the good one like a group containing a part of...
+
+---
+layout: center
+---
 
 # Aggregating trade partners
 
 Simple task: sum the trade figure to build the new trade edge.
 
-But #1: do not overwrite an existing reported trade flow
+<small>
 
-But #2: do not create internal trade flows, discard trade flows between part of and its parent
+PS #1: do not overwrite an existing reported trade flow  
+PS #2: do not create internal trade flows, discard trade flows between part of and its parent
 
+</small>
+
+---
+layout: center
 ---
 
 # Splitting trade partners
@@ -239,6 +298,8 @@ This process support partial split.
 If a set of partners from a group is found as one + another group, the one found will be split, the rest will stay as a group.
 
 ---
+layout: center
+---
 
 # Special cases: Areas
 
@@ -249,17 +310,23 @@ The composition of the group is to be defined.
 We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter.
 
 ---
+layout: center
+---
 
 # Aggregating trade reporters
 
 Because of the importance of reporter context, we need to make sure reporters are aggregated before we can split their partners.
 
 ---
+layout: center
+---
 
 # Splitting trade reporters
 
 We don't do that, yet.
 
+---
+layout: center
 ---
 
 # Gravity model
@@ -271,7 +338,9 @@ We use fixed effects on importer and exporters, geographical distance, geopoliti
 The inferred values are used to compute a ratio which is then applied on the original values.
 
 <small>
+
 Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, février 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
+
 </small>
 
 ---
@@ -281,11 +350,15 @@ scale: 0.5
 ---
 
 ---
+layout: center
+---
 
 # How much trade do we normalize?
 
 <ShareTotalReportedValue />
 
+---
+layout: center
 ---
 
 # Which method had the most impact?
@@ -293,11 +366,15 @@ scale: 0.5
 <ShareGeneratedTradeValue />
 
 ---
+layout: center
+---
 
 # Trade Network density gain!
 
 <TradeNetworkDensity />
 
+---
+layout: center
 ---
 
 # Great! But what was that for?
