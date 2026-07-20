@@ -191,7 +191,7 @@ layout: center
 
 # Multilayer networks bridging trade and politics
 
-Build yearly network which combine trade flow edges with geopolitical resolutions edges.
+Build yearly networks which combine trade flow edges with geopolitical resolutions edges.
 
 By using the GeoPolHist dataset:
 
@@ -243,11 +243,17 @@ From additional data edited for this paper:
 
 - Geographical Area -[ **SPLIT_INTO** ]-> members
 
-From GPH:
+From GeoPolHist:
 
 - `Part of` GPH entity -[ **AGGREGATE_INTO** ]-> sovereign
 - Colonial Area -[ **SPLIT_INTO** ]-> colonies  
   _(reusing geographical area data table)_
+
+---
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
+scale: 0.5
+---
 
 ---
 layout: center
@@ -258,6 +264,12 @@ layout: center
 Then for each non-autonomous entity (source: GPH), we traverse resolution edges until finding an autonomous entity.
 
 This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of.
+
+---
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
+scale: 0.5
+---
 
 ---
 layout: center
@@ -273,18 +285,6 @@ PS #1: do not overwrite an existing reported trade flow
 PS #2: do not create internal trade flows, discard trade flows between part of and its parent
 
 </small>
-
----
-layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
-scale: 0.5
----
-
----
-layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
-scale: 0.5
----
 
 ---
 layout: center
@@ -362,6 +362,8 @@ layout: center
 
 <ShareTotalReportedValue />
 
+We convert into bilateral flows between countries or colonies 75% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 19.4% on average of the total value of bilateral flows over the period.
+
 ---
 layout: center
 ---
@@ -370,6 +372,9 @@ layout: center
 
 <ShareGeneratedTradeValue />
 
+The ”aggregation”, ”split by ratio in adjacent years” and ”gravity” methods solved
+13%, 2.7% and 3.6% of the cases respectively.
+
 ---
 layout: center
 ---
@@ -377,6 +382,10 @@ layout: center
 # Trade Network density gain!
 
 <TradeNetworkDensity />
+
+Our method yields an average 156% increase in trade network density across the period. The
+average density grows from 1.6% to 4.3%, including trade flows and partners we could not
+solve.
 
 ---
 layout: center
