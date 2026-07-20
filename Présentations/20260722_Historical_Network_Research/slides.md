@@ -1,6 +1,13 @@
 ---
 favicon: "/favicon.ico"
 pwa: build
+fonts:
+  # basically the text
+  sans: Open Sans
+  # use with `font-serif` css class from UnoCSS
+  serif: Robot Slab
+  # for code blocks, inline code, etc.
+  mono: Fira Code
 ---
 
 # Harmonizing Historical Trade Using Geopolitical Data
@@ -14,7 +21,7 @@ pwa: build
 _Paul Girard_ - OuestWare - France  
 Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France  
 Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France  
-Youssef Ghallada - Economic History Department LSE - London
+Youssef Ghallada - Economic History Department LSE - United Kingdom
 
 </small>
 
@@ -27,15 +34,17 @@ Youssef Ghallada - Economic History Department LSE - London
 Trade statistics sources:
 
 - **Primary**: customs statistics published by national authorities
+- **Primary yearbook**: statistical yearbooks
 - **Secondary**: compilations of primary sources published by national or international authorities
-- **Estimations**: trade estimated by scholars
 
 RICardo also provides an exchange rate to Pound Sterling dataset to homogenize values.
 
 https://ricardo.medialab.sciences-po.fr
 
 <small>
+
 Girard, Paul, et al. « RICardo Project : Exploring XIX Century International Trade ». <i>Digital Humanities 2016: Conference Abstracts</i> [agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
+
 </small>
 
 ---
@@ -233,9 +242,7 @@ layout: center
 layout: center
 ---
 
-# Autonomous trade entity resolution
-
-## Add Geopolitical resolution edges
+# Add Geopolitical resolution edges
 
 From RICardo:
 
@@ -252,15 +259,11 @@ From GPH:
 - Colonial Area -[ **SPLIT_INTO** ]-> colonies  
   _(reusing geographical area data table)_
 
-layout: center
-
 ---
 layout: center
 ---
 
-# Autonomous trade entity resolution
-
-## Resolution graph traversals
+# Resolution graph traversals
 
 Then for each non autonomous entity (source: GPH) we traverse the resolution following resolution edges until finding an autonomous entity.
 
