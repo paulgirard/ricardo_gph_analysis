@@ -50,12 +50,6 @@ Girard, Paul, et al. « RICardo Project : Exploring XIX Century International
 </small>
 
 ---
-layout: iframe
-url: https://ricardo.medialab.sciences-po.fr/
-scale: 0.8
----
-
----
 layout: center
 ---
 
