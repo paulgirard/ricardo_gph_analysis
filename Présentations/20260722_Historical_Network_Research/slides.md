@@ -1,5 +1,6 @@
 ---
 favicon: "/favicon.ico"
+pwa: false
 fonts:
   # basically the text
   sans: Open Sans
