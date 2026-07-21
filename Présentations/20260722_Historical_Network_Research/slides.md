@@ -23,7 +23,7 @@ Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France
 Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France  
 Youssef Ghallada - Economic History Department LSE - United Kingdom
 
-<center><i>Historical Network Research 2026, Torino, Italia</i></center>
+<div style="display:flex; gap:1em; align-items: center"><img src="/images/hnr2026_logo.png" style="height:80px"/> <div>Historical Network Research 2026 <br/>Torino, Italia</div></div>
 
 </small>
 
@@ -63,6 +63,10 @@ layout: center
 
 ![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
 
+<!--
+Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
+-->
+
 ---
 layout: statement
 ---
@@ -77,11 +81,23 @@ image: /images/sweden_1840_table_12.png
 backgroundSize: contain
 ---
 
+<!--
+Swedish source edited in 1840
+Among trade partners we find Italy all along the 1830s
+But as you may know, Italy was not a unique political entity at that time.
+-->
+
 ---
 layout: image
 image: /images/USA_export_1831_1832.png
 backgroundSize: contain
 ---
+
+<!--
+USA source edited in 1833
+Among trade partners we find Italy again but that time with Malta AND with Sicily on a separate line!
+As you can see, each reporter decided to shape his statistics as they like not as you would like nowadays to be.
+-->
 
 ---
 layout: center
@@ -102,6 +118,14 @@ layout: center
 
 </small>
 
+<!--
+Our main challenge is to cope with partner heterogeneity. We want to keep this richness but make it compatible with quantification.
+In RICardo dataset we decided to keep this richness to let each scholar decide how to use this material.
+Here are the categories we use to describe trading entities.
+merely 13% of total trade value (19% of flows) are reported with miscellaneous entities
+Note that even in the GPH_entity category we find flows to Italy before its existence...
+-->
+
 ---
 layout: center
 ---
@@ -120,6 +144,10 @@ layout: center
 | Total             | £480,756,915,469 |    468448     |                                                                            |
 
 </small>
+
+<!--
+This is also true on the reporter side but for a very smaller extend
+-->
 
 ---
 layout: center
@@ -148,11 +176,19 @@ Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Ge
 
 </small>
 
+<!--
+Facing this challenge we built with Béatrice a dataset based on Correlates of War project in order to try to answer  a question that is not as simple as it seems : How many countries in the World in the 19s century?
+-->
+
 ---
 layout: iframe
 url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
 scale: 0.8
 ---
+
+<!--
+For each entity, we list their political status along time and their links to sovereign parent entities.
+-->
 
 ---
 layout: two-cols-header
@@ -183,6 +219,10 @@ Vassal of
 Claimed by  
 Neutral or demilitarized zone of
 
+<!--
+Definitions are avialable on the paper and website
+-->
+
 ---
 layout: center
 ---
@@ -194,11 +234,19 @@ Build yearly networks which combine
 - trade flow edges from **RICardo** dataset
 - geopolitical resolutions edges from **GeoPolHist**
 
+<!--
+Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into one multilayer network.
+-->
+
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
 scale: 0.5
 ---
+
+<!--
+This is the original 1850 trade network
+-->
 
 ---
 layout: center
@@ -226,6 +274,11 @@ layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
 scale: 0.5
 ---
+
+<!--
+Zoom to malta
+mention Gephi lite
+-->
 
 ---
 layout: image
@@ -350,6 +403,10 @@ url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulg
 scale: 0.5
 ---
 
+<!--
+This is an extract around Malta in 1850 that illustrate the diversity of resolution
+-->
+
 ---
 layout: center
 ---
@@ -359,6 +416,10 @@ layout: center
 <ShareTotalReportedValue />
 
 We convert into bilateral flows between countries or colonies 75% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 19.4% on average of the total value of bilateral flows over the period.
+
+<!--
+Keep it mind that we are working with the fringe of the trade networks, ou problematic flows are numerous but with smaller values on average
+-->
 
 ---
 layout: center
