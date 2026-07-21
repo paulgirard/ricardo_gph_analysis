@@ -1,6 +1,5 @@
 ---
 favicon: "/favicon.ico"
-pwa: build
 fonts:
   # basically the text
   sans: Open Sans
