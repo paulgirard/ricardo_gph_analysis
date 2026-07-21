@@ -45,7 +45,7 @@ https://ricardo.medialab.sciences-po.fr
 
 <small>
 
-Girard, Paul, et al. « RICardo Project : Exploring XIX Century International Trade ». <i>Digital Humanities 2016: Conference Abstracts</i> [agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
+Girard, Paul, et al. « RICardo Project : Exploring XIX Century International Trade ». <i>Digital Humanities 2016: Conference Abstracts</i> [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
 
 </small>
 
@@ -67,7 +67,7 @@ layout: center
 layout: statement
 ---
 
-# Sources are not the data we expect them to be!
+# Sources are not the data we would like them to be!
 
 Not yet...
 
@@ -98,7 +98,7 @@ layout: center
 | locality          |       4.57       |     6.47      | _Conakry, Sumatra, British Colonies (other)..._                  |
 | colonial_area     |       1.39       |     4.97      | _French Colonies, Portuguese Colonies, British West Indies..._   |
 | geographical_area |       0.41       |     2.18      | _America, Arabia, Borneo, Africa..._                             |
-| Total             | £480,756,915,469 |    468448     |                                                                  |
+| Total             | £480,756,915,469 |    468,448    |                                                                  |
 
 </small>
 
@@ -125,9 +125,7 @@ layout: center
 layout: center
 ---
 
-# Let's reduce trade data heterogeneity with GeoPolitical data
-
-Our goal is to reduce trading entities heterogeneity by:
+# Our goal: to reduce trading entities heterogeneity with GeoPolitical data
 
 - identifying non-autonomous or informal entities
 - aggregating non-autonomous entities to their sovereign
@@ -191,42 +189,16 @@ layout: center
 
 # Multilayer networks bridging trade and politics
 
-Build yearly networks which combine trade flow edges with geopolitical resolutions edges.
+Build yearly networks which combine
 
-By using the GeoPolHist dataset:
-
-- Identify non-autonomous trading entities
-- Add Geopolitical resolutions edges (aggregate into, split into)
+- trade flow edges from **RICardo** dataset
+- geopolitical resolutions edges from **GeoPolHist**
 
 ---
-layout: image
-image: /images/multilayer_data_model_1.png
-backgroundSize: contain
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
+scale: 0.5
 ---
-
----
-layout: image
-image: /images/multilayer_data_model_2.png
-backgroundSize: contain
----
-
----
-layout: image
-image: /images/multilayer_data_model_3.png
-backgroundSize: contain
----
-
----
-layout: center
----
-
-# Harmonization process
-
-1. Autonomous trade entity resolution
-1. Trade partner aggregation
-1. Trade partner splits with year ratio method
-1. Reporters aggregation
-1. Gravity model
 
 ---
 layout: center
@@ -256,26 +228,50 @@ scale: 0.5
 ---
 
 ---
+layout: image
+image: /images/multilayer_data_model_1.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/multilayer_data_model_2.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/multilayer_data_model_3.png
+backgroundSize: contain
+---
+
+---
 layout: center
 ---
 
-# Resolution graph traversals
+# Harmonization process
 
-Then for each non-autonomous entity (source: GPH), we traverse resolution edges until finding an autonomous entity.
+1. Autonomous trade entity resolution
+1. Trade partner aggregation
+1. Trade partner splits with year ratio method
+1. Reporters aggregation
+1. Trade partner splits with gravity model method
+
+---
+layout: center
+---
+
+# Autonomous trade entity resolution
+
+For each non-autonomous entity (source: GPH), we traverse resolution edges until finding an autonomous entity.
 
 This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of.
 
 ---
-layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
-scale: 0.5
----
-
----
 layout: center
 ---
 
-# Aggregating trade partners
+# Trade partner aggregation
 
 Simple task: sum the trade figure to build the new trade edge.
 
@@ -290,7 +286,7 @@ PS #2: do not create internal trade flows, discard trade flows between part of a
 layout: center
 ---
 
-# Splitting trade partners
+# Trade partner splits with year ratio method
 
 Difficult task: how to decide the ratios to split one trade value into many?
 
@@ -318,7 +314,7 @@ We use geographical or colonial sets which we adapt to the source context, i.e. 
 layout: center
 ---
 
-# Aggregating trade reporters
+# Reporters aggregation
 
 Because of the importance of reporter context, we need to make sure reporters are aggregated before we can split their partners.
 
@@ -326,7 +322,7 @@ Because of the importance of reporter context, we need to make sure reporters ar
 layout: center
 ---
 
-# Splitting trade reporters
+# Trade reporters splits
 
 We don't do that, yet.
 
@@ -334,7 +330,7 @@ We don't do that, yet.
 layout: center
 ---
 
-# Gravity model
+# Trade partner splits with gravity model method
 
 We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
 
@@ -368,7 +364,7 @@ We convert into bilateral flows between countries or colonies 75% of the bilater
 layout: center
 ---
 
-# Which method had the most impact?
+# Which method has the most impact?
 
 <ShareGeneratedTradeValue />
 
@@ -391,18 +387,18 @@ solve.
 layout: center
 ---
 
-# Great! But what was that for?
+# Great! What it is good for?
 
 - Trade quantification in the long run
-- Trade block analysis: on going work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Kohl et Brouwer 2014) methods
+- Trade block analysis: on going work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Poon 1997) methods
 - Study the effect of colonization: work in progress...
 
 <small>
   <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
   <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.63744%2Ff3L9hsFcGqVc&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Cluster%20Ambiguity%20in%20Networks%20as%20Substantive%20Knowledge&amp;rft.btitle=Computational%20Humanities%20Research%202025&amp;rft.publisher=Anthology%20of%20Computers%20and%20the%20Humanities&amp;rft.aufirst=Mathieu&amp;rft.aulast=Jacomy&amp;rft.au=Mathieu%20Jacomy&amp;rft.au=Tommaso%20Elli&amp;rft.au=Andrea%20Benedetti&amp;rft.au=Guillaume%20Plique&amp;rft.au=Benjamin%20Ooghe-Tabanou&amp;rft.au=Paul%20Girard&amp;rft.au=Alexis%20Jacomy&amp;rft.au=Taylor%20Arnold&amp;rft.au=Margherita%20Fantoli&amp;rft.au=Ruben%20Ros&amp;rft.date=2025&amp;rft.pages=119-130&amp;rft.spage=119&amp;rft.epage=130&amp;rft.issn=3070-8931&amp;rft.language=en"></span>
 
-  <p class="csl-entry">Kohl, Tristan, et Aleid E. Brouwer. «&nbsp;The Development of Trade Blocs in an Era of Globalisation&nbsp;». <i>Environment and Planning A: Economy and Space</i>, vol. 46, n<sup>o</sup> 7, juillet 2014, p. 1535‑53. <i>DOI.org (Crossref)</i>, <a href="https://doi.org/10.1068/a46261">https://doi.org/10.1068/a46261</a>.</p>
-  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.1068%2Fa46261&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=The%20Development%20of%20Trade%20Blocs%20in%20an%20Era%20of%20Globalisation&amp;rft.jtitle=Environment%20and%20Planning%20A%3A%20Economy%20and%20Space&amp;rft.stitle=Environ%20Plan%20A&amp;rft.volume=46&amp;rft.issue=7&amp;rft.aufirst=Tristan&amp;rft.aulast=Kohl&amp;rft.au=Tristan%20Kohl&amp;rft.au=Aleid%20E%20Brouwer&amp;rft.date=2014-07&amp;rft.pages=1535-1553&amp;rft.spage=1535&amp;rft.epage=1553&amp;rft.issn=0308-518X%2C%201472-3409&amp;rft.language=en"></span>
+  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <i>JSTOR</i>, <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.2307%2F144560&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=The%20Cosmopolitanization%20of%20Trade%20Regions%3A%20Global%20Trends%20and%20Implications%2C%201965-1990&amp;rft.jtitle=Economic%20Geography&amp;rft.volume=73&amp;rft.issue=4&amp;rft.aufirst=Jessie%20P.&amp;rft.aulast=Poon&amp;rft.au=Jessie%20P.%20Poon&amp;rft.date=1997&amp;rft.pages=390-404&amp;rft.spage=390&amp;rft.epage=404&amp;rft.issn=0013-0095"></span>
 
 </small>
 
@@ -415,11 +411,11 @@ layout: center
 Our hypothesis:
 
 - Reported sources are exhaustive: unreported trade flows are not significant enough and thus can be considered 0
-- Trade partner ratios for one reporter are _stable_ in a 20-years window
-- Gravity models are reliable
+- Trade partner ratios for one reporter are _stable_ in a 10-years window
+- Minimalist theory-gravity models are reliable
 - our sources are reliable (home-brewed)
 
-Limitations:
+Possible improvements:
 
 - find a way to include unsolvable trade flows values into quantification
 - we need more trade statistics primary sources
