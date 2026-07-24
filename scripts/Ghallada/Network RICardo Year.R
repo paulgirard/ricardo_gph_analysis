@@ -10,6 +10,7 @@ library(igraph)
 library(here)
 #setwd("set the right path")
 #set_here() so that here function understand you are there (need to restart perhaps after)
+
 traiter_annee <- function(year, dossier, seuil = 0.10) {
   
   fichier <- file.path(dossier, paste0("tradeFlows_", year, "_gravity.csv"))
@@ -262,12 +263,6 @@ write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm_oriente.csv"), r
 
 
 
-
-
-
-
-
-
 #Corrélation entre Louvain et Intramax same blocs
 
 
@@ -328,5 +323,57 @@ ggsave(here("data", "blocks", "corr_intramax_louvain.png"),
        plot = p, width = 9, height = 5, dpi = 150)
 write.csv(cor_methodes, here("data", "blocks", "cor_intramax_louvain.csv"),
           row.names = FALSE)
+
+# ================= Corrélation + Nombre de blocs par méthode (empilé) =================
+
+# --- 1. Combiner les 3 objets en un long format ---
+n_blocs_all <- bind_rows(
+  resultats_AN      %>% select(year, n_blocs) %>% mutate(methode = "Anderson-Norheim"),
+  resultats_Intra   %>% select(year, n_blocs) %>% mutate(methode = "Intramax"),
+  resultats_Louvain %>% select(year, n_blocs) %>% mutate(methode = "Louvain")
+)
+
+# --- 2. Coefficient de rescaling (somme des 3 méthodes par année) ---
+coef <- n_blocs_all %>%
+  group_by(year) %>%
+  summarise(total = sum(n_blocs, na.rm = TRUE)) %>%
+  pull(total) %>%
+  max()
+
+# --- 3. Couleurs communes aux 3 méthodes ---
+couleurs_methodes <- c("Anderson-Norheim" = "#E41A1C",  # rouge
+                       "Intramax"         = "#377EB8",  # bleu
+                       "Louvain"          = "#4DAF4A")  # vert
+
+# --- 4. Graphe combiné ---
+p_combined <- ggplot() +
+  # Barres n_blocs empilées (une barre par année, 3 segments)
+  geom_col(data = n_blocs_all,
+           aes(x = year, y = n_blocs / coef, fill = methode),
+           position = "stack", alpha = 0.7, width = 0.9) +
+  # Corrélation Intramax vs Louvain (existant)
+  geom_ribbon(data = cor_methodes,
+              aes(x = year, ymin = ic_bas, ymax = ic_haut),
+              fill = "grey70", alpha = 0.4) +
+  geom_line(data = cor_methodes,  aes(x = year, y = cor), linewidth = 0.7) +
+  geom_point(data = cor_methodes, aes(x = year, y = cor), size = 1.3) +
+  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  # Axe Y gauche = corrélation, axe Y droit = nb blocs
+  scale_y_continuous(
+    name     = "corrélation même_bloc (Intramax) ↔ même_communauté (Louvain)",
+    sec.axis = sec_axis(~ . * coef, name = "Nombre de blocs (empilé)")
+  ) +
+  scale_fill_manual(values = couleurs_methodes) +
+  labs(x = "année",
+       title = "Corrélation entre méthodes + Nombre de blocs par méthode et année",
+       fill  = "Méthode") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+print(p_combined)
+
+# --- 5. Sauvegarde ---
+ggsave(here("data", "blocks", "corr_intramax_louvain_avec_nblocs.png"),
+       plot = p_combined, width = 11, height = 6, dpi = 150)
 
 

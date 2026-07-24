@@ -300,3 +300,60 @@ ggsave("data/blocks/tibi_comparaison_trois_methodes.png",
        plot = p_combine, width = 10, height = 5, dpi = 150)
 
 
+##############################################################
+#####  5. SUPERPOSITION + NB DE BLOCS EMPILES  ###############
+##############################################################
+
+# --- 1. Combiner les 3 objets en un long format avec n_blocs ---
+n_blocs_all <- bind_rows(
+  resultats_AN       %>% select(year, n_blocs) %>% mutate(methode = "Anderson-Norheim"),
+  resultats_intra    %>% select(year, n_blocs) %>% mutate(methode = "Intramax"),
+  resultats_louvain  %>% select(year, n_blocs) %>% mutate(methode = "Louvain")
+)
+
+# --- 2. Coefficient de rescaling (somme des 3 méthodes par année) ---
+# Les barres occupent tout l'espace [-1, 1] : total_max -> 1, 0 -> -1
+coef <- n_blocs_all %>%
+  group_by(year) %>%
+  summarise(total = sum(n_blocs, na.rm = TRUE)) %>%
+  pull(total) %>%
+  max()
+
+# --- 3. Couleurs communes (identiques à celles des courbes) ---
+couleurs_methodes <- c("Intramax"         = "#0055A4",
+                       "Louvain"          = "#CF142B",
+                       "Anderson-Norheim" = "#2E8B57")
+
+# --- 4. Graphe combiné : courbes TIBI + barres empilées n_blocs ---
+p_combine <- ggplot() +
+  # 1. Courbes TIBI d'abord (au fond)
+  geom_line(data = combine,  aes(year, moyenne, color = methode), linewidth = 0.6) +
+  geom_point(data = combine, aes(year, moyenne, color = methode), size = 1) +
+  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  
+  # 2. Barres n_blocs par-dessus, mais avec bordure pour bien les délimiter
+  geom_col(data = n_blocs_all,
+           aes(x = year, y = (n_blocs / coef) * 2 - 1, fill = methode),
+           position = "stack", alpha = 0.35, width = 1,
+           colour = NA) +   # <-- pas de contour blanc entre barres
+  
+  coord_cartesian(ylim = c(-1, 1)) +
+  scale_x_continuous(breaks = seq(1835, 1935, 5)) +
+  scale_y_continuous(
+    name     = "TIBI intra-bloc moyen (pondéré)",
+    breaks   = seq(-1, 1, 0.5),
+    sec.axis = sec_axis(~ ((. + 1) / 2) * coef, name = "Nombre de blocs (empilé)")
+  ) +
+  scale_color_manual(values = couleurs_methodes) +
+  scale_fill_manual(values  = couleurs_methodes) +
+  labs(x = "année",
+       title = "Commerce intra-bloc moyen + nombre de blocs par année",
+       color = "Méthode (courbe TIBI)",
+       fill  = "Méthode (barres n_blocs)") +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(p_combine)
+ggsave("data/blocks/tibi_comparaison_avec_nblocs.png",
+       plot = p_combine, width = 11, height = 6, dpi = 150)
