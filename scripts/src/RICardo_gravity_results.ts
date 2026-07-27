@@ -4,7 +4,7 @@ import { mkdirSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { UndirectedGraph } from "graphology";
 import gexf from "graphology-gexf";
-import { camelCase, groupBy, identity, keys, mapKeys, max, pick, sortBy, sum, toPairs, uniq, values } from "lodash";
+import { camelCase, groupBy, identity, mapKeys, max, pick, sortBy, sum, toPairs, uniq, values } from "lodash";
 
 import { aggregatedFlowNote } from "./graphTraversals";
 import { assignLouvainEdgeAmbiguity } from "./louvainEdgeAmbiguity";
@@ -247,7 +247,33 @@ async function readGravityResults() {
         });
       });
 
-      const csvString = stringify(csvData, { columns: keys(csvData[0]), header: true });
+      const csvString = stringify(csvData, {
+        columns: [
+          "key",
+          "source",
+          "target",
+          "proximity",
+          "observedTradeValues",
+          "coMembershipScore",
+          "bridgeNessEdgeScore",
+          "ambiguityScore",
+          "sourceCommunityId",
+          "maxObservedTradeValue",
+          "sourceCited",
+          "sourceReporting",
+          "sourceLabel",
+          "sourceGphStatus",
+          "sourceCommunity",
+          "sourceMeanAmbiguityScore",
+          "targetCited",
+          "targetReporting",
+          "targetLabel",
+          "targetGphStatus",
+          "targetCommunity",
+          "targetMeanAmbiguityScore",
+        ],
+        header: true,
+      });
       writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.csv`, csvString);
       // TODO: export for Gephi Lite
       const gexfString = gexf.write(okGraph);
