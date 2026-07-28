@@ -239,47 +239,12 @@ tab status, missing
 keep if strmatch(status,"split_*") | status==""
 drop if strpos(newPartners,"restOfTheWorld")!=0
 
-//////All observations that include split in the status variable to be duplicated 
-/////for each term between "|" in the importer or exporter variable
-* --- expand observations with status containing "split" into parts between | ---
-// split importer into parts (creates importerLabel1 importerLabel2 ...)
-
-/* This methods moved the newPartners to Importers or Exports and then split and generated new flows. 
-gen newImporter= newPartners if exporterReporting==1
-replace newImporter= string(newReporters) if importerReporting==1
-gen newExporter= newPartners if importerReporting==1
-replace newExporter= string(newReporters) if exporterReporting==1
-
-drop newPartners newReporters
-
-split newImporter, parse("|") gen(newimporterId)
-
-// reshape long on importer parts (keeps all other vars)
-reshape long newimporterId, i(id) j(ipno) 
-drop if missing(newimporterId)
-
-// split exporter into parts (creates exporterLabel1 exporterLabel2 ...)
-split newExporter, parse("|") gen(newexporterId)
-
-// reshape long on exporter parts: include ipno so reshape produces cross-product
-reshape long newexporterId, i(id ipno) j(epno) 
-drop if missing(newexporterId)
-
-destring newimporterId newexporterId, replace
-
-
-// replace original label vars with the part values
-*replace importerLabel = importer_part
-*replace exporterLabel = exporter_part
-*gen importer_part = importerLabel
-*gen exporter_part = exporterLabel
-*/
-
 /// New method : we split first Partners and Reporters
 split newPartners, parse("|") gen(newPartnerId)
 reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
 drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
 
+//à faire seulement s’il y a des reporters à splitter
 capture assert missing(newReporters)
 	if _rc==1 {
 		split newReporters,parse ("|") gen(newReportersId)
@@ -289,7 +254,7 @@ capture assert missing(newReporters)
 
 
 
-gen newimporterId=newPartnerId if CafFob=="FromExporter" 
+gen newimporterId=newPartnerId if CafFob=="FromExporter"
 capture assert missing(newReporters)
 if _rc==1 replace newimporterId=newReportersId if CafFob=="FromImporter"
 
@@ -297,12 +262,12 @@ gen newexporterId=newPartnerId if CafFob=="FromImporter"
 capture assert missing(newReporters)
 if _rc==1  replace newexporterId=newReportersId if CafFob=="FromExporter"  
 
+
 ///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
-destring(importerId), gen(blif) force
-replace newimporterId=string(blif) if blif !=.
-destring(exporterId), gen(blouf) force
-replace newexporterId=string(blouf) if blouf !=. 
-drop blif blouf
+replace newimporterId=importerId if newimporterId==""
+replace newexporterId=exporterId if newexporterId==""
+
+*blif
 
 destring(newimporterId), replace
 destring(newexporterId), replace
