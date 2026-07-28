@@ -33,7 +33,7 @@ import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save GeoPolHist_entities_temp.dta, replace
 
-
+/***************************************************************************************/
 *************Importation des flux commerciaux
 
 capture program drop trade_importation
@@ -244,35 +244,38 @@ keep if CafFob=="`CafFob'"
 split newPartners, parse("|") gen(newPartnerId)
 reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
 drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
+destring(newPartnerId), replace
 
 //à faire seulement s’il y a des reporters à splitter
 capture assert missing(newReporters)
-	if _rc==1 {
+	if _rc!=0 {
 		split newReporters,parse ("|") gen(newReportersId)
 		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
 		drop if newReportersId=="" & reporter_no !=1
+		destring(newReportersId), replace
+		
 	}
-
-
 
 gen newimporterId=newPartnerId if CafFob=="FromExporter"
 capture assert missing(newReporters)
-if _rc==1 replace newimporterId=newReportersId if CafFob=="FromImporter"
+if _rc!=0 replace newimporterId=newReportersId if CafFob=="FromImporter"
 
 gen newexporterId=newPartnerId if CafFob=="FromImporter"
 capture assert missing(newReporters)
-if _rc==1  replace newexporterId=newReportersId if CafFob=="FromExporter"  
+if _rc!=0  replace newexporterId=newReportersId if CafFob=="FromExporter"  
 
 
 ///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
-replace newimporterId=importerId if newimporterId==""
-replace newexporterId=exporterId if newexporterId==""
+
+destring(importerId), replace force
+destring(exporterId), replace force
+replace newimporterId=importerId if newimporterId==.
+replace newexporterId=exporterId if newexporterId==.
 
 destring(newimporterId), replace
 destring(newexporterId), replace
 
 merge m:1 newimporterId CafFob using `importer_coefs'
-
 rename coefficient importer_coef
 drop _merge
 merge m:1 newexporterId CafFob using `exporter_coefs'
@@ -390,6 +393,8 @@ replace value=. if status=="unknown despite gravity"
 
 bys importerLabel exporterLabel CafFob : gen blif =_N
 egen blouf = max(blif), by(importerLabel exporterLabel CafFob)
+replace status ="both ok and not ok" if blouf!=1
+replace value =. if status=="both ok and not ok"
 
 bys importerLabel exporterLabel CafFob: assert status==status[1]
 bys importerLabel exporterLabel CafFob: assert value==value[1]
@@ -412,6 +417,10 @@ collapse (first) value status year, by(importerLabel exporterLabel CafFob)
 
 keep year value status importerLabel exporterLabel CafFob
 
+gen str256 importerLabel_256 = substr(importerLabel, 1, 256)
+gen str256 exporterLabel_256 = substr(exporterLabel, 1, 256)
+drop importerLabel exporterLabel
+rename *_256 *
 
 preserve
 keep if CafFob=="FromImporter"
@@ -472,11 +481,6 @@ end
 ************************
 
 
-
-
-
-
-
 trade_importation 1833
 gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
@@ -484,7 +488,7 @@ bestguessbiltrade 1833
 gravity_cleanup 1833
 
 
-blif
+
 
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
