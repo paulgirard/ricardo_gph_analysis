@@ -120,7 +120,7 @@ foreach trader in importer exporter {
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
 gen ln_distance=ln(distance_km)
 
-save tradeFlows_`year'ok_temp, replace
+save tradeFlows_`year'_`CafFob'ok_temp, replace
 
 *****Calcul de le relation géopolitique
 
@@ -173,7 +173,7 @@ erase GeoPolHist_dependency_`year'B.dta
 
 *******************************************
 
-use tradeFlows_`year'ok_temp, clear
+use tradeFlows_`year'_`CafFob'ok_temp, clear
 merge 1:1 importerId exporterId using GeoPolHist_dependency_`year'.dta, keep(1 3)
 replace common_empire=0 if common_empire==.
 replace dependency=0 if dependency==.
@@ -238,6 +238,7 @@ use tradeFlows_`year'_temp, clear
 tab status, missing
 keep if strmatch(status,"split_*") | status==""
 drop if strpos(newPartners,"restOfTheWorld")!=0
+keep if CafFob=="`CafFob'"
 
 /// New method : we split first Partners and Reporters
 split newPartners, parse("|") gen(newPartnerId)
@@ -267,8 +268,6 @@ if _rc==1  replace newexporterId=newReportersId if CafFob=="FromExporter"
 replace newimporterId=importerId if newimporterId==""
 replace newexporterId=exporterId if newexporterId==""
 
-*blif
-
 destring(newimporterId), replace
 destring(newexporterId), replace
 
@@ -285,7 +284,7 @@ sort originalReportedTradeFlowId
 
 
 
-
+/*
 ***On vérifie que par originalReportedTradeFlowId on a bien les coeffcients pour toutes les parties
 bysort id: egen ok_exp = min(!missing(exporter_coef))
 bysort id: egen ok_imp = min(!missing(importer_coef))
@@ -293,7 +292,7 @@ bysort id: egen ok_imp = min(!missing(importer_coef))
 drop if ok_exp==0 | ok_imp==0
 drop ok_exp ok_imp
 
-
+*/
 
 /////intégration de la distance
 foreach trader in importer exporter {
@@ -331,6 +330,12 @@ by id: egen success = max(pred_trade), missing
 drop pred sum_pred
 
 by id: replace status ="ok thanks to gravity" if success!=.
+by id: replace status ="unknown despite gravity" if success==.
+
+//// Some of the failed observations are because the reporter needs to be aggregated and the partner desagregated
+////eg in 1833 : Bilbao->Hanover & Hanse Towns
+
+
 *br if status=="ok thanks to gravity"
 drop success
 codebook id if status=="ok thanks to gravity"
@@ -347,12 +352,14 @@ drop _merge
 rename GPH_code newexporterId 
 rename GPH_name newexporterLabel
 
+keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows status
+order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit 
 
-////exportation des résultats
+save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
+
+
+////exportation des résultats gravity
 keep if status=="ok thanks to gravity"
-keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows
-order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit pred_trade 
-
 sort id pred_trade newimporterId newexporterId 
 format value pred_trade %20.0fc
 
@@ -361,8 +368,81 @@ format value pred_trade %20.0fc
 save "results/gravity_`year'_`CafFob'.dta", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
+
 end
 
+
+*****************************************
+capture program drop bestguessbiltrade 
+program define bestguessbiltrade
+	args year
+
+****Maintenant, j’aimerai créer une base du best guess du commerce
+use "results/BestGuessBilTrade_`year'_FromExporter.dta", clear
+append using "results/BestGuessBilTrade_`year'_FromImporter.dta"
+
+generate value = pred_trade if status=="ok thanks to gravity"
+replace importerLabel=newimporterLabel if newimporterLabel!=""
+replace exporterLabel=newexporterLabel if newexporterLabel!=""
+
+////eg in 1833 : Bilbao->Hanover & Hanse Towns. I need to agregate by reporter
+replace value=. if status=="unknown despite gravity"
+
+bys importerLabel exporterLabel CafFob : gen blif =_N
+egen blouf = max(blif), by(importerLabel exporterLabel CafFob)
+
+bys importerLabel exporterLabel CafFob: assert status==status[1]
+bys importerLabel exporterLabel CafFob: assert value==value[1]
+collapse (first) value status year, by(importerLabel exporterLabel CafFob)
+
+append using "tradeFlows_`year'_FromImporterok_temp.dta"
+append using "tradeFlows_`year'_FromExporterok_temp.dta"
+
+//// Some of the flows are both ok and unknown ???
+bys importerLabel exporterLabel CafFob : gen blif =_N
+egen blouf = max(blif), by(importerLabel exporterLabel CafFob)
+replace status ="both ok and not ok" if blouf!=1
+replace value =. if status=="both ok and not ok"
+
+
+bys importerLabel exporterLabel CafFob: assert status==status[1]
+bys importerLabel exporterLabel CafFob: assert value==value[1]
+collapse (first) value status year, by(importerLabel exporterLabel CafFob)
+
+
+keep year value status importerLabel exporterLabel CafFob
+
+
+preserve
+keep if CafFob=="FromImporter"
+fillin importerLabel exporterLabel
+replace value  = 0 if _fillin ==1
+replace status = "imputed zero" if _fillin ==1
+replace CafFob = "FromImporter" if _fillin ==1
+replace year=`year' if _fillin ==1
+drop _fillin
+
+save temp.dta, replace
+restore 
+keep if CafFob=="FromExporter"
+fillin importerLabel exporterLabel
+replace value  = 0 if _fillin ==1
+replace status = "imputed zero" if _fillin ==1
+replace CafFob = "FromExporter" if _fillin ==1
+replace year=`year' if _fillin ==1
+drop _fillin
+
+append using temp.dta
+drop if importerLabel==exporterLabel
+
+export delimited using "results/BestGuessBilTrade_`year'.csv", replace
+erase temp.dta
+erase "results/BestGuessBilTrade_`year'_FromImporter.dta"
+erase "results/BestGuessBilTrade_`year'_FromExporter.dta"
+
+end
+
+**************************
 capture program drop gravity_cleanup
 program define gravity_cleanup
 	args year
@@ -382,10 +462,17 @@ erase "results/gravity_`year'_FromImporter.dta"
 erase "results/gravity_`year'_FromExporter.dta"
 
 erase  tradeFlows_`year'_temp.dta
-erase  tradeFlows_`year'ok_temp.dta
+erase  tradeFlows_`year'_FromImporterok_temp.dta
+erase  tradeFlows_`year'_FromExporterok_temp.dta
 erase GeoPolHist_dependency_`year'.dta
 
 end
+
+
+************************
+
+
+
 
 
 
@@ -393,15 +480,19 @@ end
 trade_importation 1833
 gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
+bestguessbiltrade 1833
 gravity_cleanup 1833
 
 
+blif
 
 foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
+	bestguessbiltrade `year'
 	gravity_cleanup `year'
+	
 }
 
 erase GeoPolHist_entities_temp.dta
