@@ -2,9 +2,25 @@ import { parse } from "csv-parse/sync";
 import { stringify } from "csv/sync";
 import { mkdirSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-import { UndirectedGraph } from "graphology";
+import { DirectedGraph } from "graphology";
+import louvain from "graphology-communities-louvain";
 import gexf from "graphology-gexf";
-import { camelCase, groupBy, identity, mapKeys, max, pick, sortBy, sum, toPairs, uniq, values } from "lodash";
+import { modularity } from "graphology-metrics/graph";
+import {
+  camelCase,
+  groupBy,
+  identity,
+  mapKeys,
+  max,
+  maxBy,
+  pick,
+  range,
+  sortBy,
+  sum,
+  toPairs,
+  uniq,
+  values,
+} from "lodash";
 
 import { aggregatedFlowNote } from "./graphTraversals";
 import { assignLouvainEdgeAmbiguity } from "./louvainEdgeAmbiguity";
@@ -27,8 +43,16 @@ interface GravityResultsType {
   pred_trade: number;
 }
 
+interface ModularityTestResult {
+  year: number;
+  resolution: number;
+  modularity: number;
+  nb_communities: number;
+}
+
 type OkEdgeAttributes = {
   proximity: number;
+  observedTradeValue: number;
   observedTradeValues: number[];
 };
 type OkNodeAttributes = EntityNodeAttributes;
@@ -173,7 +197,7 @@ async function readGravityResults() {
     toPairs(okEdges).map(([cafFob, edges]) => {
       if (edges.length === 0) throw new Error(`No ${cafFob} flows for ${year}`);
 
-      const okGraph = UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<
+      const okGraph = DirectedGraph.from(graph.emptyCopy()) as unknown as DirectedGraph<
         OkNodeAttributes,
         OkEdgeAttributes
       >;
@@ -190,38 +214,79 @@ async function readGravityResults() {
         weightedDegrees.out[graph.source(e)] = (weightedDegrees.out[graph.source(e)] || 0) + value;
         weightedDegrees.in[graph.target(e)] = (weightedDegrees.in[graph.target(e)] || 0) + value;
       });
-      // group edges by pair of trade partners
-      const groupedEdges = groupBy(edges, (e) => sortBy([graph.source(e), graph.target(e)]).join("-"));
-      toPairs(groupedEdges).forEach(([groupKey, impExpCouple]) => {
-        const observations: number[] = [];
+      // directed version
+      edges.forEach((e) => {
+        const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
 
-        const proximities = impExpCouple.map((e) => {
-          const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
-          if (observed) observations.push(observed);
-          const expected =
-            (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
-            (totalBilateralTrade * totalBilateralTrade);
-          if (expected === 0)
-            throw new Error(
-              `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
-            );
-          const proximity = expected !== 0 ? observed / expected - 1 : 0;
-          return proximity;
+        const expected =
+          (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
+          (totalBilateralTrade * totalBilateralTrade);
+        if (expected === 0)
+          throw new Error(
+            `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
+          );
+        const proximity = expected !== 0 ? observed / expected - 1 : 0;
+        // if (proximity > 0)
+        okGraph.addDirectedEdgeWithKey(e, graph.source(e), graph.target(e), {
+          proximity: proximity > 0 ? Math.log(proximity + 1) : 0,
+          observedTradeValue: observed,
+          observedTradeValues: [observed],
         });
-        const maxProximity = max(proximities) || -1;
-        if (maxProximity > 0)
-          okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
-            proximity: Math.log(maxProximity + 1),
-            observedTradeValues: observations,
-          });
-        else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
+        //else console.log(`Discard edge cause proximity=${proximity}`);
       });
+
+      // // group edges by pair of trade partners
+      // const groupedEdges = groupBy(edges, (e) => sortBy([graph.source(e), graph.target(e)]).join("-"));
+      // toPairs(groupedEdges).forEach(([groupKey, impExpCouple]) => {
+      //   const observations: number[] = [];
+
+      //   const proximities = impExpCouple.map((e) => {
+      //     const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
+      //     if (observed) observations.push(observed);
+      //     const expected =
+      //       (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
+      //       (totalBilateralTrade * totalBilateralTrade);
+      //     if (expected === 0)
+      //       throw new Error(
+      //         `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
+      //       );
+      //     const proximity = expected !== 0 ? observed / expected - 1 : 0;
+      //     return proximity;
+      //   });
+      //   const maxProximity = max(proximities) || -1;
+      //   if (maxProximity > 0)
+      //     okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
+      //       proximity: Math.log(maxProximity + 1),
+      //       observedTradeValues: observations,
+      //     });
+      //   else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
+      // });
       console.log(`${year} ${cafFob} ${edges.length} flows result in ${okGraph.size} flows ${okGraph.order} nodes`);
       // remove deprecated nodes
       okGraph.filterNodes((n) => okGraph.degree(n) === 0).forEach((n) => okGraph.dropNode(n));
       console.log(`${year} ${cafFob} after filter out no-degree ${okGraph.size} flows ${okGraph.order} nodes`);
+      // find optimal resolution
+      const result: ModularityTestResult[] = [];
+      range(0.2, 4, 0.2).forEach((resolution) => {
+        const details = louvain.detailed(graph, {
+          resolution,
+          getEdgeWeight: "proximity",
+        });
+        if (details.count > 1)
+          result.push({
+            year,
+            resolution,
+            modularity: modularity(okGraph, {
+              getEdgeWeight: "proximity",
+              getNodeCommunity: (n) => details.communities[n],
+              resolution: 1,
+            }),
+            nb_communities: details.count,
+          });
+      });
+      const optimalResolution = maxBy(result, (r) => r.modularity)?.resolution;
       // compute Louvain + ambiguity metric
-      assignLouvainEdgeAmbiguity({ runs: 20, getEdgeWeight: "proximity", resolution: 1 }, okGraph);
+      assignLouvainEdgeAmbiguity({ runs: 20, getEdgeWeight: "proximity", resolution: optimalResolution || 1 }, okGraph);
 
       // export as CSV
       const csvData: Record<string, string | number | undefined>[] = [];
