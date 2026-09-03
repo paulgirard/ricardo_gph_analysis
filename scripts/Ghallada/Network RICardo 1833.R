@@ -8,19 +8,17 @@ library(ggplot2)
 # Charger le package
 library(writexl)
 library(tidyr)
+library(tibble)
+library(here)
 
+setwd("~/Desktop/ricardo_gph_analysis")
+here::i_am("scripts/Ghallada/Network Ricardo 1833.R")  # remplace par le vrai chemin
 
-
-Network1833 <- read.csv(here("Pair_blocs_Intramax", "tradeFlows_1833_gravity.csv"))
+Network1833 <- read.csv(here("data", "tradeFlows_1833_gravity.csv"))
 
 
 Network1833<-Network1833[Network1833$status=="ok",]
 Network1833 <- Network1833[Network1833$reportedBy == Network1833$exporterId, ] #je selectionne que les flux tel que rapporté par l'exportateur (FOB)
-
-library(tidyr)
-library(tibble)
-library(tidyr)
-library(tibble)
 
 # 1) MATRICE depuis Network1833 --------------------------------------
 df <- Network1833[, c("exporterLabel", "importerLabel", "value")]
@@ -32,7 +30,7 @@ M <- matrix(NA_real_, length(pays), length(pays), dimnames = list(pays, pays))
 M[cbind(match(df$exporterLabel, pays), match(df$importerLabel, pays))] <- df$value
 
 # 1) retirer les entites sans commerce, garder carre
-garde <- rowSums(M, na.rm = TRUE) > 0 | colSums(M, na.rm = TRUE) > 0 
+garde <- rowSums(!is.na(M)) > 0 | colSums(!is.na(M)) > 0 #ça enlève rien normalement par construction
 M <- M[garde, garde]
 
 # 2) normalisation par commerce total

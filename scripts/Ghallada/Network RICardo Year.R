@@ -81,7 +81,27 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
   paires <- merge(paires, Net,
                   by.x = c("exportateur", "importateur"),
                   by.y = c("exporterLabel", "importerLabel"), all.x = TRUE)
+  # ---- propagation des IDs manquants (paires sans flux observé n'ont pas d'ID via le merge) ----
+  dict_exp <- paires %>%
+    filter(!is.na(exporterId)) %>%
+    select(label = exportateur, gph_id = exporterId) %>%
+    distinct() %>% group_by(label) %>% slice(1) %>% ungroup()
   
+  dict_imp <- paires %>%
+    filter(!is.na(importerId)) %>%
+    select(label = importateur, gph_id = importerId) %>%
+    distinct() %>% group_by(label) %>% slice(1) %>% ungroup()
+  
+  dict_all <- bind_rows(dict_exp, dict_imp) %>%
+    distinct() %>% group_by(label) %>% slice(1) %>% ungroup()
+  
+  paires <- paires %>%
+    left_join(dict_all, by = c("exportateur" = "label")) %>%
+    mutate(exporterId = coalesce(as.character(exporterId), gph_id)) %>%
+    select(-gph_id) %>%
+    left_join(dict_all, by = c("importateur" = "label")) %>%
+    mutate(importerId = coalesce(as.character(importerId), gph_id)) %>%
+    select(-gph_id)
   # ---- export ----
   out <- file.path(here("data", "blocks", "Intramax"), paste0("paires_blocs_", year, ".csv"))
   write.csv(paires, out, row.names = FALSE)
@@ -281,15 +301,29 @@ for (year in annees) {
   
   # --- intramax : couple NON-ORIENTE + meme_bloc, deduplique ---
   di <- read.csv(f_intra, stringsAsFactors = FALSE)
+  # Filtrer aux paires avec un flux Intramax non-nul et IDs présents
+  di <- di[!is.na(di$exporterId) & !is.na(di$importerId) &
+             !is.na(di$value) & di$value >= 0, ]
+  if (nrow(di) == 0) next
+  
+  # Cast des IDs en character pour éviter tout mismatch de type
+  di$exporterId <- as.character(di$exporterId)
+  di$importerId <- as.character(di$importerId)
   di$couple <- apply(di[, c("exporterId", "importerId")], 1,
-                     function(x) paste(sort(as.character(x)), collapse = "_"))
+                     function(x) paste(sort(x), collapse = "_"))
   di <- unique(di[, c("couple", "meme_bloc")])
   
   # --- louvain : couple NON-ORIENTE + same_community, dedupliqué ---
   dl <- read.csv(f_louvain, stringsAsFactors = FALSE)
+  dl <- dl[!is.na(dl$source) & !is.na(dl$target) &
+             !is.na(dl$sourceCommunity) & !is.na(dl$targetCommunity), ]
+  if (nrow(dl) == 0) next
+  
+  dl$source <- as.character(dl$source)
+  dl$target <- as.character(dl$target)
   dl$same_community <- as.integer(dl$sourceCommunity == dl$targetCommunity)
   dl$couple <- apply(dl[, c("source", "target")], 1,
-                     function(x) paste(sort(as.character(x)), collapse = "_"))
+                     function(x) paste(sort(x), collapse = "_"))
   dl <- unique(dl[, c("couple", "same_community")])
   
   # --- jointure sur les couples communs ---
@@ -323,57 +357,5 @@ ggsave(here("data", "blocks", "corr_intramax_louvain.png"),
        plot = p, width = 9, height = 5, dpi = 150)
 write.csv(cor_methodes, here("data", "blocks", "cor_intramax_louvain.csv"),
           row.names = FALSE)
-
-# ================= Corrélation + Nombre de blocs par méthode (empilé) =================
-
-# --- 1. Combiner les 3 objets en un long format ---
-n_blocs_all <- bind_rows(
-  resultats_AN      %>% select(year, n_blocs) %>% mutate(methode = "Anderson-Norheim"),
-  resultats_Intra   %>% select(year, n_blocs) %>% mutate(methode = "Intramax"),
-  resultats_Louvain %>% select(year, n_blocs) %>% mutate(methode = "Louvain")
-)
-
-# --- 2. Coefficient de rescaling (somme des 3 méthodes par année) ---
-coef <- n_blocs_all %>%
-  group_by(year) %>%
-  summarise(total = sum(n_blocs, na.rm = TRUE)) %>%
-  pull(total) %>%
-  max()
-
-# --- 3. Couleurs communes aux 3 méthodes ---
-couleurs_methodes <- c("Anderson-Norheim" = "#E41A1C",  # rouge
-                       "Intramax"         = "#377EB8",  # bleu
-                       "Louvain"          = "#4DAF4A")  # vert
-
-# --- 4. Graphe combiné ---
-p_combined <- ggplot() +
-  # Barres n_blocs empilées (une barre par année, 3 segments)
-  geom_col(data = n_blocs_all,
-           aes(x = year, y = n_blocs / coef, fill = methode),
-           position = "stack", alpha = 0.7, width = 0.9) +
-  # Corrélation Intramax vs Louvain (existant)
-  geom_ribbon(data = cor_methodes,
-              aes(x = year, ymin = ic_bas, ymax = ic_haut),
-              fill = "grey70", alpha = 0.4) +
-  geom_line(data = cor_methodes,  aes(x = year, y = cor), linewidth = 0.7) +
-  geom_point(data = cor_methodes, aes(x = year, y = cor), size = 1.3) +
-  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  # Axe Y gauche = corrélation, axe Y droit = nb blocs
-  scale_y_continuous(
-    name     = "corrélation même_bloc (Intramax) ↔ même_communauté (Louvain)",
-    sec.axis = sec_axis(~ . * coef, name = "Nombre de blocs (empilé)")
-  ) +
-  scale_fill_manual(values = couleurs_methodes) +
-  labs(x = "année",
-       title = "Corrélation entre méthodes + Nombre de blocs par méthode et année",
-       fill  = "Méthode") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-
-print(p_combined)
-
-# --- 5. Sauvegarde ---
-ggsave(here("data", "blocks", "corr_intramax_louvain_avec_nblocs.png"),
-       plot = p_combined, width = 11, height = 6, dpi = 150)
 
 
