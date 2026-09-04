@@ -717,13 +717,20 @@ export function filterTradePartners(
   const reportedPartners = tradingPartners(reporterId, graph as GraphEntityPartiteType);
   //remove also the reporter
   const autonomousPartnersIds = autonomousPartners.autonomousIds
-    // remove partners which are already reported or which are the reporter itself
-    .filter((partnerId) => !reportedPartners.has(partnerId) && partnerId !== reporterId)
+    // remove partners which are the reporter itself
+    .filter((partnerId) => partnerId !== reporterId)
+    .filter((partnerId) => {
     // remove partners which are indirect duplicates as included in more than one partner area for that reporting for that year
+      if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
+      else {
+        // case of partner/area concurrences:
+        // (reporting)-[:REPORTED_TRADE]->(partner1)
+        // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
+        // remove partners which are already reported
+        if (reportedPartners.has(partnerId)) return false;
+        // case of area concurrences:
     // (reporting)-[:REPORTED_TRADE]->(area1)-[:SPLIT_OTHER]->(partner1)
     // (reporting)-[:REPORTED_TRADE]->(area2)-[:SPLIT_OTHER]->(partner1)
-    .filter((partnerId) => {
-      if (!autonomousPartners.traversedLabels.has("SPLIT_OTHER")) return true;
       const origins = resolutionOrigins(partnerId, graph as GraphResolutionPartiteType)
         // filter origins by the ones which are reported in the reporter trade
         .filter((o) => reportedPartners.has(o));
@@ -735,6 +742,7 @@ export function filterTradePartners(
         //check that the original partner is the smallest one
         // if the smallest (first) area is the original partner of the reported flow
         return originsByIncreasingAreaSize[0] === originalPartner;
+        }
       }
     });
   return autonomousPartnersIds;
