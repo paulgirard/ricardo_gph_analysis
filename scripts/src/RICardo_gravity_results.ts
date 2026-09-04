@@ -2,7 +2,7 @@ import { parse } from "csv-parse/sync";
 import { stringify } from "csv/sync";
 import { mkdirSync, writeFileSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-import { DirectedGraph } from "graphology";
+import { UndirectedGraph } from "graphology";
 import louvain from "graphology-communities-louvain";
 import gexf from "graphology-gexf";
 import { modularity } from "graphology-metrics/graph";
@@ -52,7 +52,6 @@ interface ModularityTestResult {
 
 type OkEdgeAttributes = {
   proximity: number;
-  observedTradeValue: number;
   observedTradeValues: number[];
 };
 type OkNodeAttributes = EntityNodeAttributes;
@@ -197,7 +196,7 @@ async function readGravityResults() {
     toPairs(okEdges).map(([cafFob, edges]) => {
       if (edges.length === 0) throw new Error(`No ${cafFob} flows for ${year}`);
 
-      const okGraph = DirectedGraph.from(graph.emptyCopy()) as unknown as DirectedGraph<
+      const okGraph = UndirectedGraph.from(graph.emptyCopy()) as unknown as UndirectedGraph<
         OkNodeAttributes,
         OkEdgeAttributes
       >;
@@ -214,53 +213,36 @@ async function readGravityResults() {
         weightedDegrees.out[graph.source(e)] = (weightedDegrees.out[graph.source(e)] || 0) + value;
         weightedDegrees.in[graph.target(e)] = (weightedDegrees.in[graph.target(e)] || 0) + value;
       });
-      // directed version
-      edges.forEach((e) => {
-        const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
 
-        const expected =
-          (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
-          (totalBilateralTrade * totalBilateralTrade);
-        if (expected === 0)
-          throw new Error(
-            `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
-          );
-        const proximity = expected !== 0 ? observed / expected - 1 : 0;
-        // if (proximity > 0)
-        okGraph.addDirectedEdgeWithKey(e, graph.source(e), graph.target(e), {
-          proximity: proximity > 0 ? Math.log(proximity + 1) : 0,
-          observedTradeValue: observed,
-          observedTradeValues: [observed],
+      // group edges by pair of trade partners
+
+      // we use undirected as we have many missing trade edges, directed version would bias reporters over partners
+      const groupedEdges = groupBy(edges, (e) => sortBy([graph.source(e), graph.target(e)]).join("-"));
+      toPairs(groupedEdges).forEach(([groupKey, impExpCouple]) => {
+        const observations: number[] = [];
+
+        const proximities = impExpCouple.map((e) => {
+          const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
+          if (observed) observations.push(observed);
+          const expected =
+            (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
+            (totalBilateralTrade * totalBilateralTrade);
+          if (expected === 0)
+            throw new Error(
+              `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
+            );
+          const proximity = expected !== 0 ? observed / expected - 1 : 0;
+          return proximity;
         });
-        //else console.log(`Discard edge cause proximity=${proximity}`);
+        // we use max over mean as we want to boost local max proximity when calculating blocks
+        const maxProximity = max(proximities) || -1;
+        if (maxProximity > 0)
+          okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
+            proximity: Math.log(maxProximity + 1),
+            observedTradeValues: observations,
+          });
+        else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
       });
-
-      // // group edges by pair of trade partners
-      // const groupedEdges = groupBy(edges, (e) => sortBy([graph.source(e), graph.target(e)]).join("-"));
-      // toPairs(groupedEdges).forEach(([groupKey, impExpCouple]) => {
-      //   const observations: number[] = [];
-
-      //   const proximities = impExpCouple.map((e) => {
-      //     const observed = ((graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
-      //     if (observed) observations.push(observed);
-      //     const expected =
-      //       (weightedDegrees.out[graph.source(e)] * weightedDegrees.in[graph.target(e)]) /
-      //       (totalBilateralTrade * totalBilateralTrade);
-      //     if (expected === 0)
-      //       throw new Error(
-      //         `${observed} ${expected} ${weightedDegrees.out[graph.source(e)]} ${weightedDegrees.in[graph.target(e)]} ${totalBilateralTrade}`,
-      //       );
-      //     const proximity = expected !== 0 ? observed / expected - 1 : 0;
-      //     return proximity;
-      //   });
-      //   const maxProximity = max(proximities) || -1;
-      //   if (maxProximity > 0)
-      //     okGraph.addUndirectedEdgeWithKey(groupKey, graph.source(impExpCouple[0]), graph.target(impExpCouple[0]), {
-      //       proximity: Math.log(maxProximity + 1),
-      //       observedTradeValues: observations,
-      //     });
-      //   else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
-      // });
       console.log(`${year} ${cafFob} ${edges.length} flows result in ${okGraph.size} flows ${okGraph.order} nodes`);
       // remove deprecated nodes
       okGraph.filterNodes((n) => okGraph.degree(n) === 0).forEach((n) => okGraph.dropNode(n));
