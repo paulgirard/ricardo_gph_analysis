@@ -446,7 +446,7 @@ export function treatReporters(graph: GraphType) {
 
           const originalPartner =
             graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
-          // finding the partners depends on trad status
+          // finding the partners depends on trade status
           let partnerIds = [originalPartner];
           switch (edgeToTreatAtts.status) {
             case "split_failed_no_ratio":
@@ -470,20 +470,25 @@ export function treatReporters(graph: GraphType) {
             throw new Error(`no partners for ${originalPartner} in ${edgeToTreat}`);
           }
           if (partnerIds.length === 1) {
-            // easy case just reroute trade flow
             const newPartner = partnerIds[0];
-            generateTradeFlow(
-              graph as GraphEntityPartiteType,
-              edgeToTreat,
-              graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
-              graph.target(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
-              new Set(["AGGREGATE_INTO"]),
-              edgeToTreatAtts.value,
-              badReporter === graph.source(edgeToTreat) ? "exporter" : "importer",
-            );
+            if (newPartner !== autonomousReporter) {
+              // easy case just reroute trade flow
+              generateTradeFlow(
+                graph as GraphEntityPartiteType,
+                edgeToTreat,
+                graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+                graph.target(edgeToTreat) === badReporter ? autonomousReporter : newPartner,
+                new Set(["AGGREGATE_INTO"]),
+                edgeToTreatAtts.value,
+                badReporter === graph.source(edgeToTreat) ? "exporter" : "importer",
+              );
 
-            // TODO: whould we check generateTradeFlow result.status?
-            (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
+              // TODO: whould we check generateTradeFlow result.status?
+              (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_resolved");
+            } else {
+              //internal flow
+              (graph as GraphEntityPartiteType).setEdgeAttribute(edgeToTreat, "status", "ignore_internal");
+            }
           } else {
             // here we have a failed split to handle with a reporter aggregation on top
             // our solve attempt is to look for ratio by looking at other part of reporter for the same reporter which would report trade to:
@@ -753,10 +758,15 @@ export function resolveEntityTransform(
         const valueReportedBy = reporterId === graph.source(e) ? "exporter" : "importer";
         const originalPartner = reporterId === graph.source(e) ? graph.target(e) : graph.source(e);
         const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
+        const autonomousReporters = resolveAutonomous(reporterId, graph as GraphEntityPartiteType);
 
-        // early exit condition : we don't treat reporting aggregation
+        // early exit condition
         if (autonomousPartners.autonomousIds.length === 1 && originalPartner === autonomousPartners.autonomousIds[0]) {
           // nothing to do on partner side
+          return;
+        }
+        if (autonomousReporters.autonomousIds.length !== 1 || reporterId !== autonomousReporters.autonomousIds[0]) {
+          // we don't treat reporting aggregation
           return;
         }
 
