@@ -612,8 +612,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Colony of",
-        "lat": "",
-        "lng": "",
+        "lat": "46.4",
+        "lng": "-63.2",
         "reporting": true,
         "totalBilateralTrade": 108861
       }
@@ -2211,8 +2211,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Protectorate of",
-        "lat": "",
-        "lng": "",
+        "lat": "3.25",
+        "lng": "73",
         "totalBilateralTrade": 93885
       }
     },
@@ -2329,8 +2329,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Sovereign",
-        "lat": "53",
-        "lng": "13",
+        "lat": "52.5221",
+        "lng": "13.3896",
         "totalBilateralTrade": 34238969.25573218
       }
     },
@@ -2951,20 +2951,6 @@
       }
     },
     {
-      "key": "***NA",
-      "attributes": {
-        "label": "***NA",
-        "ricType": "",
-        "cited": true,
-        "entityType": "RIC",
-        "ricParent": "",
-        "type": "entity",
-        "lat": "28",
-        "lng": "1",
-        "totalBilateralTrade": 8.740564163686928
-      }
-    },
-    {
       "key": "Spain & Spanish Colonies",
       "attributes": {
         "label": "Spain & Spanish Colonies",
@@ -3280,14 +3266,15 @@
       }
     },
     {
-      "key": "Gulf of Kutch",
+      "key": "7695",
       "attributes": {
-        "label": "Gulf of Kutch",
-        "ricType": "locality",
+        "label": "Kutch",
+        "ricType": "GPH_entity",
         "cited": true,
-        "entityType": "RIC",
-        "ricParent": "India",
+        "entityType": "GPH",
+        "ricParent": "",
         "type": "entity",
+        "gphStatus": "Part of",
         "lat": "12.8",
         "lng": "45.033333333333",
         "totalBilateralTrade": 9314.700616669981
@@ -5347,6 +5334,18 @@
       }
     },
     {
+      "key": "***NA",
+      "attributes": {
+        "label": "***NA",
+        "reporting": false,
+        "cited": false,
+        "ricType": "",
+        "entityType": "RIC",
+        "ricParent": "",
+        "type": "entity"
+      }
+    },
+    {
       "key": "British Eastern Africa",
       "attributes": {
         "label": "British Eastern Africa",
@@ -5756,8 +5755,8 @@
         "ricParent": "",
         "type": "entity",
         "gphStatus": "Colony of",
-        "lat": "",
-        "lng": ""
+        "lat": "54.5",
+        "lng": "-124.5"
       }
     },
     {
@@ -5972,8 +5971,8 @@
         "entityType": "GPH-AUTONOMOUS-CITED",
         "ricType": "GPH_entity",
         "type": "entity",
-        "lat": "",
-        "lng": ""
+        "lat": "35.88849",
+        "lng": "-5.32648"
       }
     },
     {
@@ -21303,20 +21302,6 @@
       }
     },
     {
-      "key": "615<-***NA",
-      "source": "***NA",
-      "target": "615",
-      "attributes": {
-        "labels": [
-          "REPORTED_TRADE"
-        ],
-        "reportedBy": "615",
-        "value": 8.740564163686928,
-        "type": "trade",
-        "status": "toTreat"
-      }
-    },
-    {
       "key": "615->Russia (Baltic Sea)",
       "source": "615",
       "target": "Russia (Baltic Sea)",
@@ -23033,8 +23018,8 @@
       }
     },
     {
-      "key": "681<-Gulf of Kutch",
-      "source": "Gulf of Kutch",
+      "key": "681<-7695",
+      "source": "7695",
       "target": "681",
       "attributes": {
         "labels": [
@@ -23247,9 +23232,9 @@
       }
     },
     {
-      "key": "681->Gulf of Kutch",
+      "key": "681->7695",
       "source": "681",
-      "target": "Gulf of Kutch",
+      "target": "7695",
       "attributes": {
         "labels": [
           "REPORTED_TRADE"
@@ -39289,17 +39274,6 @@
       }
     },
     {
-      "key": "Gulf of Kutch-resolve-into-750",
-      "source": "Gulf of Kutch",
-      "target": "750",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "AGGREGATE_INTO"
-        ]
-      }
-    },
-    {
       "key": "Asia (other) & East Indies-resolve-into-Asia (other)",
       "source": "Asia (other) & East Indies",
       "target": "Asia (other)",
@@ -41217,6 +41191,17 @@
       "key": "6514-resolve-into-651",
       "source": "6514",
       "target": "651",
+      "attributes": {
+        "type": "resolution",
+        "labels": [
+          "AGGREGATE_INTO"
+        ]
+      }
+    },
+    {
+      "key": "7695-resolve-into-750",
+      "source": "7695",
+      "target": "750",
       "attributes": {
         "type": "resolution",
         "labels": [
@@ -54134,12 +54119,12 @@
           "Chennai (Madras)",
           "Kolkata (Calcutta)",
           "Mumbai (Bombay)",
-          "Gulf of Kutch"
+          "7695"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "681<-Chennai (Madras) 431.6689874676745\n681<-Kolkata (Calcutta) 17488.95961806246\n681<-Mumbai (Bombay) 217784.0660433658\n681<-Gulf of Kutch 9314.700616669981",
+        "notes": "681<-Chennai (Madras) 431.6689874676745\n681<-Kolkata (Calcutta) 17488.95961806246\n681<-Mumbai (Bombay) 217784.0660433658\n681<-7695 9314.700616669981",
         "status": "ok",
         "type": "trade"
       }
@@ -54232,12 +54217,12 @@
         "originalPartners": [
           "Kolkata (Calcutta)",
           "Mumbai (Bombay)",
-          "Gulf of Kutch"
+          "7695"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "681->Kolkata (Calcutta) 248.65725084543465\n681->Mumbai (Bombay) 70200.01989258007\n681->Gulf of Kutch 7540.083548836284",
+        "notes": "681->Kolkata (Calcutta) 248.65725084543465\n681->Mumbai (Bombay) 70200.01989258007\n681->7695 7540.083548836284",
         "status": "ok",
         "type": "trade"
       }
