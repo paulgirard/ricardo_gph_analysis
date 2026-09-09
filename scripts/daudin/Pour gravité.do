@@ -61,11 +61,20 @@ drop valueToSplit
  
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
 */
+
+////Il me semble que ces flux ne devraient pas avoir le statut "ok". Tant qu’on ne peut pas réparer le bug en amont, voici un correctif pour ne pas les traiter comme des flux valides.
+assert  value!=0 | (strmatch(notes,"* 0 *")==1 & partial!="")
+ 
+replace status="split_failed_no_ratio" if value==0 & strmatch(notes,"* 0 *")==1 & partial!=""
+
+
 drop importerType exporterType
 drop if value==. & status !="to_impute"
 drop if status =="ignore_internal" | status=="ignore_resolved"
 drop if status=="ignore_duplicate"
 drop if status=="split_failed_error"
+
+//Restent les "split_failed_no_ratio"
 
 gen ln_value=ln(value)
 
@@ -78,6 +87,8 @@ replace CafFob="FromExporter" if reportedBy==exporterId
 assert CafFob!=""
 tab CafFob
 
+bys exporterId importerId CafFob : assert _N==1
+
 /*gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
 replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLabel
 assert reportedByIX!=""
@@ -88,7 +99,6 @@ gen totreat_flows=r(N)
 
 save tradeFlows_`year'_temp.dta, replace
 *'
-
 
 end
 ***************Gravity trade estimation program ***************
@@ -246,6 +256,12 @@ reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
 drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
 destring(newPartnerId), replace
 
+**RQ A :  This can produce duplicates in newPartnerId & importerId (or expoterId) if there are multiple reporters for a given partner in a split.
+** eg in 1833, we have a value to split for "Bilbao<-Hanover & Hanse Towns" & one for "Cadix<-Hanse Towns|Málaga<-Hanse Towns" 
+** This can proceed as we can assume that the relevant gravity coefficient are the same
+
+
+
 //à faire seulement s’il y a des reporters à splitter
 capture assert missing(newReporters)
 	if _rc!=0 {
@@ -335,8 +351,24 @@ drop pred sum_pred
 by id: replace status ="ok thanks to gravity" if success!=.
 by id: replace status ="unknown despite gravity" if success==.
 
-//// Some of the failed observations are because the reporter needs to be aggregated and the partner desagregated
-////eg in 1833 : Bilbao->Hanover & Hanse Towns
+
+
+///at that point, we need to put together the flows of RqA (c. line 250)
+///if all are succeses : we aggregate them with the sum of flows
+///if any is a failure : it is globally a failure
+bys newPartnerId reportedBy CafFob : egen nbr_of_successes=count(success)
+bys newPartnerId reportedBy CafFob :replace status="unknown despite gravity" if nbr_of_successes!=_N
+bys newPartnerId reportedBy CafFob : egen pred_trade_cum=total(pred_trade)
+sort newPartnerId reportedBy CafFob
+by newPartnerId reportedBy CafFob: gen str_concat = originalReportedTradeFlowId if _n == 1
+by newPartnerId reportedBy CafFob: replace str_concat = str_concat[_n-1] + "|" + originalReportedTradeFlowId if _n > 1
+by newPartnerId reportedBy CafFob: replace originalReportedTradeFlowId = str_concat[_N] if _N>1
+bys newPartnerId reportedBy CafFob : keep if _n==1
+replace pred_trade=pred_trade_cum
+drop  pred_trade_cum str_concat nbr_of_successes 
+
+
+*****il faudrait faire la même chose pour les reporters ??????
 
 
 *br if status=="ok thanks to gravity"
@@ -355,8 +387,13 @@ drop _merge
 rename GPH_code newexporterId 
 rename GPH_name newexporterLabel
 
-keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows status
-order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit 
+keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows status id notes
+order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit id notes
+
+replace importerLabel=newimporterLabel if newimporterLabel!=""
+replace exporterLabel=newexporterLabel if newexporterLabel!=""
+
+bys importerLabel exporterLabel CafFob : assert _N==1
 
 save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
 
@@ -382,37 +419,57 @@ program define bestguessbiltrade
 
 ****Maintenant, j’aimerai créer une base du best guess du commerce
 use "results/BestGuessBilTrade_`year'_FromExporter.dta", clear
+
 append using "results/BestGuessBilTrade_`year'_FromImporter.dta"
+
+bys importerLabel exporterLabel CafFob : assert _N==1
+
 
 generate value = pred_trade if status=="ok thanks to gravity"
 replace importerLabel=newimporterLabel if newimporterLabel!=""
 replace exporterLabel=newexporterLabel if newexporterLabel!=""
 
-////eg in 1833 : Bilbao->Hanover & Hanse Towns. I need to agregate by reporter
 replace value=. if status=="unknown despite gravity"
 
-bys importerLabel exporterLabel CafFob : gen blif =_N
-egen blouf = max(blif), by(importerLabel exporterLabel CafFob)
-replace status ="both ok and not ok" if blouf!=1
-replace value =. if status=="both ok and not ok"
+egen max = max(value), by(importerLabel exporterLabel CafFob)
+egen min = min(value), by(importerLabel exporterLabel CafFob)
+replace status ="both ok and not ok" if max!=min
+assert status !="both ok and not ok"
 
-bys importerLabel exporterLabel CafFob: assert status==status[1]
+drop max min
+
+/*bys importerLabel exporterLabel CafFob: assert status==status[1]
 bys importerLabel exporterLabel CafFob: assert value==value[1]
 collapse (first) value status year, by(importerLabel exporterLabel CafFob)
+*/
+bys importerLabel exporterLabel CafFob : assert _N==1
 
 append using "tradeFlows_`year'_FromImporterok_temp.dta"
 append using "tradeFlows_`year'_FromExporterok_temp.dta"
 
-//// Some of the flows are both ok and unknown ???
-bys importerLabel exporterLabel CafFob : gen blif =_N
-egen blouf = max(blif), by(importerLabel exporterLabel CafFob)
-replace status ="both ok and not ok" if blouf!=1
-replace value =. if status=="both ok and not ok"
+
+***Some flows are both in the "ok" file and in the gravity file.
+***if all are ok : we aggregate them with the sum of flows
+***if any is "unknown despite gravity" : all are "unknown despite gravity"
+**exemple 1833 : id=="200->3349" & id =="200->Ionian Is. & Morea"
+generate good_flow =1 if status=="ok thanks to gravity" | status=="ok"
+replace good_flow =0 if status=="unknown despite gravity"
 
 
-bys importerLabel exporterLabel CafFob: assert status==status[1]
-bys importerLabel exporterLabel CafFob: assert value==value[1]
-collapse (first) value status year, by(importerLabel exporterLabel CafFob)
+bys importerLabel exporterLabel CafFob : egen nbr_of_good_flows=total(good_flow)
+bys importerLabel exporterLabel CafFob: egen at_least_one_good_flow= max(good_flow)
+bys importerLabel exporterLabel CafFob :replace status="unknown despite partial gravity success" if nbr_of_good_flows!=_N & at_least_one_good_flow==1
+bys importerLabel exporterLabel CafFob : egen value_cum=total(value)
+bys importerLabel exporterLabel CafFob : replace value=value_cum if nbr_of_good_flows==_N
+bys importerLabel exporterLabel CafFob : replace value=. if nbr_of_good_flows!=_N
+bys importerLabel exporterLabel CafFob: gen str_concat = id + "&&" + notes if _n == 1
+bys importerLabel exporterLabel CafFob: replace str_concat = str_concat[_n-1] + "|" + id + "&&" + notes if _n > 1
+bys importerLabel exporterLabel CafFob: replace notes = str_concat[_N] if _N>1
+bys importerLabel exporterLabel CafFob : keep if _n==1
+
+
+drop value_cum str_concat
+bys importerLabel exporterLabel CafFob : assert _N==1
 
 
 keep year value status importerLabel exporterLabel CafFob
@@ -443,6 +500,9 @@ drop _fillin
 
 append using temp.dta
 drop if importerLabel==exporterLabel
+
+
+bys importerLabel exporterLabel CafFob: assert _N==1
 
 export delimited using "results/BestGuessBilTrade_`year'.csv", replace
 erase temp.dta
@@ -486,6 +546,8 @@ gravity_trade_estimation 1833 FromImporter
 gravity_trade_estimation 1833 FromExporter
 bestguessbiltrade 1833
 gravity_cleanup 1833
+
+blif
 
 
 
