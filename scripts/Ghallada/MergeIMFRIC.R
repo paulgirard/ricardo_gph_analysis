@@ -115,5 +115,6 @@ DOT <- DOT %>%
     VALUE_GBP = VALUE_USD / USD_per_GBP
   )
 
-write.csv(DOT, "scripts/IMFdatawithgph.csv",
+write.csv(DOT, "data/IMFdatawithgph.csv",
           row.names = FALSE)
+write.csv(DOT, gzfile("data/DOT_gph.csv.gz"), row.names = FALSE)
