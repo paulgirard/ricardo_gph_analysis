@@ -42,8 +42,8 @@ program define trade_importation
 
 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
-	*/stringcols(13)
-***To force newReporters to be a string even in empty
+	*/stringcols(13 15)
+***To force newReporters and originalReportedTradeFlowIds to be a string even if empty
 
 
 
@@ -360,15 +360,25 @@ bys newPartnerId reportedBy CafFob : egen nbr_of_successes=count(success)
 bys newPartnerId reportedBy CafFob :replace status="unknown despite gravity" if nbr_of_successes!=_N
 bys newPartnerId reportedBy CafFob : egen pred_trade_cum=total(pred_trade)
 sort newPartnerId reportedBy CafFob
-by newPartnerId reportedBy CafFob: gen str_concat = originalReportedTradeFlowId if _n == 1
+by newPartnerId reportedBy CafFob: gen str str_concat = originalReportedTradeFlowId if _n == 1
 by newPartnerId reportedBy CafFob: replace str_concat = str_concat[_n-1] + "|" + originalReportedTradeFlowId if _n > 1
 by newPartnerId reportedBy CafFob: replace originalReportedTradeFlowId = str_concat[_N] if _N>1
 bys newPartnerId reportedBy CafFob : keep if _n==1
 replace pred_trade=pred_trade_cum
 drop  pred_trade_cum str_concat nbr_of_successes 
 
+bys newPartnerId reportedBy CafFob : assert _N==1
 
-*****il faudrait faire la même chose pour les reporters ??????
+capture assert missing(newReporters)
+	if _rc!=0 {
+		*****il faudrait faire la même chose pour les reporters ??????
+	}
+
+
+if "`CafFob'"=="FromExporter" {
+	*blif
+}
+
 
 
 *br if status=="ok thanks to gravity"
