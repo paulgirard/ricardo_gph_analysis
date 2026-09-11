@@ -421,6 +421,7 @@ export function treatReporters(graph: GraphType) {
     .filterNodes((_, atts) => atts.reporting && atts.entityType !== "GPH-AUTONOMOUS-CITED")
     .forEach((badReporter) => {
       const autonomousReporters = resolveAutonomous(badReporter, graph as GraphEntityPartiteType);
+
       const allreportedFlows = (graph as GraphEntityPartiteType).filterEdges(badReporter, (_, eAtts) => {
         // we consider both reported_trade and generated_trade but discard the ignore ones
         return (
@@ -431,16 +432,33 @@ export function treatReporters(graph: GraphType) {
         );
       });
 
-      if (autonomousReporters.autonomousIds.length === 1) {
-        const autonomousReporter = autonomousReporters.autonomousIds[0];
-        // check if autonomousReporter is not already reporting
-        if (graph.getNodeAttribute(autonomousReporter, "reporting") === true) {
-          //mark all trade flows as to ignore_duplicate as the autonomous already reports trade
+      // check if we already know autonomous Reporters trade
+      const knownAutonomousReporters = autonomousReporters.autonomousIds.filter((goodReporter) => {
+        return (
+          graph.getNodeAttribute(goodReporter, "reporting") &&
+          (graph as GraphEntityPartiteType).filterEdges(goodReporter, (_, atts) => atts.labels.has("REPORTED_TRADE"))
+            .length > 0
+        );
+      });
+      if (knownAutonomousReporters.length > 0) {
+        // some reporters already exists
+        if (knownAutonomousReporters.length === autonomousReporters.autonomousIds.length) {
+          // we already have all reporters trade => duplicates => ignore
+          console.log(`Ignored bad reporter ${badReporter} as we already know trade from ${knownAutonomousReporters}`);
           allreportedFlows.forEach((e) => {
             (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_duplicate");
           });
           return;
+        } else {
+          // we know some
+          // we should remove know reported flows values from the bad reporter trade figures and then try to solve those flows
+          throw new Error("Partial badreporter solving algo not implemented");
         }
+      }
+
+      if (autonomousReporters.autonomousIds.length === 1) {
+        const autonomousReporter = autonomousReporters.autonomousIds[0];
+
         // move all reported trade flows from badReporter to autonomousReporter
         allreportedFlows.forEach((edgeToTreat) => {
           const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(edgeToTreat);
