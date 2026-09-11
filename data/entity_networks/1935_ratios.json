@@ -2731,7 +2731,8 @@
         "gphStatus": "Mandated to",
         "lat": "54.3482907",
         "lng": "18.6540233",
-        "totalBilateralTrade": 1480777.3648163285
+        "totalBilateralTrade": 1480777.3648163285,
+        "reportingBySplit": true
       }
     },
     {
@@ -11608,28 +11609,94 @@
       }
     },
     {
-      "key": "821|8221|8222|8223|8224|8225"
+      "key": "100|101|115|1163|130|135|145|150|165",
+      "attributes": {
+        "label": "Decomposition of Southern America",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "541|553"
+      "key": "821|8221|8222|8223|8224|8225",
+      "attributes": {
+        "label": "Decomposition of 820",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "211|490"
+      "key": "541|553",
+      "attributes": {
+        "label": "Decomposition of South Eastern Africa",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "1029|120|1201|220|430|480|522|580|5813|585|615|6403|65|66|751|810|8151|930|960"
+      "key": "211|490",
+      "attributes": {
+        "label": "Decomposition of Belgium & Democratic Republic of the Congo (Zaire) (Kinshasa) (Belgian Congo) (Congo Free State)",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "325|3353|5200|531|620"
+      "key": "1029|120|1201|220|430|480|522|580|5813|585|615|6403|65|66|751|810|8151|930|960",
+      "attributes": {
+        "label": "Decomposition of France & French Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "402|403|404|540|541|721|752|860"
+      "key": "325|3353|5200|531|620",
+      "attributes": {
+        "label": "Decomposition of Italian Colonies & Italy",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "1055|1063|110|1163|21|231|30|31|338|352|4050|420|452|475|501|51|52|53|552|570|590|591|720|750|780|80|821|8218|827|935|945|950|9620"
+      "key": "402|403|404|540|541|721|752|860",
+      "attributes": {
+        "label": "Decomposition of Portuguese Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "115|210|68|850"
+      "key": "1055|1063|110|1163|21|231|30|31|338|352|4050|420|452|475|501|51|52|53|552|570|590|591|720|750|780|80|821|8218|827|935|945|950|9620",
+      "attributes": {
+        "label": "Decomposition of British Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "115|210|68|850",
+      "attributes": {
+        "label": "Decomposition of Dutch Colonies & Netherlands",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     }
   ],
   "edges": [
@@ -42664,8 +42731,9 @@
         "value": 5,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-1163"
+          "1055<-100|101|115|1163|130|135|145|150|165"
         ]
       }
     },
@@ -168621,6 +168689,9 @@
         "value": 4493290.489635272,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-200"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168636,6 +168707,9 @@
         "value": 1583216.4618037364,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-305"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168651,6 +168725,9 @@
         "value": 999437.6482106056,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-211"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168681,6 +168758,9 @@
         "value": 1355898.2221899172,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-315"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168696,6 +168776,9 @@
         "value": 394282.7548164465,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-390"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168726,6 +168809,9 @@
         "value": 52727.663509203405,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-375"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168741,6 +168827,9 @@
         "value": 1611178.6851110277,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-220"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168786,6 +168875,9 @@
         "value": 1088292.812356502,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-210"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168801,6 +168893,9 @@
         "value": 14712.905376563696,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-205"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168861,6 +168956,9 @@
         "value": 40479.747515100644,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-367"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168876,6 +168974,9 @@
         "value": 4772412.021739872,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-255"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168891,6 +168992,9 @@
         "value": 360003.99621659913,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-385"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168921,6 +169025,9 @@
         "value": 205672.55159908414,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-360"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168951,6 +169058,9 @@
         "value": 913471.1434972805,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-225"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168966,6 +169076,9 @@
         "value": 762991.2447898608,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-380"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -168996,6 +169109,9 @@
         "value": 179520.55486953768,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-310"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169011,6 +169127,9 @@
         "value": 997242.2670418514,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-325"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169041,6 +169160,9 @@
         "value": 575536.505345527,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-365"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169116,6 +169238,9 @@
         "value": 117279.57296239909,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-710"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169191,6 +169316,9 @@
         "value": 1228142.4443520592,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-750"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169206,6 +169334,9 @@
         "value": 590557.5343948983,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-850"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169251,6 +169382,9 @@
         "value": 73140.85683270801,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-740"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169431,6 +169565,9 @@
         "value": 590480.5034766964,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-651"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169971,6 +170108,9 @@
         "value": 55269.68380986624,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-20"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -169986,6 +170126,9 @@
         "value": 4740598.252522485,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-2"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170196,6 +170339,9 @@
         "value": 616748.0465835457,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-160"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170226,6 +170372,9 @@
         "value": 574188.4642769936,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-140"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170376,6 +170525,9 @@
         "value": 760102.5853572894,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-900"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170436,6 +170588,9 @@
         "value": 6987898.260144837,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->200"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170451,6 +170606,9 @@
         "value": 2287356.085087342,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->305"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170466,6 +170624,9 @@
         "value": 2197923.1890549315,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->211"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170496,6 +170657,9 @@
         "value": 2035773.1062399233,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->315"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170511,6 +170675,9 @@
         "value": 1062102.3001678546,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->390"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170541,6 +170708,9 @@
         "value": 619906.3142298238,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->375"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170556,6 +170726,9 @@
         "value": 1256374.275873057,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->220"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170616,6 +170789,9 @@
         "value": 1364294.5922739247,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->210"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170631,6 +170807,9 @@
         "value": 97790.75065731735,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->205"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170691,6 +170870,9 @@
         "value": 287903.0567796168,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->367"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170721,6 +170903,9 @@
         "value": 5388582.336436903,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->255"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170736,6 +170921,9 @@
         "value": 723859.5383432935,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->385"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170766,6 +170954,9 @@
         "value": 304926.8897022377,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->360"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170781,6 +170972,9 @@
         "value": 498929.2571937333,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->225"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170796,6 +170990,9 @@
         "value": 1904704.9989193834,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->380"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170826,6 +171023,9 @@
         "value": 181600.38966098908,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->310"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170841,6 +171041,9 @@
         "value": 1147722.1657492712,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->325"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170871,6 +171074,9 @@
         "value": 426982.3795931548,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->365"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -170931,6 +171137,9 @@
         "value": 232094.15654233727,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->710"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171036,6 +171245,9 @@
         "value": 229051.43527336203,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->750"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171051,6 +171263,9 @@
         "value": 18333.358532053193,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->850"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171126,6 +171341,9 @@
         "value": 180059.771296951,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->740"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171306,6 +171524,9 @@
         "value": 200742.57283416227,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->651"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171906,6 +172127,9 @@
         "value": 183487.64715693574,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->20"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -171921,6 +172145,9 @@
         "value": 1666872.0389710043,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->2"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -172101,6 +172328,9 @@
         "value": 477206.53826079634,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->160"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -172131,6 +172361,9 @@
         "value": 183526.1626160367,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->140"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -172296,6 +172529,9 @@
         "value": 17563.04935003415,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->900"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -221301,6 +221537,1462 @@
       }
     },
     {
+      "key": "291<-2",
+      "source": "2",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-2 0 (ratio on 4740598.252522485)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-20",
+      "source": "20",
+      "target": "291",
+      "attributes": {
+        "value": 1348.0410685333263,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-20 1348.0410685333263 (ratio on 55269.68380986624)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1348.0410685333263
+      }
+    },
+    {
+      "key": "291<-140",
+      "source": "140",
+      "target": "291",
+      "attributes": {
+        "value": 308.1236728075892,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "140"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-140 308.1236728075892 (ratio on 574188.4642769936)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 140",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 308.1236728075892
+      }
+    },
+    {
+      "key": "291<-160",
+      "source": "160",
+      "target": "291",
+      "attributes": {
+        "value": 500.7009683124488,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "160"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-160 500.7009683124488 (ratio on 616748.0465835457)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 160",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 500.7009683124488
+      }
+    },
+    {
+      "key": "291<-200",
+      "source": "200",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "200"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-200 0 (ratio on 4493290.489635272)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 200",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-205",
+      "source": "205",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "205"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-205 0 (ratio on 14712.905376563696)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 205",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-210",
+      "source": "210",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-210 0 (ratio on 1088292.812356502)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-211",
+      "source": "211",
+      "target": "291",
+      "attributes": {
+        "value": 1887.2574959466,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "211"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-211 1887.2574959466 (ratio on 999437.6482106056)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 211",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1887.2574959466
+      }
+    },
+    {
+      "key": "291<-220",
+      "source": "220",
+      "target": "291",
+      "attributes": {
+        "value": 1232.4946912305895,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-220 1232.4946912305895 (ratio on 1611178.6851110277)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1232.4946912305895
+      }
+    },
+    {
+      "key": "291<-225",
+      "source": "225",
+      "target": "291",
+      "attributes": {
+        "value": 654.762804716127,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "225"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-225 654.762804716127 (ratio on 913471.1434972805)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 225",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 654.762804716127
+      }
+    },
+    {
+      "key": "291<-255",
+      "source": "255",
+      "target": "291",
+      "attributes": {
+        "value": 346.6391319092363,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-255 346.6391319092363 (ratio on 4772412.021739872)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 346.6391319092363
+      }
+    },
+    {
+      "key": "291<-305",
+      "source": "305",
+      "target": "291",
+      "attributes": {
+        "value": 231.09275460569188,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "305"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-305 231.09275460569188 (ratio on 1583216.4618037364)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 305",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 231.09275460569188
+      }
+    },
+    {
+      "key": "291<-310",
+      "source": "310",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "310"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-310 0 (ratio on 179520.55486953768)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 310",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-315",
+      "source": "315",
+      "target": "291",
+      "attributes": {
+        "value": 154.0618364037946,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "315"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-315 154.0618364037946 (ratio on 1355898.2221899172)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 315",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 154.0618364037946
+      }
+    },
+    {
+      "key": "291<-325",
+      "source": "325",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-325 0 (ratio on 997242.2670418514)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-360",
+      "source": "360",
+      "target": "291",
+      "attributes": {
+        "value": 1540.6183640380914,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "360"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-360 1540.6183640380914 (ratio on 205672.55159908414)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 360",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1540.6183640380914
+      }
+    },
+    {
+      "key": "291<-365",
+      "source": "365",
+      "target": "291",
+      "attributes": {
+        "value": 1656.1647413409082,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "365"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-365 1656.1647413409082 (ratio on 575536.505345527)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 365",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1656.1647413409082
+      }
+    },
+    {
+      "key": "291<-367",
+      "source": "367",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "367"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-367 0 (ratio on 40479.747515100644)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 367",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-375",
+      "source": "375",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "375"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-375 0 (ratio on 52727.663509203405)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 375",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-380",
+      "source": "380",
+      "target": "291",
+      "attributes": {
+        "value": 385.15459100948647,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "380"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-380 385.15459100948647 (ratio on 762991.2447898608)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 380",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 385.15459100948647
+      }
+    },
+    {
+      "key": "291<-385",
+      "source": "385",
+      "target": "291",
+      "attributes": {
+        "value": 1810.226577744761,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "385"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-385 1810.226577744761 (ratio on 360003.99621659913)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 385",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1810.226577744761
+      }
+    },
+    {
+      "key": "291<-390",
+      "source": "390",
+      "target": "291",
+      "attributes": {
+        "value": 1425.0719867352745,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "390"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-390 1425.0719867352745 (ratio on 394282.7548164465)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 390",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1425.0719867352745
+      }
+    },
+    {
+      "key": "291<-651",
+      "source": "651",
+      "target": "291",
+      "attributes": {
+        "value": 1193.9792321295245,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "651"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-651 1193.9792321295245 (ratio on 590480.5034766964)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 651",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1193.9792321295245
+      }
+    },
+    {
+      "key": "291<-710",
+      "source": "710",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-710 0 (ratio on 117279.57296239909)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-740",
+      "source": "740",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-740 0 (ratio on 73140.85683270801)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-750",
+      "source": "750",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-750 0 (ratio on 1228142.4443520592)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-850",
+      "source": "850",
+      "target": "291",
+      "attributes": {
+        "value": 1271.0101503314218,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "850"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-850 1271.0101503314218 (ratio on 590557.5343948983)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 850",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1271.0101503314218
+      }
+    },
+    {
+      "key": "291<-900",
+      "source": "900",
+      "target": "291",
+      "attributes": {
+        "value": 1348.041068533319,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-900 1348.041068533319 (ratio on 760102.5853572894)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1348.041068533319
+      }
+    },
+    {
+      "key": "291->2",
+      "source": "291",
+      "target": "2",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->2 0 (ratio on 1666872.0389710043)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->20",
+      "source": "291",
+      "target": "20",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->20 0 (ratio on 183487.64715693574)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->140",
+      "source": "291",
+      "target": "140",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "140"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->140 0 (ratio on 183526.1626160367)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 140",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->160",
+      "source": "291",
+      "target": "160",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "160"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->160 0 (ratio on 477206.53826079634)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 160",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->200",
+      "source": "291",
+      "target": "200",
+      "attributes": {
+        "value": 1193.9792321287096,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "200"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->200 1193.9792321287096 (ratio on 6987898.260144837)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 200",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1193.9792321287096
+      }
+    },
+    {
+      "key": "291->205",
+      "source": "291",
+      "target": "205",
+      "attributes": {
+        "value": 1502.1029049371282,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "205"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->205 1502.1029049371282 (ratio on 97790.75065731735)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 205",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1502.1029049371282
+      }
+    },
+    {
+      "key": "291->210",
+      "source": "291",
+      "target": "210",
+      "attributes": {
+        "value": 847.3401002208702,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->210 847.3401002208702 (ratio on 1364294.5922739247)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 847.3401002208702
+      }
+    },
+    {
+      "key": "291->211",
+      "source": "291",
+      "target": "211",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "211"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->211 0 (ratio on 2197923.1890549315)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 211",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->220",
+      "source": "291",
+      "target": "220",
+      "attributes": {
+        "value": 770.3091820192058,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->220 770.3091820192058 (ratio on 1256374.275873057)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 770.3091820192058
+      }
+    },
+    {
+      "key": "291->225",
+      "source": "291",
+      "target": "225",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "225"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->225 0 (ratio on 498929.2571937333)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 225",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->255",
+      "source": "291",
+      "target": "255",
+      "attributes": {
+        "value": 269.60821370687336,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->255 269.60821370687336 (ratio on 5388582.336436903)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 269.60821370687336
+      }
+    },
+    {
+      "key": "291->305",
+      "source": "291",
+      "target": "305",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "305"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->305 0 (ratio on 2287356.085087342)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 305",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->310",
+      "source": "291",
+      "target": "310",
+      "attributes": {
+        "value": 577.7318865142879,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "310"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->310 577.7318865142879 (ratio on 181600.38966098908)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 310",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 577.7318865142879
+      }
+    },
+    {
+      "key": "291->315",
+      "source": "291",
+      "target": "315",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "315"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->315 0 (ratio on 2035773.1062399233)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 315",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->325",
+      "source": "291",
+      "target": "325",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->325 0 (ratio on 1147722.1657492712)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->360",
+      "source": "291",
+      "target": "360",
+      "attributes": {
+        "value": 654.7628047161852,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "360"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->360 654.7628047161852 (ratio on 304926.8897022377)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 360",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 654.7628047161852
+      }
+    },
+    {
+      "key": "291->365",
+      "source": "291",
+      "target": "365",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "365"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->365 0 (ratio on 426982.3795931548)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 365",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->367",
+      "source": "291",
+      "target": "367",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "367"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->367 0 (ratio on 287903.0567796168)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 367",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->375",
+      "source": "291",
+      "target": "375",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "375"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->375 0 (ratio on 619906.3142298238)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 375",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->380",
+      "source": "291",
+      "target": "380",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "380"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->380 0 (ratio on 1904704.9989193834)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 380",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->385",
+      "source": "291",
+      "target": "385",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "385"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->385 0 (ratio on 723859.5383432935)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 385",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->390",
+      "source": "291",
+      "target": "390",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "390"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->390 0 (ratio on 1062102.3001678546)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 390",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->651",
+      "source": "291",
+      "target": "651",
+      "attributes": {
+        "value": 462.18550921144197,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "651"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->651 462.18550921144197 (ratio on 200742.57283416227)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 651",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 462.18550921144197
+      }
+    },
+    {
+      "key": "291->710",
+      "source": "291",
+      "target": "710",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->710 0 (ratio on 232094.15654233727)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->740",
+      "source": "291",
+      "target": "740",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->740 0 (ratio on 180059.771296951)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->750",
+      "source": "291",
+      "target": "750",
+      "attributes": {
+        "value": 1810.226577744732,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->750 1810.226577744732 (ratio on 229051.43527336203)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 1810.226577744732
+      }
+    },
+    {
+      "key": "291->850",
+      "source": "291",
+      "target": "850",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "850"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->850 0 (ratio on 18333.358532053193)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 850",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->900",
+      "source": "291",
+      "target": "900",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->900 0 (ratio on 17563.04935003415)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
       "key": "1055<-2",
       "source": "2",
       "target": "1055",
@@ -221489,26 +223181,24 @@
       "source": "101",
       "target": "1055",
       "attributes": {
-        "value": 145.5678391959799,
+        "value": 142,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "56"
+          "55"
         ],
         "originalPartners": [
-          "101",
-          "Southern America"
+          "101"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-101 142\n56<-Southern America 3.567839195979899 (ratio on 5)",
+        "notes": "55<-101 142",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 57"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -221542,26 +223232,24 @@
       "source": "130",
       "target": "1055",
       "attributes": {
-        "value": 44.08040201005025,
+        "value": 43,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "56"
+          "55"
         ],
         "originalPartners": [
-          "130",
-          "Southern America"
+          "130"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-130 43\n56<-Southern America 1.0804020100502512 (ratio on 5)",
+        "notes": "55<-130 43",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1301 unexpected: 130|Southern America"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -221621,26 +223309,24 @@
       "source": "165",
       "target": "1055",
       "attributes": {
-        "value": 13.326633165829145,
+        "value": 13,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "56"
+          "55"
         ],
         "originalPartners": [
-          "165",
-          "Southern America"
+          "165"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-165 13\n56<-Southern America 0.32663316582914576 (ratio on 5)",
+        "notes": "55<-165 13",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Uruguay (other) unexpected: 165|Southern America"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -223296,14 +224982,20 @@
       }
     },
     {
-      "key": "1055<-100",
-      "source": "100",
+      "key": "1055<-100|101|115|1163|130|135|145|150|165",
+      "source": "100|101|115|1163|130|135|145|150|165",
       "target": "1055",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "100|101|115|130|135|145|150|165|1163",
+        "valueToSplit": 5,
+        "value": 5,
+        "originalReportedTradeFlowIds": "56<-Southern America",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "56"
@@ -223311,140 +225003,7 @@
         "originalPartners": [
           "Southern America"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-115",
-      "source": "115",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-135",
-      "source": "135",
-      "target": "1055",
-      "attributes": {
-        "value": 1.0251256281407035,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56",
-          "57"
-        ],
-        "originalPartners": [
-          "Southern America",
-          "135"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0.02512562814070352 (ratio on 5)\n57<-135 1",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55"
-      }
-    },
-    {
-      "key": "1055<-145",
-      "source": "145",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-150",
-      "source": "150",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-1163",
-      "source": "1163",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Southern America 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
+        "notes": "From a flow part-of reporter 56 to/from area Southern America"
       }
     },
     {
@@ -223522,6 +225081,31 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing 55|57"
+      }
+    },
+    {
+      "key": "1055<-135",
+      "source": "135",
+      "target": "1055",
+      "attributes": {
+        "value": 1,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "57"
+        ],
+        "originalPartners": [
+          "135"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "57<-135 1",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing 55|56"
       }
     },
     {

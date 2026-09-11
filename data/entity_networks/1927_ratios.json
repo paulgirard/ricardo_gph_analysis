@@ -1233,7 +1233,8 @@
         "gphStatus": "Mandated to",
         "lat": "54.3482907",
         "lng": "18.6540233",
-        "totalBilateralTrade": 2761811.798180328
+        "totalBilateralTrade": 2761811.798180328,
+        "reportingBySplit": true
       }
     },
     {
@@ -1514,7 +1515,7 @@
         "lat": "-19",
         "lng": "35",
         "reporting": true,
-        "totalBilateralTrade": 170035.62938353635
+        "totalBilateralTrade": 2559036.222222222
       }
     },
     {
@@ -1922,7 +1923,7 @@
         "type": "entity",
         "lat": "-8.55472222222222",
         "lng": "125.578611111111",
-        "totalBilateralTrade": 742120.0722845976
+        "totalBilateralTrade": 782024.5617641102
       }
     },
     {
@@ -1964,7 +1965,7 @@
         "type": "entity",
         "lat": "8.69",
         "lng": "1.055",
-        "totalBilateralTrade": 1742890.3175230017
+        "totalBilateralTrade": 1774093.4537356263
       }
     },
     {
@@ -2021,7 +2022,7 @@
         "type": "entity",
         "lat": "8.69",
         "lng": "1.055",
-        "totalBilateralTrade": 422175.2373882758
+        "totalBilateralTrade": 524547.4064543518
       }
     },
     {
@@ -2496,7 +2497,7 @@
         "type": "entity",
         "lat": "-34",
         "lng": "-64",
-        "totalBilateralTrade": 151432.15292738017
+        "totalBilateralTrade": 215029.8487560993
       }
     },
     {
@@ -5258,7 +5259,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 3023.7578442229606
+        "totalBilateralTrade": 45507.555555555555
       }
     },
     {
@@ -5272,7 +5273,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 20.90808416389812
+        "totalBilateralTrade": 314.6666666666667
       }
     },
     {
@@ -5286,7 +5287,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 53468.03986710964
+        "totalBilateralTrade": 804694
       }
     },
     {
@@ -5300,7 +5301,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 24.30417128091547
+        "totalBilateralTrade": 365.77777777777777
       }
     },
     {
@@ -11889,19 +11890,64 @@
       }
     },
     {
-      "key": "211|490"
+      "key": "7110|720|721|7506|751|752|7531|7588|760|761|781|790|7910|810|811|812|8151|8152|8153|821|8218|8221|8222|8223|8224|8225|823|824|835|840|850|860",
+      "attributes": {
+        "label": "Decomposition of East Indies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "1029|120|220|430|480|522|580|5813|585|615|6403|65|66|751|810|8151|930|960"
+      "key": "211|490",
+      "attributes": {
+        "label": "Decomposition of Belgium & Democratic Republic of the Congo (Zaire) (Kinshasa) (Belgian Congo) (Congo Free State)",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "325|3353|5200|531|6202|6203|6204"
+      "key": "1029|120|220|430|480|522|580|5813|585|615|6403|65|66|751|810|8151|930|960",
+      "attributes": {
+        "label": "Decomposition of France & French Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "402|403|404|540|541|721|752|860"
+      "key": "325|3353|5200|531|6202|6203|6204",
+      "attributes": {
+        "label": "Decomposition of Italian Colonies & Italy",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "115|210|68|850"
+      "key": "402|403|404|540|541|721|752|860",
+      "attributes": {
+        "label": "Decomposition of Portuguese Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "115|210|68|850",
+      "attributes": {
+        "label": "Decomposition of Dutch Colonies & Netherlands",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     }
   ],
   "edges": [
@@ -22832,8 +22878,9 @@
         "value": 5,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-8218"
+          "1055<-7110|720|721|7506|751|752|7531|7588|760|761|781|790|7910|810|811|812|8151|8152|8153|821|8218|8221|8222|8223|8224|8225|823|824|835|840|850|860"
         ]
       }
     },
@@ -53722,7 +53769,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 27243.351790328536,
+        "value": 410012.44444444444,
         "type": "trade",
         "status": "ok"
       }
@@ -53736,10 +53783,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 4526.526393503138,
+        "value": 68124.22222222222,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 4526.526393503138,
+        "valueToSplit": 68124.22222222222,
         "newPartners": "402|403|404|540|721|752|860"
       }
     },
@@ -53752,7 +53799,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 31838.81875230713,
+        "value": 479174.22222222225,
         "type": "trade",
         "status": "ok"
       }
@@ -53766,7 +53813,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 14326.39350313769,
+        "value": 215612.22222222222,
         "type": "trade",
         "status": "ok"
       }
@@ -53780,7 +53827,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 15.769656699889259,
+        "value": 237.33333333333334,
         "type": "trade",
         "status": "ok"
       }
@@ -53794,7 +53841,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 299.43152454780363,
+        "value": 4506.444444444444,
         "type": "trade",
         "status": "ok"
       }
@@ -53808,10 +53855,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 3023.7578442229606,
+        "value": 45507.555555555555,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 3023.7578442229606,
+        "valueToSplit": 45507.555555555555,
         "newPartners": "211|490"
       }
     },
@@ -53824,7 +53871,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 61.23292727943891,
+        "value": 921.5555555555555,
         "type": "trade",
         "status": "ok"
       }
@@ -53838,7 +53885,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 116.82539682539684,
+        "value": 1758.2222222222222,
         "type": "trade",
         "status": "ok"
       }
@@ -53852,7 +53899,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 5.72905131044666,
+        "value": 86.22222222222223,
         "type": "trade",
         "status": "ok"
       }
@@ -53866,7 +53913,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 202.6135105204873,
+        "value": 3049.3333333333335,
         "type": "trade",
         "status": "ok"
       }
@@ -53880,7 +53927,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 13.318567737172389,
+        "value": 200.44444444444446,
         "type": "trade",
         "status": "ok"
       }
@@ -53894,10 +53941,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 20.90808416389812,
+        "value": 314.6666666666667,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 20.90808416389812,
+        "valueToSplit": 314.6666666666667,
         "newPartners": "230|411|6090"
       }
     },
@@ -53910,7 +53957,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 439.7046880767811,
+        "value": 6617.555555555556,
         "type": "trade",
         "status": "ok"
       }
@@ -53924,10 +53971,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2840.1771871539318,
+        "value": 42744.666666666664,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 2840.1771871539318,
+        "valueToSplit": 42744.666666666664,
         "newPartners": "65|66|120|220|430|480|522|580|585|615|751|810|930|960|1029|5813|6403|8151"
       }
     },
@@ -53940,7 +53987,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 53468.03986710964,
+        "value": 804694,
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
@@ -53957,7 +54004,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 31.007751937984498,
+        "value": 466.6666666666667,
         "type": "trade",
         "status": "ok"
       }
@@ -53971,10 +54018,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 7286.275378368402,
+        "value": 109658.44444444444,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 7286.275378368402,
+        "valueToSplit": 109658.44444444444,
         "newPartners": "68|115|210|850"
       }
     },
@@ -53987,10 +54034,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2220.8637873754155,
+        "value": 33424,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 2220.8637873754155,
+        "valueToSplit": 33424,
         "newPartners": "325|531|3353|5200|6202|6203|6204"
       }
     },
@@ -54003,7 +54050,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2356.603912882983,
+        "value": 35466.88888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -54017,7 +54064,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 63.063861203396094,
+        "value": 949.1111111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -54031,7 +54078,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 306.1055740125508,
+        "value": 4606.888888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -54045,7 +54092,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 67.65596160944999,
+        "value": 1018.2222222222222,
         "type": "trade",
         "status": "ok"
       }
@@ -54059,7 +54106,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 49.40568475452197,
+        "value": 743.5555555555555,
         "type": "trade",
         "status": "ok"
       }
@@ -54073,7 +54120,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 567.7519379844962,
+        "value": 8544.666666666666,
         "type": "trade",
         "status": "ok"
       }
@@ -54087,10 +54134,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 24.30417128091547,
+        "value": 365.77777777777777,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 24.30417128091547,
+        "valueToSplit": 365.77777777777777,
         "newPartners": "560|572",
         "notes": "gravity results to be aggregated for partners: 560"
       }
@@ -54104,7 +54151,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 460.1107419712071,
+        "value": 6924.666666666667,
         "type": "trade",
         "status": "ok"
       }
@@ -54118,7 +54165,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 1237.2240679217425,
+        "value": 18620.222222222223,
         "type": "trade",
         "status": "ok"
       }
@@ -54132,7 +54179,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 21182.384643779995,
+        "value": 318794.8888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -54146,7 +54193,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 189.36877076411963,
+        "value": 2850,
         "type": "trade",
         "status": "ok"
       }
@@ -54160,7 +54207,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 0.162421557770395,
+        "value": 2.4444444444444446,
         "type": "trade",
         "status": "ok"
       }
@@ -54174,7 +54221,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 441.4027316352898,
+        "value": 6643.111111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -54188,7 +54235,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 19015.93207825766,
+        "value": 286189.77777777775,
         "type": "trade",
         "status": "ok"
       }
@@ -54202,10 +54249,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2589.6936138796605,
+        "value": 38974.88888888889,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 2589.6936138796605,
+        "valueToSplit": 38974.88888888889,
         "newPartners": "402|403|404|540|721|752|860"
       }
     },
@@ -54218,7 +54265,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 14853.658176448875,
+        "value": 223547.55555555556,
         "type": "trade",
         "status": "ok"
       }
@@ -54232,7 +54279,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 25.884090070136583,
+        "value": 389.55555555555554,
         "type": "trade",
         "status": "ok"
       }
@@ -54246,10 +54293,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 11832.7796234773,
+        "value": 178083.33333333334,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 11832.7796234773,
+        "valueToSplit": 178083.33333333334,
         "newPartners": "211|490"
       }
     },
@@ -54262,7 +54309,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2.967884828349945,
+        "value": 44.666666666666664,
         "type": "trade",
         "status": "ok"
       }
@@ -54276,10 +54323,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 46949.45736434109,
+        "value": 706589.3333333334,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 46949.45736434109,
+        "valueToSplit": 706589.3333333334,
         "newPartners": "65|66|120|220|430|480|522|580|585|615|751|810|930|960|1029|5813|6403|8151"
       }
     },
@@ -54292,7 +54339,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 9940.479881875232,
+        "value": 149604.22222222222,
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
@@ -54309,10 +54356,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 5517.268364710226,
+        "value": 83034.88888888889,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 5517.268364710226,
+        "valueToSplit": 83034.88888888889,
         "newPartners": "68|115|210|850"
       }
     },
@@ -54325,10 +54372,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 621.9712070874862,
+        "value": 9360.666666666666,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 621.9712070874862,
+        "valueToSplit": 9360.666666666666,
         "newPartners": "325|531|3353|5200|6202|6203|6204"
       }
     },
@@ -54341,7 +54388,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 78.19859726836472,
+        "value": 1176.888888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -54355,7 +54402,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 0.20671834625323,
+        "value": 3.111111111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -54369,7 +54416,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 6.585455887781469,
+        "value": 99.11111111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -54383,10 +54430,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 15.754891103728314,
+        "value": 237.11111111111111,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 15.754891103728314,
+        "valueToSplit": 237.11111111111111,
         "newPartners": "560|572",
         "notes": "gravity results to be aggregated for partners: 560"
       }
@@ -54400,7 +54447,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 27.90697674418605,
+        "value": 420,
         "type": "trade",
         "status": "ok"
       }
@@ -54414,7 +54461,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 6.64451827242525,
+        "value": 100,
         "type": "trade",
         "status": "ok"
       }
@@ -54428,7 +54475,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 57799.39461055741,
+        "value": 869880.8888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -54442,7 +54489,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 750.8453303802141,
+        "value": 11300.222222222223,
         "type": "trade",
         "status": "ok"
       }
@@ -122304,6 +122351,9 @@
         "value": 6296129.397249842,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-Ireland & United Kingdom"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122319,6 +122369,9 @@
         "value": 4389704.793256933,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-305"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122334,6 +122387,9 @@
         "value": 1074325.2417209158,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-211"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122364,6 +122420,9 @@
         "value": 3891142.563262591,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-315"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122424,6 +122483,9 @@
         "value": 5027698.00453099,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-220"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122469,6 +122531,9 @@
         "value": 2835600.2880094997,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-210"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122514,6 +122579,9 @@
         "value": 491937.04999022005,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-367"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122544,6 +122612,9 @@
         "value": 17125788.10946012,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-255"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122589,6 +122660,9 @@
         "value": 2325228.965235883,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-365"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122604,6 +122678,9 @@
         "value": 1644811.355689822,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-360"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122619,6 +122696,9 @@
         "value": 1414138.860318262,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-225"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122634,6 +122714,9 @@
         "value": 1349026.126312846,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-380"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122664,6 +122747,9 @@
         "value": 1080276.2806018107,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-310"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122679,6 +122765,9 @@
         "value": 1952521.9090742157,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-325"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122739,6 +122828,9 @@
         "value": 41262.08599057937,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-710"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122769,6 +122861,9 @@
         "value": 1814276.4863215536,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-750"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122844,6 +122939,9 @@
         "value": 6276.486319693763,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-740"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122949,6 +123047,9 @@
         "value": 323448.2616748853,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-20"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -122964,6 +123065,9 @@
         "value": 8668501.748620313,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-2"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123144,6 +123248,9 @@
         "value": 779493.1084147084,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-160"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123519,6 +123626,9 @@
         "value": 747483.0281842703,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291<-900"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123579,6 +123689,9 @@
         "value": 7123579.510396136,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->Ireland & United Kingdom"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123594,6 +123707,9 @@
         "value": 6424169.718171595,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->305"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123609,6 +123725,9 @@
         "value": 1426877.8029226772,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->211"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123639,6 +123758,9 @@
         "value": 5878045.669621352,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->315"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123699,6 +123821,9 @@
         "value": 998681.9584457917,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->220"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123744,6 +123869,9 @@
         "value": 1976953.7132297645,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->210"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123789,6 +123917,9 @@
         "value": 973808.4756233016,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->367"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123819,6 +123950,9 @@
         "value": 18706393.334724035,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->255"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123864,6 +123998,9 @@
         "value": 1044802.5097727266,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->365"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123879,6 +124016,9 @@
         "value": 1915676.6097530506,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->360"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123894,6 +124034,9 @@
         "value": 445886.23740017065,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->225"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123909,6 +124052,9 @@
         "value": 3399693.6844305694,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->380"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123939,6 +124085,9 @@
         "value": 1254832.3390261827,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->310"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -123954,6 +124103,9 @@
         "value": 1226843.8592894743,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->325"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124029,6 +124181,9 @@
         "value": 70645.34046499759,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->710"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124059,6 +124214,9 @@
         "value": 320007.8173218679,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->750"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124104,6 +124262,9 @@
         "value": 287463.07344197435,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->740"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124209,6 +124370,9 @@
         "value": 8159.4322156018925,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->20"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124224,6 +124388,9 @@
         "value": 444421.72392557544,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->2"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124329,6 +124496,9 @@
         "value": 79037.23513688442,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->160"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -124674,6 +124844,9 @@
         "value": 2161.900843450074,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "291->900"
+        ],
         "newReporters": "290|291"
       }
     },
@@ -183637,7 +183810,7 @@
       "source": "20",
       "target": "541",
       "attributes": {
-        "value": 7557.638812148356,
+        "value": 113742.46412283274,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183651,7 +183824,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 7557.638812148356 (ratio on 53468.03986710964)",
+        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 113742.46412283274 (ratio on 804694)",
         "status": "ok",
         "type": "trade"
       }
@@ -183661,7 +183834,7 @@
       "source": "200",
       "target": "541",
       "attributes": {
-        "value": 11288.581957435885,
+        "value": 169893.15845941004,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183675,7 +183848,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 11288.581957435885 (ratio on 53468.03986710964)",
+        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 169893.15845941004 (ratio on 804694)",
         "status": "ok",
         "type": "trade"
       }
@@ -183685,7 +183858,7 @@
       "source": "750",
       "target": "541",
       "attributes": {
-        "value": 34606.512297973684,
+        "value": 520828.0100845039,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183699,7 +183872,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 34606.512297973684 (ratio on 53468.03986710964)",
+        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 520828.0100845039 (ratio on 804694)",
         "status": "ok",
         "type": "trade"
       }
@@ -183709,7 +183882,7 @@
       "source": "900",
       "target": "541",
       "attributes": {
-        "value": 15.30679955171637,
+        "value": 230.36733325333134,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183723,7 +183896,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 15.30679955171637 (ratio on 53468.03986710964)",
+        "notes": "541<-Australia & Canada (Province of Canada) & India & United Kingdom 230.36733325333134 (ratio on 804694)",
         "status": "ok",
         "type": "trade"
       }
@@ -183733,7 +183906,7 @@
       "source": "541",
       "target": "20",
       "attributes": {
-        "value": 400.77998946369826,
+        "value": 6031.73884142866,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183747,7 +183920,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 400.77998946369826 (ratio on 9940.479881875232)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 6031.73884142866 (ratio on 149604.22222222222)",
         "status": "ok",
         "type": "trade"
       }
@@ -183757,7 +183930,7 @@
       "source": "541",
       "target": "200",
       "attributes": {
-        "value": 7456.055652428249,
+        "value": 112213.63756904514,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183771,7 +183944,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 7456.055652428249 (ratio on 9940.479881875232)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 112213.63756904514 (ratio on 149604.22222222222)",
         "status": "ok",
         "type": "trade"
       }
@@ -183781,7 +183954,7 @@
       "source": "541",
       "target": "750",
       "attributes": {
-        "value": 1744.844508441955,
+        "value": 26259.909852051416,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183795,7 +183968,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 1744.844508441955 (ratio on 9940.479881875232)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 26259.909852051416 (ratio on 149604.22222222222)",
         "status": "ok",
         "type": "trade"
       }
@@ -183805,7 +183978,7 @@
       "source": "541",
       "target": "900",
       "attributes": {
-        "value": 338.79973154132875,
+        "value": 5098.935959696997,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -183819,7 +183992,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 338.79973154132875 (ratio on 9940.479881875232)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 5098.935959696997 (ratio on 149604.22222222222)",
         "status": "ok",
         "type": "trade"
       }
@@ -187789,6 +187962,1098 @@
       }
     },
     {
+      "key": "291<-2",
+      "source": "2",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-2 0 (ratio on 8668501.748620313)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-20",
+      "source": "20",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-20 0 (ratio on 323448.2616748853)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-160",
+      "source": "160",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "160"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-160 0 (ratio on 779493.1084147084)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 160",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-210",
+      "source": "210",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-210 0 (ratio on 2835600.2880094997)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-211",
+      "source": "211",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "211"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-211 0 (ratio on 1074325.2417209158)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 211",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-220",
+      "source": "220",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-220 0 (ratio on 5027698.00453099)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-225",
+      "source": "225",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "225"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-225 0 (ratio on 1414138.860318262)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 225",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-255",
+      "source": "255",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-255 0 (ratio on 17125788.10946012)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-305",
+      "source": "305",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "305"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-305 0 (ratio on 4389704.793256933)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 305",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-310",
+      "source": "310",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "310"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-310 0 (ratio on 1080276.2806018107)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 310",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-315",
+      "source": "315",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "315"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-315 0 (ratio on 3891142.563262591)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 315",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-325",
+      "source": "325",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-325 0 (ratio on 1952521.9090742157)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-360",
+      "source": "360",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "360"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-360 0 (ratio on 1644811.355689822)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 360",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-365",
+      "source": "365",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "365"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-365 0 (ratio on 2325228.965235883)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 365",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-367",
+      "source": "367",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "367"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-367 0 (ratio on 491937.04999022005)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 367",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-380",
+      "source": "380",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "380"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-380 0 (ratio on 1349026.126312846)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 380",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-710",
+      "source": "710",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-710 0 (ratio on 41262.08599057937)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-740",
+      "source": "740",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-740 0 (ratio on 6276.486319693763)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-750",
+      "source": "750",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-750 0 (ratio on 1814276.4863215536)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-900",
+      "source": "900",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-900 0 (ratio on 747483.0281842703)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291<-Ireland & United Kingdom",
+      "source": "Ireland & United Kingdom",
+      "target": "291",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "Ireland & United Kingdom"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland<-Ireland & United Kingdom 0 (ratio on 6296129.397249842)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area Ireland & United Kingdom",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->2",
+      "source": "291",
+      "target": "2",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->2 0 (ratio on 444421.72392557544)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->20",
+      "source": "291",
+      "target": "20",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->20 0 (ratio on 8159.4322156018925)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->160",
+      "source": "291",
+      "target": "160",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "160"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->160 0 (ratio on 79037.23513688442)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 160",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->210",
+      "source": "291",
+      "target": "210",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->210 0 (ratio on 1976953.7132297645)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->211",
+      "source": "291",
+      "target": "211",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "211"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->211 0 (ratio on 1426877.8029226772)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 211",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->220",
+      "source": "291",
+      "target": "220",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->220 0 (ratio on 998681.9584457917)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->225",
+      "source": "291",
+      "target": "225",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "225"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->225 0 (ratio on 445886.23740017065)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 225",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->255",
+      "source": "291",
+      "target": "255",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->255 0 (ratio on 18706393.334724035)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->305",
+      "source": "291",
+      "target": "305",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "305"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->305 0 (ratio on 6424169.718171595)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 305",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->310",
+      "source": "291",
+      "target": "310",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "310"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->310 0 (ratio on 1254832.3390261827)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 310",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->315",
+      "source": "291",
+      "target": "315",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "315"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->315 0 (ratio on 5878045.669621352)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 315",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->325",
+      "source": "291",
+      "target": "325",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->325 0 (ratio on 1226843.8592894743)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->360",
+      "source": "291",
+      "target": "360",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "360"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->360 0 (ratio on 1915676.6097530506)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 360",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->365",
+      "source": "291",
+      "target": "365",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "365"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->365 0 (ratio on 1044802.5097727266)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 365",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->367",
+      "source": "291",
+      "target": "367",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "367"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->367 0 (ratio on 973808.4756233016)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 367",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->380",
+      "source": "291",
+      "target": "380",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "380"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->380 0 (ratio on 3399693.6844305694)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 380",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->710",
+      "source": "291",
+      "target": "710",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->710 0 (ratio on 70645.34046499759)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->740",
+      "source": "291",
+      "target": "740",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->740 0 (ratio on 287463.07344197435)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->750",
+      "source": "291",
+      "target": "750",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->750 0 (ratio on 320007.8173218679)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->900",
+      "source": "291",
+      "target": "900",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->900 0 (ratio on 2161.900843450074)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
+      "key": "291->Ireland & United Kingdom",
+      "source": "291",
+      "target": "Ireland & United Kingdom",
+      "attributes": {
+        "value": 0,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "291",
+        "originalReporters": [
+          "Danzig (Free City of Danzig) & Poland"
+        ],
+        "originalPartners": [
+          "Ireland & United Kingdom"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "Danzig (Free City of Danzig) & Poland->Ireland & United Kingdom 0 (ratio on 7123579.510396136)\nFrom a flow part-of reporter Danzig (Free City of Danzig) & Poland to/from area Ireland & United Kingdom",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "291",
+        "valueToSplit": 0
+      }
+    },
+    {
       "key": "1055<-2",
       "source": "2",
       "target": "1055",
@@ -188914,41 +190179,20 @@
       }
     },
     {
-      "key": "1055<-720",
-      "source": "720",
+      "key": "1055<-7110|720|721|7506|751|752|7531|7588|760|761|781|790|7910|810|811|812|8151|8152|8153|821|8218|8221|8222|8223|8224|8225|823|824|835|840|850|860",
+      "source": "7110|720|721|7506|751|752|7531|7588|760|761|781|790|7910|810|811|812|8151|8152|8153|821|8218|8221|8222|8223|8224|8225|823|824|835|840|850|860",
       "target": "1055",
       "attributes": {
-        "value": 207.4517543859649,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56",
-          "55"
-        ],
-        "originalPartners": [
-          "East Indies",
-          "720"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 4.451754385964913 (ratio on 5)\n55<-720 203",
-        "status": "ok",
         "type": "trade",
-        "partial": "missing 57"
-      }
-    },
-    {
-      "key": "1055<-721",
-      "source": "721",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "720|721|751|752|760|761|781|790|810|811|812|821|8221|8222|8223|8224|8225|823|824|835|840|850|860|7110|7506|7531|7588|7910|8151|8152|8153|8218",
+        "valueToSplit": 5,
+        "value": 5,
+        "originalReportedTradeFlowIds": "56<-East Indies",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "56"
@@ -188956,769 +190200,7 @@
         "originalPartners": [
           "East Indies"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-751",
-      "source": "751",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-752",
-      "source": "752",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-760",
-      "source": "760",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-761",
-      "source": "761",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-781",
-      "source": "781",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-790",
-      "source": "790",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-810",
-      "source": "810",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-811",
-      "source": "811",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-812",
-      "source": "812",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-821",
-      "source": "821",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8221",
-      "source": "8221",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8222",
-      "source": "8222",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8223",
-      "source": "8223",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8224",
-      "source": "8224",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8225",
-      "source": "8225",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-823",
-      "source": "823",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-824",
-      "source": "824",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-835",
-      "source": "835",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-840",
-      "source": "840",
-      "target": "1055",
-      "attributes": {
-        "value": 20.43859649122807,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56",
-          "57"
-        ],
-        "originalPartners": [
-          "East Indies",
-          "840"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0.43859649122807015 (ratio on 5)\n57<-840 20",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 8401 unexpected: East Indies|840"
-      }
-    },
-    {
-      "key": "1055<-850",
-      "source": "850",
-      "target": "1055",
-      "attributes": {
-        "value": 7.109649122807017,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56",
-          "55",
-          "57"
-        ],
-        "originalPartners": [
-          "East Indies",
-          "850",
-          "Java"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0.10964912280701754 (ratio on 5)\n55<-850 5\n57<-Java 2",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Madura|Indonesia (Dutch East Indies) (other)|Sumatra|Sulawesi (Celebes)|Maluku (Mollucas)|851|8501|8510|8530 unexpected: East Indies|850"
-      }
-    },
-    {
-      "key": "1055<-860",
-      "source": "860",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-7110",
-      "source": "7110",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-7506",
-      "source": "7506",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-7531",
-      "source": "7531",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-7588",
-      "source": "7588",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-7910",
-      "source": "7910",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8151",
-      "source": "8151",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8152",
-      "source": "8152",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8153",
-      "source": "8153",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-8218",
-      "source": "8218",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "East Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-East Indies 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
+        "notes": "From a flow part-of reporter 56 to/from area East Indies"
       }
     },
     {
@@ -190475,6 +190957,58 @@
       }
     },
     {
+      "key": "1055<-720",
+      "source": "720",
+      "target": "1055",
+      "attributes": {
+        "value": 203,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "55"
+        ],
+        "originalPartners": [
+          "720"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "55<-720 203",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing 56|57"
+      }
+    },
+    {
+      "key": "1055<-850",
+      "source": "850",
+      "target": "1055",
+      "attributes": {
+        "value": 7,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "55",
+          "57"
+        ],
+        "originalPartners": [
+          "850",
+          "Java"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "55<-850 5\n57<-Java 2",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing Madura|Indonesia (Dutch East Indies) (other)|Sumatra|Sulawesi (Celebes)|Maluku (Mollucas)|851|8501|8510|8530 unexpected: 850"
+      }
+    },
+    {
       "key": "1055<-920",
       "source": "920",
       "target": "1055",
@@ -190601,6 +191135,31 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing 56"
+      }
+    },
+    {
+      "key": "1055<-840",
+      "source": "840",
+      "target": "1055",
+      "attributes": {
+        "value": 20,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "57"
+        ],
+        "originalPartners": [
+          "840"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "57<-840 20",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing 56|55"
       }
     },
     {

@@ -11614,22 +11614,94 @@
       }
     },
     {
-      "key": "65|66"
+      "key": "65|66",
+      "attributes": {
+        "label": "Decomposition of French West Indies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "1029|120|430|434|437|484|522|580|581|585|615|65|66|751|810|8151|930|9601|9602|9603|9605"
+      "key": "1055|1063|30|31|51|52|53",
+      "attributes": {
+        "label": "Decomposition of British West Indies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "380|385"
+      "key": "20|21",
+      "attributes": {
+        "label": "Decomposition of British Northern America",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "411|6067|6090|9810"
+      "key": "1032|1033|1044|1087|40|41|42|5|6|65|66|68|93",
+      "attributes": {
+        "label": "Decomposition of West Indies (other)",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "402|403|404|540|541|721|752|860"
+      "key": "1029|120|430|434|437|484|522|580|581|585|615|65|66|751|810|8151|930|9601|9602|9603|9605",
+      "attributes": {
+        "label": "Decomposition of French Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     },
     {
-      "key": "1055|1063|110|1163|20|21|231|30|31|338|4050|420|4383|452|4781|51|52|53|5522|5523|561|562|570|590|720|750|780|80|821|8218|827|9004|901|902|903|904|905|906|911|920|950|9620|9740"
+      "key": "380|385",
+      "attributes": {
+        "label": "Decomposition of Norway & Sweden",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "411|6067|6090|9810",
+      "attributes": {
+        "label": "Decomposition of Spanish Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "402|403|404|540|541|721|752|860",
+      "attributes": {
+        "label": "Decomposition of Portuguese Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "1055|1063|110|1163|20|21|231|30|31|338|4050|420|4383|452|4781|51|52|53|5522|5523|561|562|570|590|720|750|780|80|821|8218|827|9004|901|902|903|904|905|906|911|920|950|9620|9740",
+      "attributes": {
+        "label": "Decomposition of British Colonies",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
     }
   ],
   "edges": [
@@ -67078,12 +67150,9 @@
         "value": 49082,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-1063",
-          "1055<-31",
-          "1055<-51",
-          "1055<-52",
-          "1055<-53"
+          "1055<-1055|1063|30|31|51|52|53"
         ]
       }
     },
@@ -67099,9 +67168,9 @@
         "value": 2964,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-20",
-          "1055<-21"
+          "1055<-20|21"
         ]
       }
     },
@@ -67168,8 +67237,9 @@
         "value": 1409,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-1087"
+          "1055<-1032|1033|1044|1087|40|41|42|5|6|65|66|68|93"
         ]
       }
     },
@@ -67202,12 +67272,9 @@
         "value": 8843,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055->1063",
-          "1055->31",
-          "1055->51",
-          "1055->52",
-          "1055->53"
+          "1055->1055|1063|30|31|51|52|53"
         ]
       }
     },
@@ -67257,8 +67324,9 @@
         "value": 161,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055->1087"
+          "1055->1032|1033|1044|1087|40|41|42|5|6|65|66|68|93"
         ]
       }
     },
@@ -95659,27 +95727,25 @@
       "source": "5",
       "target": "1055",
       "attributes": {
-        "value": 1469.9541389589544,
+        "value": 1111,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "5",
-          "West Indies (other)"
+          "5"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-5 895\n55<-5 216\n57<-West Indies (other) 358.9541389589544 (ratio on 1409)",
+        "notes": "56<-5 895\n55<-5 216",
         "status": "ok",
         "type": "trade",
-        "partial": "missing St. Thomas unexpected: 5|West Indies (other)"
+        "partial": "missing 57"
       }
     },
     {
@@ -95687,26 +95753,24 @@
       "source": "6",
       "target": "1055",
       "attributes": {
-        "value": 3645.11579912864,
+        "value": 2755,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56",
-          "57"
+          "56"
         ],
         "originalPartners": [
-          "6",
-          "West Indies (other)"
+          "6"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-6 2755\n57<-West Indies (other) 890.1157991286401 (ratio on 1409)",
+        "notes": "56<-6 2755",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 55"
+        "partial": "missing 55|57"
       }
     },
     {
@@ -95714,29 +95778,27 @@
       "source": "20",
       "target": "1055",
       "attributes": {
-        "value": 9116.57712305026,
+        "value": 7529,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
           "20",
           "1022",
-          "Canada (Province of Canada) (other)",
-          "British Northern America"
+          "Canada (Province of Canada) (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-20 5872\n55<-1022 1636\n55<-Canada (Province of Canada) (other) 21\n57<-British Northern America 1587.5771230502598 (ratio on 2964)",
+        "notes": "56<-20 5872\n55<-1022 1636\n55<-Canada (Province of Canada) (other) 21",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Canada (Atlantic Coast)|Canada (Pacific Coast)|1027|1028|1023|1024|10204|10201|1026|1025 unexpected: 20|British Northern America"
+        "partial": "missing Canada (Atlantic Coast)|Canada (Pacific Coast)|1027|1028|1023|1024|10204|10201|1026|1025 unexpected: 20"
       }
     },
     {
@@ -95744,26 +95806,24 @@
       "source": "30",
       "target": "1055",
       "attributes": {
-        "value": 111.21112793884322,
+        "value": 59,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56",
-          "57"
+          "56"
         ],
         "originalPartners": [
-          "30",
-          "British West Indies"
+          "30"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-30 59\n57<-British West Indies 52.21112793884321 (ratio on 49082)",
+        "notes": "56<-30 59",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 55"
+        "partial": "missing 55|57"
       }
     },
     {
@@ -95771,26 +95831,24 @@
       "source": "41",
       "target": "1055",
       "attributes": {
-        "value": 14.55400137583123,
+        "value": 11,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56",
-          "57"
+          "56"
         ],
         "originalPartners": [
-          "41",
-          "West Indies (other)"
+          "41"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-41 11\n57<-West Indies (other) 3.5540013758312314 (ratio on 1409)",
+        "notes": "56<-41 11",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 55"
+        "partial": "missing 55|57"
       }
     },
     {
@@ -95798,26 +95856,25 @@
       "source": "51",
       "target": "1055",
       "attributes": {
-        "value": 1598.4243473243905,
+        "value": 848,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "51",
-          "British West Indies"
+          "51"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-51 763\n55<-51 85\n57<-British West Indies 750.4243473243906 (ratio on 49082)",
+        "notes": "56<-51 763\n55<-51 85",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing 57"
       }
     },
     {
@@ -95825,26 +95882,25 @@
       "source": "53",
       "target": "1055",
       "attributes": {
-        "value": 102836.36452473677,
+        "value": 54557,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "53",
-          "British West Indies"
+          "53"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-53 20675\n55<-53 33882\n57<-British West Indies 48279.36452473677 (ratio on 49082)",
+        "notes": "56<-53 20675\n55<-53 33882",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing 57"
       }
     },
     {
@@ -95859,8 +95915,7 @@
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
           "54",
@@ -95868,15 +95923,15 @@
           "59",
           "60",
           "1062",
-          "1075",
-          "British West Indies"
+          "1075"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-54 113\n56<-58 71\n56<-59 856\n56<-60 19\n55<-54 1\n55<-59 8\n55<-1062 24\n55<-1075 3003\n57<-British West Indies 0 (ratio on 49082)",
+        "notes": "56<-54 113\n56<-58 71\n56<-59 856\n56<-60 19\n55<-54 1\n55<-59 8\n55<-1062 24\n55<-1075 3003",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing 1061"
       }
     },
     {
@@ -96149,21 +96204,19 @@
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
           "1048",
-          "1049",
-          "British West Indies"
+          "1049"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56<-1048 394\n55<-1048 18830\n55<-1049 563\n57<-British West Indies 0 (ratio on 49082)",
+        "notes": "56<-1048 394\n55<-1048 18830\n55<-1049 563",
         "status": "ok",
         "type": "trade",
-        "partial": " unexpected: British West Indies"
+        "partial": "missing 57"
       }
     },
     {
@@ -96249,26 +96302,24 @@
       "source": "1055",
       "target": "5",
       "attributes": {
-        "value": 68.49557522123894,
+        "value": 40,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56",
-          "57"
+          "56"
         ],
         "originalPartners": [
-          "5",
-          "West Indies (other)"
+          "5"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->5 40\n57->West Indies (other) 28.495575221238937 (ratio on 161)",
+        "notes": "56->5 40",
         "status": "ok",
         "type": "trade",
-        "partial": "missing St. Thomas unexpected: 5|West Indies (other)"
+        "partial": "missing 55|57"
       }
     },
     {
@@ -96301,26 +96352,25 @@
       "source": "1055",
       "target": "51",
       "attributes": {
-        "value": 22.657747603833865,
+        "value": 5,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "51",
-          "British West Indies"
+          "51"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->51 1\n55->51 4\n57->British West Indies 17.657747603833865 (ratio on 8843)",
+        "notes": "56->51 1\n55->51 4",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing 57"
       }
     },
     {
@@ -96328,26 +96378,25 @@
       "source": "1055",
       "target": "53",
       "attributes": {
-        "value": 11324.342252396165,
+        "value": 2499,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "53",
-          "British West Indies"
+          "53"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->53 1360\n55->53 1139\n57->British West Indies 8825.342252396165 (ratio on 8843)",
+        "notes": "56->53 1360\n55->53 1139",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing 57"
       }
     },
     {
@@ -96362,24 +96411,22 @@
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
           "54",
           "58",
           "59",
           "60",
-          "1075",
-          "British West Indies"
+          "1075"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->54 95\n56->58 2\n56->59 11\n56->60 1\n55->54 3\n55->1075 7\n57->British West Indies 0 (ratio on 8843)",
+        "notes": "56->54 95\n56->58 2\n56->59 11\n56->60 1\n55->54 3\n55->1075 7",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1062|1061 unexpected: British West Indies"
+        "partial": "missing 1062|1061"
       }
     },
     {
@@ -96497,21 +96544,19 @@
         "reportedBy": "1055",
         "originalReporters": [
           "56",
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
           "1048",
-          "1049",
-          "British West Indies"
+          "1049"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->1048 16\n55->1048 2218\n55->1049 9\n57->British West Indies 0 (ratio on 8843)",
+        "notes": "56->1048 16\n55->1048 2218\n55->1049 9",
         "status": "ok",
         "type": "trade",
-        "partial": " unexpected: British West Indies"
+        "partial": "missing 57"
       }
     },
     {
@@ -96570,26 +96615,24 @@
       "source": "21",
       "target": "1055",
       "attributes": {
-        "value": 6467.42287694974,
+        "value": 5091,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "21",
-          "British Northern America"
+          "21"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-21 5091\n57<-British Northern America 1376.42287694974 (ratio on 2964)",
+        "notes": "55<-21 5091",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 56"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -96597,26 +96640,24 @@
       "source": "68",
       "target": "1055",
       "attributes": {
-        "value": 640.3760605365742,
+        "value": 484,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "68",
-          "West Indies (other)"
+          "68"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-68 484\n57<-West Indies (other) 156.3760605365742 (ratio on 1409)",
+        "notes": "55<-68 484",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1065 unexpected: 68|West Indies (other)"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -96649,26 +96690,24 @@
       "source": "1055",
       "target": "68",
       "attributes": {
-        "value": 318.50442477876106,
+        "value": 186,
         "valueGeneratedBy": [
           "aggregation"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55",
-          "57"
+          "55"
         ],
         "originalPartners": [
-          "68",
-          "West Indies (other)"
+          "68"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55->68 186\n57->West Indies (other) 132.50442477876106 (ratio on 161)",
+        "notes": "55->68 186",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1065 unexpected: 68|West Indies (other)"
+        "partial": "missing 56|57"
       }
     },
     {
@@ -96698,14 +96737,20 @@
       }
     },
     {
-      "key": "1055<-31",
-      "source": "31",
+      "key": "1055<-1055|1063|30|31|51|52|53",
+      "source": "1055|1063|30|31|51|52|53",
       "target": "1055",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "30|31|51|52|53|1055|1063",
+        "valueToSplit": 49082,
+        "value": 49082,
+        "originalReportedTradeFlowIds": "57<-British West Indies",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "57"
@@ -96713,24 +96758,49 @@
         "originalPartners": [
           "British West Indies"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-British West Indies 0 (ratio on 49082)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
+        "notes": "From a flow part-of reporter 57 to/from area British West Indies"
       }
     },
     {
-      "key": "1055<-40",
-      "source": "40",
+      "key": "1055<-20|21",
+      "source": "20|21",
       "target": "1055",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "20|21",
+        "valueToSplit": 2964,
+        "value": 2964,
+        "originalReportedTradeFlowIds": "57<-British Northern America",
+        "status": "split_failed_no_ratio",
+        "reportedBy": "1055",
+        "originalReporters": [
+          "57"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "notes": "From a flow part-of reporter 57 to/from area British Northern America"
+      }
+    },
+    {
+      "key": "1055<-1032|1033|1044|1087|40|41|42|5|6|65|66|68|93",
+      "source": "1032|1033|1044|1087|40|41|42|5|6|65|66|68|93",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
+        ],
+        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "valueToSplit": 1409,
+        "value": 1409,
+        "originalReportedTradeFlowIds": "57<-West Indies (other)",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "57"
@@ -96738,224 +96808,24 @@
         "originalPartners": [
           "West Indies (other)"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
+        "notes": "From a flow part-of reporter 57 to/from area West Indies (other)"
       }
     },
     {
-      "key": "1055<-42",
-      "source": "42",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-65",
-      "source": "65",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-66",
-      "source": "66",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-93",
-      "source": "93",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-1032",
-      "source": "1032",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-1033",
-      "source": "1033",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-1044",
-      "source": "1044",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055<-1087",
-      "source": "1087",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57<-West Indies (other) 0 (ratio on 1409)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->30",
+      "key": "1055->1055|1063|30|31|51|52|53",
       "source": "1055",
-      "target": "30",
+      "target": "1055|1063|30|31|51|52|53",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "30|31|51|52|53|1055|1063",
+        "valueToSplit": 8843,
+        "value": 8843,
+        "originalReportedTradeFlowIds": "57->British West Indies",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "57"
@@ -96963,49 +96833,24 @@
         "originalPartners": [
           "British West Indies"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->British West Indies 0 (ratio on 8843)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
+        "notes": "From a flow part-of reporter 57 to/from area British West Indies"
       }
     },
     {
-      "key": "1055->31",
+      "key": "1055->1032|1033|1044|1087|40|41|42|5|6|65|66|68|93",
       "source": "1055",
-      "target": "31",
+      "target": "1032|1033|1044|1087|40|41|42|5|6|65|66|68|93",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "British West Indies"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->British West Indies 0 (ratio on 8843)",
-        "status": "ok",
         "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->6",
-      "source": "1055",
-      "target": "6",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "5|6|40|41|42|65|66|68|93|1032|1033|1044|1087",
+        "valueToSplit": 161,
+        "value": 161,
+        "originalReportedTradeFlowIds": "57->West Indies (other)",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "57"
@@ -97013,263 +96858,7 @@
         "originalPartners": [
           "West Indies (other)"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->40",
-      "source": "1055",
-      "target": "40",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->41",
-      "source": "1055",
-      "target": "41",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->42",
-      "source": "1055",
-      "target": "42",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->65",
-      "source": "1055",
-      "target": "65",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->66",
-      "source": "1055",
-      "target": "66",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->93",
-      "source": "1055",
-      "target": "93",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->1032",
-      "source": "1055",
-      "target": "1032",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->1033",
-      "source": "1055",
-      "target": "1033",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->1044",
-      "source": "1055",
-      "target": "1044",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
-      }
-    },
-    {
-      "key": "1055->1087",
-      "source": "1055",
-      "target": "1087",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "57"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "57->West Indies (other) 0 (ratio on 161)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 56|55"
+        "notes": "From a flow part-of reporter 57 to/from area West Indies (other)"
       }
     },
     {

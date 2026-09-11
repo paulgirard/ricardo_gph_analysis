@@ -2448,7 +2448,7 @@
         "lat": "-19",
         "lng": "35",
         "reporting": true,
-        "totalBilateralTrade": 169132.58483876413
+        "totalBilateralTrade": 2226160.6666666665
       }
     },
     {
@@ -2695,7 +2695,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 806866.481513273
+        "totalBilateralTrade": 837269.3676633096
       }
     },
     {
@@ -2737,7 +2737,7 @@
         "type": "entity",
         "lat": "35.216667",
         "lng": "38.583333",
-        "totalBilateralTrade": 1673443.8656644959
+        "totalBilateralTrade": 1692920.4643475958
       }
     },
     {
@@ -2794,7 +2794,7 @@
         "type": "entity",
         "lat": "8.69",
         "lng": "1.055",
-        "totalBilateralTrade": 551487.5204820484
+        "totalBilateralTrade": 659108.0947405885
       }
     },
     {
@@ -3088,7 +3088,7 @@
         "entityType": "RIC",
         "ricParent": "Portugal",
         "type": "entity",
-        "totalBilateralTrade": 32343.30642312012
+        "totalBilateralTrade": 37400.59784826128
       }
     },
     {
@@ -4830,7 +4830,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 1988.5868647644775
+        "totalBilateralTrade": 26174.222222222223
       }
     },
     {
@@ -4844,7 +4844,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 31.977038662839778
+        "totalBilateralTrade": 420.8888888888889
       }
     },
     {
@@ -4858,7 +4858,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 53961.37092689516
+        "totalBilateralTrade": 710251.5555555555
       }
     },
     {
@@ -4872,7 +4872,7 @@
         "type": "entity",
         "lat": "-19",
         "lng": "35",
-        "totalBilateralTrade": 8.391018065169678
+        "totalBilateralTrade": 110.44444444444444
       }
     },
     {
@@ -12090,6 +12090,26 @@
         "ricType": "geographical_area",
         "reporting": false
       }
+    },
+    {
+      "key": "823|824|835|850",
+      "attributes": {
+        "label": "Decomposition of Borneo",
+        "type": "entity",
+        "ricType": "group",
+        "reporting": false,
+        "entityType": "RIC"
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "label": "Federated Malay States & Johore & Kedah & Kelantan & Perlis & Trengganu",
+        "type": "entity",
+        "entityType": "RIC",
+        "reporting": true,
+        "ricType": "group"
+      }
     }
   ],
   "edges": [
@@ -13328,8 +13348,9 @@
         "value": 5,
         "type": "trade",
         "status": "ignore_resolved",
+        "notes": "flow part-of reporter with an area which has been aggregated at the aggregated reporter level",
         "mergedIn": [
-          "1055<-850"
+          "1055<-823|824|835|850"
         ]
       }
     },
@@ -20714,6 +20735,9 @@
         "value": 15973184,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-200"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -53175,7 +53199,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 560.5942934323823,
+        "value": 7378.666666666667,
         "type": "trade",
         "status": "ok"
       }
@@ -53189,10 +53213,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 415.81968596994767,
+        "value": 5473.111111111111,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 415.81968596994767,
+        "valueToSplit": 5473.111111111111,
         "newPartners": "402|403|404|540|721|752|860"
       }
     },
@@ -53205,7 +53229,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 23009.20141820024,
+        "value": 302852.22222222225,
         "type": "trade",
         "status": "ok"
       }
@@ -53219,7 +53243,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 11488.198548033091,
+        "value": 151210.22222222222,
         "type": "trade",
         "status": "ok"
       }
@@ -53233,7 +53257,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 12.898868816478137,
+        "value": 169.77777777777777,
         "type": "trade",
         "status": "ok"
       }
@@ -53247,7 +53271,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 117.72750295458383,
+        "value": 1549.5555555555557,
         "type": "trade",
         "status": "ok"
       }
@@ -53261,10 +53285,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 1988.5868647644775,
+        "value": 26174.222222222223,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 1988.5868647644775,
+        "valueToSplit": 26174.222222222223,
         "newPartners": "211|490"
       }
     },
@@ -53277,7 +53301,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 371.4333952388992,
+        "value": 4888.888888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -53291,7 +53315,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 109.10011818335303,
+        "value": 1436,
         "type": "trade",
         "status": "ok"
       }
@@ -53305,7 +53329,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 385.3621475603579,
+        "value": 5072.222222222223,
         "type": "trade",
         "status": "ok"
       }
@@ -53319,7 +53343,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 9.961168326861388,
+        "value": 131.11111111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -53333,10 +53357,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 31.977038662839778,
+        "value": 420.8888888888889,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 31.977038662839778,
+        "valueToSplit": 420.8888888888889,
         "newPartners": "230|411|6090"
       }
     },
@@ -53349,7 +53373,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 495.1207158534527,
+        "value": 6516.888888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -53363,10 +53387,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2499.7805166300864,
+        "value": 32902.666666666664,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 2499.7805166300864,
+        "valueToSplit": 32902.666666666664,
         "newPartners": "65|66|120|220|430|480|522|580|585|615|751|810|930|960|1029|5813|6403|8151"
       }
     },
@@ -53379,10 +53403,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 53961.37092689516,
+        "value": 710251.5555555555,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 53961.37092689516,
+        "valueToSplit": 710251.5555555555,
         "newPartners": "20|200|750|900"
       }
     },
@@ -53395,7 +53419,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 11.497551916258653,
+        "value": 151.33333333333334,
         "type": "trade",
         "status": "ok"
       }
@@ -53409,10 +53433,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 8848.759074793179,
+        "value": 116469.33333333333,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 8848.759074793179,
+        "valueToSplit": 116469.33333333333,
         "newPartners": "68|115|210|850"
       }
     },
@@ -53425,10 +53449,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 1601.4013169002196,
+        "value": 21078,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 1601.4013169002196,
+        "valueToSplit": 21078,
         "newPartners": "325|531|3353|5200|5202|6202|6203|6204"
       }
     },
@@ -53441,7 +53465,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 2152.7097754516294,
+        "value": 28334.444444444445,
         "type": "trade",
         "status": "ok"
       }
@@ -53455,7 +53479,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 1091.423265237211,
+        "value": 14365.555555555555,
         "type": "trade",
         "status": "ok"
       }
@@ -53469,7 +53493,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 78.67634644605775,
+        "value": 1035.5555555555557,
         "type": "trade",
         "status": "ok"
       }
@@ -53483,7 +53507,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 197.07918284653047,
+        "value": 2594,
         "type": "trade",
         "status": "ok"
       }
@@ -53497,7 +53521,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 403.258483876414,
+        "value": 5307.777777777777,
         "type": "trade",
         "status": "ok"
       }
@@ -53511,10 +53535,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 8.391018065169678,
+        "value": 110.44444444444444,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 8.391018065169678,
+        "valueToSplit": 110.44444444444444,
         "newPartners": "560|572",
         "notes": "gravity results to be aggregated for partners: 560"
       }
@@ -53528,7 +53552,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 1249.2318082053014,
+        "value": 16442.666666666668,
         "type": "trade",
         "status": "ok"
       }
@@ -53542,7 +53566,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 854.2461590410265,
+        "value": 11243.777777777777,
         "type": "trade",
         "status": "ok"
       }
@@ -53556,7 +53580,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 23586.37514772919,
+        "value": 310449.1111111111,
         "type": "trade",
         "status": "ok"
       }
@@ -53570,7 +53594,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 130.42377173729528,
+        "value": 1716.6666666666667,
         "type": "trade",
         "status": "ok"
       }
@@ -53584,7 +53608,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 0.8948168158028027,
+        "value": 11.777777777777779,
         "type": "trade",
         "status": "ok"
       }
@@ -53598,7 +53622,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 282.5088637514773,
+        "value": 3718.4444444444443,
         "type": "trade",
         "status": "ok"
       }
@@ -53612,7 +53636,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 23147.29022454837,
+        "value": 304669.77777777775,
         "type": "trade",
         "status": "ok"
       }
@@ -53626,10 +53650,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 20798.24413304069,
+        "value": 273751.1111111111,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 20798.24413304069,
+        "valueToSplit": 273751.1111111111,
         "newPartners": "402|403|404|540|721|752|860"
       }
     },
@@ -53642,7 +53666,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 13090.427148404526,
+        "value": 172299.11111111112,
         "type": "trade",
         "status": "ok"
       }
@@ -53656,7 +53680,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 760.0540266756711,
+        "value": 10004,
         "type": "trade",
         "status": "ok"
       }
@@ -53670,10 +53694,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 6423.670437278406,
+        "value": 84549.77777777778,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 6423.670437278406,
+        "valueToSplit": 84549.77777777778,
         "newPartners": "211|490"
       }
     },
@@ -53686,10 +53710,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 0.050650008441668073,
+        "value": 0.6666666666666666,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 0.050650008441668073,
+        "valueToSplit": 0.6666666666666666,
         "newPartners": "230|411|6090"
       }
     },
@@ -53702,10 +53726,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 43059.41245990208,
+        "value": 566757.5555555555,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 43059.41245990208,
+        "valueToSplit": 566757.5555555555,
         "newPartners": "65|66|120|220|430|480|522|580|585|615|751|810|930|960|1029|5813|6403|8151"
       }
     },
@@ -53718,7 +53742,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 10799.898699983118,
+        "value": 142150.66666666666,
         "type": "trade",
         "status": "ignore_resolved",
         "mergedIn": [
@@ -53735,10 +53759,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 3355.985142664191,
+        "value": 44172.22222222222,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 3355.985142664191,
+        "valueToSplit": 44172.22222222222,
         "newPartners": "68|115|210|850"
       }
     },
@@ -53751,10 +53775,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 483.9101806516968,
+        "value": 6369.333333333333,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 483.9101806516968,
+        "valueToSplit": 6369.333333333333,
         "newPartners": "325|531|3353|5200|5202|6202|6203|6204"
       }
     },
@@ -53767,10 +53791,10 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 76.80229613371603,
+        "value": 1010.8888888888889,
         "type": "trade",
         "status": "split_failed_no_ratio",
-        "valueToSplit": 76.80229613371603,
+        "valueToSplit": 1010.8888888888889,
         "newPartners": "560|572",
         "notes": "gravity results to be aggregated for partners: 560"
       }
@@ -53784,7 +53808,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 46409.100118183356,
+        "value": 610846.8888888889,
         "type": "trade",
         "status": "ok"
       }
@@ -53798,7 +53822,7 @@
           "REPORTED_TRADE"
         ],
         "reportedBy": "541",
-        "value": 727.7393212898869,
+        "value": 9578.666666666666,
         "type": "trade",
         "status": "ok"
       }
@@ -119603,6 +119627,9 @@
         "value": 354258,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-20"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119618,6 +119645,9 @@
         "value": 1774003,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-900"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119633,6 +119663,9 @@
         "value": 17640,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-920"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119648,6 +119681,9 @@
         "value": 541383,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-560"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119663,6 +119699,9 @@
         "value": 10302488,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-750"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119678,6 +119717,9 @@
         "value": 174519,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-835"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119693,6 +119735,9 @@
         "value": 704708,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-823"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119708,6 +119753,9 @@
         "value": 4941683,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-824"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119723,6 +119771,9 @@
         "value": 3156299,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-720"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119738,6 +119789,9 @@
         "value": 273852,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-British Colonies (other)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119753,6 +119807,9 @@
         "value": 1600138,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-255"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119768,6 +119825,9 @@
         "value": 1266916,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-210"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119783,6 +119843,9 @@
         "value": 4625171,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Java"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119798,6 +119861,9 @@
         "value": 21326275,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Sumatra"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119813,6 +119879,9 @@
         "value": 10555847,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Dutch Borneo"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119828,6 +119897,9 @@
         "value": 305341,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Maluku (Mollucas) & Sulawesi (Celebes)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119843,6 +119915,9 @@
         "value": 476454,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Bali & Lombok"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119858,6 +119933,9 @@
         "value": 5162410,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Bangka & Belitung (Billiton)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119873,6 +119951,9 @@
         "value": 479404,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Indonesia (Dutch East Indies) (other)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119888,6 +119969,9 @@
         "value": 1551750,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-220"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119903,6 +119987,9 @@
         "value": 2364277,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-810"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119918,6 +120005,9 @@
         "value": 1860535,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-325"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119933,6 +120023,9 @@
         "value": 11716990,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-800"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119948,6 +120041,9 @@
         "value": 5629237,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-710"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119963,6 +120059,9 @@
         "value": 4071647,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-740"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119978,6 +120077,9 @@
         "value": 4067689,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225<-2"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -119993,6 +120095,9 @@
         "value": 24025308,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->200"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120008,6 +120113,9 @@
         "value": 550647,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->20"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120023,6 +120131,9 @@
         "value": 4477977,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->900"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120038,6 +120149,9 @@
         "value": 431502,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->920"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120053,6 +120167,9 @@
         "value": 207270,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->560"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120068,6 +120185,9 @@
         "value": 4201654,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->750"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120083,6 +120203,9 @@
         "value": 853596,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->780"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120098,6 +120221,9 @@
         "value": 563226,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->823"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120113,6 +120239,9 @@
         "value": 124524,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->835"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120128,6 +120257,9 @@
         "value": 1144232,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->824"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120143,6 +120275,9 @@
         "value": 1163519,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->720"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120158,6 +120293,9 @@
         "value": 1915327,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->British Colonies (other)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120173,6 +120311,9 @@
         "value": 2167157,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->255"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120188,6 +120329,9 @@
         "value": 3461827,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->210"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120203,6 +120347,9 @@
         "value": 2383302,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Java"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120218,6 +120365,9 @@
         "value": 7442086,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Sumatra"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120233,6 +120383,9 @@
         "value": 2056152,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Dutch Borneo"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120248,6 +120401,9 @@
         "value": 409105,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Maluku (Mollucas) & Sulawesi (Celebes)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120263,6 +120419,9 @@
         "value": 41412,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Bali & Lombok"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120278,6 +120437,9 @@
         "value": 649451,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Bangka & Belitung (Billiton)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120293,6 +120455,9 @@
         "value": 137793,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Indonesia (Dutch East Indies) (other)"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120308,6 +120473,9 @@
         "value": 4773119,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->220"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120323,6 +120491,9 @@
         "value": 1189370,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->810"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120338,6 +120509,9 @@
         "value": 441009,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->230"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120353,6 +120527,9 @@
         "value": 1779182,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->325"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120368,6 +120545,9 @@
         "value": 3276290,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->800"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120383,6 +120563,9 @@
         "value": 1074805,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->710"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120398,6 +120581,9 @@
         "value": 4662647,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->740"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120413,6 +120599,9 @@
         "value": 69752035,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->2"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -120428,6 +120617,9 @@
         "value": 239059,
         "type": "trade",
         "status": "split_failed_no_ratio",
+        "mergedIn": [
+          "821 & 8221 & 8222 & 8223 & 8224 & 8225->Philippines & Sulu Sultanate"
+        ],
         "newReporters": "821|827|8221|8222|8223|8224|8225"
       }
     },
@@ -180576,7 +180768,7 @@
       "source": "541",
       "target": "20",
       "attributes": {
-        "value": 435.4300133015018,
+        "value": 5731.226597299545,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -180590,7 +180782,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 435.4300133015018 (ratio on 10799.898699983118)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 5731.226597299545 (ratio on 142150.66666666666)",
         "status": "ok",
         "type": "trade"
       }
@@ -180600,7 +180792,7 @@
       "source": "541",
       "target": "200",
       "attributes": {
-        "value": 8100.679917323165,
+        "value": 106622.9492229002,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -180614,7 +180806,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 8100.679917323165 (ratio on 10799.898699983118)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 106622.9492229002 (ratio on 142150.66666666666)",
         "status": "ok",
         "type": "trade"
       }
@@ -180624,7 +180816,7 @@
       "source": "541",
       "target": "750",
       "attributes": {
-        "value": 1895.6976083975617,
+        "value": 24951.5931878639,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -180638,7 +180830,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 1895.6976083975617 (ratio on 10799.898699983118)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 24951.5931878639 (ratio on 142150.66666666666)",
         "status": "ok",
         "type": "trade"
       }
@@ -180648,7 +180840,7 @@
       "source": "541",
       "target": "900",
       "attributes": {
-        "value": 368.0911609608901,
+        "value": 4844.897658603003,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
@@ -180662,7 +180854,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 368.0911609608901 (ratio on 10799.898699983118)",
+        "notes": "541->Australia & Canada (Province of Canada) & India & United Kingdom 4844.897658603003 (ratio on 142150.66666666666)",
         "status": "ok",
         "type": "trade"
       }
@@ -185225,14 +185417,20 @@
       }
     },
     {
-      "key": "1055<-823",
-      "source": "823",
+      "key": "1055<-823|824|835|850",
+      "source": "823|824|835|850",
       "target": "1055",
       "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE",
+          "TRADE_FROM_TO_AGGREGATE_REPORTER"
         ],
+        "newPartners": "823|824|835|850",
+        "valueToSplit": 5,
+        "value": 5,
+        "originalReportedTradeFlowIds": "56<-Borneo",
+        "status": "split_failed_no_ratio",
         "reportedBy": "1055",
         "originalReporters": [
           "56"
@@ -185240,91 +185438,7 @@
         "originalPartners": [
           "Borneo"
         ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Borneo 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-824",
-      "source": "824",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Borneo"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Borneo 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-835",
-      "source": "835",
-      "target": "1055",
-      "attributes": {
-        "value": 0,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56"
-        ],
-        "originalPartners": [
-          "Borneo"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Borneo 0 (ratio on 5)",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing 55|57"
-      }
-    },
-    {
-      "key": "1055<-850",
-      "source": "850",
-      "target": "1055",
-      "attributes": {
-        "value": 33,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "1055",
-        "originalReporters": [
-          "56",
-          "55"
-        ],
-        "originalPartners": [
-          "Borneo",
-          "850",
-          "Java"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "56<-Borneo 5\n55<-850 12\n55<-Java 16",
-        "status": "ok",
-        "type": "trade",
-        "partial": "missing Madura|Indonesia (Dutch East Indies) (other)|Sumatra|Sulawesi (Celebes)|Maluku (Mollucas)|851|8501|8510|8530 unexpected: Borneo|850"
+        "notes": "From a flow part-of reporter 56 to/from area Borneo"
       }
     },
     {
@@ -186076,6 +186190,32 @@
       }
     },
     {
+      "key": "1055<-850",
+      "source": "850",
+      "target": "1055",
+      "attributes": {
+        "value": 28,
+        "valueGeneratedBy": [
+          "aggregation"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "55"
+        ],
+        "originalPartners": [
+          "850",
+          "Java"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "55<-850 12\n55<-Java 16",
+        "status": "ok",
+        "type": "trade",
+        "partial": "missing Madura|Indonesia (Dutch East Indies) (other)|Sumatra|Sulawesi (Celebes)|Maluku (Mollucas)|851|8501|8510|8530 unexpected: 850"
+      }
+    },
+    {
       "key": "1055<-900",
       "source": "900",
       "target": "1055",
@@ -186326,6 +186466,1488 @@
         "status": "ok",
         "type": "trade",
         "partial": "missing 1065|1069"
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-2",
+      "source": "2",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 476117.5343782231,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-2 476117.5343782231 (ratio on 4067689)\nFrom a flow part-of reporter 820 to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 476117.5343782231
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-20",
+      "source": "20",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 11954.000000184576,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-20 11954.000000184576 (ratio on 354258)\nFrom a flow part-of reporter 820 to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 11954.000000184576
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-200",
+      "source": "200",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 2723881.7933377326,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "200"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-200 2723881.7933377326 (ratio on 15973184)\nFrom a flow part-of reporter 820 to/from area 200",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 2723881.7933377326
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-210",
+      "source": "210",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 269152.9831211638,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-210 269152.9831211638 (ratio on 1266916)\nFrom a flow part-of reporter 820 to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 269152.9831211638
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-220",
+      "source": "220",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 172762.97159399185,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-220 172762.97159399185 (ratio on 1551750)\nFrom a flow part-of reporter 820 to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 172762.97159399185
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-255",
+      "source": "255",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 155442.68299789727,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-255 155442.68299789727 (ratio on 1600138)\nFrom a flow part-of reporter 820 to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 155442.68299789727
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-325",
+      "source": "325",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 147357.4065468274,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-325 147357.4065468274 (ratio on 1860535)\nFrom a flow part-of reporter 820 to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 147357.4065468274
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-560",
+      "source": "560",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 3597.820708400337,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "560"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-560 3597.820708400337 (ratio on 541383)\nFrom a flow part-of reporter 820 to/from area 560",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 3597.820708400337
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-710",
+      "source": "710",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 129135.28509971313,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-710 129135.28509971313 (ratio on 5629237)\nFrom a flow part-of reporter 820 to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 129135.28509971313
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-720",
+      "source": "720",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 30684.552492422517,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "720"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-720 30684.552492422517 (ratio on 3156299)\nFrom a flow part-of reporter 820 to/from area 720",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 30684.552492422517
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-740",
+      "source": "740",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 62056.61033563269,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-740 62056.61033563269 (ratio on 4071647)\nFrom a flow part-of reporter 820 to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 62056.61033563269
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-750",
+      "source": "750",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 1046088.7610177547,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-750 1046088.7610177547 (ratio on 10302488)\nFrom a flow part-of reporter 820 to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 1046088.7610177547
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-800",
+      "source": "800",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 869583.7039992623,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "800"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-800 869583.7039992623 (ratio on 11716990)\nFrom a flow part-of reporter 820 to/from area 800",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 869583.7039992623
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-810",
+      "source": "810",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 19755.633595335763,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "810"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-810 19755.633595335763 (ratio on 2364277)\nFrom a flow part-of reporter 820 to/from area 810",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 19755.633595335763
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-823",
+      "source": "823",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 4700.478180698585,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "823"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-823 4700.478180698585 (ratio on 704708)\nFrom a flow part-of reporter 820 to/from area 823",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 4700.478180698585
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-824",
+      "source": "824",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 32841.72952096723,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "824"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-824 32841.72952096723 (ratio on 4941683)\nFrom a flow part-of reporter 820 to/from area 824",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 32841.72952096723
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-835",
+      "source": "835",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 1159.6181557130767,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "835"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-835 1159.6181557130767 (ratio on 174519)\nFrom a flow part-of reporter 820 to/from area 835",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 1159.6181557130767
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-900",
+      "source": "900",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 123235.42836647271,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-900 123235.42836647271 (ratio on 1774003)\nFrom a flow part-of reporter 820 to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 123235.42836647271
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-920",
+      "source": "920",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 117.233429404263,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "920"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-920 117.233429404263 (ratio on 17640)\nFrom a flow part-of reporter 820 to/from area 920",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 117.233429404263
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-British Colonies (other)",
+      "source": "British Colonies (other)",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 183185.47406344948,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "British Colonies (other)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-British Colonies (other) 183185.47406344948 (ratio on 273852)\nFrom a flow part-of reporter 820 to/from area British Colonies (other)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 183185.47406344948
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Java",
+      "source": "Java",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 32752.070195971988,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Java"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Java 32752.070195971988 (ratio on 4625171)\nFrom a flow part-of reporter 820 to/from area Java",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 32752.070195971988
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Sumatra",
+      "source": "Sumatra",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 935047.6506902874,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Sumatra"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Sumatra 935047.6506902874 (ratio on 21326275)\nFrom a flow part-of reporter 820 to/from area Sumatra",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 935047.6506902874
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Dutch Borneo",
+      "source": "Dutch Borneo",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 72292.37588049844,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Dutch Borneo"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Dutch Borneo 72292.37588049844 (ratio on 10555847)\nFrom a flow part-of reporter 820 to/from area Dutch Borneo",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 72292.37588049844
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Maluku (Mollucas) & Sulawesi (Celebes)",
+      "source": "Maluku (Mollucas) & Sulawesi (Celebes)",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 2029.0959244122496,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Maluku (Mollucas) & Sulawesi (Celebes)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Maluku (Mollucas) & Sulawesi (Celebes) 2029.0959244122496 (ratio on 305341)\nFrom a flow part-of reporter 820 to/from area Maluku (Mollucas) & Sulawesi (Celebes)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 2029.0959244122496
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Bali & Lombok",
+      "source": "Bali & Lombok",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 3166.1609718484688,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Bali & Lombok"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Bali & Lombok 3166.1609718484688 (ratio on 476454)\nFrom a flow part-of reporter 820 to/from area Bali & Lombok",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 3166.1609718484688
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Bangka & Belitung (Billiton)",
+      "source": "Bangka & Belitung (Billiton)",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 34308.50700153038,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Bangka & Belitung (Billiton)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Bangka & Belitung (Billiton) 34308.50700153038 (ratio on 5162410)\nFrom a flow part-of reporter 820 to/from area Bangka & Belitung (Billiton)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 34308.50700153038
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225<-Indonesia (Dutch East Indies) (other)",
+      "source": "Indonesia (Dutch East Indies) (other)",
+      "target": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "attributes": {
+        "value": 3186.428571685392,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Indonesia (Dutch East Indies) (other)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820<-Indonesia (Dutch East Indies) (other) 3186.428571685392 (ratio on 479404)\nFrom a flow part-of reporter 820 to/from area Indonesia (Dutch East Indies) (other)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 3186.428571685392
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->2",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "2",
+      "attributes": {
+        "value": 13729467.910281345,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "2"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->2 13729467.910281345 (ratio on 69752035)\nFrom a flow part-of reporter 820 to/from area 2",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 13729467.910281345
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->20",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "20",
+      "attributes": {
+        "value": 34596.77295211033,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "20"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->20 34596.77295211033 (ratio on 550647)\nFrom a flow part-of reporter 820 to/from area 20",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 34596.77295211033
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->200",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "200",
+      "attributes": {
+        "value": 10982254.89811325,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "200"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->200 10982254.89811325 (ratio on 24025308)\nFrom a flow part-of reporter 820 to/from area 200",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 10982254.89811325
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->210",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "210",
+      "attributes": {
+        "value": 296962.59839610755,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "210"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->210 296962.59839610755 (ratio on 3461827)\nFrom a flow part-of reporter 820 to/from area 210",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 296962.59839610755
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->220",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "220",
+      "attributes": {
+        "value": 1000909.0191457146,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "220"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->220 1000909.0191457146 (ratio on 4773119)\nFrom a flow part-of reporter 820 to/from area 220",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 1000909.0191457146
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->230",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "230",
+      "attributes": {
+        "value": 29838.557225417288,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "230"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->230 29838.557225417288 (ratio on 441009)\nFrom a flow part-of reporter 820 to/from area 230",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 29838.557225417288
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->255",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "255",
+      "attributes": {
+        "value": 382365.0648424609,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "255"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->255 382365.0648424609 (ratio on 2167157)\nFrom a flow part-of reporter 820 to/from area 255",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 382365.0648424609
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->325",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "325",
+      "attributes": {
+        "value": 140411.6130103527,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "325"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->325 140411.6130103527 (ratio on 1779182)\nFrom a flow part-of reporter 820 to/from area 325",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 140411.6130103527
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->560",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "560",
+      "attributes": {
+        "value": 3073.446274297021,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "560"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->560 3073.446274297021 (ratio on 207270)\nFrom a flow part-of reporter 820 to/from area 560",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 3073.446274297021
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->710",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "710",
+      "attributes": {
+        "value": 9774.145122023532,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "710"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->710 9774.145122023532 (ratio on 1074805)\nFrom a flow part-of reporter 820 to/from area 710",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 9774.145122023532
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->720",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "720",
+      "attributes": {
+        "value": 13248.693495885935,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "720"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->720 13248.693495885935 (ratio on 1163519)\nFrom a flow part-of reporter 820 to/from area 720",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 13248.693495885935
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->740",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "740",
+      "attributes": {
+        "value": 271881.0413774196,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "740"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->740 271881.0413774196 (ratio on 4662647)\nFrom a flow part-of reporter 820 to/from area 740",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 271881.0413774196
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->750",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "750",
+      "attributes": {
+        "value": 40551.71120026754,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "750"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->750 40551.71120026754 (ratio on 4201654)\nFrom a flow part-of reporter 820 to/from area 750",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 40551.71120026754
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->780",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "780",
+      "attributes": {
+        "value": 386767.9427750562,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "780"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->780 386767.9427750562 (ratio on 853596)\nFrom a flow part-of reporter 820 to/from area 780",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 386767.9427750562
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->800",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "800",
+      "attributes": {
+        "value": 104842.74001817778,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "800"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->800 104842.74001817778 (ratio on 3276290)\nFrom a flow part-of reporter 820 to/from area 800",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 104842.74001817778
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->810",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "810",
+      "attributes": {
+        "value": 7906.387608706253,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "810"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->810 7906.387608706253 (ratio on 1189370)\nFrom a flow part-of reporter 820 to/from area 810",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 7906.387608706253
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->823",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "823",
+      "attributes": {
+        "value": 4503.200700177811,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "823"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->823 4503.200700177811 (ratio on 563226)\nFrom a flow part-of reporter 820 to/from area 823",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 4503.200700177811
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->824",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "824",
+      "attributes": {
+        "value": 7606.504940917483,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "824"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->824 7606.504940917483 (ratio on 1144232)\nFrom a flow part-of reporter 820 to/from area 824",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 7606.504940917483
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->835",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "835",
+      "attributes": {
+        "value": 859.7404282264179,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "835"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->835 859.7404282264179 (ratio on 124524)\nFrom a flow part-of reporter 820 to/from area 835",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 859.7404282264179
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->900",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "900",
+      "attributes": {
+        "value": 232389.36434975732,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->900 232389.36434975732 (ratio on 4477977)\nFrom a flow part-of reporter 820 to/from area 900",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 232389.36434975732
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->920",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "920",
+      "attributes": {
+        "value": 2868.127007229894,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "920"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->920 2868.127007229894 (ratio on 431502)\nFrom a flow part-of reporter 820 to/from area 920",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 2868.127007229894
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->British Colonies (other)",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "British Colonies (other)",
+      "attributes": {
+        "value": 56596.291067284765,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "British Colonies (other)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->British Colonies (other) 56596.291067284765 (ratio on 1915327)\nFrom a flow part-of reporter 820 to/from area British Colonies (other)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 56596.291067284765
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Java",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Java",
+      "attributes": {
+        "value": 16662.544669864234,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Java"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Java 16662.544669864234 (ratio on 2383302)\nFrom a flow part-of reporter 820 to/from area Java",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 16662.544669864234
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Sumatra",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Sumatra",
+      "attributes": {
+        "value": 65609.58728269301,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Sumatra"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Sumatra 65609.58728269301 (ratio on 7442086)\nFrom a flow part-of reporter 820 to/from area Sumatra",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 65609.58728269301
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Dutch Borneo",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Dutch Borneo",
+      "attributes": {
+        "value": 13673.411899001803,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Dutch Borneo"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Dutch Borneo 13673.411899001803 (ratio on 2056152)\nFrom a flow part-of reporter 820 to/from area Dutch Borneo",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 13673.411899001803
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Maluku (Mollucas) & Sulawesi (Celebes)",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Maluku (Mollucas) & Sulawesi (Celebes)",
+      "attributes": {
+        "value": 2719.1300949082943,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Maluku (Mollucas) & Sulawesi (Celebes)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Maluku (Mollucas) & Sulawesi (Celebes) 2719.1300949082943 (ratio on 409105)\nFrom a flow part-of reporter 820 to/from area Maluku (Mollucas) & Sulawesi (Celebes)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 2719.1300949082943
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Bali & Lombok",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Bali & Lombok",
+      "attributes": {
+        "value": 274.98764926055446,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Bali & Lombok"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Bali & Lombok 274.98764926055446 (ratio on 41412)\nFrom a flow part-of reporter 820 to/from area Bali & Lombok",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 274.98764926055446
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Bangka & Belitung (Billiton)",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Bangka & Belitung (Billiton)",
+      "attributes": {
+        "value": 4316.624331348343,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Bangka & Belitung (Billiton)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Bangka & Belitung (Billiton) 4316.624331348343 (ratio on 649451)\nFrom a flow part-of reporter 820 to/from area Bangka & Belitung (Billiton)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 4316.624331348343
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Indonesia (Dutch East Indies) (other)",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Indonesia (Dutch East Indies) (other)",
+      "attributes": {
+        "value": 915.6241252282052,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Indonesia (Dutch East Indies) (other)"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Indonesia (Dutch East Indies) (other) 915.6241252282052 (ratio on 137793)\nFrom a flow part-of reporter 820 to/from area Indonesia (Dutch East Indies) (other)",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 915.6241252282052
+      }
+    },
+    {
+      "key": "821 & 8221 & 8222 & 8223 & 8224 & 8225->Philippines & Sulu Sultanate",
+      "source": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+      "target": "Philippines & Sulu Sultanate",
+      "attributes": {
+        "value": 2093.945656776603,
+        "valueGeneratedBy": [
+          "split_partial_reporter"
+        ],
+        "reportedBy": "821 & 8221 & 8222 & 8223 & 8224 & 8225",
+        "originalReporters": [
+          "820"
+        ],
+        "originalPartners": [
+          "Philippines & Sulu Sultanate"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "820->Philippines & Sulu Sultanate 2093.945656776603 (ratio on 239059)\nFrom a flow part-of reporter 820 to/from area Philippines & Sulu Sultanate",
+        "status": "split_only_partial",
+        "type": "trade",
+        "newReporters": "821|8221|8222|8223|8224|8225",
+        "valueToSplit": 2093.945656776603
       }
     }
   ]
