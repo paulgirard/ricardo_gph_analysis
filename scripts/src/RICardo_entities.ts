@@ -120,6 +120,7 @@ const applyRatioMethod = async (
       exportGephLiteFile(new_graph, "ratios");
     } catch (e) {
       console.log(e);
+      throw e;
     }
   });
 };

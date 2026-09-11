@@ -534,10 +534,13 @@ export function treatReporters(graph: GraphType) {
               if (autonomousPartners.traversedLabels.has("SPLIT_OTHER")) partnerHasArea = true;
               // filter the list of autonomous partners to avoid overlapping areas
               partnerIds = filterTradePartners(originalPartner, autonomousPartners, badReporter, graph);
-              if (partnerIds.length === 0)
-                throw new Error(
+              if (partnerIds.length === 0) {
+                console.log(autonomousPartners, originalPartner);
+                console.log(
                   `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
                 );
+                partnerIds = [originalPartner];
+              }
               break;
             // default just use the value defined before switch block
           }
