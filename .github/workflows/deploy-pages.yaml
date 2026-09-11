@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy_HNR:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,60 +43,21 @@ jobs:
         # Note: 'npm ci' est préféré à 'npm install' en CI car il est plus rapide et plus fiable
         # car il utilise strictement le package-lock.json.
 
-      # Exécution du script de build
-      - name: Build
-        working-directory: ${{ env.HNR_2026_DIR }}
-        run: npm run build -- --base ricardo_gph_analysis/HNR_2026/
-
       - name: Wipe destination folder
         run: rm -rf ${{ env.PUBLIC_DIR }}/HNR_2026/*
 
-      - name: Move build output to public
-        run: mv ${{ env.HNR_2026_DIR }}/dist/* ${{ env.PUBLIC_DIR }}/HNR_2026
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.PUBLIC_DIR }}
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-  deploy_medialab:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-        # Configuration de Node.js (version recommandée)
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          cache: "npm"
-          cache-dependency-path: ${{ env.MEDIALAB_DIR }}
-          # Spécifie le dossier où se trouve package.json si ce n'est pas à la racine
-
-      # Installation des dépendances avec cache automatique géré par setup-node
-      - name: Install dependencies
-        working-directory: ${{ env.MEDIALAB_DIR }}
-        run: npm ci
-        # Note: 'npm ci' est préféré à 'npm install' en CI car il est plus rapide et plus fiable
-        # car il utilise strictement le package-lock.json.
-
       # Exécution du script de build
-      - name: Build
-        working-directory: ${{ env.MEDIALAB_DIR }}
-        run: npm run build -- --base ricardo_gph_analysis/medialab_seminar_2026/
+      - name: Build HNR
+        working-directory: ${{ env.HNR_2026_DIR }}
+        run: npm run build -- slides_hnr.md -o ${{ env.PUBLIC_DIR }}/HNR_2026/ --base ricardo_gph_analysis/HNR_2026/
 
       - name: Wipe destination folder
-        run: rm -rf ${{ env.PUBLIC_DIR }}/medialab_seminar_2026/*
+        run: rm -rf ${{ env.PUBLIC_DIR }}/medialab_2026/*
 
-      - name: Move build output to public
-        run: mv ${{ env.MEDIALAB_DIR }}/dist/* ${{ env.PUBLIC_DIR }}/medialab_seminar_2026
+      # Exécution du script de build
+      - name: Build médialab
+        working-directory: ${{ env.HNR_2026_DIR }}
+        run: npm run build -- slides_hnr.md -o ${{ env.PUBLIC_DIR }}/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

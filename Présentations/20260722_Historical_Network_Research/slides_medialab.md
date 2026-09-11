@@ -22,7 +22,7 @@ _Paul Girard_ - OuestWare - France
 Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France  
 Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France  
 Youssef Ghallada - Economic History Department LSE - United Kingdom
-
+MEDIALAB
 <div style="display:flex; gap:1em; align-items: center"><img src="/images/hnr2026_logo.png" style="height:80px"/> <div>Historical Network Research 2026 <br/>Torino, Italia</div></div>
 
 </small>
