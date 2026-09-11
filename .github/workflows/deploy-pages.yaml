@@ -58,6 +58,12 @@ jobs:
         working-directory: ${{ env.HNR_2026_DIR }}
         run: npm run build -- slides_medialab.md -o ${{ env.PUBLIC_DIR }}/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
 
+      - name: test
+        run: ls -lah ${{ env.PUBLIC_DIR }}/medialab_2026
+
+      - name: test
+        run: ls -lah ${{ env.PUBLIC_DIR }}/HNR_2026
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
