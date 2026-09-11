@@ -49,8 +49,9 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
             year = ${year} AND
             partner is not null AND partner not LIKE 'world%' AND partner != "***NA" AND
             reporting != partner AND
-            flow != 0
+            flow != 0 
     `,
+      //NOT(reporting = "Malaysia (British Malaya)" and f.year >= 1915 and f.year <= 1925  )
       function (err, rows) {
         console.log(year);
         if (err) reject(err);
