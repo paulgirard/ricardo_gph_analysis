@@ -43,7 +43,8 @@ export type FlowValueImputationMethod =
   | "split_to_one"
   | "split_by_years_ratio"
   | "split_by_mirror_ratio"
-  | "split_by_gravity";
+  | "split_by_gravity"
+  | "split_partial_reporter";
 
 export type TradeEdgeStatus =
   | "toTreat" // trade flows which includes one trading partner to aggregate/split
@@ -51,6 +52,7 @@ export type TradeEdgeStatus =
   | "ignore_internal" // flows to ignore as they describe internal trade
   | "ignore_resolved" // flows successfully transformed and thus should be ignored
   | "ignore_duplicate" // flows to ignore as their transformation leads to a duplicated trade flow
+  | "ignore_partial_duplicate" // flows to ignore as their transformation leads to a partial duplicated trade flow and a partial yet to split value
   | "split_failed_no_ratio" // flows we couldn't split by the ratio method
   | "split_failed_error" // an error occurred in the ratio method attempt (splitting reporter, no more partners after areas dis-ambiguisation)
   | "split_only_partial"; // flows we could only split partially by the ratio method

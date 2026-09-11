@@ -450,9 +450,57 @@ export function treatReporters(graph: GraphType) {
           });
           return;
         } else {
-          // we know some
-          // we should remove know reported flows values from the bad reporter trade figures and then try to solve those flows
-          throw new Error("Partial badreporter solving algo not implemented");
+          // we have reported  trade for some of the new reporters but not all of them
+          // we remove know reported flows values from the bad reporter trade figures and then mark those flows as split_partial_failed
+          console.log(
+            `badReporter ${badReporter} partially known ${knownAutonomousReporters} missing ${autonomousReporters.autonomousIds.filter((i) => !knownAutonomousReporters.includes(i))}`,
+          );
+          const missingReporters = autonomousReporters.autonomousIds.filter(
+            (i) => !knownAutonomousReporters.includes(i),
+          );
+          const newPartialBadReporter = missingReporters.join(" & ");
+          allreportedFlows.forEach((e) => {
+            const partner = graph.source(e) === badReporter ? graph.target(e) : graph.source(e);
+            const expImp = graph.source(e) === badReporter ? "Imp" : "Exp";
+            // get the flows to same partners from knownAutonomousReporters
+            const alreadyReportedflows = (graph as GraphEntityPartiteType).filterEdges((_, atts, source, target) => {
+              return (
+                knownAutonomousReporters.includes(atts.reportedBy) && (expImp === "Imp" ? target : source) === partner
+              );
+            });
+            const alreadyReportedValue = sum(
+              alreadyReportedflows.map((e2) => (graph as GraphEntityPartiteType).getEdgeAttribute(e2, "value")),
+            );
+            const originalValue = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value");
+            if (originalValue && alreadyReportedValue) {
+              if (!graph.hasNode(newPartialBadReporter))
+                graph.addNode(newPartialBadReporter, {
+                  label: missingReporters.map((mr) => graph.getNodeAttribute(mr, "label")).join(" & "),
+                  type: "entity",
+                  entityType: "RIC",
+                  reporting: true,
+                  ricType: "group",
+                });
+              const newValue = alreadyReportedValue < originalValue ? originalValue - alreadyReportedValue : 0;
+              if (newValue === 0) {
+                console.log(`Partial reporter split generate negative value ${originalValue}-${alreadyReportedValue}`);
+                console.log(alreadyReportedflows);
+              }
+              const { newEdgeId } = generateTradeFlow(
+                graph as GraphEntityPartiteType,
+                e,
+                graph.source(e) === badReporter ? newPartialBadReporter : partner,
+                graph.target(e) === badReporter ? newPartialBadReporter : partner,
+                new Set(["SPLIT_PARTIAL_REPORTER"]),
+                newValue,
+                badReporter === graph.source(e) ? "exporter" : "importer",
+              );
+              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "status", "split_only_partial");
+              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "newReporters", missingReporters.join("|"));
+              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "valueToSplit", newValue);
+              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_partial_duplicate");
+            }
+          });
         }
       }
 
@@ -772,7 +820,7 @@ export function resolveEntityTransform(
   tradeGraphsByYear: Record<number, GraphEntityPartiteType>,
   edgeKey?: string,
 ) {
-  const graph = tradeGraphsByYear[year].copy() as GraphType;
+  const graph = tradeGraphsByYear[year]?.copy() as GraphType;
   if (!graph) {
     throw new Error(`No trade graph available for year ${year}`);
   } else {

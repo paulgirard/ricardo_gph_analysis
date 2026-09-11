@@ -101,7 +101,7 @@ export function generateTradeFlow(
   originalFlow: string,
   newExporter: string,
   newImporter: string,
-  entitiesResolutionLabels: Set<EntityResolutionLabelType>,
+  entitiesResolutionLabels: Set<EntityResolutionLabelType | "SPLIT_PARTIAL_REPORTER">,
   newValue: number | undefined,
   valueReportedBy: "importer" | "exporter",
 ): { newEdgeId: string | null; status: "internal" | "collision" | "created" | "merged" } {
@@ -115,7 +115,9 @@ export function generateTradeFlow(
   } else {
     const generatedByMethod: FlowValueImputationMethod = entitiesResolutionLabels.has("AGGREGATE_INTO")
       ? "aggregation"
-      : "split_by_years_ratio";
+      : entitiesResolutionLabels.has("SPLIT_PARTIAL_REPORTER")
+        ? "split_partial_reporter"
+        : "split_by_years_ratio";
 
     // first check if trade flow does not already exist
     const idEdge = tradeEdgeKey(
