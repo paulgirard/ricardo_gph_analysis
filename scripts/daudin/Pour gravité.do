@@ -463,12 +463,15 @@ append using "tradeFlows_`year'_FromExporterok_temp.dta"
 ***if any is "unknown despite gravity" : all are "unknown despite gravity"
 **exemple 1833 : id=="200->3349" & id =="200->Ionian Is. & Morea"
 generate good_flow =1 if status=="ok thanks to gravity" | status=="ok"
+generate gravity_flow =1 if status=="ok thanks to gravity"
 replace good_flow =0 if status=="unknown despite gravity"
 
 
+bys importerLabel exporterLabel CafFob : egen nbr_of_gravity_flows=total(gravity_flow)
 bys importerLabel exporterLabel CafFob : egen nbr_of_good_flows=total(good_flow)
 bys importerLabel exporterLabel CafFob: egen at_least_one_good_flow= max(good_flow)
 bys importerLabel exporterLabel CafFob :replace status="unknown despite partial gravity success" if nbr_of_good_flows!=_N & at_least_one_good_flow==1
+bys importerLabel exporterLabel CafFob :replace status="ok thanks partially to gravity" if nbr_of_gravity_flows<_N & nbr_of_gravity_flows>0  & nbr_of_good_flows==_N
 bys importerLabel exporterLabel CafFob : egen value_cum=total(value)
 bys importerLabel exporterLabel CafFob : replace value=value_cum if nbr_of_good_flows==_N
 bys importerLabel exporterLabel CafFob : replace value=. if nbr_of_good_flows!=_N
@@ -480,6 +483,7 @@ bys importerLabel exporterLabel CafFob : keep if _n==1
 
 drop value_cum str_concat
 bys importerLabel exporterLabel CafFob : assert _N==1
+
 
 
 keep year value status importerLabel exporterLabel CafFob
@@ -562,7 +566,17 @@ gravity_cleanup 1833
 
 
 
-foreach year of numlist 1834(1)1938 {
+
+foreach year of numlist 1834(1)1917 {
+	trade_importation `year'
+	gravity_trade_estimation `year' FromImporter
+	gravity_trade_estimation `year' FromExporter
+	bestguessbiltrade `year'
+	gravity_cleanup `year'
+	
+}
+
+foreach year of numlist 1923(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
