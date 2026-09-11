@@ -109,7 +109,7 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 200<-681,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,681,Aden,GPH-AUTONOMOUS-CITED,330410,200,,,,,,ok,
 200<-Mumbai (Bombay) & Sindh,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,Mumbai (Bombay) & Sindh,Mumbai (Bombay) & Sindh,RIC,10413077,200,,,,,,ignore_resolved,
 200<-Chennai (Madras),1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,Chennai (Madras),Chennai (Madras),RIC,4761731,200,,,,,,ignore_resolved,
-200<-Bengal & Myanmar (Burma),1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,Bengal & Myanmar (Burma),Bengal & Myanmar (Burma),RIC,20630606,200,,,,,,ignore_resolved,
+200<-Bengal & Myanmar (Burma),1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,Bengal & Myanmar (Burma),Bengal & Myanmar (Burma),RIC,20630606,200,,,,,,toTreat,
 200<-775,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,775,Myanmar (Burma),GPH-AUTONOMOUS-CITED,3077415,200,,,,,,ok,
 200<-827,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,827,Straits Settlements,GPH-AUTONOMOUS-CITED,4643016,200,,,,,,ok,
 200<-780,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,780,Sri Lanka (Ceylon),GPH-AUTONOMOUS-CITED,2172736,200,,,,,,ok,
@@ -263,7 +263,6 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 390<-230,1883,390,Denmark,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,80284.00219901044,390,,,,,,ok,
 390<-325,1883,390,Denmark,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,34263.88125343595,390,,,,,,ok,
 390<-Madeira Isles & Portugal,1883,390,Denmark,GPH-AUTONOMOUS-CITED,Madeira Isles & Portugal,Madeira Isles & Portugal,RIC,27957.064321055524,390,,,,,,ignore_resolved,
-390<-***NA,1883,390,Denmark,GPH-AUTONOMOUS-CITED,***NA,***NA,RIC,485382.9576690489,390,,,,,,split_failed_error,
 390->Holstein & Saxe Lauenburg & Schleswig,1883,Holstein & Saxe Lauenburg & Schleswig,Holstein & Saxe Lauenburg & Schleswig,RIC,390,Denmark,GPH-AUTONOMOUS-CITED,2695223.364485981,390,,,,,,ignore_resolved,
 390->276,1883,276,Lübeck,GPH,390,Denmark,GPH-AUTONOMOUS-CITED,132614.29356789443,390,,,,,,ignore_resolved,
 390->248,1883,248,Hamburg,GPH,390,Denmark,GPH-AUTONOMOUS-CITED,82787.85046728971,390,,,,,,ignore_resolved,
@@ -285,13 +284,10 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 390->230,1883,230,Spain,GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,1698.5156679494226,390,,,,,,ok,
 390->325,1883,325,Italy,GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,22105.607476635512,390,,,,,,ok,
 390->Madeira Isles & Portugal,1883,Madeira Isles & Portugal,Madeira Isles & Portugal,RIC,390,Denmark,GPH-AUTONOMOUS-CITED,1.759208356239692,390,,,,,,ignore_resolved,
-390->***NA,1883,***NA,***NA,RIC,390,Denmark,GPH-AUTONOMOUS-CITED,145091.86366135237,390,,,,,,split_failed_error,
-310<-305,1883,310,Hungary,GPH,305,Austria,GPH,31126822.230376624,310,,,,,,ignore_resolved,
-310->305,1883,305,Austria,GPH,310,Hungary,GPH,26245413.150081728,310,,,,,,ignore_resolved,
+310<-305,1883,310,Hungary,GPH,305,Austria,GPH,31126822.230376624,310,,,,,,ignore_internal,
+310->305,1883,305,Austria,GPH,310,Hungary,GPH,26245413.150081728,310,,,,,,ignore_internal,
 310<-346,1883,310,Hungary,GPH,346,Bosnia-Herzegovina,GPH-AUTONOMOUS-CITED,138314.37435367116,310,,,,,,ignore_resolved,
 310->346,1883,346,Bosnia-Herzegovina,GPH-AUTONOMOUS-CITED,310,Hungary,GPH,222212.02922240383,310,,,,,,ignore_resolved,
-310<-***NA,1883,310,Hungary,GPH,***NA,***NA,RIC,8170347.266237449,310,,,,,,split_failed_error,
-310->***NA,1883,***NA,***NA,RIC,310,Hungary,GPH,11438978.216632752,310,,,,,,split_failed_error,
 310<-255,1883,310,Hungary,GPH,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,1799838.2092937918,310,,,,,,ignore_resolved,
 310->255,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,310,Hungary,GPH,5011467.124795676,310,,,,,,ignore_resolved,
 310<-225,1883,310,Hungary,GPH,225,Switzerland,GPH-AUTONOMOUS-CITED,36528.00480368282,310,,,,,,ignore_resolved,
@@ -300,8 +296,8 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 310->325,1883,325,Italy,GPH-AUTONOMOUS-CITED,310,Hungary,GPH,475322.7474397038,310,,,,,,ignore_resolved,
 310<-220,1883,310,Hungary,GPH,220,France,GPH-AUTONOMOUS-CITED,52832.17133135404,310,,,,,,ignore_resolved,
 310->220,1883,220,France,GPH-AUTONOMOUS-CITED,310,Hungary,GPH,1324557.1604897087,310,,,,,,ignore_resolved,
-310<-Belgium & Netherlands,1883,310,Hungary,GPH,Belgium & Netherlands,Belgium & Netherlands,RIC,54083.13039997331,310,,54083.13039997331,,210|211,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-310->Belgium & Netherlands,1883,Belgium & Netherlands,Belgium & Netherlands,RIC,310,Hungary,GPH,401974.8473829936,310,,401974.8473829936,,210|211,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+310<-Belgium & Netherlands,1883,310,Hungary,GPH,Belgium & Netherlands,Belgium & Netherlands,RIC,54083.13039997331,310,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+310->Belgium & Netherlands,1883,Belgium & Netherlands,Belgium & Netherlands,RIC,310,Hungary,GPH,401974.8473829936,310,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 310<-200,1883,310,Hungary,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,1089293.4583180437,310,,,,,,ignore_resolved,
 310->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,310,Hungary,GPH,1157387.330286553,310,,,,,,ignore_resolved,
 310<-365,1883,310,Hungary,GPH,365,Russia (USSR),GPH-AUTONOMOUS-CITED,10424.658905160622,310,,,,,,ignore_resolved,
@@ -476,7 +472,6 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 1032<-41,1883,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,41,Haiti,GPH-AUTONOMOUS-CITED,906,1032,,,,,,ok,
 1032<-42,1883,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS-CITED,1241,1032,,,,,,ok,
 1032<-2,1883,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,16453,1032,,,,,,ok,
-1032<-***NA,1883,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,***NA,***NA,RIC,10,1032,,,,,,split_failed_error,
 1032->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,607,1032,,,,,,ok,
 1032->British Northern America,1883,British Northern America,British Northern America,RIC,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,5087,1032,,5087,,20|21,,split_failed_no_ratio,
 1032->30,1883,30,Bermuda,GPH-AUTONOMOUS-CITED,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,50,1032,,,,,,ok,
@@ -844,7 +839,7 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 2->850,1883,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,494826.0905315956,2,,,,,,ok,
 2->135,1883,135,Peru,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,100185.01007277063,2,,,,,,ok,
 2->235,1883,235,Portugal,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,1102479.5461086214,2,,,,,,ok,
-2->Azores (Western Isles) & Cape Verde & Madeira Isles,1883,Azores (Western Isles) & Cape Verde & Madeira Isles,Azores (Western Isles) & Cape Verde & Madeira Isles,RIC,2,United States of America,GPH-AUTONOMOUS-CITED,127805.78053694034,2,,,,,,ignore_resolved,
+2->Azores (Western Isles) & Cape Verde & Madeira Isles,1883,Azores (Western Isles) & Cape Verde & Madeira Isles,Azores (Western Isles) & Cape Verde & Madeira Isles,RIC,2,United States of America,GPH-AUTONOMOUS-CITED,127805.78053694034,2,,127805.78053694034,,235|402,,split_failed_no_ratio,gravity results to be aggregated for partners: 235
 2->Portuguese Africa,1883,Portuguese Africa,Portuguese Africa,RIC,2,United States of America,GPH-AUTONOMOUS-CITED,1030.3005385848785,2,,1030.3005385848785,,403|404|540|541,,split_failed_no_ratio,
 2->Russia (Baltic Sea) & Russia (White Sea),1883,Russia (Baltic Sea) & Russia (White Sea),Russia (Baltic Sea) & Russia (White Sea),RIC,2,United States of America,GPH-AUTONOMOUS-CITED,2955731.200920939,2,,,,,,ignore_resolved,
 2->Russia (Black Sea),1883,Russia (Black Sea),Russia (Black Sea),RIC,2,United States of America,GPH-AUTONOMOUS-CITED,950451.0134440652,2,,,,,,ignore_resolved,
@@ -910,7 +905,7 @@ id,year,importerId,importerLabel,importerType,exporterId,exporterLabel,exporterT
 2<-850,1883,2,United States of America,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,543912.5519056037,2,,,,,,ok,
 2<-135,1883,2,United States of America,GPH-AUTONOMOUS-CITED,135,Peru,GPH-AUTONOMOUS-CITED,519450.3145171237,2,,,,,,ok,
 2<-235,1883,2,United States of America,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,224782.3048143732,2,,,,,,ok,
-2<-Azores (Western Isles) & Cape Verde & Madeira Isles,1883,2,United States of America,GPH-AUTONOMOUS-CITED,Azores (Western Isles) & Cape Verde & Madeira Isles,Azores (Western Isles) & Cape Verde & Madeira Isles,RIC,14531.30781564774,2,,,,,,ignore_resolved,
+2<-Azores (Western Isles) & Cape Verde & Madeira Isles,1883,2,United States of America,GPH-AUTONOMOUS-CITED,Azores (Western Isles) & Cape Verde & Madeira Isles,Azores (Western Isles) & Cape Verde & Madeira Isles,RIC,14531.30781564774,2,,14531.30781564774,,235|402,,split_failed_no_ratio,gravity results to be aggregated for partners: 235
 2<-Portuguese Africa,1883,2,United States of America,GPH-AUTONOMOUS-CITED,Portuguese Africa,Portuguese Africa,RIC,547.8353821485836,2,,547.8353821485836,,403|404|540|541,,split_failed_no_ratio,
 2<-Russia (Baltic Sea) & Russia (White Sea),1883,2,United States of America,GPH-AUTONOMOUS-CITED,Russia (Baltic Sea) & Russia (White Sea),Russia (Baltic Sea) & Russia (White Sea),RIC,237519.63162438842,2,,,,,,ignore_resolved,
 2<-Russia (Black Sea),1883,2,United States of America,GPH-AUTONOMOUS-CITED,Russia (Black Sea),Russia (Black Sea),RIC,276287.8756732311,2,,,,,,ignore_resolved,
@@ -1189,34 +1184,34 @@ European Russia<-2,1883,European Russia,European Russia,RIC,2,United States of A
 30->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,82903,30,,,,,,ok,
 30->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,519,30,,,,,,ok,
 59<-200,1883,59,Montserrat,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,12778,59,,,,,,ignore_resolved,
-59<-1062,1883,59,Montserrat,GPH,1062,Anguilla,GPH,2,59,,,,,,ignore_resolved,
-59<-58,1883,59,Montserrat,GPH,58,Antigua and Barbuda (Antigua),GPH,2963,59,,,,,,ignore_resolved,
+59<-1062,1883,59,Montserrat,GPH,1062,Anguilla,GPH,2,59,,,,,,ignore_internal,
+59<-58,1883,59,Montserrat,GPH,58,Antigua and Barbuda (Antigua),GPH,2963,59,,,,,,ignore_internal,
 59<-53,1883,59,Montserrat,GPH,53,Barbados,GPH,10418,59,,,,,,ignore_resolved,
 59<-Demerara,1883,59,Montserrat,GPH,Demerara,Demerara,RIC,26,59,,,,,,ignore_resolved,
-59<-54,1883,59,Montserrat,GPH,54,Dominica,GPH,47,59,,,,,,ignore_resolved,
+59<-54,1883,59,Montserrat,GPH,54,Dominica,GPH,47,59,,,,,,ignore_internal,
 59<-55,1883,59,Montserrat,GPH,55,Grenada,GPH,50,59,,,,,,ignore_resolved,
-59<-1076,1883,59,Montserrat,GPH,1076,Nevis,GPH,184,59,,,,,,ignore_resolved,
-59<-1075,1883,59,Montserrat,GPH,1075,St. Kitts,GPH,1518,59,,,,,,ignore_resolved,
-59<-Tortola,1883,59,Montserrat,GPH,Tortola,Tortola,RIC,12,59,,,,,,ignore_resolved,
+59<-1076,1883,59,Montserrat,GPH,1076,Nevis,GPH,184,59,,,,,,ignore_internal,
+59<-1075,1883,59,Montserrat,GPH,1075,St. Kitts,GPH,1518,59,,,,,,ignore_internal,
+59<-Tortola,1883,59,Montserrat,GPH,Tortola,Tortola,RIC,12,59,,,,,,ignore_internal,
 59<-1048,1883,59,Montserrat,GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,90,59,,,,,,ignore_resolved,
 59<-1022,1883,59,Montserrat,GPH,1022,Nova Scotia,GPH,262,59,,,,,,ignore_resolved,
 59<-65,1883,59,Montserrat,GPH,65,Guadeloupe,GPH-AUTONOMOUS-CITED,104,59,,,,,,ignore_resolved,
 59<-210,1883,59,Montserrat,GPH,210,Netherlands,GPH-AUTONOMOUS-CITED,56,59,,,,,,ignore_resolved,
-59<-1064,1883,59,Montserrat,GPH,1064,St. Barthelemy,GPH,8,59,,,,,,split_failed_error,
-59<-1077,1883,59,Montserrat,GPH,1077,St. Martin,GPH,32,59,,,,,,split_failed_error,
+59<-1064,1883,59,Montserrat,GPH,1064,St. Barthelemy,GPH,8,59,,,,,,ignore_resolved,
+59<-1077,1883,59,Montserrat,GPH,1077,St. Martin,GPH,32,59,,,,,,ignore_resolved,
 59<-St. Thomas,1883,59,Montserrat,GPH,St. Thomas,St. Thomas,RIC,27,59,,,,,,ignore_resolved,
 59<-2,1883,59,Montserrat,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,677,59,,,,,,ignore_resolved,
 59->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,24612,59,,,,,,ignore_resolved,
-59->58,1883,58,Antigua and Barbuda (Antigua),GPH,59,Montserrat,GPH,1829,59,,,,,,ignore_resolved,
+59->58,1883,58,Antigua and Barbuda (Antigua),GPH,59,Montserrat,GPH,1829,59,,,,,,ignore_internal,
 59->53,1883,53,Barbados,GPH,59,Montserrat,GPH,539,59,,,,,,ignore_resolved,
-59->54,1883,54,Dominica,GPH,59,Montserrat,GPH,32,59,,,,,,ignore_resolved,
-59->1076,1883,1076,Nevis,GPH,59,Montserrat,GPH,0.5,59,,,,,,ignore_resolved,
-59->1075,1883,1075,St. Kitts,GPH,59,Montserrat,GPH,1059,59,,,,,,ignore_resolved,
-59->Tortola,1883,Tortola,Tortola,RIC,59,Montserrat,GPH,43,59,,,,,,ignore_resolved,
+59->54,1883,54,Dominica,GPH,59,Montserrat,GPH,32,59,,,,,,ignore_internal,
+59->1076,1883,1076,Nevis,GPH,59,Montserrat,GPH,0.5,59,,,,,,ignore_internal,
+59->1075,1883,1075,St. Kitts,GPH,59,Montserrat,GPH,1059,59,,,,,,ignore_internal,
+59->Tortola,1883,Tortola,Tortola,RIC,59,Montserrat,GPH,43,59,,,,,,ignore_internal,
 59->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,75,59,,,,,,ignore_resolved,
 59->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,110,59,,,,,,ignore_resolved,
-59->1064,1883,1064,St. Barthelemy,GPH,59,Montserrat,GPH,4,59,,,,,,split_failed_error,
-59->1077,1883,1077,St. Martin,GPH,59,Montserrat,GPH,171,59,,,,,,split_failed_error,
+59->1064,1883,1064,St. Barthelemy,GPH,59,Montserrat,GPH,4,59,,,,,,ignore_resolved,
+59->1077,1883,1077,St. Martin,GPH,59,Montserrat,GPH,171,59,,,,,,ignore_resolved,
 59->St. Thomas,1883,St. Thomas,St. Thomas,RIC,59,Montserrat,GPH,16,59,,,,,,ignore_resolved,
 59->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,293,59,,,,,,ignore_resolved,
 59->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,31,59,,,,,,ignore_resolved,
@@ -1278,10 +1273,10 @@ European Russia<-2,1883,European Russia,European Russia,RIC,2,United States of A
 94->100,1883,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,94,Costa Rica,GPH-AUTONOMOUS-CITED,13519.269945701717,94,,,,,,ok,
 94->Central America,1883,Central America,Central America,RIC,94,Costa Rica,GPH-AUTONOMOUS-CITED,1450.2596012841348,94,,1450.2596012841348,,80|90|91|92|93|160|1081|1103,,split_failed_no_ratio,
 1049<-200,1883,1049,Tobago,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,25039,1049,,,,,,ignore_resolved,
-1049<-British West Indies,1883,1049,Tobago,GPH,British West Indies,British West Indies,RIC,21632,1049,,21632,,30|31|51|1048|1055|1063,,ignore_resolved,
+1049<-British West Indies,1883,1049,Tobago,GPH,British West Indies,British West Indies,RIC,21632,1049,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 1049<-66,1883,1049,Tobago,GPH,66,Martinique,GPH-AUTONOMOUS-CITED,333,1049,,,,,,ignore_resolved,
 1049->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,1049,Tobago,GPH,37070,1049,,,,,,ignore_resolved,
-1049->British West Indies,1883,British West Indies,British West Indies,RIC,1049,Tobago,GPH,5163,1049,,5163,,30|31|51|1048|1055|1063,,ignore_resolved,
+1049->British West Indies,1883,British West Indies,British West Indies,RIC,1049,Tobago,GPH,5163,1049,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 1049->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,1049,Tobago,GPH,10,1049,,,,,,ignore_resolved,
 1049->French West Indies,1883,French West Indies,French West Indies,RIC,1049,Tobago,GPH,944,1049,,,,,,ignore_resolved,
 1049->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,1049,Tobago,GPH,4830,1049,,,,,,ignore_resolved,
@@ -1499,21 +1494,21 @@ European Russia<-2,1883,European Russia,European Russia,RIC,2,United States of A
 840<-French East Indies,1883,840,Philippines,GPH-AUTONOMOUS-CITED,French East Indies,French East Indies,RIC,154806.61273364304,840,,154806.61273364304,,751|8151,,split_failed_no_ratio,
 840<-710,1883,840,Philippines,GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,77403.30636682152,840,,,,,,ok,
 55<-200,1883,55,Grenada,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,69391,55,,,,,,ignore_resolved,
-55<-53,1883,55,Grenada,GPH,53,Barbados,GPH,37922,55,,,,,,ignore_resolved,
+55<-53,1883,55,Grenada,GPH,53,Barbados,GPH,37922,55,,,,,,ignore_internal,
 55<-1048,1883,55,Grenada,GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,7407,55,,,,,,ignore_resolved,
-55<-57,1883,55,Grenada,GPH,57,St. Vincent and the Grenadines,GPH,336,55,,,,,,ignore_resolved,
+55<-57,1883,55,Grenada,GPH,57,St. Vincent and the Grenadines,GPH,336,55,,,,,,ignore_internal,
 55<-Demerara,1883,55,Grenada,GPH,Demerara,Demerara,RIC,152,55,,,,,,ignore_resolved,
-55<-56,1883,55,Grenada,GPH,56,St. Lucia,GPH,85,55,,,,,,ignore_resolved,
+55<-56,1883,55,Grenada,GPH,56,St. Lucia,GPH,85,55,,,,,,ignore_internal,
 55<-1022,1883,55,Grenada,GPH,1022,Nova Scotia,GPH,1491,55,,,,,,ignore_resolved,
 55<-51,1883,55,Grenada,GPH,51,Jamaica,GPH-AUTONOMOUS-CITED,35,55,,,,,,ignore_resolved,
 55<-59,1883,55,Grenada,GPH,59,Montserrat,GPH,26,55,,,,,,ignore_resolved,
 55<-1062,1883,55,Grenada,GPH,1062,Anguilla,GPH,8,55,,,,,,ignore_resolved,
-55<-1049,1883,55,Grenada,GPH,1049,Tobago,GPH,10,55,,,,,,ignore_resolved,
+55<-1049,1883,55,Grenada,GPH,1049,Tobago,GPH,10,55,,,,,,ignore_internal,
 55<-58,1883,55,Grenada,GPH,58,Antigua and Barbuda (Antigua),GPH,1,55,,,,,,ignore_resolved,
 55<-2,1883,55,Grenada,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,15820,55,,,,,,ignore_resolved,
 55<-66,1883,55,Grenada,GPH,66,Martinique,GPH-AUTONOMOUS-CITED,1639,55,,,,,,ignore_resolved,
 55<-1077,1883,55,Grenada,GPH,1077,St. Martin,GPH,40,55,,,,,,ignore_resolved,
-55<-Margarita I.,1883,55,Grenada,GPH,Margarita I.,Margarita I.,RIC,240,55,,,,,,split_failed_error,
+55<-Margarita I.,1883,55,Grenada,GPH,Margarita I.,Margarita I.,RIC,240,55,,,,,,ignore_resolved,
 55<-1064,1883,55,Grenada,GPH,1064,St. Barthelemy,GPH,132,55,,,,,,ignore_resolved,
 55<-401,1883,55,Grenada,GPH,401,Madeira Isles,GPH,41,55,,,,,,ignore_resolved,
 55<-St. Thomas,1883,55,Grenada,GPH,St. Thomas,St. Thomas,RIC,5,55,,,,,,ignore_resolved,
@@ -1522,12 +1517,12 @@ European Russia<-2,1883,European Russia,European Russia,RIC,2,United States of A
 55<-41,1883,55,Grenada,GPH,41,Haiti,GPH-AUTONOMOUS-CITED,16,55,,,,,,ignore_resolved,
 55<-1067,1883,55,Grenada,GPH,1067,Saba,GPH,24,55,,,,,,ignore_resolved,
 55->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,155559,55,,,,,,ignore_resolved,
-55->53,1883,53,Barbados,GPH,55,Grenada,GPH,4134,55,,,,,,ignore_resolved,
+55->53,1883,53,Barbados,GPH,55,Grenada,GPH,4134,55,,,,,,ignore_internal,
 55->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,6917,55,,,,,,ignore_resolved,
-55->57,1883,57,St. Vincent and the Grenadines,GPH,55,Grenada,GPH,324,55,,,,,,ignore_resolved,
+55->57,1883,57,St. Vincent and the Grenadines,GPH,55,Grenada,GPH,324,55,,,,,,ignore_internal,
 55->Demerara,1883,Demerara,Demerara,RIC,55,Grenada,GPH,285,55,,,,,,ignore_resolved,
-55->56,1883,56,St. Lucia,GPH,55,Grenada,GPH,15,55,,,,,,ignore_resolved,
-55->1049,1883,1049,Tobago,GPH,55,Grenada,GPH,18,55,,,,,,ignore_resolved,
+55->56,1883,56,St. Lucia,GPH,55,Grenada,GPH,15,55,,,,,,ignore_internal,
+55->1049,1883,1049,Tobago,GPH,55,Grenada,GPH,18,55,,,,,,ignore_internal,
 55->1075,1883,1075,St. Kitts,GPH,55,Grenada,GPH,4,55,,,,,,ignore_resolved,
 55->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,1612,55,,,,,,ignore_resolved,
 55->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,4851,55,,,,,,ignore_resolved,
@@ -1536,8 +1531,8 @@ European Russia<-2,1883,European Russia,European Russia,RIC,2,United States of A
 1061<-1077,1883,1061,British Virgin Is.,GPH,1077,St. Martin,GPH,108,1061,,,,,,ignore_resolved,
 1061<-1068,1883,1061,British Virgin Is.,GPH,1068,Sint Eustatius,GPH,22,1061,,,,,,ignore_resolved,
 1061<-1067,1883,1061,British Virgin Is.,GPH,1067,Saba,GPH,9,1061,,,,,,ignore_resolved,
-1061->54,1883,54,Dominica,GPH,1061,British Virgin Is.,GPH,10,1061,,,,,,ignore_resolved,
-1061->59,1883,59,Montserrat,GPH,1061,British Virgin Is.,GPH,54,1061,,,,,,ignore_resolved,
+1061->54,1883,54,Dominica,GPH,1061,British Virgin Is.,GPH,10,1061,,,,,,ignore_internal,
+1061->59,1883,59,Montserrat,GPH,1061,British Virgin Is.,GPH,54,1061,,,,,,ignore_internal,
 1061->St. Croix & St. John & St. Thomas,1883,St. Croix & St. John & St. Thomas,St. Croix & St. John & St. Thomas,RIC,1061,British Virgin Is.,GPH,4917,1061,,,,,,ignore_resolved,
 1061->1077,1883,1077,St. Martin,GPH,1061,British Virgin Is.,GPH,44,1061,,,,,,ignore_resolved,
 230->255,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,383031.15470392787,230,,,,,,ok,
@@ -1654,13 +1649,12 @@ European Russia<-Southern America & United States of America,1883,European Russi
 31<-100,1883,31,Bahamas,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,8,31,,,,,,ok,
 31<-41,1883,31,Bahamas,GPH-AUTONOMOUS-CITED,41,Haiti,GPH-AUTONOMOUS-CITED,613,31,,,,,,ok,
 31<-42,1883,31,Bahamas,GPH-AUTONOMOUS-CITED,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS-CITED,116,31,,,,,,ok,
-31<-***NA,1883,31,Bahamas,GPH-AUTONOMOUS-CITED,***NA,***NA,RIC,474,31,,,,,,split_failed_error,
 31->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,74719,31,,,,,,ok,
 31->41,1883,41,Haiti,GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,19,31,,,,,,ok,
 31->42,1883,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,109,31,,,,,,ok,
 53<-200,1883,53,Barbados,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,458946,53,,,,,,ignore_resolved,
-53<-British Northern America,1883,53,Barbados,GPH,British Northern America,British Northern America,RIC,90159,53,,90159,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-53<-British West Indies,1883,53,Barbados,GPH,British West Indies,British West Indies,RIC,36707,53,,36707,,31|51|1048|1055|1063,,ignore_resolved,
+53<-British Northern America,1883,53,Barbados,GPH,British Northern America,British Northern America,RIC,90159,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+53<-British West Indies,1883,53,Barbados,GPH,British West Indies,British West Indies,RIC,36707,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 53<-30,1883,53,Barbados,GPH,30,Bermuda,GPH-AUTONOMOUS-CITED,668,53,,,,,,ignore_resolved,
 53<-110,1883,53,Barbados,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,33717,53,,,,,,ignore_resolved,
 53<-2003,1883,53,Barbados,GPH,2003,Channel Is.,GPH-AUTONOMOUS-CITED,1992,53,,,,,,ignore_resolved,
@@ -1668,7 +1662,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 53<-Chittagong,1883,53,Barbados,GPH,Chittagong,Chittagong,RIC,9229,53,,,,,,ignore_resolved,
 53<-2,1883,53,Barbados,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,451724,53,,,,,,ignore_resolved,
 53<-220,1883,53,Barbados,GPH,220,France,GPH-AUTONOMOUS-CITED,5487,53,,,,,,ignore_resolved,
-53<-West Indies (other),1883,53,Barbados,GPH,West Indies (other),West Indies (other),RIC,14731,53,,14731,,5|6|40|42|65|66|68|1032|1033|1044|1081|1087,,ignore_resolved,
+53<-West Indies (other),1883,53,Barbados,GPH,West Indies (other),West Indies (other),RIC,14731,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 53<-115,1883,53,Barbados,GPH,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,1501,53,,,,,,ignore_resolved,
 53<-3291,1883,53,Barbados,GPH,3291,Sicily,GPH,1324,53,,,,,,ignore_resolved,
 53<-390,1883,53,Barbados,GPH,390,Denmark,GPH-AUTONOMOUS-CITED,2093,53,,,,,,ignore_resolved,
@@ -1678,14 +1672,13 @@ European Russia<-Southern America & United States of America,1883,European Russi
 53<-410,1883,53,Barbados,GPH,410,Canary Is.,GPH,794,53,,,,,,ignore_resolved,
 53<-140,1883,53,Barbados,GPH,140,Brazil,GPH-AUTONOMOUS-CITED,20,53,,,,,,ignore_resolved,
 53<-235,1883,53,Barbados,GPH,235,Portugal,GPH-AUTONOMOUS-CITED,1,53,,,,,,ignore_resolved,
-53<-***NA,1883,53,Barbados,GPH,***NA,***NA,RIC,1748,53,,,,,,split_failed_error,
 53->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,53,Barbados,GPH,438916,53,,,,,,ignore_resolved,
-53->British Northern America,1883,British Northern America,British Northern America,RIC,53,Barbados,GPH,109442,53,,109442,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-53->British West Indies,1883,British West Indies,British West Indies,RIC,53,Barbados,GPH,3051,53,,3051,,31|51|1048|1055|1063,,ignore_resolved,
+53->British Northern America,1883,British Northern America,British Northern America,RIC,53,Barbados,GPH,109442,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+53->British West Indies,1883,British West Indies,British West Indies,RIC,53,Barbados,GPH,3051,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 53->30,1883,30,Bermuda,GPH-AUTONOMOUS-CITED,53,Barbados,GPH,4924,53,,,,,,ignore_resolved,
 53->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,53,Barbados,GPH,4422,53,,,,,,ignore_resolved,
 53->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,53,Barbados,GPH,405076,53,,,,,,ignore_resolved,
-53->West Indies (other),1883,West Indies (other),West Indies (other),RIC,53,Barbados,GPH,485,53,,485,,5|6|40|42|65|66|68|1032|1033|1044|1081|1087,,ignore_resolved,
+53->West Indies (other),1883,West Indies (other),West Indies (other),RIC,53,Barbados,GPH,485,53,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 53->115,1883,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,53,Barbados,GPH,55,53,,,,,,ignore_resolved,
 53->41,1883,41,Haiti,GPH-AUTONOMOUS-CITED,53,Barbados,GPH,23,53,,,,,,ignore_resolved,
 51<-200,1883,51,Jamaica,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,941757,51,,,,,,ok,
@@ -1792,29 +1785,29 @@ European Russia<-Southern America & United States of America,1883,European Russi
 561->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,99226,561,,,,,,ok,
 56<-200,1883,56,St. Lucia,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,80715,56,,,,,,ignore_resolved,
 56<-58,1883,56,St. Lucia,GPH,58,Antigua and Barbuda (Antigua),GPH,11,56,,,,,,ignore_resolved,
-56<-53,1883,56,St. Lucia,GPH,53,Barbados,GPH,13196,56,,,,,,ignore_resolved,
+56<-53,1883,56,St. Lucia,GPH,53,Barbados,GPH,13196,56,,,,,,ignore_internal,
 56<-110,1883,56,St. Lucia,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,364,56,,,,,,ignore_resolved,
 56<-54,1883,56,St. Lucia,GPH,54,Dominica,GPH,174,56,,,,,,ignore_resolved,
-56<-55,1883,56,St. Lucia,GPH,55,Grenada,GPH,9,56,,,,,,ignore_resolved,
+56<-55,1883,56,St. Lucia,GPH,55,Grenada,GPH,9,56,,,,,,ignore_internal,
 56<-51,1883,56,St. Lucia,GPH,51,Jamaica,GPH-AUTONOMOUS-CITED,347,56,,,,,,ignore_resolved,
-56<-57,1883,56,St. Lucia,GPH,57,St. Vincent and the Grenadines,GPH,165,56,,,,,,ignore_resolved,
-56<-1049,1883,56,St. Lucia,GPH,1049,Tobago,GPH,1,56,,,,,,ignore_resolved,
+56<-57,1883,56,St. Lucia,GPH,57,St. Vincent and the Grenadines,GPH,165,56,,,,,,ignore_internal,
+56<-1049,1883,56,St. Lucia,GPH,1049,Tobago,GPH,1,56,,,,,,ignore_internal,
 56<-1048,1883,56,St. Lucia,GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,151,56,,,,,,ignore_resolved,
 56->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,158963,56,,,,,,ignore_resolved,
 56->58,1883,58,Antigua and Barbuda (Antigua),GPH,56,St. Lucia,GPH,869,56,,,,,,ignore_resolved,
 56->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,5,56,,,,,,ignore_resolved,
-56->57,1883,57,St. Vincent and the Grenadines,GPH,56,St. Lucia,GPH,32,56,,,,,,ignore_resolved,
+56->57,1883,57,St. Vincent and the Grenadines,GPH,56,St. Lucia,GPH,32,56,,,,,,ignore_internal,
 56<-220,1883,56,St. Lucia,GPH,220,France,GPH-AUTONOMOUS-CITED,35239,56,,,,,,ignore_resolved,
 56<-210,1883,56,St. Lucia,GPH,210,Netherlands,GPH-AUTONOMOUS-CITED,65,56,,,,,,ignore_resolved,
 56<-2,1883,56,St. Lucia,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,44294,56,,,,,,ignore_resolved,
-56<-French West Indies,1883,56,St. Lucia,GPH,French West Indies,French West Indies,RIC,14318,56,,14318,,65|66,,ignore_resolved,
+56<-French West Indies,1883,56,St. Lucia,GPH,French West Indies,French West Indies,RIC,14318,56,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 56<-5,1883,56,St. Lucia,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,68,56,,,,,,ignore_resolved,
 56<-68,1883,56,St. Lucia,GPH,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,46,56,,,,,,ignore_resolved,
-56<-Spanish West Indies,1883,56,St. Lucia,GPH,Spanish West Indies,Spanish West Indies,RIC,1993,56,,1993,,6|40,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+56<-Spanish West Indies,1883,56,St. Lucia,GPH,Spanish West Indies,Spanish West Indies,RIC,1993,56,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 56<-Colón,1883,56,St. Lucia,GPH,Colón,Colón,RIC,30,56,,,,,,ignore_resolved,
 56->220,1883,220,France,GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,4344,56,,,,,,ignore_resolved,
 56->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,40296,56,,,,,,ignore_resolved,
-56->French West Indies,1883,French West Indies,French West Indies,RIC,56,St. Lucia,GPH,7706,56,,7706,,65|66,,ignore_resolved,
+56->French West Indies,1883,French West Indies,French West Indies,RIC,56,St. Lucia,GPH,7706,56,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 211->Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,1883,Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,RIC,211,Belgium,GPH-AUTONOMOUS-CITED,201943.7800001272,211,,201943.7800001272,,511|600|615|616,,split_failed_no_ratio,
 211<-Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,1883,211,Belgium,GPH-AUTONOMOUS-CITED,Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,Algeria (Regency of Algiers) & Morocco & Tunisia (Regency of Tunis) & Zanzibar,RIC,73027.64000004601,211,,73027.64000004601,,511|600|615|616,,split_failed_no_ratio,
 211->255,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,211,Belgium,GPH-AUTONOMOUS-CITED,7835057.840004936,211,,,,,,ok,
@@ -1961,7 +1954,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 651->365,1883,365,Russia (USSR),GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,415853.1722880249,651,,,,,,ok,
 651->640,1883,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,345268.59775670007,651,,,,,,ok,
 651->British Mediterranean Sea & United Kingdom,1883,British Mediterranean Sea & United Kingdom,British Mediterranean Sea & United Kingdom,RIC,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,8755510.990051216,651,,8755510.990051216,,200|231|338,,split_failed_no_ratio,
-70->Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,1883,Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,RIC,70,Mexico,GPH-AUTONOMOUS-CITED,46100,70,,46100,,90|100|101,,split_failed_no_ratio,
+70->Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,1883,Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela,RIC,70,Mexico,GPH-AUTONOMOUS-CITED,46100,70,,,,,,ignore_resolved,
 70->220,1883,220,France,GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,420500,70,,,,,,ok,
 70->255,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,112600,70,,,,,,ok,
 70->230,1883,230,Spain,GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,198900,70,,,,,,ok,
@@ -2180,7 +2173,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 20<-850,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,25023.605416821967,20,,,,,,ok,
 20<-1029,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,1690.686213608316,20,,,,,,ok,
 20<-21,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,158598.37660993086,20,,,,,,ok,
-20<-Norway & Sweden,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,Norway & Sweden,Norway & Sweden,RIC,8639.58255683936,20,,,,,,split_failed_error,
+20<-Norway & Sweden,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,Norway & Sweden,Norway & Sweden,RIC,8639.58255683936,20,,,,,,ignore_resolved,
 20<-900,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,900,Australia,GPH,253.03350312668243,20,,253.03350312668243,,901|902|903|904|905|906,,split_failed_no_ratio,
 20<-365,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,2133.598376609931,20,,,,,,ok,
 20<-390,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,35.408125232948194,20,,,,,,ok,
@@ -2470,14 +2463,14 @@ European Russia<-Southern America & United States of America,1883,European Russi
 220->101,1883,101,Venezuela,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,202132.29757044904,220,,,,,,ok,
 220<-101,1883,220,France,GPH-AUTONOMOUS-CITED,101,Venezuela,GPH-AUTONOMOUS-CITED,713408.1090721731,220,,,,,,ok,
 54<-200,1883,54,Dominica,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,30861,54,,,,,,ignore_resolved,
-54<-1062,1883,54,Dominica,GPH,1062,Anguilla,GPH,17,54,,,,,,ignore_resolved,
-54<-58,1883,54,Dominica,GPH,58,Antigua and Barbuda (Antigua),GPH,463,54,,,,,,ignore_resolved,
+54<-1062,1883,54,Dominica,GPH,1062,Anguilla,GPH,17,54,,,,,,ignore_internal,
+54<-58,1883,54,Dominica,GPH,58,Antigua and Barbuda (Antigua),GPH,463,54,,,,,,ignore_internal,
 54<-53,1883,54,Dominica,GPH,53,Barbados,GPH,19014,54,,,,,,ignore_resolved,
-54<-British Northern America,1883,54,Dominica,GPH,British Northern America,British Northern America,RIC,608,54,,608,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+54<-British Northern America,1883,54,Dominica,GPH,British Northern America,British Northern America,RIC,608,54,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 54<-110,1883,54,Dominica,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,675,54,,,,,,ignore_resolved,
-54<-59,1883,54,Dominica,GPH,59,Montserrat,GPH,141,54,,,,,,ignore_resolved,
-54<-1076,1883,54,Dominica,GPH,1076,Nevis,GPH,1,54,,,,,,ignore_resolved,
-54<-1075,1883,54,Dominica,GPH,1075,St. Kitts,GPH,184,54,,,,,,ignore_resolved,
+54<-59,1883,54,Dominica,GPH,59,Montserrat,GPH,141,54,,,,,,ignore_internal,
+54<-1076,1883,54,Dominica,GPH,1076,Nevis,GPH,1,54,,,,,,ignore_internal,
+54<-1075,1883,54,Dominica,GPH,1075,St. Kitts,GPH,184,54,,,,,,ignore_internal,
 54<-56,1883,54,Dominica,GPH,56,St. Lucia,GPH,266,54,,,,,,ignore_resolved,
 54<-57,1883,54,Dominica,GPH,57,St. Vincent and the Grenadines,GPH,4,54,,,,,,ignore_resolved,
 54<-1048,1883,54,Dominica,GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,139,54,,,,,,ignore_resolved,
@@ -2486,20 +2479,20 @@ European Russia<-Southern America & United States of America,1883,European Russi
 54<-65,1883,54,Dominica,GPH,65,Guadeloupe,GPH-AUTONOMOUS-CITED,927,54,,,,,,ignore_resolved,
 54<-66,1883,54,Dominica,GPH,66,Martinique,GPH-AUTONOMOUS-CITED,5980,54,,,,,,ignore_resolved,
 54<-6,1883,54,Dominica,GPH,6,Puerto Rico,GPH-AUTONOMOUS-CITED,501,54,,,,,,ignore_resolved,
-54<-1077,1883,54,Dominica,GPH,1077,St. Martin,GPH,109,54,,,,,,split_failed_error,
+54<-1077,1883,54,Dominica,GPH,1077,St. Martin,GPH,109,54,,,,,,ignore_resolved,
 54<-St. Thomas,1883,54,Dominica,GPH,St. Thomas,St. Thomas,RIC,310,54,,,,,,ignore_resolved,
-54<-1064,1883,54,Dominica,GPH,1064,St. Barthelemy,GPH,245,54,,,,,,split_failed_error,
+54<-1064,1883,54,Dominica,GPH,1064,St. Barthelemy,GPH,245,54,,,,,,ignore_resolved,
 54<-2,1883,54,Dominica,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,10867,54,,,,,,ignore_resolved,
 54->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,34930,54,,,,,,ignore_resolved,
-54->58,1883,58,Antigua and Barbuda (Antigua),GPH,54,Dominica,GPH,692,54,,,,,,ignore_resolved,
+54->58,1883,58,Antigua and Barbuda (Antigua),GPH,54,Dominica,GPH,692,54,,,,,,ignore_internal,
 54->53,1883,53,Barbados,GPH,54,Dominica,GPH,1362,54,,,,,,ignore_resolved,
-54->British Northern America,1883,British Northern America,British Northern America,RIC,54,Dominica,GPH,53,54,,53,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-54->59,1883,59,Montserrat,GPH,54,Dominica,GPH,13,54,,,,,,ignore_resolved,
-54->1075,1883,1075,St. Kitts,GPH,54,Dominica,GPH,74,54,,,,,,ignore_resolved,
+54->British Northern America,1883,British Northern America,British Northern America,RIC,54,Dominica,GPH,53,54,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+54->59,1883,59,Montserrat,GPH,54,Dominica,GPH,13,54,,,,,,ignore_internal,
+54->1075,1883,1075,St. Kitts,GPH,54,Dominica,GPH,74,54,,,,,,ignore_internal,
 54->56,1883,56,St. Lucia,GPH,54,Dominica,GPH,10,54,,,,,,ignore_resolved,
 54->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,447,54,,,,,,ignore_resolved,
 54->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,2952,54,,,,,,ignore_resolved,
-54->1077,1883,1077,St. Martin,GPH,54,Dominica,GPH,19,54,,,,,,split_failed_error,
+54->1077,1883,1077,St. Martin,GPH,54,Dominica,GPH,19,54,,,,,,ignore_resolved,
 54->St. Croix,1883,St. Croix,St. Croix,RIC,54,Dominica,GPH,42,54,,,,,,ignore_resolved,
 54->St. Thomas,1883,St. Thomas,St. Thomas,RIC,54,Dominica,GPH,332,54,,,,,,ignore_resolved,
 54->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,17534,54,,,,,,ignore_resolved,
@@ -2571,61 +2564,61 @@ European Russia<-Southern America & United States of America,1883,European Russi
 365<-380,1883,365,Russia (USSR),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,332931.6120027913,365,,,,,,ok,
 365<-375,1883,365,Russia (USSR),GPH-AUTONOMOUS-CITED,375,Finland,GPH,1567973.2828232478,365,,,,,,ignore_resolved,
 57<-200,1883,57,St. Vincent and the Grenadines,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,76200,57,,,,,,ignore_resolved,
-57<-British West Indies,1883,57,St. Vincent and the Grenadines,GPH,British West Indies,British West Indies,RIC,52179,57,,52179,,30|31|51|1048|1055|1063,,ignore_resolved,
-57<-British Northern America,1883,57,St. Vincent and the Grenadines,GPH,British Northern America,British Northern America,RIC,5284,57,,,,,,ignore_resolved,
+57<-British West Indies,1883,57,St. Vincent and the Grenadines,GPH,British West Indies,British West Indies,RIC,52179,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+57<-British Northern America,1883,57,St. Vincent and the Grenadines,GPH,British Northern America,British Northern America,RIC,5284,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 57<-2,1883,57,St. Vincent and the Grenadines,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,9495,57,,,,,,ignore_resolved,
 57<-101,1883,57,St. Vincent and the Grenadines,GPH,101,Venezuela,GPH-AUTONOMOUS-CITED,998,57,,,,,,ignore_resolved,
 57<-210,1883,57,St. Vincent and the Grenadines,GPH,210,Netherlands,GPH-AUTONOMOUS-CITED,553,57,,,,,,ignore_resolved,
-57<-French West Indies,1883,57,St. Vincent and the Grenadines,GPH,French West Indies,French West Indies,RIC,3192,57,,3192,,65|66,,ignore_resolved,
+57<-French West Indies,1883,57,St. Vincent and the Grenadines,GPH,French West Indies,French West Indies,RIC,3192,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 57<-68,1883,57,St. Vincent and the Grenadines,GPH,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,368,57,,,,,,ignore_resolved,
 57<-5,1883,57,St. Vincent and the Grenadines,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,13,57,,,,,,ignore_resolved,
 57->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,57,St. Vincent and the Grenadines,GPH,97842,57,,,,,,ignore_resolved,
-57->British West Indies,1883,British West Indies,British West Indies,RIC,57,St. Vincent and the Grenadines,GPH,5965,57,,5965,,30|31|51|1048|1055|1063,,ignore_resolved,
-57->British Northern America,1883,British Northern America,British Northern America,RIC,57,St. Vincent and the Grenadines,GPH,3784,57,,,,,,ignore_resolved,
+57->British West Indies,1883,British West Indies,British West Indies,RIC,57,St. Vincent and the Grenadines,GPH,5965,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+57->British Northern America,1883,British Northern America,British Northern America,RIC,57,St. Vincent and the Grenadines,GPH,3784,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 57->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,57,St. Vincent and the Grenadines,GPH,51502,57,,,,,,ignore_resolved,
-57->French West Indies,1883,French West Indies,French West Indies,RIC,57,St. Vincent and the Grenadines,GPH,4975,57,,4975,,65|66,,ignore_resolved,
+57->French West Indies,1883,French West Indies,French West Indies,RIC,57,St. Vincent and the Grenadines,GPH,4975,57,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 57->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,57,St. Vincent and the Grenadines,GPH,718,57,,,,,,ignore_resolved,
 60<-200,1883,60,St. Kitts-Nevis,GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,100561,60,,,,,,ignore_resolved,
-60<-British Northern America,1883,60,St. Kitts-Nevis,GPH,British Northern America,British Northern America,RIC,4442,60,,4442,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-60<-58,1883,60,St. Kitts-Nevis,GPH,58,Antigua and Barbuda (Antigua),GPH,6227,60,,,,,,ignore_resolved,
+60<-British Northern America,1883,60,St. Kitts-Nevis,GPH,British Northern America,British Northern America,RIC,4442,60,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+60<-58,1883,60,St. Kitts-Nevis,GPH,58,Antigua and Barbuda (Antigua),GPH,6227,60,,,,,,ignore_internal,
 60<-53,1883,60,St. Kitts-Nevis,GPH,53,Barbados,GPH,5971,60,,,,,,ignore_resolved,
 60<-1048,1883,60,St. Kitts-Nevis,GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,210,60,,,,,,ignore_resolved,
-60<-59,1883,60,St. Kitts-Nevis,GPH,59,Montserrat,GPH,87,60,,,,,,ignore_resolved,
-60<-54,1883,60,St. Kitts-Nevis,GPH,54,Dominica,GPH,142,60,,,,,,ignore_resolved,
+60<-59,1883,60,St. Kitts-Nevis,GPH,59,Montserrat,GPH,87,60,,,,,,ignore_internal,
+60<-54,1883,60,St. Kitts-Nevis,GPH,54,Dominica,GPH,142,60,,,,,,ignore_internal,
 60<-57,1883,60,St. Kitts-Nevis,GPH,57,St. Vincent and the Grenadines,GPH,9,60,,,,,,ignore_resolved,
 60<-51,1883,60,St. Kitts-Nevis,GPH,51,Jamaica,GPH-AUTONOMOUS-CITED,377,60,,,,,,ignore_resolved,
 60<-55,1883,60,St. Kitts-Nevis,GPH,55,Grenada,GPH,102,60,,,,,,ignore_resolved,
 60<-Demerara,1883,60,St. Kitts-Nevis,GPH,Demerara,Demerara,RIC,3248,60,,,,,,ignore_resolved,
-60<-Tortola,1883,60,St. Kitts-Nevis,GPH,Tortola,Tortola,RIC,32,60,,,,,,ignore_resolved,
+60<-Tortola,1883,60,St. Kitts-Nevis,GPH,Tortola,Tortola,RIC,32,60,,,,,,ignore_internal,
 60<-56,1883,60,St. Kitts-Nevis,GPH,56,St. Lucia,GPH,21,60,,,,,,ignore_resolved,
 60<-2,1883,60,St. Kitts-Nevis,GPH,2,United States of America,GPH-AUTONOMOUS-CITED,78276,60,,,,,,ignore_resolved,
 60<-66,1883,60,St. Kitts-Nevis,GPH,66,Martinique,GPH-AUTONOMOUS-CITED,729,60,,,,,,ignore_resolved,
 60<-65,1883,60,St. Kitts-Nevis,GPH,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1171,60,,,,,,ignore_resolved,
-60<-1077,1883,60,St. Kitts-Nevis,GPH,1077,St. Martin,GPH,1931,60,,,,,,split_failed_error,
-60<-1064,1883,60,St. Kitts-Nevis,GPH,1064,St. Barthelemy,GPH,733,60,,,,,,split_failed_error,
+60<-1077,1883,60,St. Kitts-Nevis,GPH,1077,St. Martin,GPH,1931,60,,,,,,ignore_resolved,
+60<-1064,1883,60,St. Kitts-Nevis,GPH,1064,St. Barthelemy,GPH,733,60,,,,,,ignore_resolved,
 60<-1068,1883,60,St. Kitts-Nevis,GPH,1068,Sint Eustatius,GPH,282,60,,,,,,ignore_resolved,
 60<-1067,1883,60,St. Kitts-Nevis,GPH,1067,Saba,GPH,87,60,,,,,,ignore_resolved,
 60<-St. Thomas,1883,60,St. Kitts-Nevis,GPH,St. Thomas,St. Thomas,RIC,850,60,,,,,,ignore_resolved,
 60<-210,1883,60,St. Kitts-Nevis,GPH,210,Netherlands,GPH-AUTONOMOUS-CITED,267,60,,,,,,ignore_resolved,
-60<-Spanish West Indies,1883,60,St. Kitts-Nevis,GPH,Spanish West Indies,Spanish West Indies,RIC,33,60,,33,,6|40,,ignore_resolved,
+60<-Spanish West Indies,1883,60,St. Kitts-Nevis,GPH,Spanish West Indies,Spanish West Indies,RIC,33,60,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 60->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,156389,60,,,,,,ignore_resolved,
-60->British Northern America,1883,British Northern America,British Northern America,RIC,60,St. Kitts-Nevis,GPH,5162,60,,5162,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-60->58,1883,58,Antigua and Barbuda (Antigua),GPH,60,St. Kitts-Nevis,GPH,875,60,,,,,,ignore_resolved,
+60->British Northern America,1883,British Northern America,British Northern America,RIC,60,St. Kitts-Nevis,GPH,5162,60,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+60->58,1883,58,Antigua and Barbuda (Antigua),GPH,60,St. Kitts-Nevis,GPH,875,60,,,,,,ignore_internal,
 60->53,1883,53,Barbados,GPH,60,St. Kitts-Nevis,GPH,75,60,,,,,,ignore_resolved,
 60->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,107,60,,,,,,ignore_resolved,
-60->59,1883,59,Montserrat,GPH,60,St. Kitts-Nevis,GPH,21,60,,,,,,ignore_resolved,
-60->Redonda,1883,Redonda,Redonda,RIC,60,St. Kitts-Nevis,GPH,18,60,,,,,,ignore_resolved,
-60->54,1883,54,Dominica,GPH,60,St. Kitts-Nevis,GPH,33,60,,,,,,ignore_resolved,
+60->59,1883,59,Montserrat,GPH,60,St. Kitts-Nevis,GPH,21,60,,,,,,ignore_internal,
+60->Redonda,1883,Redonda,Redonda,RIC,60,St. Kitts-Nevis,GPH,18,60,,,,,,ignore_internal,
+60->54,1883,54,Dominica,GPH,60,St. Kitts-Nevis,GPH,33,60,,,,,,ignore_internal,
 60->57,1883,57,St. Vincent and the Grenadines,GPH,60,St. Kitts-Nevis,GPH,7,60,,,,,,ignore_resolved,
 60->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,76406,60,,,,,,ignore_resolved,
 60->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,562,60,,,,,,ignore_resolved,
 60->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,46,60,,,,,,ignore_resolved,
-60->1077,1883,1077,St. Martin,GPH,60,St. Kitts-Nevis,GPH,1061,60,,,,,,split_failed_error,
-60->1064,1883,1064,St. Barthelemy,GPH,60,St. Kitts-Nevis,GPH,595,60,,,,,,split_failed_error,
+60->1077,1883,1077,St. Martin,GPH,60,St. Kitts-Nevis,GPH,1061,60,,,,,,ignore_resolved,
+60->1064,1883,1064,St. Barthelemy,GPH,60,St. Kitts-Nevis,GPH,595,60,,,,,,ignore_resolved,
 60->1068,1883,1068,Sint Eustatius,GPH,60,St. Kitts-Nevis,GPH,182,60,,,,,,ignore_resolved,
 60->1067,1883,1067,Saba,GPH,60,St. Kitts-Nevis,GPH,141,60,,,,,,ignore_resolved,
 60->St. Thomas,1883,St. Thomas,St. Thomas,RIC,60,St. Kitts-Nevis,GPH,238,60,,,,,,ignore_resolved,
-60->Sombrero,1883,Sombrero,Sombrero,RIC,60,St. Kitts-Nevis,GPH,202,60,,,,,,ignore_resolved,
+60->Sombrero,1883,Sombrero,Sombrero,RIC,60,St. Kitts-Nevis,GPH,202,60,,,,,,ignore_internal,
 60->St. Croix,1883,St. Croix,St. Croix,RIC,60,St. Kitts-Nevis,GPH,18,60,,,,,,ignore_resolved,
 255<-248,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,248,Hamburg,GPH,26840371.91093712,255,,,,,,ignore_resolved,
 255->248,1883,248,Hamburg,GPH,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,36029899.68191828,255,,,,,,ignore_resolved,
@@ -2699,8 +2692,6 @@ European Russia<-Southern America & United States of America,1883,European Russi
 255->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,8646929.287986299,255,,,,,,ok,
 255<-Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,RIC,242769.7577685344,255,,242769.7577685344,,4|901|902|903|904|905|906|912|9900,,split_failed_no_ratio,
 255->Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,1883,Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,Australia & Hawaii (Sandwich Is.) & New Guinea (German New Guinea) (Kaiser Wilhelmsland) & Samoa,RIC,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,258673.84389527774,255,,258673.84389527774,,4|901|902|903|904|905|906|912|9900,,split_failed_no_ratio,
-255<-***NA,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,***NA,***NA,RIC,29214.582823586985,255,,,,,,split_failed_error,
-255->***NA,1883,***NA,***NA,RIC,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,3180.817225348667,255,,,,,,split_failed_error,
 710<-200,1883,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,4743920.638542655,710,,,,,,ok,
 710->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,6884794.966668101,710,,,,,,ok,
 710<-720,1883,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,720,Hong Kong,GPH-AUTONOMOUS-CITED,8151505.038543365,710,,,,,,ok,
@@ -2766,36 +2757,36 @@ European Russia<-Southern America & United States of America,1883,European Russi
 4781->Leeward Coast of Africa,1883,Leeward Coast of Africa,Leeward Coast of Africa,RIC,4781,Lagos,GPH,1117,4781,,,,,,ignore_duplicate,
 4781->Niger River,1883,Niger River,Niger River,RIC,4781,Lagos,GPH,190,4781,,,,,,ignore_duplicate,
 58<-200,1883,58,Antigua and Barbuda (Antigua),GPH,200,United Kingdom,GPH-AUTONOMOUS-CITED,86407,58,,,,,,ignore_resolved,
-58<-British Northern America,1883,58,Antigua and Barbuda (Antigua),GPH,British Northern America,British Northern America,RIC,13145,58,,13145,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58<-British Northern America,1883,58,Antigua and Barbuda (Antigua),GPH,British Northern America,British Northern America,RIC,13145,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 58<-53,1883,58,Antigua and Barbuda (Antigua),GPH,53,Barbados,GPH,8592,58,,,,,,ignore_resolved,
-58<-Anguilla & St. Kitts-Nevis,1883,58,Antigua and Barbuda (Antigua),GPH,Anguilla & St. Kitts-Nevis,Anguilla & St. Kitts-Nevis,RIC,2874,58,,,,,,ignore_resolved,
-58<-54,1883,58,Antigua and Barbuda (Antigua),GPH,54,Dominica,GPH,930,58,,,,,,ignore_resolved,
+58<-Anguilla & St. Kitts-Nevis,1883,58,Antigua and Barbuda (Antigua),GPH,Anguilla & St. Kitts-Nevis,Anguilla & St. Kitts-Nevis,RIC,2874,58,,,,,,ignore_internal,
+58<-54,1883,58,Antigua and Barbuda (Antigua),GPH,54,Dominica,GPH,930,58,,,,,,ignore_internal,
 58<-51,1883,58,Antigua and Barbuda (Antigua),GPH,51,Jamaica,GPH-AUTONOMOUS-CITED,322,58,,,,,,ignore_resolved,
-58<-59,1883,58,Antigua and Barbuda (Antigua),GPH,59,Montserrat,GPH,234,58,,,,,,ignore_resolved,
+58<-59,1883,58,Antigua and Barbuda (Antigua),GPH,59,Montserrat,GPH,234,58,,,,,,ignore_internal,
 58<-1048,1883,58,Antigua and Barbuda (Antigua),GPH,1048,Trinidad,GPH-AUTONOMOUS-CITED,84,58,,,,,,ignore_resolved,
 58<-Demerara,1883,58,Antigua and Barbuda (Antigua),GPH,Demerara,Demerara,RIC,45,58,,,,,,ignore_resolved,
 58<-57,1883,58,Antigua and Barbuda (Antigua),GPH,57,St. Vincent and the Grenadines,GPH,43,58,,,,,,ignore_resolved,
 58<-56,1883,58,Antigua and Barbuda (Antigua),GPH,56,St. Lucia,GPH,33,58,,,,,,ignore_resolved,
-58<-Tortola,1883,58,Antigua and Barbuda (Antigua),GPH,Tortola,Tortola,RIC,29,58,,,,,,ignore_resolved,
+58<-Tortola,1883,58,Antigua and Barbuda (Antigua),GPH,Tortola,Tortola,RIC,29,58,,,,,,ignore_internal,
 58<-2,1883,58,Antigua and Barbuda (Antigua),GPH,2,United States of America,GPH-AUTONOMOUS-CITED,66509,58,,,,,,ignore_resolved,
-58<-French Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,French Colonies,French Colonies,RIC,2021,58,,2021,,65|66|120|432|433|484|585|615|751|930|1029|5801|8151|9601|9602|9603|9605,,ignore_resolved,
-58<-Dutch Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Dutch Colonies,Dutch Colonies,RIC,1298,58,,1298,,68|115|850,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-58<-Peruvian Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Peruvian Colonies,Peruvian Colonies,RIC,739,58,,,,,,split_failed_error,
-58<-Danish Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Danish Colonies,Danish Colonies,RIC,219,58,,219,,5|10|11|395,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-58<-Portuguese Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Portuguese Colonies,Portuguese Colonies,RIC,111,58,,111,,402|403|404|540|541|721|752|860,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-58<-Spanish Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Spanish Colonies,Spanish Colonies,RIC,1,58,,1,,6|40|411|840|6067|9810|9820,,ignore_resolved,
+58<-French Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,French Colonies,French Colonies,RIC,2021,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58<-Dutch Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Dutch Colonies,Dutch Colonies,RIC,1298,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58<-Peruvian Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Peruvian Colonies,Peruvian Colonies,RIC,739,58,,,,,,ignore_resolved,
+58<-Danish Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Danish Colonies,Danish Colonies,RIC,219,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58<-Portuguese Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Portuguese Colonies,Portuguese Colonies,RIC,111,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58<-Spanish Colonies,1883,58,Antigua and Barbuda (Antigua),GPH,Spanish Colonies,Spanish Colonies,RIC,1,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 58->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,58,Antigua and Barbuda (Antigua),GPH,61143,58,,,,,,ignore_resolved,
-58->British Northern America,1883,British Northern America,British Northern America,RIC,58,Antigua and Barbuda (Antigua),GPH,21495,58,,21495,,20|21,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58->British Northern America,1883,British Northern America,British Northern America,RIC,58,Antigua and Barbuda (Antigua),GPH,21495,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 58->53,1883,53,Barbados,GPH,58,Antigua and Barbuda (Antigua),GPH,384,58,,,,,,ignore_resolved,
-58->Anguilla & St. Kitts-Nevis,1883,Anguilla & St. Kitts-Nevis,Anguilla & St. Kitts-Nevis,RIC,58,Antigua and Barbuda (Antigua),GPH,242,58,,,,,,ignore_resolved,
-58->54,1883,54,Dominica,GPH,58,Antigua and Barbuda (Antigua),GPH,47,58,,,,,,ignore_resolved,
-58->59,1883,59,Montserrat,GPH,58,Antigua and Barbuda (Antigua),GPH,126,58,,,,,,ignore_resolved,
+58->Anguilla & St. Kitts-Nevis,1883,Anguilla & St. Kitts-Nevis,Anguilla & St. Kitts-Nevis,RIC,58,Antigua and Barbuda (Antigua),GPH,242,58,,,,,,ignore_internal,
+58->54,1883,54,Dominica,GPH,58,Antigua and Barbuda (Antigua),GPH,47,58,,,,,,ignore_internal,
+58->59,1883,59,Montserrat,GPH,58,Antigua and Barbuda (Antigua),GPH,126,58,,,,,,ignore_internal,
 58->57,1883,57,St. Vincent and the Grenadines,GPH,58,Antigua and Barbuda (Antigua),GPH,10,58,,,,,,ignore_resolved,
 58->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,58,Antigua and Barbuda (Antigua),GPH,129220,58,,,,,,ignore_resolved,
-58->French Colonies,1883,French Colonies,French Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,1148,58,,1148,,65|66|120|432|433|484|585|615|751|930|1029|5801|8151|9601|9602|9603|9605,,ignore_resolved,
-58->Dutch Colonies,1883,Dutch Colonies,Dutch Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,5,58,,5,,68|115|850,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-58->Danish Colonies,1883,Danish Colonies,Danish Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,8,58,,8,,5|10|11|395,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
-58->Portuguese Colonies,1883,Portuguese Colonies,Portuguese Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,746,58,,746,,402|403|404|540|541|721|752|860,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58->French Colonies,1883,French Colonies,French Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,1148,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58->Dutch Colonies,1883,Dutch Colonies,Dutch Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,5,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58->Danish Colonies,1883,Danish Colonies,Danish Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,8,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
+58->Portuguese Colonies,1883,Portuguese Colonies,Portuguese Colonies,RIC,58,Antigua and Barbuda (Antigua),GPH,746,58,,,,,,ignore_resolved,flow part-of reporter with an area which has been aggregated at the aggregated reporter level
 452<-200,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,295176,452,,,,,,ok,
 452<-4781,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,4781,Lagos,GPH,241,452,,,,,,ignore_resolved,
 452<-451,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,451,Sierra Leone,GPH-AUTONOMOUS-CITED,925,452,,,,,,ok,
@@ -2805,7 +2796,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 452<-255,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,17656,452,,,,,,ok,
 452<-4372,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,4372,Grand-Bassam,GPH,33,452,,,,,,ignore_resolved,
 452<-4346,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,4346,Anecho (Little Popo),GPH,2081,452,,,,,,split_failed_error,
-452<-Unknown,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,Unknown,Unknown,RIC,134,452,,,,,,split_failed_error,
+452<-Lomé,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,Lomé,Lomé,RIC,134,452,,,,,,ignore_resolved,
 452<-401,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,401,Madeira Isles,GPH,5,452,,,,,,ignore_resolved,
 452<-4792,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,4792,Old Calabar (Efik),GPH-AUTONOMOUS-CITED,1,452,,,,,,ok,
 452<-2,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,65626,452,,,,,,ok,
@@ -2887,7 +2878,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 165<-Denmark & Russia (USSR),1883,165,Uruguay,GPH-AUTONOMOUS-CITED,Denmark & Russia (USSR),Denmark & Russia (USSR),RIC,494.1666666666667,165,,494.1666666666667,,365|390,,split_failed_no_ratio,
 165<-235,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,9284.583333333334,165,,,,,,ok,
 165<-India & Japan & People's Republic of China (China),1883,165,Uruguay,GPH-AUTONOMOUS-CITED,India & Japan & People's Republic of China (China),India & Japan & People's Republic of China (China),RIC,10928.333333333334,165,,10928.333333333334,,710|740|750,,split_failed_no_ratio,
-165<-Ecuador & Peru,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,Ecuador & Peru,Ecuador & Peru,RIC,510.83333333333337,165,,,,,,ignore_resolved,
+165<-Ecuador & Peru,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,Ecuador & Peru,Ecuador & Peru,RIC,510.83333333333337,165,,510.83333333333337,,130|135,,split_failed_no_ratio,
 165<-225,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,225,Switzerland,GPH-AUTONOMOUS-CITED,3829.375,165,,,,,,ok,
 165<-100,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,297.2916666666667,165,,,,,,ok,
 165<-300,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,395.20833333333337,165,,,,,,ok,
@@ -2949,17 +2940,17 @@ European Russia<-Southern America & United States of America,1883,European Russi
 200<-850,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,4090593,200,missing Sumatra|Indonesia (Dutch East Indies) (other),,,,,ok,200<-Java 4090593
 200<-restOfTheWorld,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,420,200,,,,,,ok,200<-Dutch Oceania (other) 420
 200<-411,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,411,Equatorial Guinea (Spanish Guinea),GPH-AUTONOMOUS-CITED,7301,200,,,,,,ok,200<-413 7301
-200<-640,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,10198048,200,missing European Turkey|Archipelago|6203|645 unexpected: Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis),,,,,ok,"200<-Asian Turkey 10008659
-200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 189389"
+200<-640,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,10193043.19382359,200,missing European Turkey|Archipelago|6203|645 unexpected: Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis),,,,,ok,"200<-Asian Turkey 10008659
+200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 184384.19382359032 (ratio on 189389)"
 200<-651,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,383198,200,missing Indian Transit|6514 unexpected: Egypt Arab Republic (Egypt) & Indian Transit,,,,,ok,200<-Egypt Arab Republic (Egypt) & Indian Transit 383198
 200<-600,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,600,Morocco,GPH-AUTONOMOUS-CITED,275054,200,,,,,,ok,200<-Morocco (other) 275054
 200<-2,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,99238960,200,missing United States of America (other)|New York,,,,,ok,"200<-United States of America (Atlantic Coast) 91382200
 200<-United States of America (Pacific Coast) 7856760"
 200<-338,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,338,Malta,GPH-AUTONOMOUS-CITED,151578,200,,,,,,ok,200<-Gozo & Malta 151578
 200<-451,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,451,Sierra Leone,GPH-AUTONOMOUS-CITED,241509,200,,,,,,ok,200<-Gambia & Sierra Leone 241509
-200<-750,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,35805414,200,missing Bengal|Kolkata (Calcutta)|Chittagong|Mumbai (Bombay)|Thoothukudi (Tuticorin)|7693|770 unexpected: Mumbai (Bombay) & Sindh|Bengal & Myanmar (Burma),,,,,ok,"200<-Mumbai (Bombay) & Sindh 10413077
+200<-750,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,34623518.41903958,200,missing Bengal|Kolkata (Calcutta)|Chittagong|Mumbai (Bombay)|Thoothukudi (Tuticorin)|7693|770 unexpected: Mumbai (Bombay) & Sindh|Bengal & Myanmar (Burma),,,,,ok,"200<-Mumbai (Bombay) & Sindh 10413077
 200<-Chennai (Madras) 4761731
-200<-Bengal & Myanmar (Burma) 20630606"
+200<-Bengal & Myanmar (Burma) 19448710.419039574 (ratio on 20630606)"
 200->365,1883,365,Russia (USSR),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,5036614,200,missing Russia (Black Sea)|Asian Russia|Russia (White Sea)|Russia (Baltic Sea)|European Russia|Russia and Siberia (Kiakhta)|Russia (North Sea)|375|3694,,,,,ok,"200->Russia (North Ports) 4161718
 200->Russia (South Ports) 874896"
 200->850,1883,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,2133407,200,missing Sumatra|Indonesia (Dutch East Indies) (other),,,,,ok,200->Java 2133407
@@ -3117,8 +3108,9 @@ European Russia<-Southern America & United States of America,1883,European Russi
 710->Russia and Siberia (Kiakhta) 1027074.784375214"
 710<-850,1883,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,14057.211458336262,710,missing Sumatra|Indonesia (Dutch East Indies) (other),,,,,ok,710<-Java 14057.211458336262
 710->850,1883,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,90853.6291666856,710,missing Sumatra|Indonesia (Dutch East Indies) (other),,,,,ok,710->Java 90853.6291666856
-452<-restOfTheWorld,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,419,452,,,,,,ok,"452<-Bageidah 119
-452<-Bey-Beach 300"
+452<-restOfTheWorld,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,restOfTheWorld,Rest Of The World,ROTW,553,452,,,,,,ok,"452<-Bageidah 119
+452<-Bey-Beach 300
+452<-Lomé 134"
 452<-437,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,437,Ivory Coast,GPH-AUTONOMOUS-CITED,33,452,missing 4373,,,,,ok,452<-4372 33
 452<-235,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,5,452,missing 400,,,,,ok,452<-401 5
 452<-230,1883,452,Ghana (Gold Coast),GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,134,452,,,,,,ok,452<-Tenerife 134
@@ -3142,39 +3134,18 @@ European Russia<-Southern America & United States of America,1883,European Russi
 385->248 525036.4527442731
 385->246 30218.717037880007
 385->Germany (Zollverein) (North Sea) 46593.608134881266"
-200<-341,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,341,Montenegro,GPH-AUTONOMOUS-CITED,1780558.125,200,,,,,,ok,200<-Bulgaria & Kingdom of Serbia & Montenegro 1780558.125 (ratio on 1899262)
-200<-342,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,342,Kingdom of Serbia,GPH-AUTONOMOUS-CITED,118703.875,200,,,,,,ok,200<-Bulgaria & Kingdom of Serbia & Montenegro 118703.875 (ratio on 1899262)
-310<-300,1883,310,Hungary,GPH,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,31126822.230376624,310,missing 310,,,,,ignore_resolved,310<-305 31126822.230376624
-310->300,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,310,Hungary,GPH,26245413.150081728,310,missing 310,,,,,ignore_resolved,310->305 26245413.150081728
+200<-341,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,341,Montenegro,GPH-AUTONOMOUS-CITED,4107.6697120236995,200,,,,,,ok,200<-Bulgaria & Kingdom of Serbia & Montenegro 4107.6697120236995 (ratio on 1899262)
+200<-342,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,342,Kingdom of Serbia,GPH-AUTONOMOUS-CITED,273.8446474682466,200,,,,,,ok,200<-Bulgaria & Kingdom of Serbia & Montenegro 273.8446474682466 (ratio on 1899262)
+200<-616,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,5004.806176409689,200,,,,,,ok,200<-Tripolitania (Regency of Tripoli) & Tunisia (Regency of Tunis) 5004.806176409689 (ratio on 189389)
 1048<-20,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,10.28681659922838,1048,,,,,,ok,1048<-British Northern America 10.28681659922838 (ratio on 54659)
 1048<-21,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,54648.71318340077,1048,,,,,,ok,1048<-British Northern America 54648.71318340077 (ratio on 54659)
 1048<-6,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,3293.496906235126,1048,,,,,,ok,1048<-Spanish West Indies 3293.496906235126 (ratio on 6473)
 1048<-40,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,3179.503093764874,1048,,,,,,ok,1048<-Spanish West Indies 3179.503093764874 (ratio on 6473)
-2->402,1883,402,Cape Verde,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,127805.78053694034,2,,,,,,ok,2->Azores (Western Isles) & Cape Verde & Madeira Isles 127805.78053694034
 2->651,1883,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,21810.87097348822,2,,,,,,ok,2->Egypt Arab Republic (Egypt) & Tripolitania (Regency of Tripoli) 21810.87097348822 (ratio on 59775.10997820992)
-2<-402,1883,2,United States of America,GPH-AUTONOMOUS-CITED,402,Cape Verde,GPH-AUTONOMOUS-CITED,14531.30781564774,2,,,,,,ok,2<-Azores (Western Isles) & Cape Verde & Madeira Isles 14531.30781564774
 740->710,1883,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,740,Japan,GPH-AUTONOMOUS-CITED,747873.0753398547,740,,,,,,ok,740->Hong Kong & People's Republic of China (China) 747873.0753398547 (ratio on 1081476.281852507)
 740->720,1883,720,Hong Kong,GPH-AUTONOMOUS-CITED,740,Japan,GPH-AUTONOMOUS-CITED,333603.20651265245,740,,,,,,ok,740->Hong Kong & People's Republic of China (China) 333603.20651265245 (ratio on 1081476.281852507)
 740<-710,1883,740,Japan,GPH-AUTONOMOUS-CITED,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,448057.70401070185,740,,,,,,ok,740<-Hong Kong & People's Republic of China (China) 448057.70401070185 (ratio on 1052154.4005253268)
 740<-720,1883,740,Japan,GPH-AUTONOMOUS-CITED,720,Hong Kong,GPH-AUTONOMOUS-CITED,604096.6965146249,740,,,,,,ok,740<-Hong Kong & People's Republic of China (China) 604096.6965146249 (ratio on 1052154.4005253268)
-59<-1063,1883,59,Montserrat,GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,4726,59,missing 59|1061|60 unexpected: Tortola,,,,,ignore_resolved,"59<-1062 2
-59<-58 2963
-59<-54 47
-59<-1076 184
-59<-1075 1518
-59<-Tortola 12"
-59<-1055,1883,59,Montserrat,GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,10468,59,missing 1049|57|56,,,,,ignore_resolved,"59<-53 10418
-59<-55 50"
-59<-110,1883,59,Montserrat,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,26,59,,,,,,ignore_resolved,59<-Demerara 26
-59<-20,1883,59,Montserrat,GPH,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,262,59,missing 1027|1028|1026|1025|1023|10204|1024|10201,,,,,ignore_resolved,59<-1022 262
-59<-5,1883,59,Montserrat,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,27,59,missing St. John|St. Croix,,,,,ignore_resolved,59<-St. Thomas 27
-59->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,2963.5,59,missing 59|1062|1061|60 unexpected: Tortola,,,,,ignore_resolved,"59->58 1829
-59->54 32
-59->1076 0.5
-59->1075 1059
-59->Tortola 43"
-59->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,539,59,missing 55|1049|57|56,,,,,ignore_resolved,59->53 539
-59->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,59,Montserrat,GPH,16,59,missing St. John|St. Croix,,,,,ignore_resolved,59->St. Thomas 16
 110<-31,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,2528.5817054263566,110,,,,,,ok,110<-British West Indies 2528.5817054263566 (ratio on 52178)
 110<-51,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,4.622635658914729,110,,,,,,ok,110<-British West Indies 4.622635658914729 (ratio on 52178)
 110<-1048,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,1048,Trinidad,GPH-AUTONOMOUS-CITED,3154.9488372093024,110,,,,,,ok,110<-British West Indies 3154.9488372093024 (ratio on 52178)
@@ -3188,55 +3159,10 @@ European Russia<-Southern America & United States of America,1883,European Russi
 110->21,1883,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,4563.259744865609,110,,,,,,ok,110->British Northern America 4563.259744865609 (ratio on 93898)
 110->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,24178.741756206004,110,,,,,,ok,110->French West Indies 24178.741756206004 (ratio on 78672)
 110->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,54493.25824379399,110,,,,,,ok,110->French West Indies 54493.25824379399 (ratio on 78672)
-1049->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1049,Tobago,GPH,944,1049,,,,,,ignore_resolved,1049->French West Indies 944
-55<-1055,1883,55,Grenada,GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,38353,55,missing 55,,,,,ignore_resolved,"55<-53 37922
-55<-57 336
-55<-56 85
-55<-1049 10"
-55<-110,1883,55,Grenada,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,152,55,,,,,,ignore_resolved,55<-Demerara 152
-55<-20,1883,55,Grenada,GPH,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,1491,55,missing 1027|1028|1026|1025|1023|10204|1024|10201,,,,,ignore_resolved,55<-1022 1491
-55<-1063,1883,55,Grenada,GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,35,55,missing 1076|54|1075|1061|60,,,,,ignore_resolved,"55<-59 26
-55<-1062 8
-55<-58 1"
-55<-65,1883,55,Grenada,GPH,65,Guadeloupe,GPH-AUTONOMOUS-CITED,172,55,,,,,,ignore_resolved,"55<-1077 40
-55<-1064 132"
-55<-235,1883,55,Grenada,GPH,235,Portugal,GPH-AUTONOMOUS-CITED,41,55,missing 400,,,,,ignore_resolved,55<-401 41
-55<-5,1883,55,Grenada,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,5,55,missing St. John|St. Croix,,,,,ignore_resolved,55<-St. Thomas 5
-55<-68,1883,55,Grenada,GPH,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,59,55,missing 1065,,,,,ignore_resolved,"55<-1068 35
-55<-1067 24"
-55->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,4491,55,missing 55,,,,,ignore_resolved,"55->53 4134
-55->57 324
-55->56 15
-55->1049 18"
-55->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,55,Grenada,GPH,285,55,,,,,,ignore_resolved,55->Demerara 285
-55->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,55,Grenada,GPH,4,55,missing 58|1076|59|1062|54|1061|60,,,,,ignore_resolved,55->1075 4
-1061<-5,1883,1061,British Virgin Is.,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,7163,1061,missing St. Thomas|St. John|St. Croix unexpected: St. Croix & St. John & St. Thomas,,,,,ignore_resolved,1061<-St. Croix & St. John & St. Thomas 7163
-1061<-65,1883,1061,British Virgin Is.,GPH,65,Guadeloupe,GPH-AUTONOMOUS-CITED,108,1061,missing 1064,,,,,ignore_resolved,1061<-1077 108
-1061<-68,1883,1061,British Virgin Is.,GPH,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,31,1061,missing 1065,,,,,ignore_resolved,"1061<-1068 22
-1061<-1067 9"
-1061->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1061,British Virgin Is.,GPH,64,1061,missing 58|1076|1062|1075|1061|60,,,,,ignore_resolved,"1061->54 10
-1061->59 54"
-1061->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,1061,British Virgin Is.,GPH,4917,1061,missing St. Thomas|St. John|St. Croix unexpected: St. Croix & St. John & St. Thomas,,,,,ignore_resolved,1061->St. Croix & St. John & St. Thomas 4917
-1061->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1061,British Virgin Is.,GPH,44,1061,missing 1064,,,,,ignore_resolved,1061->1077 44
-53<-750,1883,53,Barbados,GPH,750,India,GPH-AUTONOMOUS-CITED,44671,53,missing Chennai (Madras)|Bengal|Mumbai (Bombay)|Thoothukudi (Tuticorin)|7693|770,,,,,ignore_resolved,"53<-Kolkata (Calcutta) 35442
-53<-Chittagong 9229"
-53<-325,1883,53,Barbados,GPH,325,Italy,GPH-AUTONOMOUS-CITED,1324,53,,,,,,ignore_resolved,53<-3291 1324
-53<-165,1883,53,Barbados,GPH,165,Uruguay,GPH-AUTONOMOUS-CITED,8706,53,,,,,,ignore_resolved,53<-Montevideo 8706
-53<-160,1883,53,Barbados,GPH,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,13,53,,,,,,ignore_resolved,53<-1161 13
-53<-230,1883,53,Barbados,GPH,230,Spain,GPH-AUTONOMOUS-CITED,794,53,,,,,,ignore_resolved,53<-410 794
 561<-380,1883,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,6770.909090909091,561,,,,,,ok,561<-Norway & Sweden 6770.909090909091 (ratio on 74480)
 561<-385,1883,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,385,Norway,GPH-AUTONOMOUS-CITED,67709.09090909091,561,,,,,,ok,561<-Norway & Sweden 67709.09090909091 (ratio on 74480)
 561->380,1883,380,Sweden,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,12.205020920502092,561,,,,,,ok,561->Norway & Sweden 12.205020920502092 (ratio on 18)
 561->385,1883,385,Norway,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,5.794979079497908,561,,,,,,ok,561->Norway & Sweden 5.794979079497908 (ratio on 18)
-56<-1063,1883,56,St. Lucia,GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,185,56,missing 1076|59|1062|1075|1061|60,,,,,ignore_resolved,"56<-58 11
-56<-54 174"
-56<-1055,1883,56,St. Lucia,GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,13371,56,missing 56,,,,,ignore_resolved,"56<-53 13196
-56<-55 9
-56<-57 165
-56<-1049 1"
-56->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,869,56,missing 1076|59|1062|54|1075|1061|60,,,,,ignore_resolved,56->58 869
-56->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,56,St. Lucia,GPH,32,56,missing 53|55|1049|56,,,,,ignore_resolved,56->57 32
-56<-100,1883,56,St. Lucia,GPH,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,30,56,missing Colombia (New Granada) (Gran Colombia) (other)|95 unexpected: Colón,,,,,ignore_resolved,56<-Colón 30
 325<-338,1883,325,Italy,GPH-AUTONOMOUS-CITED,338,Malta,GPH-AUTONOMOUS-CITED,196623.4129358218,325,,,,,,ok,325<-Greece & Malta 196623.4129358218 (ratio on 311757.2492473459)
 325<-350,1883,325,Italy,GPH-AUTONOMOUS-CITED,350,Greece,GPH-AUTONOMOUS-CITED,115133.83631152414,325,,,,,,ok,325<-Greece & Malta 115133.83631152414 (ratio on 311757.2492473459)
 325->338,1883,338,Malta,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,258398.58104677865,325,,,,,,ok,325->Greece & Malta 258398.58104677865 (ratio on 668237.9971478371)
@@ -3257,50 +3183,11 @@ European Russia<-Southern America & United States of America,1883,European Russi
 325<-155,1883,325,Italy,GPH-AUTONOMOUS-CITED,155,Chile,GPH-AUTONOMOUS-CITED,533.6323281870394,325,,,,,,ok,325<-Chile & Peru 533.6323281870394 (ratio on 5664.712406908572)
 325->135,1883,135,Peru,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,31721.741269415576,325,,,,,,ok,325->Chile & Peru 31721.741269415576 (ratio on 32166.05926160672)
 325->155,1883,155,Chile,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,444.3179921911407,325,,,,,,ok,325->Chile & Peru 444.3179921911407 (ratio on 32166.05926160672)
-54<-1063,1883,54,Dominica,GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,806,54,missing 54|1061|60,,,,,ignore_resolved,"54<-1062 17
-54<-58 463
-54<-59 141
-54<-1076 1
-54<-1075 184"
-54<-1055,1883,54,Dominica,GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,19284,54,missing 55|1049,,,,,ignore_resolved,"54<-53 19014
-54<-56 266
-54<-57 4"
-54<-120,1883,54,Dominica,GPH,120,French Guiana,GPH-AUTONOMOUS-CITED,3,54,,,,,,ignore_resolved,54<-Cayenne 3
-54<-5,1883,54,Dominica,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,310,54,missing St. John|St. Croix,,,,,ignore_resolved,54<-St. Thomas 310
-54->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,779,54,missing 1076|1062|54|1061|60,,,,,ignore_resolved,"54->58 692
-54->59 13
-54->1075 74"
-54->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,54,Dominica,GPH,1372,54,missing 55|1049|57,,,,,ignore_resolved,"54->53 1362
-54->56 10"
-54->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,54,Dominica,GPH,374,54,missing St. John,,,,,ignore_resolved,"54->St. Croix 42
-54->St. Thomas 332"
-57<-20,1883,57,St. Vincent and the Grenadines,GPH,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,3314.3856041131103,57,,,,,,ignore_resolved,57<-British Northern America 3314.3856041131103 (ratio on 5284)
-57<-21,1883,57,St. Vincent and the Grenadines,GPH,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,1969.6143958868895,57,,,,,,ignore_resolved,57<-British Northern America 1969.6143958868895 (ratio on 5284)
-57->20,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,57,St. Vincent and the Grenadines,GPH,3286.631929480901,57,,,,,,ignore_resolved,57->British Northern America 3286.631929480901 (ratio on 3784)
-57->21,1883,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,57,St. Vincent and the Grenadines,GPH,497.36807051909886,57,,,,,,ignore_resolved,57->British Northern America 497.36807051909886 (ratio on 3784)
-60<-1063,1883,60,St. Kitts-Nevis,GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,6488,60,missing 1076|1062|1075|1061|60 unexpected: Tortola,,,,,ignore_resolved,"60<-58 6227
-60<-59 87
-60<-54 142
-60<-Tortola 32"
-60<-1055,1883,60,St. Kitts-Nevis,GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,6103,60,missing 1049,,,,,ignore_resolved,"60<-53 5971
-60<-57 9
-60<-55 102
-60<-56 21"
-60<-110,1883,60,St. Kitts-Nevis,GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,3248,60,,,,,,ignore_resolved,60<-Demerara 3248
-60<-68,1883,60,St. Kitts-Nevis,GPH,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,369,60,missing 1065,,,,,ignore_resolved,"60<-1068 282
-60<-1067 87"
-60<-5,1883,60,St. Kitts-Nevis,GPH,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,850,60,missing St. John|St. Croix,,,,,ignore_resolved,60<-St. Thomas 850
-60->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,1149,60,missing 1076|1062|1075|1061|60 unexpected: Redonda|Sombrero,,,,,ignore_resolved,"60->58 875
-60->59 21
-60->Redonda 18
-60->54 33
-60->Sombrero 202"
-60->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,82,60,missing 55|1049|56,,,,,ignore_resolved,"60->53 75
-60->57 7"
-60->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,323,60,missing 1065,,,,,ignore_resolved,"60->1068 182
-60->1067 141"
-60->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,60,St. Kitts-Nevis,GPH,256,60,missing St. John,,,,,ignore_resolved,"60->St. Thomas 238
-60->St. Croix 18"
+70->90,1883,90,Guatemala,GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,3256.738751414676,70,,,,,,ok,70->Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela 3256.738751414676 (ratio on 46100)
+70->100,1883,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,22047.850610222373,70,,,,,,ok,70->Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela 22047.850610222373 (ratio on 46100)
+70->101,1883,101,Venezuela,GPH-AUTONOMOUS-CITED,70,Mexico,GPH-AUTONOMOUS-CITED,20795.41063836295,70,,,,,,ok,70->Colombia (New Granada) (Gran Colombia) & Guatemala & Venezuela 20795.41063836295 (ratio on 46100)
+20<-380,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,2189.4028180992223,20,,,,,,ok,20<-Norway & Sweden 2189.4028180992223 (ratio on 8639.58255683936)
+20<-385,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,385,Norway,GPH-AUTONOMOUS-CITED,6450.179738740137,20,,,,,,ok,20<-Norway & Sweden 6450.179738740137 (ratio on 8639.58255683936)
 255<-840,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,60600.15076617902,255,,,,,,ok,255<-Indonesia (Dutch East Indies) & Philippines 60600.15076617902 (ratio on 174210.91264986544)
 255<-850,1883,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,113610.76188368641,255,,,,,,ok,255<-Indonesia (Dutch East Indies) & Philippines 113610.76188368641 (ratio on 174210.91264986544)
 255->840,1883,840,Philippines,GPH-AUTONOMOUS-CITED,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,6584.011289693096,255,,,,,,ok,255->Indonesia (Dutch East Indies) & Philippines 6584.011289693096 (ratio on 341375.09175434307)
@@ -3312,26 +3199,12 @@ European Russia<-Southern America & United States of America,1883,European Russi
 255->160,1883,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,457728.89339548413,255,,,,,,ok,255->Argentina (La Plata) & Paraguay & Uruguay 457728.89339548413 (ratio on 478101.296794715)
 255->165,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,255,Germany (Zollverein),GPH-AUTONOMOUS-CITED,19778.408973878944,255,,,,,,ok,255->Argentina (La Plata) & Paraguay & Uruguay 19778.408973878944 (ratio on 478101.296794715)
 710<-920,1883,710,People's Republic of China (China),GPH-AUTONOMOUS-CITED,920,New Zealand,GPH-AUTONOMOUS-CITED,9436.87688521888,710,,,,,,ok,710<-Australia & New Zealand 9436.87688521888 (ratio on 118367.84583335799)
-58<-1055,1883,58,Antigua and Barbuda (Antigua),GPH,1055,Windward Is.,GPH-AUTONOMOUS-CITED,8668,58,missing 55|1049,,,,,ignore_resolved,"58<-53 8592
-58<-57 43
-58<-56 33"
-58<-1063,1883,58,Antigua and Barbuda (Antigua),GPH,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,4067,58,missing 58|1076|1062|1075|1061|60 unexpected: Anguilla & St. Kitts-Nevis|Tortola,,,,,ignore_resolved,"58<-Anguilla & St. Kitts-Nevis 2874
-58<-54 930
-58<-59 234
-58<-Tortola 29"
-58<-110,1883,58,Antigua and Barbuda (Antigua),GPH,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,45,58,,,,,,ignore_resolved,58<-Demerara 45
-58->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,58,Antigua and Barbuda (Antigua),GPH,394,58,missing 55|1049|56,,,,,ignore_resolved,"58->53 384
-58->57 10"
-58->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,58,Antigua and Barbuda (Antigua),GPH,415,58,missing 58|1076|1062|1075|1061|60 unexpected: Anguilla & St. Kitts-Nevis,,,,,ignore_resolved,"58->Anguilla & St. Kitts-Nevis 242
-58->54 47
-58->59 126"
 385<-11,1883,385,Norway,GPH-AUTONOMOUS-CITED,11,Faeroe Is.,GPH-AUTONOMOUS-CITED,304.30045527704647,385,,,,,,ok,385<-Faeroe Is. & Iceland 304.30045527704647 (ratio on 63936.90676987722)
 385<-395,1883,385,Norway,GPH-AUTONOMOUS-CITED,395,Iceland,GPH-AUTONOMOUS-CITED,63632.60631460017,385,,,,,,ok,385<-Faeroe Is. & Iceland 63632.60631460017 (ratio on 63936.90676987722)
 385<-300,1883,385,Norway,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,569.9857827311241,385,,,,,,ok,385<-Austria-Hungary (Austrian Empire) & Italy 569.9857827311241 (ratio on 15863.175750219967)
 385<-325,1883,385,Norway,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,15293.189967488843,385,,,,,,ok,385<-Austria-Hungary (Austrian Empire) & Italy 15293.189967488843 (ratio on 15863.175750219967)
 385->300,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,385,Norway,GPH-AUTONOMOUS-CITED,1524.7381007352083,385,,,,,,ok,385->Austria-Hungary (Austrian Empire) & Italy 1524.7381007352083 (ratio on 132919.4369053291)
 385->325,1883,325,Italy,GPH-AUTONOMOUS-CITED,385,Norway,GPH-AUTONOMOUS-CITED,131394.69880459388,385,,,,,,ok,385->Austria-Hungary (Austrian Empire) & Italy 131394.69880459388 (ratio on 132919.4369053291)
-165<-130,1883,165,Uruguay,GPH-AUTONOMOUS-CITED,130,Ecuador,GPH-AUTONOMOUS-CITED,510.83333333333337,165,,,,,,ok,165<-Ecuador & Peru 510.83333333333337
 300<-200,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,1089293.4583180437,300,missing 305,,,,,ok,310<-200 1089293.4583180437
 300<-220,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,52832.17133135404,300,missing 305,,,,,ok,310<-220 52832.17133135404
 300<-225,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,225,Switzerland,GPH-AUTONOMOUS-CITED,36528.00480368282,300,missing 305,,,,,ok,310<-225 36528.00480368282
@@ -3341,7 +3214,7 @@ European Russia<-Southern America & United States of America,1883,European Russi
 300<-346,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,346,Bosnia-Herzegovina,GPH-AUTONOMOUS-CITED,138314.37435367116,300,missing 305,,,,,ok,310<-346 138314.37435367116
 300<-360,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,360,Romania,GPH-AUTONOMOUS-CITED,2700695.533242152,300,missing 305,,,,,ok,310<-360 2700695.533242152
 300<-365,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,365,Russia (USSR),GPH-AUTONOMOUS-CITED,10424.658905160622,300,missing 305,,,,,ok,310<-365 10424.658905160622
-300<-210|211,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,210|211,,,54083.13039997331,300,,54083.13039997331,,210|211,310<-Belgium & Netherlands,split_failed_no_ratio,From a flow part-of reporter 310 to/from area Belgium & Netherlands
+300<-210|211,1883,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,210|211,Decomposition of Belgium & Netherlands,RIC,54083.13039997331,300,,54083.13039997331,,210|211,310<-Belgium & Netherlands,split_failed_no_ratio,From a flow part-of reporter 310 to/from area Belgium & Netherlands
 300->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1157387.330286553,300,missing 305,,,,,ok,310->200 1157387.330286553
 300->220,1883,220,France,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1324557.1604897087,300,missing 305,,,,,ok,310->220 1324557.1604897087
 300->225,1883,225,Switzerland,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,756621.743336558,300,missing 305,,,,,ok,310->225 756621.743336558
@@ -3351,17 +3224,25 @@ European Russia<-Southern America & United States of America,1883,European Russi
 300->346,1883,346,Bosnia-Herzegovina,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,222212.02922240383,300,missing 305,,,,,ok,310->346 222212.02922240383
 300->360,1883,360,Romania,GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,1001893.1180571772,300,missing 305,,,,,ok,310->360 1001893.1180571772
 300->365,1883,365,Russia (USSR),GPH-AUTONOMOUS-CITED,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,79394.20222170331,300,missing 305,,,,,ok,310->365 79394.20222170331
-300->210|211,1883,210|211,,,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,401974.8473829936,300,,401974.8473829936,,210|211,310->Belgium & Netherlands,split_failed_no_ratio,From a flow part-of reporter 310 to/from area Belgium & Netherlands
+300->210|211,1883,210|211,Decomposition of Belgium & Netherlands,RIC,300,Austria-Hungary (Austrian Empire),GPH-AUTONOMOUS-CITED,401974.8473829936,300,,401974.8473829936,,210|211,310->Belgium & Netherlands,split_failed_no_ratio,From a flow part-of reporter 310 to/from area Belgium & Netherlands
 1063<-2,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,156329,1063,missing 1076|1062|1075|1061,,,,,ok,"58<-2 66509
 59<-2 677
 54<-2 10867
 60<-2 78276"
 1063<-51,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,699,1063,missing 1076|59|1062|54|1075|1061,,,,,ok,"58<-51 322
 60<-51 377"
-1063<-110,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,3994,1063,missing 1076|1062|1075|1061,,,,,ok,"58<-110 45
-59<-110 26
-54<-110 675
-60<-110 3248"
+1063<-1055,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,44523,1063,missing 1049,,,,,ok,"58<-53 8592
+58<-56 33
+58<-57 43
+59<-53 10418
+59<-55 50
+54<-53 19014
+54<-56 266
+54<-57 4
+60<-53 5971
+60<-55 102
+60<-56 21
+60<-57 9"
 1063<-200,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,230607,1063,missing 1076|1062|1075|1061,,,,,ok,"58<-200 86407
 59<-200 12778
 54<-200 30861
@@ -3370,110 +3251,55 @@ European Russia<-Southern America & United States of America,1883,European Russi
 59<-1048 90
 54<-1048 139
 60<-1048 210"
-1063<-1055,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,44523,1063,missing 1076|1062|1075|1061,,,,,ok,"58<-1055 8668
-59<-1055 10468
-54<-1055 19284
-60<-1055 6103"
-1063<-20|21,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,20|21,,,18195,1063,,18195,,20|21,58<-British Northern America|54<-British Northern America|60<-British Northern America,split_failed_no_ratio,"From a flow part-of reporter 58 to/from area British Northern America
+1063<-20|21,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,20|21,Decomposition of British Northern America,RIC,18195,1063,,18195,,20|21,58<-British Northern America|54<-British Northern America|60<-British Northern America,split_failed_no_ratio,"From a flow part-of reporter 58 to/from area British Northern America
 From a flow part-of reporter 54 to/from area British Northern America
 From a flow part-of reporter 60 to/from area British Northern America"
-1063<-65,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,2809.2418667264974,1063,missing 1076|1062|1075,,,,,ok,"58<-French Colonies 499.2418667264976 (ratio on 2021)
-59<-65 104
-54<-65 927
-1061<-65 108
-60<-65 1171"
-1063<-66,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,8230.07796724254,1063,missing 1076|59|1062|1075|1061,,,,,ok,"58<-French Colonies 1521.07796724254 (ratio on 2021)
-54<-66 5980
-60<-66 729"
-1063<-120,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,120,French Guiana,GPH-AUTONOMOUS-CITED,3.680166030962531,1063,missing Cayenne unexpected: French Colonies|120,,,,,ok,"58<-French Colonies 0.6801660309625308 (ratio on 2021)
-54<-120 3"
-1063<-432,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,432,Mali (French Sudan) (Upper Senegal and Niger),GPH-AUTONOMOUS,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-433,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,433,Senegal,GPH-AUTONOMOUS-CITED,0,1063,missing 4338|438 unexpected: French Colonies,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-484,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,484,Congo (Brazzaville) (French Congo) (Middle Congo),GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-585,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-615,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-751,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,751,French India,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-930,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,930,New Caledonia,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-1029,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-5801,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5801,Nossi Be,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-8151,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,8151,Cochin China,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-9601,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9601,Society Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-9602,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9602,Marquesas Is.,GPH-AUTONOMOUS,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-9603,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9603,Tuamotu Is.,GPH-AUTONOMOUS,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-9605,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9605,Tubuai Is. (Austral Is.),GPH-AUTONOMOUS,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-French Colonies 0 (ratio on 2021)
-1063<-115|68|850,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,115|68|850,,,1298,1063,,1298,,68|115|850,58<-Dutch Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Dutch Colonies
-1063<-10|11|395|5,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,10|11|395|5,,,219,1063,,219,,5|10|11|395,58<-Danish Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Danish Colonies
-1063<-402|403|404|540|541|721|752|860,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,402|403|404|540|541|721|752|860,,,111,1063,,111,,402|403|404|540|541|721|752|860,58<-Portuguese Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Portuguese Colonies
-1063<-6,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,534.26953125,1063,missing 1076|59|1062|1075|1061,,,,,ok,"58<-Spanish Colonies 0.978515625 (ratio on 1)
-54<-6 501
-60<-Spanish West Indies 32.291015625 (ratio on 33)"
-1063<-40,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,11.73046875,1063,missing Havana unexpected: Spanish Colonies|40|Spanish West Indies,,,,,ok,"58<-Spanish Colonies 0.021484375 (ratio on 1)
-54<-40 11
-60<-Spanish West Indies 0.708984375 (ratio on 33)"
-1063<-411,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,411,Equatorial Guinea (Spanish Guinea),GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-Spanish Colonies 0 (ratio on 1)
-1063<-840,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-Spanish Colonies 0 (ratio on 1)
-1063<-6067,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,6067,Captaincy-general of north Africa,GPH-AUTONOMOUS-CITED,0,1063,missing 6062|6063|6064 unexpected: Spanish Colonies,,,,,ok,58<-Spanish Colonies 0 (ratio on 1)
-1063<-9810,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9810,Caroline Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-Spanish Colonies 0 (ratio on 1)
-1063<-9820,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,9820,Mariana Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-Spanish Colonies 0 (ratio on 1)
+1063<-110,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,3994,1063,missing 1113 unexpected: Demerara|110,,,,,ok,"58<-Demerara 45
+59<-Demerara 26
+54<-110 675
+60<-Demerara 3248"
+1063<-1029|120|432|433|484|5801|585|615|65|66|751|8151|930|9601|9602|9603|9605,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1029|120|432|433|484|5801|585|615|65|66|751|8151|930|9601|9602|9603|9605,Decomposition of French Colonies,RIC,2021,1063,,2021,,65|66|120|432|433|484|585|615|751|930|1029|5801|8151|9601|9602|9603|9605,58<-French Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area French Colonies
+1063<-115|68|850,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,115|68|850,Decomposition of Dutch Colonies,RIC,1298,1063,,1298,,68|115|850,58<-Dutch Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Dutch Colonies
+1063<-Peruvian Colonies,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,Peruvian Colonies,Peruvian Colonies,RIC,739,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58<-Peruvian Colonies 739
+1063<-10|11|395|5,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,10|11|395|5,Decomposition of Danish Colonies,RIC,219,1063,,219,,5|10|11|395,58<-Danish Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Danish Colonies
+1063<-402|403|404|540|541|721|752|860,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,402|403|404|540|541|721|752|860,Decomposition of Portuguese Colonies,RIC,111,1063,,111,,402|403|404|540|541|721|752|860,58<-Portuguese Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Portuguese Colonies
+1063<-40|411|6|6067|840|9810|9820,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,40|411|6|6067|840|9810|9820,Decomposition of Spanish Colonies,RIC,1,1063,,1,,6|40|411|840|6067|9810|9820,58<-Spanish Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Spanish Colonies
 1063->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,223453,1063,missing 1076|1062|1075|1061,,,,,ok,"58->2 129220
 59->2 293
 54->2 17534
 60->2 76406"
+1063->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2387,1063,missing 55|1049,,,,,ok,"58->53 384
+58->57 10
+59->53 539
+54->53 1362
+54->56 10
+60->53 75
+60->57 7"
 1063->200,1883,200,United Kingdom,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,277074,1063,missing 1076|1062|1075|1061,,,,,ok,"58->200 61143
 59->200 24612
 54->200 34930
 60->200 156389"
-1063->1055,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2387,1063,missing 1076|1062|1075|1061,,,,,ok,"58->1055 394
-59->1055 539
-54->1055 1372
-60->1055 82"
-1063->20|21,1883,20|21,,,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,26710,1063,,26710,,20|21,58->British Northern America|54->British Northern America|60->British Northern America,split_failed_no_ratio,"From a flow part-of reporter 58 to/from area British Northern America
+1063->20|21,1883,20|21,Decomposition of British Northern America,RIC,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,26710,1063,,26710,,20|21,58->British Northern America|54->British Northern America|60->British Northern America,split_failed_no_ratio,"From a flow part-of reporter 58 to/from area British Northern America
 From a flow part-of reporter 54 to/from area British Northern America
 From a flow part-of reporter 60 to/from area British Northern America"
-1063->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,813.8862102217936,1063,missing 1076|1062|1075,,,,,ok,"58->French Colonies 166.88621022179362 (ratio on 1148)
-59->65 110
-54->65 447
-1061->65 44
-60->65 46"
-1063->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,4526.113789778206,1063,missing 1076|1062|1075|1061,,,,,ok,"58->French Colonies 981.1137897782064 (ratio on 1148)
-59->66 31
-54->66 2952
-60->66 562"
-1063->120,1883,120,French Guiana,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->432,1883,432,Mali (French Sudan) (Upper Senegal and Niger),GPH-AUTONOMOUS,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->433,1883,433,Senegal,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 4338|438 unexpected: French Colonies,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->484,1883,484,Congo (Brazzaville) (French Congo) (Middle Congo),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->585,1883,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->615,1883,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->751,1883,751,French India,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->930,1883,930,New Caledonia,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->1029,1883,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->5801,1883,5801,Nossi Be,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->8151,1883,8151,Cochin China,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->9601,1883,9601,Society Is.,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->9602,1883,9602,Marquesas Is.,GPH-AUTONOMOUS,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->9603,1883,9603,Tuamotu Is.,GPH-AUTONOMOUS,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->9605,1883,9605,Tubuai Is. (Austral Is.),GPH-AUTONOMOUS,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,0,1063,missing 1076|59|1062|54|1075|1061|60,,,,,ok,58->French Colonies 0 (ratio on 1148)
-1063->115|68|850,1883,115|68|850,,,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5,1063,,5,,68|115|850,58->Dutch Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Dutch Colonies
-1063->10|11|395|5,1883,10|11|395|5,,,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,8,1063,,8,,5|10|11|395,58->Danish Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Danish Colonies
-1063->402|403|404|540|541|721|752|860,1883,402|403|404|540|541|721|752|860,,,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,746,1063,,746,,402|403|404|540|541|721|752|860,58->Portuguese Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Portuguese Colonies
+1063->1029|120|432|433|484|5801|585|615|65|66|751|8151|930|9601|9602|9603|9605,1883,1029|120|432|433|484|5801|585|615|65|66|751|8151|930|9601|9602|9603|9605,Decomposition of French Colonies,RIC,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1148,1063,,1148,,65|66|120|432|433|484|585|615|751|930|1029|5801|8151|9601|9602|9603|9605,58->French Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area French Colonies
+1063->115|68|850,1883,115|68|850,Decomposition of Dutch Colonies,RIC,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5,1063,,5,,68|115|850,58->Dutch Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Dutch Colonies
+1063->10|11|395|5,1883,10|11|395|5,Decomposition of Danish Colonies,RIC,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,8,1063,,8,,5|10|11|395,58->Danish Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Danish Colonies
+1063->402|403|404|540|541|721|752|860,1883,402|403|404|540|541|721|752|860,Decomposition of Portuguese Colonies,RIC,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,746,1063,,746,,402|403|404|540|541|721|752|860,58->Portuguese Colonies,split_failed_no_ratio,From a flow part-of reporter 58 to/from area Portuguese Colonies
 1055<-2,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,2,United States of America,GPH-AUTONOMOUS-CITED,521333,1055,missing 1049,,,,,ok,"53<-2 451724
 55<-2 15820
 57<-2 9495
 56<-2 44294"
-1055<-30,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,1482.2711718853216,1055,missing 55|56,,,,,ok,"53<-30 668
-1049<-British West Indies 238.64077156823888 (ratio on 21632)
-57<-British West Indies 575.6304003170828 (ratio on 52179)"
-1055<-101,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,101,Venezuela,GPH-AUTONOMOUS-CITED,1749,1055,missing 1049|56,,,,,ok,"53<-101 342
+1055<-30,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,30,Bermuda,GPH-AUTONOMOUS-CITED,668,1055,missing 55|1049|57|56,,,,,ok,53<-30 668
+1055<-101,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,101,Venezuela,GPH-AUTONOMOUS-CITED,1989,1055, unexpected: 101,,,,,ok,"53<-101 342
 55<-101 409
+55<-Margarita I. 240
 57<-101 998"
-1055<-110,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,34233,1055,missing 1049|57,,,,,ok,"53<-110 33717
-55<-110 152
+1055<-110,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,34233,1055,missing 1113 unexpected: 110|Demerara,,,,,ok,"53<-110 33717
+55<-Demerara 152
 56<-110 364"
 1055<-115,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,1501,1055,missing 55|1049|57|56,,,,,ok,53<-115 1501
 1055<-140,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,140,Brazil,GPH-AUTONOMOUS-CITED,20,1055,missing 55|1049|57|56,,,,,ok,53<-140 20
-1055<-160,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,13,1055,missing 55|1049|57|56,,,,,ok,53<-160 13
-1055<-165,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,165,Uruguay,GPH-AUTONOMOUS-CITED,8706,1055,missing 55|1049|57|56,,,,,ok,53<-165 8706
 1055<-200,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,200,United Kingdom,GPH-AUTONOMOUS-CITED,710291,1055,,,,,,ok,"53<-200 458946
 55<-200 69391
 1049<-200 25039
@@ -3481,68 +3307,29 @@ From a flow part-of reporter 60 to/from area British Northern America"
 56<-200 80715"
 1055<-220,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,40726,1055,missing 55|1049|57,,,,,ok,"53<-220 5487
 56<-220 35239"
-1055<-230,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,794,1055,missing 55|1049|57|56,,,,,ok,53<-230 794
 1055<-235,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,42,1055,missing 1049|57|56,,,,,ok,"53<-235 1
-55<-235 41"
-1055<-325,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,1324,1055,missing 55|1049|57|56,,,,,ok,53<-325 1324
+55<-401 41"
 1055<-390,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,390,Denmark,GPH-AUTONOMOUS-CITED,2093,1055,missing 55|1049|57|56,,,,,ok,53<-390 2093
-1055<-750,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,44671,1055,missing 55|1049|57|56,,,,,ok,53<-750 44671
+1055<-230,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,794,1055,missing 55|1049|57|56,,,,,ok,53<-410 794
+1055<-160,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,160,Argentina (La Plata),GPH-AUTONOMOUS-CITED,13,1055,missing 55|1049|57|56,,,,,ok,53<-1161 13
 1055<-2003,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,2003,Channel Is.,GPH-AUTONOMOUS-CITED,1992,1055,missing 55|1049|57|56,,,,,ok,53<-2003 1992
-1055<-20|21,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,20|21,,,90159,1055,,90159,,20|21,53<-British Northern America,split_failed_no_ratio,From a flow part-of reporter 53 to/from area British Northern America
-1055<-31,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,31,Bahamas,GPH-AUTONOMOUS-CITED,0,1055,missing 55|56,,,,,ok,"53<-British West Indies 0 (ratio on 36707)
-1049<-British West Indies 0 (ratio on 21632)
-57<-British West Indies 0 (ratio on 52179)"
-1055<-51,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,1081.8000202448034,1055,,,,,,ok,"53<-British West Indies 234.15393093313742 (ratio on 36707)
-55<-51 35
-1049<-British West Indies 136.4682256572863 (ratio on 21632)
-57<-British West Indies 329.17786365437973 (ratio on 52179)
-56<-51 347"
-1055<-1048,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1048,Trinidad,GPH-AUTONOMOUS-CITED,21403.781552382785,1055,,,,,,ok,"53<-British West Indies 4632.815209404849 (ratio on 36707)
-55<-1048 7407
-1049<-British West Indies 2700.0702866957326 (ratio on 21632)
-57<-British West Indies 6512.896056282204 (ratio on 52179)
-56<-1048 151"
-1055<-1063,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,623.0261896697821,1055,missing 58|1076|59|1062|54|1075|1061|60 unexpected: British West Indies|1063,,,,,ok,"53<-British West Indies 134.85304922850844 (ratio on 36707)
-55<-1063 35
-1049<-British West Indies 78.59426608534812 (ratio on 21632)
-57<-British West Indies 189.57887435592548 (ratio on 52179)
-56<-1063 185"
-1055<-5,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,119.35824275362319,1055,missing St. Thomas|St. John|St. Croix unexpected: West Indies (other)|5,,,,,ok,"53<-West Indies (other) 33.35824275362319 (ratio on 14731)
-55<-5 5
-57<-5 13
-56<-5 68"
-1055<-6,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-40,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-42,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-65,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,2724.243699978369,1055,missing 1077|1064 unexpected: West Indies (other)|65|French West Indies,,,,,ok,"53<-West Indies (other) 1147.5235507246377 (ratio on 14731)
-55<-65 172
-57<-French West Indies 256.07462686567163 (ratio on 3192)
-56<-French West Indies 1148.6455223880596 (ratio on 14318)"
-1055<-66,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,31233.770792775256,1055,,,,,,ok,"53<-West Indies (other) 13156.490942028986 (ratio on 14731)
-55<-66 1639
-1049<-66 333
-57<-French West Indies 2935.9253731343283 (ratio on 3192)
-56<-French West Indies 13169.35447761194 (ratio on 14318)"
-1055<-68,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,866.6272644927536,1055,missing 1065|1068|1067 unexpected: West Indies (other)|68,,,,,ok,"53<-West Indies (other) 393.6272644927536 (ratio on 14731)
-55<-68 59
-57<-68 368
-56<-68 46"
-1055<-1032,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-1033,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1033,Cayman Is.,GPH-AUTONOMOUS,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-1044,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1044,Navassa I.,GPH-AUTONOMOUS,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-1081,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1081,Mosquito Coast,GPH-AUTONOMOUS,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
-1055<-1087,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1087,Swan Is.,GPH-AUTONOMOUS,0,1055,missing 55|1049|57|56,,,,,ok,53<-West Indies (other) 0 (ratio on 14731)
+1055<-325,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,325,Italy,GPH-AUTONOMOUS-CITED,1324,1055,missing 55|1049|57|56,,,,,ok,53<-3291 1324
+1055<-20|21,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,20|21,Decomposition of British Northern America,RIC,95443,1055,,95443,,20|21,53<-British Northern America|57<-British Northern America,split_failed_no_ratio,"From a flow part-of reporter 53 to/from area British Northern America
+From a flow part-of reporter 57 to/from area British Northern America"
+1055<-1048|1055|1063|31|51,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1048|1055|1063|31|51,Decomposition of British West Indies,RIC,36707,1055,,36707,,31|51|1048|1055|1063,53<-British West Indies,split_failed_no_ratio,From a flow part-of reporter 53 to/from area British West Indies
+1055<-750,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,44671,1055,missing Chennai (Madras)|Bengal|Mumbai (Bombay)|Thoothukudi (Tuticorin)|7693|770,,,,,ok,"53<-Kolkata (Calcutta) 35442
+53<-Chittagong 9229"
+1055<-1032|1033|1044|1081|1087|40|42|5|6|65|66|68,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1032|1033|1044|1081|1087|40|42|5|6|65|66|68,Decomposition of West Indies (other),RIC,14731,1055,,14731,,5|6|40|42|65|66|68|1032|1033|1044|1081|1087,53<-West Indies (other),split_failed_no_ratio,From a flow part-of reporter 53 to/from area West Indies (other)
+1055<-165,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,165,Uruguay,GPH-AUTONOMOUS-CITED,8706,1055,missing 55|1049|57|56,,,,,ok,53<-Montevideo 8706
 1055->2,1883,2,United States of America,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,503316,1055,,,,,,ok,"53->2 405076
 55->2 1612
 1049->2 4830
 57->2 51502
 56->2 40296"
-1055->30,1883,30,Bermuda,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,8102.875210303417,1055,missing 55|56,,,,,ok,"53->30 4924
-1049->British West Indies 1474.8861170737368 (ratio on 5163)
-57->British West Indies 1703.9890932296803 (ratio on 5965)"
+1055->30,1883,30,Bermuda,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,4924,1055,missing 55|1049|57|56,,,,,ok,53->30 4924
 1055->41,1883,41,Haiti,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,23,1055,missing 55|1049|57|56,,,,,ok,53->41 23
-1055->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,4722,1055,missing 57,,,,,ok,"53->110 4422
-55->110 285
+1055->110,1883,110,Guyana (British Guiana),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,4722,1055,missing 1113 unexpected: 110|Demerara,,,,,ok,"53->110 4422
+55->Demerara 285
 1049->110 10
 56->110 5"
 1055->115,1883,115,Surinam (Dutch Guiana),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,55,1055,missing 55|1049|57|56,,,,,ok,53->115 55
@@ -3551,66 +3338,98 @@ From a flow part-of reporter 60 to/from area British Northern America"
 1049->200 37070
 57->200 97842
 56->200 158963"
-1055->20|21,1883,20|21,,,1055,Windward Is.,GPH-AUTONOMOUS-CITED,109442,1055,,109442,,20|21,53->British Northern America,split_failed_no_ratio,From a flow part-of reporter 53 to/from area British Northern America
-1055->31,1883,31,Bahamas,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|56,,,,,ok,"53->British West Indies 0 (ratio on 3051)
-1049->British West Indies 0 (ratio on 5163)
-57->British West Indies 0 (ratio on 5965)"
-1055->51,1883,51,Jamaica,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|56,,,,,ok,"53->British West Indies 0 (ratio on 3051)
-1049->British West Indies 0 (ratio on 5163)
-57->British West Indies 0 (ratio on 5965)"
-1055->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,13096.473984433629,1055,missing 56,,,,,ok,"53->British West Indies 1713.9419312921302 (ratio on 3051)
-55->1048 6917
-1049->British West Indies 2071.8495677902188 (ratio on 5163)
-57->British West Indies 2393.6824853512794 (ratio on 5965)"
-1055->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1652.916262600919,1055,missing 58|1076|59|1062|54|1075|1061|60 unexpected: British West Indies|1063,,,,,ok,"53->British West Indies 216.3179566312028 (ratio on 3051)
-55->1063 4
-1049->British West Indies 261.48976039914135 (ratio on 5163)
-57->British West Indies 302.1085455705749 (ratio on 5965)
-56->1063 869"
-1055->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing St. Thomas|St. John|St. Croix unexpected: West Indies (other),,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->6,1883,6,Puerto Rico,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->40,1883,40,Cuba,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->42,1883,42,Dominican Republic (Santo Domingo),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,3088.7289042277826,1055,missing 1077|1064 unexpected: West Indies (other)|65|French West Indies,,,,,ok,"53->West Indies (other) 79.0060396893874 (ratio on 485)
-1049->65 944
-57->French West Indies 810.4227782571182 (ratio on 4975)
-56->French West Indies 1255.300086281277 (ratio on 7706)"
-1055->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,15872.271095772217,1055,missing 1049,,,,,ok,"53->West Indies (other) 405.99396031061264 (ratio on 485)
-55->66 4851
-57->French West Indies 4164.577221742882 (ratio on 4975)
-56->French West Indies 6450.699913718723 (ratio on 7706)"
-1055->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,718,1055,missing 1065|1068|1067 unexpected: West Indies (other)|68,,,,,ok,"53->West Indies (other) 0 (ratio on 485)
-57->68 718"
-1055->1032,1883,1032,Turks and Caicos Is.,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->1033,1883,1033,Cayman Is.,GPH-AUTONOMOUS,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->1044,1883,1044,Navassa I.,GPH-AUTONOMOUS,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->1081,1883,1081,Mosquito Coast,GPH-AUTONOMOUS,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055->1087,1883,1087,Swan Is.,GPH-AUTONOMOUS,1055,Windward Is.,GPH-AUTONOMOUS-CITED,0,1055,missing 55|1049|57|56,,,,,ok,53->West Indies (other) 0 (ratio on 485)
-1055<-20,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,4805.38560411311,1055,missing 53|1049|56,,,,,ok,"55<-20 1491
-57<-20 3314.3856041131103"
+1055->20|21,1883,20|21,Decomposition of British Northern America,RIC,1055,Windward Is.,GPH-AUTONOMOUS-CITED,113226,1055,,113226,,20|21,53->British Northern America|57->British Northern America,split_failed_no_ratio,"From a flow part-of reporter 53 to/from area British Northern America
+From a flow part-of reporter 57 to/from area British Northern America"
+1055->1048|1055|1063|31|51,1883,1048|1055|1063|31|51,Decomposition of British West Indies,RIC,1055,Windward Is.,GPH-AUTONOMOUS-CITED,3051,1055,,3051,,31|51|1048|1055|1063,53->British West Indies,split_failed_no_ratio,From a flow part-of reporter 53 to/from area British West Indies
+1055->1032|1033|1044|1081|1087|40|42|5|6|65|66|68,1883,1032|1033|1044|1081|1087|40|42|5|6|65|66|68,Decomposition of West Indies (other),RIC,1055,Windward Is.,GPH-AUTONOMOUS-CITED,485,1055,,485,,5|6|40|42|65|66|68|1032|1033|1044|1081|1087,53->West Indies (other),split_failed_no_ratio,From a flow part-of reporter 53 to/from area West Indies (other)
 1055<-41,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,41,Haiti,GPH-AUTONOMOUS-CITED,16,1055,missing 53|1049|57|56,,,,,ok,55<-41 16
+1055<-51,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,51,Jamaica,GPH-AUTONOMOUS-CITED,382,1055,missing 53|1049|57,,,,,ok,"55<-51 35
+56<-51 347"
+1055<-1063,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,220,1055,missing 1076|1075|1061|60,,,,,ok,"55<-58 1
+55<-59 26
+55<-1062 8
+56<-54 174
+56<-58 11"
+1055<-66,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,1972,1055,missing 53|57|56,,,,,ok,"55<-66 1639
+1049<-66 333"
+1055<-20,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,1491,1055,missing 1027|1028|1026|1025|1023|10204|1024|10201,,,,,ok,55<-1022 1491
+1055<-1048,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1048,Trinidad,GPH-AUTONOMOUS-CITED,7558,1055,missing 53|1049|57,,,,,ok,"55<-1048 7407
+56<-1048 151"
+1055<-65,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,172,1055,missing 53|1049|57|56,,,,,ok,"55<-1064 132
+55<-1077 40"
+1055<-68,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,473,1055,missing 53|1049,,,,,ok,"55<-1067 24
+55<-1068 35
+57<-68 368
+56<-68 46"
+1055<-5,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,86,1055,missing St. John|St. Croix unexpected: 5,,,,,ok,"55<-St. Thomas 5
+57<-5 13
+56<-5 68"
+1055->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,4851,1055,missing 53|1049|57|56,,,,,ok,55->66 4851
 1055->220,1883,220,France,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,23781,1055,missing 53|1049|57,,,,,ok,"55->220 19437
 56->220 4344"
-1063<-5,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,8350,1063,missing 58|1076|1062|1075,,,,,ok,"59<-5 27
-54<-5 310
-1061<-5 7163
-60<-5 850"
-1063<-20,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,262,1063,missing 58|1076|1062|54|1075|1061|60,,,,,ok,59<-20 262
+1055->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,6917,1055,missing 53|1049|57|56,,,,,ok,55->1048 6917
+1055->1063,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,873,1055,missing 1076|59|1062|54|1061|60,,,,,ok,"55->1075 4
+56->58 869"
+1063<-65,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,5368,1063, unexpected: 65,,,,,ok,"59<-65 104
+59<-1064 8
+59<-1077 32
+54<-65 927
+54<-1064 245
+54<-1077 109
+1061<-1077 108
+60<-65 1171
+60<-1064 733
+60<-1077 1931"
 1063<-210,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,323,1063,missing 58|1076|1062|54|1075|1061,,,,,ok,"59<-210 56
 60<-210 267"
-1063->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5563,1063,missing 58|1076|1062|1075,,,,,ok,"59->5 16
-54->5 374
-1061->5 4917
-60->5 256"
+1063<-20,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,262,1063,missing 1027|1028|1026|1025|1023|10204|1024|10201,,,,,ok,59<-1022 262
+1063<-5,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,8350,1063,missing St. John|St. Croix unexpected: St. Croix & St. John & St. Thomas,,,,,ok,"59<-St. Thomas 27
+54<-St. Thomas 310
+1061<-St. Croix & St. John & St. Thomas 7163
+60<-St. Thomas 850"
+1063->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,2497,1063, unexpected: 65,,,,,ok,"59->65 110
+59->1064 4
+59->1077 171
+54->65 447
+54->1077 19
+1061->1077 44
+60->65 46
+60->1064 595
+60->1077 1061"
+1063->66,1883,66,Martinique,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,3545,1063,missing 58|1076|1062|1075|1061,,,,,ok,"59->66 31
+54->66 2952
+60->66 562"
 1063->1048,1883,1048,Trinidad,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,182,1063,missing 58|1076|1062|54|1075|1061,,,,,ok,"59->1048 75
 60->1048 107"
-1055<-21,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,1969.6143958868895,1055,missing 53|55|1049|56,,,,,ok,57<-21 1969.6143958868895
+1063->5,1883,5,Virgin Islands (Danish West Indies),GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,5563,1063,missing 58|1076|1062|1075,,,,,ok,"59->St. Thomas 16
+54->St. Croix 42
+54->St. Thomas 332
+1061->St. Croix & St. John & St. Thomas 4917
+60->St. Thomas 238
+60->St. Croix 18"
+1063<-6,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,501,1063,missing 58|1076|59|1062|1075|1061|60,,,,,ok,54<-6 501
+1063<-40,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,11,1063,missing 58|1076|59|1062|1075|1061|60,,,,,ok,54<-40 11
+1063<-66,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,6709,1063,missing 58|1076|59|1062|1075|1061,,,,,ok,"54<-66 5980
+60<-66 729"
+1063<-120,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,120,French Guiana,GPH-AUTONOMOUS-CITED,3,1063,missing 58|1076|59|1062|1075|1061|60,,,,,ok,54<-Cayenne 3
+1055<-1048|1055|1063|30|31|51,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1048|1055|1063|30|31|51,Decomposition of British West Indies,RIC,73811,1055,,73811,,30|31|51|1048|1055|1063,1049<-British West Indies|57<-British West Indies,split_failed_no_ratio,"From a flow part-of reporter 1049 to/from area British West Indies
+From a flow part-of reporter 57 to/from area British West Indies"
+1055->1048|1055|1063|30|31|51,1883,1048|1055|1063|30|31|51,Decomposition of British West Indies,RIC,1055,Windward Is.,GPH-AUTONOMOUS-CITED,11128,1055,,11128,,30|31|51|1048|1055|1063,1049->British West Indies|57->British West Indies,split_failed_no_ratio,"From a flow part-of reporter 1049 to/from area British West Indies
+From a flow part-of reporter 57 to/from area British West Indies"
+1055->65,1883,65,Guadeloupe,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,944,1055,missing 1077|1064 unexpected: French West Indies,,,,,ok,1049->French West Indies 944
 1055<-210,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,210,Netherlands,GPH-AUTONOMOUS-CITED,618,1055,missing 53|55|1049,,,,,ok,"57<-210 553
 56<-210 65"
-1055->20,1883,20,Canada (Province of Canada),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,3286.631929480901,1055,missing 53|55|1049|56,,,,,ok,57->20 3286.631929480901
-1055->21,1883,21,Newfoundland and Labrador (Newfoundland),GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,497.36807051909886,1055,missing 53|55|1049|56,,,,,ok,57->21 497.36807051909886
-1055<-100,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,30,1055,missing 53|55|1049|57,,,,,ok,56<-100 30
-1055<-40|6,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,40|6,,,1993,1055,,1993,,6|40,56<-Spanish West Indies,split_failed_no_ratio,From a flow part-of reporter 56 to/from area Spanish West Indies
-1063<-68,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,400,1063,missing 58|1076|59|1062|54|1075,,,,,ok,"1061<-68 31
-60<-68 369"
-1063->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,323,1063,missing 58|1076|59|1062|54|1075|1061,,,,,ok,60->68 323
+1055<-65|66,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,65|66,Decomposition of French West Indies,RIC,17510,1055,,17510,,65|66,57<-French West Indies|56<-French West Indies,split_failed_no_ratio,"From a flow part-of reporter 57 to/from area French West Indies
+From a flow part-of reporter 56 to/from area French West Indies"
+1055->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,1055,Windward Is.,GPH-AUTONOMOUS-CITED,718,1055,missing 53|55|1049|56,,,,,ok,57->68 718
+1055->65|66,1883,65|66,Decomposition of French West Indies,RIC,1055,Windward Is.,GPH-AUTONOMOUS-CITED,12681,1055,,12681,,65|66,57->French West Indies|56->French West Indies,split_failed_no_ratio,"From a flow part-of reporter 57 to/from area French West Indies
+From a flow part-of reporter 56 to/from area French West Indies"
+1055<-40|6,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,40|6,Decomposition of Spanish West Indies,RIC,1993,1055,,1993,,6|40,56<-Spanish West Indies,split_failed_no_ratio,From a flow part-of reporter 56 to/from area Spanish West Indies
+1055<-100,1883,1055,Windward Is.,GPH-AUTONOMOUS-CITED,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,30,1055,missing Colombia (New Granada) (Gran Colombia) (other)|95 unexpected: Colón,,,,,ok,56<-Colón 30
+1063<-68,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,400,1063,missing 1065,,,,,ok,"1061<-1067 9
+1061<-1068 22
+60<-1067 87
+60<-1068 282"
+1063<-40|6,1883,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,40|6,Decomposition of Spanish West Indies,RIC,33,1063,,33,,6|40,60<-Spanish West Indies,split_failed_no_ratio,From a flow part-of reporter 60 to/from area Spanish West Indies
+1063->68,1883,68,Netherlands Antilles,GPH-AUTONOMOUS-CITED,1063,Leeward Is.,GPH-AUTONOMOUS-CITED,323,1063,missing 1065,,,,,ok,"60->1067 141
+60->1068 182"
