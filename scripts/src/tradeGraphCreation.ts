@@ -455,8 +455,8 @@ export function treatReporters(graph: GraphType) {
           console.log(
             `badReporter ${badReporter} partially known ${knownAutonomousReporters} missing ${autonomousReporters.autonomousIds.filter((i) => !knownAutonomousReporters.includes(i))}`,
           );
-          const missingReporters = autonomousReporters.autonomousIds.filter(
-            (i) => !knownAutonomousReporters.includes(i),
+          const missingReporters = sortBy(
+            autonomousReporters.autonomousIds.filter((i) => !knownAutonomousReporters.includes(i)),
           );
           const newPartialBadReporter = missingReporters.join(" & ");
           allreportedFlows.forEach((e) => {
@@ -495,9 +495,16 @@ export function treatReporters(graph: GraphType) {
                 newValue,
                 badReporter === graph.source(e) ? "exporter" : "importer",
               );
-              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "status", "split_only_partial");
-              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "newReporters", missingReporters.join("|"));
-              (graph as GraphEntityPartiteType).setEdgeAttribute(newEdgeId, "valueToSplit", newValue);
+              (graph as GraphEntityPartiteType).updateEdgeAttributes(newEdgeId, (atts) => ({
+                ...atts,
+                status: "split_only_partial",
+                newReporters: missingReporters.join("|"),
+                valueToSplit: newValue,
+                notes: [atts?.notes, `From a flow part-of reporter ${badReporter} to/from area ${partner}`]
+                  .filter(identity)
+                  .join("\n"),
+              }));
+
               (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_partial_duplicate");
             }
           });
@@ -683,6 +690,15 @@ export function treatReporters(graph: GraphType) {
               newPartnerGroupId,
               graph.source(edgeToTreat) === badReporter ? "Exp" : "Imp",
             );
+            if (!graph.hasNode(newPartnerGroupId)) {
+              graph.addNode(newPartnerGroupId, {
+                label: `Decomposition of ${originalPartner}`,
+                type: "entity",
+                ricType: "group",
+                reporting: false,
+                entityType: "RIC",
+              });
+            }
             (graph as GraphEntityPartiteType).updateDirectedEdgeWithKey(
               newEdgeId,
               graph.source(edgeToTreat) === badReporter ? autonomousReporter : newPartnerGroupId,
