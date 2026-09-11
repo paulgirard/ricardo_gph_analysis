@@ -8,7 +8,6 @@ on:
 
 env:
   HNR_2026_DIR: Présentations/20260722_Historical_Network_Research
-  MEDIALAB_DIR: Présentations/20260922_medialab_seminar
   PUBLIC_DIR: public
 
 permissions:
@@ -57,7 +56,7 @@ jobs:
       # Exécution du script de build
       - name: Build médialab
         working-directory: ${{ env.HNR_2026_DIR }}
-        run: npm run build -- slides_hnr.md -o ${{ env.PUBLIC_DIR }}/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
+        run: npm run build -- slides_medialab.md -o ${{ env.PUBLIC_DIR }}/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
