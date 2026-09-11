@@ -48,7 +48,7 @@ jobs:
       # Exécution du script de build
       - name: Build HNR
         working-directory: ${{ env.HNR_2026_DIR }}
-        run: npm run build -- slides_hnr.md -o ${{ env.PUBLIC_DIR }}/HNR_2026/ --base ricardo_gph_analysis/HNR_2026/
+        run: npm run build -- slides_hnr.md -o dist/HNR_2026/ --base ricardo_gph_analysis/HNR_2026/
 
       - name: Wipe destination folder
         run: rm -rf ${{ env.PUBLIC_DIR }}/medialab_2026/*
@@ -56,13 +56,12 @@ jobs:
       # Exécution du script de build
       - name: Build médialab
         working-directory: ${{ env.HNR_2026_DIR }}
-        run: npm run build -- slides_medialab.md -o ${{ env.PUBLIC_DIR }}/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
+        run: npm run build -- slides_medialab.md -o dist/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
 
-      - name: test
-        run: ls -lah ${{ env.PUBLIC_DIR }}/medialab_2026
-
-      - name: test
-        run: ls -lah ${{ env.PUBLIC_DIR }}/HNR_2026
+      - name: Move build output to public
+        run:
+          - mv ${{ env.HNR_2026_DIR }}/dist/HNR_2026/* ${{ env.PUBLIC_DIR }}/HNR_2026;
+          - mv ${{ env.HNR_2026_DIR }}/dist/medialab_2026/* ${{ env.PUBLIC_DIR }}/medialab_2026;
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
