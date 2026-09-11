@@ -356,23 +356,17 @@ by id: replace status ="unknown despite gravity" if success==.
 ///at that point, we need to put together the flows of RqA (c. line 250)
 ///if all are succeses : we aggregate them with the sum of flows
 ///if any is a failure : it is globally a failure
-bys newPartnerId reportedBy CafFob : egen nbr_of_successes=count(success)
-bys newPartnerId reportedBy CafFob :replace status="unknown despite gravity" if nbr_of_successes!=_N
-bys newPartnerId reportedBy CafFob : egen pred_trade_cum=total(pred_trade)
-sort newPartnerId reportedBy CafFob
-by newPartnerId reportedBy CafFob: gen str str_concat = originalReportedTradeFlowId if _n == 1
-by newPartnerId reportedBy CafFob: replace str_concat = str_concat[_n-1] + "|" + originalReportedTradeFlowId if _n > 1
-by newPartnerId reportedBy CafFob: replace originalReportedTradeFlowId = str_concat[_N] if _N>1
-bys newPartnerId reportedBy CafFob : keep if _n==1
+bys newexporterId newimporterId reportedBy CafFob : egen nbr_of_successes=count(success)
+bys newexporterId newimporterId CafFob :replace status="unknown despite gravity" if nbr_of_successes!=_N
+bys newexporterId newimporterId CafFob : egen pred_trade_cum=total(pred_trade)
+bys newexporterId newimporterId CafFob: gen str str_concat = originalReportedTradeFlowId if _n == 1
+by newexporterId newimporterId CafFob: replace str_concat = str_concat[_n-1] + "|" + originalReportedTradeFlowId if _n > 1
+by newexporterId newimporterId CafFob: replace originalReportedTradeFlowId = str_concat[_N] if _N>1
+bys newexporterId newimporterId CafFob : keep if _n==1
 replace pred_trade=pred_trade_cum
 drop  pred_trade_cum str_concat nbr_of_successes 
 
-bys newPartnerId reportedBy CafFob : assert _N==1
-
-capture assert missing(newReporters)
-	if _rc!=0 {
-		*****il faudrait faire la même chose pour les reporters ??????
-	}
+bys newexporterId newimporterId CafFob : assert _N==1
 
 
 if "`CafFob'"=="FromExporter" {
@@ -567,7 +561,7 @@ gravity_cleanup 1833
 
 
 
-foreach year of numlist 1834(1)1917 {
+foreach year of numlist 1834(1)1913 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
