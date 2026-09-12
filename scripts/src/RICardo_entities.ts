@@ -64,7 +64,10 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
         // flag flows as toTreat or ok
         flagFlowsToTreat(graph);
 
-        resolveOneToOneEntityTransform(graph as GraphEntityPartiteType);
+        // treat reporters
+        treatReporters(graph as GraphEntityPartiteType);
+
+        resolveOneToOneEntityTransform(graph);
 
         await writeFile(`../data/entity_networks/${year}.json`, JSON.stringify(graph.export(), setReplacer, 2), "utf8");
         return graph;
@@ -77,11 +80,13 @@ export const entitesTransformationGraph = async (startYear: number, endYear: num
   );
 
   if (results.some((r) => r.status === "rejected")) {
-    console.error(`ERRORS in years: 
+    const e = new Error(`ERRORS in years: 
       ${results
         .filter((r) => r.status === "rejected")
         .map((r) => r.reason)
         .join("\n")}`);
+    console.error(e);
+    throw e;
   }
 };
 
@@ -99,9 +104,6 @@ const applyRatioMethod = async (
     console.log(`****** Compute ratio for ${year}`);
     try {
       const new_graph = resolveEntityTransform(+year, tradeGraphsByYear, edgeKey);
-
-      // TODO: transform aggregate part of reporters method
-      treatReporters(new_graph as GraphEntityPartiteType);
 
       console.log(`writing gexf for ${year}`);
       // flag partial aggregations
@@ -125,7 +127,7 @@ const applyRatioMethod = async (
   });
 };
 
-entitesTransformationGraph(conf.startDate, conf.endDate + 1)
-  .catch((e) => console.log(e))
-  .then(() => applyRatioMethod(conf.startDate, conf.endDate + 1));
+entitesTransformationGraph(conf.startDate, conf.endDate + 1).then(() =>
+  applyRatioMethod(conf.startDate, conf.endDate + 1),
+);
 //applyRatioMethod(1833, 1834);

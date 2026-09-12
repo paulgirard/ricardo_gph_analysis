@@ -61,17 +61,7 @@ export function resolveAutonomous(
           return resolveAutonomous(n, graph, limitToResolutionTypes);
         // dead-end not resolved: should we send it to rest of the world?
         else {
-          // if (!graph.hasNode("restOfTheWorld"))
-          //   graph.addNode("restOfTheWorld", {
-          //     type: "entity",
-          //     label: "Rest Of The World",
-          //     entityType: "ROTW",
-          //     ricType: "geographical_area",
-          //     reporting: false,
-          //   });
-
-          // TODO: failure
-          return { autonomousIds: ["restOfTheWorld"], traversedLabels };
+          return { autonomousIds: [], traversedLabels };
         }
       }
     }),
@@ -172,13 +162,14 @@ export function generateTradeFlow(
           "notes",
           (notes) => `${notes}\n${aggregatedFlowNote(originalFlow, newValue, graph)}`,
         );
-
+        graph.setEdgeAttribute(originalFlow, "status", "ignore_resolved");
         return { status: "merged", newEdgeId: idEdge };
       }
 
       // COLLISION with reported_trade
       // TODO: should we check that reported_trade is ok?
       if (labels.has("REPORTED_TRADE")) {
+        graph.setEdgeAttribute(originalFlow, "status", "ignore_resolved");
         return { status: "collision", newEdgeId: null };
       }
       throw new Error(`merged with wrong edge ${JSON.stringify(eAtts, null, 2)}`);
