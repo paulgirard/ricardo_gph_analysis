@@ -11,8 +11,11 @@ coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FA
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
 
+annees_ric <- 1833:1938
+annees_imf <- 1948:2025
+annees_all <- c(annees_ric, annees_imf)
 
-annees <- 1833:1938
+annees <- annees_all
 
 # ---- couleur fixe par pays ----
 tous_pays <- c()
@@ -117,24 +120,26 @@ for (year in annees) {
 }
 
 
-annees <- 1833:1938
+annees <- annees_all
 annees <- annees[file.exists(sprintf(here("cartes","Intramaxmap","carte_blocs_%d.png"), annees))]
+
 
 html <- paste0(
   '<html><body style="text-align:center;font-family:sans-serif">',
-  '<input type="range" min="', min(annees), '" max="', max(annees),
-  '" value="', min(annees), '" id="s" style="width:80%"> <span id="y">', min(annees), '</span><br>',
-  '<img id="img" src="carte_blocs_', min(annees), '.png" style="max-width:95%">',
-  '<script>var s=document.getElementById("s");s.oninput=function(){',
-  'document.getElementById("y").innerText=s.value;',
-  'document.getElementById("img").src="carte_blocs_"+s.value+".png";}</script>',
+  '<input type="range" min="0" max="', length(annees)-1,
+  '" value="0" id="s" style="width:80%"> <span id="y">', annees[1], '</span><br>',
+  '<img id="img" src="carte_blocs_', annees[1], '.png" style="max-width:95%">',
+  '<script>var A=[', paste(annees, collapse=','), '];',
+  'var s=document.getElementById("s");s.oninput=function(){',
+  'document.getElementById("y").innerText=A[s.value];',
+  'document.getElementById("img").src="carte_blocs_"+A[s.value]+".png";}</script>',
   '</body></html>')
 
 writeLines(html, here("cartes", "Intramaxmap", "diaporama.html"))
 
 # ---- gif ----
 library(magick)
-fichiers <- sprintf(here("cartes","Intramaxmap","carte_blocs_%d.png"), 1833:1938)
+fichiers <- sprintf(here("cartes","Intramaxmap","carte_blocs_%d.png"), annees_all)
 fichiers <- fichiers[file.exists(fichiers)]
 img <- image_read(fichiers)
 anim <- image_animate(image_join(img), fps = 2)
@@ -144,7 +149,7 @@ image_write(anim, here("cartes","Intramaxmap","blocs_animation.gif"))
 
 ##D'abord inclure les flux export et import dans deux colonnes distinctes
 
-annees <- 1833:1938
+annees <- annees_ric
 
 for (year in annees) {
   f_fob <- here("data", "blocks", "louvain", paste0(year, "_fob.csv"))
@@ -161,6 +166,8 @@ for (year in annees) {
   Net <- read.csv(f_tf, stringsAsFactors = FALSE)
   Net <- Net[Net$status == "ok", ]
   Net <- Net[Net$reportedBy == Net$exporterId, ]
+  Net <- Net[Net$exporterLabel != "Rest Of The World" &
+               Net$importerLabel != "Rest Of The World", ]
   Net$exporterId <- as.character(Net$exporterId)
   Net$importerId <- as.character(Net$importerId)
   
@@ -194,7 +201,7 @@ coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FA
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
 
-annees <- 1833:1938
+annees <- annees_ric
 
 # ---- couleur fixe par pays (sur toutes les annees) ----
 tous_pays <- c()
@@ -301,7 +308,7 @@ for (year in annees) {
 }
 
 # ---- diaporama HTML ----
-annees <- 1833:1938
+annees <- annees_ric
 annees <- annees[file.exists(sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), annees))]
 
 html <- paste0(
@@ -318,7 +325,7 @@ writeLines(html, here("cartes", "Louvainmap", "diaporama.html"))
 
 # ---- gif ----
 library(magick)
-fichiers <- sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), 1833:1938)
+fichiers <- sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), annees_ric)
 fichiers <- fichiers[file.exists(fichiers)]
 img <- image_read(fichiers)
 anim <- image_animate(image_join(img), fps = 2)

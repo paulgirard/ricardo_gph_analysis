@@ -8,8 +8,13 @@ library(ggplot2)
 library(writexl)
 library(igraph)
 library(here)
+
+
 #setwd("set the right path")
 #set_here() so that here function understand you are there (need to restart perhaps after)
+annees_ric <- 1833:1938
+annees_imf <- 1948:2025
+annees_all <- c(annees_ric, annees_imf)
 
 traiter_annee <- function(year, dossier, seuil = 0.10) {
   
@@ -18,9 +23,14 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
   
   # ---- chargement + filtre exportateur (FOB) ----
   Net <- read.csv(fichier)
+  Net$exporterId <- as.character(Net$exporterId)
+  Net$importerId <- as.character(Net$importerId)
+  Net$reportedBy <- as.character(Net$reportedBy)
   Net <- Net[Net$status == "ok", ]
   Net <- Net[Net$reportedBy == Net$exporterId, ]
-  
+  exclure <- c("Rest Of The World")
+  Net <- Net[!(Net$exporterLabel %in% exclure | Net$importerLabel %in% exclure), ]
+
   df <- Net[, c("exporterLabel", "importerLabel", "value")]
   df <- df[!is.na(df$exporterLabel) & !is.na(df$importerLabel) & !is.na(df$value), ]
   if (nrow(df) == 0) { message("  aucune donnee : ", year); return(NULL) }
@@ -112,7 +122,7 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
 # ================= BOUCLE =================
 dossier <- here("data")
 
-for (year in 1833:1938) {
+for (year in annees_all) {
   message("Annee ", year)
   res <- tryCatch(traiter_annee(year, dossier),
                   error = function(e) { message("  ERREUR ", year, " : ", conditionMessage(e)); NULL })
@@ -120,7 +130,7 @@ for (year in 1833:1938) {
 
 # ================= Recupérere les corrélations =================
 dossier <- here("data", "blocks", "Intramax")
-annees  <- 1833:1938
+annees  <- annees_all
 
 cor_par_annee <- data.frame(year = integer(), cor = numeric())
 
@@ -181,7 +191,7 @@ write.csv(cor_par_annee,
 
 
 dossier <- here("data", "blocks", "louvain")  
-annees  <- 1833:1938
+annees  <- annees_ric
 
 cor_comm <- data.frame(year = integer(), cor = numeric(),
                        ic_bas = numeric(), ic_haut = numeric())
@@ -229,7 +239,7 @@ write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm.csv"), row.names
 #Correlation Louvain mais avec les flux i==>j et j==>i
 
 dossier <- here("data", "blocks", "louvain")
-annees  <- 1833:1938
+annees  <- annees_ric
 cor_comm <- data.frame(year = integer(), cor = numeric(),
                        ic_bas = numeric(), ic_haut = numeric())
 for (year in annees) {
@@ -288,7 +298,7 @@ write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm_oriente.csv"), r
 
 dossier_intra   <- here("data", "blocks", "Intramax")
 dossier_louvain <- here("data", "blocks", "louvain")
-annees <- 1833:1938
+annees <- annees_ric
 
 cor_methodes <- data.frame(year = integer(), cor = numeric(),
                            ic_bas = numeric(), ic_haut = numeric(), n = integer())

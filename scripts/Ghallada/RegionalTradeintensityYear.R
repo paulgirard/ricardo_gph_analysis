@@ -6,8 +6,20 @@ library(readxl)
 library(tidyverse)
 library(ggplot2)
 setwd("~/Desktop/ricardo_gph_analysis")
+BlocselonAN <- as.data.frame(read_excel("data/BlocselonAN.xlsx"))
+region_map  <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 
-annees <- 1833:1938
+codes_post45 <- unique(unlist(lapply(1948:2025, function(y) {
+  f <- paste0("data/blocks/Intramax/paires_blocs_", y, ".csv")
+  if (!file.exists(f)) return(NULL)
+  d <- read.csv(f); c(d$exporterId, d$importerId)
+})))
+
+length(setdiff(as.character(codes_post45), as.character(region_map$GPH_code)))
+annees_ric <- 1833:1938
+annees_imf <- 1948:2025
+annees_all <- c(annees_ric, annees_imf)
+annees <- annees_all
 resultats_intra <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 
 for (year in annees) {
@@ -87,7 +99,7 @@ write.csv(resultats_intra, "data/blocks/Intramax/tibi_intrabloc_moyen.csv", row.
 
 #####Louvain method#####
 
-annees <- 1833:1938
+annees <- annees_ric
 resultats_louvain <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 for (year in annees) {
   f <- paste0("data/blocks/louvain/", year, "_fob_enrichi.csv")
@@ -180,7 +192,7 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
   geom_line() + geom_point(size = 1) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
   coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1835, 1935, 5)) +
+  scale_x_continuous(breaks = seq(1835, 2025, 5)) +
   scale_color_manual(values = c("Intramax" = "#0055A4", "Louvain" = "#CF142B")) +
   labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
        title = "Commerce intra-bloc moyen : Intramax vs Louvain",
@@ -200,7 +212,7 @@ region_map$GPH_code <- as.character(region_map$GPH_code)
 
 resultats_AN <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 
-for (year in annees) {
+for (year in annees_all) {
   f <- paste0("data/blocks/Intramax/paires_blocs_", year, ".csv")
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
@@ -283,7 +295,7 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
   geom_line() + geom_point(size = 1) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
   coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1835, 1935, 5)) +
+  scale_x_continuous(breaks = seq(1835, 2025, 5)) +
   scale_color_manual(values = c("Intramax" = "#0055A4",
                                 "Louvain" = "#CF142B",
                                 "Anderson-Norheim" = "#2E8B57")) +
@@ -326,6 +338,25 @@ coef <- max(abs(diff_long$diff), na.rm = TRUE)
 coef<-coef+1 #(nb pair)
 
 # 5. Graph
+accolade <- function(x1, x2, y, rx = 1.2, h = 0.08, n = 30) {
+  ry <- h / 2
+  xm <- (x1 + x2) / 2
+  a1 <- seq(pi, 3*pi/2, length.out = n)
+  a2 <- seq(pi/2, 0,    length.out = n)
+  gauche <- rbind(
+    data.frame(x = (x1 + rx) + rx*cos(a1), y = y + ry*sin(a1)),
+    data.frame(x = c(x1 + rx, xm - rx),    y = c(y - ry, y - ry)),
+    data.frame(x = (xm - rx) + rx*cos(a2), y = (y - 2*ry) + ry*sin(a2))
+  )
+  droite <- data.frame(x = 2*xm - rev(gauche$x), y = rev(gauche$y))
+  rbind(gauche, droite)
+}
+
+acc <- accolade(1939, 1947, y = 0.84, h = -0.07)
+
+library(tidyr)
+combine <- combine %>% complete(methode, year = 1833:2025)
+
 p_combine <- ggplot() +
   # Barres différence nb blocs, rescalées pour occuper [-1, 1]
   geom_col(data = diff_long,
@@ -337,9 +368,12 @@ p_combine <- ggplot() +
   geom_line(data = combine,  aes(year, moyenne, color = methode), linewidth = 0.7) +
   geom_point(data = combine, aes(year, moyenne, color = methode), size = 1.2) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  
+  geom_path(data = acc, aes(x, y), inherit.aes = FALSE,
+            linewidth = 0.4, colour = "grey25") +
+  annotate("text", x = 1943, y = 0.96, label = "no data",
+           size = 3, fontface = "bold", colour = "grey25") +
   coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1833, 1938, 2)) +
+  scale_x_continuous(breaks = seq(1833, 2025, 5)) +
   scale_y_continuous(
     name     = "Average intra-bloc TIBI (weighted)",
     breaks   = seq(-1, 1, 0.25),

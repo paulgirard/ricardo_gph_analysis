@@ -23,7 +23,7 @@ safe_cols <- function(df, cols) {
 }
 
 # --- 2. Boucle par année ---
-annees <- 1833:1938
+annees <- c(1833:1938, 1948:2025)
 master_panel <- list()
 
 for (year in annees) {
@@ -166,8 +166,8 @@ cat("\nPaires avec écart Intramax vs Louvain > 1% :", n_ecart, "\n")
 
 
 # --- 6. Sauvegarde ---
-write.csv(master, "data/blocks/master_panel_3methodes.csv", row.names = FALSE)
-
+#write.csv(master, "data/blocks/master_panel_3methodes.csv", row.names = FALSE)
+write.csv(master, gzfile("data/blocks/master_panel_3methodes.csv.gz"), row.names = FALSE)
 
 
 # Diagnostic année par année : ensemble exportateurs vs importateurs
@@ -219,7 +219,8 @@ diag_carre %>%
 
 
 # --- 6. Sauvegarde ---
-write.csv(master, "data/blocks/master_panelmatricecarré.csv", row.names = FALSE)
+#write.csv(master, "data/blocks/master_panelmatricecarré.csv", row.names = FALSE)
+write.csv(master, gzfile("data/blocks/master_panel_carre.csv.gz"), row.names = FALSE)
 
 
 ##Rendre la matrice réctangle
@@ -251,5 +252,6 @@ diag_rect <- master_rect %>%
 
 
 # --- 4. Sauvegarde ---
-write.csv(master, "data/blocks/master_panelmatricerectangle.csv", row.names = FALSE)
+#write.csv(master_rect, "data/blocks/master_panelmatricerectangle.csv", row.names = FALSE)
+write.csv(master_rect, gzfile("data/blocks/master_panel_rectangle.csv.gz"), row.names = FALSE)
 

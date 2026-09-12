@@ -1,4 +1,6 @@
 #DOT
+rm(list = ls(all = TRUE))
+gc()
 library(readxl); library(dplyr)
 DOT<-read.csv("scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv")
 DOT <- distinct(DOT)
@@ -118,3 +120,76 @@ DOT <- DOT %>%
 write.csv(DOT, "data/IMFdatawithgph.csv",
           row.names = FALSE)
 write.csv(DOT, gzfile("data/DOT_gph.csv.gz"), row.names = FALSE)
+
+# =============================================================================
+# Conversion du DOT (FMI) au format tradeFlows_<year>_gravity.csv
+## =============================================================================
+
+library(dplyr); library(here); library(data.table)
+
+
+DOT <- DOT[!is.na(DOT$VALUE_GBP) & !is.na(DOT$TIME_PERIOD), ]
+
+# -----------------------------------------------------------------------------
+# 1. Nom canonique par code GPH
+# -----------------------------------------------------------------------------
+noms <- read.csv("data/GeoPolHist_entities.csv") %>%
+  select(gph = GPH_code, nom = GPH_name) %>%
+  mutate(gph = as.integer(gph)) %>%
+  distinct()
+
+
+setdiff(unique(c(DOT$GPH_reporter, DOT$GPH_partner)), noms$gph)
+
+# -----------------------------------------------------------------------------
+# 2. Mise au format RICardo
+# -----------------------------------------------------------------------------
+# Colonnes attendues par traiter_annee() :
+#   status, reportedBy, exporterId, importerId, exporterLabel, importerLabel, value
+# Le DOT ne contient que des exports FOB declares par l'exportateur : status vaut
+# donc "ok" partout et reportedBy est egal a exporterId, ce qui neutralise les
+# deux filtres du debut de la fonction sans avoir a les modifier.
+flux <- DOT %>%
+  transmute(
+    id                           = paste0(GPH_reporter, "->", GPH_partner),
+    year                         = TIME_PERIOD,
+    importerId                   = as.character(GPH_partner),
+    importerLabel                = noms$nom[match(GPH_partner,  noms$gph)],
+    importerType                 = "GPH", #to update if autonomous and cited later
+    exporterId                   = as.character(GPH_reporter),
+    exporterLabel                = noms$nom[match(GPH_reporter, noms$gph)],
+    exporterType                 = "GPH",#to update if autonomous and cited later
+    value                        = VALUE_GBP,
+    reportedBy                   = as.character(GPH_reporter),
+    partial                      = NA,
+    valueToSplit                 = NA,
+    newReporters                 = NA,
+    newPartners                  = NA,
+    originalReportedTradeFlowIds = NA_character_,
+    status                       = "ok",
+    notes                        = NA_character_
+  )
+
+
+
+
+# -----------------------------------------------------------------------------
+# 3. Ecriture d'un fichier par annee
+# -----------------------------------------------------------------------------
+for (an in sort(unique(flux$year))) {
+  d <- flux[flux$year == an, ]
+  f <- paste0("data/tradeFlows_", an, "_gravity.csv")
+  write.csv(d, f, row.names = FALSE)
+  message("  ", an, " : ", nrow(d), " flux, ",
+          length(unique(c(d$exporterId, d$importerId))), " pays")
+}
+
+# -----------------------------------------------------------------------------
+# 4. Controle : la fonction existante tourne-t-elle ?
+# -----------------------------------------------------------------------------
+# test <- traiter_annee(1960, here("data"))
+# str(test)
+#
+# Puis, une fois valide, il suffit d'etendre la boucle existante :
+#   for (year in 1948:2025) { ... traiter_annee(year, dossier) ... }
+
