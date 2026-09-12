@@ -117,8 +117,8 @@ DOT <- DOT %>%
     VALUE_GBP = VALUE_USD / USD_per_GBP
   )
 
-write.csv(DOT, "data/IMFdatawithgph.csv",
-          row.names = FALSE)
+#write.csv(DOT, "data/IMFdatawithgph.csv",
+         # row.names = FALSE)
 write.csv(DOT, gzfile("data/DOT_gph.csv.gz"), row.names = FALSE)
 
 # =============================================================================
@@ -144,11 +144,7 @@ setdiff(unique(c(DOT$GPH_reporter, DOT$GPH_partner)), noms$gph)
 # -----------------------------------------------------------------------------
 # 2. Mise au format RICardo
 # -----------------------------------------------------------------------------
-# Colonnes attendues par traiter_annee() :
-#   status, reportedBy, exporterId, importerId, exporterLabel, importerLabel, value
-# Le DOT ne contient que des exports FOB declares par l'exportateur : status vaut
-# donc "ok" partout et reportedBy est egal a exporterId, ce qui neutralise les
-# deux filtres du debut de la fonction sans avoir a les modifier.
+
 flux <- DOT %>%
   transmute(
     id                           = paste0(GPH_reporter, "->", GPH_partner),
@@ -183,13 +179,4 @@ for (an in sort(unique(flux$year))) {
   message("  ", an, " : ", nrow(d), " flux, ",
           length(unique(c(d$exporterId, d$importerId))), " pays")
 }
-
-# -----------------------------------------------------------------------------
-# 4. Controle : la fonction existante tourne-t-elle ?
-# -----------------------------------------------------------------------------
-# test <- traiter_annee(1960, here("data"))
-# str(test)
-#
-# Puis, une fois valide, il suffit d'etendre la boucle existante :
-#   for (year in 1948:2025) { ... traiter_annee(year, dossier) ... }
 
