@@ -62,17 +62,19 @@ drop valueToSplit
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
 */
 
+/* cela devrait avoir été réparé le 10 septembre 2026
 ////Il me semble que ces flux ne devraient pas avoir le statut "ok". Tant qu’on ne peut pas réparer le bug en amont, voici un correctif pour ne pas les traiter comme des flux valides.
 assert  value!=0 | (strmatch(notes,"* 0 *")==1 & partial!="")
  
 replace status="split_failed_no_ratio" if value==0 & strmatch(notes,"* 0 *")==1 & partial!=""
-
+*/
 
 drop importerType exporterType
 drop if value==. & status !="to_impute"
 drop if status =="ignore_internal" | status=="ignore_resolved"
 drop if status=="ignore_duplicate"
 drop if status=="split_failed_error"
+drop if status=="ignore_partial_reporter"
 
 //Restent les "split_failed_no_ratio"
 
@@ -98,7 +100,6 @@ count if status !="ok"
 gen totreat_flows=r(N)
 
 save tradeFlows_`year'_temp.dta, replace
-*'
 
 end
 ***************Gravity trade estimation program ***************
@@ -114,8 +115,9 @@ keep if CafFob=="`CafFob'"
 
 *****Calcul de la distance
 
-keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld"
+keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld" & exporterId!="Unknown" & importerId!="Unknown"
 destring exporterId importerId, replace
+
 
 foreach trader in importer exporter {
 	rename `trader'Id GPH_code
@@ -561,7 +563,7 @@ gravity_cleanup 1833
 
 
 
-foreach year of numlist 1834(1)1913 {
+foreach year of numlist 1834(1)1938 {
 	trade_importation `year'
 	gravity_trade_estimation `year' FromImporter
 	gravity_trade_estimation `year' FromExporter
@@ -570,14 +572,6 @@ foreach year of numlist 1834(1)1913 {
 	
 }
 
-foreach year of numlist 1923(1)1938 {
-	trade_importation `year'
-	gravity_trade_estimation `year' FromImporter
-	gravity_trade_estimation `year' FromExporter
-	bestguessbiltrade `year'
-	gravity_cleanup `year'
-	
-}
 
 erase GeoPolHist_entities_temp.dta
 erase GeoPolHist_entities_status_over_time_temp.dta
