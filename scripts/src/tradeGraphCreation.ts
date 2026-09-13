@@ -446,6 +446,7 @@ export function treatReporters(graph: GraphType) {
           allreportedFlows.forEach((e) => {
             (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_duplicate");
           });
+          // early exist, we are done with this reporter
           return;
         } else {
           // we have reported  trade for some of the new reporters but not all of them
@@ -459,41 +460,48 @@ export function treatReporters(graph: GraphType) {
           const newPartialBadReporter = missingReporters.join(" & ");
           allreportedFlows.forEach((e) => {
             const partner = graph.source(e) === badReporter ? graph.target(e) : graph.source(e);
-            const expImp = graph.source(e) === badReporter ? "Imp" : "Exp";
+            const expImp = graph.source(e) === badReporter ? "Exp" : "Imp";
             // get the flows to same partners from knownAutonomousReporters
             const alreadyReportedflows = (graph as GraphEntityPartiteType).filterEdges((_, atts, source, target) => {
               return (
-                knownAutonomousReporters.includes(atts.reportedBy) && (expImp === "Imp" ? target : source) === partner
+                knownAutonomousReporters.includes(atts.reportedBy) && (expImp === "Imp" ? source : target) === partner
               );
             });
-            const alreadyReportedValue = sum(
-              alreadyReportedflows.map((e2) => (graph as GraphEntityPartiteType).getEdgeAttribute(e2, "value")),
+            const alreadyReportedValue =
+              alreadyReportedflows.length > 0
+                ? sum(alreadyReportedflows.map((e2) => (graph as GraphEntityPartiteType).getEdgeAttribute(e2, "value")))
+                : 0;
+            const originalValue = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value") || 0; // || 0 required to make sure we keep that flow
+
+            if (!graph.hasNode(newPartialBadReporter)) {
+              const newPartialBadReporterLabel = missingReporters
+                .map((mr) => graph.getNodeAttribute(mr, "label"))
+                .join(" & ");
+              console.log(`Create new partial reporter ${newPartialBadReporter} ${newPartialBadReporterLabel}`);
+              graph.addNode(newPartialBadReporter, {
+                label: newPartialBadReporterLabel,
+                type: "entity",
+                entityType: "RIC",
+                reporting: true,
+                ricType: "group",
+              });
+            }
+            const newValue = alreadyReportedValue < originalValue ? originalValue - alreadyReportedValue : 0;
+            if (newValue === 0) {
+              console.log(`Partial reporter split generate negative value ${originalValue}-${alreadyReportedValue}`);
+              console.log(alreadyReportedflows);
+            }
+            // TODO :is it safe tous generateTradeFlow method here ?
+            const { newEdgeId, status } = generateTradeFlow(
+              graph as GraphEntityPartiteType,
+              e,
+              graph.source(e) === badReporter ? newPartialBadReporter : partner,
+              graph.target(e) === badReporter ? newPartialBadReporter : partner,
+              new Set(["SPLIT_PARTIAL_REPORTER"]),
+              newValue,
+              badReporter === graph.source(e) ? "exporter" : "importer",
             );
-            const originalValue = (graph as GraphEntityPartiteType).getEdgeAttribute(e, "value");
-            if (originalValue && alreadyReportedValue) {
-              if (!graph.hasNode(newPartialBadReporter))
-                graph.addNode(newPartialBadReporter, {
-                  label: missingReporters.map((mr) => graph.getNodeAttribute(mr, "label")).join(" & "),
-                  type: "entity",
-                  entityType: "RIC",
-                  reporting: true,
-                  ricType: "group",
-                });
-              const newValue = alreadyReportedValue < originalValue ? originalValue - alreadyReportedValue : 0;
-              if (newValue === 0) {
-                console.log(`Partial reporter split generate negative value ${originalValue}-${alreadyReportedValue}`);
-                console.log(alreadyReportedflows);
-              }
-              // TODO :is it safe tous generateTradeFlow method here ?
-              const { newEdgeId } = generateTradeFlow(
-                graph as GraphEntityPartiteType,
-                e,
-                graph.source(e) === badReporter ? newPartialBadReporter : partner,
-                graph.target(e) === badReporter ? newPartialBadReporter : partner,
-                new Set(["SPLIT_PARTIAL_REPORTER"]),
-                newValue,
-                badReporter === graph.source(e) ? "exporter" : "importer",
-              );
+            if (newEdgeId !== null) {
               (graph as GraphEntityPartiteType).updateEdgeAttributes(newEdgeId, (atts) => ({
                 ...atts,
                 // This new trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
@@ -507,13 +515,16 @@ export function treatReporters(graph: GraphType) {
                   .filter(identity)
                   .join("\n"),
               }));
+              console.log(`${e} Rerouted as ${newEdgeId}`);
+            } else console.log(`${e} ignored cause ${status}`);
 
-              (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_partial_duplicate");
-            }
+            (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_partial_duplicate");
           });
+          // early exist, we are done with this reporter
+          return;
         }
       }
-
+      // Reporters to treat which doesn't have overlapping ones
       if (autonomousReporters.autonomousIds.length === 1) {
         // we have only one new reporter
         const autonomousReporter = autonomousReporters.autonomousIds[0];
@@ -548,6 +559,28 @@ export function treatReporters(graph: GraphType) {
           }
           console.log(`${edgeToTreat} rerouted as ${newEdgeId}`);
         });
+      } else {
+        // multiple new reporters, add newReporter attribute
+        allreportedFlows.forEach((edgeToTreat) => {
+          console.log(edgeToTreat);
+          const originalPartner =
+            graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
+
+          (graph as GraphEntityPartiteType).updateEdgeAttributes(edgeToTreat, (atts) => ({
+            ...atts,
+            newReporters: autonomousReporters.autonomousIds.join("|"),
+            // This trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
+            status:
+              graph.getNodeAttribute(originalPartner, "entityType") === "GPH-AUTONOMOUS-CITED"
+                ? "split_failed_no_ratio"
+                : "toTreat",
+            notes: [atts?.notes, `From a flow part-of reporter ${badReporter} to/from ${originalPartner}`]
+              .filter(identity)
+              .join("\n"),
+          }));
+
+          console.log(`${edgeToTreat} add newReporters fields ${autonomousReporters.autonomousIds.join("|")}`);
+        });
       }
     });
 }
@@ -560,7 +593,6 @@ export function resolveOneToOneEntityTransform(graph: GraphEntityPartiteType) {
       // we only treat partner side
       const originalPartner = edgeToTreatAtts.reportedBy === graph.source(e) ? graph.target(e) : graph.source(e);
       const autonomousPartners = resolveAutonomous(originalPartner, graph as GraphEntityPartiteType);
-
       if (autonomousPartners.autonomousIds.length === 1) {
         generateTradeFlow(
           graph,

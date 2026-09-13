@@ -174,15 +174,20 @@ export function generateTradeFlow(
       }
       throw new Error(`merged with wrong edge ${JSON.stringify(eAtts, null, 2)}`);
     } else {
+      const autonomousReporters = resolveAutonomous(
+        graph.getEdgeAttribute(originalFlow, "reportedBy"),
+        graph as GraphEntityPartiteType,
+      );
+
       // create a new edge
-      if ((newExporter === "restOfTheWorld" || newImporter === "restOfTheWorld") && !graph.hasNode("restOfTheWorld"))
-        graph.addNode("restOfTheWorld", {
-          type: "entity",
-          label: "Rest Of The World",
-          entityType: "ROTW",
-          ricType: "geographical_area",
-          reporting: false,
-        });
+      // if ((newExporter === "restOfTheWorld" || newImporter === "restOfTheWorld") && !graph.hasNode("restOfTheWorld"))
+      //   graph.addNode("restOfTheWorld", {
+      //     type: "entity",
+      //     label: "Rest Of The World",
+      //     entityType: "ROTW",
+      //     ricType: "geographical_area",
+      //     reporting: false,
+      //   });
 
       graph.addDirectedEdgeWithKey(idEdge, newExporter, newImporter, {
         // reuse direction and value from original flow
@@ -193,9 +198,15 @@ export function generateTradeFlow(
         originalPartners: new Set([
           valueReportedBy === "exporter" ? graph.target(originalFlow) : graph.source(originalFlow),
         ]),
+        newReporters: graph.getEdgeAttribute(originalFlow, "newReporters"),
         labels: new Set(["GENERATED_TRADE"]),
         notes: aggregatedFlowNote(originalFlow, newValue, graph),
-        status: "ok",
+        // if no more aggs/split on reporter side then ok else split_error
+        status:
+          autonomousReporters.autonomousIds.length > 1 ||
+          autonomousReporters.autonomousIds[0] !== graph.getEdgeAttribute(originalFlow, `reportedBy`)
+            ? "split_failed_no_ratio"
+            : "ok",
         type: "trade",
       });
 

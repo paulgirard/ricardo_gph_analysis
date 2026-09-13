@@ -112,12 +112,26 @@ const applyRatioMethod = async (
       // flag reporters created by aggregations/split
       flagReporters(new_graph);
 
+      // check bad ok status
+      const okNonOkFlows = (new_graph as GraphEntityPartiteType).filterEdges(
+        (e, atts, s, t, sAtts, tAtts) =>
+          atts.status === "ok" &&
+          (!["GPH-AUTONOMOUS-CITED", "GPH-AUTONOMOUS"].includes(sAtts.entityType) ||
+            !["GPH-AUTONOMOUS-CITED", "GPH-AUTONOMOUS"].includes(tAtts.entityType)),
+      );
+
       // export graph in graphology
       writeFileSync(
         `../data/entity_networks/${year}_ratios.json`,
         JSON.stringify(new_graph.export(), setReplacer, 2),
         "utf8",
       );
+      if (okNonOkFlows.length > 0) {
+        const m = `found ${okNonOkFlows.length} ok but not ok flows`;
+        console.log(m);
+        console.log(okNonOkFlows);
+        throw new Error(m);
+      }
 
       exportGephLiteFile(new_graph, "ratios");
     } catch (e) {
