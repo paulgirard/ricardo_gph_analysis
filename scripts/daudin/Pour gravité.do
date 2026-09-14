@@ -514,7 +514,7 @@ drop if importerLabel==exporterLabel
 
 bys importerLabel exporterLabel CafFob: assert _N==1
 
-export delimited using "results/BestGuessBilTrade_`year'.csv", replace
+export delimited using "results/BestGuessBilTrade_`year'.csv", replace quote
 erase temp.dta
 erase "results/BestGuessBilTrade_`year'_FromImporter.dta"
 erase "results/BestGuessBilTrade_`year'_FromExporter.dta"
@@ -535,7 +535,7 @@ codebook full_id
 levelsof full_id
 generate treated_flows=r(r)
 order year id full_id
-export delimited using "results/gravity_`year'.csv", replace 
+export delimited using "results/gravity_`year'.csv", replace quote
 
 erase "results/gravity_`year'_FromImporter.dta"
 erase "results/gravity_`year'_FromExporter.dta"
