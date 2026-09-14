@@ -169,6 +169,77 @@ cat("\nPaires avec écart Intramax vs Louvain > 1% :", n_ecart, "\n")
 #write.csv(master, "data/blocks/master_panel_3methodes.csv", row.names = FALSE)
 write.csv(master, gzfile("data/blocks/master_panel_3methodes.csv.gz"), row.names = FALSE)
 
+####Ajout de variables gravitaires avant filtre rectangulaire
+coord <- read.csv("data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
+  select(gph = GPH_code, lat, lng) %>%
+  mutate(gph = as.character(gph))
+
+master <- master %>%
+  left_join(coord %>% rename(lat_exp = lat, lng_exp = lng),
+            by = c("exporterId" = "gph")) %>%
+  left_join(coord %>% rename(lat_imp = lat, lng_imp = lng),
+            by = c("importerId" = "gph")) %>%
+  mutate(distance_km = geosphere::distHaversine(
+    cbind(lng_exp, lat_exp), cbind(lng_imp, lat_imp)) / 1000)
+
+##Contiguity
+contig <- read.csv("data/DirectContiguity320/contdird.csv", stringsAsFactors = FALSE) %>%
+  mutate(state1no = if_else(state1no == 510L, 512L, state1no),
+         state2no = if_else(state2no == 510L, 512L, state2no)) %>%
+  group_by(state1no, state2no, year) %>%
+  slice_min(conttype, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  transmute(exporterId = as.character(state1no),
+            importerId = as.character(state2no),
+            year, conttype)
+
+# 2017-2025 : on reconduit la situation de 2016
+contig <- bind_rows(
+  contig,
+  contig %>% filter(year == 2016) %>% select(-year) %>%
+    tidyr::crossing(year = 2017:2025)
+)
+
+master <- master %>%
+  left_join(contig, by = c("exporterId", "importerId", "year")) %>%
+  mutate(contig_terre = as.integer(!is.na(conttype) & conttype == 1),
+         contig_24mi  = as.integer(!is.na(conttype) & conttype <= 3),
+         contig_large = as.integer(!is.na(conttype)))
+#Need to treat the contiguity of 4 numbers code, as of now considered zero (we can put NA for now)
+master <- master %>%
+  mutate(
+    hors_cow = as.integer(exporterId) > 999 | as.integer(importerId) > 999,
+    contig_terre = if_else(hors_cow, NA_integer_, contig_terre),
+    contig_24mi  = if_else(hors_cow, NA_integer_, contig_24mi),
+    contig_large = if_else(hors_cow, NA_integer_, contig_large)
+  ) %>%
+  select(-hors_cow)
+library(writexl)
+
+# 1. paires-annees
+library(writexl)
+
+na_contig_annees <- master %>%
+  filter(is.na(contig_terre), !is.na(export_intramax)) %>%
+  select(year, exporterId, exportateur, importerId, importateur,
+         export_intramax, distance_km) %>%
+  arrange(exporterId, importerId, year)
+
+# 2. paires uniques
+na_contig_paires <- na_contig_annees %>%
+  group_by(exporterId, exportateur, importerId, importateur) %>%
+  summarise(distance_km    = first(distance_km),
+            premiere_annee = min(year),
+            derniere_annee = max(year),
+            n_annees       = n(), .groups = "drop") %>%
+  arrange(distance_km)
+
+write_xlsx(na_contig_annees, "data/na_contig_paires_annees.xlsx")
+write_xlsx(na_contig_paires, "data/na_contig_paires.xlsx")
+
+nrow(na_contig_annees); nrow(na_contig_paires)
+
+#Treaties 
 
 # Diagnostic année par année : ensemble exportateurs vs importateurs
 diag_carre <- master %>%
@@ -254,4 +325,5 @@ diag_rect <- master_rect %>%
 # --- 4. Sauvegarde ---
 #write.csv(master_rect, "data/blocks/master_panelmatricerectangle.csv", row.names = FALSE)
 write.csv(master_rect, gzfile("data/blocks/master_panel_rectangle.csv.gz"), row.names = FALSE)
+
 
