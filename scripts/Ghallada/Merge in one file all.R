@@ -239,6 +239,50 @@ write_xlsx(na_contig_paires, "data/na_contig_paires.xlsx")
 
 nrow(na_contig_annees); nrow(na_contig_paires)
 
+#Bilateral Disputes
+BilateralDis <- read.csv("~/Desktop/ricardo_gph_analysis/data/dyadic_mid_4.03_update/dyadic_mid_4.03.csv")
+library(dplyr); library(writexl)
+
+mid <- BilateralDis %>%
+  mutate(exporterId = as.character(if_else(statea == 510L, 512L, statea)),
+         importerId = as.character(if_else(stateb == 510L, 512L, stateb))) %>%
+  group_by(exporterId, importerId, year) %>%
+  summarise(mid_n        = n(),
+            mid_hihost   = max(hihost, na.rm = TRUE),
+            mid_guerre   = as.integer(any(war == 1, na.rm = TRUE)),
+            mid_duration = sum(duration, na.rm = TRUE),
+            .groups = "drop")
+
+master <- master %>%
+  left_join(mid, by = c("exporterId", "importerId", "year")) %>%
+  mutate(
+    hors_champ   = as.integer(exporterId) > 999 | as.integer(importerId) > 999 | year > 2014,
+    mid_n        = if_else(hors_champ, NA_integer_, coalesce(mid_n, 0L)),
+    mid_hihost   = if_else(hors_champ, NA_integer_, coalesce(mid_hihost, 0L)),
+    mid_guerre   = if_else(hors_champ, NA_integer_, coalesce(mid_guerre, 0L)),
+    mid_duration = if_else(hors_champ, NA_real_, coalesce(as.numeric(mid_duration), 0))
+  ) %>%
+  select(-hors_champ)
+#Alliances
+atop <- read.csv("data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALSE) %>%
+  mutate(exporterId = as.character(if_else(stateA == 510L, 512L, stateA)),
+         importerId = as.character(if_else(stateB == 510L, 512L, stateB))) %>%
+  select(exporterId, importerId, year,
+         atop_allie   = atopally,
+         atop_defense = defense, atop_offense = offense,
+         atop_neutral = neutral, atop_nonagg  = nonagg,
+         atop_consul  = consul,  atop_asymm   = asymm)
+
+master <- master %>%
+  left_join(atop, by = c("exporterId", "importerId", "year")) %>%
+  mutate(
+    hors_champ = as.integer(exporterId) > 999 | as.integer(importerId) > 999 |
+      year < 1815 | year > 2018,
+    across(c(atop_allie, atop_defense, atop_offense, atop_neutral,
+             atop_nonagg, atop_consul, atop_asymm),
+           ~ if_else(hors_champ, NA_integer_, coalesce(as.integer(.x), 0L)))
+  ) %>%
+  select(-hors_champ)
 #Treaties 
 
 # Diagnostic année par année : ensemble exportateurs vs importateurs
