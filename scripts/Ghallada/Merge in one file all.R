@@ -370,4 +370,5 @@ diag_rect <- master_rect %>%
 #write.csv(master_rect, "data/blocks/master_panelmatricerectangle.csv", row.names = FALSE)
 write.csv(master_rect, gzfile("data/blocks/master_panel_rectangle.csv.gz"), row.names = FALSE)
 
+colnames(master_rect)
 
