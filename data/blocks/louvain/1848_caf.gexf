@@ -3,1766 +3,1152 @@
   <meta/>
   <graph defaultedgetype="undirected">
     <attributes class="node">
-      <attribute id="ricType" title="ricType" type="string"/>
-      <attribute id="cited" title="cited" type="boolean"/>
-      <attribute id="entityType" title="entityType" type="string"/>
+      <attribute id="id" title="id" type="string"/>
       <attribute id="type" title="type" type="string"/>
-      <attribute id="gphStatus" title="gphStatus" type="string"/>
-      <attribute id="lat" title="lat" type="string"/>
-      <attribute id="lng" title="lng" type="string"/>
-      <attribute id="reporting" title="reporting" type="boolean"/>
-      <attribute id="totalBilateralTrade" title="totalBilateralTrade" type="double"/>
-      <attribute id="community" title="community" type="integer"/>
-      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="integer"/>
-      <attribute id="reportingByAggregateInto" title="reportingByAggregateInto" type="boolean"/>
+      <attribute id="blockIntraMax" title="blockIntraMax" type="string"/>
+      <attribute id="blockAN" title="blockAN" type="string"/>
+      <attribute id="blockLouvain" title="blockLouvain" type="integer"/>
+      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="double"/>
     </attributes>
     <attributes class="edge">
       <attribute id="proximity" title="proximity" type="double"/>
       <attribute id="observedTradeValues" title="observedTradeValues" type="listdouble"/>
-      <attribute id="coMembershipScore" title="coMembershipScore" type="integer"/>
-      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="integer"/>
-      <attribute id="ambiguityScore" title="ambiguityScore" type="integer"/>
+      <attribute id="coMembershipScore" title="coMembershipScore" type="double"/>
+      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="double"/>
+      <attribute id="ambiguityScore" title="ambiguityScore" type="double"/>
       <attribute id="sourceCommunityId" title="sourceCommunityId" type="string"/>
     </attributes>
     <nodes>
       <node id="200" label="United Kingdom">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="54.6"/>
-          <attvalue for="lng" value="-2"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="52849445"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="200"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.99746833346201" y="0.7115665100781555"/>
       </node>
       <node id="2" label="United States of America">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="39.828175"/>
-          <attvalue for="lng" value="-98.5795"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="27284213.7577002"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="2"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="NAM"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.95949589907424" y="2.8459057614335084"/>
-      </node>
-      <node id="380" label="Sweden">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="61"/>
-          <attvalue for="lng" value="15"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="2130945.5263539553"/>
-          <attvalue for="community" value="1"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="99.93671474565826" y="3.5571120090504027"/>
       </node>
       <node id="385" label="Norway">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="65"/>
-          <attvalue for="lng" value="11"/>
-          <attvalue for="totalBilateralTrade" value="927830.3635341832"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="385"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.9088734635095" y="4.268138148238393"/>
+      </node>
+      <node id="380" label="Sweden">
+        <attvalues>
+          <attvalue for="id" value="380"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="1"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
       </node>
       <node id="365" label="Russia (USSR)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="66.4166666666667"/>
-          <attvalue for="lng" value="94.25"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="12627597.559115175"/>
-          <attvalue for="community" value="2"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="365"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.08272727272727272"/>
         </attvalues>
-        <viz:position x="99.83801640794078" y="5.689506105783291"/>
       </node>
       <node id="239" label="Prussia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="52.5221"/>
-          <attvalue for="lng" value="13.3896"/>
-          <attvalue for="totalBilateralTrade" value="3241291.861171703"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="239"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
-        <viz:position x="99.79500422224959" y="6.399775955546275"/>
       </node>
       <node id="390" label="Denmark">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="56"/>
-          <attvalue for="lng" value="10"/>
-          <attvalue for="totalBilateralTrade" value="402973.87967647787"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="390"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.6938234241943" y="7.8193075822330895"/>
       </node>
       <node id="210" label="Netherlands">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="52.316666666667"/>
-          <attvalue for="lng" value="5.55"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="10424490.436816169"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="210"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.63565993495104" y="8.528497483542546"/>
       </node>
       <node id="211" label="Belgium">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="50.641111111111"/>
-          <attvalue for="lng" value="4.6680555555556"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="5836408.81000607"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="211"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.5724515603828" y="9.237255558618033"/>
       </node>
       <node id="220" label="France">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="47"/>
-          <attvalue for="lng" value="2"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="27098142.40270195"/>
-          <attvalue for="community" value="4"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="220"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
+          <attvalue for="meanAmbiguityScore" value="0.1338235294117647"/>
         </attvalues>
-        <viz:position x="99.50420150094013" y="9.945545920677503"/>
       </node>
       <node id="230" label="Spain">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="40.2"/>
-          <attvalue for="lng" value="-3.5"/>
-          <attvalue for="totalBilateralTrade" value="2737082.9020505953"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="230"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.43091321235083" y="10.653332706620782"/>
       </node>
       <node id="235" label="Portugal">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="38.7"/>
-          <attvalue for="lng" value="-9.18333333333333"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1828721.7271050785"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="id" value="235"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="99.3525904054451" y="11.36058007884543"/>
       </node>
       <node id="140" label="Brazil">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-14"/>
-          <attvalue for="lng" value="-53"/>
-          <attvalue for="totalBilateralTrade" value="4538099.844496824"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="id" value="140"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
-        <viz:position x="99.0874558056295" y="13.47872775774558"/>
       </node>
       <node id="300" label="Austria-Hungary (Austrian Empire)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="48.2075"/>
-          <attvalue for="lng" value="16.365"/>
-          <attvalue for="totalBilateralTrade" value="1150050.9028691985"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
+          <attvalue for="id" value="300"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.2022222222222222"/>
         </attvalues>
-        <viz:position x="98.77716857868865" y="15.590733388052186"/>
       </node>
       <node id="561" label="Cape Colony (Cape of Good Hope)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-33"/>
-          <attvalue for="lng" value="18"/>
-          <attvalue for="totalBilateralTrade" value="15426.444953403885"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="561"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
-        <viz:position x="98.42187011773174" y="17.695634561335893"/>
       </node>
       <node id="115" label="Surinam (Dutch Guiana)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="4"/>
-          <attvalue for="lng" value="-56"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="253299.92483086945"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="115"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="98.29346219489561" y="18.395523633227416"/>
       </node>
       <node id="452" label="Ghana (Gold Coast)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="7.9465"/>
-          <attvalue for="lng" value="-1.0232"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="155924"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="452"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="98.0217223267939" y="19.792472106558947"/>
       </node>
       <node id="30" label="Bermuda">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="32.32"/>
-          <attvalue for="lng" value="-64.74"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="16188"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="30"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="97.87840414062295" y="20.48946077584485"/>
       </node>
       <node id="338" label="Malta">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="35.8833333333333"/>
-          <attvalue for="lng" value="14.5"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="0"/>
-          <attvalue for="community" value="6"/>
+          <attvalue for="id" value="338"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="97.73013004484088" y="21.18541199548619"/>
       </node>
       <node id="248" label="Hamburg">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="53.55"/>
-          <attvalue for="lng" value="10"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="7314275.9381898455"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="248"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="97.41874440544281" y="22.574061186835785"/>
       </node>
       <node id="40" label="Cuba">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="22"/>
-          <attvalue for="lng" value="-79.5"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="5227899.304873738"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="40"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="97.25564862831888" y="23.26668884661022"/>
       </node>
       <node id="41" label="Haiti">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="19"/>
-          <attvalue for="lng" value="-72.8"/>
-          <attvalue for="totalBilateralTrade" value="518095.0047514888"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="41"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="96.91469244921524" y="24.648374945907115"/>
       </node>
       <node id="101" label="Venezuela">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="8"/>
-          <attvalue for="lng" value="-67"/>
-          <attvalue for="totalBilateralTrade" value="427809.2397235092"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="101"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="96.55410806386197" y="26.02506899111056"/>
       </node>
       <node id="850" label="Indonesia (Dutch East Indies)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-2"/>
-          <attvalue for="lng" value="118"/>
-          <attvalue for="totalBilateralTrade" value="241004.0008585489"/>
-          <attvalue for="community" value="8"/>
+          <attvalue for="id" value="850"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="6"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="96.36647796065158" y="26.711456820234535"/>
       </node>
       <node id="710" label="People's Republic of China (China)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="35.8447222222222"/>
-          <attvalue for="lng" value="103.451944444444"/>
-          <attvalue for="totalBilateralTrade" value="4733473.2181448415"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="710"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="96.17396850168842" y="27.39649215933025"/>
       </node>
       <node id="160" label="Argentina (La Plata)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-34"/>
-          <attvalue for="lng" value="-64"/>
-          <attvalue for="totalBilateralTrade" value="315397.9261184486"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="160"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="95.77435075264876" y="28.762366695190583"/>
       </node>
       <node id="840" label="Philippines">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="12"/>
-          <attvalue for="lng" value="123"/>
-          <attvalue for="totalBilateralTrade" value="276848.66245473723"/>
-          <attvalue for="community" value="8"/>
+          <attvalue for="id" value="840"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="6"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="94.69063011137906" y="32.15096529048535"/>
       </node>
       <node id="10" label="Greenland">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="72"/>
-          <attvalue for="lng" value="-40"/>
-          <attvalue for="totalBilateralTrade" value="2134.6578366445915"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="10"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="94.45945735870795" y="32.82393814731"/>
       </node>
       <node id="8501" label="Bali">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="-8.4262"/>
-          <attvalue for="lng" value="115.079"/>
-          <attvalue for="totalBilateralTrade" value="3857.983811626196"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="8501"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="93.98277540973758" y="34.16486391430273"/>
       </node>
       <node id="91" label="Honduras">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="14.633333"/>
-          <attvalue for="lng" value="-86.816667"/>
-          <attvalue for="totalBilateralTrade" value="654.8933038999264"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="91"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="93.4870590579018" y="35.498870245465305"/>
       </node>
       <node id="3349" label="Ionian Is.">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Protectorate of"/>
-          <attvalue for="lat" value="37.8"/>
-          <attvalue for="lng" value="20.7"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="543965.7542316301"/>
-          <attvalue for="community" value="6"/>
+          <attvalue for="id" value="3349"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="91.88672671577514" y="39.456678185833816"/>
       </node>
       <node id="280" label="Mecklenburg Schwerin">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="53.6333333333333"/>
-          <attvalue for="lng" value="11.4166666666667"/>
-          <attvalue for="totalBilateralTrade" value="54387.53886707809"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="280"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="91.0235663716302" y="41.40906138744795"/>
       </node>
       <node id="2249" label="Heligoland">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="54.1825"/>
-          <attvalue for="lng" value="7.8852777777778"/>
-          <attvalue for="totalBilateralTrade" value="4813.097866077998"/>
-          <attvalue for="community" value="6"/>
+          <attvalue for="id" value="2249"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="90.72660894548788" y="42.05570626267638"/>
       </node>
       <node id="231" label="Gibraltar">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="36.14"/>
-          <attvalue for="lng" value="-5.35"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1075089.3453245887"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="231"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.25999999999999995"/>
         </attvalues>
-        <viz:position x="90.4250577289461" y="42.70022171741928"/>
       </node>
       <node id="51" label="Jamaica">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="18.18"/>
-          <attvalue for="lng" value="-77.4"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1139844"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="51"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="89.80823523065989" y="43.98273393906364"/>
       </node>
       <node id="4" label="Hawaii (Sandwich Is.)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="21.5"/>
-          <attvalue for="lng" value="-158"/>
-          <attvalue for="totalBilateralTrade" value="1336.3449691991786"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="4"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="89.49299518069303" y="44.62066576809959"/>
       </node>
       <node id="640" label="Turkey (Ottoman Empire)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="39"/>
-          <attvalue for="lng" value="36"/>
-          <attvalue for="totalBilateralTrade" value="1924683.416186589"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="640"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.11374999999999999"/>
         </attvalues>
-        <viz:position x="88.52015205321463" y="46.520776868790165"/>
       </node>
       <node id="329" label="Two Sicilies">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="40.83333333"/>
-          <attvalue for="lng" value="14.25"/>
-          <attvalue for="totalBilateralTrade" value="1475884.1963530234"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="329"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.22749999999999998"/>
         </attvalues>
-        <viz:position x="87.84915225051957" y="47.77579354511061"/>
       </node>
       <node id="327" label="Papal States">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="41.904"/>
-          <attvalue for="lng" value="12.453"/>
-          <attvalue for="totalBilateralTrade" value="516749.79381848173"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="327"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.22749999999999998"/>
         </attvalues>
-        <viz:position x="87.50697165613704" y="48.39968916813444"/>
       </node>
       <node id="651" label="Egypt Arab Republic (Egypt)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="27"/>
-          <attvalue for="lng" value="29"/>
-          <attvalue for="totalBilateralTrade" value="564449.4258033488"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="651"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.3033333333333333"/>
         </attvalues>
-        <viz:position x="87.16036029231483" y="49.021134153687925"/>
       </node>
       <node id="350" label="Greece">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="38.5"/>
-          <attvalue for="lng" value="23"/>
-          <attvalue for="totalBilateralTrade" value="320936.29684123414"/>
-          <attvalue for="community" value="6"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
+          <attvalue for="id" value="350"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.15166666666666664"/>
         </attvalues>
-        <viz:position x="86.80933570914078" y="49.64009703594157"/>
       </node>
       <node id="70" label="Mexico">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="23"/>
-          <attvalue for="lng" value="-102"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1295998.1149118328"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="70"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="86.0941182014685" y="50.87045125720401"/>
       </node>
       <node id="3261" label="Republic of St. Mark">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="45.583"/>
-          <attvalue for="lng" value="12.683"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="0"/>
-          <attvalue for="community" value="6"/>
+          <attvalue for="id" value="3261"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="84.61152144974506" y="53.30000410843636"/>
       </node>
       <node id="155" label="Chile">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-33"/>
-          <attvalue for="lng" value="-71"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1512342.7587456952"/>
-          <attvalue for="community" value="11"/>
+          <attvalue for="id" value="155"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="8"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="83.84444247713974" y="54.49871067922255"/>
       </node>
       <node id="145" label="Bolivia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-17.056869611111"/>
-          <attvalue for="lng" value="-64.991228611111"/>
-          <attvalue for="totalBilateralTrade" value="80048.16605421732"/>
-          <attvalue for="community" value="11"/>
+          <attvalue for="id" value="145"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="8"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="82.66203398622761" y="56.27599965580132"/>
       </node>
       <node id="130" label="Ecuador">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-1"/>
-          <attvalue for="lng" value="-78"/>
-          <attvalue for="totalBilateralTrade" value="43013.400124065185"/>
-          <attvalue for="community" value="11"/>
+          <attvalue for="id" value="130"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="8"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="81.44195767987257" y="58.02764452629319"/>
       </node>
       <node id="100" label="Colombia (New Granada) (Gran Colombia)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="4"/>
-          <attvalue for="lng" value="-73.25"/>
-          <attvalue for="totalBilateralTrade" value="43797.94661190965"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="100"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="79.75755826834006" y="60.32190231642516"/>
       </node>
       <node id="135" label="Peru">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-9.4"/>
-          <attvalue for="lng" value="-76"/>
-          <attvalue for="totalBilateralTrade" value="396043.585195742"/>
-          <attvalue for="community" value="11"/>
+          <attvalue for="id" value="135"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="8"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="79.32630861780012" y="60.88790324090271"/>
       </node>
       <node id="165" label="Uruguay">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-33"/>
-          <attvalue for="lng" value="-56"/>
-          <attvalue for="totalBilateralTrade" value="220418.06522612795"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="165"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="78.89104241203796" y="61.45082120803617"/>
       </node>
       <node id="150" label="Paraguay">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="-23.5"/>
-          <attvalue for="lng" value="-58"/>
-          <attvalue for="totalBilateralTrade" value="1552.6554286750045"/>
-          <attvalue for="community" value="11"/>
+          <attvalue for="id" value="150"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="8"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="78.45178169003134" y="62.01062771541393"/>
       </node>
       <node id="750" label="India">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="22.8"/>
-          <attvalue for="lng" value="83"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="14738435"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="750"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="76.19634579510065" y="64.76200187975545"/>
       </node>
       <node id="780" label="Sri Lanka (Ceylon)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="7"/>
-          <attvalue for="lng" value="81"/>
-          <attvalue for="totalBilateralTrade" value="192208"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="780"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="73.84446779769888" y="67.43140644888415"/>
       </node>
       <node id="781" label="Maldive Islands">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Protectorate of"/>
-          <attvalue for="lat" value="3.25"/>
-          <attvalue for="lng" value="73"/>
-          <attvalue for="totalBilateralTrade" value="25205"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="781"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="72.8773755933518" y="68.47545638128695"/>
       </node>
       <node id="901" label="New South Wales">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-32"/>
-          <attvalue for="lng" value="147"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="1150961"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="901"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="71.39912448177097" y="70.01546274385805"/>
       </node>
       <node id="4050" label="St. Helena">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-15.95"/>
-          <attvalue for="lng" value="-5.7166666666667"/>
-          <attvalue for="totalBilateralTrade" value="4225"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="4050"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="69.88833788909835" y="71.52356413867544"/>
       </node>
       <node id="920" label="New Zealand">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-41.2"/>
-          <attvalue for="lng" value="174"/>
-          <attvalue for="totalBilateralTrade" value="8982"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="920"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="68.34570425750994" y="72.99907334716647"/>
       </node>
       <node id="600" label="Morocco">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="32"/>
-          <attvalue for="lng" value="-6"/>
-          <attvalue for="totalBilateralTrade" value="87095.54919769421"/>
-          <attvalue for="community" value="10"/>
+          <attvalue for="id" value="600"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="67.82453701357926" y="73.48355039662698"/>
       </node>
       <node id="324" label="Kingdom of Sardinia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="45.087"/>
-          <attvalue for="lng" value="7.685"/>
-          <attvalue for="totalBilateralTrade" value="141871.7192795272"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="324"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.15166666666666664"/>
         </attvalues>
-        <viz:position x="67.29993558743233" y="73.96430672917485"/>
       </node>
       <node id="720" label="Hong Kong">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="22.278333333333"/>
-          <attvalue for="lng" value="114.15861111111"/>
-          <attvalue for="totalBilateralTrade" value="2814"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="720"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="64.62635141494964" y="76.31143232040291"/>
       </node>
       <node id="8510" label="Lombok">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="-8.63121944444444"/>
-          <attvalue for="lng" value="116.317555555556"/>
-          <attvalue for="totalBilateralTrade" value="40"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="8510"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="62.98271698685759" y="77.67353063272841"/>
       </node>
       <node id="906" label="Tasmania">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-42"/>
-          <attvalue for="lng" value="147"/>
-          <attvalue for="totalBilateralTrade" value="11673"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="906"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="61.87096934073748" y="78.56197014355942"/>
       </node>
       <node id="590" label="Mauritius">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-20.2"/>
-          <attvalue for="lng" value="57.5"/>
-          <attvalue for="totalBilateralTrade" value="84877"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="590"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="60.1799237282309" y="79.86474053087701"/>
       </node>
       <node id="9974" label="Crozet Is.">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Possession of"/>
-          <attvalue for="lat" value="-46.38"/>
-          <attvalue for="lng" value="51.67"/>
-          <attvalue for="totalBilateralTrade" value="5235"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="9974"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="58.46145505157925" y="81.13111778628578"/>
       </node>
       <node id="1024" label="Prince Edward Is.">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="46.4"/>
-          <attvalue for="lng" value="-63.2"/>
-          <attvalue for="totalBilateralTrade" value="815"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="1024"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="57.30096043401605" y="81.95486522067696"/>
       </node>
       <node id="585" label="Reunion (Bourbon I.)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-21.114444444444"/>
-          <attvalue for="lng" value="55.5325"/>
-          <attvalue for="totalBilateralTrade" value="358732.2983544751"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="585"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="56.128860609427164" y="82.7620142739862"/>
       </node>
       <node id="511" label="Zanzibar">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-5.9"/>
-          <attvalue for="lng" value="39.3"/>
-          <attvalue for="totalBilateralTrade" value="237"/>
-          <attvalue for="community" value="7"/>
+          <attvalue for="id" value="511"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="5"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="55.53853283720518" y="83.15931319034976"/>
       </node>
       <node id="246" label="Bremen">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="53.1333333333333"/>
-          <attvalue for="lng" value="8.73333333333333"/>
-          <attvalue for="totalBilateralTrade" value="84014.93836131295"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="246"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="51.938568125722625" y="85.45399429546679"/>
       </node>
       <node id="3361" label="Moldavia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Occupied by"/>
-          <attvalue for="lat" value="47.25"/>
-          <attvalue for="lng" value="28.516667"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="285512.3119820917"/>
-          <attvalue for="community" value="6"/>
+          <attvalue for="id" value="3361"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="44.4613933597524" y="89.57223063265403"/>
       </node>
       <node id="31" label="Bahamas">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="25"/>
-          <attvalue for="lng" value="-77.4"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="69984"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="31"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="41.89424339989377" y="90.80127956119593"/>
       </node>
       <node id="247" label="Frankfurt">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="50.1105555555556"/>
-          <attvalue for="lng" value="8.68222222222222"/>
-          <attvalue for="totalBilateralTrade" value="464364.23619811237"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="247"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="40.59781068604787" y="91.38828025244712"/>
       </node>
       <node id="240" label="Hanover">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="52.374444444444"/>
-          <attvalue for="lng" value="9.7386111111111"/>
-          <attvalue for="totalBilateralTrade" value="427805.49302340345"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="240"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="39.94649448844679" y="91.67484703060317"/>
       </node>
       <node id="276" label="Lübeck">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="53.869722222222"/>
-          <attvalue for="lng" value="10.686388888889"/>
-          <attvalue for="totalBilateralTrade" value="4864.779086277457"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="276"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="37.98054257485453" y="92.50663968450948"/>
       </node>
       <node id="337" label="Tuscany">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="43.35"/>
-          <attvalue for="lng" value="11.016666666667"/>
-          <attvalue for="totalBilateralTrade" value="107887.41106479605"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
+          <attvalue for="id" value="337"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.45499999999999996"/>
         </attvalues>
-        <viz:position x="35.332507109067876" y="93.55006115117011"/>
       </node>
       <node id="402" label="Cape Verde">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="15.3"/>
-          <attvalue for="lng" value="-23.7"/>
-          <attvalue for="totalBilateralTrade" value="46.20123203285421"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="id" value="402"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="21.706673383805768" y="97.61567666419559"/>
       </node>
       <node id="681" label="Aden">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Dependency of"/>
-          <attvalue for="lat" value="12.8"/>
-          <attvalue for="lng" value="45.033333333333"/>
-          <attvalue for="totalBilateralTrade" value="0"/>
-          <attvalue for="community" value="9"/>
+          <attvalue for="id" value="681"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="ME"/>
+          <attvalue for="blockLouvain" value="7"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="20.315309491762402" y="97.91469859144698"/>
       </node>
       <node id="630" label="Iran (Persia)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="32"/>
-          <attvalue for="lng" value="53"/>
-          <attvalue for="totalBilateralTrade" value="603930.4347826088"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="id" value="630"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="ME"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="19.618066972249217" y="98.05677665654906"/>
       </node>
       <node id="80" label="Belize (British Honduras)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Occupied by"/>
-          <attvalue for="lat" value="17.0666666666667"/>
-          <attvalue for="lng" value="-88.7"/>
-          <attvalue for="totalBilateralTrade" value="38128.13141683778"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="80"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="16.819517394258394" y="98.57537133901266"/>
       </node>
       <node id="6" label="Puerto Rico">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="18.25"/>
-          <attvalue for="lng" value="-66.5"/>
-          <attvalue for="totalBilateralTrade" value="0"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="6"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="16.117662250531044" y="98.69255779225608"/>
       </node>
       <node id="65" label="Guadeloupe">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="16.2595"/>
-          <attvalue for="lng" value="-61.5605"/>
-          <attvalue for="totalBilateralTrade" value="314181.36119074735"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="65"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="NAM"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="15.41499101587991" y="98.80474711257725"/>
       </node>
       <node id="54" label="Dominica">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="15.416667"/>
-          <attvalue for="lng" value="-61.333333"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="53176"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="54"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="8.351239089602792" y="99.65067388466719"/>
       </node>
       <node id="5" label="Virgin Islands (Danish West Indies)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="18.333333"/>
-          <attvalue for="lng" value="-64.833333"/>
-          <attvalue for="totalBilateralTrade" value="113935.06988962767"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="5"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="6.222237467489366" y="99.80623107250454"/>
       </node>
       <node id="68" label="Netherlands Antilles">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="15"/>
-          <attvalue for="lng" value="-66"/>
-          <attvalue for="totalBilateralTrade" value="93144.76386036961"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="68"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="5.5118922259023195" y="99.84797966954582"/>
       </node>
       <node id="110" label="Guyana (British Guiana)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="5.733333"/>
-          <attvalue for="lng" value="-59.316667"/>
-          <attvalue for="totalBilateralTrade" value="4980.287474332648"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="110"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="3.3793259257836614" y="99.9428844705181"/>
       </node>
       <node id="120" label="French Guiana">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="4"/>
-          <attvalue for="lng" value="-53"/>
-          <attvalue for="totalBilateralTrade" value="52411.88986136908"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="120"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-0.1778930349156916" y="99.99984177021545"/>
       </node>
       <node id="1029" label="St. Pierre and Miquelon">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="46.85"/>
-          <attvalue for="lng" value="-56.3"/>
-          <attvalue for="totalBilateralTrade" value="597095.0996094425"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="1029"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-0.8894539154252605" y="99.99604428042309"/>
       </node>
       <node id="2901" label="Congress Poland">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Dependency of"/>
-          <attvalue for="lat" value="52.233333"/>
-          <attvalue for="lng" value="21.016667"/>
-          <attvalue for="totalBilateralTrade" value="191104.50038138826"/>
-          <attvalue for="community" value="1"/>
+          <attvalue for="id" value="2901"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-12.949728996120694" y="99.15797758590598"/>
       </node>
       <node id="7030" label="Khiva">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="41.3783333333333"/>
-          <attvalue for="lng" value="60.3638888888889"/>
-          <attvalue for="totalBilateralTrade" value="12022.730739893212"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="id" value="7030"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="EESU"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-14.359531832431403" y="98.96364911195114"/>
       </node>
       <node id="7020" label="Bokhara">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="39.774722222222"/>
-          <attvalue for="lng" value="64.428611111111"/>
-          <attvalue for="totalBilateralTrade" value="104521.5865751335"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="id" value="7020"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="EESU"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-15.063360481200874" y="98.8589660628382"/>
       </node>
       <node id="7010" label="Kokand">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="40.528611"/>
-          <attvalue for="lng" value="70.9425"/>
-          <attvalue for="totalBilateralTrade" value="6669.870327993898"/>
-          <attvalue for="community" value="2"/>
+          <attvalue for="id" value="7010"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="EESU"/>
+          <attvalue for="blockLouvain" value="2"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-16.468694055828713" y="98.63458884233012"/>
       </node>
       <node id="212" label="Luxemburg">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="49.77"/>
-          <attvalue for="lng" value="6.13"/>
-          <attvalue for="totalBilateralTrade" value="61725.06000006419"/>
-          <attvalue for="community" value="3"/>
+          <attvalue for="id" value="212"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-19.96681460569673" y="97.98635779791867"/>
       </node>
       <node id="90" label="Guatemala">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="15.5"/>
-          <attvalue for="lng" value="-90.25"/>
-          <attvalue for="totalBilateralTrade" value="8316.894029769164"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="90"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-21.359233568218258" y="97.69228803430852"/>
       </node>
       <node id="225" label="Switzerland">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="46.798562"/>
-          <attvalue for="lng" value="8.231973"/>
-          <attvalue for="totalBilateralTrade" value="656954.7753666443"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="225"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.45499999999999996"/>
         </attvalues>
-        <viz:position x="-27.567535601286224" y="96.1250798744626"/>
       </node>
       <node id="21" label="Newfoundland and Labrador (Newfoundland)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="53"/>
-          <attvalue for="lng" value="-60"/>
-          <attvalue for="totalBilateralTrade" value="141783.36488612235"/>
-          <attvalue for="community" value="5"/>
+          <attvalue for="id" value="21"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="1"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-30.969366176189016" y="95.08363875370526"/>
       </node>
       <node id="420" label="Gambia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="13.5"/>
-          <attvalue for="lng" value="-15.5"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="95154"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="420"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="5"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-33.66281306632928" y="94.16376700441296"/>
       </node>
       <node id="616" label="Tunisia (Regency of Tunis)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign"/>
-          <attvalue for="lat" value="34"/>
-          <attvalue for="lng" value="10"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="135490.7120135098"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="616"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.546"/>
         </attvalues>
-        <viz:position x="-34.33199866678654" y="93.92184978770258"/>
       </node>
       <node id="615" label="Algeria (Regency of Algiers)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="28"/>
-          <attvalue for="lng" value="1"/>
-          <attvalue for="totalBilateralTrade" value="117346.73840474413"/>
-          <attvalue for="community" value="10"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
+          <attvalue for="id" value="615"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="2"/>
+          <attvalue for="meanAmbiguityScore" value="0.45499999999999996"/>
         </attvalues>
-        <viz:position x="-35.665121042290934" y="93.42376111588922"/>
       </node>
       <node id="800" label="Thailand (Siam)">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="14"/>
-          <attvalue for="lng" value="101"/>
-          <attvalue for="totalBilateralTrade" value="18629.384615384617"/>
-          <attvalue for="community" value="8"/>
+          <attvalue for="id" value="800"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="6"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-43.5028218328851" y="90.04168197327422"/>
       </node>
       <node id="740" label="Japan">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="35"/>
-          <attvalue for="lng" value="136"/>
-          <attvalue for="totalBilateralTrade" value="40140.769230769234"/>
-          <attvalue for="community" value="8"/>
+          <attvalue for="id" value="740"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="6"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-44.14242694053453" y="89.72985090703969"/>
       </node>
       <node id="902" label="Western Australia">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-26"/>
-          <attvalue for="lng" value="121"/>
-          <attvalue for="totalBilateralTrade" value="1568.8461538461538"/>
-          <attvalue for="community" value="8"/>
+          <attvalue for="id" value="902"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="6"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-44.77979697008018" y="89.41347651958512"/>
       </node>
       <node id="66" label="Martinique">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="14.65"/>
-          <attvalue for="lng" value="-61.015"/>
-          <attvalue for="totalBilateralTrade" value="337744.9632800534"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="66"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="NAM"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-50.41026244832474" y="86.36437598854646"/>
       </node>
       <node id="433" label="Senegal">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="14.366667"/>
-          <attvalue for="lng" value="-14.283333"/>
-          <attvalue for="totalBilateralTrade" value="94254.40835722421"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="433"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-51.0235262047511" y="86.00348698531401"/>
       </node>
       <node id="751" label="French India">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="11.9359"/>
-          <attvalue for="lng" value="79.8061"/>
-          <attvalue for="totalBilateralTrade" value="70690.80626791816"/>
-          <attvalue for="community" value="4"/>
+          <attvalue for="id" value="751"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="2"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="4"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-51.634206470098555" y="85.63824333907856"/>
       </node>
       <node id="451" label="Sierra Leone">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="8.5"/>
-          <attvalue for="lng" value="-12.1"/>
-          <attvalue for="reporting" value="true"/>
-          <attvalue for="totalBilateralTrade" value="82537"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="451"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="6"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-53.450437775350004" y="84.51657057419827"/>
-      </node>
-      <node id="257" label="Oldenburg">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="53.1438888888889"/>
-          <attvalue for="lng" value="8.21388888888889"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="3"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-55.83405010742533" y="82.9611888089938"/>
-      </node>
-      <node id="2248" label="Holstein">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="54.1667"/>
-          <attvalue for="lng" value="9.66667"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="3"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-56.42296061138946" y="82.56179210655249"/>
-      </node>
-      <node id="2247" label="Schleswig">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (limited)"/>
-          <attvalue for="lat" value="55.166666666667"/>
-          <attvalue for="lng" value="9.25"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="3"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-57.0090142329265" y="82.15821502558332"/>
-      </node>
-      <node id="775" label="Myanmar (Burma)">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="true"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Sovereign (unrecognized)"/>
-          <attvalue for="lat" value="22"/>
-          <attvalue for="lng" value="96"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="9"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-60.4636900101873" y="79.65012360537789"/>
-      </node>
-      <node id="903" label="South Australia">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="false"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-30"/>
-          <attvalue for="lng" value="135"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="7"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-65.43717145765416" y="75.61730351990589"/>
-      </node>
-      <node id="1023" label="New Brunswick">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="false"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="46.6"/>
-          <attvalue for="lng" value="-66"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="7"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-67.56266391719765" y="73.72439517833836"/>
-      </node>
-      <node id="564" label="Orange Free State (Orange River Colony)">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="false"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-29.1"/>
-          <attvalue for="lng" value="26.216666666667"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="7"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-68.08555156168981" y="73.24177543274384"/>
-      </node>
-      <node id="541" label="Mozambique (Portuguese East Africa)">
-        <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="cited" value="false"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="-19"/>
-          <attvalue for="lng" value="35"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="7"/>
-          <attvalue for="meanAmbiguityScore" value="0"/>
-        </attvalues>
-        <viz:position x="-68.60499180792976" y="72.75544721210838"/>
       </node>
       <node id="1063" label="Leeward Is.">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="17.0833333333333"/>
-          <attvalue for="lng" value="-61.8"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="1063"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
-        <viz:position x="-86.27456298860213" y="50.56381889380709"/>
       </node>
       <node id="1055" label="Windward Is.">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS-CITED"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="lat" value="13.25"/>
-          <attvalue for="lng" value="-61.2"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="1055"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
-          <attvalue for="reportingByAggregateInto" value="true"/>
         </attvalues>
-        <viz:position x="-86.63217400582502" y="49.948637889580674"/>
+      </node>
+      <node id="2248" label="Holstein">
+        <attvalues>
+          <attvalue for="id" value="2248"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="257" label="Oldenburg">
+        <attvalues>
+          <attvalue for="id" value="257"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
       </node>
       <node id="1064" label="St. Barthelemy">
         <attvalues>
-          <attvalue for="ricType" value="GPH_entity"/>
-          <attvalue for="entityType" value="GPH-AUTONOMOUS"/>
-          <attvalue for="type" value="entity"/>
-          <attvalue for="gphStatus" value="Colony of"/>
-          <attvalue for="reporting" value="false"/>
-          <attvalue for="community" value="0"/>
+          <attvalue for="id" value="1064"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS"/>
+          <attvalue for="blockIntraMax" value="3"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="0"/>
           <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
-        <viz:position x="-89.96415101048237" y="43.66293087921521"/>
+      </node>
+      <node id="903" label="South Australia">
+        <attvalues>
+          <attvalue for="id" value="903"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="5"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="775" label="Myanmar (Burma)">
+        <attvalues>
+          <attvalue for="id" value="775"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="AS"/>
+          <attvalue for="blockLouvain" value="7"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="1023" label="New Brunswick">
+        <attvalues>
+          <attvalue for="id" value="1023"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="LA"/>
+          <attvalue for="blockLouvain" value="5"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="564" label="Orange Free State (Orange River Colony)">
+        <attvalues>
+          <attvalue for="id" value="564"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="5"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="541" label="Mozambique (Portuguese East Africa)">
+        <attvalues>
+          <attvalue for="id" value="541"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockAN" value="AF"/>
+          <attvalue for="blockLouvain" value="5"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
+      </node>
+      <node id="2247" label="Schleswig">
+        <attvalues>
+          <attvalue for="id" value="2247"/>
+          <attvalue for="type" value="GPH-AUTONOMOUS-CITED"/>
+          <attvalue for="blockIntraMax" value="1"/>
+          <attvalue for="blockAN" value="WE"/>
+          <attvalue for="blockLouvain" value="3"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
+        </attvalues>
       </node>
     </nodes>
     <edges>
@@ -1773,7 +1159,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="365-380" source="365" target="380">
@@ -1793,7 +1178,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="380-390" source="390" target="380">
@@ -1803,7 +1187,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-380" source="211" target="380">
@@ -1830,10 +1213,9 @@
         <attvalues>
           <attvalue for="proximity" value="1.4354670328992412"/>
           <attvalue for="observedTradeValues" value="0.00013383163668838913|0.00020783229078059215"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2-380" source="2" target="380">
@@ -1850,10 +1232,9 @@
         <attvalues>
           <attvalue for="proximity" value="1.4446750936268227"/>
           <attvalue for="observedTradeValues" value="0.002223814040700757"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="115-210" source="210" target="115">
@@ -1863,7 +1244,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="115-2" source="2" target="115">
@@ -1883,7 +1263,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-452" source="2" target="452">
@@ -1893,7 +1272,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="200-30" source="200" target="30">
@@ -1903,7 +1281,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-30" source="2" target="30">
@@ -1913,7 +1290,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="200-338" source="200" target="338">
@@ -1963,7 +1339,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="101-248" source="101" target="248">
@@ -1973,7 +1348,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="10-248" source="10" target="248">
@@ -1983,7 +1357,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="248-8501" source="8501" target="248">
@@ -1993,7 +1366,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="248-91" source="91" target="248">
@@ -2003,7 +1375,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="200-248" source="200" target="248">
@@ -2083,7 +1454,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="2-3261" source="2" target="3261">
@@ -2113,7 +1483,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="155-160" source="160" target="155">
@@ -2143,7 +1512,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="11"/>
         </attvalues>
       </edge>
       <edge id="140-155" source="140" target="155">
@@ -2183,7 +1551,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="11"/>
         </attvalues>
       </edge>
       <edge id="155-70" source="70" target="155">
@@ -2203,7 +1570,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="11"/>
         </attvalues>
       </edge>
       <edge id="135-155" source="135" target="155">
@@ -2213,7 +1579,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="11"/>
         </attvalues>
       </edge>
       <edge id="155-380" source="380" target="155">
@@ -2233,7 +1598,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="230-40" source="230" target="40">
@@ -2243,7 +1607,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="561-750" source="561" target="750">
@@ -2263,7 +1626,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="710-750" source="710" target="750">
@@ -2273,7 +1635,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="220-750" source="220" target="750">
@@ -2293,7 +1654,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="750-901" source="901" target="750">
@@ -2303,7 +1663,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="4050-750" source="4050" target="750">
@@ -2343,7 +1702,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="2-51" source="2" target="51">
@@ -2353,7 +1711,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-231" source="2" target="231">
@@ -2373,7 +1730,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="231-324" source="324" target="231">
@@ -2383,7 +1739,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="231-235" source="235" target="231">
@@ -2423,7 +1778,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="210-211" source="211" target="210">
@@ -2443,7 +1797,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-390" source="390" target="210">
@@ -2453,7 +1806,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-247" source="247" target="210">
@@ -2463,7 +1815,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-240" source="240" target="210">
@@ -2473,7 +1824,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-276" source="276" target="210">
@@ -2483,7 +1833,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-280" source="280" target="210">
@@ -2493,7 +1842,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-385" source="385" target="210">
@@ -2503,17 +1851,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-235" source="235" target="210">
         <attvalues>
           <attvalue for="proximity" value="0.1511597516313191"/>
           <attvalue for="observedTradeValues" value="0.0005006223870898634|0.0003276090287642687"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="210-239" source="239" target="210">
@@ -2523,17 +1869,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="3349-365" source="365" target="3349">
         <attvalues>
           <attvalue for="proximity" value="2.0512869437362538"/>
           <attvalue for="observedTradeValues" value="0.0019259488811797683|0.0007163693156548818"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="3349-640" source="640" target="3349">
@@ -2543,7 +1887,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="300-3349" source="300" target="3349">
@@ -2553,7 +1896,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="3349-350" source="350" target="3349">
@@ -2563,7 +1905,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="200-54" source="200" target="54">
@@ -2573,7 +1914,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-54" source="2" target="54">
@@ -2583,7 +1923,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-5" source="5" target="2">
@@ -2593,7 +1932,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-68" source="68" target="2">
@@ -2603,7 +1941,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-211" source="211" target="2">
@@ -2623,7 +1960,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-561" source="561" target="2">
@@ -2643,7 +1979,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="110-2" source="110" target="2">
@@ -2653,7 +1988,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="120-2" source="120" target="2">
@@ -2693,7 +2027,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="100-2" source="100" target="2">
@@ -2703,7 +2036,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="101-2" source="101" target="2">
@@ -2763,7 +2095,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="239-365" source="239" target="365">
@@ -2820,9 +2151,9 @@
         <attvalues>
           <attvalue for="proximity" value="2.2612014616153617"/>
           <attvalue for="observedTradeValues" value="0.00015943206912125789|0.006416668683398867"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -2830,30 +2161,27 @@
         <attvalues>
           <attvalue for="proximity" value="0.8918040760437695"/>
           <attvalue for="observedTradeValues" value="0.0032471785957432432"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="300-365" source="300" target="365">
         <attvalues>
           <attvalue for="proximity" value="1.0328700736353509"/>
           <attvalue for="observedTradeValues" value="0.0033834470006188816|0.005078018837379448"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="350-365" source="350" target="365">
         <attvalues>
           <attvalue for="proximity" value="0.9961658212200868"/>
           <attvalue for="observedTradeValues" value="0.0007323855805061867"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="2901-365" source="2901" target="365">
@@ -2873,7 +2201,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="365-7030" source="7030" target="365">
@@ -2883,7 +2210,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="365-7020" source="7020" target="365">
@@ -2893,7 +2219,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="365-7010" source="7010" target="365">
@@ -2903,7 +2228,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="2"/>
         </attvalues>
       </edge>
       <edge id="365-710" source="710" target="365">
@@ -2933,7 +2257,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="211-235" source="235" target="211">
@@ -2963,7 +2286,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="220-70" source="220" target="70">
@@ -2983,7 +2305,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="5"/>
         </attvalues>
       </edge>
       <edge id="200-235" source="200" target="235">
@@ -3003,7 +2324,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="5"/>
         </attvalues>
       </edge>
       <edge id="235-600" source="600" target="235">
@@ -3033,7 +2353,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-420" source="2" target="420">
@@ -3043,7 +2362,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="200-616" source="200" target="616">
@@ -3060,10 +2378,9 @@
         <attvalues>
           <attvalue for="proximity" value="1.202500724092245"/>
           <attvalue for="observedTradeValues" value="0.0006770691783172598"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
         </attvalues>
       </edge>
       <edge id="337-616" source="337" target="616">
@@ -3073,16 +2390,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="350-616" source="350" target="616">
         <attvalues>
           <attvalue for="proximity" value="2.522308347565689"/>
           <attvalue for="observedTradeValues" value="0.0000815517497693058"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3090,9 +2406,9 @@
         <attvalues>
           <attvalue for="proximity" value="0.060299286009091464"/>
           <attvalue for="observedTradeValues" value="0.00006132185835366406"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3103,16 +2419,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="300-616" source="300" target="616">
         <attvalues>
           <attvalue for="proximity" value="0.2548333412943247"/>
           <attvalue for="observedTradeValues" value="0.00003761495435095887"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3120,9 +2435,9 @@
         <attvalues>
           <attvalue for="proximity" value="0.9996300790260537"/>
           <attvalue for="observedTradeValues" value="0.000031925297390309634"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3133,7 +2448,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="220-385" source="385" target="220">
@@ -3150,10 +2464,9 @@
         <attvalues>
           <attvalue for="proximity" value="1.8451815515374714"/>
           <attvalue for="observedTradeValues" value="0.004235633515149991"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
         </attvalues>
       </edge>
       <edge id="220-230" source="230" target="220">
@@ -3233,7 +2546,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="140-220" source="140" target="220">
@@ -3253,7 +2565,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="130-220" source="130" target="220">
@@ -3303,7 +2614,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="120-220" source="120" target="220">
@@ -3313,7 +2623,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="220-66" source="66" target="220">
@@ -3323,7 +2632,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="220-65" source="65" target="220">
@@ -3333,17 +2641,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="220-615" source="615" target="220">
         <attvalues>
           <attvalue for="proximity" value="1.565787043871889"/>
           <attvalue for="observedTradeValues" value="0.0009166669547712667"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
         </attvalues>
       </edge>
       <edge id="220-433" source="433" target="220">
@@ -3353,7 +2659,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="220-751" source="751" target="220">
@@ -3363,7 +2668,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="1029-220" source="1029" target="220">
@@ -3373,7 +2677,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="4"/>
         </attvalues>
       </edge>
       <edge id="200-451" source="200" target="451">
@@ -3383,7 +2686,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-451" source="2" target="451">
@@ -3393,7 +2695,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="1063-2" source="2" target="1063">
@@ -3403,7 +2704,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="1063-200" source="200" target="1063">
@@ -3413,7 +2713,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="2-300" source="2" target="300">
@@ -3453,7 +2752,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="300-329" source="329" target="300">
@@ -3463,7 +2761,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="300-350" source="350" target="300">
@@ -3473,7 +2770,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="300-640" source="640" target="300">
@@ -3483,7 +2779,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="300-651" source="651" target="300">
@@ -3493,7 +2788,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="200-350" source="200" target="350">
@@ -3513,7 +2807,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="200-561" source="200" target="561">
@@ -3543,7 +2836,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-590" source="590" target="561">
@@ -3553,7 +2845,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-720" source="720" target="561">
@@ -3563,7 +2854,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-906" source="906" target="561">
@@ -3573,7 +2863,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="1024-561" source="1024" target="561">
@@ -3583,7 +2872,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="4050-561" source="4050" target="561">
@@ -3593,7 +2881,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-8510" source="8510" target="561">
@@ -3603,7 +2890,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-9974" source="9974" target="561">
@@ -3613,7 +2899,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="1055-2" source="2" target="1055">
@@ -3623,7 +2908,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="1055-200" source="200" target="1055">
@@ -3633,17 +2917,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="140-390" source="390" target="140">
         <attvalues>
           <attvalue for="proximity" value="1.6237594763524985"/>
           <attvalue for="observedTradeValues" value="0.000014224142401623104"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="200-337" source="200" target="337">
@@ -3660,10 +2942,9 @@
         <attvalues>
           <attvalue for="proximity" value="1.6900461702230891"/>
           <attvalue for="observedTradeValues" value="0.0012643682134776094|0.001896552320216414"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
         </attvalues>
       </edge>
       <edge id="225-337" source="225" target="337">
@@ -3673,16 +2954,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="300-337" source="300" target="337">
         <attvalues>
           <attvalue for="proximity" value="2.227988705045738"/>
           <attvalue for="observedTradeValues" value="0.001896552320216414"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3693,16 +2973,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="327-337" source="327" target="337">
         <attvalues>
           <attvalue for="proximity" value="2.0610840887477613"/>
           <attvalue for="observedTradeValues" value="0.0005689656960649243"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3713,7 +2992,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="210-850" source="210" target="850">
@@ -3743,7 +3021,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="8"/>
         </attvalues>
       </edge>
       <edge id="800-850" source="800" target="850">
@@ -3753,7 +3030,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="8"/>
         </attvalues>
       </edge>
       <edge id="850-902" source="902" target="850">
@@ -3763,7 +3039,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="8"/>
         </attvalues>
       </edge>
       <edge id="246-248" source="246" target="248">
@@ -3783,7 +3058,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="155-324" source="324" target="155">
@@ -3813,7 +3087,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="1064-2" source="1064" target="2">
@@ -3823,7 +3096,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="0"/>
         </attvalues>
       </edge>
       <edge id="165-2" source="165" target="2">
@@ -3840,9 +3112,9 @@
         <attvalues>
           <attvalue for="proximity" value="0.7411674632746204"/>
           <attvalue for="observedTradeValues" value="0.0003831281117006266"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3850,19 +3122,18 @@
         <attvalues>
           <attvalue for="proximity" value="0.9848823991791644"/>
           <attvalue for="observedTradeValues" value="0.00638643403914783"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="329-616" source="329" target="616">
         <attvalues>
           <attvalue for="proximity" value="0.7132904478731616"/>
           <attvalue for="observedTradeValues" value="0.00006574714710083568"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -3883,7 +3154,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="1023-561" source="1023" target="561">
@@ -3893,7 +3163,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="561-564" source="564" target="561">
@@ -3903,7 +3172,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="140-561" source="140" target="561">
@@ -3923,7 +3191,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="7"/>
         </attvalues>
       </edge>
       <edge id="840-850" source="840" target="850">
@@ -3933,7 +3200,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="8"/>
         </attvalues>
       </edge>
       <edge id="248-6" source="6" target="248">
@@ -3943,7 +3209,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="248-257" source="257" target="248">
@@ -3953,7 +3218,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="248-380" source="380" target="248">
@@ -3973,7 +3237,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="211-40" source="211" target="40">
@@ -3993,7 +3256,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="590-750" source="590" target="750">
@@ -4013,7 +3275,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="9"/>
         </attvalues>
       </edge>
       <edge id="750-800" source="800" target="750">
@@ -4043,16 +3304,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="5"/>
         </attvalues>
       </edge>
       <edge id="300-615" source="615" target="300">
         <attvalues>
           <attvalue for="proximity" value="1.8388524277006195"/>
           <attvalue for="observedTradeValues" value="0.0005010263930528874"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -4063,7 +3323,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="239-2901" source="2901" target="239">
@@ -4073,7 +3332,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="211-6" source="6" target="211">
@@ -4083,7 +3341,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="101-211" source="101" target="211">
@@ -4093,7 +3350,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="211-41" source="41" target="211">
@@ -4103,7 +3359,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="211-257" source="257" target="211">
@@ -4113,7 +3368,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="3"/>
         </attvalues>
       </edge>
       <edge id="231-615" source="615" target="231">
@@ -4123,27 +3377,24 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="10"/>
         </attvalues>
       </edge>
       <edge id="220-231" source="220" target="231">
         <attvalues>
           <attvalue for="proximity" value="1.1337465137401406"/>
           <attvalue for="observedTradeValues" value="0.0009459902588725164"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
+          <attvalue for="coMembershipScore" value="0.65"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.35"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
         </attvalues>
       </edge>
       <edge id="235-385" source="385" target="235">
         <attvalues>
           <attvalue for="proximity" value="0.8642900913477305"/>
           <attvalue for="observedTradeValues" value="0.00042735122419976457"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
       <edge id="239-300" source="300" target="239">
@@ -4163,7 +3414,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="239-246" source="246" target="239">
@@ -4173,7 +3423,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="2-276" source="276" target="2">
@@ -4203,7 +3452,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="2249-300" source="2249" target="300">
@@ -4213,16 +3461,15 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="6"/>
         </attvalues>
       </edge>
       <edge id="231-300" source="231" target="300">
         <attvalues>
           <attvalue for="proximity" value="2.8670348825082956"/>
           <attvalue for="observedTradeValues" value="0.0069559589168897915"/>
-          <attvalue for="coMembershipScore" value="0"/>
-          <attvalue for="bridgeNessEdgeScore" value="1"/>
-          <attvalue for="ambiguityScore" value="0"/>
+          <attvalue for="coMembershipScore" value="0.35"/>
+          <attvalue for="bridgeNessEdgeScore" value="0.65"/>
+          <attvalue for="ambiguityScore" value="0.9099999999999999"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
@@ -4253,7 +3500,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="280-380" source="280" target="380">
@@ -4263,7 +3509,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="240-380" source="240" target="380">
@@ -4273,7 +3518,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
       <edge id="246-380" source="246" target="380">
@@ -4283,7 +3527,6 @@
           <attvalue for="coMembershipScore" value="1"/>
           <attvalue for="bridgeNessEdgeScore" value="0"/>
           <attvalue for="ambiguityScore" value="0"/>
-          <attvalue for="sourceCommunityId" value="1"/>
         </attvalues>
       </edge>
     </edges>

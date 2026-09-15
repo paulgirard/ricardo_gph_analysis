@@ -36,7 +36,16 @@ type OkEdgeAttributes = {
 };
 type OkNodeAttributes = EntityNodeAttributes & { blockLouvain: number; blockIntraMax: string; blockAN: string };
 
-range(1833, 1834).forEach((year) => {
+const blocksStats: {
+  year: number;
+  cafFob: string; //"caf" | "fob";
+  louvain_modularity: number | null;
+  intramax_modularity: number | null;
+  an_modularity: number | null;
+}[] = [];
+const missingInANAll: Set<string> = new Set();
+[...range(1833, 1939), ...range(1948, 2026)].forEach((year) => {
+  let intramaxOk = true;
   // read intramax block from data/blocks/Intramax
   const intraMaxBlocks: { [year: number]: { [node: string]: string } } = {};
   const intramaxFile = `../data/blocks/Intramax/paires_blocs_${year}.csv`;
@@ -56,8 +65,11 @@ range(1833, 1834).forEach((year) => {
         intraMaxBlocks[year][row.importerId] = row.bloc_imp;
       }
     });
+    intramaxOk = true;
   } else {
-    throw new Error("file intramax does not exist");
+    console.log(`no intramax for ${year}`);
+    intraMaxBlocks[year] = {};
+    intramaxOk = false;
   }
   // read Adnerson blocks from a csv to create from XLSX file
   const anBlocsFile = "../data/BlocselonAN.csv";
@@ -141,10 +153,13 @@ range(1833, 1834).forEach((year) => {
           atts.status === "ok" && atts.reportedBy === target && !!atts.value && isFinite(atts.value),
       ),
     };
-    console.log(bilateralGraph.order, bilateralGraph.size, okEdges.caf.length, okEdges.fob.length);
+
     // iterate on Caf and Fob
     toPairs(okEdges).map(([cafFob, edges]) => {
-      if (edges.length === 0) throw new Error(`No ${cafFob} flows for ${year}`);
+      if (edges.length === 0) {
+        console.log(`No ${cafFob} flows for ${year}`);
+        return;
+      }
 
       const okGraph = UndirectedGraph.from(bilateralGraph.emptyCopy({ multi: false }) as UndirectedGraph, {
         multi: false,
@@ -195,9 +210,9 @@ range(1833, 1834).forEach((year) => {
               observedTradeValues: observations,
             },
           );
-        else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
+        //else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
       });
-      console.log(`${year} ${cafFob} ${edges.length} flows result in ${okGraph.size} flows ${okGraph.order} nodes`);
+
       // remove deprecated nodes
       okGraph.filterNodes((n) => okGraph.degree(n) === 0).forEach((n) => okGraph.dropNode(n));
       console.log(`${year} ${cafFob} after filter out no-degree ${okGraph.size} flows ${okGraph.order} nodes`);
@@ -232,42 +247,6 @@ range(1833, 1834).forEach((year) => {
         },
         okGraph,
       );
-
-      // - compute modularity louvain blocks
-      const modularityScores: { [type: string]: number | null } = { louvain: null, intramax: null, AN: null };
-      modularityScores.louvain = modularity(okGraph, {
-        getEdgeWeight: "proximity",
-        getNodeCommunity: (n) => okGraph.getNodeAttribute(n, "blockLouvain"),
-        resolution: 1,
-      });
-      if (cafFob === "fob") {
-        // - compute modularity intramax blocks
-        console.log(intraMaxBlocks[year]["781"]);
-        const missingInIntraMax = okGraph.filterNodes((n) => intraMaxBlocks[year][n] === undefined);
-        const missingInGravity = keys(intraMaxBlocks[year]).filter((k) => !okGraph.hasNode(k));
-        if (missingInGravity.length > 0 || missingInGravity.length > 0)
-          console.log(
-            `${missingInIntraMax.length} missing in IntraMax ${missingInIntraMax} ; ${missingInGravity.length} missing in Gravity ${cafFob} ${missingInGravity} ;`,
-          );
-        modularityScores.intramax = modularity(okGraph, {
-          getEdgeWeight: "proximity",
-          getNodeCommunity: (n) => intraMaxBlocks[year][n] || "indéterminé",
-          resolution: 1,
-        });
-      }
-      // - compute modularity Adnerson blocks
-      const missingInAN = okGraph.filterNodes((n) => anBlocks[n] === undefined);
-      const missingInGravity = keys(anBlocks).filter((k) => !okGraph.hasNode(k));
-      if (missingInGravity.length > 0 || missingInGravity.length > 0)
-        console.log(
-          `${missingInAN.length} missing in AN ${missingInAN} ; ${missingInGravity.length} missing in Gravity ${cafFob} ${missingInGravity} ;`,
-        );
-
-      modularityScores.AN = modularity(okGraph, {
-        getEdgeWeight: "proximity",
-        getNodeCommunity: (n) => anBlocks[n] || "indéterminé",
-        resolution: 1,
-      });
 
       // export as CSV
       const csvData: Record<string, string | number | undefined>[] = [];
@@ -329,8 +308,61 @@ range(1833, 1834).forEach((year) => {
       // TODO: export for Gephi Lite
       const gexfString = gexf.write(okGraph);
       writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.gexf`, gexfString);
+
+      // - compute modularity louvain blocks
+      const modularityScores: { [type: string]: number | null } = { louvain: null, intramax: null, AN: null };
+      modularityScores.louvain = modularity(okGraph, {
+        getEdgeWeight: "proximity",
+        getNodeCommunity: (n) => okGraph.getNodeAttribute(n, "blockLouvain"),
+        resolution: 1,
+      });
+      if (cafFob === "fob" && intramaxOk) {
+        // - compute modularity intramax blocks
+        const missingInIntraMax = okGraph.filterNodes((n) => intraMaxBlocks[year][n] === undefined);
+        const missingInGravity = keys(intraMaxBlocks[year]).filter((k) => !okGraph.hasNode(k));
+        if (missingInIntraMax.length > 0 || missingInGravity.length > 0)
+          console.log(
+            `${missingInIntraMax.length} missing in IntraMax ${missingInIntraMax} ; ${missingInGravity.length} missing in Gravity ${cafFob} ${missingInGravity} ;`,
+          );
+        modularityScores.intramax = modularity(okGraph, {
+          getEdgeWeight: "proximity",
+          getNodeCommunity: (n) => intraMaxBlocks[year][n] || "indéterminé",
+          resolution: 1,
+        });
+      }
+      // - compute modularity Adnerson blocks
+      const missingInAN = okGraph.filterNodes((n) => anBlocks[n] === undefined);
+
+      if (missingInAN.length > 0) {
+        missingInAN.forEach((m) => missingInANAll.add(m));
+        console.log(`${missingInAN.length} missing in AN ${missingInAN}`);
+        missingInAN.forEach((missing) => okGraph.dropNode(missing));
+      }
+
+      modularityScores.AN = modularity(okGraph, {
+        getEdgeWeight: "proximity",
+        getNodeCommunity: (n) => anBlocks[n],
+        resolution: 1,
+      });
+      blocksStats.push({
+        year,
+        cafFob,
+        louvain_modularity: modularityScores.louvain,
+        intramax_modularity: modularityScores.intramax,
+        an_modularity: modularityScores.AN,
+      });
     });
+
+    writeFileSync(
+      "../data/blocks/modularities_by_year.csv",
+      stringify(blocksStats, {
+        columns: ["year", "cafFob", "louvain_modularity", "intramax_modularity", "an_modularity"],
+        header: true,
+      }),
+    );
   } else {
     throw new Error("file AN does not exist");
   }
 });
+console.log(`missing entities in AN`);
+console.log(missingInANAll);
