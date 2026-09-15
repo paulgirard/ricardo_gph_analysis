@@ -194,11 +194,11 @@ contig <- read.csv("data/DirectContiguity320/contdird.csv", stringsAsFactors = F
             year, conttype)
 write.csv(contig, "data/Gravity controls/contiguity_gph.csv", row.names = FALSE)
 # 2017-2025 : on reconduit la situation de 2016
-#contig <- bind_rows(
-  #contig,
- # contig %>% filter(year == 2016) %>% select(-year) %>%
-  #  tidyr::crossing(year = 2017:2025)
-#)
+contig <- bind_rows(
+contig,
+  contig %>% filter(year == 2016) %>% select(-year) %>%
+    tidyr::crossing(year = 2017:2025)
+)
 
 master <- master %>%
   left_join(contig, by = c("exporterId", "importerId", "year")) %>%
@@ -214,7 +214,22 @@ master <- master %>%
     contig_large = if_else(hors_cow, NA_integer_, contig_large)
   ) %>%
   select(-hors_cow)
+
 library(writexl)
+master %>%
+  filter(!is.na(conttype)) %>%
+  group_by(conttype) %>%
+  summarise(n = n(),
+            median = median(distance_km, na.rm = TRUE),
+            p95    = quantile(distance_km, 0.95, na.rm = TRUE),
+            max    = max(distance_km, na.rm = TRUE))
+
+# les dyades terrestres les plus éloignées
+master %>%
+  filter(conttype == 1) %>%
+  distinct(exportateur, importateur, distance_km) %>%
+  arrange(desc(distance_km)) %>%
+  head(15)
 
 # 1. paires-annees
 library(writexl)
