@@ -192,13 +192,13 @@ contig <- read.csv("data/DirectContiguity320/contdird.csv", stringsAsFactors = F
   transmute(exporterId = as.character(state1no),
             importerId = as.character(state2no),
             year, conttype)
-
+write.csv(contig, "data/Gravity controls/contiguity_gph.csv", row.names = FALSE)
 # 2017-2025 : on reconduit la situation de 2016
-contig <- bind_rows(
-  contig,
-  contig %>% filter(year == 2016) %>% select(-year) %>%
-    tidyr::crossing(year = 2017:2025)
-)
+#contig <- bind_rows(
+  #contig,
+ # contig %>% filter(year == 2016) %>% select(-year) %>%
+  #  tidyr::crossing(year = 2017:2025)
+#)
 
 master <- master %>%
   left_join(contig, by = c("exporterId", "importerId", "year")) %>%
@@ -252,6 +252,7 @@ mid <- BilateralDis %>%
             mid_guerre   = as.integer(any(war == 1, na.rm = TRUE)),
             mid_duration = sum(duration, na.rm = TRUE),
             .groups = "drop")
+write.csv(mid, "data/Gravity controls/bilateraldisputes_gph.csv", row.names = FALSE)
 
 master <- master %>%
   left_join(mid, by = c("exporterId", "importerId", "year")) %>%
@@ -273,6 +274,7 @@ atop <- read.csv("data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALS
          atop_neutral = neutral, atop_nonagg  = nonagg,
          atop_consul  = consul,  atop_asymm   = asymm)
 
+write.csv(atop, "data/Gravity controls/alliance_gph.csv", row.names = FALSE)
 master <- master %>%
   left_join(atop, by = c("exporterId", "importerId", "year")) %>%
   mutate(
@@ -336,6 +338,7 @@ diag_carre %>%
 # --- 6. Sauvegarde ---
 #write.csv(master, "data/blocks/master_panelmatricecarré.csv", row.names = FALSE)
 write.csv(master, gzfile("data/blocks/master_panel_carre.csv.gz"), row.names = FALSE)
+write.csv(master, xzfile("data/blocks/master_panel_carre.csv.xz"), row.names = FALSE)
 
 
 ##Rendre la matrice réctangle
@@ -369,6 +372,7 @@ diag_rect <- master_rect %>%
 # --- 4. Sauvegarde ---
 #write.csv(master_rect, "data/blocks/master_panelmatricerectangle.csv", row.names = FALSE)
 write.csv(master_rect, gzfile("data/blocks/master_panel_rectangle.csv.gz"), row.names = FALSE)
+write.csv(master_rect, xzfile("data/blocks/master_panel_rectangle.csv.xz"), row.names = FALSE)
 
-colnames(master_rect)
+#
 
