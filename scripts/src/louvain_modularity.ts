@@ -4,6 +4,7 @@ import { MultiDirectedGraph, UndirectedGraph } from "graphology";
 import louvain from "graphology-communities-louvain";
 import gexf from "graphology-gexf";
 import { modularity } from "graphology-metrics/graph";
+import { density } from "graphology-metrics/graph/density";
 import {
   camelCase,
   groupBy,
@@ -42,9 +43,11 @@ const blocksStats: {
   louvain_modularity: number | null;
   intramax_modularity: number | null;
   an_modularity: number | null;
+  network_density: number;
 }[] = [];
 const missingInANAll: Set<string> = new Set();
-[...range(1833, 1939), ...range(1948, 2026)].forEach((year) => {
+const years = [...range(1833, 1939), ...range(1948, 2026)];
+years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from data/blocks/Intramax
   const intraMaxBlocks: { [year: number]: { [node: string]: string } } = {};
@@ -200,16 +203,16 @@ const missingInANAll: Set<string> = new Set();
         });
         // we use max over mean as we want to boost local max proximity when calculating blocks
         const maxProximity = max(proximities) || -1;
-        if (maxProximity > 0)
-          okGraph.addUndirectedEdgeWithKey(
-            groupKey,
-            bilateralGraph.source(impExpCouple[0]),
-            bilateralGraph.target(impExpCouple[0]),
-            {
-              proximity: Math.log(maxProximity + 1),
-              observedTradeValues: observations,
-            },
+        if (maxProximity > 0) {
+          const sourceTarget = sortBy(
+            [bilateralGraph.source(impExpCouple[0]), bilateralGraph.target(impExpCouple[0])],
+            (id) => toNumber(id),
           );
+          okGraph.addUndirectedEdgeWithKey(groupKey, sourceTarget[0], sourceTarget[1], {
+            proximity: Math.log(maxProximity + 1),
+            observedTradeValues: observations,
+          });
+        }
         //else console.log(`Discard edge cause proximity=${maxProximity} ${JSON.stringify(proximities)}`);
       });
 
@@ -290,16 +293,16 @@ const missingInANAll: Set<string> = new Set();
           "sourceLabel",
           "sourceGphStatus",
           "sourceBlockLouvain",
-          "sourceBlockIntramax",
-          "sourceBlockAN",
+          "sourceBlockIntraMax",
+          "sourceBlockAn",
           "sourceMeanAmbiguityScore",
           "targetCited",
           "targetReporting",
           "targetLabel",
           "targetGphStatus",
           "targetBlockLouvain",
-          "targetBlockIntramax",
-          "targetBlockAN",
+          "targetBlockIntraMax",
+          "targetBlockAn",
           "targetMeanAmbiguityScore",
         ],
         header: true,
@@ -333,6 +336,7 @@ const missingInANAll: Set<string> = new Set();
       // - compute modularity Adnerson blocks
       const missingInAN = okGraph.filterNodes((n) => anBlocks[n] === undefined);
 
+      const networkDensity = density(okGraph);
       if (missingInAN.length > 0) {
         missingInAN.forEach((m) => missingInANAll.add(m));
         console.log(`${missingInAN.length} missing in AN ${missingInAN}`);
@@ -350,13 +354,14 @@ const missingInANAll: Set<string> = new Set();
         louvain_modularity: modularityScores.louvain,
         intramax_modularity: modularityScores.intramax,
         an_modularity: modularityScores.AN,
+        network_density: networkDensity,
       });
     });
 
     writeFileSync(
       "../data/blocks/modularities_by_year.csv",
       stringify(blocksStats, {
-        columns: ["year", "cafFob", "louvain_modularity", "intramax_modularity", "an_modularity"],
+        columns: ["year", "cafFob", "louvain_modularity", "intramax_modularity", "an_modularity", "network_density"],
         header: true,
       }),
     );
