@@ -34,7 +34,10 @@ function computeLouvainEdgeScores(
 
   const coMembershipEdgeScores = mapValues(edgeScores, (edgeScore) => edgeScore / runs);
   const bridgeNessEdgeScores = mapValues(coMembershipEdgeScores, (coMemberShip) => 1 - coMemberShip);
-  const ambiguityEdgeScores = mapValues(coMembershipEdgeScores, (coMemberShip) => coMemberShip * (1 - coMemberShip) * 4);
+  const ambiguityEdgeScores = mapValues(
+    coMembershipEdgeScores,
+    (coMemberShip) => coMemberShip * (1 - coMemberShip) * 4,
+  );
   const nodes = graph.nodes();
   const meanAmbiguityNodeScores = zipObject(
     nodes,
@@ -66,6 +69,7 @@ export function assignLouvainEdgeAmbiguity(
     runs: number;
     getEdgeWeight?: string;
     resolution: number;
+    communityAttribute: string;
   },
   graph: UndirectedGraph,
 ): UndirectedGraph {
@@ -76,7 +80,7 @@ export function assignLouvainEdgeAmbiguity(
   louvain.assign(graph, {
     resolution: parameters.resolution,
     getEdgeWeight: parameters.getEdgeWeight || null,
-    nodeCommunityAttribute: "community",
+    nodeCommunityAttribute: parameters.communityAttribute,
   });
 
   graph.forEachEdge((edge, _, source) => {
