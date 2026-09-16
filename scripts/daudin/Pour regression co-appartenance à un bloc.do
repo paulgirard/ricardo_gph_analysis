@@ -47,41 +47,50 @@ program define master_panel_importation
     drop exp_MeanAmbiguityScore imp_Cited imp_Reporting imp_GphStatus imp_MeanAmbiguityScore 
     drop region_AN_exp region_AN_imp lat_exp lng_exp lat_imp lng_imp
 
+    keep if exportateur < importateur 
+    rename exportateur source
+    rename importateur target
+
     
 
-    save data/blocks/master_panel_`shape'.dta, replace
+    save data/blocks/master_panel.dta, replace
 
     foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
         preserve
         keep if year==`year'
-        save data/blocks/master_panel_`shape'_`year'_caf.dta, replace
-        export delimited using data/blocks/master_panel_`shape'_`year'_caf.csv, replace delimiter(",") quote
+        gen key= string(exporterId) +  "-" + string(importerId)
+        sort key
+        save data/blocks/master_panel_`year'_fob.dta, replace
+        export delimited using data/blocks/master_panel_`year'_fob.csv, replace delimiter(",") quote
         restore
     }
 
 
 end
 
-*master_panel_importation rectangle
-*master_panel_importation carre
+*master_panel_importation rectangle /// jamais utile
+*master_panel_importation carre // à rétablir quand les données changent
+
+//En fait, la rectangle ne me sert pas à ce niveau : je prends la carré, puis je fixe l’ordre target/source
 
 capture program drop block_regression
 program define block_regression
     args year CafFob NetworkType
 
-use "data/blocks/master_panel_rectangle_`year'_`CafFob'.dta", clear
+use "data/blocks/master_panel_`year'_`CafFob'.dta", clear
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
-logistic meme_`NetworkType' ln_dist
+logistic meme_`NetworkType' ln_dist, robust
 display "`year'"
 
 post reg_result ("`NetworkType'") ("`CafFob'") (`year') ("ln_dist") (_b[ln_dist]) (_b[ln_dist]-1.96*_se[ln_dist]) (_b[ln_dist]+1.96*_se[ln_dist]) (e(r2_p))
 
 end
+capture postclose reg_result
 
 postfile reg_result str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_regression/regression_results.dta", replace
   foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
-    block_regression `year' caf intramax
+    block_regression `year' fob intramax
   }
 
 
@@ -97,12 +106,11 @@ replace ci_high=exp(ci_high)
 tsset year
 tsfill, full
 twoway (rcap ci_low ci_high year, lcolor(gs8)) ///
-       (connected coef year, mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)), ///
+       (connected coef year, mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
+       (connected r2p year, yaxis(2) cmissing(n)), ///
     yline(1, lpattern(dash) lcolor(red)) ///
-    xtitle("Year") ytitle("Coefficient (ln_dist)") ///
-    title("Effect of ln_dist over time") ///
-    legend(off)
+    xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
+    title("Regression results (fob)") ///
+    legend(order(2 "Odds Ratio of ln_dist (left)" 3 "Pseudo R2 (right)") position(6))
 
-graph export "results/block_regression/ln_dist_intramax_caf.png", replace
-
-*block_importation 1833 caf IntraMax
+graph export "results/block_regression/ln_dist_intramax_fob.png", replace
