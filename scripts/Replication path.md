@@ -16,6 +16,9 @@ https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les do
 ### Post gravity data (Paul) (YYYY < 1939)
 - From Pour results/gravity_XXXX.csv, Paul creates data/tradeFlows_YYYY_gravity.csv
 
+### Graphique de diagnostic ?
+Qui s’en occupe ?
+
 ### IMF data (YYYY > 1947 up to 2025) (Youssef)
 From:
 - scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
@@ -36,10 +39,10 @@ Création des blocks intramax : scripts/Ghallada/Network RICardo Year.R"
 
 Todo : retrouver le code
 
-###  Louvain (Paul)
+### Louvain (Paul)
 - Paul does his magic ?????
 	- creates data/blocks/louvain/YYYY_caf/fob.csv
-va faire une nouvelle sortie avec tous les blocks (année par année / caf/fob) avec les valeurs avec la métrique
+Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec les valeurs avec la métrique
 + fichier avec modularité et nombre de blocks par année.
 
 ## Métriques
@@ -57,6 +60,7 @@ Paul does his magic ???
 	- Cela donne data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png
 
 ## Variables explicatives (Youssef)
+- Et mise de tout dans le même fichier: grâce à scripts/Ghallada/Merge in one file all.R
 ### Contiguité (Youssef)
 De COW :
 Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
@@ -69,6 +73,8 @@ Management and Peace Science* 19 (2):58-66.
 
 + travail à la main pour les xxxx
 
+- produit data/Gravity controls/contiguity_gph.csv
+
 ### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation 
 Dans le script "scripts/Ghallada/Merge in one file all.R"
@@ -76,8 +82,16 @@ Dans le script "scripts/Ghallada/Merge in one file all.R"
 ### Conflit
 De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
 Script ???
+- Produit data/Gravity controls/bilateraldisputes_gph.csv
 
 ### Alliances
 De ATOP 5.1
+- Produit data/Gravity controls/alliance_gph.csv
+
+### Base qui rassemble tout
+- data/blocks/master_panel_carre.csv.xz
+- data/blocks/master_panel_rectangle.csv.xz
 
 ## Régressions (Guillaume)
+
+Prendre l’appartenance AN  comme une variable explicative.
