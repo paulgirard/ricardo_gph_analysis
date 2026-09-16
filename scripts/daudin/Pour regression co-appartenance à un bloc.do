@@ -60,16 +60,19 @@ program define master_panel_importation
         keep if year==`year'
         gen key= string(exporterId) +  "-" + string(importerId)
         sort key
-        save data/blocks/master_panel_`year'_fob.dta, replace
-        export delimited using data/blocks/master_panel_`year'_fob.csv, replace delimiter(",") quote
+        order key
+        drop importerId exporterId
+        save data/blocks/master_`year'_fob.dta, replace
+        export delimited using data/blocks/master_`year'_fob.csv, replace delimiter(",") quote
         restore
     }
 
 
 end
-
-*master_panel_importation rectangle /// jamais utile
-*master_panel_importation carre // à rétablir quand les données changent
+*jamais utile
+*master_panel_importation rectangle 
+*// à rétablir quand les données changent
+master_panel_importation carre 
 
 //En fait, la rectangle ne me sert pas à ce niveau : je prends la carré, puis je fixe l’ordre target/source
 
@@ -77,7 +80,7 @@ capture program drop block_regression
 program define block_regression
     args year CafFob NetworkType
 
-use "data/blocks/master_panel_`year'_`CafFob'.dta", clear
+use "data/blocks/master_`year'_`CafFob'.dta", clear
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
 logistic meme_`NetworkType' ln_dist, robust
