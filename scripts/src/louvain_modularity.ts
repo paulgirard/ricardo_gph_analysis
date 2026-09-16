@@ -277,36 +277,39 @@ years.forEach((year) => {
         });
       });
 
-      const csvString = stringify(csvData, {
-        columns: [
-          "key",
-          "source",
-          "target",
-          "proximity",
-          "observedTradeValues",
-          "coMembershipScore",
-          "bridgeNessEdgeScore",
-          "ambiguityScore",
-          "maxObservedTradeValue",
-          "sourceCited",
-          "sourceReporting",
-          "sourceLabel",
-          "sourceGphStatus",
-          "sourceBlockLouvain",
-          "sourceBlockIntraMax",
-          "sourceBlockAn",
-          "sourceMeanAmbiguityScore",
-          "targetCited",
-          "targetReporting",
-          "targetLabel",
-          "targetGphStatus",
-          "targetBlockLouvain",
-          "targetBlockIntraMax",
-          "targetBlockAn",
-          "targetMeanAmbiguityScore",
-        ],
-        header: true,
-      });
+      const csvString = stringify(
+        sortBy(csvData, (row) => row.key),
+        {
+          columns: [
+            "key",
+            "source",
+            "target",
+            "proximity",
+            "observedTradeValues",
+            "coMembershipScore",
+            "bridgeNessEdgeScore",
+            "ambiguityScore",
+            "maxObservedTradeValue",
+            "sourceCited",
+            "sourceReporting",
+            "sourceLabel",
+            "sourceGphStatus",
+            "sourceBlockLouvain",
+            "sourceBlockIntraMax",
+            "sourceBlockAn",
+            "sourceMeanAmbiguityScore",
+            "targetCited",
+            "targetReporting",
+            "targetLabel",
+            "targetGphStatus",
+            "targetBlockLouvain",
+            "targetBlockIntraMax",
+            "targetBlockAn",
+            "targetMeanAmbiguityScore",
+          ],
+          header: true,
+        },
+      );
       writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.csv`, csvString);
       // TODO: export for Gephi Lite
       const gexfString = gexf.write(okGraph);
