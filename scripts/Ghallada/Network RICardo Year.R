@@ -191,7 +191,7 @@ write.csv(cor_par_annee,
 
 
 dossier <- here("data", "blocks", "louvain")  
-annees  <- annees_ric
+annees  <- annees_all
 
 cor_comm <- data.frame(year = integer(), cor = numeric(),
                        ic_bas = numeric(), ic_haut = numeric())
@@ -209,8 +209,7 @@ for (year in annees) {
     message("Annee ", year, " : lecture impossible -> sautee")
     next
   }
-  
-  d$same_community <- as.integer(d$sourceCommunity == d$targetCommunity)
+  d$same_community <- as.integer(d$sourceBlockLouvain == d$targetBlockLouvain)
   
   ct <- tryCatch(cor.test(d$same_community, log1p(d$maxObservedTradeValue)),
                  error = function(e) NULL)
@@ -239,7 +238,7 @@ write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm.csv"), row.names
 #Correlation Louvain mais avec les flux i==>j et j==>i
 
 dossier <- here("data", "blocks", "louvain")
-annees  <- annees_ric
+annees  <- annees_all
 cor_comm <- data.frame(year = integer(), cor = numeric(),
                        ic_bas = numeric(), ic_haut = numeric())
 for (year in annees) {
@@ -256,7 +255,7 @@ for (year in annees) {
     next
   }
   
-  d$same_community <- as.integer(d$sourceCommunity == d$targetCommunity)
+  d$same_community <- as.integer(d$sourceBlockLouvain == d$targetBlockLouvain)
   
   # ---- empiler les deux sens comme observations distinctes (comme intramax) ----
   # sens i->j : flux = export
@@ -298,7 +297,7 @@ write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm_oriente.csv"), r
 
 dossier_intra   <- here("data", "blocks", "Intramax")
 dossier_louvain <- here("data", "blocks", "louvain")
-annees <- annees_ric
+annees <- annees_all
 
 cor_methodes <- data.frame(year = integer(), cor = numeric(),
                            ic_bas = numeric(), ic_haut = numeric(), n = integer())
@@ -326,12 +325,12 @@ for (year in annees) {
   # --- louvain : couple NON-ORIENTE + same_community, dedupliqué ---
   dl <- read.csv(f_louvain, stringsAsFactors = FALSE)
   dl <- dl[!is.na(dl$source) & !is.na(dl$target) &
-             !is.na(dl$sourceCommunity) & !is.na(dl$targetCommunity), ]
+             !is.na(dl$sourceBlockLouvain) & !is.na(dl$targetBlockLouvain), ]
   if (nrow(dl) == 0) next
   
   dl$source <- as.character(dl$source)
   dl$target <- as.character(dl$target)
-  dl$same_community <- as.integer(dl$sourceCommunity == dl$targetCommunity)
+  dl$same_community <- as.integer(dl$sourceBlockLouvain == dl$targetBlockLouvain)
   dl$couple <- apply(dl[, c("source", "target")], 1,
                      function(x) paste(sort(x), collapse = "_"))
   dl <- unique(dl[, c("couple", "same_community")])

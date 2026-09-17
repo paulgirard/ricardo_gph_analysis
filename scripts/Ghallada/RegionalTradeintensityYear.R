@@ -99,7 +99,7 @@ write.csv(resultats_intra, "data/blocks/Intramax/tibi_intrabloc_moyen.csv", row.
 
 #####Louvain method#####
 
-annees <- annees_ric
+annees <- annees_all
 resultats_louvain <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 for (year in annees) {
   f <- paste0("data/blocks/louvain/", year, "_fob_enrichi.csv")
@@ -109,9 +109,9 @@ for (year in annees) {
   
   # ---- flux orientes bloc->bloc a partir de export et import ----
   # sens 1 : source -> target = export (sourceCommunity -> targetCommunity)
-  f1 <- data.frame(i = d$sourceCommunity, j = d$targetCommunity, value = d$export)
+  f1 <- data.frame(i = d$sourceBlockLouvain, j = d$targetBlockLouvain, value = d$export)
   # sens 2 : target -> source = import (targetCommunity -> sourceCommunity)
-  f2 <- data.frame(i = d$targetCommunity, j = d$sourceCommunity, value = d$import)
+  f2 <- data.frame(i = d$targetBlockLouvain, j = d$sourceBlockLouvain, value = d$import)
   flux <- rbind(f1, f2)
   flux <- flux[!is.na(flux$value), ]
   if (nrow(flux) == 0) next
@@ -145,8 +145,8 @@ for (year in annees) {
   tibi <- grille[, c("i", "j", "Xij", "TIBI")]
   
   # ---- identifier les singletons (communautes a un seul pays) ----
-  src <- unique(d[, c("sourceLabel", "sourceCommunity")]); names(src) <- c("pays", "bloc")
-  tgt <- unique(d[, c("targetLabel", "targetCommunity")]); names(tgt) <- c("pays", "bloc")
+  src <- unique(d[, c("sourceLabel", "sourceBlockLouvain")]); names(src) <- c("pays", "bloc")
+  tgt <- unique(d[, c("targetLabel", "targetBlockLouvain")]); names(tgt) <- c("pays", "bloc")
   pays_bloc <- unique(rbind(src, tgt))
   taille <- table(pays_bloc$bloc)
   blocs_singletons <- as.integer(names(taille)[taille == 1])

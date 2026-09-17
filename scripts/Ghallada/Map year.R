@@ -149,7 +149,7 @@ image_write(anim, here("cartes","Intramaxmap","blocs_animation.gif"))
 
 ##D'abord inclure les flux export et import dans deux colonnes distinctes
 
-annees <- annees_ric
+annees <- annees_all
 
 for (year in annees) {
   f_fob <- here("data", "blocks", "louvain", paste0(year, "_fob.csv"))
@@ -201,7 +201,7 @@ coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FA
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
 
-annees <- annees_ric
+annees <- annees_all
 
 # ---- couleur fixe par pays (sur toutes les annees) ----
 tous_pays <- c()
@@ -251,9 +251,9 @@ for (year in annees) {
   d <- read.csv(f, stringsAsFactors = FALSE)
   
   # pays -> communaute -> gph, cote SOURCE et TARGET
-  src <- unique(d[, c("sourceLabel", "source", "sourceCommunity")])
+  src <- unique(d[, c("sourceLabel", "source", "sourceBlockLouvain")])
   names(src) <- c("pays", "gph", "bloc")
-  tgt <- unique(d[, c("targetLabel", "target", "targetCommunity")])
+  tgt <- unique(d[, c("targetLabel", "target", "targetBlockLouvain")])
   names(tgt) <- c("pays", "gph", "bloc")
   pays_bloc <- unique(rbind(src, tgt))
   pays_bloc$gph <- as.character(pays_bloc$gph)
@@ -308,7 +308,7 @@ for (year in annees) {
 }
 
 # ---- diaporama HTML ----
-annees <- annees_ric
+annees <- annees_all
 annees <- annees[file.exists(sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), annees))]
 
 html <- paste0(
@@ -325,7 +325,7 @@ writeLines(html, here("cartes", "Louvainmap", "diaporama.html"))
 
 # ---- gif ----
 library(magick)
-fichiers <- sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), annees_ric)
+fichiers <- sprintf(here("cartes","Louvainmap","carte_comm_%d.png"), annees_all)
 fichiers <- fichiers[file.exists(fichiers)]
 img <- image_read(fichiers)
 anim <- image_animate(image_join(img), fps = 2)

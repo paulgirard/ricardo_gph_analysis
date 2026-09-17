@@ -15,10 +15,6 @@ BlocselonAN <- as.data.frame(read_excel("data/BlocselonAN.xlsx"))
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
-rm(list = ls(all = TRUE)); gc()
-library(dplyr)
-setwd("~/Desktop/ricardo_gph_analysis")
-
 dossier <- "data/blocks/gph_blocks_by_year"
 annees  <- c(1833:1938, 1948:2025)
 
@@ -168,61 +164,140 @@ a_coder <- master %>%
   arrange(distance_km)
 
 write_xlsx(a_coder, "data/blocks/Controls panel/na_contig_a_coder.xlsx")
+write.csv2(a_coder, "data/blocks/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
 nrow(a_coder)
-
+n_distinct(master$key)
 #Bilateral Disputes
+# --- 1. MID agrege ----------------------------------------------------
+# =============================================================================
+# MID : heritage des conflits de la metropole pour les entites hors COW
+#   - souverain unique        -> on herite
+#   - souverain multiple      -> NA (ambigu)
+#   - souverain a 4 chiffres  -> on remonte d'un cran
+# =============================================================================
+
+library(dplyr); library(tidyr)
+
+# --- 1. MID agrege ----------------------------------------------------
 BilateralDis <- read.csv("data/dyadic_mid_4.03_update/dyadic_mid_4.03.csv",
                          stringsAsFactors = FALSE)
 
+# Symetrisation : la dyade non orientee prend le maximum des deux sens.
+# Chaque differend apparaissant deux fois, on le reduit d'abord au niveau
+# disno avant d'agreger par dyade-annee.
 mid <- BilateralDis %>%
-  mutate(source = as.character(if_else(statea == 510L, 512L, statea)),
-         target = as.character(if_else(stateb == 510L, 512L, stateb))) %>%
-  group_by(source, target, year) %>%
+  mutate(a = as.character(if_else(statea == 510L, 512L, statea)),
+         b = as.character(if_else(stateb == 510L, 512L, stateb)),
+         key_mid = paste0(pmin(a, b), "-", pmax(a, b))) %>%
+  group_by(key_mid, year, disno) %>%
+  summarise(hihost   = max(hihost,   na.rm = TRUE),
+            war      = max(war,      na.rm = TRUE),
+            duration = max(duration, na.rm = TRUE),
+            .groups = "drop") %>%
+  group_by(key_mid, year) %>%
   summarise(mid_n        = n(),
             mid_hihost   = max(hihost, na.rm = TRUE),
             mid_guerre   = as.integer(any(war == 1, na.rm = TRUE)),
             mid_duration = sum(duration, na.rm = TRUE),
             .groups = "drop")
 
+# --- 2. Souverainete par entite-annee ---------------------------------
+statuts_dep <- c("Associated state of", "Colony of", "Dependency of",
+                 "Possession of", "Protectorate of", "Leased to",
+                 "Mandated to", "Occupied by", "Vassal of")
+
+sov_brut <- read.csv("data/GeoPolHist_entities_status_over_time.csv",
+                     stringsAsFactors = FALSE) %>%
+  filter(GPH_status %in% statuts_dep, !is.na(sovereign_GPH_code)) %>%
+  transmute(gph = as.character(GPH_code),
+            sov = as.character(as.integer(sovereign_GPH_code)),
+            start_year, end_year) %>%
+  rowwise() %>% mutate(year = list(seq(start_year, end_year))) %>% ungroup() %>%
+  unnest(year) %>%
+  distinct(gph, year, sov)
+
+# Remonter d'un cran quand le souverain est lui-meme une entite dependante
+sov_brut <- sov_brut %>%
+  left_join(sov_brut %>% rename(sov2 = sov),
+            by = c("sov" = "gph", "year"), relationship = "many-to-many") %>%
+  mutate(sov = coalesce(sov2, sov)) %>%
+  distinct(gph, year, sov)
+
+# Un seul souverain par entite-annee, sinon NA
+sov <- sov_brut %>%
+  group_by(gph, year) %>%
+  summarise(sov = if (n_distinct(sov) == 1) first(sov) else NA_character_,
+            .groups = "drop")
+# --- 3. Code effectif -------------------------------------------------
 disputes <- master %>%
-  left_join(mid, by = c("source", "target", "year")) %>%
+  select(key, year, source, target) %>%
+  left_join(sov %>% rename(sov_s = sov), by = c("source" = "gph", "year")) %>%
+  left_join(sov %>% rename(sov_t = sov), by = c("target" = "gph", "year")) %>%
+  mutate(s_eff = if_else(as.integer(source) > 999, sov_s, source),
+         t_eff = if_else(as.integer(target) > 999, sov_t, target))
+# --- 4. Jointure MID (sur la cle non orientee des codes effectifs) ----
+disputes <- disputes %>%
+  mutate(key_mid = paste0(pmin(s_eff, t_eff), "-", pmax(s_eff, t_eff))) %>%
+  left_join(mid, by = c("key_mid", "year"))
+
+# --- 5. Zeros vs NA ---------------------------------------------------
+# Zero seulement si les deux codes effectifs sont resolus, dans le champ COW
+# et l'annee couverte. Deux possessions du meme souverain donnent s_eff ==
+# t_eff : la dyade n'a pas de sens, on met NA.
+disputes <- disputes %>%
   mutate(
-    hors_champ   = as.integer(source) > 999 | as.integer(target) > 999 | year > 2014,
-    mid_n        = if_else(hors_champ, NA_integer_, coalesce(mid_n, 0L)),
-    mid_hihost   = if_else(hors_champ, NA_integer_, coalesce(mid_hihost, 0L)),
-    mid_guerre   = if_else(hors_champ, NA_integer_, coalesce(mid_guerre, 0L)),
-    mid_duration = if_else(hors_champ, NA_real_,   coalesce(as.numeric(mid_duration), 0))
+    dans_champ = !is.na(s_eff) & !is.na(t_eff) &
+      as.integer(s_eff) <= 999 & as.integer(t_eff) <= 999 &
+      s_eff != t_eff & year <= 2014,
+    mid_n        = if_else(dans_champ, coalesce(mid_n, 0L),       NA_integer_),
+    mid_hihost   = if_else(dans_champ, coalesce(mid_hihost, 0L),  NA_integer_),
+    mid_guerre   = if_else(dans_champ, coalesce(mid_guerre, 0L),  NA_integer_),
+    mid_duration = if_else(dans_champ, coalesce(mid_duration, 0), NA_real_),
+    mid_herite   = as.integer(dans_champ &
+                                (as.integer(source) > 999 | as.integer(target) > 999))
   ) %>%
-  select(-hors_champ)
+  select(key, year, mid_n, mid_hihost, mid_guerre, mid_duration, mid_herite)
+# --- 6. Controles -----------------------------------------------------
+colSums(is.na(disputes))
+table(disputes$mid_herite, useNA = "ifany")
 
 write.csv(disputes, "data/blocks/Controls panel/disputes.csv", row.names = FALSE)
 
-
-#Alliances
+###########
+#Alliances# (for symetry, j'ai pris max des 2 sens)
+###########
 
 atop <- read.csv("data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALSE) %>%
-  mutate(source = as.character(if_else(stateA == 510L, 512L, stateA)),
-         target = as.character(if_else(stateB == 510L, 512L, stateB))) %>%
-  select(source, target, year,
+  mutate(a = as.character(if_else(stateA == 510L, 512L, stateA)),
+         b = as.character(if_else(stateB == 510L, 512L, stateB)),
+         key_atop = paste0(pmin(a, b), "-", pmax(a, b))) %>%
+  select(key_atop, year,
          atop_allie   = atopally,
          atop_defense = defense, atop_offense = offense,
          atop_neutral = neutral, atop_nonagg  = nonagg,
-         atop_consul  = consul,  atop_asymm   = asymm)
+         atop_consul  = consul,  atop_asymm   = asymm) %>%
+  group_by(key_atop, year) %>%
+  summarise(across(starts_with("atop_"), ~ max(.x, na.rm = TRUE)), .groups = "drop")
 
 #write.csv(atop, "data/blocks/Controls panel/alliance_gph.csv", row.names = FALSE)
 
 alliances <- master %>%
-  left_join(atop, by = c("source", "target", "year")) %>%
+  left_join(sov %>% rename(sov_s = sov), by = c("source" = "gph", "year")) %>%
+  left_join(sov %>% rename(sov_t = sov), by = c("target" = "gph", "year")) %>%
+  mutate(s_eff = if_else(as.integer(source) > 999, sov_s, source),
+         t_eff = if_else(as.integer(target) > 999, sov_t, target),
+         key_atop = paste0(pmin(s_eff, t_eff), "-", pmax(s_eff, t_eff))) %>%
+  left_join(atop, by = c("key_atop", "year")) %>%
   mutate(
-    hors_champ = as.integer(source) > 999 | as.integer(target) > 999 |
-      year < 1815 | year > 2018,
+    dans_champ = !is.na(s_eff) & !is.na(t_eff) &
+      as.integer(s_eff) <= 999 & as.integer(t_eff) <= 999 &
+      s_eff != t_eff & year >= 1815 & year <= 2018,
     across(c(atop_allie, atop_defense, atop_offense, atop_neutral,
              atop_nonagg, atop_consul, atop_asymm),
-           ~ if_else(hors_champ, NA_integer_, coalesce(as.integer(.x), 0L)))
+           ~ if_else(dans_champ, coalesce(as.integer(.x), 0L), NA_integer_)),
+    atop_herite = as.integer(dans_champ &
+                               (as.integer(source) > 999 | as.integer(target) > 999))
   ) %>%
-  select(-hors_champ)
+  select(key, year, starts_with("atop_"))
+
 write.csv(alliances, "data/blocks/Controls panel/alliances.csv", row.names = FALSE)
-
-
-#Treaties 
-

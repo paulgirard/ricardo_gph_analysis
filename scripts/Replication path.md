@@ -61,7 +61,7 @@ Paul does his magic ???
 	- Cela donne data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png
 
 ## Variables explicatives (Youssef)
-- Et mise de tout dans le même fichier: grâce à scripts/Ghallada/Merge in one file all.R
+- Et mise de tout dans le même fichier: grâce à scripts/Ghallada/Variables de controles.R
 ### Contiguité (Youssef)
 De COW :
 Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
@@ -70,24 +70,28 @@ Douglas M. Stinnett, Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Go
 (2002). "The Correlates of War Project Direct Contiguity Data, Version 3." *Conflict
 Management and Peace Science* 19 (2):58-66.
 
-+ script (dans "scripts/Ghallada/Merge in one file all.R")
++ script (dans "scripts/Ghallada/Variables de controles.R")
 
 + travail à la main pour les xxxx
 
-- produit data/Gravity controls/contiguity_gph.csv
+- produit data/blocks/Controls panel/contiguity.csv
+
 
 ### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation 
-Dans le script "scripts/Ghallada/Merge in one file all.R"
+Dans le script "scripts/Ghallada/Variables de controles.R"
+- produit data/blocks/Controls panel/distance.csv
 
 ### Conflit
 De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
 Script ???
-- Produit data/Gravity controls/bilateraldisputes_gph.csv
+- Produit data/blocks/Controls panel/disputes.csv
 
 ### Alliances
 De ATOP 5.1
-- Produit data/Gravity controls/alliance_gph.csv
+- Produit data/blocks/Controls panel/alliances.csv
+###Contiguity manquant
+- Produit data/blocks/Controls panel/na_contig_a_coder.csv
 
 ### Base qui rassemble tout
 - data/blocks/master_panel_carre.csv.xz
