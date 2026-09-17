@@ -18,10 +18,10 @@ fonts:
 
 <small>
 
-_Paul Girard_ - OuestWare - France  
-Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France  
-Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France  
-Youssef Ghallada - Economic History Department LSE - United Kingdom
+_Paul Girard_ - OuestWare - France   
+Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France\
+Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France \
+Youssef Ghallada - Economic History Department LSE - United Kingdom\
 MEDIALAB
 <div style="display:flex; gap:1em; align-items: center"><img src="/images/hnr2026_logo.png" style="height:80px"/> <div>Historical Network Research 2026 <br/>Torino, Italia</div></div>
 
@@ -109,7 +109,7 @@ layout: center
 | colonial_area     |       1.39       |     4.97      | _French Colonies, Portuguese Colonies, British West Indies..._   |
 | geographical_area |       0.41       |     2.18      | _America, Arabia, Borneo, Africa..._                             |
 | Total             | £480,756,915,469 |    468,448    |                                                                  |
-
+<!-- Je trouve l’ordre bizarre, parce que British Colonies (other) (et toutes les "other") viennent avant colonial area et geographical area GD -->
 </small>
 
 <!--
@@ -150,8 +150,11 @@ layout: center
 # Our goal: to reduce trading entities heterogeneity with GeoPolitical data
 
 - identifying non-autonomous or informal entities
-- aggregating non-autonomous entities to their sovereign
+- aggregating non-autonomous entities and localities to their « sovereign »
 - splitting trade of groups, geographical and colonial areas
+
+<!-- Sovereign is an ambiguous term. It could mean « France » for « Saint-Louis du Sénégal » instead of « Sénégal » GD-->
+<!-- je rajoute localities dans le 2e bp GD-->
 
 ---
 layout: center
@@ -166,7 +169,7 @@ https://medialab.github.io/GeoPolHist/
 
 <small>
 
-Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 0.0 (2021), 1–20 <https://doi.org/10.1080/01615440.2021.1939826>
+Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
 
 </small>
 
@@ -190,8 +193,10 @@ layout: two-cols-header
 
 ## Autonomous definition
 
-Sufficient political autonomy to handle trade.  
-In short, every political status but `part of`.
+A very extensive definition.\
+Sufficient political autonomy to <!-- handle trade--> have its own trade statistics.  
+Every political status in GeoPolHist but `part of`.
+<!-- Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus :  "Occupied by" n’a pas beaucoup d’autonomie politique GD-->
 
 ::left::
 
@@ -214,7 +219,7 @@ Claimed by
 Neutral or demilitarized zone of
 
 <!--
-Definitions are avialable on the paper and website
+Definitions are available on the paper and website
 -->
 
 ---
@@ -226,7 +231,8 @@ layout: center
 Build yearly networks which combine
 
 - trade flow edges from **RICardo** dataset
-- geopolitical resolutions edges from **GeoPolHist**
+- geopolitical resolutions edges mainly from **GeoPolHist**
+<!-- Je mets mainly parce que les resolution edges « localities » et group viennent de Ricardo je pense ? GD-->
 
 <!--
 Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into one multilayer network.
@@ -263,6 +269,7 @@ From GeoPolHist:
 - Colonial Area -[ **SPLIT_INTO** ]-> colonies  
   _(reusing geographical area data table)_
 
+<!-- Quid des « other » ? GD-->
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
@@ -270,6 +277,7 @@ scale: 0.5
 ---
 
 <!--
+This is the network of the resolution edges
 Zoom to malta
 mention Gephi lite
 -->
@@ -310,9 +318,11 @@ layout: center
 
 # Autonomous trade entity resolution
 
-For each non-autonomous entity (source: GPH), we traverse resolution edges until finding an autonomous entity.
+For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
 
 This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of.
+
+<!-- Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD-->
 
 ---
 layout: center
@@ -355,7 +365,9 @@ Areas (geographical or colonial) are implicit groups.
 
 The composition of the group is to be defined.
 
-We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter.
+We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter and we remove those that would not be part of the trade network otherwise.
+
+<!-- and we remove those that would not be part of the trade network otherwise... Je crois, non ? GD-->
 
 ---
 layout: center
@@ -373,6 +385,8 @@ layout: center
 
 We don't do that, yet.
 
+<!-- On le fait maintenant je crois ? GD-->
+
 ---
 layout: center
 ---
@@ -381,13 +395,13 @@ layout: center
 
 We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
 
-We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables.
+We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables (to be extended).
 
 The inferred values are used to compute a ratio which is then applied on the original values.
 
 <small>
 
-Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, février 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
+Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, February 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
 
 </small>
 
@@ -437,7 +451,11 @@ layout: center
 Our method yields an average 156% increase in trade network density across the period. The
 average density grows from 1.6% to 4.3%, including trade flows and partners we could not
 solve.
+<!--Je ne comprends pas « including trade flows and partners we could not solve GD-->
 
+<!--
+The effect on the number of trade flows is much larger than on the value of trade flows
+-->
 ---
 layout: center
 ---
@@ -445,8 +463,42 @@ layout: center
 # Great! What it is good for?
 
 - Trade quantification in the long run
-- Trade block analysis: on going work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Poon 1997) methods
 - Study the effect of colonization: work in progress...
+- What we will talk about: Trade block analysis
+
+---
+layout: center
+---
+# Trade block analysis
+## Why?
+
+- Between 1830 and 2025, the pattern of bilateral trade flows has been heavily affected by successive waves of globalisation and deglobalisation
+	<!-- a pre-1913 wave of globalisation (1830 -1913) (Kevin O'Rourke and Williamson, 2002)
+	- dislocation during and between the two World Wars
+	- reconstruction of the international economy till the 1970s
+	- hyper globalisation till the recent recent tensions-->
+- The relationship between globalisation and regionalisation has been ambiguous
+<!-- Some episodes when regionalisation negatively linked with globalisation :  1930s, the exit from empire trade in the 1960s-1970s, the current tensions...
+Some when the reverse seems to be the case, such as the rise of the European Union
+Anderson and Norheim in an old paper (1993) show that generally, regionalisation and globalisation are positively correlated. Is that really the case ?-->
+
+
+
+<!--
+ Past literature has assumed that trade blocs were exogenously given by historical, political, and geographical boundaries. In that respect, Jacks and Novy (2019) have studied the performance of two political trade blocs (i.e. the Commonwealth and Reichsmark blocs) and two currency blocs (i.e. the gold bloc and the sterling bloc). In general, the effect of empire is important, may spill over coloniser's neighbours and decreases only gradually (Head et al., 2010; Berthou and Ehrhart, 2017; Gokmen et al., 2020). Geographical “regional” groups have been studied and tied to globalisation waves as well. Debates such as increasing regionalism in an era of globalisation were burgeoning in the 1990s with the advent of the Maastricht Treaty. Seminal papers such as Anderson and Norheim (1993) showed, for example, that regionalisation and global interdependence grew hand in hand. Recently, global trade integration has been tied to geopolitical contexts, with global treaty activity and treaty-signing being a leading indicator of increasing bilateral trade (Broner et al., 2025). -->
+
+
+
+<small>
+Anderson, Kym, and Hege Norheim. "Is world trade becoming more regionalized?." <i> Review of International Economics,</i> 1.2 (1993): 91-109.
+</small>
+
+---
+layout: center
+---
+
+- : ongoing work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Poon 1997) methods
+
 
 <small>
   <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
