@@ -48,8 +48,8 @@ program define master_panel_importation
     drop region_AN_exp region_AN_imp lat_exp lng_exp lat_imp lng_imp
 
     keep if exportateur < importateur 
-    rename exportateur source
-    rename importateur target
+    rename exportateur target
+    rename importateur source
 
     
 
@@ -58,7 +58,9 @@ program define master_panel_importation
     foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
         preserve
         keep if year==`year'
-        gen key= string(exporterId) +  "-" + string(importerId)
+        gen key= string(exporterId) +  "-" + string(importerId) if string(exporterId) < string(importerId)
+        replace key= string(importerId) +  "-" + string(exporterId) if string(exporterId) > string(importerId)
+        assert key !=""
         sort key
         order key
         drop importerId exporterId

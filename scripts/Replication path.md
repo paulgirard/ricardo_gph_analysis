@@ -44,6 +44,7 @@ Todo : retrouver le code
 	- creates data/blocks/louvain/YYYY_caf/fob.csv
 Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec les valeurs avec la métrique
 + fichier avec modularité et nombre de blocks par année.
+Attention ! Ce fichier ne comprend que les paires qui commercent -- même si toute l’information utile s’y trouve.
 
 ## Métriques
 ### Modularité (Paul)
