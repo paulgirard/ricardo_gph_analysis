@@ -8,14 +8,14 @@
       <attribute id="blockIntraMax" title="blockIntraMax" type="string"/>
       <attribute id="blockAN" title="blockAN" type="string"/>
       <attribute id="blockLouvain" title="blockLouvain" type="integer"/>
-      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="double"/>
+      <attribute id="meanAmbiguityScore" title="meanAmbiguityScore" type="integer"/>
     </attributes>
     <attributes class="edge">
       <attribute id="proximity" title="proximity" type="double"/>
       <attribute id="observedTradeValues" title="observedTradeValues" type="listdouble"/>
-      <attribute id="coMembershipScore" title="coMembershipScore" type="double"/>
-      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="double"/>
-      <attribute id="ambiguityScore" title="ambiguityScore" type="double"/>
+      <attribute id="coMembershipScore" title="coMembershipScore" type="integer"/>
+      <attribute id="bridgeNessEdgeScore" title="bridgeNessEdgeScore" type="integer"/>
+      <attribute id="ambiguityScore" title="ambiguityScore" type="integer"/>
       <attribute id="sourceCommunityId" title="sourceCommunityId" type="string"/>
     </attributes>
     <nodes>
@@ -86,7 +86,7 @@
           <attvalue for="blockIntraMax" value="5"/>
           <attvalue for="blockAN" value="WE"/>
           <attvalue for="blockLouvain" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0.009500000000000008"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
       </node>
       <node id="300" label="Austria-Hungary (Austrian Empire)">
@@ -166,7 +166,7 @@
           <attvalue for="blockIntraMax" value="2"/>
           <attvalue for="blockAN" value="NAM"/>
           <attvalue for="blockLouvain" value="4"/>
-          <attvalue for="meanAmbiguityScore" value="0.0054285714285714284"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
       </node>
       <node id="239" label="Prussia">
@@ -346,7 +346,7 @@
           <attvalue for="blockIntraMax" value="3"/>
           <attvalue for="blockAN" value="WE"/>
           <attvalue for="blockLouvain" value="0"/>
-          <attvalue for="meanAmbiguityScore" value="0.12666666666666673"/>
+          <attvalue for="meanAmbiguityScore" value="0"/>
         </attvalues>
       </node>
       <node id="140" label="Brazil">
@@ -2617,9 +2617,9 @@
         <attvalues>
           <attvalue for="proximity" value="0.7984870399452534"/>
           <attvalue for="observedTradeValues" value="0.00008551081044510611"/>
-          <attvalue for="coMembershipScore" value="0.95"/>
-          <attvalue for="bridgeNessEdgeScore" value="0.050000000000000044"/>
-          <attvalue for="ambiguityScore" value="0.19000000000000017"/>
+          <attvalue for="coMembershipScore" value="1"/>
+          <attvalue for="bridgeNessEdgeScore" value="0"/>
+          <attvalue for="ambiguityScore" value="0"/>
         </attvalues>
       </edge>
       <edge id="130-230" source="130" target="230">
@@ -2826,9 +2826,9 @@
         <attvalues>
           <attvalue for="proximity" value="0.6788879544989289"/>
           <attvalue for="observedTradeValues" value="0.00047678357606305153"/>
-          <attvalue for="coMembershipScore" value="0.05"/>
-          <attvalue for="bridgeNessEdgeScore" value="0.95"/>
-          <attvalue for="ambiguityScore" value="0.19"/>
+          <attvalue for="coMembershipScore" value="0"/>
+          <attvalue for="bridgeNessEdgeScore" value="1"/>
+          <attvalue for="ambiguityScore" value="0"/>
           <attvalue for="sourceCommunityId" value="bridge"/>
         </attvalues>
       </edge>
