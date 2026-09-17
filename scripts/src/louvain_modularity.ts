@@ -46,6 +46,7 @@ const blocksStats: {
   network_density: number;
 }[] = [];
 const missingInANAll: Set<string> = new Set();
+
 const years = [...range(1833, 1939), ...range(1948, 2026)];
 years.forEach((year) => {
   let intramaxOk = true;
@@ -311,9 +312,28 @@ years.forEach((year) => {
         },
       );
       writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.csv`, csvString);
-      // TODO: export for Gephi Lite
+      // TODO: export in Gephi Lite format
       const gexfString = gexf.write(okGraph);
       writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.gexf`, gexfString);
+
+      const entitiesBlocksCsvString = stringify(
+        sortBy(
+          okGraph.mapNodes((n, atts) => ({
+            id: n,
+            label: atts.label,
+            year,
+            cafFob,
+            blockLouvain: atts.blockLouvain,
+            blockIntraMax: atts.blockIntraMax,
+          })),
+          (row) => toNumber(row.id),
+        ),
+        {
+          columns: ["id", "label", "blockLouvain", "blockIntraMax", "year", "cafFob"],
+          header: true,
+        },
+      );
+      writeFileSync(`../data/blocks/gph_blocks_by_year/${year}_${cafFob}.csv`, entitiesBlocksCsvString);
 
       // - compute modularity louvain blocks
       const modularityScores: { [type: string]: number | null } = { louvain: null, intramax: null, AN: null };
