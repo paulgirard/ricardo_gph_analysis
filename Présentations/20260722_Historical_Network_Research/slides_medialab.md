@@ -480,14 +480,7 @@ layout: center
 - The relationship between globalisation and regionalisation has been ambiguous
 <!-- Some episodes when regionalisation negatively linked with globalisation :  1930s, the exit from empire trade in the 1960s-1970s, the current tensions...
 Some when the reverse seems to be the case, such as the rise of the European Union
-Anderson and Norheim in an old paper (1993) show that generally, regionalisation and globalisation are positively correlated. Is that really the case ?-->
-
-
-
-<!--
- Past literature has assumed that trade blocs were exogenously given by historical, political, and geographical boundaries. In that respect, Jacks and Novy (2019) have studied the performance of two political trade blocs (i.e. the Commonwealth and Reichsmark blocs) and two currency blocs (i.e. the gold bloc and the sterling bloc). In general, the effect of empire is important, may spill over coloniser's neighbours and decreases only gradually (Head et al., 2010; Berthou and Ehrhart, 2017; Gokmen et al., 2020). Geographical “regional” groups have been studied and tied to globalisation waves as well. Debates such as increasing regionalism in an era of globalisation were burgeoning in the 1990s with the advent of the Maastricht Treaty. Seminal papers such as Anderson and Norheim (1993) showed, for example, that regionalisation and global interdependence grew hand in hand. Recently, global trade integration has been tied to geopolitical contexts, with global treaty activity and treaty-signing being a leading indicator of increasing bilateral trade (Broner et al., 2025). -->
-
-
+Anderson and Norheim in an old paper (1993) show that generally, regionalisation and globalisation are positively correlated. Is that really the case ? Or is regionalisation a threat to globalisation as it seems to be currently ?-->
 
 <small>
 Anderson, Kym, and Hege Norheim. "Is world trade becoming more regionalized?." <i> Review of International Economics,</i> 1.2 (1993): 91-109.
@@ -495,20 +488,102 @@ Anderson, Kym, and Hege Norheim. "Is world trade becoming more regionalized?." <
 
 ---
 layout: center
+
+---
+# Trade block analysis
+## Outline
+### How to define a block?
+### Regionalisation and globalisation
+### Determinants of blocks
+
+
+
+
+
+---
+layout: center
 ---
 
-- : ongoing work comparing Louvain ambiguity (Jacomy et al. 2025) and intramax (Poon 1997) methods
+# How to define a block?
+## Pre-given by geography and judgment?
+<!-- This is the most common point of view. Anderson and Norheim. Currency blocks, political trade blocs, empires...
+This leads to 
+- endogeneity issue (you might pick the composition of a block because you see increased inblock trade)
+- fixity over time. The relevant block might actually change through time, and you might miss that. Most obvious example : maybe imperial blocks are important in the 1930s and 1950s, but they loose that importance through time. And now continental blocks are important because of regional trade agreements, especially the EU-->
+
+## Let the data speak?
+Trade studies : Intramax
+
+Network studies: Louvain ambiguity
 
 
 <small>
-  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
-  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.63744%2Ff3L9hsFcGqVc&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=proceeding&amp;rft.atitle=Cluster%20Ambiguity%20in%20Networks%20as%20Substantive%20Knowledge&amp;rft.btitle=Computational%20Humanities%20Research%202025&amp;rft.publisher=Anthology%20of%20Computers%20and%20the%20Humanities&amp;rft.aufirst=Mathieu&amp;rft.aulast=Jacomy&amp;rft.au=Mathieu%20Jacomy&amp;rft.au=Tommaso%20Elli&amp;rft.au=Andrea%20Benedetti&amp;rft.au=Guillaume%20Plique&amp;rft.au=Benjamin%20Ooghe-Tabanou&amp;rft.au=Paul%20Girard&amp;rft.au=Alexis%20Jacomy&amp;rft.au=Taylor%20Arnold&amp;rft.au=Margherita%20Fantoli&amp;rft.au=Ruben%20Ros&amp;rft.date=2025&amp;rft.pages=119-130&amp;rft.spage=119&amp;rft.epage=130&amp;rft.issn=3070-8931&amp;rft.language=en"></span>
 
-  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <i>JSTOR</i>, <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
-  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_id=info%3Adoi%2F10.2307%2F144560&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=The%20Cosmopolitanization%20of%20Trade%20Regions%3A%20Global%20Trends%20and%20Implications%2C%201965-1990&amp;rft.jtitle=Economic%20Geography&amp;rft.volume=73&amp;rft.issue=4&amp;rft.aufirst=Jessie%20P.&amp;rft.aulast=Poon&amp;rft.au=Jessie%20P.%20Poon&amp;rft.date=1997&amp;rft.pages=390-404&amp;rft.spage=390&amp;rft.epage=404&amp;rft.issn=0013-0095"></span>
+  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
+
+  Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
+
+  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
+  
+
+<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
 
 </small>
+---
+layout: center
+---
+# Anderson and Norheim’s blocks
+Western Europe (including Turkey and Yugoslavia)\
+Eastern Europe (East of West Germany, including Soviet Central Asia)
 
+North America (excluding Mexico and West Indies)\
+Latin America
+
+(Japan)\
+Australasia\
+Developing Asia
+
+Africa\
+Middle East (as far as Iran)
+
+<small>
+Finger, Karl-Michael, Hege Norheim, and Kym Anderson. 1993. “Trends in the Regionalization of World Trade, 1928 to 1990.” In <i> Regional Integration and the Global Trading System</i>, by Kim Anderson and Richard Blackhurst. https://www.cabidigitallibrary.org/doi/full/10.5555/19941801183.
+
+</small>
+---
+layout: center
+---
+
+# Intramax
+
+You look at the one pair that is the furthest from a no friction model of bilateral trade prediction. $I_{i,j}$ is (eg) fob exports from country *i* to country *j*
+
+$I’_{i,j}= \frac{\sum_j I_{i,j}}{\sum_{ij}I_{i,j}}.\frac{\sum_i I_{i,j}}{\sum_{ij}I_{i,j}}.\sum_{ij}I_{i,j}=\frac{\sum_j I_{i,j}.\sum_iI_{i,j}}{\sum_{ij}I_{i,j}}$ 
+
+You are looking for countries *i* and *j* that maximise :
+$(I_{ij}-I’_{ij})+ (I_{ji}-I’_{ji})$
+
+The issue is that this formula (used by Poon) gives an advantage to large country pairs. 
+
+<small>
+ <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
+</small>
+ 
+---
+layout: image
+image: /images/Intramax.png
+backgroundSize: small
+---
+
+
+# Louvain
+« The problem of community detection requires the partition of a network into communities of densely connected nodes, with the nodes belonging to different communities being only sparsely connected »
+
+## Measure of distance
+## Modularity
+<small>
+Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
+</small>
 ---
 layout: center
 ---
