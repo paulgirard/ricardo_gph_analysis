@@ -52,6 +52,28 @@ Paul Girard - OuestWare - France
 </div>
 
 ---
+
+## RICardo
+
+https://ricardo.medialab.sciences-po.fr
+
+<small>
+
+Girard, Paul, et al. « **RICardo Project : Exploring XIX Century International Trade** ». _Digital Humanities 2016: Conference Abstracts_ [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
+
+</small>
+
+## GeoPolHist
+
+https://medialab.github.io/GeoPolHist
+
+<small>
+
+Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
+
+</small>
+
+---
 layout: image-left
 image: /images/tableau_generale_Belgique_1850.png
 backgroundSize: contain
@@ -95,12 +117,12 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 
 |   **RIC type**    | **All entities** | **Reporting** | **Partner** | **Examples**                                          |
 | :---------------: | :--------------: | :-----------: | :---------: | ----------------------------------------------------- |
-|    GPH entity     |   530 (22.7 %)   |      277      |     448     | Bulgaria, Gambia, Singapore, Queensland…              |
-|     Locality      |   707 (30.3 %)   |      115      |     616     | Asian Russia, Bahia, France (Atlantic Coast)…         |
-|       Group       |   860 (36.9 %)   |      44       |     752     | Altona & Holstein, Trinidad & United Kingdom…         |
-|   Colonial area   |   130 (5.6 %)    |       0       |     114     | British Africa, Portuguese Asia, Spanish West Indies… |
-| Geographical area |   106 (4.5 %)    |       2       |     96      | Central America, Eastern Africa, Persian Gulf...      |
-|     **Total**     |     **2333**     |    **438**    |  **2026**   |                                                       |
+|    GPH entity     |   530 (22.7 %)   |      286      |     483     | Bulgaria, Gambia, Singapore, Queensland…              |
+|     Locality      |   707 (30.2 %)   |      120      |     571     | Asian Russia, Bahia, France (Atlantic Coast)…         |
+|       Group       |   860 (36.8 %)   |      37       |     797     | Altona & Holstein, Trinidad & United Kingdom…         |
+|   Colonial area   |   130 (5.6 %)    |       0       |     120     | British Africa, Portuguese Asia, Spanish West Indies… |
+| Geographical area |   112 (4.8 %)    |       4       |     94      | Central America, Eastern Africa, Persian Gulf...      |
+|     **Total**     |     **2339**     |    **447**    |  **2065**   |                                                       |
 
 </div>
 
@@ -112,10 +134,10 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 
 |   **RIC type**    | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
 | :---------------: | :-------------------: | :-------------------: | :-----------------: | :-----------------: |
-|    GPH entity     |         97.3          |         96.0          |        87.2         |        81.2         |
-|     Locality      |          1.0          |          2.5          |         4.6         |         6.5         |
-|       Group       |          1.7          |          1.5          |         6.4         |         5.1         |
-|   Colonial area   |           -           |           -           |         1.4         |         5.0         |
+|    GPH entity     |         97.3          |         95.6          |        87.2         |        81.2         |
+|     Locality      |          0.6          |          2.5          |         4.6         |         6.5         |
+|       Group       |          2.4          |          1.8          |         6.5         |         5.1         |
+|   Colonial area   |          0.0          |          0.1          |         1.4         |         5.0         |
 | Geographical area |           -           |           -           |         0.4         |         2.2         |
 
 </div>
@@ -151,55 +173,14 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 </div>
 
 ---
-
-# RICardo
-
-## International bilateral trade c. 1830-1938
-
-Trade statistics sources:
-
-- **Primary**: customs statistics published by national authorities
-- **Primary yearbook**: statistical yearbooks
-- **Secondary**: compilations of primary sources published by national or international authorities
-
-Includes exchange rates to Pound Sterling to homogenize values.
-
-https://ricardo.medialab.sciences-po.fr
-
-<small>
-
-Girard, Paul, et al. « RICardo Project : Exploring XIX Century International Trade ». <i>Digital Humanities 2016: Conference Abstracts</i> [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
-
-</small>
-
+layout: iframe
+url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
+scale: 0.8
 ---
-layout: center
----
-
-# Bilateral trade data model
-
-![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
 
 <!--
-Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
+For each entity, we list their political status along time and their links to sovereign parent entities.
 -->
-
----
-layout: center
----
-
-# GeoPolHist
-
-Identifies the political status of every geopolitical entity that has existed since 1816  
-Based on the lists of states and dependencies developed by [_Correlates of War project_](https://correlatesofwar.org/)
-
-https://medialab.github.io/GeoPolHist/
-
-<small>
-
-Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
-
-</small>
 
 ---
 layout: statement
@@ -219,20 +200,6 @@ layout: center
 - aggregating non-autonomous entities and localities to their « sovereign »
 - splitting trade of groups, geographical and colonial areas
 
-<!--
-Facing this challenge we built with Béatrice a dataset based on Correlates of War project in order to try to answer  a question that is not as simple as it seems : How many countries in the World in the 19s century?
--->
-
----
-layout: iframe
-url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
-scale: 0.8
----
-
-<!--
-For each entity, we list their political status along time and their links to sovereign parent entities.
--->
-
 ---
 layout: two-cols-header
 ---
@@ -240,9 +207,10 @@ layout: two-cols-header
 ## Autonomous definition
 
 A very extensive definition.\
-Sufficient political autonomy to <!-- handle trade--> have its own trade statistics.  
+Sufficient political autonomy to have its own trade statistics.  
 Every political status in GeoPolHist but `part of`.
 <!-- Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus :  "Occupied by" n’a pas beaucoup d’autonomie politique GD-->
+<!-- oui, est ce que la définition n'est pas plutôt la négation de ça a été dissout, i.e. tout ce qui n'est pas part of-->
 
 ::left::
 
@@ -272,13 +240,27 @@ Definitions are available on the paper and website
 layout: center
 ---
 
+# Bilateral trade data model
+
+![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
+
+<!--
+Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
+-->
+
+---
+layout: center
+---
+
 # Multilayer networks bridging trade and politics
 
 Build yearly networks which combine
 
 - trade flow edges from **RICardo** dataset
 - geopolitical resolutions edges mainly from **GeoPolHist**
+
 <!-- Je mets mainly parce que les resolution edges « localities » et group viennent de Ricardo je pense ? GD-->
+<!-- oui le mainly c'est bien. c'est un détail pas important ici et j'ai pas du tout envie de rentrer dans le débat de oui mais une localité peut changer dans le temps...Et surtout j'explique en détail slide 18-->
 
 <!--
 Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into one multilayer network.
@@ -287,7 +269,7 @@ Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into on
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
-scale: 0.5
+scale: 0.8
 ---
 
 <!--
@@ -308,6 +290,7 @@ From RICardo:
 From additional data edited for this paper:
 
 - Geographical Area -[ **SPLIT_INTO** ]-> members
+- Informal -[ **SPLIT_INTO** ]-> members
 
 From GeoPolHist:
 
@@ -315,11 +298,15 @@ From GeoPolHist:
 - Colonial Area -[ **SPLIT_INTO** ]-> colonies  
   _(reusing geographical area data table)_
 
-<!-- Quid des « other » ? GD-->
+<!--
+Quid des « other » ? GD
+Ce sont des locality RICardo
+-->
+
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
-scale: 0.5
+scale: 0.8
 ---
 
 <!--
@@ -353,10 +340,10 @@ layout: center
 # Harmonization process
 
 1. Autonomous trade entity resolution
-1. Trade partner aggregation
-1. Trade partner splits with year ratio method
-1. Reporters aggregation
-1. Trade partner splits with gravity model method
+1. Trade reporters aggregation/split
+1. Trade partners aggregation
+1. Trade partners splits with year ratio method
+1. Trade reporters & partners splits with gravity model method
 
 ---
 layout: center
@@ -366,9 +353,35 @@ layout: center
 
 For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
 
-This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of.
+This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
 
-<!-- Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD-->
+```cypher
+(D)<-[SPLIT]-(D & part of A)-[SPLIT]->(part of A)-[AGGREGATE_INTO]->(A)
+```
+
+Autonomous of **D & part of A** are **D** and **A**.
+
+<!--
+Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
+
+Je ne comprends pas ce que tu ne comprends pas. On suit tous les liens de résolutions qq soit la raison pour laquelle on a créé le lien. J'ajoute un schéma symbolique PG
+-->
+
+---
+layout: center
+---
+
+# Trade reporters aggregation/split
+
+Reporters needs to be treated before the partners as areas desagregations needs a stable reporter scope.
+
+Moreover we need to treat cases of reporters overlaps. It happens that a set of reporters report part of the same trade from different perspectives.
+
+<small>
+
+PS: we don't split reporters trade at this step, we prepare the work for the gravity model
+
+</small>
 
 ---
 layout: center
@@ -409,35 +422,18 @@ layout: center
 
 Areas (geographical or colonial) are implicit groups.
 
-The composition of the group is to be defined.
+The composition of the group is not explicit in the source.
 
-We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter and we remove those that would not be part of the trade network otherwise.
+We use geographical or colonial sets which we adapt to the source context:
 
-<!-- and we remove those that would not be part of the trade network otherwise... Je crois, non ? GD-->
-
----
-layout: center
----
-
-# Reporters aggregation
-
-Because of the importance of reporter context, we need to make sure reporters are aggregated before we can split their partners.
+- we remove all theoretical members of the area which are already cited by the reporter
+- we remove those that would not be part of the trade network otherwise (not directly cited by another source)
 
 ---
 layout: center
 ---
 
-# Trade reporters splits
-
-We don't do that, yet.
-
-<!-- On le fait maintenant je crois ? GD-->
-
----
-layout: center
----
-
-# Trade partner splits with gravity model method
+# Trade partner/reporter splits with gravity model method
 
 We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
 
@@ -469,7 +465,7 @@ layout: center
 
 <ShareTotalReportedValue />
 
-We convert into bilateral flows between countries or colonies 75% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 19.4% on average of the total value of bilateral flows over the period.
+We convert into bilateral flows between countries or colonies 87% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 17.5% on average of the total value of bilateral flows over the period.
 
 <!--
 Keep it mind that we are working with the fringe of the trade networks, ou problematic flows are numerous but with smaller values on average
@@ -484,7 +480,7 @@ layout: center
 <ShareGeneratedTradeValue />
 
 The ”aggregation”, ”split by ratio in adjacent years” and ”gravity” methods solved
-13%, 2.7% and 3.6% of the cases respectively.
+12%, 4.6% and 26.19% of the cases respectively.
 
 ---
 layout: center
@@ -494,14 +490,15 @@ layout: center
 
 <TradeNetworkDensity />
 
-Our method yields an average 156% increase in trade network density across the period. The
-average density grows from 1.6% to 4.3%, including trade flows and partners we could not
+Our method yields an average 216% increase in trade network density across the period. The
+average density grows from 1.8% to 8.9%, including trade flows and partners we could not
 solve.
 <!--Je ne comprends pas « including trade flows and partners we could not solve GD-->
 
 <!--
 The effect on the number of trade flows is much larger than on the value of trade flows
 -->
+
 ---
 layout: center
 ---
