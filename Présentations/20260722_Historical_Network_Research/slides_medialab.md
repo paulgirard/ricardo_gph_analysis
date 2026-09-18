@@ -558,21 +558,16 @@ This leads to
 - fixity over time. The relevant block might actually change through time, and you might miss that. Most obvious example : maybe imperial blocks are important in the 1930s and 1950s, but they loose that importance through time. And now continental blocks are important because of regional trade agreements, especially the EU-->
 
 ## Let the data speak?
+
+« The problem of community detection requires the partition of a network into communities of densely connected nodes, with the nodes belonging to different communities being only sparsely connected » 
+
 Trade studies : Intramax
 
-Network studies: Louvain ambiguity
+Network studies: Louvain + ambiguity
 
 
 <small>
-
-  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
-
-  Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
-
-  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
-  
-
-<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
+Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
 
 </small>
 ---
@@ -600,36 +595,120 @@ Finger, Karl-Michael, Hege Norheim, and Kym Anderson. 1993. “Trends in the Reg
 layout: center
 ---
 
-# Intramax
+# Intramax (1)
 
-You look at the one pair that is the furthest from a no friction model of bilateral trade prediction. $I_{i,j}$ is (eg) fob exports from country *i* to country *j*
+Iterative process on fob trade. One looks for the country/block pair that is the furthest from a no friction model of bilateral trade.\
+$I_{i,j}$ is (eg) fob exports from country/block *i* to country/block *j*\
+$I’_{i,j}$ is « no friction trade »
+
+ <center>
 
 $I’_{i,j}= \frac{\sum_j I_{i,j}}{\sum_{ij}I_{i,j}}.\frac{\sum_i I_{i,j}}{\sum_{ij}I_{i,j}}.\sum_{ij}I_{i,j}=\frac{\sum_j I_{i,j}.\sum_iI_{i,j}}{\sum_{ij}I_{i,j}}$ 
 
-You are looking for countries *i* and *j* that maximise :
+ </center>
+
+---
+layout: center
+---
+
+# Intramax (2)
+
+You are looking for the countries/blocks pair (*i*,*j*) that maximises:
+
+ <center>
+
 $(I_{ij}-I’_{ij})+ (I_{ji}-I’_{ji})$
 
-The issue is that this formula (used by Poon) gives an advantage to large country pairs. 
+ </center>
+When we find one, we join the two countries/blocks and treat them as one block for the next search. We stop before the maximising pair includes 10% or more of world trade.
+
+ <!-- Without a stopping rule, all countries would be put in a single block... -->
 
 <small>
  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
 </small>
  
+
 ---
-layout: image
-image: /images/Intramax.png
-backgroundSize: small
+layout: center
+---
+# Intramax (3)
+
+We have issues:
+- Poon’s maximisation objective is in monetary terms, and as such gives an advantage to large country pairs
+- Often we are missing one direction of trade
+- We believe if a small country does 100% of its trade with a big one, even if this trade is small in monetary terms, they must be in the same block.
+ So we use rather:
+
+ <center>
+ 
+$Max (\frac{(I_{ij}-I’_{ij})}{\sum_{i}I_{i,j}}; \frac{(I_{ji}-I’_{ji})}{\sum_{j}I_{j,i}})=A_{i,j}$
+ 
+ </center>
+ 
+ <small>
+
+ Kohl, Tristan, and Aleid E. Brouwer. 2014. “The Development of Trade Blocs in an Era of Globalisation.” *Environment and Planning A: Economy and Space* 46 (7): 1535–53. https://doi.org/10.1068/a46261.
+
+</small>
+ 
+---
+layout: center
 ---
 
+# Louvain (1)
+## Objective fonction: modularity Q ($\in[-0.5,1]$)
 
-# Louvain
-« The problem of community detection requires the partition of a network into communities of densely connected nodes, with the nodes belonging to different communities being only sparsely connected »
+$Q=\frac{1}{2m}.\sum_{i,j}\left({A_{i,j}}.\frac{k_i.k_j}{2m}.\delta(c_i,c_j)\right)$ is the ratio between the weight of links inside blocks compared to random links
 
-## Measure of distance
-## Modularity
+<small>
+
+- $A_{i,j}$ is the weight of the link (or proximity) between countries *i* and *j* (the same as in IntraMax)
+- $k_i= \sum_{i}{A_{i,j}}$ is total weight of a country’s links (it might be different from one)
+- $m= \frac{1}{2}.\sum_{i,j}{A_{i,j}}$ is the sum of all weights in the trade network divided by two
+- $c_i$ and $c_j$ are the blocks of countries *i* and *j*
+- the $\delta$-function $\delta(u,v)$ is 1 if $u=v$ and 0 otherwise
+
+</small>
+<small>
+
+ M. E. J. Newman, « Modularity and community structure in networks », *Proc. Natl. Acad. Sci*. USA, vol. 103, no 23, 2006, p. 8577–8582 https://dx.doi.org/10.1073%2Fpnas.0601602103
+ 
+</small>
+
+---
+layout: center
+---
+# Louvain (2)
+
+1. All countries are put in its own block
+2. We examine all trade partners *j* of a country *i* and we assign *i* in *j*’s block, where *j*’s block provides the largest gain in modularity. If there are no positive gains, *i* stays in its block. Once all countries have been considered once, we examine them again in the same order and they can moved from block to block.  
+3. When all positive gain-grouping have been made, we re-create the network with the new blocks as units, considering internal trade as a self-loop. Proximity between blocks is the sum of proximity of each pair of countries.\
+And we iterate (2 and 3) till no change in grouping is made in phase 2. \
+The result depends on the order in which *i* are treated.
+
 <small>
 Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
 </small>
+
+---
+layout: image
+image: /images/Louvain_algorithm.png
+backgroundSize: contain
+---
+
+## Blondel et al.
+
+---
+
+  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
+  
+<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
+
+
+## Measure of distance
+## Modularity
+
 ---
 layout: center
 ---
