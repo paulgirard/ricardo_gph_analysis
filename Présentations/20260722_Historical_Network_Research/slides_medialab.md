@@ -396,7 +396,7 @@ Moreover we need to treat cases of reporters overlaps. It happens that a set of 
 
 <small>
 
-PS: we don't split reporters trade at this step
+PS: we don't split reporters trade at this step, we prepare the work for the gravity model
 
 </small>
 
@@ -439,35 +439,18 @@ layout: center
 
 Areas (geographical or colonial) are implicit groups.
 
-The composition of the group is to be defined.
+The composition of the group is not explicit in the source.
 
-We use geographical or colonial sets which we adapt to the source context, i.e. we remove all theoretical members of the area which are already cited by the reporter and we remove those that would not be part of the trade network otherwise.
+We use geographical or colonial sets which we adapt to the source context:
 
-<!-- and we remove those that would not be part of the trade network otherwise... Je crois, non ? GD-->
-
----
-layout: center
----
-
-# Reporters aggregation
-
-Because of the importance of reporter context, we need to make sure reporters are aggregated before we can split their partners.
+- we remove all theoretical members of the area which are already cited by the reporter
+- we remove those that would not be part of the trade network otherwise (not directly cited by another source)
 
 ---
 layout: center
 ---
 
-# Trade reporters splits
-
-We don't do that, yet.
-
-<!-- On le fait maintenant je crois ? GD-->
-
----
-layout: center
----
-
-# Trade partner splits with gravity model method
+# Trade partner/reporter splits with gravity model method
 
 We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
 
@@ -499,7 +482,7 @@ layout: center
 
 <ShareTotalReportedValue />
 
-We convert into bilateral flows between countries or colonies 75% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 19.4% on average of the total value of bilateral flows over the period.
+We convert into bilateral flows between countries or colonies 87% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 17.5% on average of the total value of bilateral flows over the period.
 
 <!--
 Keep it mind that we are working with the fringe of the trade networks, ou problematic flows are numerous but with smaller values on average
@@ -514,7 +497,7 @@ layout: center
 <ShareGeneratedTradeValue />
 
 The ”aggregation”, ”split by ratio in adjacent years” and ”gravity” methods solved
-13%, 2.7% and 3.6% of the cases respectively.
+12%, 4.6% and 26.19% of the cases respectively.
 
 ---
 layout: center
@@ -524,14 +507,15 @@ layout: center
 
 <TradeNetworkDensity />
 
-Our method yields an average 156% increase in trade network density across the period. The
-average density grows from 1.6% to 4.3%, including trade flows and partners we could not
+Our method yields an average 216% increase in trade network density across the period. The
+average density grows from 1.8% to 8.9%, including trade flows and partners we could not
 solve.
 <!--Je ne comprends pas « including trade flows and partners we could not solve GD-->
 
 <!--
 The effect on the number of trade flows is much larger than on the value of trade flows
 -->
+
 ---
 layout: center
 ---
