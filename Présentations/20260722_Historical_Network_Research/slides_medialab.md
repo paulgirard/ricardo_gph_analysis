@@ -202,6 +202,16 @@ Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Ge
 </small>
 
 ---
+layout: iframe
+url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
+scale: 0.8
+---
+
+<!--
+For each entity, we list their political status along time and their links to sovereign parent entities.
+-->
+
+---
 layout: statement
 ---
 
@@ -219,20 +229,6 @@ layout: center
 - aggregating non-autonomous entities and localities to their « sovereign »
 - splitting trade of groups, geographical and colonial areas
 
-<!--
-Facing this challenge we built with Béatrice a dataset based on Correlates of War project in order to try to answer  a question that is not as simple as it seems : How many countries in the World in the 19s century?
--->
-
----
-layout: iframe
-url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
-scale: 0.8
----
-
-<!--
-For each entity, we list their political status along time and their links to sovereign parent entities.
--->
-
 ---
 layout: two-cols-header
 ---
@@ -240,9 +236,10 @@ layout: two-cols-header
 ## Autonomous definition
 
 A very extensive definition.\
-Sufficient political autonomy to <!-- handle trade--> have its own trade statistics.  
+Sufficient political autonomy to have its own trade statistics.  
 Every political status in GeoPolHist but `part of`.
 <!-- Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus :  "Occupied by" n’a pas beaucoup d’autonomie politique GD-->
+<!-- oui, est ce que la définition n'est pas plutôt la négation de ça a été dissout, i.e. tout ce qui n'est pas part of-->
 
 ::left::
 
@@ -278,7 +275,9 @@ Build yearly networks which combine
 
 - trade flow edges from **RICardo** dataset
 - geopolitical resolutions edges mainly from **GeoPolHist**
+
 <!-- Je mets mainly parce que les resolution edges « localities » et group viennent de Ricardo je pense ? GD-->
+<!-- oui le mainly c'est bien. c'est un détail pas important ici et j'ai pas du tout envie de rentrer dans le débat de oui mais une localité peut changer dans le temps...Et surtout j'explique en détail slide 18-->
 
 <!--
 Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into one multilayer network.
@@ -287,7 +286,7 @@ Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into on
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
-scale: 0.5
+scale: 0.8
 ---
 
 <!--
@@ -308,6 +307,7 @@ From RICardo:
 From additional data edited for this paper:
 
 - Geographical Area -[ **SPLIT_INTO** ]-> members
+- Informal -[ **SPLIT_INTO** ]-> members
 
 From GeoPolHist:
 
@@ -315,11 +315,15 @@ From GeoPolHist:
 - Colonial Area -[ **SPLIT_INTO** ]-> colonies  
   _(reusing geographical area data table)_
 
-<!-- Quid des « other » ? GD-->
+<!--
+Quid des « other » ? GD
+Ce sont des locality RICardo
+-->
+
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
-scale: 0.5
+scale: 0.8
 ---
 
 <!--
@@ -353,10 +357,10 @@ layout: center
 # Harmonization process
 
 1. Autonomous trade entity resolution
-1. Trade partner aggregation
-1. Trade partner splits with year ratio method
-1. Reporters aggregation
-1. Trade partner splits with gravity model method
+1. Trade reporters aggregation/split
+1. Trade partners aggregation
+1. Trade partners splits with year ratio method
+1. Trade reporters & partners splits with gravity model method
 
 ---
 layout: center
@@ -366,9 +370,35 @@ layout: center
 
 For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
 
-This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of.
+This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
 
-<!-- Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD-->
+```cypher
+(D)<-[SPLIT]-(D & part of A)-[SPLIT]->(part of A)-[AGGREGATE_INTO]->(A)
+```
+
+Autonomous of **D & part of A** are **D** and **A**.
+
+<!--
+Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
+
+Je ne comprends pas ce que tu ne comprends pas. On suit tous les liens de résolutions qq soit la raison pour laquelle on a créé le lien. J'ajoute un schéma symbolique PG
+-->
+
+---
+layout: center
+---
+
+# Trade reporters aggregation/split
+
+Reporters needs to be treated before the partners as areas desagregations needs a stable reporter scope.
+
+Moreover we need to treat cases of reporters overlaps. It happens that a set of reporters report part of the same trade from different perspectives.
+
+<small>
+
+PS: we don't split reporters trade at this step
+
+</small>
 
 ---
 layout: center
