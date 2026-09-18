@@ -52,6 +52,28 @@ Paul Girard - OuestWare - France
 </div>
 
 ---
+
+## RICardo
+
+https://ricardo.medialab.sciences-po.fr
+
+<small>
+
+Girard, Paul, et al. « **RICardo Project : Exploring XIX Century International Trade** ». _Digital Humanities 2016: Conference Abstracts_ [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
+
+</small>
+
+## GeoPolHist
+
+https://medialab.github.io/GeoPolHist
+
+<small>
+
+Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
+
+</small>
+
+---
 layout: image-left
 image: /images/tableau_generale_Belgique_1850.png
 backgroundSize: contain
@@ -95,12 +117,12 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 
 |   **RIC type**    | **All entities** | **Reporting** | **Partner** | **Examples**                                          |
 | :---------------: | :--------------: | :-----------: | :---------: | ----------------------------------------------------- |
-|    GPH entity     |   530 (22.7 %)   |      277      |     448     | Bulgaria, Gambia, Singapore, Queensland…              |
-|     Locality      |   707 (30.3 %)   |      115      |     616     | Asian Russia, Bahia, France (Atlantic Coast)…         |
-|       Group       |   860 (36.9 %)   |      44       |     752     | Altona & Holstein, Trinidad & United Kingdom…         |
-|   Colonial area   |   130 (5.6 %)    |       0       |     114     | British Africa, Portuguese Asia, Spanish West Indies… |
-| Geographical area |   106 (4.5 %)    |       2       |     96      | Central America, Eastern Africa, Persian Gulf...      |
-|     **Total**     |     **2333**     |    **438**    |  **2026**   |                                                       |
+|    GPH entity     |   530 (22.7 %)   |      286      |     483     | Bulgaria, Gambia, Singapore, Queensland…              |
+|     Locality      |   707 (30.2 %)   |      120      |     571     | Asian Russia, Bahia, France (Atlantic Coast)…         |
+|       Group       |   860 (36.8 %)   |      37       |     797     | Altona & Holstein, Trinidad & United Kingdom…         |
+|   Colonial area   |   130 (5.6 %)    |       0       |     120     | British Africa, Portuguese Asia, Spanish West Indies… |
+| Geographical area |   112 (4.8 %)    |       4       |     94      | Central America, Eastern Africa, Persian Gulf...      |
+|     **Total**     |     **2339**     |    **447**    |  **2065**   |                                                       |
 
 </div>
 
@@ -112,10 +134,10 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 
 |   **RIC type**    | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
 | :---------------: | :-------------------: | :-------------------: | :-----------------: | :-----------------: |
-|    GPH entity     |         97.3          |         96.0          |        87.2         |        81.2         |
-|     Locality      |          1.0          |          2.5          |         4.6         |         6.5         |
-|       Group       |          1.7          |          1.5          |         6.4         |         5.1         |
-|   Colonial area   |           -           |           -           |         1.4         |         5.0         |
+|    GPH entity     |         97.3          |         95.6          |        87.2         |        81.2         |
+|     Locality      |          0.6          |          2.5          |         4.6         |         6.5         |
+|       Group       |          2.4          |          1.8          |         6.5         |         5.1         |
+|   Colonial area   |          0.0          |          0.1          |         1.4         |         5.0         |
 | Geographical area |           -           |           -           |         0.4         |         2.2         |
 
 </div>
@@ -149,57 +171,6 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 |     329      | Two Sicilies |      1861      |     1861     | Dissolved into           |          325           |
 
 </div>
-
----
-
-# RICardo
-
-## International bilateral trade c. 1830-1938
-
-Trade statistics sources:
-
-- **Primary**: customs statistics published by national authorities
-- **Primary yearbook**: statistical yearbooks
-- **Secondary**: compilations of primary sources published by national or international authorities
-
-Includes exchange rates to Pound Sterling to homogenize values.
-
-https://ricardo.medialab.sciences-po.fr
-
-<small>
-
-Girard, Paul, et al. « RICardo Project : Exploring XIX Century International Trade ». <i>Digital Humanities 2016: Conference Abstracts</i> [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
-
-</small>
-
----
-layout: center
----
-
-# Bilateral trade data model
-
-![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
-
-<!--
-Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
--->
-
----
-layout: center
----
-
-# GeoPolHist
-
-Identifies the political status of every geopolitical entity that has existed since 1816  
-Based on the lists of states and dependencies developed by [_Correlates of War project_](https://correlatesofwar.org/)
-
-https://medialab.github.io/GeoPolHist/
-
-<small>
-
-Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
-
-</small>
 
 ---
 layout: iframe
@@ -263,6 +234,18 @@ Neutral or demilitarized zone of
 
 <!--
 Definitions are available on the paper and website
+-->
+
+---
+layout: center
+---
+
+# Bilateral trade data model
+
+![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
+
+<!--
+Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
 -->
 
 ---
