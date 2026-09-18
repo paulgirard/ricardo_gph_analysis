@@ -18,14 +18,137 @@ fonts:
 
 <small>
 
-_Paul Girard_ - OuestWare - France   
 Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France\
 Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France \
 Youssef Ghallada - Economic History Department LSE - United Kingdom\
-MEDIALAB
-<div style="display:flex; gap:1em; align-items: center"><img src="/images/hnr2026_logo.png" style="height:80px"/> <div>Historical Network Research 2026 <br/>Torino, Italia</div></div>
+Paul Girard - OuestWare - France
+
+<div style="display:flex; gap:1em; align-items: center"><img src="/images/logo_medialab.svg" style="height:40px"/> <div>research seminar 2026-09-22 <br/>Paris, France</div></div>
 
 </small>
+
+---
+
+# A brief history of the RICardo project
+
+<div style="font-size: 70%">
+
+- **2004-2006**: exhumation of ‘_Annales du commerce extérieur_’ trade archive
+  Birth of the RICardo project (RIC = Research on International Commerce)
+
+- **2007-2010**: creation of the RICardo bilateral trade database  
+  2010: bilateral trade database covering all countries of the world over the period 1830-1938: _250 000 data + an exchange rate database_
+
+- **2013-2017**: extension of the RICardo project to the creation of a digital tool  
+  2016: RICardo website (https://ricardo.medialab.sciences-po.fr/), 2017 version of the database (350 000 data)
+
+- **2019-2023**: extension to a political dimension of the RICardo project  
+  2023: GeoPolHist, a database and digital tool (https://medialab.github.io/GeoPolHist/#/GeoPolHist/)
+  to quantify the geopolitical entities of the world since 1816
+
+- **Since 2024**: RICardo data analysis (last version ~ 690 000 data)  
+  Return to the initial question: how has the structure of world trade evolved since the early 19th century?
+
+</div>
+
+---
+layout: image-left
+image: /images/tableau_generale_Belgique_1850.png
+backgroundSize: contain
+---
+
+# Heterogeneity of<br/> trade entities<br/>in trade archives
+
+_Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
+
+---
+
+# RICardo: faithful to the sources
+
+![](/images/faithful_source_ricardo_tradehist.png)
+
+---
+
+# Standardization of the RIC names
+
+<div style="font-size:50%">
+
+| **COW code** | **COW name**                       | **ISO code** |    **ISO name**    |
+| :----------: | ---------------------------------- | :----------: | :----------------: |
+|     7501     | Andaman and Nicobar Is.            |      -       |         -          |
+|     242      | Anhalt Cothen                      |      -       |         -          |
+|     5813     | Anjouan                            |      -       |         -          |
+|     8152     | Annam                              |      -       |         -          |
+|     7588     | Baluchistan (Kalat)                |      -       |         -          |
+|      80      | Belize (British Honduras)          |     BLZ      |       Belize       |
+|     434      | Benin (Dahomey)                    |     BEN      |       Benin        |
+|      42      | Dominican Republic (Santo Domingo) |     DOM      | Dominican Republic |
+|     404      | Guinea-Bissau (Portuguese Guinea)  |     GNB      |   Guinea-Bissau    |
+
+</div>
+
+---
+
+# RICentities types
+
+<div style="font-size:50%">
+
+|   **RIC type**    | **All entities** | **Reporting** | **Partner** | **Examples**                                          |
+| :---------------: | :--------------: | :-----------: | :---------: | ----------------------------------------------------- |
+|    GPH entity     |   530 (22.7 %)   |      277      |     448     | Bulgaria, Gambia, Singapore, Queensland…              |
+|     Locality      |   707 (30.3 %)   |      115      |     616     | Asian Russia, Bahia, France (Atlantic Coast)…         |
+|       Group       |   860 (36.9 %)   |      44       |     752     | Altona & Holstein, Trinidad & United Kingdom…         |
+|   Colonial area   |   130 (5.6 %)    |       0       |     114     | British Africa, Portuguese Asia, Spanish West Indies… |
+| Geographical area |   106 (4.5 %)    |       2       |     96      | Central America, Eastern Africa, Persian Gulf...      |
+|     **Total**     |     **2333**     |    **438**    |  **2026**   |                                                       |
+
+</div>
+
+---
+
+# RICentities types
+
+<div style="font-size:50%">
+
+|   **RIC type**    | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
+| :---------------: | :-------------------: | :-------------------: | :-----------------: | :-----------------: |
+|    GPH entity     |         97.3          |         96.0          |        87.2         |        81.2         |
+|     Locality      |          1.0          |          2.5          |         4.6         |         6.5         |
+|       Group       |          1.7          |          1.5          |         6.4         |         5.1         |
+|   Colonial area   |           -           |           -           |         1.4         |         5.0         |
+| Geographical area |           -           |           -           |         0.4         |         2.2         |
+
+</div>
+
+---
+
+## The GeoPolHist dataset
+
+<div style="font-size:45%">
+
+| **GPH code** | **GPH name** | **Start year** | **End year** | **GPH Status**           | **GPH sovereign code** |
+| :----------: | :----------: | :------------: | :----------: | ------------------------ | :--------------------: |
+|     325      |    Italy     |      1816      |     1861     | Informal                 |                        |
+|     325      |    Italy     |      1861      |     2022     | Sovereign                |                        |
+|     325      |    Italy     |      1943      |     1946     | Occupied by              |           2            |
+|     325      |    Italy     |      1943      |     1945     | Occupied by              |          255           |
+|     326      |   Trieste    |      1816      |     1918     | Part of                  |          300           |
+|     326      |   Trieste    |      1918      |     1943     | Part of                  |          325           |
+|     326      |   Trieste    |      1943      |     1947     | Occupied by              |           2            |
+|     326      |   Trieste    |      1947      |     1954     | Mandated to              |           1            |
+|     326      |   Trieste    |      1954      |     2022     | Part of                  |          325           |
+|     327      | Papal States |      1816      |     1861     | Sovereign                |                        |
+|     327      | Papal States |      1861      |     1870     | Part of                  |          325           |
+|     327      | Papal States |      1870      |     1870     | Dissolved into           |          328           |
+|     328      | Vatican City |      1816      |     1870     | Part of                  |          327           |
+|     328      | Vatican City |      1870      |     1929     | Part of                  |          325           |
+|     328      | Vatican City |      1929      |     1964     | Sovereign (unrecognized) |                        |
+|     328      | Vatican City |      1964      |     2022     | Sovereign                |                        |
+|     329      | Two Sicilies |      1816      |     1860     | Sovereign                |                        |
+|     329      | Two Sicilies |      1860      |     1861     | Part of                  |          324           |
+|     329      | Two Sicilies |      1861      |     1861     | Dissolved into           |          325           |
+
+</div>
 
 ---
 
@@ -62,101 +185,6 @@ Note that we have trade between reporters but also between reporter and partners
 -->
 
 ---
-layout: statement
----
-
-# Sources are not the data we would like them to be!
-
-Not yet...
-
----
-layout: image
-image: /images/sweden_1840_table_12.png
-backgroundSize: contain
----
-
-<!--
-Swedish source edited in 1840
-Among trade partners we find Italy all along the 1830s
-But as you may know, Italy was not a unique political entity at that time.
--->
-
----
-layout: image
-image: /images/USA_export_1831_1832.png
-backgroundSize: contain
----
-
-<!--
-USA source edited in 1833
-Among trade partners we find Italy again but that time with Malta AND with Sicily on a separate line!
-As you can see, each reporter decided to shape his statistics as they like not as you would like nowadays to be.
--->
-
----
-layout: center
----
-
-# Trade partners heterogeneity
-
-<small>
-
-| Partners’ type    |  % Total value   | % flow number | examples                                                         |
-| ----------------- | :--------------: | :-----------: | :--------------------------------------------------------------- |
-| GPH_entity        |      87.18       |     81.24     | _United Kingdom, Sierra Leone, Belgium..._                       |
-| group             |       6.45       |     5.14      | _Fiume & Republic of St. Mark & Trieste, Belgium & Luxemburg..._ |
-| locality          |       4.57       |     6.47      | _Conakry, Sumatra, British Colonies (other)..._                  |
-| colonial_area     |       1.39       |     4.97      | _French Colonies, Portuguese Colonies, British West Indies..._   |
-| geographical_area |       0.41       |     2.18      | _America, Arabia, Borneo, Africa..._                             |
-| Total             | £480,756,915,469 |    468,448    |                                                                  |
-<!-- Je trouve l’ordre bizarre, parce que British Colonies (other) (et toutes les "other") viennent avant colonial area et geographical area GD -->
-</small>
-
-<!--
-Our main challenge is to cope with partner heterogeneity. We want to keep this richness but make it compatible with quantification.
-In RICardo dataset we decided to keep this richness to let each scholar decide how to use this material.
-Here are the categories we use to describe trading entities.
-merely 13% of total trade value (19% of flows) are reported with miscellaneous entities
-Note that even in the GPH_entity category we find flows to Italy before its existence...
--->
-
----
-layout: center
----
-
-# Trade reporters heterogeneity
-
-<small>
-
-| Reporters' type   |  % Total value   | % flow number | examples                                                                   |
-| ----------------- | :--------------: | :-----------: | :------------------------------------------------------------------------- |
-| GPH_entity        |      96.98       |     95.59     | _Gambia, Singapore, Penang, Malacca..._                                    |
-| group             |       1.42       |     1.79      | _Fiume & Republic of St. Mark & Trieste, Belgium & Luxemburg..._           |
-| geographical_area |       0.94       |     0.06      | _Levant_                                                                   |
-| locality          |       0.64       |     2.51      | _Saint-Louis (Senegal), Kaliningrad (Königsberg), Bahia, Rio de Janeiro.._ |
-| colonial_area     |       0.01       |     0.06      | _British Northern America..._                                              |
-| Total             | £480,756,915,469 |    468448     |                                                                            |
-
-</small>
-
-<!--
-This is also true on the reporter side but for a very smaller extend
--->
-
----
-layout: center
----
-
-# Our goal: to reduce trading entities heterogeneity with GeoPolitical data
-
-- identifying non-autonomous or informal entities
-- aggregating non-autonomous entities and localities to their « sovereign »
-- splitting trade of groups, geographical and colonial areas
-
-<!-- Sovereign is an ambiguous term. It could mean « France » for « Saint-Louis du Sénégal » instead of « Sénégal » GD-->
-<!-- je rajoute localities dans le 2e bp GD-->
-
----
 layout: center
 ---
 
@@ -172,6 +200,24 @@ https://medialab.github.io/GeoPolHist/
 Dedinger, Béatrice, and Paul Girard, ‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
 
 </small>
+
+---
+layout: statement
+---
+
+# Sources are not the data we would like them to be!
+
+Not yet...
+
+---
+layout: center
+---
+
+# Our goal: to reduce trading entities heterogeneity with GeoPolitical data
+
+- identifying non-autonomous or informal entities
+- aggregating non-autonomous entities and localities to their « sovereign »
+- splitting trade of groups, geographical and colonial areas
 
 <!--
 Facing this challenge we built with Béatrice a dataset based on Correlates of War project in order to try to answer  a question that is not as simple as it seems : How many countries in the World in the 19s century?
