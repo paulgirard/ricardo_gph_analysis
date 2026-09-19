@@ -11,6 +11,7 @@ destring(start_year), gen(start_year_num)
 drop start_year
 rename start_year_num start_year
 
+
 ///We keep only dependency relations, excluding those that lead to an aggregation in the network
 
 
@@ -21,7 +22,7 @@ keep if GPH_status=="Associated state of" | GPH_status=="Colony of" | GPH_status
 		| GPH_status=="Protectorate of" | GPH_status=="Vassal of"
 
 
-gen dependency=1
+gen common_empire=1
 
 save GeoPolHist_entities_status_over_time_temp.dta, replace
 
@@ -37,6 +38,11 @@ bysort key: gen year = start_year + _n - 1
 drop nyears
 drop start_year end_year GPH_name sovereign_GPH_code
 
+bysort key year: egen max=max(common_empire)
+bysort key year: egen min=min(common_empire)
+assert max==min
+drop max min
+bysort key year: keep if _n==1
 
 save "external data/dependency_relations.dta", replace
 export delimited using "external data/dependency_relations.csv", replace delimiter(",") quote
