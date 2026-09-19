@@ -2,10 +2,9 @@
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
-
+/*
 ************Importation des relations géopolitiques
-import delimited "$dirGeoPolHist/data/GeoPolHist_entities_status_over_time.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+import delimited "$dirGeoPolHist/data/GeoPolHist_entities_status_over_time.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
 replace start_year="1800" if start_year=="?"
 destring(start_year), gen(start_year_num)
@@ -26,12 +25,15 @@ gen dependency=1
 
 save GeoPolHist_entities_status_over_time_temp.dta, replace
 
-
+*/
 *************Importation des données de localisation
 
 import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+
+tostring(GPH_code), replace
 save GeoPolHist_entities_temp.dta, replace
+
 
 /***************************************************************************************/
 *************Importation des flux commerciaux
@@ -99,6 +101,13 @@ tab status, missing
 count if status !="ok"
 gen totreat_flows=r(N)
 
+
+
+///Création de la clef pour les paires de GPH
+gen key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
+replace key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
+order key
+
 save tradeFlows_`year'_temp.dta, replace
 
 end
@@ -116,11 +125,12 @@ keep if CafFob=="`CafFob'"
 *****Calcul de la distance
 
 keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld" & exporterId!="Unknown" & importerId!="Unknown"
-destring exporterId importerId, replace
+*destring exporterId importerId, replace
 
 
 foreach trader in importer exporter {
 	rename `trader'Id GPH_code
+	recast str2045 GPH_code
 	merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(1 3)
 	assert _merge==3
 	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
@@ -130,28 +140,54 @@ foreach trader in importer exporter {
 }
 
 geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
+
+
 gen ln_distance=ln(distance_km)
+
+
+
 
 save tradeFlows_`year'_`CafFob'ok_temp, replace
 
 *****Calcul de le relation géopolitique
 
-use GeoPolHist_entities_status_over_time_temp.dta, clear
 
-keep if start_year<=`year' & end_year>=`year'
 
-keep GPH_code sovereign_GPH_code dependency
+use tradeFlows_`year'_`CafFob'ok_temp, clear
 
 ////Pour rapports de subordination
-save GeoPolHist_dependency_`year'.dta, replace
-rename GPH_code importerId
-rename sovereign_GPH_code exporterId
-save GeoPolHist_dependency_`year'A.dta, replace
-rename importerId bibe
-rename exporterId importerId
-rename bibe exporterId
-save GeoPolHist_dependency_`year'B.dta, replace
+merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
+replace sub_empire=0 if sub_empire==.
+drop _merge GPH_code GPH_status sovereign_GPH_code
 
+recast str2045 importerId
+rename importerId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code importerId_sov
+drop _merge
+rename GPH_code importerId 
+
+recast str2045 exporterId
+rename exporterId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code exporterId_sov
+drop _merge
+rename GPH_code exporterId
+
+
+generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
+replace common_empire=0 if common_empire==.
+bysort importerId exporterId : egen max=max(common_empire)
+bysort importerId exporterId : replace common_empire = max
+bysort importerId exporterId : keep if _n==1
+drop max
+bysort importerId exporterId : assert  _N==1
+***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
+*Cracow dès 1833
+
+replace common_empire=1 if sub_empire==1
+
+/*
 ///Pour présence dans le même empire (ie partage du souverain)
 use GeoPolHist_dependency_`year'.dta, clear
 rename GPH_code importerId
@@ -179,25 +215,28 @@ collapse (max) common_empire dependency empire, by(importerId exporterId)
 
 gen newimporterId=importerId
 gen newexporterId=exporterId
+
 save GeoPolHist_dependency_`year'.dta, replace
-erase GeoPolHist_dependency_`year'A.dta
-erase GeoPolHist_dependency_`year'B.dta
+*erase GeoPolHist_dependency_`year'A.dta
+*erase GeoPolHist_dependency_`year'B.dta
 
 *******************************************
+*/
 
-use tradeFlows_`year'_`CafFob'ok_temp, clear
-merge 1:1 importerId exporterId using GeoPolHist_dependency_`year'.dta, keep(1 3)
+
+
+/*merge 1:1 importerId exporterId using GeoPolHist_dependency_`year'.dta, keep(1 3)
 replace common_empire=0 if common_empire==.
 replace dependency=0 if dependency==.
 replace empire=0 if empire==.
-
+*/
 ******
 
 *****Régression de gravité
 
+destring importerId exporterId, replace force
 
-
-regress ln_value ln_distance empire i.importerId i.exporterId
+reg ln_value ln_distance common_empire i.importerId i.exporterId
 
 
 
@@ -293,16 +332,28 @@ replace newexporterId=exporterId if newexporterId==.
 destring(newimporterId), replace
 destring(newexporterId), replace
 
-merge m:1 newimporterId CafFob using `importer_coefs'
+merge m:1 newimporterId CafFob using `importer_coefs', keep(1 3)
 rename coefficient importer_coef
 drop _merge
-merge m:1 newexporterId CafFob using `exporter_coefs'
+merge m:1 newexporterId CafFob using `exporter_coefs',keep(1 3)
 rename coefficient exporter_coef
 drop _merge
 
 sort originalReportedTradeFlowId
 *drop importer_lbl-importer exporter
 
+
+tostring(newimporterId), replace
+tostring(newexporterId), replace
+
+drop if newimporterId==newexporterId
+
+drop key
+gen key = newimporterId + "-" + newexporterId if newimporterId < newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
+replace key = newexporterId + "-" + newimporterId if newimporterId > newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
+order key
+
+drop if key=="" & id==""
 
 
 /*
@@ -332,15 +383,39 @@ gen ln_distance=ln(distance_km)
 
 ////intégration de la relation géopolitique
 
-merge m:1 newimporterId newexporterId using GeoPolHist_dependency_`year'.dta, keepusing(common_empire dependency empire) keep(1 3)
-replace common_empire=0 if common_empire==.
-replace dependency=0 if dependency==.
-replace empire=0 if empire==.
+////Pour rapports de subordination
+merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
+replace sub_empire=0 if sub_empire==.
+drop _merge GPH_code GPH_status sovereign_GPH_code
+
+rename newimporterId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code importerId_sov
 drop _merge
+rename GPH_code newimporterId 
+
+rename newexporterId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code exporterId_sov
+drop _merge
+rename GPH_code newexporterId
+
+
+generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
+replace common_empire=0 if common_empire==.
+bysort newimporterId newexporterId : egen max=max(common_empire)
+bysort newimporterId newexporterId : replace common_empire = max
+bysort newimporterId newexporterId : keep if _n==1
+drop max
+bysort newimporterId newexporterId : assert  _N==1
+***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
+*Cracow dès 1833
+
+replace common_empire=1 if sub_empire==1
 
 ////estimation of the trade
 
-gen pred=exp(`constant' + `coef_empire'*empire + `coef_distance'*ln_distance + importer_coef + exporter_coef)
+gen pred=exp(`constant' + `coef_empire'*common_empire + `coef_distance'*ln_distance + importer_coef + exporter_coef)
 sort id
 egen sum_pred = total(pred), by(id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
@@ -543,7 +618,7 @@ erase "results/gravity_`year'_FromExporter.dta"
 erase  tradeFlows_`year'_temp.dta
 erase  tradeFlows_`year'_FromImporterok_temp.dta
 erase  tradeFlows_`year'_FromExporterok_temp.dta
-erase GeoPolHist_dependency_`year'.dta
+*erase GeoPolHist_dependency_`year'.dta
 
 end
 

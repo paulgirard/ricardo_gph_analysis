@@ -22,7 +22,7 @@ keep if GPH_status=="Associated state of" | GPH_status=="Colony of" | GPH_status
 		| GPH_status=="Protectorate of" | GPH_status=="Vassal of"
 
 
-gen common_empire=1
+gen sub_empire=1
 
 save GeoPolHist_entities_status_over_time_temp.dta, replace
 
@@ -34,17 +34,17 @@ order key
 sort key
 gen nyears = end_year - start_year + 1
 expand nyears
-bysort key: gen year = start_year + _n - 1
-drop nyears
-drop start_year end_year GPH_name sovereign_GPH_code
+bysort key GPH_status start_year end_year : gen year = start_year + _n - 1
 
-bysort key year: egen max=max(common_empire)
-bysort key year: egen min=min(common_empire)
+drop nyears
+drop start_year end_year GPH_name 
+
+bysort key year: egen max=max(sub_empire)
+bysort key year: egen min=min(sub_empire)
 assert max==min
 drop max min
 bysort key year: keep if _n==1
 
-drop GPH_code GPH_status
 
 save "external data/dependency_relations.dta", replace
 export delimited using "external data/dependency_relations.csv", replace delimiter(",") quote
