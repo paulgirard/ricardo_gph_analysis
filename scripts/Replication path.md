@@ -1,5 +1,13 @@
 # Replication path
 
+## External data and controls
+### dependency 
+`daudin/Pour relations de dépendance.do`
+Creates 
+`external data/dependency_relations.csv`
+From 
+https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv 
+
 ## Data generation
 
 ### Before gravity (Paul) (YYYY < 1939, from 1833)
@@ -9,11 +17,32 @@ From data in https://github.com/medialab/GeoPolHist and https://github.com/media
 ### Gravity (Guillaume) (YYYY < 1939)
 From:
 data/tradeFlows_YYY_ratios.csv pour les flux
-https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv pour les liens politiques
+From
+`external data/dependency_relations.csv`
+pour les liens politiques
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
 - Using scripts/daudin/Pour gravité.do (stata), Guillaume creates results/BestGuessBilTrade_YYYY.csv and results/gravity_XXXX.csv
 
 ### Post gravity data (Paul) (YYYY < 1939)
+```
+cd scripts
+
+npm i 
+```
+
+**installer les dépendances à ne faire qu'une seule fois**
+
+`npm run gravity `
+
+**lit le dossier results et exporte les réseaux au format json et gephi lite**
+
+`npm run gravity-quality `
+
+**exporte au format tradeFlows_{year}.csv** 
+
+
+
+
 - From Pour results/gravity_XXXX.csv, Paul creates data/tradeFlows_YYYY_gravity.csv
 
 ### Graphique de diagnostic ?
@@ -33,18 +62,25 @@ From:
 Création des blocks intramax : scripts/Ghallada/Network RICardo Year.R"
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
 
-??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner data/BlocselonAN.xlsx
+??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
 
-"c'était un code qui genere l'excel à compléter, un excel où il y a les gph avec flux existant (provenant de intramax ou gravity flow je pense), ensuite j'ai merge les differentes status over time pour décider (double checker) à quel bloc j'assigne chacun, en restant un max fidèle à AN."
-
-Todo : retrouver le code
 
 ### Louvain (Paul)
-- Paul does his magic ?????
-	- creates data/blocks/louvain/YYYY_caf/fob.csv
+`npm run louvain-modularity `
+
+**exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
+
+
+
+creates `data/blocks/louvain/YYYY_caf/fob.csv`
+
 Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec les valeurs avec la métrique
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend que les paires qui commercent -- même si toute l’information utile s’y trouve.
+
+Ce fichier comprend la liste des GPH avec leurs blocs:
+
+`data/blocks/master_YYYY_caf/fob.csv`
 
 ## Métriques
 ### Modularité (Paul)
@@ -74,7 +110,7 @@ Management and Peace Science* 19 (2):58-66.
 
 + travail à la main pour les xxxx
 
-- produit data/blocks/Controls panel/contiguity.csv
+produit `data/blocks/Controls panel/contiguity.csv`
 
 
 ### Distance
