@@ -682,7 +682,7 @@ layout: center
 2. We examine all trade partners *j* of a country *i* and we assign *i* in *j*’s block, where *j*’s block provides the largest gain in modularity. If there are no positive gains, *i* stays in its block. Once all countries have been considered once, we examine them again in the same order and they can moved from block to block.  
 3. When all positive gain-grouping have been made, we re-create the network with the new blocks as units, considering internal trade as a self-loop. Proximity between blocks is the sum of proximity of each pair of countries.\
 And we iterate (2 and 3) till no change in grouping is made in phase 2. \
-The result depends on the order in which *i* are treated.
+
 
 <small>
 Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
@@ -697,14 +697,58 @@ backgroundSize: contain
 ## Blondel et al.
 
 ---
+layout: center
+---
 
+## The result depends on the order in which *i* are treated.
+<!-- One day we take that into account
+-->
+ <small>
+ 
   <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
+  </small>
   
 <!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
 
 
-## Measure of distance
-## Modularity
+
+---
+layout: center
+---
+
+# Trade block analysis
+### How to define a block?
+> ### Regionalisation and globalisation
+### Determinants of blocks
+
+---
+layout: center
+---
+# Regionalisation and globalisation
+TIBI is a measure of bilateral trade intensity that solves
+	- range variability
+	- range asymmetry
+	- dynamic ambiguity
+
+
+ <small>
+ 
+Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Produces for Whom in the World Economy?” *Canadian Journal of Economics/Revue Canadienne d’économique* 44 (4): 1403–37. https://doi.org/10.1111/j.1540-5982.2011.01679.x.
+
+
+Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of World Trade.” *Assessment And Measurement of Regional Integration*, 65–85.
+
+ </small>
+
+---
+layout: center
+---
+
+
+---
+layout: center
+---
+
 
 ---
 layout: center
