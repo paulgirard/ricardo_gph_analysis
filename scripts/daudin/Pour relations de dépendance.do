@@ -44,5 +44,7 @@ assert max==min
 drop max min
 bysort key year: keep if _n==1
 
+drop GPH_code GPH_status
+
 save "external data/dependency_relations.dta", replace
 export delimited using "external data/dependency_relations.csv", replace delimiter(",") quote
