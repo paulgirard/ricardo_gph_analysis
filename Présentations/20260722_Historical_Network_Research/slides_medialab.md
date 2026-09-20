@@ -711,6 +711,17 @@ layout: center
 <!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
 
 
+---
+layout: image
+image: /images/carte_blocs_1850.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/carte_comm_1850.png
+backgroundSize: contain
+---
 
 ---
 layout: center
