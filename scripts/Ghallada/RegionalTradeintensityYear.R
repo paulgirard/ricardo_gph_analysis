@@ -4,9 +4,14 @@ gc()
 library(dplyr)
 library(readxl)
 library(tidyverse)
-library(ggplot2)
-setwd("~/Desktop/ricardo_gph_analysis")
-BlocselonAN <- as.data.frame(read_excel("data/BlocselonAN.xlsx"))
+library
+user <- Sys.info()["user"]
+if (user == "guillaumedaudin") {
+  setwd("~/Répertoires Git/ricardo_gph_analysis")
+} else {
+  setwd("~/Desktop/ricardo_gph_analysis")
+}
+BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
 region_map  <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 
 codes_post45 <- unique(unlist(lapply(1948:2025, function(y) {
@@ -93,9 +98,9 @@ p <- ggplot(resultats_intra, aes(year, moyenne)) +
 print(p)
 
 
-ggsave("data/blocks/Intramax/tibi_intrabloc_moyen.png",
+ggsave("results/block_study/Intramax/tibi_intrabloc_moyen.png",
        plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_intra, "data/blocks/Intramax/tibi_intrabloc_moyen.csv", row.names = FALSE)
+write.csv(resultats_intra, "results/block_study/Intramax/tibi_intrabloc_moyen.csv", row.names = FALSE)
 
 #####Louvain method#####
 
@@ -176,9 +181,9 @@ p <- ggplot(resultats_louvain, aes(year, moyenne)) +
        title = "Commerce Intra-communauté (Louvain) moyen pondéré par année") +
   theme_minimal()
 print(p)
-ggsave("data/blocks/louvain/tibi_intracomm_moyen.png",
+ggsave("results/block_study/louvain/tibi_intracomm_moyen.png",
        plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_louvain, "data/blocks/louvain/tibi_intracomm_moyen.csv", row.names = FALSE)
+write.csv(resultats_louvain, "results/block_study/louvain/tibi_intracomm_moyen.csv", row.names = FALSE)
 
 
 
@@ -201,12 +206,12 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 45, hjust = 1))
 print(p_combine)
-ggsave("data/blocks/tibi_comparaison_intramax_louvain.png",
+ggsave("results/block_study/tibi_comparaison_intramax_louvain.png",
        plot = p_combine, width = 10, height = 5, dpi = 150)
 
 
 ###Regional blocs (as echoed by Anderson and Norheim)
-BlocselonAN <- as.data.frame(read_excel("data/BlocselonAN.xlsx"))
+BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
@@ -308,7 +313,7 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
 
 print(p_combine)
 
-ggsave("data/blocks/tibi_comparaison_trois_methodes.png",
+ggsave("results/block_study/tibi_comparaison_trois_methodes.png",
        plot = p_combine, width = 10, height = 5, dpi = 150)
 
 
@@ -395,6 +400,6 @@ p_combine <- ggplot() +
 
 print(p_combine)
 
-ggsave("data/blocks/tibi_comparaison_avec_diff_nblocs.png",
+ggsave("results/block_study/tibi_comparaison_avec_diff_nblocs.png",
        plot = p_combine, width = 11, height = 6, dpi = 150)
 

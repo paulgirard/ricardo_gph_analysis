@@ -36,6 +36,14 @@ npm install sqlite3@latest
 **installer les dépendances à ne faire qu'une seule fois**
 
 
+
+
+`npm run gravity `
+**lit le dossier results et exporte les réseaux au format json et gephi lite**
+
+
+`npm run quality-gravity` 
+**exporte au format tradeFlows_{year}.csv** Pour cela:
 Salut, j'avais zappé que tu as besoin de la base de données SQLite Ricardo... Elle est un peu relou a construire. Je oeux lancer le script ce matin et t'envoyer un lien vers le fichier SQLite. Je te dis quand c'est fait. 
 la base sqlite est là : https://nextcloud.ouestware.com/s/sEMXMAn8TYPp2X4
 
@@ -45,12 +53,8 @@ Le plus simple est de cloner le repo RICardo_data dans un dossier ricardo_data �
 puis tu bouges la sqlite dnsle dossier sqlite_data
 
 
-`npm run gravity `
-**lit le dossier results et exporte les réseaux au format json et gephi lite**
 
 
-`npm run quality-gravity`
-**exporte au format tradeFlows_{year}.csv** 
 
 
 From Pour results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
