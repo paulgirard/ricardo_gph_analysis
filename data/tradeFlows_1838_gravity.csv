@@ -2309,7 +2309,7 @@ From a flow part-of reporter 830 to/from Europe (other)
 gravity results to be aggregated for partners: 200|220|235|380|710"
 750->Mumbai (Bombay),1838,Mumbai (Bombay),Mumbai (Bombay),RIC,750,India,GPH-AUTONOMOUS-CITED,75185.89920132194,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Chennai (Madras)|Bengal|8271|7566|8272|7695,,,,,ignore_internal,"830->Mumbai (Bombay) 75185.89920132194
 From a flow part-of reporter 830 to/from Mumbai (Bombay)"
-750->Borneo,1838,Borneo,Borneo,RIC,750,India,GPH-AUTONOMOUS-CITED,62399.181650076716,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Chennai (Madras)|Bengal|8271|7566|8272|7695,9915.99604147765,,835|8401,,split_only_partial,"830->Borneo 62399.181650076716
+750->Borneo,1838,Borneo,Borneo,RIC,750,India,GPH-AUTONOMOUS-CITED,62399.181650076716,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Chennai (Madras)|Bengal|8271|7566|8272|7695,9915.99604147765,,835|8401,,ignore_resolved,"830->Borneo 62399.181650076716
 From a flow part-of reporter 830 to/from Borneo"
 750->Kolkata (Calcutta),1838,Kolkata (Calcutta),Kolkata (Calcutta),RIC,750,India,GPH-AUTONOMOUS-CITED,236967.38403430773,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Chennai (Madras)|Bengal|8271|7566|8272|7695,,,,,ignore_internal,"830->Kolkata (Calcutta) 236967.38403430773
 From a flow part-of reporter 830 to/from Kolkata (Calcutta)"
@@ -2394,7 +2394,7 @@ From a flow part-of reporter 1049 to/from 200"
 From a flow part-of reporter 53 to/from British West Indies
 1049<-British West Indies 22276
 From a flow part-of reporter 1049 to/from British West Indies"
-1055<-British Northern America,1838,1055,Windward Is.,GPH-AUTONOMOUS-CITED,British Northern America,British Northern America,RIC,88094,1055,,88094,,21|1022|1023|1024|1025|1026,,split_failed_no_ratio,"53<-British Northern America 82140
+1055<-British Northern America,1838,1055,Windward Is.,GPH-AUTONOMOUS-CITED,British Northern America,British Northern America,RIC,88094,1055,,88094,,21|1022|1023|1024|1025|1026,,ignore_resolved,"53<-British Northern America 82140
 From a flow part-of reporter 53 to/from British Northern America
 1049<-British Northern America 5954
 From a flow part-of reporter 1049 to/from British Northern America"
@@ -2896,7 +2896,7 @@ From a flow part-of reporter Chennai (Madras) to/from 7566"
 From a flow part-of reporter Chennai (Madras) to/from 7591"
 750<-8271,1838,750,India,GPH-AUTONOMOUS-CITED,8271,Malacca,GPH,39672.256421142,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,,,,,ignore_internal,"Chennai (Madras)<-8271 39672.256421142
 From a flow part-of reporter Chennai (Madras) to/from 8271"
-750<-Canary Is. & Madeira Isles,1838,750,India,GPH-AUTONOMOUS-CITED,Canary Is. & Madeira Isles,Canary Is. & Madeira Isles,RIC,4756.845680322649,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,4756.845680322649,,230|235,,split_failed_no_ratio,"Chennai (Madras)<-Canary Is. & Madeira Isles 4756.845680322649
+750<-Canary Is. & Madeira Isles,1838,750,India,GPH-AUTONOMOUS-CITED,Canary Is. & Madeira Isles,Canary Is. & Madeira Isles,RIC,4756.845680322649,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,4756.845680322649,,230|235,,ignore_resolved,"Chennai (Madras)<-Canary Is. & Madeira Isles 4756.845680322649
 From a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles
 gravity results to be aggregated for partners: 235"
 750<-Bago (Pegu),1838,750,India,GPH-AUTONOMOUS-CITED,Bago (Pegu),Bago (Pegu),RIC,237707.38696667372,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|830|8271|7566|8272|7695,,,,,ignore_resolved,"Chennai (Madras)<-Bago (Pegu) 156422.7340267459
@@ -3189,9 +3189,10 @@ gravity results to be aggregated for partners: 616"
 640->Barbary Coast,1838,Barbary Coast,Barbary Coast,RIC,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,4650.430814022111,640,missing Izmir (Smyrna)|Archipelago|European Turkey|Asian Turkey|Trabzon|Istanbul (Constantinople)|Adana|Tarsus|6525|6402|352|6203|660|665|6202 unexpected: Benghazi,4650.430814022111,,600|615|616|6062|6064,,split_failed_no_ratio,"Benghazi->Barbary Coast 4650.430814022111
 From a flow part-of reporter Benghazi to/from Barbary Coast
 gravity results to be aggregated for partners: 616"
-750<-235,1838,750,India,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,5522.288261515601,750,missing Lisbon|Algarve|Porto|Figueira|400 unexpected: 235,,,,,ok,"Bengal<-235 4829.654001273615
+750<-235,1838,750,India,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,10278.288261515601,750,missing Lisbon|Algarve|Porto|Figueira|400 unexpected: 235|Canary Is. & Madeira Isles,,,,750<-Canary Is. & Madeira Isles,ok,"Bengal<-235 4829.654001273615
 From a flow part-of reporter Bengal to/from 235
-750<-401 692.6342602419868"
+750<-401 692.6342602419868
+750<-Canary Is. & Madeira Isles 4756 (ratio on 4756.845680322649)"
 750<-590,1838,750,India,GPH-AUTONOMOUS-CITED,590,Mauritius,GPH-AUTONOMOUS-CITED,38536.29742126718,750,missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Chennai (Madras)|830|8271|7566|8272|7695 unexpected: 750,,,,,ok,"Bengal<-590 25845.998726385056
 From a flow part-of reporter Bengal to/from 590
 750<-Cape Colony (Cape of Good Hope) & Mauritius & New South Wales 4904.855533842424 (ratio on 6098.280678286186)
@@ -3398,6 +3399,8 @@ From a flow part-of reporter Bengal to/from Demerara"
 100<-324,1838,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,489,100,,,,,100<-325,ok,100<-325 489 (ratio on 4232.796946925286)
 100<-329,1838,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,329,Two Sicilies,GPH-AUTONOMOUS-CITED,1503,100,,,,,100<-325,ok,100<-325 1503 (ratio on 4232.796946925286)
 100<-337,1838,100,Colombia (New Granada) (Gran Colombia),GPH-AUTONOMOUS-CITED,337,Tuscany,GPH-AUTONOMOUS-CITED,2232,100,,,,,100<-325,ok,100<-325 2232 (ratio on 4232.796946925286)
+1055<-1023,1838,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1023,New Brunswick,GPH-AUTONOMOUS-CITED,22363,1055,,,,,1055<-British Northern America,ok,1055<-British Northern America 22363 (ratio on 88094)
+1055<-1024,1838,1055,Windward Is.,GPH-AUTONOMOUS-CITED,1024,Prince Edward Is.,GPH-AUTONOMOUS-CITED,65730,1055,,,,,1055<-British Northern America,ok,1055<-British Northern America 65730 (ratio on 88094)
 140<-276,1838,140,Brazil,GPH-AUTONOMOUS-CITED,276,Lübeck,GPH-AUTONOMOUS,918,140,,,,,140<-Hanse Towns,ok,140<-Hanse Towns 918 (ratio on 50102.90442706468)
 140<-246,1838,140,Brazil,GPH-AUTONOMOUS-CITED,246,Bremen,GPH-AUTONOMOUS-CITED,48902,140,,,,,140<-Hanse Towns,ok,140<-Hanse Towns 48902 (ratio on 50102.90442706468)
 210<-840,1838,210,Netherlands,GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,18694,210,,,,,210<-Cuba & Philippines & Puerto Rico,ok,210<-Cuba & Philippines & Puerto Rico 18694 (ratio on 108290)
@@ -3583,5 +3586,6 @@ From a flow part-of reporter Bengal to/from Demerara"
 380->324,1838,324,Kingdom of Sardinia,GPH-AUTONOMOUS-CITED,380,Sweden,GPH-AUTONOMOUS-CITED,3061,380,,,,,380->Kingdom of Sardinia & Papal States & Tuscany & Two Sicilies,ok,380->Kingdom of Sardinia & Papal States & Tuscany & Two Sicilies 3061 (ratio on 8480.893433776962)
 652->651,1838,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,652,Syria,GPH-AUTONOMOUS-CITED,99163,652,,,,,652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire),ok,652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 99163 (ratio on 292123.3819884329)
 652->640,1838,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,652,Syria,GPH-AUTONOMOUS-CITED,192959,652,,,,,652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire),ok,652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 192959 (ratio on 292123.3819884329)
+750->8401,1838,8401,Sulu Sultanate,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,9915,750,,,,,750->Borneo,ok,750->Borneo 9915 (ratio on 62399.181650076716)
 850->246,1838,246,Bremen,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,12118,850,,,,,850->Bremen & Hamburg,ok,850->Bremen & Hamburg 12118 (ratio on 25691.466341425028)
 850->248,1838,248,Hamburg,GPH-AUTONOMOUS-CITED,850,Indonesia (Dutch East Indies),GPH-AUTONOMOUS-CITED,13572,850,,,,,850->Bremen & Hamburg,ok,850->Bremen & Hamburg 13572 (ratio on 25691.466341425028)

@@ -2246,7 +2246,7 @@ From a flow part-of reporter Bengal to/from Eastern Asia (other) & Penang
 gravity results to be aggregated for partners: 710|775|800|815|840|850|8501|8532"
 750<-Kutch & Sindh,1839,750,India,GPH-AUTONOMOUS-CITED,Kutch & Sindh,Kutch & Sindh,RIC,137790.9314731227,750,missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Bengal|830|8271|7566|8272|7695,,,,,ignore_resolved,"Mumbai (Bombay)<-Kutch & Sindh 137790.9314731227
 From a flow part-of reporter Mumbai (Bombay) to/from Kutch & Sindh"
-750<-Persian Gulf,1839,750,India,GPH-AUTONOMOUS-CITED,Persian Gulf,Persian Gulf,RIC,164379.7702092737,750,missing East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,164379.7702092737,,630|640|651|670|690|692|696|698,,split_failed_no_ratio,"Mumbai (Bombay)<-Persian Gulf 162692.75748871564
+750<-Persian Gulf,1839,750,India,GPH-AUTONOMOUS-CITED,Persian Gulf,Persian Gulf,RIC,164379.7702092737,750,missing East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,164379.7702092737,,630|640|651|670|690|692|696|698,,ignore_resolved,"Mumbai (Bombay)<-Persian Gulf 162692.75748871564
 From a flow part-of reporter Mumbai (Bombay) to/from Persian Gulf
 Chennai (Madras)<-Persian Gulf 1687.0127205580634
 From a flow part-of reporter Chennai (Madras) to/from Persian Gulf"
@@ -3230,7 +3230,7 @@ From a flow part-of reporter Chennai (Madras) to/from 7566"
 From a flow part-of reporter Chennai (Madras) to/from 7591"
 750<-8271,1839,750,India,GPH-AUTONOMOUS-CITED,8271,Malacca,GPH,36622.07632334838,750,missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,,,,,ignore_internal,"Chennai (Madras)<-8271 36622.07632334838
 From a flow part-of reporter Chennai (Madras) to/from 8271"
-750<-Canary Is. & Madeira Isles,1839,750,India,GPH-AUTONOMOUS-CITED,Canary Is. & Madeira Isles,Canary Is. & Madeira Isles,RIC,3298.0098481739847,750,missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,3298.0098481739847,,230|235,,split_failed_no_ratio,"Chennai (Madras)<-Canary Is. & Madeira Isles 3298.0098481739847
+750<-Canary Is. & Madeira Isles,1839,750,India,GPH-AUTONOMOUS-CITED,Canary Is. & Madeira Isles,Canary Is. & Madeira Isles,RIC,3298.0098481739847,750,missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695,3298.0098481739847,,230|235,,ignore_resolved,"Chennai (Madras)<-Canary Is. & Madeira Isles 3298.0098481739847
 From a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles
 gravity results to be aggregated for partners: 235"
 750<-Bago (Pegu),1839,750,India,GPH-AUTONOMOUS-CITED,Bago (Pegu),Bago (Pegu),RIC,240816.3725892491,750,missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|830|8271|7566|8272|7695,,,,,ignore_resolved,"Chennai (Madras)<-Bago (Pegu) 148486.86910135412
@@ -3463,7 +3463,8 @@ From a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) 
 561->140,1839,140,Brazil,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,10245,561,,,,,,ok,561->Rio de Janeiro 10245
 561->380,1839,380,Sweden,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,80,561,,,,,,ok,561->Gothenburg 80
 561->2,1839,2,United States of America,GPH-AUTONOMOUS-CITED,561,Cape Colony (Cape of Good Hope),GPH-AUTONOMOUS-CITED,12543,561,,,,,,ok,561->Boston 12543
-750<-235,1839,750,India,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,344.68608945424705,750,missing Lisbon|Porto|400,,,,,ok,750<-401 344.68608945424705
+750<-235,1839,750,India,GPH-AUTONOMOUS-CITED,235,Portugal,GPH-AUTONOMOUS-CITED,3642.686089454247,750,missing Lisbon|Porto|400 unexpected: Canary Is. & Madeira Isles,,,,750<-Canary Is. & Madeira Isles,ok,"750<-401 344.68608945424705
+750<-Canary Is. & Madeira Isles 3298 (ratio on 3298.0098481739847)"
 750<-840,1839,750,India,GPH-AUTONOMOUS-CITED,840,Philippines,GPH-AUTONOMOUS-CITED,56413.54380446914,750,,,,,,ok,750<-Manila 56413.54380446914
 750->752,1839,752,Portuguese India,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,39456.70906852688,750,,,,,,ok,750->7591 39456.70906852688
 750->235,1839,235,Portugal,GPH-AUTONOMOUS-CITED,750,India,GPH-AUTONOMOUS-CITED,2560.2174805088225,750,missing Porto|401|400,,,,,ok,750->Lisbon 2560.2174805088225
@@ -3620,6 +3621,7 @@ From a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) 
 220<-248,1839,220,France,GPH-AUTONOMOUS-CITED,248,Hamburg,GPH-AUTONOMOUS-CITED,200210,220,,,,,220<-Hanover & Hanse Towns,ok,220<-Hanover & Hanse Towns 200210 (ratio on 222699.4352978605)
 220<-6,1839,220,France,GPH-AUTONOMOUS-CITED,6,Puerto Rico,GPH-AUTONOMOUS-CITED,90308,220,,,,,220<-Spanish America,ok,220<-Spanish America 90308 (ratio on 202815.5571462658)
 220<-40,1839,220,France,GPH-AUTONOMOUS-CITED,40,Cuba,GPH-AUTONOMOUS-CITED,112507,220,,,,,220<-Spanish America,ok,220<-Spanish America 112507 (ratio on 202815.5571462658)
+230<-615,1839,230,Spain,GPH-AUTONOMOUS-CITED,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,38,230,,,,,230<-French Africa,ok,230<-French Africa 38 (ratio on 795.3551260637875)
 230<-433,1839,230,Spain,GPH-AUTONOMOUS-CITED,433,Senegal,GPH-AUTONOMOUS-CITED,75,230,,,,,230<-French Africa,ok,230<-French Africa 75 (ratio on 795.3551260637875)
 230<-585,1839,230,Spain,GPH-AUTONOMOUS-CITED,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,681,230,,,,,230<-French Africa,ok,230<-French Africa 681 (ratio on 795.3551260637875)
 230<-276,1839,230,Spain,GPH-AUTONOMOUS-CITED,276,Lübeck,GPH-AUTONOMOUS,37,230,,,,,230<-Hanse Towns,ok,230<-Hanse Towns 37 (ratio on 62992.125984251965)
@@ -3698,7 +3700,7 @@ From a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) 
 585<-1029,1839,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,6964,585,,,,,585<-French Colonies,ok,585<-French Colonies 6964 (ratio on 38655.33285612026)
 585<-66,1839,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,66,Martinique,GPH-AUTONOMOUS-CITED,11019,585,,,,,585<-French Colonies,ok,585<-French Colonies 11019 (ratio on 38655.33285612026)
 585<-65,1839,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,14436,585,,,,,585<-French Colonies,ok,585<-French Colonies 14436 (ratio on 38655.33285612026)
-616<-220,1839,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,76386,616,,,,,616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis),ok,616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis) 76386 (ratio on 78729.8178637638)
+616<-220,1839,616,Tunisia (Regency of Tunis),GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,78729,616,,,,,616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis),ok,616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis) 78729 (ratio on 78729.8178637638)
 652<-651,1839,652,Syria,GPH-AUTONOMOUS-CITED,651,Egypt Arab Republic (Egypt),GPH-AUTONOMOUS-CITED,70122,652,,,,,652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire),ok,652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 70122 (ratio on 357631.43243458204)
 652<-640,1839,652,Syria,GPH-AUTONOMOUS-CITED,640,Turkey (Ottoman Empire),GPH-AUTONOMOUS-CITED,287509,652,,,,,652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire),ok,652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 287509 (ratio on 357631.43243458204)
 65<-615,1839,65,Guadeloupe,GPH-AUTONOMOUS-CITED,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,1116,65,,,,,65<-French Colonies,ok,65<-French Colonies 1116 (ratio on 80504.77213075638)
@@ -3715,6 +3717,7 @@ From a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) 
 66<-1029,1839,66,Martinique,GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,13722,66,,,,,66<-French Colonies,ok,66<-French Colonies 13722 (ratio on 70115.9627773801)
 66<-585,1839,66,Martinique,GPH-AUTONOMOUS-CITED,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,15659,66,,,,,66<-French Colonies,ok,66<-French Colonies 15659 (ratio on 70115.9627773801)
 66<-65,1839,66,Martinique,GPH-AUTONOMOUS-CITED,65,Guadeloupe,GPH-AUTONOMOUS-CITED,28446,66,,,,,66<-French Colonies,ok,66<-French Colonies 28446 (ratio on 70115.9627773801)
+750<-630,1839,750,India,GPH-AUTONOMOUS-CITED,630,Iran (Persia),GPH-AUTONOMOUS-CITED,152409,750,,,,,750<-Persian Gulf,ok,750<-Persian Gulf 152409 (ratio on 164379.7702092737)
 1029->120,1839,120,French Guiana,GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,1220,1029,,,,,1029->French Colonies,ok,1029->French Colonies 1220 (ratio on 122223.2561838861)
 1029->751,1839,751,French India,GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,2404,1029,,,,,1029->French Colonies,ok,1029->French Colonies 2404 (ratio on 122223.2561838861)
 1029->433,1839,433,Senegal,GPH-AUTONOMOUS-CITED,1029,St. Pierre and Miquelon,GPH-AUTONOMOUS-CITED,8030,1029,,,,,1029->French Colonies,ok,1029->French Colonies 8030 (ratio on 122223.2561838861)
@@ -3767,6 +3770,7 @@ From a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) 
 220->40,1839,40,Cuba,GPH-AUTONOMOUS-CITED,220,France,GPH-AUTONOMOUS-CITED,389176,220,,,,,220->Spanish America,ok,220->Spanish America 389176 (ratio on 485166.6268989103)
 230->433,1839,433,Senegal,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,1408,230,,,,,230->French Africa,ok,230->French Africa 1408 (ratio on 7913.783504334685)
 230->585,1839,585,Reunion (Bourbon I.),GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,1413,230,,,,,230->French Africa,ok,230->French Africa 1413 (ratio on 7913.783504334685)
+230->615,1839,615,Algeria (Regency of Algiers),GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,5092,230,,,,,230->French Africa,ok,230->French Africa 5092 (ratio on 7913.783504334685)
 230->276,1839,276,Lübeck,GPH-AUTONOMOUS,230,Spain,GPH-AUTONOMOUS-CITED,83,230,,,,,230->Hanse Towns,ok,230->Hanse Towns 83 (ratio on 32689.09568122167)
 230->246,1839,246,Bremen,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,12026,230,,,,,230->Hanse Towns,ok,230->Hanse Towns 12026 (ratio on 32689.09568122167)
 230->248,1839,248,Hamburg,GPH-AUTONOMOUS-CITED,230,Spain,GPH-AUTONOMOUS-CITED,20579,230,,,,,230->Hanse Towns,ok,230->Hanse Towns 20579 (ratio on 32689.09568122167)
