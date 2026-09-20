@@ -62601,7 +62601,7 @@
       "source": "101",
       "target": "255",
       "attributes": {
-        "value": 1146874.0124843945,
+        "value": 1161986.0124843945,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_gravity"
@@ -62618,7 +62618,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-101 999190.0124843946\nFrom a flow part-of reporter 248 to/from 101\n255<-Southern America 147684 (ratio on 1499468.8594247943)",
+        "notes": "248<-101 999190.0124843946\nFrom a flow part-of reporter 248 to/from 101\n255<-Southern America 162796 (ratio on 1499468.8594247943)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|257|239|276|2247|2248|245|269",
@@ -62630,7 +62630,7 @@
       "source": "140",
       "target": "255",
       "attributes": {
-        "value": 3242716.494382023,
+        "value": 3295878.494382023,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_gravity"
@@ -62647,7 +62647,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "248<-140 2723204.494382023\nFrom a flow part-of reporter 248 to/from 140\n255<-Southern America 519512 (ratio on 1499468.8594247943)",
+        "notes": "248<-140 2723204.494382023\nFrom a flow part-of reporter 248 to/from 140\n255<-Southern America 572674 (ratio on 1499468.8594247943)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Bahia unexpected: 140|Southern America",
@@ -63546,11 +63546,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-British Northern America 26279.65043695381\nFrom a flow part-of reporter 248 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 26279.65043695381,
         "newPartners": "20|21|1024",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269",
+        "mergedIn": [
+          "255<-1024"
+        ]
       }
     },
     {
@@ -63655,11 +63658,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Dominican Republic (Santo Domingo) & Haiti 235393.75780274658\nFrom a flow part-of reporter 248 to/from Dominican Republic (Santo Domingo) & Haiti",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 235393.75780274658,
         "newPartners": "41|42",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269",
+        "mergedIn": [
+          "255<-42"
+        ]
       }
     },
     {
@@ -63848,11 +63854,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-British East Indies 175158.05243445694\nFrom a flow part-of reporter 248 to/from British East Indies\ngravity results to be aggregated for partners: 827",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 175158.05243445694,
         "newPartners": "720|750|780|827|8231",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2555|280|246|257|239|276|2247|2248|245|269",
+        "mergedIn": [
+          "255<-827",
+          "255<-750"
+        ]
       }
     },
     {
@@ -64824,6 +64834,7 @@
           "255<-135",
           "255<-155",
           "255<-101",
+          "255<-160",
           "255<-140"
         ]
       }
@@ -66868,11 +66879,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "56<-Spanish West Indies 38\nFrom a flow part-of reporter 56 to/from Spanish West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 38,
         "newPartners": "6|40",
-        "partial": "missing 53|57|55|1049"
+        "partial": "missing 53|57|55|1049",
+        "mergedIn": [
+          "1055<-6"
+        ]
       }
     },
     {
@@ -70391,24 +70405,28 @@
       "source": "827",
       "target": "255",
       "attributes": {
-        "value": 106865.41822721598,
+        "value": 147551.418227216,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "255",
         "originalReporters": [
-          "255"
+          "255",
+          "248"
         ],
         "originalPartners": [
-          "830"
+          "830",
+          "British East Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "255<-830 106865.41822721598",
+        "notes": "255<-830 106865.41822721598\n255<-British East Indies 40686 (ratio on 175158.05243445694)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 8272|8271"
+        "partial": "missing 8272|8271 unexpected: British East Indies",
+        "originalReportedTradeFlowIds": "255<-British East Indies"
       }
     },
     {
@@ -72238,6 +72256,31 @@
       }
     },
     {
+      "key": "1055<-6",
+      "source": "6",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "Spanish West Indies"
+        ],
+        "status": "ok",
+        "value": 38,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-Spanish West Indies",
+        "notes": "1055<-Spanish West Indies 38"
+      }
+    },
+    {
       "key": "200<-42",
       "source": "42",
       "target": "200",
@@ -73527,12 +73570,12 @@
           "Argentina (La Plata) & Uruguay"
         ],
         "status": "ok",
-        "value": 170654,
+        "value": 263373,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Argentina (La Plata) & Uruguay",
-        "notes": "255<-Argentina (La Plata) & Uruguay 170654 (ratio on 263373.7827715356)"
+        "notes": "255<-Argentina (La Plata) & Uruguay 263373 (ratio on 263373.7827715356)"
       }
     },
     {
@@ -73711,6 +73754,81 @@
       }
     },
     {
+      "key": "255<-750",
+      "source": "750",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British East Indies"
+        ],
+        "status": "ok",
+        "value": 134471,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British East Indies",
+        "notes": "255<-British East Indies 134471 (ratio on 175158.05243445694)"
+      }
+    },
+    {
+      "key": "255<-1024",
+      "source": "1024",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 26279,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 26279 (ratio on 26279.65043695381)"
+      }
+    },
+    {
+      "key": "255<-42",
+      "source": "42",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Dominican Republic (Santo Domingo) & Haiti"
+        ],
+        "status": "ok",
+        "value": 235393,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Dominican Republic (Santo Domingo) & Haiti",
+        "notes": "255<-Dominican Republic (Santo Domingo) & Haiti 235393 (ratio on 235393.75780274658)"
+      }
+    },
+    {
       "key": "255<-231",
       "source": "231",
       "target": "255",
@@ -73727,12 +73845,12 @@
           "Gibraltar & Spain"
         ],
         "status": "ok",
-        "value": 1249,
+        "value": 396490,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Gibraltar & Spain",
-        "notes": "255<-Gibraltar & Spain 1249 (ratio on 396490.38701622974)"
+        "notes": "255<-Gibraltar & Spain 396490 (ratio on 396490.38701622974)"
       }
     },
     {
@@ -73752,12 +73870,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 285,
+        "value": 315,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 285 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 315 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73777,12 +73895,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 355,
+        "value": 391,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 355 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 391 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73802,12 +73920,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 8305,
+        "value": 9155,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 8305 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 9155 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73827,12 +73945,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 8778,
+        "value": 9676,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 8778 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 9676 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73852,12 +73970,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 13366,
+        "value": 14734,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 13366 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 14734 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73877,12 +73995,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 30158,
+        "value": 33244,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 30158 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 33244 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73902,12 +74020,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 31486,
+        "value": 34707,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 31486 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 34707 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73927,12 +74045,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 137721,
+        "value": 151814,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 137721 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 151814 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -73952,12 +74070,37 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 142593,
+        "value": 157184,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Southern America",
-        "notes": "255<-Southern America 142593 (ratio on 1499468.8594247943)"
+        "notes": "255<-Southern America 157184 (ratio on 1499468.8594247943)"
+      }
+    },
+    {
+      "key": "255<-160",
+      "source": "160",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "246"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": 352773,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Southern America",
+        "notes": "255<-Southern America 352773 (ratio on 1499468.8594247943)"
       }
     },
     {
@@ -78711,12 +78854,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 108,
+        "value": 167,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 108 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 167 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78736,12 +78879,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 450,
+        "value": 693,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 450 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 693 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78761,12 +78904,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 1763,
+        "value": 2715,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 1763 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 2715 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78786,12 +78929,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 2934,
+        "value": 4517,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 2934 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 4517 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78811,12 +78954,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 4563,
+        "value": 7026,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 4563 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 7026 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78836,12 +78979,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 5140,
+        "value": 7914,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 5140 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 7914 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78861,12 +79004,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 5952,
+        "value": 9165,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 5952 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 9165 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78886,12 +79029,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 5997,
+        "value": 9234,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 5997 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 9234 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78911,12 +79054,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 9337,
+        "value": 14376,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 9337 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 14376 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78936,12 +79079,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 9593,
+        "value": 14770,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 9593 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 14770 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78961,12 +79104,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 19893,
+        "value": 30628,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 19893 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 30628 (ratio on 157374.98524609514)"
       }
     },
     {
@@ -78986,12 +79129,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 36478,
+        "value": 56163,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255->Southern America",
-        "notes": "255->Southern America 36478 (ratio on 157374.98524609514)"
+        "notes": "255->Southern America 56163 (ratio on 157374.98524609514)"
       }
     },
     {

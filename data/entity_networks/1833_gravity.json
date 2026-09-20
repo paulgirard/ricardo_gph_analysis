@@ -47841,11 +47841,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Cadix<-Hanse Towns 91725.75905974535\nFrom a flow part-of reporter Cadix to/from Hanse Towns\nMálaga<-Hanse Towns 11361.410381978452\nFrom a flow part-of reporter Málaga to/from Hanse Towns",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 103087.1694417238,
         "newPartners": "246|248|276",
-        "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|San Sebastián|Bilbao|Santander|2301|410"
+        "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|San Sebastián|Bilbao|Santander|2301|410",
+        "mergedIn": [
+          "230<-246",
+          "230<-248"
+        ]
       }
     },
     {
@@ -48037,11 +48041,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Cadix->Hanse Towns 4262.487757100882\nFrom a flow part-of reporter Cadix to/from Hanse Towns\nMálaga->Hanse Towns 18805.0930460333\nFrom a flow part-of reporter Málaga to/from Hanse Towns",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 23067.58080313418,
         "newPartners": "246|248|276",
-        "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|San Sebastián|Bilbao|Santander|2301|410"
+        "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|San Sebastián|Bilbao|Santander|2301|410",
+        "mergedIn": [
+          "230->246",
+          "230->248"
+        ]
       }
     },
     {
@@ -56986,6 +56994,58 @@
       }
     },
     {
+      "key": "230<-246",
+      "source": "246",
+      "target": "230",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "Cadix",
+          "Málaga"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 34500,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230<-Hanse Towns",
+        "notes": "230<-Hanse Towns 34500 (ratio on 103087.1694417238)"
+      }
+    },
+    {
+      "key": "230<-248",
+      "source": "248",
+      "target": "230",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "Cadix",
+          "Málaga"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 68587,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230<-Hanse Towns",
+        "notes": "230<-Hanse Towns 68587 (ratio on 103087.1694417238)"
+      }
+    },
+    {
       "key": "248<-815",
       "source": "815",
       "target": "248",
@@ -58798,6 +58858,58 @@
         ],
         "originalReportedTradeFlowIds": "230->French Africa",
         "notes": "230->French Africa 6899 (ratio on 11643.486777668953)"
+      }
+    },
+    {
+      "key": "230->246",
+      "source": "230",
+      "target": "246",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "Cadix",
+          "Málaga"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 4577,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230->Hanse Towns",
+        "notes": "230->Hanse Towns 4577 (ratio on 23067.58080313418)"
+      }
+    },
+    {
+      "key": "230->248",
+      "source": "230",
+      "target": "248",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "Cadix",
+          "Málaga"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 18490,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230->Hanse Towns",
+        "notes": "230->Hanse Towns 18490 (ratio on 23067.58080313418)"
       }
     },
     {

@@ -70454,11 +70454,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "56<-Spanish West Indies 1773\nFrom a flow part-of reporter 56 to/from Spanish West Indies\ngravity results to be aggregated for partners: 6",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 1773,
         "newPartners": "6|40",
-        "partial": "missing 53|55|57|1049"
+        "partial": "missing 53|55|57|1049",
+        "mergedIn": [
+          "1055<-6",
+          "1055<-40"
+        ]
       }
     },
     {
@@ -71633,24 +71637,28 @@
       "source": "6",
       "target": "1055",
       "attributes": {
-        "value": 108,
+        "value": 297,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "55"
+          "55",
+          "56"
         ],
         "originalPartners": [
-          "6"
+          "6",
+          "Spanish West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "55<-6 108\nFrom a flow part-of reporter 55 to/from 6",
+        "notes": "55<-6 108\nFrom a flow part-of reporter 55 to/from 6\n1055<-Spanish West Indies 189 (ratio on 1773)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 53|56|57|1049"
+        "partial": "missing 53|57|1049",
+        "originalReportedTradeFlowIds": "1055<-Spanish West Indies"
       }
     },
     {
@@ -79636,6 +79644,31 @@
         ],
         "originalReportedTradeFlowIds": "1048<-Southern America (other)",
         "notes": "1048<-Southern America (other) 566 (ratio on 1554)"
+      }
+    },
+    {
+      "key": "1055<-40",
+      "source": "40",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "Spanish West Indies"
+        ],
+        "status": "ok",
+        "value": 1583,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-Spanish West Indies",
+        "notes": "1055<-Spanish West Indies 1583 (ratio on 1773)"
       }
     },
     {

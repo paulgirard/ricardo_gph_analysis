@@ -46408,10 +46408,11 @@
           "GENERATED_TRADE"
         ],
         "notes": "326<-British Europe & United Kingdom 1123657.383900324\nFrom a flow part-of reporter 326 to/from British Europe & United Kingdom",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "300<-200"
+          "300<-2249",
+          "300<-338"
         ],
         "valueToSplit": 1110359.2757599542,
         "newPartners": "231|338|2249",
@@ -46752,10 +46753,11 @@
           "GENERATED_TRADE"
         ],
         "notes": "326->British Europe & United Kingdom 705581.3771823614\nFrom a flow part-of reporter 326 to/from British Europe & United Kingdom",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "300->200"
+          "300->338",
+          "300->231"
         ],
         "valueToSplit": 702786.9489903721,
         "newPartners": "231|338|2249",
@@ -46788,7 +46790,6 @@
         "newPartners": "240|246|248|276",
         "partial": "missing 3261|3343|3001",
         "mergedIn": [
-          "300->276",
           "300->240",
           "300->246"
         ]
@@ -52419,11 +52420,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia<-Algeria (Regency of Algiers) & France 193180.4866617193\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 193180.4866617193,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327<-220"
+        ]
       }
     },
     {
@@ -52524,11 +52528,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia->Algeria (Regency of Algiers) & France 72764.91036206693\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 72764.91036206693,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327->615",
+          "327->220"
+        ]
       }
     },
     {
@@ -52799,6 +52807,7 @@
         "newPartners": "246|248|276",
         "partial": "missing 326|3343|3001",
         "mergedIn": [
+          "300->276",
           "300->248"
         ]
       }
@@ -58204,6 +58213,56 @@
       }
     },
     {
+      "key": "300<-2249",
+      "source": "2249",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "originalPartners": [
+          "British Europe & United Kingdom"
+        ],
+        "status": "ok",
+        "value": 184491,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "300<-British Europe & United Kingdom",
+        "notes": "300<-British Europe & United Kingdom 184491 (ratio on 1123657.383900324)"
+      }
+    },
+    {
+      "key": "300<-338",
+      "source": "338",
+      "target": "300",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "originalPartners": [
+          "British Europe & United Kingdom"
+        ],
+        "status": "ok",
+        "value": 925867,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "300<-British Europe & United Kingdom",
+        "notes": "300<-British Europe & United Kingdom 925867 (ratio on 1123657.383900324)"
+      }
+    },
+    {
       "key": "300<-246",
       "source": "246",
       "target": "300",
@@ -58326,6 +58385,31 @@
         ],
         "originalReportedTradeFlowIds": "300<-Norway & Sweden",
         "notes": "300<-Norway & Sweden 69693 (ratio on 96043.43241026442)"
+      }
+    },
+    {
+      "key": "327<-220",
+      "source": "220",
+      "target": "327",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 193180,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327<-Algeria (Regency of Algiers) & France",
+        "notes": "327<-Algeria (Regency of Algiers) & France 193180 (ratio on 193180.4866617193)"
       }
     },
     {
@@ -59981,9 +60065,9 @@
       }
     },
     {
-      "key": "300->276",
+      "key": "300->338",
       "source": "300",
-      "target": "276",
+      "target": "338",
       "attributes": {
         "type": "trade",
         "labels": [
@@ -59994,15 +60078,40 @@
           "326"
         ],
         "originalPartners": [
-          "Hanover & Hanse Towns"
+          "British Europe & United Kingdom"
         ],
         "status": "ok",
-        "value": 639,
+        "value": 40512,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
-        "originalReportedTradeFlowIds": "300->Hanover & Hanse Towns",
-        "notes": "300->Hanover & Hanse Towns 639 (ratio on 65109.55747373354)"
+        "originalReportedTradeFlowIds": "300->British Europe & United Kingdom",
+        "notes": "300->British Europe & United Kingdom 40512 (ratio on 705581.3771823614)"
+      }
+    },
+    {
+      "key": "300->231",
+      "source": "300",
+      "target": "231",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "300",
+        "originalReporters": [
+          "326"
+        ],
+        "originalPartners": [
+          "British Europe & United Kingdom"
+        ],
+        "status": "ok",
+        "value": 662274,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "300->British Europe & United Kingdom",
+        "notes": "300->British Europe & United Kingdom 662274 (ratio on 705581.3771823614)"
       }
     },
     {
@@ -60022,12 +60131,12 @@
           "Hanover & Hanse Towns"
         ],
         "status": "ok",
-        "value": 4554,
+        "value": 23695,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300->Hanover & Hanse Towns",
-        "notes": "300->Hanover & Hanse Towns 4554 (ratio on 65109.55747373354)"
+        "notes": "300->Hanover & Hanse Towns 23695 (ratio on 65109.55747373354)"
       }
     },
     {
@@ -60047,12 +60156,37 @@
           "Hanover & Hanse Towns"
         ],
         "status": "ok",
-        "value": 8941,
+        "value": 41414,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300->Hanover & Hanse Towns",
-        "notes": "300->Hanover & Hanse Towns 8941 (ratio on 65109.55747373354)"
+        "notes": "300->Hanover & Hanse Towns 41414 (ratio on 65109.55747373354)"
+      }
+    },
+    {
+      "key": "300->276",
+      "source": "300",
+      "target": "276",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "300",
+        "originalReporters": [
+          "3261"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 80,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "300->Hanse Towns",
+        "notes": "300->Hanse Towns 80 (ratio on 7460.063273835097)"
       }
     },
     {
@@ -60072,12 +60206,12 @@
           "Hanse Towns"
         ],
         "status": "ok",
-        "value": 58434,
+        "value": 7379,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300->Hanse Towns",
-        "notes": "300->Hanse Towns 58434 (ratio on 7460.063273835097)"
+        "notes": "300->Hanse Towns 7379 (ratio on 7460.063273835097)"
       }
     },
     {
@@ -60173,6 +60307,56 @@
         ],
         "originalReportedTradeFlowIds": "31->British Northern America",
         "notes": "31->British Northern America 1164 (ratio on 1646)"
+      }
+    },
+    {
+      "key": "327->615",
+      "source": "327",
+      "target": "615",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 7774,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327->Algeria (Regency of Algiers) & France",
+        "notes": "327->Algeria (Regency of Algiers) & France 7774 (ratio on 72764.91036206693)"
+      }
+    },
+    {
+      "key": "327->220",
+      "source": "327",
+      "target": "220",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 64990,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327->Algeria (Regency of Algiers) & France",
+        "notes": "327->Algeria (Regency of Algiers) & France 64990 (ratio on 72764.91036206693)"
       }
     },
     {

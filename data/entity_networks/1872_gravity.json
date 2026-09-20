@@ -59355,11 +59355,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "53<-British West Indies 47263\nFrom a flow part-of reporter 53 to/from British West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 47263,
         "newPartners": "30|31|51|1032|1048|1053|1054|1063",
-        "partial": "missing 56|57|55|1049"
+        "partial": "missing 56|57|55|1049",
+        "mergedIn": [
+          "1055<-30",
+          "1055<-1032"
+        ]
       }
     },
     {
@@ -59591,11 +59595,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "53->British West Indies 221167\nFrom a flow part-of reporter 53 to/from British West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 221167,
         "newPartners": "30|31|51|1032|1048|1053|1054|1063",
-        "partial": "missing 56|57|55|1049"
+        "partial": "missing 56|57|55|1049",
+        "mergedIn": [
+          "1055->1048",
+          "1055->30"
+        ]
       }
     },
     {
@@ -63975,6 +63983,56 @@
       }
     },
     {
+      "key": "1055<-30",
+      "source": "30",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 1531,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 1531 (ratio on 47263)"
+      }
+    },
+    {
+      "key": "1055<-1032",
+      "source": "1032",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 45731,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 45731 (ratio on 47263)"
+      }
+    },
+    {
       "key": "155<-902",
       "source": "902",
       "target": "155",
@@ -64998,12 +65056,12 @@
           "British Northern America"
         ],
         "status": "ok",
-        "value": 57,
+        "value": 871,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
-        "notes": "255<-British Northern America 57 (ratio on 1778.2254648147195)"
+        "notes": "255<-British Northern America 871 (ratio on 1778.2254648147195)"
       }
     },
     {
@@ -65023,12 +65081,12 @@
           "British Northern America"
         ],
         "status": "ok",
-        "value": 59,
+        "value": 907,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
-        "notes": "255<-British Northern America 59 (ratio on 1778.2254648147195)"
+        "notes": "255<-British Northern America 907 (ratio on 1778.2254648147195)"
       }
     },
     {
@@ -67123,6 +67181,56 @@
         ],
         "originalReportedTradeFlowIds": "1055->British Northern America",
         "notes": "1055->British Northern America 119846 (ratio on 124170)"
+      }
+    },
+    {
+      "key": "1055->1048",
+      "source": "1055",
+      "target": "1048",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 43303,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 43303 (ratio on 221167)"
+      }
+    },
+    {
+      "key": "1055->30",
+      "source": "1055",
+      "target": "30",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 177863,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 177863 (ratio on 221167)"
       }
     },
     {

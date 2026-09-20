@@ -68302,11 +68302,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Puerto Rico & St. Thomas 100141.92727450693\nFrom a flow part-of reporter 248 to/from Puerto Rico & St. Thomas",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 100141.92727450693,
         "newPartners": "5|6",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|2555|280|257|246|239|2248|2246|2247|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|2555|280|257|246|239|2248|2246|2247|245|269",
+        "mergedIn": [
+          "255<-6",
+          "255<-5"
+        ]
       }
     },
     {
@@ -68329,11 +68333,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Dominican Republic (Santo Domingo) & Haiti 398817.10957764403\nFrom a flow part-of reporter 248 to/from Dominican Republic (Santo Domingo) & Haiti",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 398817.10957764403,
         "newPartners": "41|42",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|2555|280|257|246|239|2248|2246|2247|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|2555|280|257|246|239|2248|2246|2247|245|269",
+        "mergedIn": [
+          "255<-42"
+        ]
       }
     },
     {
@@ -68417,7 +68424,8 @@
         "newPartners": "160|165",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|2555|280|257|246|239|2248|2246|2247|245|269",
         "mergedIn": [
-          "255<-165"
+          "255<-165",
+          "255<-160"
         ]
       }
     },
@@ -77240,6 +77248,31 @@
       }
     },
     {
+      "key": "255<-160",
+      "source": "160",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Argentina (La Plata) & Uruguay"
+        ],
+        "status": "ok",
+        "value": 311760,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Argentina (La Plata) & Uruguay",
+        "notes": "255<-Argentina (La Plata) & Uruguay 311760 (ratio on 428463.75960456126)"
+      }
+    },
+    {
       "key": "255<-21",
       "source": "21",
       "target": "255",
@@ -77256,12 +77289,37 @@
           "British Northern America"
         ],
         "status": "ok",
-        "value": 4524,
+        "value": 12660,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
-        "notes": "255<-British Northern America 4524 (ratio on 12660.89169480742)"
+        "notes": "255<-British Northern America 12660 (ratio on 12660.89169480742)"
+      }
+    },
+    {
+      "key": "255<-42",
+      "source": "42",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Dominican Republic (Santo Domingo) & Haiti"
+        ],
+        "status": "ok",
+        "value": 398817,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Dominican Republic (Santo Domingo) & Haiti",
+        "notes": "255<-Dominican Republic (Santo Domingo) & Haiti 398817 (ratio on 398817.10957764403)"
       }
     },
     {
@@ -77337,6 +77395,56 @@
         ],
         "originalReportedTradeFlowIds": "255<-Gibraltar & Spain",
         "notes": "255<-Gibraltar & Spain 261883 (ratio on 262666.76454754564)"
+      }
+    },
+    {
+      "key": "255<-6",
+      "source": "6",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Puerto Rico & St. Thomas"
+        ],
+        "status": "ok",
+        "value": 26318,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Puerto Rico & St. Thomas",
+        "notes": "255<-Puerto Rico & St. Thomas 26318 (ratio on 100141.92727450693)"
+      }
+    },
+    {
+      "key": "255<-5",
+      "source": "5",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Puerto Rico & St. Thomas"
+        ],
+        "status": "ok",
+        "value": 73823,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Puerto Rico & St. Thomas",
+        "notes": "255<-Puerto Rico & St. Thomas 73823 (ratio on 100141.92727450693)"
       }
     },
     {

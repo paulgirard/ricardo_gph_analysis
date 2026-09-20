@@ -64080,28 +64080,27 @@
       "source": "1161",
       "target": "1063",
       "attributes": {
-        "value": 343,
+        "value": 349,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_gravity"
         ],
         "reportedBy": "1063",
         "originalReporters": [
-          "58",
-          "1076"
+          "58"
         ],
         "originalPartners": [
           "1161",
-          "Southern America"
+          "Southern America (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "58<-1161 314\nFrom a flow part-of reporter 58 to/from 1161\n1063<-Southern America 29 (ratio on 108)",
+        "notes": "58<-1161 314\nFrom a flow part-of reporter 58 to/from 1161\n1063<-Southern America (other) 35 (ratio on 625)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1075|59|1061|1062",
-        "originalReportedTradeFlowIds": "1063<-Southern America"
+        "partial": "missing 1075|59|1061|1076|1062",
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)"
       }
     },
     {
@@ -64242,6 +64241,7 @@
         "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
+          "1063<-115",
           "1063<-850"
         ],
         "valueToSplit": 1127.2088474970897,
@@ -64361,14 +64361,11 @@
         "type": "trade",
         "mergedIn": [
           "1063<-1163",
-          "1063<-150",
-          "1063<-145",
-          "1063<-100",
+          "1063<-130",
           "1063<-135",
+          "1063<-1161",
           "1063<-160",
-          "1063<-155",
-          "1063<-140",
-          "1063<-115"
+          "1063<-140"
         ],
         "valueToSplit": 320.2479338842975,
         "newPartners": "100|115|120|130|135|140|145|150|155|160|165|1161|1163",
@@ -65946,10 +65943,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Algeria (Regency of Algiers) & France 454183.5841095454\nFrom a flow part-of reporter Livorno to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 454183.5841095454,
-        "newPartners": "220|615"
+        "newPartners": "220|615",
+        "mergedIn": [
+          "337->615",
+          "337->220"
+        ]
       }
     },
     {
@@ -65972,10 +65973,13 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Ionian Is. & Malta 25873.736167502586\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 25873.736167502586,
-        "newPartners": "338|3349"
+        "newPartners": "338|3349",
+        "mergedIn": [
+          "337->338"
+        ]
       }
     },
     {
@@ -66025,10 +66029,13 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Barbary Coast & Turkey (Ottoman Empire) 189873.41772151898\nFrom a flow part-of reporter Livorno to/from Barbary Coast & Turkey (Ottoman Empire)",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 189873.41772151898,
-        "newPartners": "600|615|616|640|6067"
+        "newPartners": "600|615|616|640|6067",
+        "mergedIn": [
+          "337->640"
+        ]
       }
     },
     {
@@ -66679,9 +66686,12 @@
         "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "1063<-130",
+          "1063<-120",
+          "1063<-150",
+          "1063<-145",
+          "1063<-100",
           "1063<-165",
-          "1063<-1161"
+          "1063<-155"
         ],
         "valueToSplit": 55.33884297520661,
         "newPartners": "100|115|120|130|135|140|145|150|155|160|165|1161|1163",
@@ -76401,6 +76411,31 @@
       }
     },
     {
+      "key": "1063<-115",
+      "source": "115",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Dutch Colonies"
+        ],
+        "status": "ok",
+        "value": 222,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Dutch Colonies",
+        "notes": "1063<-Dutch Colonies 222 (ratio on 3473)"
+      }
+    },
+    {
       "key": "1063<-850",
       "source": "850",
       "target": "1063",
@@ -76426,8 +76461,8 @@
       }
     },
     {
-      "key": "1063<-130",
-      "source": "130",
+      "key": "1063<-120",
+      "source": "120",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -76442,12 +76477,87 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 5,
+        "value": null,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 5 (ratio on 108)"
+        "notes": "1063<-Southern America NaN (ratio on 108)"
+      }
+    },
+    {
+      "key": "1063<-150",
+      "source": "150",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": null,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America NaN (ratio on 108)"
+      }
+    },
+    {
+      "key": "1063<-145",
+      "source": "145",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": null,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America NaN (ratio on 108)"
+      }
+    },
+    {
+      "key": "1063<-100",
+      "source": "100",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": 3,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America 3 (ratio on 108)"
       }
     },
     {
@@ -76467,12 +76577,37 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 14,
+        "value": 7,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 14 (ratio on 108)"
+        "notes": "1063<-Southern America 7 (ratio on 108)"
+      }
+    },
+    {
+      "key": "1063<-155",
+      "source": "155",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": 43,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America 43 (ratio on 108)"
       }
     },
     {
@@ -76501,58 +76636,8 @@
       }
     },
     {
-      "key": "1063<-150",
-      "source": "150",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "58"
-        ],
-        "originalPartners": [
-          "Southern America (other)"
-        ],
-        "status": "ok",
-        "value": null,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) NaN (ratio on 625)"
-      }
-    },
-    {
-      "key": "1063<-145",
-      "source": "145",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "58"
-        ],
-        "originalPartners": [
-          "Southern America (other)"
-        ],
-        "status": "ok",
-        "value": 1,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 1 (ratio on 625)"
-      }
-    },
-    {
-      "key": "1063<-100",
-      "source": "100",
+      "key": "1063<-130",
+      "source": "130",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -76592,12 +76677,12 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 23,
+        "value": 28,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 23 (ratio on 625)"
+        "notes": "1063<-Southern America (other) 28 (ratio on 625)"
       }
     },
     {
@@ -76617,37 +76702,12 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 56,
+        "value": 69,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 56 (ratio on 625)"
-      }
-    },
-    {
-      "key": "1063<-155",
-      "source": "155",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "58"
-        ],
-        "originalPartners": [
-          "Southern America (other)"
-        ],
-        "status": "ok",
-        "value": 85,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 85 (ratio on 625)"
+        "notes": "1063<-Southern America (other) 69 (ratio on 625)"
       }
     },
     {
@@ -76667,37 +76727,12 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 147,
+        "value": 179,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 147 (ratio on 625)"
-      }
-    },
-    {
-      "key": "1063<-115",
-      "source": "115",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "58"
-        ],
-        "originalPartners": [
-          "Southern America (other)"
-        ],
-        "status": "ok",
-        "value": 226,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 226 (ratio on 625)"
+        "notes": "1063<-Southern America (other) 179 (ratio on 625)"
       }
     },
     {
@@ -78590,12 +78625,12 @@
           "Algeria (Regency of Algiers) & France"
         ],
         "status": "ok",
-        "value": 1484880,
+        "value": 1524002,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "337<-Algeria (Regency of Algiers) & France",
-        "notes": "337<-Algeria (Regency of Algiers) & France 1484880 (ratio on 1524002.8660138524)"
+        "notes": "337<-Algeria (Regency of Algiers) & France 1524002 (ratio on 1524002.8660138524)"
       }
     },
     {
@@ -79415,12 +79450,12 @@
           "Dutch Colonies"
         ],
         "status": "ok",
-        "value": 534,
+        "value": 683,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063->Dutch Colonies",
-        "notes": "1063->Dutch Colonies 534 (ratio on 1501)"
+        "notes": "1063->Dutch Colonies 683 (ratio on 1501)"
       }
     },
     {
@@ -80790,6 +80825,106 @@
         ],
         "originalReportedTradeFlowIds": "324->Hanse Towns",
         "notes": "324->Hanse Towns 30330 (ratio on 33729.37861950227)"
+      }
+    },
+    {
+      "key": "337->615",
+      "source": "337",
+      "target": "615",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 18231,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Algeria (Regency of Algiers) & France",
+        "notes": "337->Algeria (Regency of Algiers) & France 18231 (ratio on 454183.5841095454)"
+      }
+    },
+    {
+      "key": "337->220",
+      "source": "337",
+      "target": "220",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 435951,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Algeria (Regency of Algiers) & France",
+        "notes": "337->Algeria (Regency of Algiers) & France 435951 (ratio on 454183.5841095454)"
+      }
+    },
+    {
+      "key": "337->640",
+      "source": "337",
+      "target": "640",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Barbary Coast & Turkey (Ottoman Empire)"
+        ],
+        "status": "ok",
+        "value": 189873,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Barbary Coast & Turkey (Ottoman Empire)",
+        "notes": "337->Barbary Coast & Turkey (Ottoman Empire) 189873 (ratio on 189873.41772151898)"
+      }
+    },
+    {
+      "key": "337->338",
+      "source": "337",
+      "target": "338",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Ionian Is. & Malta"
+        ],
+        "status": "ok",
+        "value": 25873,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta",
+        "notes": "337->Ionian Is. & Malta 25873 (ratio on 25873.736167502586)"
       }
     },
     {

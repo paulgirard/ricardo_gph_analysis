@@ -28,6 +28,10 @@ https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les do
 cd scripts
 
 npm i 
+De Guillaume ?
+npm uninstall sqlite3
+npm install sqlite3@latest
+
 ```
 
 **installer les dépendances à ne faire qu'une seule fois**
@@ -36,14 +40,12 @@ npm i 
 
 **lit le dossier results et exporte les réseaux au format json et gephi lite**
 
-`npm run gravity-quality `
+`npm run quality-gravity`
 
 **exporte au format tradeFlows_{year}.csv** 
 
 
-
-
-- From Pour results/gravity_XXXX.csv, Paul creates data/tradeFlows_YYYY_gravity.csv
+From Pour results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
 
 ### Graphique de diagnostic ?
 Qui s’en occupe ?

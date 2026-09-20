@@ -55853,10 +55853,10 @@
           "GENERATED_TRADE"
         ],
         "notes": "830->Borneo 62399.181650076716\nFrom a flow part-of reporter 830 to/from Borneo",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "750->850"
+          "750->8401"
         ],
         "valueToSplit": 9915.99604147765,
         "newPartners": "835|8401",
@@ -56677,10 +56677,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "53<-British Northern America 82140\nFrom a flow part-of reporter 53 to/from British Northern America\n1049<-British Northern America 5954\nFrom a flow part-of reporter 1049 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 88094,
-        "newPartners": "21|1022|1023|1024|1025|1026"
+        "newPartners": "21|1022|1023|1024|1025|1026",
+        "mergedIn": [
+          "1055<-1023",
+          "1055<-1024"
+        ]
       }
     },
     {
@@ -61746,11 +61750,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Chennai (Madras)<-Canary Is. & Madeira Isles 4756.845680322649\nFrom a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles\ngravity results to be aggregated for partners: 235",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 4756.845680322649,
         "newPartners": "230|235",
-        "partial": "missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695"
+        "partial": "missing East India Company|Mumbai (Bombay)|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695",
+        "mergedIn": [
+          "750<-235"
+        ]
       }
     },
     {
@@ -64649,26 +64656,30 @@
       "source": "235",
       "target": "750",
       "attributes": {
-        "value": 5522.288261515601,
+        "value": 10278.288261515601,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "750",
         "originalReporters": [
           "Bengal",
-          "750"
+          "750",
+          "Chennai (Madras)"
         ],
         "originalPartners": [
           "235",
-          "401"
+          "401",
+          "Canary Is. & Madeira Isles"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "Bengal<-235 4829.654001273615\nFrom a flow part-of reporter Bengal to/from 235\n750<-401 692.6342602419868",
+        "notes": "Bengal<-235 4829.654001273615\nFrom a flow part-of reporter Bengal to/from 235\n750<-401 692.6342602419868\n750<-Canary Is. & Madeira Isles 4756 (ratio on 4756.845680322649)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Lisbon|Algarve|Porto|Figueira|400 unexpected: 235"
+        "partial": "missing Lisbon|Algarve|Porto|Figueira|400 unexpected: 235|Canary Is. & Madeira Isles",
+        "originalReportedTradeFlowIds": "750<-Canary Is. & Madeira Isles"
       }
     },
     {
@@ -68918,6 +68929,58 @@
       }
     },
     {
+      "key": "1055<-1023",
+      "source": "1023",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53",
+          "1049"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 22363,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British Northern America",
+        "notes": "1055<-British Northern America 22363 (ratio on 88094)"
+      }
+    },
+    {
+      "key": "1055<-1024",
+      "source": "1024",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53",
+          "1049"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 65730,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British Northern America",
+        "notes": "1055<-British Northern America 65730 (ratio on 88094)"
+      }
+    },
+    {
       "key": "140<-276",
       "source": "276",
       "target": "140",
@@ -72695,6 +72758,31 @@
         ],
         "originalReportedTradeFlowIds": "652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire)",
         "notes": "652->Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 192959 (ratio on 292123.3819884329)"
+      }
+    },
+    {
+      "key": "750->8401",
+      "source": "750",
+      "target": "8401",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "830"
+        ],
+        "originalPartners": [
+          "Borneo"
+        ],
+        "status": "ok",
+        "value": 9915,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "750->Borneo",
+        "notes": "750->Borneo 9915 (ratio on 62399.181650076716)"
       }
     },
     {

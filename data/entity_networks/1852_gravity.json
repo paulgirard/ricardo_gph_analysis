@@ -13545,7 +13545,8 @@
         "newPartners": "390|2247|2248",
         "mergedIn": [
           "200->2248",
-          "200->2247"
+          "200->2247",
+          "200->390"
         ]
       }
     },
@@ -53313,6 +53314,7 @@
         "valueToSplit": 95000.59375371096,
         "newPartners": "365|640",
         "mergedIn": [
+          "337->640",
           "337->365"
         ]
       }
@@ -55291,11 +55293,17 @@
           "GENERATED_TRADE"
         ],
         "notes": "56<-British West Indies 21634\nFrom a flow part-of reporter 56 to/from British West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 21634,
         "newPartners": "30|31|51|54|1032|1048|1063",
-        "partial": "missing 57"
+        "partial": "missing 57",
+        "mergedIn": [
+          "1055<-54",
+          "1055<-30",
+          "1055<-1063",
+          "1055<-1048"
+        ]
       }
     },
     {
@@ -60027,6 +60035,106 @@
       }
     },
     {
+      "key": "1055<-54",
+      "source": "54",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 945,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 945 (ratio on 21634)"
+      }
+    },
+    {
+      "key": "1055<-30",
+      "source": "30",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 1211,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 1211 (ratio on 21634)"
+      }
+    },
+    {
+      "key": "1055<-1063",
+      "source": "1063",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 6464,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 6464 (ratio on 21634)"
+      }
+    },
+    {
+      "key": "1055<-1048",
+      "source": "1048",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 13012,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-British West Indies",
+        "notes": "1055<-British West Indies 13012 (ratio on 21634)"
+      }
+    },
+    {
       "key": "140<-276",
       "source": "276",
       "target": "140",
@@ -61537,12 +61645,12 @@
           "Black Sea & Russia (USSR)"
         ],
         "status": "ok",
-        "value": 564492,
+        "value": 712504,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "337<-Black Sea & Russia (USSR)",
-        "notes": "337<-Black Sea & Russia (USSR) 564492 (ratio on 712504.4531528321)"
+        "notes": "337<-Black Sea & Russia (USSR) 712504 (ratio on 712504.4531528321)"
       }
     },
     {
@@ -62745,6 +62853,25 @@
         ],
         "originalReportedTradeFlowIds": "200->Denmark & Holstein & Schleswig",
         "notes": "200->Denmark & Holstein & Schleswig 41294 (ratio on 449065)"
+      }
+    },
+    {
+      "key": "200->390",
+      "source": "200",
+      "target": "390",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "200",
+        "status": "ok",
+        "value": 393446,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "200->Denmark & Holstein & Schleswig",
+        "notes": "200->Denmark & Holstein & Schleswig 393446 (ratio on 449065)"
       }
     },
     {
@@ -64018,6 +64145,31 @@
         ],
         "originalReportedTradeFlowIds": "324->Southern America",
         "notes": "324->Southern America 41309 (ratio on 136402.89821107726)"
+      }
+    },
+    {
+      "key": "337->640",
+      "source": "337",
+      "target": "640",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Black Sea & Russia (USSR)"
+        ],
+        "status": "ok",
+        "value": 19104,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Black Sea & Russia (USSR)",
+        "notes": "337->Black Sea & Russia (USSR) 19104 (ratio on 95000.59375371096)"
       }
     },
     {

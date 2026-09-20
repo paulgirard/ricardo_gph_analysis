@@ -60657,6 +60657,7 @@
         "newPartners": "20|21|1024|1027",
         "partial": "missing North Germany|Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|280|257|276|269|2246",
         "mergedIn": [
+          "255<-1027",
           "255<-21",
           "255<-1024"
         ]
@@ -63834,11 +63835,18 @@
           "GENERATED_TRADE"
         ],
         "notes": "53->British West Indies 193948\nFrom a flow part-of reporter 53 to/from British West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 193948,
         "newPartners": "30|31|51|54|1032|1048|1053|1054|1063",
-        "partial": "missing 55|56|57|1049"
+        "partial": "missing 55|56|57|1049",
+        "mergedIn": [
+          "1055->30",
+          "1055->1032",
+          "1055->1063",
+          "1055->1048",
+          "1055->51"
+        ]
       }
     },
     {
@@ -71874,6 +71882,31 @@
       }
     },
     {
+      "key": "255<-1027",
+      "source": "1027",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 241,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 241 (ratio on 3234.7700123019285)"
+      }
+    },
+    {
       "key": "255<-21",
       "source": "21",
       "target": "255",
@@ -71890,12 +71923,12 @@
           "British Northern America"
         ],
         "status": "ok",
-        "value": 69,
+        "value": 786,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
-        "notes": "255<-British Northern America 69 (ratio on 3234.7700123019285)"
+        "notes": "255<-British Northern America 786 (ratio on 3234.7700123019285)"
       }
     },
     {
@@ -71915,12 +71948,12 @@
           "British Northern America"
         ],
         "status": "ok",
-        "value": 193,
+        "value": 2207,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
-        "notes": "255<-British Northern America 193 (ratio on 3234.7700123019285)"
+        "notes": "255<-British Northern America 2207 (ratio on 3234.7700123019285)"
       }
     },
     {
@@ -74640,6 +74673,131 @@
         ],
         "originalReportedTradeFlowIds": "1055->British Northern America",
         "notes": "1055->British Northern America 59141 (ratio on 65257)"
+      }
+    },
+    {
+      "key": "1055->30",
+      "source": "1055",
+      "target": "30",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 6929,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 6929 (ratio on 193948)"
+      }
+    },
+    {
+      "key": "1055->1032",
+      "source": "1055",
+      "target": "1032",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 20287,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 20287 (ratio on 193948)"
+      }
+    },
+    {
+      "key": "1055->1063",
+      "source": "1055",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 31863,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 31863 (ratio on 193948)"
+      }
+    },
+    {
+      "key": "1055->1048",
+      "source": "1055",
+      "target": "1048",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 53632,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 53632 (ratio on 193948)"
+      }
+    },
+    {
+      "key": "1055->51",
+      "source": "1055",
+      "target": "51",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 81234,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 81234 (ratio on 193948)"
       }
     },
     {

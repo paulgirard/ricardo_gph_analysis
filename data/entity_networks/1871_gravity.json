@@ -55804,11 +55804,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-British Northern America 26217.128892036693\nFrom a flow part-of reporter 248 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 26217.128892036693,
         "newPartners": "20|21|1024|1027",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|257|246|280|276|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|257|246|280|276|269",
+        "mergedIn": [
+          "255<-21",
+          "255<-1024"
+        ]
       }
     },
     {
@@ -56396,11 +56400,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "1023<-Spanish West Indies 29390.28654886553\nFrom a flow part-of reporter 1023 to/from Spanish West Indies\n1022<-Spanish West Indies 77699.58653035197\nFrom a flow part-of reporter 1022 to/from Spanish West Indies\n1026<-Spanish West Indies 56823.27772406558\nFrom a flow part-of reporter 1026 to/from Spanish West Indies\n1025<-Spanish West Indies 251393.45442577088\nFrom a flow part-of reporter 1025 to/from Spanish West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 415306.605229054,
         "newPartners": "6|40",
-        "partial": "missing 10204"
+        "partial": "missing 10204",
+        "mergedIn": [
+          "20<-40"
+        ]
       }
     },
     {
@@ -63291,6 +63298,34 @@
       }
     },
     {
+      "key": "20<-40",
+      "source": "40",
+      "target": "20",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "20",
+        "originalReporters": [
+          "1023",
+          "1022",
+          "1026",
+          "1025"
+        ],
+        "originalPartners": [
+          "Spanish West Indies"
+        ],
+        "status": "ok",
+        "value": 415306,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "20<-Spanish West Indies",
+        "notes": "20<-Spanish West Indies 415306 (ratio on 415306.605229054)"
+      }
+    },
+    {
       "key": "211<-6",
       "source": "6",
       "target": "211",
@@ -63858,6 +63893,56 @@
         ],
         "originalReportedTradeFlowIds": "235<-Norway & Sweden",
         "notes": "235<-Norway & Sweden 59726 (ratio on 97301.14769997598)"
+      }
+    },
+    {
+      "key": "255<-21",
+      "source": "21",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 7677,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 7677 (ratio on 26217.128892036693)"
+      }
+    },
+    {
+      "key": "255<-1024",
+      "source": "1024",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 18539,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 18539 (ratio on 26217.128892036693)"
       }
     },
     {

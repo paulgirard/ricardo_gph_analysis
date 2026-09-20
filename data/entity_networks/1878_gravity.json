@@ -71187,7 +71187,8 @@
         "newPartners": "20|21",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|246|280|239|257|2247|2248|2555|2246|245|269",
         "mergedIn": [
-          "255<-21"
+          "255<-21",
+          "255<-20"
         ]
       }
     },
@@ -71293,11 +71294,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Dominican Republic (Santo Domingo) & Haiti 441974.73436811444\nFrom a flow part-of reporter 248 to/from Dominican Republic (Santo Domingo) & Haiti",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 441974.73436811444,
         "newPartners": "41|42",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|246|280|239|257|2247|2248|2555|2246|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|276|246|280|239|257|2247|2248|2555|2246|245|269",
+        "mergedIn": [
+          "255<-41"
+        ]
       }
     },
     {
@@ -79710,12 +79714,12 @@
           "Argentina (La Plata) & Uruguay"
         ],
         "status": "ok",
-        "value": 124415,
+        "value": 542702,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Argentina (La Plata) & Uruguay",
-        "notes": "255<-Argentina (La Plata) & Uruguay 124415 (ratio on 542702.345394898)"
+        "notes": "255<-Argentina (La Plata) & Uruguay 542702 (ratio on 542702.345394898)"
       }
     },
     {
@@ -79741,6 +79745,56 @@
         ],
         "originalReportedTradeFlowIds": "255<-British Northern America",
         "notes": "255<-British Northern America 3000 (ratio on 6368.310238456643)"
+      }
+    },
+    {
+      "key": "255<-20",
+      "source": "20",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 3368,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 3368 (ratio on 6368.310238456643)"
+      }
+    },
+    {
+      "key": "255<-41",
+      "source": "41",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Dominican Republic (Santo Domingo) & Haiti"
+        ],
+        "status": "ok",
+        "value": 441974,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Dominican Republic (Santo Domingo) & Haiti",
+        "notes": "255<-Dominican Republic (Santo Domingo) & Haiti 441974 (ratio on 441974.73436811444)"
       }
     },
     {

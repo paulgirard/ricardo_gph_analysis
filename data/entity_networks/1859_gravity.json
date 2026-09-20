@@ -56867,9 +56867,10 @@
       "source": "101",
       "target": "1063",
       "attributes": {
-        "value": 4716,
+        "value": 4728,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1063",
         "originalReporters": [
@@ -56878,15 +56879,17 @@
         ],
         "originalPartners": [
           "101",
-          "Margarita I."
+          "Margarita I.",
+          "Southern America (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "58<-101 2692\nFrom a flow part-of reporter 58 to/from 101\n1063<-Margarita I. 2024",
+        "notes": "58<-101 2692\nFrom a flow part-of reporter 58 to/from 101\n1063<-Margarita I. 2024\n1063<-Southern America (other) 12 (ratio on 233)",
         "status": "ok",
         "type": "trade",
-        "partial": " unexpected: 101"
+        "partial": " unexpected: 101|Southern America (other)",
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)"
       }
     },
     {
@@ -57280,11 +57283,21 @@
           "GENERATED_TRADE"
         ],
         "notes": "58<-Southern America (other) 233\nFrom a flow part-of reporter 58 to/from Southern America (other)\ngravity results to be aggregated for partners: 100|101|110|140|165",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 233,
         "newPartners": "100|101|110|115|120|130|135|140|145|150|155|160|165|1161|1163",
-        "partial": "missing 59|1076|1075|1061|1062"
+        "partial": "missing 59|1076|1075|1061|1062",
+        "mergedIn": [
+          "1063<-120",
+          "1063<-115",
+          "1063<-101",
+          "1063<-165",
+          "1063<-110",
+          "1063<-155",
+          "1063<-135",
+          "1063<-140"
+        ]
       }
     },
     {
@@ -67718,23 +67731,28 @@
       "source": "110",
       "target": "1063",
       "attributes": {
-        "value": 193,
+        "value": 215,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1063",
         "originalReporters": [
-          "1063"
+          "1063",
+          "58"
         ],
         "originalPartners": [
-          "Demerara"
+          "Demerara",
+          "Southern America (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1063<-Demerara 193",
+        "notes": "1063<-Demerara 193\n1063<-Southern America (other) 22 (ratio on 233)",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "partial": "missing 1113 unexpected: Demerara|Southern America (other)"
       }
     },
     {
@@ -67771,24 +67789,28 @@
       "source": "140",
       "target": "1063",
       "attributes": {
-        "value": 99,
+        "value": 210,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1063",
         "originalReporters": [
-          "1063"
+          "1063",
+          "58"
         ],
         "originalPartners": [
-          "Pará"
+          "Pará",
+          "Southern America (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1063<-Pará 99",
+        "notes": "1063<-Pará 99\n1063<-Southern America (other) 111 (ratio on 233)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Bahia|Pernambuco|Rio de Janeiro"
+        "partial": "missing Bahia|Pernambuco|Rio de Janeiro unexpected: Southern America (other)",
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)"
       }
     },
     {
@@ -67796,23 +67818,28 @@
       "source": "165",
       "target": "1063",
       "attributes": {
-        "value": 1280,
+        "value": 1293,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1063",
         "originalReporters": [
-          "1063"
+          "1063",
+          "58"
         ],
         "originalPartners": [
-          "Montevideo"
+          "Montevideo",
+          "Southern America (other)"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1063<-Montevideo 1280",
+        "notes": "1063<-Montevideo 1280\n1063<-Southern America (other) 13 (ratio on 233)",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "partial": " unexpected: Southern America (other)"
       }
     },
     {
@@ -69538,12 +69565,112 @@
           "Dutch Colonies"
         ],
         "status": "ok",
-        "value": 2345,
+        "value": 2529,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Dutch Colonies",
-        "notes": "1063<-Dutch Colonies 2345 (ratio on 3219)"
+        "notes": "1063<-Dutch Colonies 2529 (ratio on 3219)"
+      }
+    },
+    {
+      "key": "1063<-120",
+      "source": "120",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Southern America (other)"
+        ],
+        "status": "ok",
+        "value": null,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "notes": "1063<-Southern America (other) NaN (ratio on 233)"
+      }
+    },
+    {
+      "key": "1063<-115",
+      "source": "115",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Southern America (other)"
+        ],
+        "status": "ok",
+        "value": 3,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "notes": "1063<-Southern America (other) 3 (ratio on 233)"
+      }
+    },
+    {
+      "key": "1063<-155",
+      "source": "155",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Southern America (other)"
+        ],
+        "status": "ok",
+        "value": 28,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "notes": "1063<-Southern America (other) 28 (ratio on 233)"
+      }
+    },
+    {
+      "key": "1063<-135",
+      "source": "135",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Southern America (other)"
+        ],
+        "status": "ok",
+        "value": 40,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "notes": "1063<-Southern America (other) 40 (ratio on 233)"
       }
     },
     {
@@ -71986,12 +72113,12 @@
           "Dutch Colonies"
         ],
         "status": "ok",
-        "value": 877,
+        "value": 1151,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063->Dutch Colonies",
-        "notes": "1063->Dutch Colonies 877 (ratio on 1201)"
+        "notes": "1063->Dutch Colonies 1151 (ratio on 1201)"
       }
     },
     {

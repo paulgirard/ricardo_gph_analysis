@@ -34074,8 +34074,8 @@
           "710<-101",
           "710<-135",
           "710<-115",
-          "710<-165",
           "710<-1163",
+          "710<-165",
           "710<-155",
           "710<-140"
         ]
@@ -90591,8 +90591,8 @@
           "225<-101",
           "225<-135",
           "225<-115",
-          "225<-165",
-          "225<-1163"
+          "225<-1163",
+          "225<-165"
         ]
       }
     },
@@ -111379,24 +111379,28 @@
       "source": "1055",
       "target": "30",
       "attributes": {
-        "value": 117,
+        "value": 5125,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56"
+          "56",
+          "57"
         ],
         "originalPartners": [
-          "30"
+          "30",
+          "British West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->30 117\nFrom a flow part-of reporter 56 to/from 30",
+        "notes": "56->30 117\nFrom a flow part-of reporter 56 to/from 30\n1055->British West Indies 5008 (ratio on 23652)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 55|57"
+        "partial": "missing 55",
+        "originalReportedTradeFlowIds": "1055->British West Indies"
       }
     },
     {
@@ -111744,11 +111748,17 @@
           "GENERATED_TRADE"
         ],
         "notes": "57->British West Indies 23652\nFrom a flow part-of reporter 57 to/from British West Indies\ngravity results to be aggregated for partners: 30|52|53|1063",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 23652,
         "newPartners": "30|31|51|52|53|1063",
-        "partial": "missing 55|56"
+        "partial": "missing 55|56",
+        "mergedIn": [
+          "1055->31",
+          "1055->30",
+          "1055->51",
+          "1055->52"
+        ]
       }
     },
     {
@@ -114423,7 +114433,7 @@
       "source": "365",
       "target": "850",
       "attributes": {
-        "value": 70541.02835696413,
+        "value": 70561.02835696413,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_gravity"
@@ -114438,7 +114448,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "850<-7352 834.0283569641367\n850<-Dalian & Korea (Chosen) & Vladivostok 69707 (ratio on 176563.80316930776)",
+        "notes": "850<-7352 834.0283569641367\n850<-Dalian & Korea (Chosen) & Vladivostok 69727 (ratio on 176563.80316930776)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Asian Russia|European Russia|Russia and Siberia|Russia (Amur River)|Russia (Pacific Ports)|Siberia|375|369",
@@ -115914,7 +115924,7 @@
       "source": "521",
       "target": "681",
       "attributes": {
-        "value": 239204,
+        "value": 238898,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_gravity"
@@ -115929,7 +115939,7 @@
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "681<-Berbera & Bulhar & Zeila 229338\n681<-Italian Somaliland (other) & Somaliland Republic (British Somaliland) (other) 9866 (ratio on 58754)",
+        "notes": "681<-Berbera & Bulhar & Zeila 229338\n681<-Italian Somaliland (other) & Somaliland Republic (British Somaliland) (other) 9560 (ratio on 58754)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Berbera|Bulhar|Zeila|Somaliland Republic (British Somaliland) (other)|Heis|Karam unexpected: Berbera & Bulhar & Zeila",
@@ -118189,24 +118199,28 @@
       "source": "1055",
       "target": "52",
       "attributes": {
-        "value": 4941,
+        "value": 13596,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "1055"
+          "1055",
+          "57"
         ],
         "originalPartners": [
-          "1048"
+          "1048",
+          "British West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1055->1048 4941",
+        "notes": "1055->1048 4941\n1055->British West Indies 8655 (ratio on 23652)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1049"
+        "partial": "missing 55|56 unexpected: 1055",
+        "originalReportedTradeFlowIds": "1055->British West Indies"
       }
     },
     {
@@ -119564,12 +119578,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 606,
+        "value": 605,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 606 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 605 (ratio on 45551.25)"
       }
     },
     {
@@ -119583,12 +119597,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 806,
+        "value": 804,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 806 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 804 (ratio on 45551.25)"
       }
     },
     {
@@ -119602,12 +119616,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 5011,
+        "value": 4999,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 5011 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 4999 (ratio on 45551.25)"
       }
     },
     {
@@ -119621,12 +119635,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 11673,
+        "value": 11677,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 11673 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 11677 (ratio on 45551.25)"
       }
     },
     {
@@ -119640,12 +119654,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 12962,
+        "value": 12967,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 12962 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 12967 (ratio on 45551.25)"
       }
     },
     {
@@ -119659,12 +119673,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 14490,
+        "value": 14497,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-British West Indies",
-        "notes": "110<-British West Indies 14490 (ratio on 45551.25)"
+        "notes": "110<-British West Indies 14497 (ratio on 45551.25)"
       }
     },
     {
@@ -119830,12 +119844,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 254,
+        "value": 251,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-Portuguese Colonies",
-        "notes": "110<-Portuguese Colonies 254 (ratio on 6388.333333333334)"
+        "notes": "110<-Portuguese Colonies 251 (ratio on 6388.333333333334)"
       }
     },
     {
@@ -119849,12 +119863,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 269,
+        "value": 267,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-Portuguese Colonies",
-        "notes": "110<-Portuguese Colonies 269 (ratio on 6388.333333333334)"
+        "notes": "110<-Portuguese Colonies 267 (ratio on 6388.333333333334)"
       }
     },
     {
@@ -119868,12 +119882,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 455,
+        "value": 449,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-Portuguese Colonies",
-        "notes": "110<-Portuguese Colonies 455 (ratio on 6388.333333333334)"
+        "notes": "110<-Portuguese Colonies 449 (ratio on 6388.333333333334)"
       }
     },
     {
@@ -119887,12 +119901,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 1129,
+        "value": 1130,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-Portuguese Colonies",
-        "notes": "110<-Portuguese Colonies 1129 (ratio on 6388.333333333334)"
+        "notes": "110<-Portuguese Colonies 1130 (ratio on 6388.333333333334)"
       }
     },
     {
@@ -119906,12 +119920,12 @@
         ],
         "reportedBy": "110",
         "status": "ok",
-        "value": 4252,
+        "value": 4262,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "110<-Portuguese Colonies",
-        "notes": "110<-Portuguese Colonies 4252 (ratio on 6388.333333333334)"
+        "notes": "110<-Portuguese Colonies 4262 (ratio on 6388.333333333334)"
       }
     },
     {
@@ -119982,12 +119996,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 73089,
+        "value": 72938,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-British West Indies",
-        "notes": "200<-British West Indies 73089 (ratio on 4074142)"
+        "notes": "200<-British West Indies 72938 (ratio on 4074142)"
       }
     },
     {
@@ -120001,12 +120015,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 454313,
+        "value": 453154,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-British West Indies",
-        "notes": "200<-British West Indies 454313 (ratio on 4074142)"
+        "notes": "200<-British West Indies 453154 (ratio on 4074142)"
       }
     },
     {
@@ -120020,12 +120034,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 1058180,
+        "value": 1058499,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-British West Indies",
-        "notes": "200<-British West Indies 1058180 (ratio on 4074142)"
+        "notes": "200<-British West Indies 1058499 (ratio on 4074142)"
       }
     },
     {
@@ -120039,12 +120053,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 1174987,
+        "value": 1175419,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-British West Indies",
-        "notes": "200<-British West Indies 1174987 (ratio on 4074142)"
+        "notes": "200<-British West Indies 1175419 (ratio on 4074142)"
       }
     },
     {
@@ -120058,12 +120072,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 1313571,
+        "value": 1314130,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-British West Indies",
-        "notes": "200<-British West Indies 1313571 (ratio on 4074142)"
+        "notes": "200<-British West Indies 1314130 (ratio on 4074142)"
       }
     },
     {
@@ -120077,12 +120091,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 135113,
+        "value": 134278,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Denmark & Faeroe Is.",
-        "notes": "200<-Denmark & Faeroe Is. 135113 (ratio on 22569927)"
+        "notes": "200<-Denmark & Faeroe Is. 134278 (ratio on 22569927)"
       }
     },
     {
@@ -120096,12 +120110,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 22434816,
+        "value": 22435648,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Denmark & Faeroe Is.",
-        "notes": "200<-Denmark & Faeroe Is. 22434816 (ratio on 22569927)"
+        "notes": "200<-Denmark & Faeroe Is. 22435648 (ratio on 22569927)"
       }
     },
     {
@@ -120153,12 +120167,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 17862,
+        "value": 17664,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Guam & Philippines",
-        "notes": "200<-Guam & Philippines 17862 (ratio on 2156651)"
+        "notes": "200<-Guam & Philippines 17664 (ratio on 2156651)"
       }
     },
     {
@@ -120172,12 +120186,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 2138788,
+        "value": 2138986,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Guam & Philippines",
-        "notes": "200<-Guam & Philippines 2138788 (ratio on 2156651)"
+        "notes": "200<-Guam & Philippines 2138986 (ratio on 2156651)"
       }
     },
     {
@@ -120191,12 +120205,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 116565,
+        "value": 116192,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Portuguese Western Africa",
-        "notes": "200<-Portuguese Western Africa 116565 (ratio on 239898)"
+        "notes": "200<-Portuguese Western Africa 116192 (ratio on 239898)"
       }
     },
     {
@@ -120210,12 +120224,12 @@
         ],
         "reportedBy": "200",
         "status": "ok",
-        "value": 123332,
+        "value": 123705,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "200<-Portuguese Western Africa",
-        "notes": "200<-Portuguese Western Africa 123332 (ratio on 239898)"
+        "notes": "200<-Portuguese Western Africa 123705 (ratio on 239898)"
       }
     },
     {
@@ -120229,12 +120243,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 17275,
+        "value": 17257,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 17275 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 17257 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120248,12 +120262,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 22967,
+        "value": 22920,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 22967 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 22920 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120267,12 +120281,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 142762,
+        "value": 142400,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 142762 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 142400 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120286,12 +120300,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 332520,
+        "value": 332625,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 332520 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 332625 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120305,12 +120319,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 369225,
+        "value": 369366,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 369225 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 369366 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120324,12 +120338,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 412773,
+        "value": 412955,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-British West Indies",
-        "notes": "20<-British West Indies 412773 (ratio on 1297525.5300781168)"
+        "notes": "20<-British West Indies 412955 (ratio on 1297525.5300781168)"
       }
     },
     {
@@ -120343,12 +120357,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 599,
+        "value": 180,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 599 (ratio on 6418.208999220938)"
+        "notes": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 180 (ratio on 6418.208999220938)"
       }
     },
     {
@@ -120362,12 +120376,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 5818,
+        "value": 6237,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 5818 (ratio on 6418.208999220938)"
+        "notes": "20<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 6237 (ratio on 6418.208999220938)"
       }
     },
     {
@@ -120400,12 +120414,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 77,
+        "value": 76,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-German Africa",
-        "notes": "20<-German Africa 77 (ratio on 23857.200008422293)"
+        "notes": "20<-German Africa 76 (ratio on 23857.200008422293)"
       }
     },
     {
@@ -120419,12 +120433,12 @@
         ],
         "reportedBy": "20",
         "status": "ok",
-        "value": 23753,
+        "value": 23754,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "20<-German Africa",
-        "notes": "20<-German Africa 23753 (ratio on 23857.200008422293)"
+        "notes": "20<-German Africa 23754 (ratio on 23857.200008422293)"
       }
     },
     {
@@ -120780,12 +120794,12 @@
         ],
         "reportedBy": "210",
         "status": "ok",
-        "value": 114,
+        "value": 112,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "210<-Eastern Africa",
-        "notes": "210<-Eastern Africa 114 (ratio on 2336.6790899951793)"
+        "notes": "210<-Eastern Africa 112 (ratio on 2336.6790899951793)"
       }
     },
     {
@@ -120818,12 +120832,12 @@
         ],
         "reportedBy": "210",
         "status": "ok",
-        "value": 235,
+        "value": 234,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "210<-Eastern Africa",
-        "notes": "210<-Eastern Africa 235 (ratio on 2336.6790899951793)"
+        "notes": "210<-Eastern Africa 234 (ratio on 2336.6790899951793)"
       }
     },
     {
@@ -120837,12 +120851,12 @@
         ],
         "reportedBy": "210",
         "status": "ok",
-        "value": 287,
+        "value": 294,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "210<-Eastern Africa",
-        "notes": "210<-Eastern Africa 287 (ratio on 2336.6790899951793)"
+        "notes": "210<-Eastern Africa 294 (ratio on 2336.6790899951793)"
       }
     },
     {
@@ -120856,12 +120870,12 @@
         ],
         "reportedBy": "210",
         "status": "ok",
-        "value": 1288,
+        "value": 1285,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "210<-Eastern Africa",
-        "notes": "210<-Eastern Africa 1288 (ratio on 2336.6790899951793)"
+        "notes": "210<-Eastern Africa 1285 (ratio on 2336.6790899951793)"
       }
     },
     {
@@ -120894,12 +120908,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 580,
+        "value": 579,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 580 (ratio on 44030)"
+        "notes": "21<-British West Indies 579 (ratio on 44030)"
       }
     },
     {
@@ -120913,12 +120927,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 771,
+        "value": 769,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 771 (ratio on 44030)"
+        "notes": "21<-British West Indies 769 (ratio on 44030)"
       }
     },
     {
@@ -120932,12 +120946,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 4795,
+        "value": 4783,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 4795 (ratio on 44030)"
+        "notes": "21<-British West Indies 4783 (ratio on 44030)"
       }
     },
     {
@@ -120951,12 +120965,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 11170,
+        "value": 11174,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 11170 (ratio on 44030)"
+        "notes": "21<-British West Indies 11174 (ratio on 44030)"
       }
     },
     {
@@ -120970,12 +120984,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 12403,
+        "value": 12408,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 12403 (ratio on 44030)"
+        "notes": "21<-British West Indies 12408 (ratio on 44030)"
       }
     },
     {
@@ -120989,12 +121003,12 @@
         ],
         "reportedBy": "21",
         "status": "ok",
-        "value": 13866,
+        "value": 13872,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "21<-British West Indies",
-        "notes": "21<-British West Indies 13866 (ratio on 44030)"
+        "notes": "21<-British West Indies 13872 (ratio on 44030)"
       }
     },
     {
@@ -121008,12 +121022,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 4151,
+        "value": 4145,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 4151 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 4145 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121027,12 +121041,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 5455,
+        "value": 5448,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 5455 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 5448 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121046,12 +121060,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 7252,
+        "value": 7236,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 7252 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 7236 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121065,12 +121079,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 42451,
+        "value": 42293,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 42451 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 42293 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121084,12 +121098,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 45078,
+        "value": 44960,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 45078 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 44960 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121103,12 +121117,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 65807,
+        "value": 65689,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 65807 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 65689 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121122,12 +121136,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 104996,
+        "value": 105021,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 104996 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 105021 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121141,12 +121155,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 116586,
+        "value": 116621,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 116586 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 116621 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121160,12 +121174,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 130337,
+        "value": 130384,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 130337 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 130384 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121179,12 +121193,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 238710,
+        "value": 238281,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 238710 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 238281 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121198,12 +121212,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 1431063,
+        "value": 1431003,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 1431063 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 1431003 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121217,12 +121231,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 2358025,
+        "value": 2358830,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British America",
-        "notes": "220<-British America 2358025 (ratio on 4549916.700007983)"
+        "notes": "220<-British America 2358830 (ratio on 4549916.700007983)"
       }
     },
     {
@@ -121236,12 +121250,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 4262,
+        "value": 4252,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British Mediterranean Sea",
-        "notes": "220<-British Mediterranean Sea 4262 (ratio on 30408.80000005335)"
+        "notes": "220<-British Mediterranean Sea 4252 (ratio on 30408.80000005335)"
       }
     },
     {
@@ -121255,12 +121269,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 9724,
+        "value": 9731,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British Mediterranean Sea",
-        "notes": "220<-British Mediterranean Sea 9724 (ratio on 30408.80000005335)"
+        "notes": "220<-British Mediterranean Sea 9731 (ratio on 30408.80000005335)"
       }
     },
     {
@@ -121274,12 +121288,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 16422,
+        "value": 16425,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-British Mediterranean Sea",
-        "notes": "220<-British Mediterranean Sea 16422 (ratio on 30408.80000005335)"
+        "notes": "220<-British Mediterranean Sea 16425 (ratio on 30408.80000005335)"
       }
     },
     {
@@ -121293,12 +121307,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 2453,
+        "value": 2457,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua",
-        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 2453 (ratio on 186253.90000032677)"
+        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 2457 (ratio on 186253.90000032677)"
       }
     },
     {
@@ -121312,12 +121326,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 32079,
+        "value": 32120,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua",
-        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 32079 (ratio on 186253.90000032677)"
+        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 32120 (ratio on 186253.90000032677)"
       }
     },
     {
@@ -121331,12 +121345,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 47254,
+        "value": 47225,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua",
-        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 47254 (ratio on 186253.90000032677)"
+        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 47225 (ratio on 186253.90000032677)"
       }
     },
     {
@@ -121350,12 +121364,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 51650,
+        "value": 51639,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua",
-        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 51650 (ratio on 186253.90000032677)"
+        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 51639 (ratio on 186253.90000032677)"
       }
     },
     {
@@ -121369,12 +121383,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 52816,
+        "value": 52810,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua",
-        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 52816 (ratio on 186253.90000032677)"
+        "notes": "220<-Costa Rica & El Salvador & Guatemala & Honduras & Nicaragua 52810 (ratio on 186253.90000032677)"
       }
     },
     {
@@ -121388,12 +121402,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 114284,
+        "value": 114183,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Cuba & Puerto Rico",
-        "notes": "220<-Cuba & Puerto Rico 114284 (ratio on 459933.1000008069)"
+        "notes": "220<-Cuba & Puerto Rico 114183 (ratio on 459933.1000008069)"
       }
     },
     {
@@ -121407,12 +121421,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 345648,
+        "value": 345749,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Cuba & Puerto Rico",
-        "notes": "220<-Cuba & Puerto Rico 345648 (ratio on 459933.1000008069)"
+        "notes": "220<-Cuba & Puerto Rico 345749 (ratio on 459933.1000008069)"
       }
     },
     {
@@ -121426,12 +121440,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 566804,
+        "value": 566908,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Dominican Republic (Santo Domingo) & Haiti",
-        "notes": "220<-Dominican Republic (Santo Domingo) & Haiti 566804 (ratio on 1372197.1000024073)"
+        "notes": "220<-Dominican Republic (Santo Domingo) & Haiti 566908 (ratio on 1372197.1000024073)"
       }
     },
     {
@@ -121445,12 +121459,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 805393,
+        "value": 805288,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Dominican Republic (Santo Domingo) & Haiti",
-        "notes": "220<-Dominican Republic (Santo Domingo) & Haiti 805393 (ratio on 1372197.1000024073)"
+        "notes": "220<-Dominican Republic (Santo Domingo) & Haiti 805288 (ratio on 1372197.1000024073)"
       }
     },
     {
@@ -121464,12 +121478,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 1556,
+        "value": 1551,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Kingdom of Serbia & Montenegro",
-        "notes": "220<-Kingdom of Serbia & Montenegro 1556 (ratio on 15204.400000026675)"
+        "notes": "220<-Kingdom of Serbia & Montenegro 1551 (ratio on 15204.400000026675)"
       }
     },
     {
@@ -121483,12 +121497,12 @@
         ],
         "reportedBy": "220",
         "status": "ok",
-        "value": 13647,
+        "value": 13653,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "220<-Kingdom of Serbia & Montenegro",
-        "notes": "220<-Kingdom of Serbia & Montenegro 13647 (ratio on 15204.400000026675)"
+        "notes": "220<-Kingdom of Serbia & Montenegro 13653 (ratio on 15204.400000026675)"
       }
     },
     {
@@ -121502,12 +121516,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 4007,
+        "value": 3971,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Afghanistan & Iran (Persia)",
-        "notes": "225<-Afghanistan & Iran (Persia) 4007 (ratio on 12622.252499998991)"
+        "notes": "225<-Afghanistan & Iran (Persia) 3971 (ratio on 12622.252499998991)"
       }
     },
     {
@@ -121521,12 +121535,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 8614,
+        "value": 8650,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Afghanistan & Iran (Persia)",
-        "notes": "225<-Afghanistan & Iran (Persia) 8614 (ratio on 12622.252499998991)"
+        "notes": "225<-Afghanistan & Iran (Persia) 8650 (ratio on 12622.252499998991)"
       }
     },
     {
@@ -121540,12 +121554,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 80157,
+        "value": 80072,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis)",
-        "notes": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 80157 (ratio on 216373.92805998272)"
+        "notes": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 80072 (ratio on 216373.92805998272)"
       }
     },
     {
@@ -121559,12 +121573,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 136216,
+        "value": 136301,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis)",
-        "notes": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 136216 (ratio on 216373.92805998272)"
+        "notes": "225<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 136301 (ratio on 216373.92805998272)"
       }
     },
     {
@@ -121597,12 +121611,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 529,
+        "value": 530,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 529 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 530 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121616,12 +121630,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 725,
+        "value": 727,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 725 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 727 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121635,12 +121649,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 1189,
+        "value": 1182,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 1189 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 1182 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121654,12 +121668,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 4631,
+        "value": 4642,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 4631 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 4642 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121673,12 +121687,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 4871,
+        "value": 4885,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 4871 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 4885 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121692,12 +121706,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 5390,
+        "value": 5403,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 5390 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 5403 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121711,31 +121725,12 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 6746,
+        "value": 6762,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 6746 (ratio on 75985.41082999393)"
-      }
-    },
-    {
-      "key": "225<-165",
-      "source": "165",
-      "target": "225",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "225",
-        "status": "ok",
-        "value": 25873,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 25873 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 6762 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121749,12 +121744,31 @@
         ],
         "reportedBy": "225",
         "status": "ok",
-        "value": 25875,
+        "value": 25753,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "225<-Southern America (other)",
-        "notes": "225<-Southern America (other) 25875 (ratio on 75985.41082999393)"
+        "notes": "225<-Southern America (other) 25753 (ratio on 75985.41082999393)"
+      }
+    },
+    {
+      "key": "225<-165",
+      "source": "165",
+      "target": "225",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "225",
+        "status": "ok",
+        "value": 25945,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "225<-Southern America (other)",
+        "notes": "225<-Southern America (other) 25945 (ratio on 75985.41082999393)"
       }
     },
     {
@@ -121806,12 +121820,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 584,
+        "value": 583,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 584 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 583 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121825,12 +121839,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 3421,
+        "value": 3408,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 3421 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 3408 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121844,12 +121858,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 3633,
+        "value": 3623,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 3633 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 3623 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121863,12 +121877,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 5304,
+        "value": 5294,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 5304 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 5294 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121882,12 +121896,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 8462,
+        "value": 8464,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 8462 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 8464 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121901,12 +121915,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 9397,
+        "value": 9399,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 9397 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 9399 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121920,12 +121934,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 10505,
+        "value": 10509,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 10505 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 10509 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121939,12 +121953,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 19240,
+        "value": 19205,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 19240 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 19205 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121958,12 +121972,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 115345,
+        "value": 115340,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 115345 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 115340 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121977,12 +121991,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 190059,
+        "value": 190124,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-British America",
-        "notes": "230<-British America 190059 (ratio on 366728.1124497992)"
+        "notes": "230<-British America 190124 (ratio on 366728.1124497992)"
       }
     },
     {
@@ -121996,12 +122010,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 842,
+        "value": 838,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Danish Europe",
-        "notes": "230<-Danish Europe 842 (ratio on 20502.449799196787)"
+        "notes": "230<-Danish Europe 838 (ratio on 20502.449799196787)"
       }
     },
     {
@@ -122015,12 +122029,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 19659,
+        "value": 19663,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Danish Europe",
-        "notes": "230<-Danish Europe 19659 (ratio on 20502.449799196787)"
+        "notes": "230<-Danish Europe 19663 (ratio on 20502.449799196787)"
       }
     },
     {
@@ -122072,12 +122086,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 65,
+        "value": 66,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-French America",
-        "notes": "230<-French America 65 (ratio on 816.2650602409639)"
+        "notes": "230<-French America 66 (ratio on 816.2650602409639)"
       }
     },
     {
@@ -122167,12 +122181,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 89,
+        "value": 88,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-French Asia",
-        "notes": "230<-French Asia 89 (ratio on 933.8152610441767)"
+        "notes": "230<-French Asia 88 (ratio on 933.8152610441767)"
       }
     },
     {
@@ -122186,12 +122200,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 772,
+        "value": 773,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-French Asia",
-        "notes": "230<-French Asia 772 (ratio on 933.8152610441767)"
+        "notes": "230<-French Asia 773 (ratio on 933.8152610441767)"
       }
     },
     {
@@ -122205,12 +122219,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 981,
+        "value": 968,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Portuguese Africa",
-        "notes": "230<-Portuguese Africa 981 (ratio on 24520)"
+        "notes": "230<-Portuguese Africa 968 (ratio on 24520)"
       }
     },
     {
@@ -122224,12 +122238,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 1038,
+        "value": 1030,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Portuguese Africa",
-        "notes": "230<-Portuguese Africa 1038 (ratio on 24520)"
+        "notes": "230<-Portuguese Africa 1030 (ratio on 24520)"
       }
     },
     {
@@ -122243,12 +122257,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 1757,
+        "value": 1733,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Portuguese Africa",
-        "notes": "230<-Portuguese Africa 1757 (ratio on 24520)"
+        "notes": "230<-Portuguese Africa 1733 (ratio on 24520)"
       }
     },
     {
@@ -122262,12 +122276,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 4351,
+        "value": 4356,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Portuguese Africa",
-        "notes": "230<-Portuguese Africa 4351 (ratio on 24520)"
+        "notes": "230<-Portuguese Africa 4356 (ratio on 24520)"
       }
     },
     {
@@ -122281,12 +122295,12 @@
         ],
         "reportedBy": "230",
         "status": "ok",
-        "value": 16391,
+        "value": 16430,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "230<-Portuguese Africa",
-        "notes": "230<-Portuguese Africa 16391 (ratio on 24520)"
+        "notes": "230<-Portuguese Africa 16430 (ratio on 24520)"
       }
     },
     {
@@ -122395,12 +122409,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 41877,
+        "value": 41929,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British West Indies (other)",
-        "notes": "2<-British West Indies (other) 41877 (ratio on 443612.58373402373)"
+        "notes": "2<-British West Indies (other) 41929 (ratio on 443612.58373402373)"
       }
     },
     {
@@ -122414,12 +122428,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 55674,
+        "value": 55690,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British West Indies (other)",
-        "notes": "2<-British West Indies (other) 55674 (ratio on 443612.58373402373)"
+        "notes": "2<-British West Indies (other) 55690 (ratio on 443612.58373402373)"
       }
     },
     {
@@ -122433,12 +122447,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 346060,
+        "value": 345992,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British West Indies (other)",
-        "notes": "2<-British West Indies (other) 346060 (ratio on 443612.58373402373)"
+        "notes": "2<-British West Indies (other) 345992 (ratio on 443612.58373402373)"
       }
     },
     {
@@ -122452,12 +122466,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 47734,
+        "value": 47824,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British Western Africa",
-        "notes": "2<-British Western Africa 47734 (ratio on 191148.23490732748)"
+        "notes": "2<-British Western Africa 47824 (ratio on 191148.23490732748)"
       }
     },
     {
@@ -122471,12 +122485,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 57643,
+        "value": 57760,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British Western Africa",
-        "notes": "2<-British Western Africa 57643 (ratio on 191148.23490732748)"
+        "notes": "2<-British Western Africa 57760 (ratio on 191148.23490732748)"
       }
     },
     {
@@ -122490,12 +122504,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 85770,
+        "value": 85563,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-British Western Africa",
-        "notes": "2<-British Western Africa 85770 (ratio on 191148.23490732748)"
+        "notes": "2<-British Western Africa 85563 (ratio on 191148.23490732748)"
       }
     },
     {
@@ -122509,12 +122523,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 2382,
+        "value": 2383,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Cyprus & Gozo & Malta",
-        "notes": "2<-Cyprus & Gozo & Malta 2382 (ratio on 6407.142563596762)"
+        "notes": "2<-Cyprus & Gozo & Malta 2383 (ratio on 6407.142563596762)"
       }
     },
     {
@@ -122528,12 +122542,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 4024,
+        "value": 4023,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Cyprus & Gozo & Malta",
-        "notes": "2<-Cyprus & Gozo & Malta 4024 (ratio on 6407.142563596762)"
+        "notes": "2<-Cyprus & Gozo & Malta 4023 (ratio on 6407.142563596762)"
       }
     },
     {
@@ -122566,12 +122580,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 91,
+        "value": 90,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-French East Indies",
-        "notes": "2<-French East Indies 91 (ratio on 949.9445197879423)"
+        "notes": "2<-French East Indies 90 (ratio on 949.9445197879423)"
       }
     },
     {
@@ -122585,12 +122599,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 785,
+        "value": 786,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-French East Indies",
-        "notes": "2<-French East Indies 785 (ratio on 949.9445197879423)"
+        "notes": "2<-French East Indies 786 (ratio on 949.9445197879423)"
       }
     },
     {
@@ -122604,12 +122618,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 4873,
+        "value": 4880,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-French West Indies",
-        "notes": "2<-French West Indies 4873 (ratio on 11936.05391854683)"
+        "notes": "2<-French West Indies 4880 (ratio on 11936.05391854683)"
       }
     },
     {
@@ -122623,12 +122637,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 7062,
+        "value": 7055,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-French West Indies",
-        "notes": "2<-French West Indies 7062 (ratio on 11936.05391854683)"
+        "notes": "2<-French West Indies 7055 (ratio on 11936.05391854683)"
       }
     },
     {
@@ -122642,12 +122656,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 9721,
+        "value": 9592,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Portuguese Africa",
-        "notes": "2<-Portuguese Africa 9721 (ratio on 242925.2455513089)"
+        "notes": "2<-Portuguese Africa 9592 (ratio on 242925.2455513089)"
       }
     },
     {
@@ -122661,12 +122675,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 10286,
+        "value": 10213,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Portuguese Africa",
-        "notes": "2<-Portuguese Africa 10286 (ratio on 242925.2455513089)"
+        "notes": "2<-Portuguese Africa 10213 (ratio on 242925.2455513089)"
       }
     },
     {
@@ -122680,12 +122694,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 17407,
+        "value": 17176,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Portuguese Africa",
-        "notes": "2<-Portuguese Africa 17407 (ratio on 242925.2455513089)"
+        "notes": "2<-Portuguese Africa 17176 (ratio on 242925.2455513089)"
       }
     },
     {
@@ -122699,12 +122713,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 43114,
+        "value": 43163,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Portuguese Africa",
-        "notes": "2<-Portuguese Africa 43114 (ratio on 242925.2455513089)"
+        "notes": "2<-Portuguese Africa 43163 (ratio on 242925.2455513089)"
       }
     },
     {
@@ -122718,12 +122732,12 @@
         ],
         "reportedBy": "2",
         "status": "ok",
-        "value": 162394,
+        "value": 162779,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "2<-Portuguese Africa",
-        "notes": "2<-Portuguese Africa 162394 (ratio on 242925.2455513089)"
+        "notes": "2<-Portuguese Africa 162779 (ratio on 242925.2455513089)"
       }
     },
     {
@@ -122794,12 +122808,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 1613,
+        "value": 1611,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 1613 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 1611 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122813,12 +122827,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 2119,
+        "value": 2117,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 2119 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 2117 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122832,12 +122846,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 2818,
+        "value": 2812,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 2818 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 2812 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122851,12 +122865,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 17518,
+        "value": 17474,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 17518 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 17474 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122870,12 +122884,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 40803,
+        "value": 40816,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 40803 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 40816 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122889,12 +122903,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 45307,
+        "value": 45325,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 45307 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 45325 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122908,12 +122922,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 50651,
+        "value": 50674,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-British West Indies",
-        "notes": "300<-British West Indies 50651 (ratio on 160831.91072989965)"
+        "notes": "300<-British West Indies 50674 (ratio on 160831.91072989965)"
       }
     },
     {
@@ -122927,12 +122941,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 7054,
+        "value": 7064,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-El Salvador & Honduras & Nicaragua",
-        "notes": "300<-El Salvador & Honduras & Nicaragua 7054 (ratio on 235189.36586584503)"
+        "notes": "300<-El Salvador & Honduras & Nicaragua 7064 (ratio on 235189.36586584503)"
       }
     },
     {
@@ -122946,12 +122960,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 92248,
+        "value": 92349,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-El Salvador & Honduras & Nicaragua",
-        "notes": "300<-El Salvador & Honduras & Nicaragua 92248 (ratio on 235189.36586584503)"
+        "notes": "300<-El Salvador & Honduras & Nicaragua 92349 (ratio on 235189.36586584503)"
       }
     },
     {
@@ -122965,12 +122979,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 135886,
+        "value": 135776,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-El Salvador & Honduras & Nicaragua",
-        "notes": "300<-El Salvador & Honduras & Nicaragua 135886 (ratio on 235189.36586584503)"
+        "notes": "300<-El Salvador & Honduras & Nicaragua 135776 (ratio on 235189.36586584503)"
       }
     },
     {
@@ -123003,12 +123017,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 174,
+        "value": 172,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-German Africa",
-        "notes": "300<-German Africa 174 (ratio on 53627.472207186576)"
+        "notes": "300<-German Africa 172 (ratio on 53627.472207186576)"
       }
     },
     {
@@ -123022,12 +123036,12 @@
         ],
         "reportedBy": "300",
         "status": "ok",
-        "value": 53395,
+        "value": 53396,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "300<-German Africa",
-        "notes": "300<-German Africa 53395 (ratio on 53627.472207186576)"
+        "notes": "300<-German Africa 53396 (ratio on 53627.472207186576)"
       }
     },
     {
@@ -123041,12 +123055,12 @@
         ],
         "reportedBy": "31",
         "status": "ok",
-        "value": 587,
+        "value": 586,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "31<-British West Indies",
-        "notes": "31<-British West Indies 587 (ratio on 13687)"
+        "notes": "31<-British West Indies 586 (ratio on 13687)"
       }
     },
     {
@@ -123060,12 +123074,12 @@
         ],
         "reportedBy": "31",
         "status": "ok",
-        "value": 3652,
+        "value": 3645,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "31<-British West Indies",
-        "notes": "31<-British West Indies 3652 (ratio on 13687)"
+        "notes": "31<-British West Indies 3645 (ratio on 13687)"
       }
     },
     {
@@ -123079,12 +123093,12 @@
         ],
         "reportedBy": "31",
         "status": "ok",
-        "value": 9446,
+        "value": 9455,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "31<-British West Indies",
-        "notes": "31<-British West Indies 9446 (ratio on 13687)"
+        "notes": "31<-British West Indies 9455 (ratio on 13687)"
       }
     },
     {
@@ -123174,12 +123188,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 397,
+        "value": 396,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-British West Indies",
-        "notes": "325<-British West Indies 397 (ratio on 22676.560000024354)"
+        "notes": "325<-British West Indies 396 (ratio on 22676.560000024354)"
       }
     },
     {
@@ -123193,12 +123207,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 2469,
+        "value": 2463,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-British West Indies",
-        "notes": "325<-British West Indies 2469 (ratio on 22676.560000024354)"
+        "notes": "325<-British West Indies 2463 (ratio on 22676.560000024354)"
       }
     },
     {
@@ -123212,12 +123226,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 5753,
+        "value": 5754,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-British West Indies",
-        "notes": "325<-British West Indies 5753 (ratio on 22676.560000024354)"
+        "notes": "325<-British West Indies 5754 (ratio on 22676.560000024354)"
       }
     },
     {
@@ -123231,12 +123245,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 6388,
+        "value": 6390,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-British West Indies",
-        "notes": "325<-British West Indies 6388 (ratio on 22676.560000024354)"
+        "notes": "325<-British West Indies 6390 (ratio on 22676.560000024354)"
       }
     },
     {
@@ -123250,12 +123264,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 7141,
+        "value": 7144,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-British West Indies",
-        "notes": "325<-British West Indies 7141 (ratio on 22676.560000024354)"
+        "notes": "325<-British West Indies 7144 (ratio on 22676.560000024354)"
       }
     },
     {
@@ -123269,12 +123283,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 59203,
+        "value": 59214,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Dominican Republic (Santo Domingo) & Haiti",
-        "notes": "325<-Dominican Republic (Santo Domingo) & Haiti 59203 (ratio on 143328.38000015393)"
+        "notes": "325<-Dominican Republic (Santo Domingo) & Haiti 59214 (ratio on 143328.38000015393)"
       }
     },
     {
@@ -123288,12 +123302,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 84124,
+        "value": 84113,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Dominican Republic (Santo Domingo) & Haiti",
-        "notes": "325<-Dominican Republic (Santo Domingo) & Haiti 84124 (ratio on 143328.38000015393)"
+        "notes": "325<-Dominican Republic (Santo Domingo) & Haiti 84113 (ratio on 143328.38000015393)"
       }
     },
     {
@@ -123345,12 +123359,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 320,
+        "value": 319,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 320 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 319 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123364,12 +123378,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 514,
+        "value": 513,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 514 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 513 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123383,12 +123397,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 545,
+        "value": 544,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 545 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 544 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123402,12 +123416,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 681,
+        "value": 676,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 681 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 676 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123421,12 +123435,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 2602,
+        "value": 2608,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 2602 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 2608 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123440,12 +123454,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 5877,
+        "value": 5875,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 5877 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 5875 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123459,12 +123473,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 6569,
+        "value": 6572,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-French Colonies",
-        "notes": "325<-French Colonies 6569 (ratio on 17424.780000018713)"
+        "notes": "325<-French Colonies 6572 (ratio on 17424.780000018713)"
       }
     },
     {
@@ -123535,12 +123549,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 349766,
+        "value": 347207,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-India & Sri Lanka (Ceylon)",
-        "notes": "325<-India & Sri Lanka (Ceylon) 349766 (ratio on 7686414.7800082555)"
+        "notes": "325<-India & Sri Lanka (Ceylon) 347207 (ratio on 7686414.7800082555)"
       }
     },
     {
@@ -123554,12 +123568,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 7336648,
+        "value": 7339208,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-India & Sri Lanka (Ceylon)",
-        "notes": "325<-India & Sri Lanka (Ceylon) 7336648 (ratio on 7686414.7800082555)"
+        "notes": "325<-India & Sri Lanka (Ceylon) 7339208 (ratio on 7686414.7800082555)"
       }
     },
     {
@@ -123573,12 +123587,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 7802,
+        "value": 7699,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Portuguese Africa",
-        "notes": "325<-Portuguese Africa 7802 (ratio on 194976.6800002094)"
+        "notes": "325<-Portuguese Africa 7699 (ratio on 194976.6800002094)"
       }
     },
     {
@@ -123592,12 +123606,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 8255,
+        "value": 8197,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Portuguese Africa",
-        "notes": "325<-Portuguese Africa 8255 (ratio on 194976.6800002094)"
+        "notes": "325<-Portuguese Africa 8197 (ratio on 194976.6800002094)"
       }
     },
     {
@@ -123611,12 +123625,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 13971,
+        "value": 13786,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Portuguese Africa",
-        "notes": "325<-Portuguese Africa 13971 (ratio on 194976.6800002094)"
+        "notes": "325<-Portuguese Africa 13786 (ratio on 194976.6800002094)"
       }
     },
     {
@@ -123630,12 +123644,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 34604,
+        "value": 34643,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Portuguese Africa",
-        "notes": "325<-Portuguese Africa 34604 (ratio on 194976.6800002094)"
+        "notes": "325<-Portuguese Africa 34643 (ratio on 194976.6800002094)"
       }
     },
     {
@@ -123649,12 +123663,12 @@
         ],
         "reportedBy": "325",
         "status": "ok",
-        "value": 130340,
+        "value": 130650,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "325<-Portuguese Africa",
-        "notes": "325<-Portuguese Africa 130340 (ratio on 194976.6800002094)"
+        "notes": "325<-Portuguese Africa 130650 (ratio on 194976.6800002094)"
       }
     },
     {
@@ -123687,12 +123701,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 4731,
+        "value": 4732,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-British Northern America",
-        "notes": "380<-British Northern America 4731 (ratio on 5210.635396782111)"
+        "notes": "380<-British Northern America 4732 (ratio on 5210.635396782111)"
       }
     },
     {
@@ -123706,12 +123720,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 1149,
+        "value": 2030,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 1149 (ratio on 12310.771748022906)"
+        "notes": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 2030 (ratio on 12310.771748022906)"
       }
     },
     {
@@ -123725,12 +123739,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 11161,
+        "value": 10280,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 11161 (ratio on 12310.771748022906)"
+        "notes": "380<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 10280 (ratio on 12310.771748022906)"
       }
     },
     {
@@ -123744,12 +123758,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 199,
+        "value": 200,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 199 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 200 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123763,12 +123777,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 692,
+        "value": 695,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 692 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 695 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123782,12 +123796,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 949,
+        "value": 953,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 949 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 953 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123801,12 +123815,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 1556,
+        "value": 1549,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 1556 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 1549 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123820,12 +123834,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 5316,
+        "value": 5340,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 5316 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 5340 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123839,12 +123853,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 6059,
+        "value": 6085,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 6059 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 6085 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123858,12 +123872,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 8826,
+        "value": 8865,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 8826 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 8865 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123877,12 +123891,12 @@
         ],
         "reportedBy": "380",
         "status": "ok",
-        "value": 33852,
+        "value": 33762,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "380<-Southern America (other)",
-        "notes": "380<-Southern America (other) 33852 (ratio on 57452.84974093264)"
+        "notes": "380<-Southern America (other) 33762 (ratio on 57452.84974093264)"
       }
     },
     {
@@ -123896,12 +123910,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 1693,
+        "value": 1690,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland)",
-        "notes": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland) 1693 (ratio on 18424.396442185513)"
+        "notes": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland) 1690 (ratio on 18424.396442185513)"
       }
     },
     {
@@ -123915,12 +123929,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 16730,
+        "value": 16733,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland)",
-        "notes": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland) 16730 (ratio on 18424.396442185513)"
+        "notes": "385<-Canada (Province of Canada) & Newfoundland and Labrador (Newfoundland) 16733 (ratio on 18424.396442185513)"
       }
     },
     {
@@ -123972,12 +123986,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 96,
+        "value": 100,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 96 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 100 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124010,12 +124024,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 595,
+        "value": 588,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 595 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 588 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124029,12 +124043,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 1353,
+        "value": 1355,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 1353 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 1355 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124048,12 +124062,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 1563,
+        "value": 1532,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 1563 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 1532 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124067,12 +124081,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 2879,
+        "value": 2869,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 2879 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 2869 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124086,12 +124100,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 3196,
+        "value": 3185,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 3196 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 3185 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124105,12 +124119,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 3913,
+        "value": 4003,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 3913 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 4003 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124124,12 +124138,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 17521,
+        "value": 17484,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Eastern Africa",
-        "notes": "385<-Eastern Africa 17521 (ratio on 31771.630882177258)"
+        "notes": "385<-Eastern Africa 17484 (ratio on 31771.630882177258)"
       }
     },
     {
@@ -124143,12 +124157,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 388,
+        "value": 387,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Gibraltar & Malta",
-        "notes": "385<-Gibraltar & Malta 388 (ratio on 1884.251566589559)"
+        "notes": "385<-Gibraltar & Malta 387 (ratio on 1884.251566589559)"
       }
     },
     {
@@ -124162,12 +124176,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 1495,
+        "value": 1496,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Gibraltar & Malta",
-        "notes": "385<-Gibraltar & Malta 1495 (ratio on 1884.251566589559)"
+        "notes": "385<-Gibraltar & Malta 1496 (ratio on 1884.251566589559)"
       }
     },
     {
@@ -124181,12 +124195,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 539,
+        "value": 542,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 539 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 542 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124200,12 +124214,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 1877,
+        "value": 1882,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 1877 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 1882 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124219,12 +124233,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 2575,
+        "value": 2582,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 2575 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 2582 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124238,12 +124252,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 4221,
+        "value": 4198,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 4221 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 4198 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124257,12 +124271,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 14416,
+        "value": 14468,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 14416 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 14468 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124276,12 +124290,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 16430,
+        "value": 16487,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 16430 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 16487 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124295,12 +124309,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 17281,
+        "value": 17351,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 17281 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 17351 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124314,12 +124328,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 19124,
+        "value": 19191,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 19124 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 19191 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124333,12 +124347,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 23933,
+        "value": 24019,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 23933 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 24019 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124352,12 +124366,12 @@
         ],
         "reportedBy": "385",
         "status": "ok",
-        "value": 91794,
+        "value": 91469,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "385<-Southern America (other)",
-        "notes": "385<-Southern America (other) 91794 (ratio on 192193.659792135)"
+        "notes": "385<-Southern America (other) 91469 (ratio on 192193.659792135)"
       }
     },
     {
@@ -124371,12 +124385,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 65673,
+        "value": 65603,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis)",
-        "notes": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 65673 (ratio on 177277.10000031377)"
+        "notes": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 65603 (ratio on 177277.10000031377)"
       }
     },
     {
@@ -124390,12 +124404,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 111603,
+        "value": 111673,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis)",
-        "notes": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 111603 (ratio on 177277.10000031377)"
+        "notes": "390<-Algeria (Regency of Algiers) & Tunisia (Regency of Tunis) 111673 (ratio on 177277.10000031377)"
       }
     },
     {
@@ -124409,12 +124423,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 5158,
+        "value": 5148,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-British Northern America",
-        "notes": "390<-British Northern America 5158 (ratio on 56109.90000009932)"
+        "notes": "390<-British Northern America 5148 (ratio on 56109.90000009932)"
       }
     },
     {
@@ -124428,12 +124442,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 50951,
+        "value": 50961,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-British Northern America",
-        "notes": "390<-British Northern America 50951 (ratio on 56109.90000009932)"
+        "notes": "390<-British Northern America 50961 (ratio on 56109.90000009932)"
       }
     },
     {
@@ -124485,12 +124499,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 160,
+        "value": 161,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-German Africa",
-        "notes": "390<-German Africa 160 (ratio on 161.70000000028622)"
+        "notes": "390<-German Africa 161 (ratio on 161.70000000028622)"
       }
     },
     {
@@ -124504,12 +124518,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 32856,
+        "value": 32615,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-India & Sri Lanka (Ceylon)",
-        "notes": "390<-India & Sri Lanka (Ceylon) 32856 (ratio on 722044.400001278)"
+        "notes": "390<-India & Sri Lanka (Ceylon) 32615 (ratio on 722044.400001278)"
       }
     },
     {
@@ -124523,12 +124537,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 689188,
+        "value": 689428,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-India & Sri Lanka (Ceylon)",
-        "notes": "390<-India & Sri Lanka (Ceylon) 689188 (ratio on 722044.400001278)"
+        "notes": "390<-India & Sri Lanka (Ceylon) 689428 (ratio on 722044.400001278)"
       }
     },
     {
@@ -124542,12 +124556,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 474,
+        "value": 477,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 474 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 477 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124561,12 +124575,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 1650,
+        "value": 1657,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 1650 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 1657 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124580,12 +124594,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 2263,
+        "value": 2273,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 2263 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 2273 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124599,12 +124613,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 3711,
+        "value": 3696,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 3711 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 3696 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124618,12 +124632,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 14445,
+        "value": 14514,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 14445 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 14514 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124637,12 +124651,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 21042,
+        "value": 21145,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 21042 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 21145 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124656,12 +124670,12 @@
         ],
         "reportedBy": "390",
         "status": "ok",
-        "value": 80705,
+        "value": 80527,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "390<-Southern America (other)",
-        "notes": "390<-Southern America (other) 80705 (ratio on 124293.40000022)"
+        "notes": "390<-Southern America (other) 80527 (ratio on 124293.40000022)"
       }
     },
     {
@@ -124675,12 +124689,12 @@
         ],
         "reportedBy": "40",
         "status": "ok",
-        "value": 260,
+        "value": 259,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "40<-British West Indies",
-        "notes": "40<-British West Indies 260 (ratio on 19538.562384286135)"
+        "notes": "40<-British West Indies 259 (ratio on 19538.562384286135)"
       }
     },
     {
@@ -124713,12 +124727,12 @@
         ],
         "reportedBy": "40",
         "status": "ok",
-        "value": 2149,
+        "value": 2144,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "40<-British West Indies",
-        "notes": "40<-British West Indies 2149 (ratio on 19538.562384286135)"
+        "notes": "40<-British West Indies 2144 (ratio on 19538.562384286135)"
       }
     },
     {
@@ -124732,12 +124746,12 @@
         ],
         "reportedBy": "40",
         "status": "ok",
-        "value": 5007,
+        "value": 5008,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "40<-British West Indies",
-        "notes": "40<-British West Indies 5007 (ratio on 19538.562384286135)"
+        "notes": "40<-British West Indies 5008 (ratio on 19538.562384286135)"
       }
     },
     {
@@ -124751,12 +124765,12 @@
         ],
         "reportedBy": "40",
         "status": "ok",
-        "value": 5559,
+        "value": 5562,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "40<-British West Indies",
-        "notes": "40<-British West Indies 5559 (ratio on 19538.562384286135)"
+        "notes": "40<-British West Indies 5562 (ratio on 19538.562384286135)"
       }
     },
     {
@@ -124770,12 +124784,12 @@
         ],
         "reportedBy": "40",
         "status": "ok",
-        "value": 6215,
+        "value": 6218,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "40<-British West Indies",
-        "notes": "40<-British West Indies 6215 (ratio on 19538.562384286135)"
+        "notes": "40<-British West Indies 6218 (ratio on 19538.562384286135)"
       }
     },
     {
@@ -124846,12 +124860,12 @@
         ],
         "reportedBy": "420",
         "status": "ok",
-        "value": 64,
+        "value": 63,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "420<-Portuguese Colonies",
-        "notes": "420<-Portuguese Colonies 64 (ratio on 1609)"
+        "notes": "420<-Portuguese Colonies 63 (ratio on 1609)"
       }
     },
     {
@@ -124884,12 +124898,12 @@
         ],
         "reportedBy": "420",
         "status": "ok",
-        "value": 114,
+        "value": 113,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "420<-Portuguese Colonies",
-        "notes": "420<-Portuguese Colonies 114 (ratio on 1609)"
+        "notes": "420<-Portuguese Colonies 113 (ratio on 1609)"
       }
     },
     {
@@ -124922,12 +124936,12 @@
         ],
         "reportedBy": "420",
         "status": "ok",
-        "value": 1071,
+        "value": 1073,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "420<-Portuguese Colonies",
-        "notes": "420<-Portuguese Colonies 1071 (ratio on 1609)"
+        "notes": "420<-Portuguese Colonies 1073 (ratio on 1609)"
       }
     },
     {
@@ -125074,12 +125088,12 @@
         ],
         "reportedBy": "475",
         "status": "ok",
-        "value": 67,
+        "value": 68,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "475<-Portuguese Colonies",
-        "notes": "475<-Portuguese Colonies 67 (ratio on 102)"
+        "notes": "475<-Portuguese Colonies 68 (ratio on 102)"
       }
     },
     {
@@ -125093,12 +125107,12 @@
         ],
         "reportedBy": "490",
         "status": "ok",
-        "value": 877,
+        "value": 879,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "490<-British Western Africa",
-        "notes": "490<-British Western Africa 877 (ratio on 3515.561368006168)"
+        "notes": "490<-British Western Africa 879 (ratio on 3515.561368006168)"
       }
     },
     {
@@ -125112,12 +125126,12 @@
         ],
         "reportedBy": "490",
         "status": "ok",
-        "value": 1060,
+        "value": 1062,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "490<-British Western Africa",
-        "notes": "490<-British Western Africa 1060 (ratio on 3515.561368006168)"
+        "notes": "490<-British Western Africa 1062 (ratio on 3515.561368006168)"
       }
     },
     {
@@ -125131,12 +125145,12 @@
         ],
         "reportedBy": "490",
         "status": "ok",
-        "value": 1577,
+        "value": 1573,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "490<-British Western Africa",
-        "notes": "490<-British Western Africa 1577 (ratio on 3515.561368006168)"
+        "notes": "490<-British Western Africa 1573 (ratio on 3515.561368006168)"
       }
     },
     {
@@ -125454,12 +125468,12 @@
         ],
         "reportedBy": "501",
         "status": "ok",
-        "value": 239,
+        "value": 236,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "501<-Portuguese Colonies",
-        "notes": "501<-Portuguese Colonies 239 (ratio on 6013)"
+        "notes": "501<-Portuguese Colonies 236 (ratio on 6013)"
       }
     },
     {
@@ -125473,12 +125487,12 @@
         ],
         "reportedBy": "501",
         "status": "ok",
-        "value": 253,
+        "value": 251,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "501<-Portuguese Colonies",
-        "notes": "501<-Portuguese Colonies 253 (ratio on 6013)"
+        "notes": "501<-Portuguese Colonies 251 (ratio on 6013)"
       }
     },
     {
@@ -125492,12 +125506,12 @@
         ],
         "reportedBy": "501",
         "status": "ok",
-        "value": 429,
+        "value": 423,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "501<-Portuguese Colonies",
-        "notes": "501<-Portuguese Colonies 429 (ratio on 6013)"
+        "notes": "501<-Portuguese Colonies 423 (ratio on 6013)"
       }
     },
     {
@@ -125511,12 +125525,12 @@
         ],
         "reportedBy": "501",
         "status": "ok",
-        "value": 1062,
+        "value": 1063,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "501<-Portuguese Colonies",
-        "notes": "501<-Portuguese Colonies 1062 (ratio on 6013)"
+        "notes": "501<-Portuguese Colonies 1063 (ratio on 6013)"
       }
     },
     {
@@ -125530,12 +125544,12 @@
         ],
         "reportedBy": "501",
         "status": "ok",
-        "value": 4002,
+        "value": 4012,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "501<-Portuguese Colonies",
-        "notes": "501<-Portuguese Colonies 4002 (ratio on 6013)"
+        "notes": "501<-Portuguese Colonies 4012 (ratio on 6013)"
       }
     },
     {
@@ -125663,12 +125677,12 @@
         ],
         "reportedBy": "511",
         "status": "ok",
-        "value": 3526,
+        "value": 3527,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "511<-Scandinavia",
-        "notes": "511<-Scandinavia 3526 (ratio on 10276)"
+        "notes": "511<-Scandinavia 3527 (ratio on 10276)"
       }
     },
     {
@@ -125682,12 +125696,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 39746,
+        "value": 39669,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British Northern America",
-        "notes": "52<-British Northern America 39746 (ratio on 432366)"
+        "notes": "52<-British Northern America 39669 (ratio on 432366)"
       }
     },
     {
@@ -125701,12 +125715,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 392619,
+        "value": 392697,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British Northern America",
-        "notes": "52<-British Northern America 392619 (ratio on 432366)"
+        "notes": "52<-British Northern America 392697 (ratio on 432366)"
       }
     },
     {
@@ -125720,12 +125734,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 509,
+        "value": 508,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 509 (ratio on 37905)"
+        "notes": "52<-British West Indies 508 (ratio on 37905)"
       }
     },
     {
@@ -125739,12 +125753,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 669,
+        "value": 668,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 669 (ratio on 37905)"
+        "notes": "52<-British West Indies 668 (ratio on 37905)"
       }
     },
     {
@@ -125758,12 +125772,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 890,
+        "value": 888,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 890 (ratio on 37905)"
+        "notes": "52<-British West Indies 888 (ratio on 37905)"
       }
     },
     {
@@ -125777,12 +125791,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 5532,
+        "value": 5518,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 5532 (ratio on 37905)"
+        "notes": "52<-British West Indies 5518 (ratio on 37905)"
       }
     },
     {
@@ -125796,12 +125810,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 14308,
+        "value": 14315,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 14308 (ratio on 37905)"
+        "notes": "52<-British West Indies 14315 (ratio on 37905)"
       }
     },
     {
@@ -125815,12 +125829,12 @@
         ],
         "reportedBy": "52",
         "status": "ok",
-        "value": 15995,
+        "value": 16004,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "52<-British West Indies",
-        "notes": "52<-British West Indies 15995 (ratio on 37905)"
+        "notes": "52<-British West Indies 16004 (ratio on 37905)"
       }
     },
     {
@@ -125834,12 +125848,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 1198,
+        "value": 1197,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-British West Indies",
-        "notes": "53<-British West Indies 1198 (ratio on 64411)"
+        "notes": "53<-British West Indies 1197 (ratio on 64411)"
       }
     },
     {
@@ -125853,12 +125867,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 1593,
+        "value": 1590,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-British West Indies",
-        "notes": "53<-British West Indies 1593 (ratio on 64411)"
+        "notes": "53<-British West Indies 1590 (ratio on 64411)"
       }
     },
     {
@@ -125872,12 +125886,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 9905,
+        "value": 9882,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-British West Indies",
-        "notes": "53<-British West Indies 9905 (ratio on 64411)"
+        "notes": "53<-British West Indies 9882 (ratio on 64411)"
       }
     },
     {
@@ -125891,12 +125905,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 23072,
+        "value": 23083,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-British West Indies",
-        "notes": "53<-British West Indies 23072 (ratio on 64411)"
+        "notes": "53<-British West Indies 23083 (ratio on 64411)"
       }
     },
     {
@@ -125910,12 +125924,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 28640,
+        "value": 28657,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-British West Indies",
-        "notes": "53<-British West Indies 28640 (ratio on 64411)"
+        "notes": "53<-British West Indies 28657 (ratio on 64411)"
       }
     },
     {
@@ -125929,12 +125943,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 2133,
+        "value": 2135,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-French West Indies",
-        "notes": "53<-French West Indies 2133 (ratio on 5224)"
+        "notes": "53<-French West Indies 2135 (ratio on 5224)"
       }
     },
     {
@@ -125948,12 +125962,12 @@
         ],
         "reportedBy": "53",
         "status": "ok",
-        "value": 3090,
+        "value": 3088,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "53<-French West Indies",
-        "notes": "53<-French West Indies 3090 (ratio on 5224)"
+        "notes": "53<-French West Indies 3088 (ratio on 5224)"
       }
     },
     {
@@ -126271,12 +126285,12 @@
         ],
         "reportedBy": "552",
         "status": "ok",
-        "value": 22,
+        "value": 21,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "552<-British West Indies",
-        "notes": "552<-British West Indies 22 (ratio on 202)"
+        "notes": "552<-British West Indies 21 (ratio on 202)"
       }
     },
     {
@@ -126404,12 +126418,12 @@
         ],
         "reportedBy": "553",
         "status": "ok",
-        "value": 8827,
+        "value": 8805,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "553<-Mozambique (Portuguese East Africa) & Portugal",
-        "notes": "553<-Mozambique (Portuguese East Africa) & Portugal 8827 (ratio on 25725)"
+        "notes": "553<-Mozambique (Portuguese East Africa) & Portugal 8805 (ratio on 25725)"
       }
     },
     {
@@ -126423,12 +126437,12 @@
         ],
         "reportedBy": "553",
         "status": "ok",
-        "value": 16897,
+        "value": 16919,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "553<-Mozambique (Portuguese East Africa) & Portugal",
-        "notes": "553<-Mozambique (Portuguese East Africa) & Portugal 16897 (ratio on 25725)"
+        "notes": "553<-Mozambique (Portuguese East Africa) & Portugal 16919 (ratio on 25725)"
       }
     },
     {
@@ -126499,12 +126513,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 1006,
+        "value": 1004,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British West Indies",
-        "notes": "560<-British West Indies 1006 (ratio on 9243)"
+        "notes": "560<-British West Indies 1004 (ratio on 9243)"
       }
     },
     {
@@ -126518,12 +126532,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 2344,
+        "value": 2345,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British West Indies",
-        "notes": "560<-British West Indies 2344 (ratio on 9243)"
+        "notes": "560<-British West Indies 2345 (ratio on 9243)"
       }
     },
     {
@@ -126537,12 +126551,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 2603,
+        "value": 2604,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British West Indies",
-        "notes": "560<-British West Indies 2603 (ratio on 9243)"
+        "notes": "560<-British West Indies 2604 (ratio on 9243)"
       }
     },
     {
@@ -126556,12 +126570,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 2910,
+        "value": 2912,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British West Indies",
-        "notes": "560<-British West Indies 2910 (ratio on 9243)"
+        "notes": "560<-British West Indies 2912 (ratio on 9243)"
       }
     },
     {
@@ -126575,12 +126589,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 6308,
+        "value": 6307,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British Western Africa",
-        "notes": "560<-British Western Africa 6308 (ratio on 13926)"
+        "notes": "560<-British Western Africa 6307 (ratio on 13926)"
       }
     },
     {
@@ -126594,12 +126608,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 7617,
+        "value": 7618,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-British Western Africa",
-        "notes": "560<-British Western Africa 7617 (ratio on 13926)"
+        "notes": "560<-British Western Africa 7618 (ratio on 13926)"
       }
     },
     {
@@ -126613,12 +126627,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 8452,
+        "value": 8425,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-Portuguese Western Africa",
-        "notes": "560<-Portuguese Western Africa 8452 (ratio on 17395)"
+        "notes": "560<-Portuguese Western Africa 8425 (ratio on 17395)"
       }
     },
     {
@@ -126632,12 +126646,12 @@
         ],
         "reportedBy": "560",
         "status": "ok",
-        "value": 8942,
+        "value": 8969,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "560<-Portuguese Western Africa",
-        "notes": "560<-Portuguese Western Africa 8942 (ratio on 17395)"
+        "notes": "560<-Portuguese Western Africa 8969 (ratio on 17395)"
       }
     },
     {
@@ -126670,12 +126684,12 @@
         ],
         "reportedBy": "590",
         "status": "ok",
-        "value": 69,
+        "value": 68,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "590<-Australasia",
-        "notes": "590<-Australasia 69 (ratio on 25879)"
+        "notes": "590<-Australasia 68 (ratio on 25879)"
       }
     },
     {
@@ -126689,12 +126703,12 @@
         ],
         "reportedBy": "590",
         "status": "ok",
-        "value": 6557,
+        "value": 6548,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "590<-Australasia",
-        "notes": "590<-Australasia 6557 (ratio on 25879)"
+        "notes": "590<-Australasia 6548 (ratio on 25879)"
       }
     },
     {
@@ -126708,12 +126722,12 @@
         ],
         "reportedBy": "590",
         "status": "ok",
-        "value": 19222,
+        "value": 19232,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "590<-Australasia",
-        "notes": "590<-Australasia 19222 (ratio on 25879)"
+        "notes": "590<-Australasia 19232 (ratio on 25879)"
       }
     },
     {
@@ -126879,12 +126893,12 @@
         ],
         "reportedBy": "602",
         "status": "ok",
-        "value": 45071,
+        "value": 45072,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "602<-Algeria (Regency of Algiers) & France",
-        "notes": "602<-Algeria (Regency of Algiers) & France 45071 (ratio on 45729.475649080225)"
+        "notes": "602<-Algeria (Regency of Algiers) & France 45072 (ratio on 45729.475649080225)"
       }
     },
     {
@@ -126936,12 +126950,12 @@
         ],
         "reportedBy": "615",
         "status": "ok",
-        "value": 484,
+        "value": 483,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "615<-British Mediterranean Sea",
-        "notes": "615<-British Mediterranean Sea 484 (ratio on 3459.0010000060684)"
+        "notes": "615<-British Mediterranean Sea 483 (ratio on 3459.0010000060684)"
       }
     },
     {
@@ -127031,12 +127045,12 @@
         ],
         "reportedBy": "625",
         "status": "ok",
-        "value": 1124,
+        "value": 1126,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "625<-Aden & India",
-        "notes": "625<-Aden & India 1124 (ratio on 223542)"
+        "notes": "625<-Aden & India 1126 (ratio on 223542)"
       }
     },
     {
@@ -127050,12 +127064,12 @@
         ],
         "reportedBy": "625",
         "status": "ok",
-        "value": 222417,
+        "value": 222415,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "625<-Aden & India",
-        "notes": "625<-Aden & India 222417 (ratio on 223542)"
+        "notes": "625<-Aden & India 222415 (ratio on 223542)"
       }
     },
     {
@@ -127145,12 +127159,12 @@
         ],
         "reportedBy": "630",
         "status": "ok",
-        "value": 4156,
+        "value": 4155,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "630<-Dutch Colonies & Netherlands",
-        "notes": "630<-Dutch Colonies & Netherlands 4156 (ratio on 11801.438444107698)"
+        "notes": "630<-Dutch Colonies & Netherlands 4155 (ratio on 11801.438444107698)"
       }
     },
     {
@@ -127164,12 +127178,12 @@
         ],
         "reportedBy": "630",
         "status": "ok",
-        "value": 7269,
+        "value": 7270,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "630<-Dutch Colonies & Netherlands",
-        "notes": "630<-Dutch Colonies & Netherlands 7269 (ratio on 11801.438444107698)"
+        "notes": "630<-Dutch Colonies & Netherlands 7270 (ratio on 11801.438444107698)"
       }
     },
     {
@@ -127202,12 +127216,12 @@
         ],
         "reportedBy": "630",
         "status": "ok",
-        "value": 126409,
+        "value": 126408,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "630<-Hainan & Macao & People's Republic of China (China)",
-        "notes": "630<-Hainan & Macao & People's Republic of China (China) 126409 (ratio on 126569.44762547669)"
+        "notes": "630<-Hainan & Macao & People's Republic of China (China) 126408 (ratio on 126569.44762547669)"
       }
     },
     {
@@ -127221,12 +127235,12 @@
         ],
         "reportedBy": "651",
         "status": "ok",
-        "value": 143908,
+        "value": 143705,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "651<-Australia & New Zealand",
-        "notes": "651<-Australia & New Zealand 143908 (ratio on 565772.8482336929)"
+        "notes": "651<-Australia & New Zealand 143705 (ratio on 565772.8482336929)"
       }
     },
     {
@@ -127240,12 +127254,12 @@
         ],
         "reportedBy": "651",
         "status": "ok",
-        "value": 421864,
+        "value": 422067,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "651<-Australia & New Zealand",
-        "notes": "651<-Australia & New Zealand 421864 (ratio on 565772.8482336929)"
+        "notes": "651<-Australia & New Zealand 422067 (ratio on 565772.8482336929)"
       }
     },
     {
@@ -127259,12 +127273,12 @@
         ],
         "reportedBy": "681",
         "status": "ok",
-        "value": 243,
+        "value": 245,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "681<-Eastern Africa (other) & Italian East Africa",
-        "notes": "681<-Eastern Africa (other) & Italian East Africa 243 (ratio on 21415)"
+        "notes": "681<-Eastern Africa (other) & Italian East Africa 245 (ratio on 21415)"
       }
     },
     {
@@ -127278,12 +127292,12 @@
         ],
         "reportedBy": "681",
         "status": "ok",
-        "value": 4332,
+        "value": 4275,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "681<-Eastern Africa (other) & Italian East Africa",
-        "notes": "681<-Eastern Africa (other) & Italian East Africa 4332 (ratio on 21415)"
+        "notes": "681<-Eastern Africa (other) & Italian East Africa 4275 (ratio on 21415)"
       }
     },
     {
@@ -127297,12 +127311,12 @@
         ],
         "reportedBy": "681",
         "status": "ok",
-        "value": 7981,
+        "value": 8006,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "681<-Eastern Africa (other) & Italian East Africa",
-        "notes": "681<-Eastern Africa (other) & Italian East Africa 7981 (ratio on 21415)"
+        "notes": "681<-Eastern Africa (other) & Italian East Africa 8006 (ratio on 21415)"
       }
     },
     {
@@ -127316,12 +127330,12 @@
         ],
         "reportedBy": "681",
         "status": "ok",
-        "value": 8857,
+        "value": 8887,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "681<-Eastern Africa (other) & Italian East Africa",
-        "notes": "681<-Eastern Africa (other) & Italian East Africa 8857 (ratio on 21415)"
+        "notes": "681<-Eastern Africa (other) & Italian East Africa 8887 (ratio on 21415)"
       }
     },
     {
@@ -127335,12 +127349,12 @@
         ],
         "reportedBy": "681",
         "status": "ok",
-        "value": 48887,
+        "value": 49193,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "681<-Italian Somaliland (other) & Somaliland Republic (British Somaliland) (other)",
-        "notes": "681<-Italian Somaliland (other) & Somaliland Republic (British Somaliland) (other) 48887 (ratio on 58754)"
+        "notes": "681<-Italian Somaliland (other) & Somaliland Republic (British Somaliland) (other) 49193 (ratio on 58754)"
       }
     },
     {
@@ -127354,12 +127368,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 1612,
+        "value": 1606,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 1612 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 1606 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127373,12 +127387,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 4345,
+        "value": 4336,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 4345 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 4336 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127392,12 +127406,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 5300,
+        "value": 5311,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 5300 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 5311 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127411,12 +127425,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 7164,
+        "value": 7219,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 7164 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 7219 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127430,12 +127444,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 9344,
+        "value": 9352,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 9344 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 9352 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127449,12 +127463,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 12390,
+        "value": 12329,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco",
-        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 12390 (ratio on 40156.69687496863)"
+        "notes": "710<-Aden & Algeria (Regency of Algiers) & Turkey (Ottoman Empire) & Egypt Arab Republic (Egypt) & Iran (Persia) & Morocco 12329 (ratio on 40156.69687496863)"
       }
     },
     {
@@ -127468,12 +127482,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 25324,
+        "value": 25288,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Australia & New Zealand",
-        "notes": "710<-Australia & New Zealand 25324 (ratio on 99561.61249992221)"
+        "notes": "710<-Australia & New Zealand 25288 (ratio on 99561.61249992221)"
       }
     },
     {
@@ -127487,12 +127501,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 74237,
+        "value": 74273,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Australia & New Zealand",
-        "notes": "710<-Australia & New Zealand 74237 (ratio on 99561.61249992221)"
+        "notes": "710<-Australia & New Zealand 74273 (ratio on 99561.61249992221)"
       }
     },
     {
@@ -127544,12 +127558,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 4618,
+        "value": 4617,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Hawaii (Sandwich Is.) & United States of America",
-        "notes": "710<-Hawaii (Sandwich Is.) & United States of America 4618 (ratio on 4804072.292183747)"
+        "notes": "710<-Hawaii (Sandwich Is.) & United States of America 4617 (ratio on 4804072.292183747)"
       }
     },
     {
@@ -127563,12 +127577,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 4799454,
+        "value": 4799455,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Hawaii (Sandwich Is.) & United States of America",
-        "notes": "710<-Hawaii (Sandwich Is.) & United States of America 4799454 (ratio on 4804072.292183747)"
+        "notes": "710<-Hawaii (Sandwich Is.) & United States of America 4799455 (ratio on 4804072.292183747)"
       }
     },
     {
@@ -127582,12 +127596,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 12991,
+        "value": 12996,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles",
-        "notes": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles 12991 (ratio on 872372.5374993184)"
+        "notes": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles 12996 (ratio on 872372.5374993184)"
       }
     },
     {
@@ -127601,12 +127615,12 @@
         ],
         "reportedBy": "710",
         "status": "ok",
-        "value": 859380,
+        "value": 859376,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles",
-        "notes": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles 859380 (ratio on 872372.5374993184)"
+        "notes": "710<-Indonesia (Dutch East Indies) & Netherlands Antilles 859376 (ratio on 872372.5374993184)"
       }
     },
     {
@@ -127819,8 +127833,8 @@
       }
     },
     {
-      "key": "710<-165",
-      "source": "165",
+      "key": "710<-1163",
+      "source": "1163",
       "target": "710",
       "attributes": {
         "type": "trade",
@@ -127838,8 +127852,8 @@
       }
     },
     {
-      "key": "710<-1163",
-      "source": "1163",
+      "key": "710<-165",
+      "source": "165",
       "target": "710",
       "attributes": {
         "type": "trade",
@@ -128171,12 +128185,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 404,
+        "value": 403,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 404 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 403 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128190,12 +128204,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 2369,
+        "value": 2360,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 2369 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 2360 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128209,12 +128223,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 2515,
+        "value": 2509,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 2515 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 2509 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128228,12 +128242,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 3672,
+        "value": 3667,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 3672 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 3667 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128247,12 +128261,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 5860,
+        "value": 5862,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 5860 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 5862 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128266,12 +128280,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 6507,
+        "value": 6510,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 6507 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 6510 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128285,12 +128299,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 7274,
+        "value": 7278,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 7274 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 7278 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128304,12 +128318,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 79871,
+        "value": 79883,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-British America",
-        "notes": "740<-British America 79871 (ratio on 109012.65371876006)"
+        "notes": "740<-British America 79883 (ratio on 109012.65371876006)"
       }
     },
     {
@@ -128475,12 +128489,12 @@
         ],
         "reportedBy": "740",
         "status": "ok",
-        "value": 8056,
+        "value": 8055,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "740<-Southern America (other)",
-        "notes": "740<-Southern America (other) 8056 (ratio on 10933.066442156867)"
+        "notes": "740<-Southern America (other) 8055 (ratio on 10933.066442156867)"
       }
     },
     {
@@ -128608,12 +128622,12 @@
         ],
         "reportedBy": "750",
         "status": "ok",
-        "value": 3500,
+        "value": 3545,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "750<-Eritrea & Italian Somaliland",
-        "notes": "750<-Eritrea & Italian Somaliland 3500 (ratio on 145287)"
+        "notes": "750<-Eritrea & Italian Somaliland 3545 (ratio on 145287)"
       }
     },
     {
@@ -128627,12 +128641,12 @@
         ],
         "reportedBy": "750",
         "status": "ok",
-        "value": 141786,
+        "value": 141741,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "750<-Eritrea & Italian Somaliland",
-        "notes": "750<-Eritrea & Italian Somaliland 141786 (ratio on 145287)"
+        "notes": "750<-Eritrea & Italian Somaliland 141741 (ratio on 145287)"
       }
     },
     {
@@ -128760,12 +128774,12 @@
         ],
         "reportedBy": "80",
         "status": "ok",
-        "value": 134,
+        "value": 133,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "80<-British West Indies",
-        "notes": "80<-British West Indies 134 (ratio on 1231)"
+        "notes": "80<-British West Indies 133 (ratio on 1231)"
       }
     },
     {
@@ -128836,12 +128850,12 @@
         ],
         "reportedBy": "827",
         "status": "ok",
-        "value": 1334517,
+        "value": 1334923,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "827<-Dutch Colonies (other)",
-        "notes": "827<-Dutch Colonies (other) 1334517 (ratio on 7971747)"
+        "notes": "827<-Dutch Colonies (other) 1334923 (ratio on 7971747)"
       }
     },
     {
@@ -128855,12 +128869,12 @@
         ],
         "reportedBy": "827",
         "status": "ok",
-        "value": 6637229,
+        "value": 6636823,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "827<-Dutch Colonies (other)",
-        "notes": "827<-Dutch Colonies (other) 6637229 (ratio on 7971747)"
+        "notes": "827<-Dutch Colonies (other) 6636823 (ratio on 7971747)"
       }
     },
     {
@@ -128874,12 +128888,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 4367,
+        "value": 4402,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-Australasia",
-        "notes": "840<-Australasia 4367 (ratio on 295104.32224085403)"
+        "notes": "840<-Australasia 4402 (ratio on 295104.32224085403)"
       }
     },
     {
@@ -128893,12 +128907,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 9998,
+        "value": 10048,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-Australasia",
-        "notes": "840<-Australasia 9998 (ratio on 295104.32224085403)"
+        "notes": "840<-Australasia 10048 (ratio on 295104.32224085403)"
       }
     },
     {
@@ -128912,12 +128926,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 140628,
+        "value": 140544,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-Australasia",
-        "notes": "840<-Australasia 140628 (ratio on 295104.32224085403)"
+        "notes": "840<-Australasia 140544 (ratio on 295104.32224085403)"
       }
     },
     {
@@ -129064,12 +129078,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 110603,
+        "value": 110636,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-French East Indies",
-        "notes": "840<-French East Indies 110603 (ratio on 1440979.797177322)"
+        "notes": "840<-French East Indies 110636 (ratio on 1440979.797177322)"
       }
     },
     {
@@ -129083,12 +129097,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 138206,
+        "value": 137296,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-French East Indies",
-        "notes": "840<-French East Indies 138206 (ratio on 1440979.797177322)"
+        "notes": "840<-French East Indies 137296 (ratio on 1440979.797177322)"
       }
     },
     {
@@ -129102,12 +129116,12 @@
         ],
         "reportedBy": "840",
         "status": "ok",
-        "value": 1192169,
+        "value": 1193046,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "840<-French East Indies",
-        "notes": "840<-French East Indies 1192169 (ratio on 1440979.797177322)"
+        "notes": "840<-French East Indies 1193046 (ratio on 1440979.797177322)"
       }
     },
     {
@@ -129159,12 +129173,12 @@
         ],
         "reportedBy": "850",
         "status": "ok",
-        "value": 2613,
+        "value": 2615,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "850<-Dalian & Korea (Chosen) & Vladivostok",
-        "notes": "850<-Dalian & Korea (Chosen) & Vladivostok 2613 (ratio on 176563.80316930776)"
+        "notes": "850<-Dalian & Korea (Chosen) & Vladivostok 2615 (ratio on 176563.80316930776)"
       }
     },
     {
@@ -129178,12 +129192,12 @@
         ],
         "reportedBy": "850",
         "status": "ok",
-        "value": 104242,
+        "value": 104221,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "850<-Dalian & Korea (Chosen) & Vladivostok",
-        "notes": "850<-Dalian & Korea (Chosen) & Vladivostok 104242 (ratio on 176563.80316930776)"
+        "notes": "850<-Dalian & Korea (Chosen) & Vladivostok 104221 (ratio on 176563.80316930776)"
       }
     },
     {
@@ -129197,12 +129211,12 @@
         ],
         "reportedBy": "850",
         "status": "ok",
-        "value": 1440,
+        "value": 2545,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 1440 (ratio on 15429.52460383653)"
+        "notes": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 2545 (ratio on 15429.52460383653)"
       }
     },
     {
@@ -129216,12 +129230,12 @@
         ],
         "reportedBy": "850",
         "status": "ok",
-        "value": 13988,
+        "value": 12884,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State)",
-        "notes": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 13988 (ratio on 15429.52460383653)"
+        "notes": "850<-Egypt Arab Republic (Egypt) & Sudan (Anglo-Egyptian Sudan) (Mahdist State) 12884 (ratio on 15429.52460383653)"
       }
     },
     {
@@ -129235,12 +129249,12 @@
         ],
         "reportedBy": "900",
         "status": "ok",
-        "value": 1403,
+        "value": 1406,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "900<-British Western Africa",
-        "notes": "900<-British Western Africa 1403 (ratio on 5620)"
+        "notes": "900<-British Western Africa 1406 (ratio on 5620)"
       }
     },
     {
@@ -129254,12 +129268,12 @@
         ],
         "reportedBy": "900",
         "status": "ok",
-        "value": 1694,
+        "value": 1698,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "900<-British Western Africa",
-        "notes": "900<-British Western Africa 1694 (ratio on 5620)"
+        "notes": "900<-British Western Africa 1698 (ratio on 5620)"
       }
     },
     {
@@ -129273,12 +129287,12 @@
         ],
         "reportedBy": "900",
         "status": "ok",
-        "value": 2521,
+        "value": 2515,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "900<-British Western Africa",
-        "notes": "900<-British Western Africa 2521 (ratio on 5620)"
+        "notes": "900<-British Western Africa 2515 (ratio on 5620)"
       }
     },
     {
@@ -129292,12 +129306,12 @@
         ],
         "reportedBy": "900",
         "status": "ok",
-        "value": 1021,
+        "value": 1018,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "900<-Portuguese Western Africa",
-        "notes": "900<-Portuguese Western Africa 1021 (ratio on 2103)"
+        "notes": "900<-Portuguese Western Africa 1018 (ratio on 2103)"
       }
     },
     {
@@ -129311,12 +129325,12 @@
         ],
         "reportedBy": "900",
         "status": "ok",
-        "value": 1081,
+        "value": 1084,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "900<-Portuguese Western Africa",
-        "notes": "900<-Portuguese Western Africa 1081 (ratio on 2103)"
+        "notes": "900<-Portuguese Western Africa 1084 (ratio on 2103)"
       }
     },
     {
@@ -129374,6 +129388,56 @@
         ],
         "originalReportedTradeFlowIds": "900<-Southern America",
         "notes": "900<-Southern America 101 (ratio on 106)"
+      }
+    },
+    {
+      "key": "1055->31",
+      "source": "1055",
+      "target": "31",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "57"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 4166,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 4166 (ratio on 23652)"
+      }
+    },
+    {
+      "key": "1055->51",
+      "source": "1055",
+      "target": "51",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "57"
+        ],
+        "originalPartners": [
+          "British West Indies"
+        ],
+        "status": "ok",
+        "value": 5821,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->British West Indies",
+        "notes": "1055->British West Indies 5821 (ratio on 23652)"
       }
     },
     {

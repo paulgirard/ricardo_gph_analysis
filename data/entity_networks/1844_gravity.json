@@ -54666,11 +54666,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "59->British Northern America 100\nFrom a flow part-of reporter 59 to/from British Northern America\n1075->British Northern America 2503\nFrom a flow part-of reporter 1075 to/from British Northern America\n1076->British Northern America 549\nFrom a flow part-of reporter 1076 to/from British Northern America\n1061->British Northern America 37\nFrom a flow part-of reporter 1061 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 3189,
         "newPartners": "20|21|1022|1023|1024",
-        "partial": "missing 58"
+        "partial": "missing 58",
+        "mergedIn": [
+          "1063->1022",
+          "1063->21"
+        ]
       }
     },
     {
@@ -63888,6 +63892,62 @@
         ],
         "originalReportedTradeFlowIds": "1055->British Northern America",
         "notes": "1055->British Northern America 15 (ratio on 25)"
+      }
+    },
+    {
+      "key": "1063->1022",
+      "source": "1063",
+      "target": "1022",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "59",
+          "1075",
+          "1076",
+          "1061"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 333,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063->British Northern America",
+        "notes": "1063->British Northern America 333 (ratio on 3189)"
+      }
+    },
+    {
+      "key": "1063->21",
+      "source": "1063",
+      "target": "21",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "59",
+          "1075",
+          "1076",
+          "1061"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 2855,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063->British Northern America",
+        "notes": "1063->British Northern America 2855 (ratio on 3189)"
       }
     },
     {

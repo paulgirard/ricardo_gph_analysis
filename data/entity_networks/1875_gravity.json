@@ -61569,7 +61569,7 @@
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246",
         "mergedIn": [
           "255<-902",
-          "255<-905",
+          "255<-906",
           "255<-904"
         ]
       }
@@ -61970,11 +61970,16 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Central America & Mexico (other) 347137.2721497337\nFrom a flow part-of reporter 248 to/from Central America & Mexico (other)\ngravity results to be aggregated for partners: 100",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 347137.2721497337,
         "newPartners": "70|80|90|91|92|93|94|100|160|1081|1103",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246",
+        "mergedIn": [
+          "255<-92",
+          "255<-91",
+          "255<-70"
+        ]
       }
     },
     {
@@ -61997,11 +62002,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Puerto Rico & St. Thomas 134483.70229194153\nFrom a flow part-of reporter 248 to/from Puerto Rico & St. Thomas",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 134483.70229194153,
         "newPartners": "5|6",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246",
+        "mergedIn": [
+          "255<-5",
+          "255<-6"
+        ]
       }
     },
     {
@@ -62106,11 +62115,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Argentina (La Plata) & Uruguay 414942.09060255095\nFrom a flow part-of reporter 248 to/from Argentina (La Plata) & Uruguay",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 414942.09060255095,
         "newPartners": "160|165",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246",
+        "mergedIn": [
+          "255<-165"
+        ]
       }
     },
     {
@@ -62133,11 +62145,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Western America 1114401.6028930263\nFrom a flow part-of reporter 248 to/from Western America\ngravity results to be aggregated for partners: 2",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 1114401.6028930263,
         "newPartners": "2|3|20",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|246|2555|280|257|276|239|245|269|2246",
+        "mergedIn": [
+          "255<-2"
+        ]
       }
     },
     {
@@ -62554,7 +62569,7 @@
         "newPartners": "4|901|902|903|904|905|906",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|2247|2248|248|2555|280|257|276|239|245|269|2246",
         "mergedIn": [
-          "255<-906",
+          "255<-905",
           "255<-4",
           "255<-903",
           "255<-901"
@@ -68162,24 +68177,28 @@
       "source": "2",
       "target": "255",
       "attributes": {
-        "value": 4159751.258368763,
+        "value": 5274152.258368763,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "255",
         "originalReporters": [
-          "255"
+          "255",
+          "248"
         ],
         "originalPartners": [
-          "United States of America (other)"
+          "United States of America (other)",
+          "Western America"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "255<-United States of America (other) 4159751.258368763",
+        "notes": "255<-United States of America (other) 4159751.258368763\n255<-Western America 1114401 (ratio on 1114401.6028930263)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|1014"
+        "partial": "missing San Francisco|United States of America (Atlantic Coast)|United States of America (Pacific Coast)|1014 unexpected: Western America",
+        "originalReportedTradeFlowIds": "255<-Western America"
       }
     },
     {
@@ -71486,17 +71505,17 @@
           "900"
         ],
         "status": "ok",
-        "value": 1995,
+        "value": 84,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-900",
-        "notes": "255<-900 1995 (ratio on 4892.244538923911)"
+        "notes": "255<-900 84 (ratio on 4892.244538923911)"
       }
     },
     {
-      "key": "255<-905",
-      "source": "905",
+      "key": "255<-906",
+      "source": "906",
       "target": "255",
       "attributes": {
         "type": "trade",
@@ -71511,12 +71530,12 @@
           "900"
         ],
         "status": "ok",
-        "value": 11833,
+        "value": 437,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-900",
-        "notes": "255<-900 11833 (ratio on 4892.244538923911)"
+        "notes": "255<-900 437 (ratio on 4892.244538923911)"
       }
     },
     {
@@ -71536,17 +71555,42 @@
           "900"
         ],
         "status": "ok",
-        "value": 103615,
+        "value": 4370,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-900",
-        "notes": "255<-900 103615 (ratio on 4892.244538923911)"
+        "notes": "255<-900 4370 (ratio on 4892.244538923911)"
       }
     },
     {
-      "key": "255<-906",
-      "source": "906",
+      "key": "255<-165",
+      "source": "165",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Argentina (La Plata) & Uruguay"
+        ],
+        "status": "ok",
+        "value": 414942,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Argentina (La Plata) & Uruguay",
+        "notes": "255<-Argentina (La Plata) & Uruguay 414942 (ratio on 414942.09060255095)"
+      }
+    },
+    {
+      "key": "255<-905",
+      "source": "905",
       "target": "255",
       "attributes": {
         "type": "trade",
@@ -71561,12 +71605,12 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 10362,
+        "value": 20655,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 10362 (ratio on 258131.1306143521)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 20655 (ratio on 258131.1306143521)"
       }
     },
     {
@@ -71586,12 +71630,12 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 37540,
+        "value": 66980,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 37540 (ratio on 258131.1306143521)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 66980 (ratio on 258131.1306143521)"
       }
     },
     {
@@ -71611,12 +71655,12 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 38435,
+        "value": 67089,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 38435 (ratio on 258131.1306143521)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 67089 (ratio on 258131.1306143521)"
       }
     },
     {
@@ -71636,12 +71680,87 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 59241,
+        "value": 103406,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 59241 (ratio on 258131.1306143521)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 103406 (ratio on 258131.1306143521)"
+      }
+    },
+    {
+      "key": "255<-92",
+      "source": "92",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Central America & Mexico (other)"
+        ],
+        "status": "ok",
+        "value": 725,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Central America & Mexico (other)",
+        "notes": "255<-Central America & Mexico (other) 725 (ratio on 347137.2721497337)"
+      }
+    },
+    {
+      "key": "255<-91",
+      "source": "91",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Central America & Mexico (other)"
+        ],
+        "status": "ok",
+        "value": 13954,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Central America & Mexico (other)",
+        "notes": "255<-Central America & Mexico (other) 13954 (ratio on 347137.2721497337)"
+      }
+    },
+    {
+      "key": "255<-70",
+      "source": "70",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Central America & Mexico (other)"
+        ],
+        "status": "ok",
+        "value": 332458,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Central America & Mexico (other)",
+        "notes": "255<-Central America & Mexico (other) 332458 (ratio on 347137.2721497337)"
       }
     },
     {
@@ -71667,6 +71786,56 @@
         ],
         "originalReportedTradeFlowIds": "255<-European Turkey & Romania",
         "notes": "255<-European Turkey & Romania 1 (ratio on 5.864242779651077)"
+      }
+    },
+    {
+      "key": "255<-5",
+      "source": "5",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Puerto Rico & St. Thomas"
+        ],
+        "status": "ok",
+        "value": 51608,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Puerto Rico & St. Thomas",
+        "notes": "255<-Puerto Rico & St. Thomas 51608 (ratio on 134483.70229194153)"
+      }
+    },
+    {
+      "key": "255<-6",
+      "source": "6",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Puerto Rico & St. Thomas"
+        ],
+        "status": "ok",
+        "value": 82875,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Puerto Rico & St. Thomas",
+        "notes": "255<-Puerto Rico & St. Thomas 82875 (ratio on 134483.70229194153)"
       }
     },
     {

@@ -45196,10 +45196,10 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno<-Ionian Is. & Malta & United Kingdom 556670.2073252292\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta & United Kingdom",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "337<-200"
+          "337<-338"
         ],
         "valueToSplit": 97208.53495416816,
         "newPartners": "338|3349"
@@ -45286,7 +45286,6 @@
         "valueToSplit": 42487.90274991148,
         "newPartners": "338|3349",
         "mergedIn": [
-          "337<-338",
           "337<-3349"
         ]
       }
@@ -45611,10 +45610,11 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Ionian Is. & Malta & United Kingdom 328494.43329792673\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta & United Kingdom",
-        "status": "split_only_partial",
+        "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "337->200"
+          "337->3349",
+          "337->338"
         ],
         "valueToSplit": 62629.86861659806,
         "newPartners": "338|3349"
@@ -45696,14 +45696,10 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Ionian Is. & Malta 47995.59384712223\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta",
-        "status": "ignore_resolved",
+        "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 47995.59384712223,
-        "newPartners": "338|3349",
-        "mergedIn": [
-          "337->3349",
-          "337->338"
-        ]
+        "newPartners": "338|3349"
       }
     },
     {
@@ -45860,7 +45856,9 @@
         "valueToSplit": 7234.745662693261,
         "newPartners": "231|338",
         "partial": "missing Genoa|Kingdom of Sardinia (continental)",
-        "mergedIn": []
+        "mergedIn": [
+          "324<-231"
+        ]
       }
     },
     {
@@ -46099,7 +46097,9 @@
         "valueToSplit": 2671.230182147213,
         "newPartners": "231|338",
         "partial": "missing Genoa|Kingdom of Sardinia (continental)",
-        "mergedIn": []
+        "mergedIn": [
+          "324->231"
+        ]
       }
     },
     {
@@ -60840,6 +60840,31 @@
       }
     },
     {
+      "key": "324<-231",
+      "source": "231",
+      "target": "324",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "324",
+        "originalReporters": [
+          "Sardinia"
+        ],
+        "originalPartners": [
+          "Gibraltar & Malta"
+        ],
+        "status": "ok",
+        "value": 4461,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "324<-Gibraltar & Malta",
+        "notes": "324<-Gibraltar & Malta 4461 (ratio on 7234.745662693261)"
+      }
+    },
+    {
       "key": "324<-380",
       "source": "380",
       "target": "324",
@@ -60985,31 +61010,6 @@
       }
     },
     {
-      "key": "337<-338",
-      "source": "338",
-      "target": "337",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "337",
-        "originalReporters": [
-          "Livorno"
-        ],
-        "originalPartners": [
-          "Ionian Is. & Malta"
-        ],
-        "status": "ok",
-        "value": 42998,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "337<-Ionian Is. & Malta",
-        "notes": "337<-Ionian Is. & Malta 42998 (ratio on 42487.90274991148)"
-      }
-    },
-    {
       "key": "337<-3349",
       "source": "3349",
       "target": "337",
@@ -61026,12 +61026,37 @@
           "Ionian Is. & Malta"
         ],
         "status": "ok",
-        "value": 96698,
+        "value": 42487,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "337<-Ionian Is. & Malta",
-        "notes": "337<-Ionian Is. & Malta 96698 (ratio on 42487.90274991148)"
+        "notes": "337<-Ionian Is. & Malta 42487 (ratio on 42487.90274991148)"
+      }
+    },
+    {
+      "key": "337<-338",
+      "source": "338",
+      "target": "337",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Ionian Is. & Malta & United Kingdom"
+        ],
+        "status": "ok",
+        "value": 97208,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337<-Ionian Is. & Malta & United Kingdom",
+        "notes": "337<-Ionian Is. & Malta & United Kingdom 97208 (ratio on 556670.2073252292)"
       }
     },
     {
@@ -63093,6 +63118,31 @@
       }
     },
     {
+      "key": "324->231",
+      "source": "324",
+      "target": "231",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "324",
+        "originalReporters": [
+          "Sardinia"
+        ],
+        "originalPartners": [
+          "Gibraltar & Malta"
+        ],
+        "status": "ok",
+        "value": 2150,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "324->Gibraltar & Malta",
+        "notes": "324->Gibraltar & Malta 2150 (ratio on 2671.230182147213)"
+      }
+    },
+    {
       "key": "329->335",
       "source": "329",
       "target": "335",
@@ -63163,15 +63213,15 @@
           "Livorno"
         ],
         "originalPartners": [
-          "Ionian Is. & Malta"
+          "Ionian Is. & Malta & United Kingdom"
         ],
         "status": "ok",
-        "value": 53659,
+        "value": 30378,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
-        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta",
-        "notes": "337->Ionian Is. & Malta 53659 (ratio on 47995.59384712223)"
+        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta & United Kingdom",
+        "notes": "337->Ionian Is. & Malta & United Kingdom 30378 (ratio on 328494.43329792673)"
       }
     },
     {
@@ -63188,15 +63238,15 @@
           "Livorno"
         ],
         "originalPartners": [
-          "Ionian Is. & Malta"
+          "Ionian Is. & Malta & United Kingdom"
         ],
         "status": "ok",
-        "value": 56966,
+        "value": 32251,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
-        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta",
-        "notes": "337->Ionian Is. & Malta 56966 (ratio on 47995.59384712223)"
+        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta & United Kingdom",
+        "notes": "337->Ionian Is. & Malta & United Kingdom 32251 (ratio on 328494.43329792673)"
       }
     },
     {

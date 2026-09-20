@@ -64472,11 +64472,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Mumbai (Bombay)<-Persian Gulf 162692.75748871564\nFrom a flow part-of reporter Mumbai (Bombay) to/from Persian Gulf\nChennai (Madras)<-Persian Gulf 1687.0127205580634\nFrom a flow part-of reporter Chennai (Madras) to/from Persian Gulf",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 164379.7702092737,
         "newPartners": "630|640|651|670|690|692|696|698",
-        "partial": "missing East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695"
+        "partial": "missing East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695",
+        "mergedIn": [
+          "750<-630"
+        ]
       }
     },
     {
@@ -68413,6 +68416,7 @@
         "newPartners": "433|585|615",
         "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|Málaga|Bilbao|Santander|Gijón|San Sebastián|Cadix|A Coruna|Cartagena (Spain)|410",
         "mergedIn": [
+          "230<-615",
           "230<-433",
           "230<-585"
         ]
@@ -68675,7 +68679,8 @@
         "partial": "missing Spain (Atlantic Coast)|Spain (Mediterranean Coast)|Málaga|Bilbao|Santander|Gijón|San Sebastián|Cadix|A Coruna|Cartagena (Spain)|410",
         "mergedIn": [
           "230->433",
-          "230->585"
+          "230->585",
+          "230->615"
         ]
       }
     },
@@ -72761,11 +72766,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Chennai (Madras)<-Canary Is. & Madeira Isles 3298.0098481739847\nFrom a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles\ngravity results to be aggregated for partners: 235",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 3298.0098481739847,
         "newPartners": "230|235",
-        "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695"
+        "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|Bengal|830|8271|7566|8272|7695",
+        "mergedIn": [
+          "750<-235"
+        ]
       }
     },
     {
@@ -76200,24 +76208,28 @@
       "source": "235",
       "target": "750",
       "attributes": {
-        "value": 344.68608945424705,
+        "value": 3642.686089454247,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "750",
         "originalReporters": [
-          "750"
+          "750",
+          "Chennai (Madras)"
         ],
         "originalPartners": [
-          "401"
+          "401",
+          "Canary Is. & Madeira Isles"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "750<-401 344.68608945424705",
+        "notes": "750<-401 344.68608945424705\n750<-Canary Is. & Madeira Isles 3298 (ratio on 3298.0098481739847)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Lisbon|Porto|400"
+        "partial": "missing Lisbon|Porto|400 unexpected: Canary Is. & Madeira Isles",
+        "originalReportedTradeFlowIds": "750<-Canary Is. & Madeira Isles"
       }
     },
     {
@@ -79384,6 +79396,31 @@
       }
     },
     {
+      "key": "230<-615",
+      "source": "615",
+      "target": "230",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "2301"
+        ],
+        "originalPartners": [
+          "French Africa"
+        ],
+        "status": "ok",
+        "value": 38,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230<-French Africa",
+        "notes": "230<-French Africa 38 (ratio on 795.3551260637875)"
+      }
+    },
+    {
       "key": "230<-433",
       "source": "433",
       "target": "230",
@@ -81064,12 +81101,12 @@
           "Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis)"
         ],
         "status": "ok",
-        "value": 76386,
+        "value": 78729,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis)",
-        "notes": "616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis) 76386 (ratio on 78729.8178637638)"
+        "notes": "616<-Algeria (Regency of Algiers) & France & Morocco & Tunisia (Regency of Tunis) 78729 (ratio on 78729.8178637638)"
       }
     },
     {
@@ -81374,6 +81411,32 @@
         ],
         "originalReportedTradeFlowIds": "66<-French Colonies",
         "notes": "66<-French Colonies 28446 (ratio on 70115.9627773801)"
+      }
+    },
+    {
+      "key": "750<-630",
+      "source": "630",
+      "target": "750",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "Mumbai (Bombay)",
+          "Chennai (Madras)"
+        ],
+        "originalPartners": [
+          "Persian Gulf"
+        ],
+        "status": "ok",
+        "value": 152409,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "750<-Persian Gulf",
+        "notes": "750<-Persian Gulf 152409 (ratio on 164379.7702092737)"
       }
     },
     {
@@ -82386,6 +82449,31 @@
         ],
         "originalReportedTradeFlowIds": "230->French Africa",
         "notes": "230->French Africa 1413 (ratio on 7913.783504334685)"
+      }
+    },
+    {
+      "key": "230->615",
+      "source": "230",
+      "target": "615",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "230",
+        "originalReporters": [
+          "2301"
+        ],
+        "originalPartners": [
+          "French Africa"
+        ],
+        "status": "ok",
+        "value": 5092,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "230->French Africa",
+        "notes": "230->French Africa 5092 (ratio on 7913.783504334685)"
       }
     },
     {

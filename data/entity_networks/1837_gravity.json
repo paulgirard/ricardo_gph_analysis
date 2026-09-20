@@ -56908,11 +56908,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Bengal<-Arabia & Persian Gulf 93493.21716113378\nFrom a flow part-of reporter Bengal to/from Arabia & Persian Gulf",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 93493.21716113378,
         "newPartners": "630|640|651|670|678|690|692|696|698|6800|6821",
-        "partial": "missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Serampore|Mumbai (Bombay)|8271|7566|7503|8272|7695"
+        "partial": "missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Serampore|Mumbai (Bombay)|8271|7566|7503|8272|7695",
+        "mergedIn": [
+          "750<-640",
+          "750<-630"
+        ]
       }
     },
     {
@@ -62399,6 +62403,56 @@
         ],
         "originalReportedTradeFlowIds": "652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire)",
         "notes": "652<-Egypt Arab Republic (Egypt) & Turkey (Ottoman Empire) 185113 (ratio on 215599.79541251916)"
+      }
+    },
+    {
+      "key": "750<-640",
+      "source": "640",
+      "target": "750",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "Bengal"
+        ],
+        "originalPartners": [
+          "Arabia & Persian Gulf"
+        ],
+        "status": "ok",
+        "value": 38120,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "750<-Arabia & Persian Gulf",
+        "notes": "750<-Arabia & Persian Gulf 38120 (ratio on 93493.21716113378)"
+      }
+    },
+    {
+      "key": "750<-630",
+      "source": "630",
+      "target": "750",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "Bengal"
+        ],
+        "originalPartners": [
+          "Arabia & Persian Gulf"
+        ],
+        "status": "ok",
+        "value": 55372,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "750<-Arabia & Persian Gulf",
+        "notes": "750<-Arabia & Persian Gulf 55372 (ratio on 93493.21716113378)"
       }
     },
     {

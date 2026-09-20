@@ -59546,25 +59546,29 @@
       "source": "1055",
       "target": "1048",
       "attributes": {
-        "value": 209,
+        "value": 6862,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
           "1049",
-          "56"
+          "56",
+          "53"
         ],
         "originalPartners": [
-          "1048"
+          "1048",
+          "Bermuda & British West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1049->1048 191\nFrom a flow part-of reporter 1049 to/from 1048\n56->1048 18\nFrom a flow part-of reporter 56 to/from 1048",
+        "notes": "1049->1048 191\nFrom a flow part-of reporter 1049 to/from 1048\n56->1048 18\nFrom a flow part-of reporter 56 to/from 1048\n1055->Bermuda & British West Indies 6653 (ratio on 211160)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 53|57|55"
+        "partial": "missing 57|55",
+        "originalReportedTradeFlowIds": "1055->Bermuda & British West Indies"
       }
     },
     {
@@ -60136,11 +60140,17 @@
           "GENERATED_TRADE"
         ],
         "notes": "53->Bermuda & British West Indies 211160\nFrom a flow part-of reporter 53 to/from Bermuda & British West Indies\ngravity results to be aggregated for partners: 30|1048|1063",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 211160,
         "newPartners": "30|31|51|1048|1053|1054|1063",
-        "partial": "missing 1049|57|55|56"
+        "partial": "missing 1049|57|55|56",
+        "mergedIn": [
+          "1055->1063",
+          "1055->1048",
+          "1055->30",
+          "1055->51"
+        ]
       }
     },
     {
@@ -60724,10 +60734,7 @@
         "newPartners": "4|901|902|903|904|905|906",
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|248|276|2555|280|257|239|2247|2248|2246|245|269",
         "mergedIn": [
-          "255<-905",
-          "255<-906",
           "255<-901",
-          "255<-903",
           "255<-4"
         ]
       }
@@ -61887,6 +61894,9 @@
         "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269",
         "mergedIn": [
           "255<-902",
+          "255<-905",
+          "255<-906",
+          "255<-903",
           "255<-904"
         ]
       }
@@ -62232,11 +62242,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-British Northern America 28355.192326514632\nFrom a flow part-of reporter 248 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 28355.192326514632,
         "newPartners": "20|21",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269",
+        "mergedIn": [
+          "255<-21",
+          "255<-20"
+        ]
       }
     },
     {
@@ -62314,11 +62328,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Puerto Rico & St. Thomas 76108.93608691396\nFrom a flow part-of reporter 248 to/from Puerto Rico & St. Thomas",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 76108.93608691396,
         "newPartners": "5|6",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269",
+        "mergedIn": [
+          "255<-5"
+        ]
       }
     },
     {
@@ -62450,11 +62467,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "248<-Western America 2201991.2890280904\nFrom a flow part-of reporter 248 to/from Western America\ngravity results to be aggregated for partners: 2",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 2201991.2890280904,
         "newPartners": "2|3|20",
-        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269"
+        "partial": "missing Germany (Zollverein) (Baltic Sea)|Germany (Zollverein) (North Sea)|Germany (Zollverein) (other)|246|276|2555|280|257|239|2247|2248|2246|245|269",
+        "mergedIn": [
+          "255<-2"
+        ]
       }
     },
     {
@@ -62981,24 +63001,28 @@
       "source": "1055",
       "target": "30",
       "attributes": {
-        "value": 22,
+        "value": 17823,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "56"
+          "56",
+          "53"
         ],
         "originalPartners": [
-          "30"
+          "30",
+          "Bermuda & British West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "56->30 22\nFrom a flow part-of reporter 56 to/from 30",
+        "notes": "56->30 22\nFrom a flow part-of reporter 56 to/from 30\n1055->Bermuda & British West Indies 17801 (ratio on 211160)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1049|53|57|55"
+        "partial": "missing 1049|57|55",
+        "originalReportedTradeFlowIds": "1055->Bermuda & British West Indies"
       }
     },
     {
@@ -66581,24 +66605,28 @@
       "source": "2",
       "target": "255",
       "attributes": {
-        "value": 4017267.299598708,
+        "value": 6219258.299598708,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "255",
         "originalReporters": [
-          "255"
+          "255",
+          "248"
         ],
         "originalPartners": [
-          "United States of America (other)"
+          "United States of America (other)",
+          "Western America"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "255<-United States of America (other) 4017267.299598708",
+        "notes": "255<-United States of America (other) 4017267.299598708\n255<-Western America 2201991 (ratio on 2201991.2890280904)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing United States of America (Atlantic Coast)|United States of America (Pacific Coast)|San Francisco"
+        "partial": "missing United States of America (Atlantic Coast)|United States of America (Pacific Coast)|San Francisco unexpected: Western America",
+        "originalReportedTradeFlowIds": "255<-Western America"
       }
     },
     {
@@ -66655,24 +66683,28 @@
       "source": "1055",
       "target": "1063",
       "attributes": {
-        "value": 6,
+        "value": 286,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "1055",
         "originalReporters": [
-          "1055"
+          "1055",
+          "53"
         ],
         "originalPartners": [
-          "58"
+          "58",
+          "Bermuda & British West Indies"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "1055->58 6",
+        "notes": "1055->58 6\n1055->Bermuda & British West Indies 280 (ratio on 211160)",
         "status": "ok",
         "type": "trade",
-        "partial": "missing 1075|1076|59|54"
+        "partial": "missing 1075|1076|59|54 unexpected: Bermuda & British West Indies",
+        "originalReportedTradeFlowIds": "1055->Bermuda & British West Indies"
       }
     },
     {
@@ -69882,12 +69914,87 @@
           "900"
         ],
         "status": "ok",
-        "value": 804,
+        "value": 134,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-900",
-        "notes": "255<-900 804 (ratio on 6877.263384555153)"
+        "notes": "255<-900 134 (ratio on 6877.263384555153)"
+      }
+    },
+    {
+      "key": "255<-905",
+      "source": "905",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "status": "ok",
+        "value": 247,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-900",
+        "notes": "255<-900 247 (ratio on 6877.263384555153)"
+      }
+    },
+    {
+      "key": "255<-906",
+      "source": "906",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "status": "ok",
+        "value": 368,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-900",
+        "notes": "255<-900 368 (ratio on 6877.263384555153)"
+      }
+    },
+    {
+      "key": "255<-903",
+      "source": "903",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "900"
+        ],
+        "status": "ok",
+        "value": 1598,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-900",
+        "notes": "255<-900 1598 (ratio on 6877.263384555153)"
       }
     },
     {
@@ -69907,62 +70014,12 @@
           "900"
         ],
         "status": "ok",
-        "value": 27140,
+        "value": 4527,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-900",
-        "notes": "255<-900 27140 (ratio on 6877.263384555153)"
-      }
-    },
-    {
-      "key": "255<-905",
-      "source": "905",
-      "target": "255",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "255",
-        "originalReporters": [
-          "246"
-        ],
-        "originalPartners": [
-          "Australia & Hawaii (Sandwich Is.)"
-        ],
-        "status": "ok",
-        "value": 1486,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 1486 (ratio on 51789.82458925311)"
-      }
-    },
-    {
-      "key": "255<-906",
-      "source": "906",
-      "target": "255",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "255",
-        "originalReporters": [
-          "246"
-        ],
-        "originalPartners": [
-          "Australia & Hawaii (Sandwich Is.)"
-        ],
-        "status": "ok",
-        "value": 2209,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 2209 (ratio on 51789.82458925311)"
+        "notes": "255<-900 4527 (ratio on 6877.263384555153)"
       }
     },
     {
@@ -69982,37 +70039,12 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 5595,
+        "value": 14873,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 5595 (ratio on 51789.82458925311)"
-      }
-    },
-    {
-      "key": "255<-903",
-      "source": "903",
-      "target": "255",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "255",
-        "originalReporters": [
-          "246"
-        ],
-        "originalPartners": [
-          "Australia & Hawaii (Sandwich Is.)"
-        ],
-        "status": "ok",
-        "value": 9584,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 9584 (ratio on 51789.82458925311)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 14873 (ratio on 51789.82458925311)"
       }
     },
     {
@@ -70032,12 +70064,62 @@
           "Australia & Hawaii (Sandwich Is.)"
         ],
         "status": "ok",
-        "value": 11846,
+        "value": 36915,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "255<-Australia & Hawaii (Sandwich Is.)",
-        "notes": "255<-Australia & Hawaii (Sandwich Is.) 11846 (ratio on 51789.82458925311)"
+        "notes": "255<-Australia & Hawaii (Sandwich Is.) 36915 (ratio on 51789.82458925311)"
+      }
+    },
+    {
+      "key": "255<-21",
+      "source": "21",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 5167,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 5167 (ratio on 28355.192326514632)"
+      }
+    },
+    {
+      "key": "255<-20",
+      "source": "20",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 23187,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-British Northern America",
+        "notes": "255<-British Northern America 23187 (ratio on 28355.192326514632)"
       }
     },
     {
@@ -70063,6 +70145,31 @@
         ],
         "originalReportedTradeFlowIds": "255<-European Turkey & Romania",
         "notes": "255<-European Turkey & Romania 5106 (ratio on 14753.352256043847)"
+      }
+    },
+    {
+      "key": "255<-5",
+      "source": "5",
+      "target": "255",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "255",
+        "originalReporters": [
+          "248"
+        ],
+        "originalPartners": [
+          "Puerto Rico & St. Thomas"
+        ],
+        "status": "ok",
+        "value": 76108,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "255<-Puerto Rico & St. Thomas",
+        "notes": "255<-Puerto Rico & St. Thomas 76108 (ratio on 76108.93608691396)"
       }
     },
     {
@@ -72609,6 +72716,31 @@
         ],
         "originalReportedTradeFlowIds": "1048->French West Indies",
         "notes": "1048->French West Indies 14774 (ratio on 16590)"
+      }
+    },
+    {
+      "key": "1055->51",
+      "source": "1055",
+      "target": "51",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "53"
+        ],
+        "originalPartners": [
+          "Bermuda & British West Indies"
+        ],
+        "status": "ok",
+        "value": 186423,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055->Bermuda & British West Indies",
+        "notes": "1055->Bermuda & British West Indies 186423 (ratio on 211160)"
       }
     },
     {

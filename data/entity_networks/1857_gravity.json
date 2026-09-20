@@ -63563,11 +63563,12 @@
         "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "1063<-150",
-          "1063<-130",
+          "1063<-1163",
+          "1063<-120",
           "1063<-100",
           "1063<-135",
-          "1063<-115"
+          "1063<-1161",
+          "1063<-140"
         ],
         "valueToSplit": 3475.586776859504,
         "newPartners": "100|115|120|130|135|140|145|150|155|160|165|1161|1163",
@@ -64925,13 +64926,13 @@
         "status": "ignore_resolved",
         "type": "trade",
         "mergedIn": [
-          "1063<-1163",
+          "1063<-150",
           "1063<-165",
+          "1063<-130",
+          "1063<-115",
           "1063<-145",
           "1063<-155",
-          "1063<-160",
-          "1063<-1161",
-          "1063<-140"
+          "1063<-160"
         ],
         "valueToSplit": 405.3057851239669,
         "newPartners": "100|115|120|130|135|140|145|150|155|160|165|1161|1163",
@@ -67542,6 +67543,7 @@
         "valueToSplit": 513180.322670155,
         "newPartners": "365|640",
         "mergedIn": [
+          "337<-640",
           "337<-365"
         ]
       }
@@ -67944,10 +67946,13 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Ionian Is. & Malta 28144.448408451262\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 28144.448408451262,
-        "newPartners": "338|3349"
+        "newPartners": "338|3349",
+        "mergedIn": [
+          "337->338"
+        ]
       }
     },
     {
@@ -67997,10 +68002,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Livorno->Black Sea & Russia (USSR) 154992.66658738654\nFrom a flow part-of reporter Livorno to/from Black Sea & Russia (USSR)",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 154992.66658738654,
-        "newPartners": "365|640"
+        "newPartners": "365|640",
+        "mergedIn": [
+          "337->640",
+          "337->365"
+        ]
       }
     },
     {
@@ -68652,11 +68661,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Lisbon->Portuguese Africa 2180.20374995045\nFrom a flow part-of reporter Lisbon to/from Portuguese Africa\ngravity results to be aggregated for partners: 402",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 2180.20374995045,
         "newPartners": "402|403|540|541",
-        "partial": "missing Porto|400|401"
+        "partial": "missing Porto|400|401",
+        "mergedIn": [
+          "235->541",
+          "235->402"
+        ]
       }
     },
     {
@@ -73793,23 +73806,28 @@
       "source": "235",
       "target": "402",
       "attributes": {
-        "value": 26875.96622666191,
+        "value": 28143.96622666191,
         "valueGeneratedBy": [
-          "aggregation"
+          "aggregation",
+          "split_by_gravity"
         ],
         "reportedBy": "235",
         "originalReporters": [
-          "235"
+          "235",
+          "Lisbon"
         ],
         "originalPartners": [
-          "Azores (Western Isles) & Cape Verde & Madeira Isles"
+          "Azores (Western Isles) & Cape Verde & Madeira Isles",
+          "Portuguese Africa"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "235->Azores (Western Isles) & Cape Verde & Madeira Isles 26875.96622666191",
+        "notes": "235->Azores (Western Isles) & Cape Verde & Madeira Isles 26875.96622666191\n235->Portuguese Africa 1268 (ratio on 2180.20374995045)",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "originalReportedTradeFlowIds": "235->Portuguese Africa",
+        "partial": "missing Porto|400|401 unexpected: 235"
       }
     },
     {
@@ -73925,17 +73943,17 @@
           "Dutch Colonies"
         ],
         "status": "ok",
-        "value": 1232,
+        "value": 1452,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Dutch Colonies",
-        "notes": "1063<-Dutch Colonies 1232 (ratio on 2601)"
+        "notes": "1063<-Dutch Colonies 1452 (ratio on 2601)"
       }
     },
     {
-      "key": "1063<-1163",
-      "source": "1163",
+      "key": "1063<-150",
+      "source": "150",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -73950,12 +73968,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": null,
+        "value": 6,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America NaN (ratio on 791)"
+        "notes": "1063<-Southern America 6 (ratio on 791)"
       }
     },
     {
@@ -73975,12 +73993,62 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 26,
+        "value": 9,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 26 (ratio on 791)"
+        "notes": "1063<-Southern America 9 (ratio on 791)"
+      }
+    },
+    {
+      "key": "1063<-130",
+      "source": "130",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": 14,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America 14 (ratio on 791)"
+      }
+    },
+    {
+      "key": "1063<-115",
+      "source": "115",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "1076"
+        ],
+        "originalPartners": [
+          "Southern America"
+        ],
+        "status": "ok",
+        "value": 18,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America",
+        "notes": "1063<-Southern America 18 (ratio on 791)"
       }
     },
     {
@@ -74000,12 +74068,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 52,
+        "value": 18,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 52 (ratio on 791)"
+        "notes": "1063<-Southern America 18 (ratio on 791)"
       }
     },
     {
@@ -74025,12 +74093,12 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 398,
+        "value": 139,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 398 (ratio on 791)"
+        "notes": "1063<-Southern America 139 (ratio on 791)"
       }
     },
     {
@@ -74050,67 +74118,17 @@
           "Southern America"
         ],
         "status": "ok",
-        "value": 562,
+        "value": 197,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 562 (ratio on 791)"
+        "notes": "1063<-Southern America 197 (ratio on 791)"
       }
     },
     {
-      "key": "1063<-1161",
-      "source": "1161",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "1076"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "status": "ok",
-        "value": 1031,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 1031 (ratio on 791)"
-      }
-    },
-    {
-      "key": "1063<-140",
-      "source": "140",
-      "target": "1063",
-      "attributes": {
-        "type": "trade",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "reportedBy": "1063",
-        "originalReporters": [
-          "1076"
-        ],
-        "originalPartners": [
-          "Southern America"
-        ],
-        "status": "ok",
-        "value": 1414,
-        "valueGeneratedBy": [
-          "split_by_gravity"
-        ],
-        "originalReportedTradeFlowIds": "1063<-Southern America",
-        "notes": "1063<-Southern America 1414 (ratio on 791)"
-      }
-    },
-    {
-      "key": "1063<-150",
-      "source": "150",
+      "key": "1063<-1163",
+      "source": "1163",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -74125,17 +74143,17 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 18,
+        "value": null,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 18 (ratio on 6783)"
+        "notes": "1063<-Southern America (other) NaN (ratio on 6783)"
       }
     },
     {
-      "key": "1063<-130",
-      "source": "130",
+      "key": "1063<-120",
+      "source": "120",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -74150,12 +74168,12 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 42,
+        "value": 3,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 42 (ratio on 6783)"
+        "notes": "1063<-Southern America (other) 3 (ratio on 6783)"
       }
     },
     {
@@ -74175,12 +74193,12 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 110,
+        "value": 141,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 110 (ratio on 6783)"
+        "notes": "1063<-Southern America (other) 141 (ratio on 6783)"
       }
     },
     {
@@ -74200,17 +74218,17 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 167,
+        "value": 213,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 167 (ratio on 6783)"
+        "notes": "1063<-Southern America (other) 213 (ratio on 6783)"
       }
     },
     {
-      "key": "1063<-115",
-      "source": "115",
+      "key": "1063<-1161",
+      "source": "1161",
       "target": "1063",
       "attributes": {
         "type": "trade",
@@ -74225,12 +74243,37 @@
           "Southern America (other)"
         ],
         "status": "ok",
-        "value": 273,
+        "value": 1314,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "1063<-Southern America (other)",
-        "notes": "1063<-Southern America (other) 273 (ratio on 6783)"
+        "notes": "1063<-Southern America (other) 1314 (ratio on 6783)"
+      }
+    },
+    {
+      "key": "1063<-140",
+      "source": "140",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58"
+        ],
+        "originalPartners": [
+          "Southern America (other)"
+        ],
+        "status": "ok",
+        "value": 1801,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-Southern America (other)",
+        "notes": "1063<-Southern America (other) 1801 (ratio on 6783)"
       }
     },
     {
@@ -75618,12 +75661,12 @@
           "Algeria (Regency of Algiers) & France"
         ],
         "status": "ok",
-        "value": 1199810,
+        "value": 1207832,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "337<-Algeria (Regency of Algiers) & France",
-        "notes": "337<-Algeria (Regency of Algiers) & France 1199810 (ratio on 1207832.8774725492)"
+        "notes": "337<-Algeria (Regency of Algiers) & France 1207832 (ratio on 1207832.8774725492)"
       }
     },
     {
@@ -75674,6 +75717,31 @@
         ],
         "originalReportedTradeFlowIds": "337<-Belgium & Netherlands",
         "notes": "337<-Belgium & Netherlands 200773 (ratio on 350338.92258294683)"
+      }
+    },
+    {
+      "key": "337<-640",
+      "source": "640",
+      "target": "337",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Black Sea & Russia (USSR)"
+        ],
+        "status": "ok",
+        "value": 119032,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337<-Black Sea & Russia (USSR)",
+        "notes": "337<-Black Sea & Russia (USSR) 119032 (ratio on 513180.322670155)"
       }
     },
     {
@@ -77909,6 +77977,31 @@
       }
     },
     {
+      "key": "235->541",
+      "source": "235",
+      "target": "541",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "235",
+        "originalReporters": [
+          "Lisbon"
+        ],
+        "originalPartners": [
+          "Portuguese Africa"
+        ],
+        "status": "ok",
+        "value": 912,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "235->Portuguese Africa",
+        "notes": "235->Portuguese Africa 912 (ratio on 2180.20374995045)"
+      }
+    },
+    {
       "key": "324->380",
       "source": "324",
       "target": "380",
@@ -78058,6 +78151,81 @@
         ],
         "originalReportedTradeFlowIds": "3361->Genoa & Livorno",
         "notes": "3361->Genoa & Livorno 31872 (ratio on 52919.491021524555)"
+      }
+    },
+    {
+      "key": "337->640",
+      "source": "337",
+      "target": "640",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Black Sea & Russia (USSR)"
+        ],
+        "status": "ok",
+        "value": 44752,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Black Sea & Russia (USSR)",
+        "notes": "337->Black Sea & Russia (USSR) 44752 (ratio on 154992.66658738654)"
+      }
+    },
+    {
+      "key": "337->365",
+      "source": "337",
+      "target": "365",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Black Sea & Russia (USSR)"
+        ],
+        "status": "ok",
+        "value": 110240,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Black Sea & Russia (USSR)",
+        "notes": "337->Black Sea & Russia (USSR) 110240 (ratio on 154992.66658738654)"
+      }
+    },
+    {
+      "key": "337->338",
+      "source": "337",
+      "target": "338",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "337",
+        "originalReporters": [
+          "Livorno"
+        ],
+        "originalPartners": [
+          "Ionian Is. & Malta"
+        ],
+        "status": "ok",
+        "value": 28144,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "337->Ionian Is. & Malta",
+        "notes": "337->Ionian Is. & Malta 28144 (ratio on 28144.448408451262)"
       }
     },
     {

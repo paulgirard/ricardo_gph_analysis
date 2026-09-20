@@ -53417,11 +53417,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia<-Algeria (Regency of Algiers) & France 196079.9625175699\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 196079.9625175699,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327<-220"
+        ]
       }
     },
     {
@@ -53547,11 +53550,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia->Algeria (Regency of Algiers) & France 45408.402311416525\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 45408.402311416525,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327->220"
+        ]
       }
     },
     {
@@ -54064,7 +54070,9 @@
         "newPartners": "246|248|276",
         "partial": "missing East Frisia",
         "mergedIn": [
-          "239<-276"
+          "239<-276",
+          "239<-246",
+          "239<-248"
         ]
       }
     },
@@ -54347,7 +54355,8 @@
         "newPartners": "246|248|276",
         "partial": "missing East Frisia",
         "mergedIn": [
-          "239->276"
+          "239->276",
+          "239->246"
         ]
       }
     },
@@ -54457,11 +54466,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "291->Hanover & Mecklenburg Schwerin & Oldenburg 10893.331250976105\nFrom a flow part-of reporter 291 to/from Hanover & Mecklenburg Schwerin & Oldenburg",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 10893.331250976105,
         "newPartners": "240|257|280",
-        "partial": "missing East Frisia|Szczecin|Kaliningrad (Königsberg)|Klaipėda (Memel)"
+        "partial": "missing East Frisia|Szczecin|Kaliningrad (Königsberg)|Klaipėda (Memel)",
+        "mergedIn": [
+          "239->280"
+        ]
       }
     },
     {
@@ -54588,11 +54600,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Klaipėda (Memel)->Hanover & Oldenburg 2108.386693737311\nFrom a flow part-of reporter Klaipėda (Memel) to/from Hanover & Oldenburg",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 2108.386693737311,
         "newPartners": "240|257",
-        "partial": "missing East Frisia|Szczecin|Kaliningrad (Königsberg)|291"
+        "partial": "missing East Frisia|Szczecin|Kaliningrad (Königsberg)|291",
+        "mergedIn": [
+          "239->257",
+          "239->240"
+        ]
       }
     },
     {
@@ -58836,6 +58852,62 @@
       }
     },
     {
+      "key": "239<-246",
+      "source": "246",
+      "target": "239",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "Szczecin",
+          "291",
+          "Kaliningrad (Königsberg)",
+          "Klaipėda (Memel)"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 181680,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239<-Hanse Towns",
+        "notes": "239<-Hanse Towns 181680 (ratio on 405669.2175542715)"
+      }
+    },
+    {
+      "key": "239<-248",
+      "source": "248",
+      "target": "239",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "Szczecin",
+          "291",
+          "Kaliningrad (Königsberg)",
+          "Klaipėda (Memel)"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 223930,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239<-Hanse Towns",
+        "notes": "239<-Hanse Towns 223930 (ratio on 405669.2175542715)"
+      }
+    },
+    {
       "key": "248<-350",
       "source": "350",
       "target": "248",
@@ -59155,6 +59227,31 @@
         ],
         "originalReportedTradeFlowIds": "300<-British Europe & United Kingdom",
         "notes": "300<-British Europe & United Kingdom 472369 (ratio on 1040605.9659534594)"
+      }
+    },
+    {
+      "key": "327<-220",
+      "source": "220",
+      "target": "327",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 196079,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327<-Algeria (Regency of Algiers) & France",
+        "notes": "327<-Algeria (Regency of Algiers) & France 196079 (ratio on 196079.9625175699)"
       }
     },
     {
@@ -60459,6 +60556,81 @@
       }
     },
     {
+      "key": "239->280",
+      "source": "239",
+      "target": "280",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "291"
+        ],
+        "originalPartners": [
+          "Hanover & Mecklenburg Schwerin & Oldenburg"
+        ],
+        "status": "ok",
+        "value": 10893,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239->Hanover & Mecklenburg Schwerin & Oldenburg",
+        "notes": "239->Hanover & Mecklenburg Schwerin & Oldenburg 10893 (ratio on 10893.331250976105)"
+      }
+    },
+    {
+      "key": "239->257",
+      "source": "239",
+      "target": "257",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "Klaipėda (Memel)"
+        ],
+        "originalPartners": [
+          "Hanover & Oldenburg"
+        ],
+        "status": "ok",
+        "value": 1001,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239->Hanover & Oldenburg",
+        "notes": "239->Hanover & Oldenburg 1001 (ratio on 2108.386693737311)"
+      }
+    },
+    {
+      "key": "239->240",
+      "source": "239",
+      "target": "240",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "Klaipėda (Memel)"
+        ],
+        "originalPartners": [
+          "Hanover & Oldenburg"
+        ],
+        "status": "ok",
+        "value": 1106,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239->Hanover & Oldenburg",
+        "notes": "239->Hanover & Oldenburg 1106 (ratio on 2108.386693737311)"
+      }
+    },
+    {
       "key": "239->276",
       "source": "239",
       "target": "276",
@@ -60478,12 +60650,40 @@
           "Hanse Towns"
         ],
         "status": "ok",
-        "value": 9,
+        "value": 77,
         "valueGeneratedBy": [
           "split_by_gravity"
         ],
         "originalReportedTradeFlowIds": "239->Hanse Towns",
-        "notes": "239->Hanse Towns 9 (ratio on 51967.82758082149)"
+        "notes": "239->Hanse Towns 77 (ratio on 51967.82758082149)"
+      }
+    },
+    {
+      "key": "239->246",
+      "source": "239",
+      "target": "246",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "239",
+        "originalReporters": [
+          "Szczecin",
+          "291",
+          "Kaliningrad (Königsberg)",
+          "Klaipėda (Memel)"
+        ],
+        "originalPartners": [
+          "Hanse Towns"
+        ],
+        "status": "ok",
+        "value": 51890,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "239->Hanse Towns",
+        "notes": "239->Hanse Towns 51890 (ratio on 51967.82758082149)"
       }
     },
     {
@@ -61001,6 +61201,31 @@
         ],
         "originalReportedTradeFlowIds": "31->British Northern America",
         "notes": "31->British Northern America 1047 (ratio on 1472)"
+      }
+    },
+    {
+      "key": "327->220",
+      "source": "327",
+      "target": "220",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 45408,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327->Algeria (Regency of Algiers) & France",
+        "notes": "327->Algeria (Regency of Algiers) & France 45408 (ratio on 45408.402311416525)"
       }
     },
     {

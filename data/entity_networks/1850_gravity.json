@@ -24117,7 +24117,8 @@
         "newPartners": "390|2247|2248",
         "mergedIn": [
           "200->2248",
-          "200->2247"
+          "200->2247",
+          "200->390"
         ]
       }
     },
@@ -51222,11 +51223,17 @@
           "GENERATED_TRADE"
         ],
         "notes": "58<-British Northern America 9728\nFrom a flow part-of reporter 58 to/from British Northern America\n1075<-British Northern America 5672\nFrom a flow part-of reporter 1075 to/from British Northern America\n1076<-British Northern America 600\nFrom a flow part-of reporter 1076 to/from British Northern America\n59<-British Northern America 49\nFrom a flow part-of reporter 59 to/from British Northern America",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 16049,
         "newPartners": "20|21|1022|1023|1024|1028",
-        "partial": "missing 1061"
+        "partial": "missing 1061",
+        "mergedIn": [
+          "1063<-1024",
+          "1063<-1022",
+          "1063<-21",
+          "1063<-20"
+        ]
       }
     },
     {
@@ -54952,11 +54959,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Rio de Janeiro->Cape Colony (Cape of Good Hope) & India 15806.52809610369\nFrom a flow part-of reporter Rio de Janeiro to/from Cape Colony (Cape of Good Hope) & India",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 15806.52809610369,
         "newPartners": "561|750",
-        "partial": "missing Bahia|Santos|Maranhão"
+        "partial": "missing Bahia|Santos|Maranhão",
+        "mergedIn": [
+          "140->561",
+          "140->750"
+        ]
       }
     },
     {
@@ -60504,6 +60515,118 @@
       }
     },
     {
+      "key": "1063<-1024",
+      "source": "1024",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1075",
+          "1076",
+          "59"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 49,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-British Northern America",
+        "notes": "1063<-British Northern America 49 (ratio on 16049)"
+      }
+    },
+    {
+      "key": "1063<-1022",
+      "source": "1022",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1075",
+          "1076",
+          "59"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 190,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-British Northern America",
+        "notes": "1063<-British Northern America 190 (ratio on 16049)"
+      }
+    },
+    {
+      "key": "1063<-21",
+      "source": "21",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1075",
+          "1076",
+          "59"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 1120,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-British Northern America",
+        "notes": "1063<-British Northern America 1120 (ratio on 16049)"
+      }
+    },
+    {
+      "key": "1063<-20",
+      "source": "20",
+      "target": "1063",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1063",
+        "originalReporters": [
+          "58",
+          "1075",
+          "1076",
+          "59"
+        ],
+        "originalPartners": [
+          "British Northern America"
+        ],
+        "status": "ok",
+        "value": 14687,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1063<-British Northern America",
+        "notes": "1063<-British Northern America 14687 (ratio on 16049)"
+      }
+    },
+    {
       "key": "140<-276",
       "source": "276",
       "target": "140",
@@ -62028,6 +62151,56 @@
       }
     },
     {
+      "key": "140->561",
+      "source": "140",
+      "target": "561",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "140",
+        "originalReporters": [
+          "Rio de Janeiro"
+        ],
+        "originalPartners": [
+          "Cape Colony (Cape of Good Hope) & India"
+        ],
+        "status": "ok",
+        "value": 6153,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "140->Cape Colony (Cape of Good Hope) & India",
+        "notes": "140->Cape Colony (Cape of Good Hope) & India 6153 (ratio on 15806.52809610369)"
+      }
+    },
+    {
+      "key": "140->750",
+      "source": "140",
+      "target": "750",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "140",
+        "originalReporters": [
+          "Rio de Janeiro"
+        ],
+        "originalPartners": [
+          "Cape Colony (Cape of Good Hope) & India"
+        ],
+        "status": "ok",
+        "value": 9652,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "140->Cape Colony (Cape of Good Hope) & India",
+        "notes": "140->Cape Colony (Cape of Good Hope) & India 9652 (ratio on 15806.52809610369)"
+      }
+    },
+    {
       "key": "140->276",
       "source": "140",
       "target": "276",
@@ -62286,6 +62459,25 @@
         ],
         "originalReportedTradeFlowIds": "200->Denmark & Holstein & Schleswig",
         "notes": "200->Denmark & Holstein & Schleswig 178773 (ratio on 452235)"
+      }
+    },
+    {
+      "key": "200->390",
+      "source": "200",
+      "target": "390",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "200",
+        "status": "ok",
+        "value": 267455,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "200->Denmark & Holstein & Schleswig",
+        "notes": "200->Denmark & Holstein & Schleswig 267455 (ratio on 452235)"
       }
     },
     {

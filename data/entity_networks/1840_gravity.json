@@ -70245,11 +70245,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia<-Algeria (Regency of Algiers) & France 149815.11669516124\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 149815.11669516124,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327<-220"
+        ]
       }
     },
     {
@@ -70297,11 +70300,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "Civitavecchia->Algeria (Regency of Algiers) & France 54828.83384358475\nFrom a flow part-of reporter Civitavecchia to/from Algeria (Regency of Algiers) & France",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 54828.83384358475,
         "newPartners": "220|615",
-        "partial": "missing 3271"
+        "partial": "missing 3271",
+        "mergedIn": [
+          "327->615",
+          "327->220"
+        ]
       }
     },
     {
@@ -70838,11 +70845,14 @@
           "GENERATED_TRADE"
         ],
         "notes": "Chennai (Madras)<-Canary Is. & Madeira Isles 9195.517310386233\nFrom a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 9195.517310386233,
         "newPartners": "230|235",
-        "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|830|8271|7566|8272|7695"
+        "partial": "missing Mumbai (Bombay)|East India Company|Kolkata (Calcutta)|830|8271|7566|8272|7695",
+        "mergedIn": [
+          "750<-235"
+        ]
       }
     },
     {
@@ -76209,6 +76219,31 @@
       }
     },
     {
+      "key": "327<-220",
+      "source": "220",
+      "target": "327",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 149815,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327<-Algeria (Regency of Algiers) & France",
+        "notes": "327<-Algeria (Regency of Algiers) & France 149815 (ratio on 149815.11669516124)"
+      }
+    },
+    {
       "key": "327<-380",
       "source": "380",
       "target": "327",
@@ -76748,6 +76783,31 @@
         ],
         "originalReportedTradeFlowIds": "651<-Ionian Is. & Malta & United Kingdom",
         "notes": "651<-Ionian Is. & Malta & United Kingdom 429595 (ratio on 436936.9011172518)"
+      }
+    },
+    {
+      "key": "750<-235",
+      "source": "235",
+      "target": "750",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "750",
+        "originalReporters": [
+          "Chennai (Madras)"
+        ],
+        "originalPartners": [
+          "Canary Is. & Madeira Isles"
+        ],
+        "status": "ok",
+        "value": 9195,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "750<-Canary Is. & Madeira Isles",
+        "notes": "750<-Canary Is. & Madeira Isles 9195 (ratio on 9195.517310386233)"
       }
     },
     {
@@ -78070,6 +78130,56 @@
         ],
         "originalReportedTradeFlowIds": "324->Norway & Sweden",
         "notes": "324->Norway & Sweden 3068 (ratio on 4333.82370482287)"
+      }
+    },
+    {
+      "key": "327->615",
+      "source": "327",
+      "target": "615",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 5077,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327->Algeria (Regency of Algiers) & France",
+        "notes": "327->Algeria (Regency of Algiers) & France 5077 (ratio on 54828.83384358475)"
+      }
+    },
+    {
+      "key": "327->220",
+      "source": "327",
+      "target": "220",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "327",
+        "originalReporters": [
+          "Civitavecchia"
+        ],
+        "originalPartners": [
+          "Algeria (Regency of Algiers) & France"
+        ],
+        "status": "ok",
+        "value": 49750,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "327->Algeria (Regency of Algiers) & France",
+        "notes": "327->Algeria (Regency of Algiers) & France 49750 (ratio on 54828.83384358475)"
       }
     },
     {

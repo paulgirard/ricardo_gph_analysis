@@ -70403,11 +70403,15 @@
           "GENERATED_TRADE"
         ],
         "notes": "56<-Spanish West Indies 526\nFrom a flow part-of reporter 56 to/from Spanish West Indies",
-        "status": "split_failed_no_ratio",
+        "status": "ignore_resolved",
         "type": "trade",
         "valueToSplit": 526,
         "newPartners": "6|40",
-        "partial": "missing 53|57|55|1049"
+        "partial": "missing 53|57|55|1049",
+        "mergedIn": [
+          "1055<-6",
+          "1055<-40"
+        ]
       }
     },
     {
@@ -77216,6 +77220,56 @@
         ],
         "originalReportedTradeFlowIds": "1048<-Southern America (other)",
         "notes": "1048<-Southern America (other) 682 (ratio on 3446)"
+      }
+    },
+    {
+      "key": "1055<-6",
+      "source": "6",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "Spanish West Indies"
+        ],
+        "status": "ok",
+        "value": 66,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-Spanish West Indies",
+        "notes": "1055<-Spanish West Indies 66 (ratio on 526)"
+      }
+    },
+    {
+      "key": "1055<-40",
+      "source": "40",
+      "target": "1055",
+      "attributes": {
+        "type": "trade",
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "reportedBy": "1055",
+        "originalReporters": [
+          "56"
+        ],
+        "originalPartners": [
+          "Spanish West Indies"
+        ],
+        "status": "ok",
+        "value": 459,
+        "valueGeneratedBy": [
+          "split_by_gravity"
+        ],
+        "originalReportedTradeFlowIds": "1055<-Spanish West Indies",
+        "notes": "1055<-Spanish West Indies 459 (ratio on 526)"
       }
     },
     {
