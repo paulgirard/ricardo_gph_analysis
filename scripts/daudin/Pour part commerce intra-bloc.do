@@ -71,23 +71,22 @@ save  "results/intra_block_share_`CafFob'.dta", replace
 
 end
 
-capture erase "results/intra_block_share_fob.dta"
+capture erase "results/block_study/intra_block_share_fob.dta"
 
 foreach y of numlist 1833(1)1938 1948(1)2025 {
 	intra_block_share `y'  fob
 }
 
 
-export delimited "results/intra_block_share_fob.csv", replace
+export delimited "results/block_study/intra_block_share_fob.csv", replace
 
 tsset year
 tsfill, full
 
-twoway (line intra_Louvain_share year, cmissing(n)) (line intra_An_share year, cmissing(n)) /*
-    */ (line intra_IntraMax_share year, cmissing(n)), /*
-    */ legend(order(2 "An" 3 "IntraMax" 1 "Louvain") position(6) rows(1)) /*
-    */ ytitle("Intra-block trade share")
+twoway (line intra_IntraMax_share year, cmissing(n)) (line intra_Louvain_share year, cmissing(n)) /*
+	*/   (line intra_An_share year, cmissing(n)), legend(order(3 "An" 1 "IntraMax" 2 "Louvain") /*
+	*/    position(6) rows(1))  ytitle("Intra-block trade share")
 
-graph export "results/Intra-block trade share.png", replace
+graph export "results/block_study/Intra-block trade share.png", replace
 
 

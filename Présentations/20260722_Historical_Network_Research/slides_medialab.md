@@ -741,6 +741,26 @@ Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of Wo
  </small>
 
 ---
+layout: image
+image: /images/Intra-block trade share.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/tibi_comparaison_avec_diff_nblocs.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/Modularity.png
+backgroundSize: contain
+---
+
+Blif
+
+---
 layout: center
 ---
 
