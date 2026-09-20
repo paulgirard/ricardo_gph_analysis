@@ -74,7 +74,7 @@ end
 *jamais utile
 *master_panel_importation rectangle 
 *// à rétablir quand les données changent
-master_panel_importation carre 
+*master_panel_importation carre 
 
 //En fait, la rectangle ne me sert pas à ce niveau : je prends la carré, puis je fixe l’ordre target/source
 
@@ -91,9 +91,10 @@ display "`year'"
 post reg_result ("`NetworkType'") ("`CafFob'") (`year') ("ln_dist") (_b[ln_dist]) (_b[ln_dist]-1.96*_se[ln_dist]) (_b[ln_dist]+1.96*_se[ln_dist]) (e(r2_p))
 
 end
+
 capture postclose reg_result
 
-postfile reg_result str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_regression/regression_results.dta", replace
+postfile reg_result str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results.dta", replace
   foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
@@ -101,8 +102,8 @@ postfile reg_result str10(NetworkType) str10(CafFob) year str40(var) coef ci_low
 
 postclose reg_result
 
-use "results/block_regression/regression_results.dta", clear
-export delimited using "results/block_regression/regression_results.csv", replace delimiter(",") quote
+use "results/block_study/regression_results.dta", clear
+export delimited using "results/block_study/regression_results.csv", replace delimiter(",") quote
 
 replace coef=exp(coef)
 replace ci_low=exp(ci_low)
@@ -118,4 +119,4 @@ twoway (rcap ci_low ci_high year, lcolor(gs8)) ///
     title("Regression results (fob)") ///
     legend(order(2 "Odds Ratio of ln_dist (left)" 3 "Pseudo R2 (right)") position(6))
 
-graph export "results/block_regression/ln_dist_intramax_fob.png", replace
+graph export "results/block_study/ln_dist_intramax_fob.png", replace
