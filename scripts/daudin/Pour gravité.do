@@ -2,30 +2,7 @@
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
-/*
-************Importation des relations géopolitiques
-import delimited "$dirGeoPolHist/data/GeoPolHist_entities_status_over_time.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
-replace start_year="1800" if start_year=="?"
-destring(start_year), gen(start_year_num)
-drop start_year
-rename start_year_num start_year
-
-///We keep only dependency relations, excluding those that lead to an aggregation in the network
-
-
-/////Mieux faire la jointure avec les statuts
-
-
-keep if GPH_status=="Associated state of" | GPH_status=="Colony of" | GPH_status=="Dependency of" ///
-		| GPH_status=="Protectorate of" | GPH_status=="Vassal of"
-
-
-gen dependency=1
-
-save GeoPolHist_entities_status_over_time_temp.dta, replace
-
-*/
 *************Importation des données de localisation
 
 import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
@@ -33,6 +10,13 @@ import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
 
 tostring(GPH_code), replace
 save GeoPolHist_entities_temp.dta, replace
+
+
+
+**********Importation de la contiguité
+import delimited "data/blocks/Controls panel/contiguity.csv",/*
+	*/ delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/contiguity.dta", replace
 
 
 /***************************************************************************************/
@@ -187,50 +171,10 @@ bysort importerId exporterId : assert  _N==1
 
 replace common_empire=1 if sub_empire==1
 
-/*
-///Pour présence dans le même empire (ie partage du souverain)
-use GeoPolHist_dependency_`year'.dta, clear
-rename GPH_code importerId
-joinby sovereign_GPH_code using GeoPolHist_dependency_`year'.dta
-drop if GPH_code==importerId
-drop sovereign_GPH_code
-rename dependency common_empire
-rename GPH_code exporterId
 
-
-append using GeoPolHist_dependency_`year'A.dta
-append using GeoPolHist_dependency_`year'B.dta
-
-
-replace common_empire=0 if common_empire==.
-replace dependency =0 if dependency ==.
-
-
-replace common_empire=0 if common_empire==.
-replace dependency =0 if dependency ==.
-gen empire =1 if common_empire==1 | dependency==1
-replace empire=0 if empire==.
-collapse (max) common_empire dependency empire, by(importerId exporterId)
-
-
-gen newimporterId=importerId
-gen newexporterId=exporterId
-
-save GeoPolHist_dependency_`year'.dta, replace
-*erase GeoPolHist_dependency_`year'A.dta
-*erase GeoPolHist_dependency_`year'B.dta
-
-*******************************************
-*/
-
-
-
-/*merge 1:1 importerId exporterId using GeoPolHist_dependency_`year'.dta, keep(1 3)
-replace common_empire=0 if common_empire==.
-replace dependency=0 if dependency==.
-replace empire=0 if empire==.
-*/
-******
+***contiguité
+*merge m:1 key  year using "external data/contiguity.dta",  keep(1 3)
+*missing 6 keys in 1833 ???
 
 *****Régression de gravité
 
