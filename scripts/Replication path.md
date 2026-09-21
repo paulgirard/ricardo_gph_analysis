@@ -131,35 +131,35 @@ Management and Peace Science* 19 (2):58-66.
 
 + travail à la main pour les xxxx
 
-produit `data/blocks/Controls panel/contiguity.csv`
+produit `external data/Controls panel/contiguity.csv`
 
 
 ### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation 
 Dans le script "scripts/Ghallada/Variables de controles.R"
-Produit `data/blocks/Controls panel/distance.csv’
+Produit `external data/Controls panel/distance.csv’
 
 ### Conflit
 De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
-Script ???
-- Produit data/blocks/Controls panel/disputes.csv
+Script : le même
+Produit `external data/Controls panel/disputes.csv`
 
 ### Alliances
 De ATOP 5.1
-- Produit data/blocks/Controls panel/alliances.csv
-###Contiguity manquant
-- Produit data/blocks/Controls panel/na_contig_a_coder.csv
-
-### Base qui rassemble tout y compris les variables explicatives (Youssef)
-J’imagine depuis `scripts/Ghallada/Merge in one file all.R` ?
-`data/blocks/master_panel_carre.csv.xz`
-`data/blocks/master_panel_rectangle.csv.xz`
-`data/blocks/louvain/YYYY_fob_enrichi.csv`
-`data/blocks/master_YYYY_fob_.csv`
+Produit `external data/Controls panel/alliances.csv`
+### Contiguity manquant
+- Produit `external data/Controls panel/na_contig_a_coder.csv`
 
 ## Régressions (Guillaume)
 
+<<<<<<< Updated upstream
 À partir de `data/blocks/master_YYYY_fob_.csv`
+=======
+<<<<<<< Updated upstream
+Prendre l’appartenance AN  comme une variable explicative.
+=======
+À partir de `data/blocks/master_YYYY_fob_.csv` NON PAS LES BONS
+>>>>>>> Stashed changes
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`
 Et `results/block_study/ln_dist_intramax_fob.png`
@@ -167,4 +167,9 @@ Et `results/block_study/ln_dist_intramax_fob.png`
 
 
 Prendre l’appartenance AN  comme une variable explicative.
+<<<<<<< Updated upstream
 À partir de 
+=======
+À partir de 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

@@ -8,10 +8,15 @@ gc()
 library(dplyr)
 library(readxl)
 library(tidyverse)
-setwd("~/Desktop/ricardo_gph_analysis")
+user <- Sys.info()["user"]
+if (user == "guillaumedaudin") {
+  setwd("~/Répertoires Git/ricardo_gph_analysis")
+} else {
+  setwd("~/Desktop/ricardo_gph_analysis")
+}
 
 # --- 1. Mapping Anderson-Norheim ---
-BlocselonAN <- as.data.frame(read_excel("data/BlocselonAN.xlsx"))
+BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
@@ -51,10 +56,10 @@ master %>% count(year) %>%
   print()
 
 master <- master[!duplicated(master[, c("key", "year")]), ]
-write.csv(master, "data/blocks/Controls panel/panel_blocs_paires.csv", row.names = FALSE)
+write.csv(master, "data/blocks/panel_blocs_paires.csv", row.names = FALSE)
 
 # --- Distance entre centroides ----------------------------------------
-coord <- read.csv("data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
+coord <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
   select(gph = GPH_code, lat, lng) %>%
   mutate(gph = as.character(gph))
 
@@ -70,10 +75,10 @@ distance <- master %>%
 
 sum(is.na(distance$distance_km))
 
-write.csv(distance, "data/blocks/Controls panel/distance.csv", row.names = FALSE)
+write.csv(distance, "external data/Controls panel/distance.csv", row.names = FALSE)
 
 #Verifier d'abord si matrice complete en terme de doublons (càd on a a>b b>a)
-raw <- read.csv("data/DirectContiguity320/contdird.csv", stringsAsFactors = FALSE) %>%
+raw <- read.csv("external data/DirectContiguity320/contdird.csv", stringsAsFactors = FALSE) %>%
   mutate(state1no = if_else(state1no == 510L, 512L, state1no),
          state2no = if_else(state2no == 510L, 512L, state2no)) %>%
   group_by(state1no, state2no, year) %>%
@@ -90,7 +95,7 @@ nrow(v)                          # lignes ayant leur miroir
 sum(v$conttype != v$ct_rev)      # divergences de conttype entre les deux sens
 
 # --- Contiguite COW ---------------------------------------------------
-contig <- read.csv("data/DirectContiguity320/contdird.csv", stringsAsFactors = FALSE) %>%
+contig <- read.csv("external data/DirectContiguity320/contdird.csv", stringsAsFactors = FALSE) %>%
   mutate(state1no = if_else(state1no == 510L, 512L, state1no),
          state2no = if_else(state2no == 510L, 512L, state2no)) %>%
   group_by(state1no, state2no, year) %>%
@@ -107,7 +112,7 @@ contig <- bind_rows(
 )
 
 # --- Complement manuel pour les entites hors COW ----------------------
-manuel <- read.csv2("data/blocks/Controls panel/na_contig_paires complete.csv",
+manuel <- read.csv2("external data/na_contig_paires complete.csv",
                     stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM") %>%
   transmute(a = as.character(exporterId),
             b = as.character(importerId),
@@ -140,12 +145,12 @@ contiguity <- master %>%
 table(contiguity$conttype, useNA = "ifany")
 
 
-write.csv(contiguity, "data/blocks/Controls panel/contiguity.csv", row.names = FALSE)
+write.csv(contiguity, "external data/Controls panel/contiguity.csv", row.names = FALSE)
 
 #Restant à coder
 library(writexl)
 
-noms <- read.csv("data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
+noms <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
   transmute(gph = as.character(GPH_code), nom = GPH_name)
 
 a_coder <- master %>%
@@ -163,8 +168,8 @@ a_coder <- master %>%
   mutate(conttype = NA_integer_) %>%
   arrange(distance_km)
 
-write_xlsx(a_coder, "data/blocks/Controls panel/na_contig_a_coder.xlsx")
-write.csv2(a_coder, "data/blocks/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
+write_xlsx(a_coder, "external data/Controls panel/na_contig_a_coder.xlsx")
+write.csv2(a_coder, "external data/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
 nrow(a_coder)
 n_distinct(master$key)
 #Bilateral Disputes
@@ -179,7 +184,7 @@ n_distinct(master$key)
 library(dplyr); library(tidyr)
 
 # --- 1. MID agrege ----------------------------------------------------
-BilateralDis <- read.csv("data/dyadic_mid_4.03_update/dyadic_mid_4.03.csv",
+BilateralDis <- read.csv("external data/dyadic_mid_4.03_update/dyadic_mid_4.03.csv",
                          stringsAsFactors = FALSE)
 
 # Symetrisation : la dyade non orientee prend le maximum des deux sens.
@@ -206,7 +211,7 @@ statuts_dep <- c("Associated state of", "Colony of", "Dependency of",
                  "Possession of", "Protectorate of", "Leased to",
                  "Mandated to", "Occupied by", "Vassal of")
 
-sov_brut <- read.csv("data/GeoPolHist_entities_status_over_time.csv",
+sov_brut <- read.csv("external data/GeoPolHist_entities_status_over_time.csv",
                      stringsAsFactors = FALSE) %>%
   filter(GPH_status %in% statuts_dep, !is.na(sovereign_GPH_code)) %>%
   transmute(gph = as.character(GPH_code),
@@ -261,13 +266,13 @@ disputes <- disputes %>%
 colSums(is.na(disputes))
 table(disputes$mid_herite, useNA = "ifany")
 
-write.csv(disputes, "data/blocks/Controls panel/disputes.csv", row.names = FALSE)
+write.csv(disputes, "external data/Controls panel/disputes.csv", row.names = FALSE)
 
 ###########
 #Alliances# (for symetry, j'ai pris max des 2 sens)
 ###########
 
-atop <- read.csv("data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALSE) %>%
+atop <- read.csv("external data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALSE) %>%
   mutate(a = as.character(if_else(stateA == 510L, 512L, stateA)),
          b = as.character(if_else(stateB == 510L, 512L, stateB)),
          key_atop = paste0(pmin(a, b), "-", pmax(a, b))) %>%
@@ -279,7 +284,7 @@ atop <- read.csv("data/ATOP 5.1 (.csv)/atop5_1ddyr.csv", stringsAsFactors = FALS
   group_by(key_atop, year) %>%
   summarise(across(starts_with("atop_"), ~ max(.x, na.rm = TRUE)), .groups = "drop")
 
-#write.csv(atop, "data/blocks/Controls panel/alliance_gph.csv", row.names = FALSE)
+#write.csv(atop, "external data/Controls panel/alliance_gph.csv", row.names = FALSE)
 
 alliances <- master %>%
   left_join(sov %>% rename(sov_s = sov), by = c("source" = "gph", "year")) %>%
@@ -300,4 +305,4 @@ alliances <- master %>%
   ) %>%
   select(key, year, starts_with("atop_"))
 
-write.csv(alliances, "data/blocks/Controls panel/alliances.csv", row.names = FALSE)
+write.csv(alliances, "external data/Controls panel/alliances.csv", row.names = FALSE)
