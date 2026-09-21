@@ -92,79 +92,91 @@ import delimited "data/blocks/master_`year'_fob.csv", delimiter(comma) bindquote
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
 
-/*
+
 ***Importation des données d’appartenance à empire **************
 ////Pour rapports de subordination
 merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
 replace sub_empire=0 if sub_empire==.
 drop _merge GPH_code GPH_status sovereign_GPH_code
 
-recast str2045 importerId
-rename importerId GPH_code
+
+recast str2045 target
+rename target GPH_code
 merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code importerId_sov
+rename sovereign_GPH_code target_sov
 drop _merge
-rename GPH_code importerId 
+rename GPH_code target 
 
-recast str2045 exporterId
-rename exporterId GPH_code
+recast str2045 source
+rename source GPH_code
 merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code exporterId_sov
+rename sovereign_GPH_code source_sov
 drop _merge
-rename GPH_code exporterId
+rename GPH_code source
 
 
-generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
+generate common_empire=1 if target_sov==source_sov & target_sov!=""
 replace common_empire=0 if common_empire==.
-bysort importerId exporterId : egen max=max(common_empire)
-bysort importerId exporterId : replace common_empire = max
-bysort importerId exporterId : keep if _n==1
+bysort source target : egen max=max(common_empire)
+bysort source target : replace common_empire = max
+bysort source target : keep if _n==1
 drop max
-bysort importerId exporterId : assert  _N==1
+bysort source target : assert  _N==1
 ***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
 *Cracow dès 1833
 
 replace common_empire=1 if sub_empire==1
 
 ******************************
-*/
 
 
 
 
-logistic meme_`NetworkType' ln_dist /*common_empire*/, vce(cluster source)
+
+logistic meme_`NetworkType' ln_dist common_empire, vce(cluster source)
 display "`year'"
 
-
-post reg_result ("`NetworkType'") ("`CafFob'") (`year') ("ln_dist") (_b[ln_dist]) (_b[ln_dist]-1.96*_se[ln_dist]) (_b[ln_dist]+1.96*_se[ln_dist]) (e(r2_p))
+foreach var_ex in ln_dist common_empire {
+    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (_b[`var_ex']) (_b[`var_ex']-1.96*_se[`var_ex']) (_b[`var_ex']+1.96*_se[`var_ex']) (e(r2_p))
+}
 
 end
 
-capture postclose reg_result
+*********************************************************************
 
-postfile reg_result str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results.dta", replace
-  foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
+foreach var_ex in ln_dist common_empire {
+    capture postclose reg_result_`var_ex'
+    postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
+    
+}
+
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
 
+foreach var_ex in ln_dist common_empire {
+    postclose reg_result_`var_ex'
+}
 
-postclose reg_result
 
-use "results/block_study/regression_results.dta", clear
-export delimited using "results/block_study/regression_results.csv", replace delimiter(",") quote
+foreach var_ex in ln_dist common_empire {
 
-replace coef=exp(coef)
-replace ci_low=exp(ci_low)
-replace ci_high=exp(ci_high)
+    use "results/block_study/regression_results_`var_ex'.dta", clear
+    export delimited using "results/block_study/regression_results_`var_ex'.csv", replace delimiter(",") quote
 
-tsset year
-tsfill, full
-twoway (rcap ci_low ci_high year, lcolor(gs8)) ///
-       (connected coef year, mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
-       (connected r2p year, yaxis(2) cmissing(n)), ///
-    yline(1, lpattern(dash) lcolor(red)) ///
-    xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-    title("Regression results (fob)") ///
-    legend(order(2 "Odds Ratio of ln_dist (left)" 3 "Pseudo R2 (right)") position(6))
+    replace coef=exp(coef)
+    replace ci_low=exp(ci_low)
+    replace ci_high=exp(ci_high)
 
-graph export "results/block_study/ln_dist_intramax_fob.png", replace
+    tsset year
+    tsfill, full
+    twoway (rcap ci_low ci_high year, lcolor(gs8)) ///
+           (connected coef year, mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
+            (connected r2p year, yaxis(2) cmissing(n)), ///
+            yline(1, lpattern(dash) lcolor(red)) ///
+            xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
+            title("Regression results (fob)") ///
+            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Pseudo R2 (right)") position(6))
+
+    graph export "results/block_study/`var_ex'_intramax_fob.png", replace
+}
