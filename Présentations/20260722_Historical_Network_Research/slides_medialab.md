@@ -769,35 +769,42 @@ image: /images/Modularity.png
 backgroundSize: contain
 ---
 
-Blif
-
 ---
 layout: center
 ---
 
+# Conclusion (1)
+##  Outline
+- Gather data
+- Find classifications
+- Explain classifications 
 
----
-layout: center
----
-
-
----
-layout: center
----
-
-# Great?
-
-Our hypothesis:
-
+## Our hypothesis:
 - Reported sources are exhaustive: unreported trade flows are not significant enough and thus can be considered 0
 - Trade partner ratios for one reporter are _stable_ in a 10-years window
 - Minimalist theory-gravity models are reliable
 - our sources are reliable (home-brewed)
 
-Possible improvements:
+---
+layout: center
+---
+# Conclusions (2)
 
-- find a way to include unsolvable trade flows values into quantification
-- we need more trade statistics primary sources
+## Pat on the back
+Interdisciplinary work between history, economics and network science
+
+## Possible improvements
+
+- more primary sources on trade statistics (and a poney)
+- distinguish unknown but non-zero trade flows and zero trade flows in the analysis
+- Take ambiguity into account (for that public)
+- Advance block determinants (for another public)
+
+
+ <small>
+ 
+  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
+  </small>
 
 ---
 layout: center
