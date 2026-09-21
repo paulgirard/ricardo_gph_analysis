@@ -175,7 +175,7 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
 ---
 layout: iframe
 url: https://medialab.github.io/GeoPolHist/#/GeoPolHist/country/325
-scale: 0.8
+scale: 1
 ---
 
 <!--
@@ -284,19 +284,26 @@ layout: center
 
 From RICardo:
 
-- Locality -[ **AGGREGATE_INTO** ]-> parent entity
-- Group -[ **SPLIT_INTO** ]-> members
+```cypher
+(Locality)-[:AGGREGATE_INTO]->(parent entity)
+(Group)-[:SPLIT_INTO]->(members)
+```
 
 From additional data edited for this paper:
 
-- Geographical Area -[ **SPLIT_INTO** ]-> members
-- Informal -[ **SPLIT_INTO** ]-> members
+```cypher
+(Geographical Area)-[:SPLIT_INTO]->(members)
+(Informal)-[:SPLIT_INTO]->(members)
+```
 
 From GeoPolHist:
 
-- `Part of` GPH entity -[ **AGGREGATE_INTO** ]-> sovereign
-- Colonial Area -[ **SPLIT_INTO** ]-> colonies  
-  _(reusing geographical area data table)_
+```cypher
+(`Part of` GPH entity)-[:AGGREGATE_INTO]->(sovereign)
+(Colonial Area)-[:SPLIT_INTO]->(colonies)
+```
+
+For colonial area we combine geographical area data table with GPH data.
 
 <!--
 Quid des « other » ? GD
@@ -356,7 +363,7 @@ For each non-autonomous entity (source: GPH + Ricardo localities), we traverse r
 This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
 
 ```cypher
-(D)<-[SPLIT]-(D & part of A)-[SPLIT]->(part of A)-[AGGREGATE_INTO]->(A)
+(D)<-[:SPLIT]-(D & part of A)-[:SPLIT]->(part of A)-[:AGGREGATE_INTO]->(A)
 ```
 
 Autonomous of **D & part of A** are **D** and **A**.
@@ -450,7 +457,7 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_examples_gephi_lite.json
-scale: 0.5
+scale: 1
 ---
 
 <!--
