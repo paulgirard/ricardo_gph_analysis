@@ -132,7 +132,7 @@ replace common_empire=1 if sub_empire==1
 
 
 
-logistic meme_`NetworkType' ln_dist /*common_empire*/, robust
+logistic meme_`NetworkType' ln_dist /*common_empire*/, vce(cluster source)
 display "`year'"
 
 
