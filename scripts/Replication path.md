@@ -150,12 +150,21 @@ De ATOP 5.1
 ###Contiguity manquant
 - Produit data/blocks/Controls panel/na_contig_a_coder.csv
 
-### Base qui rassemble tout (Youssef)
+### Base qui rassemble tout y compris les variables explicatives (Youssef)
 J’imagine depuis `scripts/Ghallada/Merge in one file all.R` ?
 `data/blocks/master_panel_carre.csv.xz`
 `data/blocks/master_panel_rectangle.csv.xz`
 `data/blocks/louvain/YYYY_fob_enrichi.csv`
+`data/blocks/master_YYYY_fob_.csv`
 
 ## Régressions (Guillaume)
 
+À partir de `data/blocks/master_YYYY_fob_.csv`
+Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
+Produit :` results/block_study/regression_results.csv`
+Et `results/block_study/ln_dist_intramax_fob.png`
+
+
+
 Prendre l’appartenance AN  comme une variable explicative.
+À partir de 

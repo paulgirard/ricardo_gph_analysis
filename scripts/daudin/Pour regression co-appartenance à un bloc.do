@@ -14,8 +14,7 @@ program define block_importation
 
 if "`NetworkType'"=="IntraMax" {
     *importation des données de co-appartenance à un bloc
-    import delimited using "data/blocks/intramax/paires_blocs_`year'.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+    import delimited using "data/blocks/intramax/paires_blocs_`year'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 }
 
 
@@ -25,8 +24,8 @@ drop year* bloc_exp bloc_imp id *Type value new* original*
 end
 */
 
-***Importation des données travaillées par Youssef
-
+***Importation des données travaillées par Youssef (du temps du gros fichier)
+/*
 capture program drop master_panel_importation
 program define master_panel_importation
     args   shape
@@ -37,8 +36,7 @@ program define master_panel_importation
     ! /opt/homebrew/bin/xz -dkf data/blocks/master_panel_`shape'.csv.xz    
 
 
-    import delimited using "data/blocks/master_panel_`shape'.csv", /*
-        */delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+    import delimited using "data/blocks/master_panel_`shape'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 
     drop intramax_exp intramax_imp id importerType exporterType export_intramax
     drop reportedBy partial valueToSplit newReporters newPartners originalReportedTradeFlowIds
@@ -73,20 +71,70 @@ program define master_panel_importation
 end
 *jamais utile
 *master_panel_importation rectangle 
-*// à rétablir quand les données changent
+* à rétablir quand les données changent
 *master_panel_importation carre 
 
 //En fait, la rectangle ne me sert pas à ce niveau : je prends la carré, puis je fixe l’ordre target/source
+
+
+*/
+
+
+import delimited "data/blocks/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/distance.dta", replace
 
 capture program drop block_regression
 program define block_regression
     args year CafFob NetworkType
 
-use "data/blocks/master_`year'_`CafFob'.dta", clear
+import delimited "data/blocks/master_`year'_fob.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
-logistic meme_`NetworkType' ln_dist, robust
+
+/*
+***Importation des données d’appartenance à empire **************
+////Pour rapports de subordination
+merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
+replace sub_empire=0 if sub_empire==.
+drop _merge GPH_code GPH_status sovereign_GPH_code
+
+recast str2045 importerId
+rename importerId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code importerId_sov
+drop _merge
+rename GPH_code importerId 
+
+recast str2045 exporterId
+rename exporterId GPH_code
+merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
+rename sovereign_GPH_code exporterId_sov
+drop _merge
+rename GPH_code exporterId
+
+
+generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
+replace common_empire=0 if common_empire==.
+bysort importerId exporterId : egen max=max(common_empire)
+bysort importerId exporterId : replace common_empire = max
+bysort importerId exporterId : keep if _n==1
+drop max
+bysort importerId exporterId : assert  _N==1
+***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
+*Cracow dès 1833
+
+replace common_empire=1 if sub_empire==1
+
+******************************
+*/
+
+
+
+
+logistic meme_`NetworkType' ln_dist /*common_empire*/, robust
 display "`year'"
+
 
 post reg_result ("`NetworkType'") ("`CafFob'") (`year') ("ln_dist") (_b[ln_dist]) (_b[ln_dist]-1.96*_se[ln_dist]) (_b[ln_dist]+1.96*_se[ln_dist]) (e(r2_p))
 
