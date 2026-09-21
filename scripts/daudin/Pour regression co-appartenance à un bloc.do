@@ -91,6 +91,13 @@ import delimited "data/blocks/master_`year'_fob.csv", delimiter(comma) bindquote
 
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
+destring(contig_large), replace force
+replace contig_large=0 if contig_large==.
+destring(mid_n), replace force
+replace mid_n=0 if mid_n==.
+destring(atop_allie), replace force
+replace atop_allie=0 if atop_allie==.
+
 
 
 ***Importation des données d’appartenance à empire **************
@@ -130,13 +137,10 @@ replace common_empire=1 if sub_empire==1
 ******************************
 
 
-
-
-
 logistic meme_`NetworkType' $liste_var_ex, vce(cluster source)
 display "`year'"
 
-foreach var_ex in ln_dist common_empire {
+foreach var_ex in $liste_var_ex {
     local coef = _b[`var_ex']
     local lc=_b[`var_ex']-1.96*_se[`var_ex']
     local uc=_b[`var_ex']+1.96*_se[`var_ex']
@@ -151,7 +155,7 @@ end
 
 *********************************************************************
 
-global liste_var_ex ln_dist common_empire
+global liste_var_ex ln_dist common_empire contig_large mid_n atop_allie
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
@@ -163,6 +167,10 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
 
+foreach year of numlist 1833(1)1938  {
+    block_regression `year' fob louvain
+  }
+
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
@@ -172,20 +180,28 @@ foreach var_ex of global liste_var_ex {
 
     use "results/block_study/regression_results_`var_ex'.dta", clear
     export delimited using "results/block_study/regression_results_`var_ex'.csv", replace delimiter(",") quote
-
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
 
-    tsset year
-    tsfill, full
-    twoway (rcap ci_low ci_high year, lcolor(gs8)) ///
-           (connected coef year, mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
-            (connected r2p year, yaxis(2) cmissing(n)), ///
+  
+    foreach NetworkType in intramax louvain {
+        preserve
+        keep if NetworkType=="`NetworkType'"
+        tsset year
+        tsfill, full
+
+        
+    twoway (rcap ci_low ci_high year , lcolor(gs8)) ///
+           (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
+            (connected r2p year , yaxis(2) cmissing(n)), ///
             yline(1, lpattern(dash) lcolor(red)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            title("Regression results (fob)") ///
+            xscale(range(1830 2030)) ///
+            title(""`NetworkType'" Regression results `var_ex' (fob)") ///
             legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Additional Pseudo R2 (right)") position(6))
 
-    graph export "results/block_study/`var_ex'_intramax_fob.png", replace
+    graph export "results/block_study/`var_ex'_`NetworkType'_fob.png", replace
+    restore
+    }
 }
