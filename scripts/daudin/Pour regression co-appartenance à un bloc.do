@@ -133,18 +133,27 @@ replace common_empire=1 if sub_empire==1
 
 
 
-logistic meme_`NetworkType' ln_dist common_empire, vce(cluster source)
+logistic meme_`NetworkType' $liste_var_ex, vce(cluster source)
 display "`year'"
 
 foreach var_ex in ln_dist common_empire {
-    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (_b[`var_ex']) (_b[`var_ex']-1.96*_se[`var_ex']) (_b[`var_ex']+1.96*_se[`var_ex']) (e(r2_p))
+    local coef = _b[`var_ex']
+    local lc=_b[`var_ex']-1.96*_se[`var_ex']
+    local uc=_b[`var_ex']+1.96*_se[`var_ex']
+    local R2=e(r2_p)
+    local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
+    logistic meme_`NetworkType' `var_ex_minus', vce(cluster source)
+    local add_R2=`R2'-e(r2_p)
+    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
 }
 
 end
 
 *********************************************************************
 
-foreach var_ex in ln_dist common_empire {
+global liste_var_ex ln_dist common_empire
+
+foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
     postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
     
@@ -154,12 +163,12 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
 
-foreach var_ex in ln_dist common_empire {
+foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
 
 
-foreach var_ex in ln_dist common_empire {
+foreach var_ex of global liste_var_ex {
 
     use "results/block_study/regression_results_`var_ex'.dta", clear
     export delimited using "results/block_study/regression_results_`var_ex'.csv", replace delimiter(",") quote
@@ -176,7 +185,7 @@ foreach var_ex in ln_dist common_empire {
             yline(1, lpattern(dash) lcolor(red)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
             title("Regression results (fob)") ///
-            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Pseudo R2 (right)") position(6))
+            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Additional Pseudo R2 (right)") position(6))
 
     graph export "results/block_study/`var_ex'_intramax_fob.png", replace
 }
