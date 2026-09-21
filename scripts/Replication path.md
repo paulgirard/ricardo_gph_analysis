@@ -111,13 +111,14 @@ Avec `Pour part commerce intra-bloc.do`
 Produit : `results/block_study/intra_block_share_fob.csv` et
 `results/block_study/Intra-block trade share.png`
 ### Divers (Youssef)
-- Cartes avec scripts/Ghallada/Map year.R
-		-Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
+Cartes avec `scripts/Ghallada/Map year.R`
+Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 
-- Corrélations avec scripts/Ghallada/RegionalTradeintensityYear.R
-	- Cela donne data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png
+Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
+Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 ## Variables explicatives (Youssef)
-- Et mise de tout dans le même fichier: grâce à scripts/Ghallada/Variables de controles.R
+Et mise de tout dans le même fichier: grâce à `scripts/Ghallada/Variables de controles.R`
+- 
 ### Contiguité (Youssef)
 De COW :
 Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
@@ -136,7 +137,7 @@ produit `data/blocks/Controls panel/contiguity.csv`
 ### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation 
 Dans le script "scripts/Ghallada/Variables de controles.R"
-- produit data/blocks/Controls panel/distance.csv
+Produit `data/blocks/Controls panel/distance.csv’
 
 ### Conflit
 De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
@@ -149,9 +150,11 @@ De ATOP 5.1
 ###Contiguity manquant
 - Produit data/blocks/Controls panel/na_contig_a_coder.csv
 
-### Base qui rassemble tout
-- data/blocks/master_panel_carre.csv.xz
-- data/blocks/master_panel_rectangle.csv.xz
+### Base qui rassemble tout (Youssef)
+J’imagine depuis `scripts/Ghallada/Merge in one file all.R` ?
+`data/blocks/master_panel_carre.csv.xz`
+`data/blocks/master_panel_rectangle.csv.xz`
+`data/blocks/louvain/YYYY_fob_enrichi.csv`
 
 ## Régressions (Guillaume)
 
