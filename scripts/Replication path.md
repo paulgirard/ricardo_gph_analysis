@@ -152,24 +152,15 @@ Produit `external data/Controls panel/alliances.csv`
 
 ## Régressions (Guillaume)
 
-<<<<<<< Updated upstream
-À partir de `data/blocks/master_YYYY_fob_.csv`
-=======
-<<<<<<< Updated upstream
+
 Prendre l’appartenance AN  comme une variable explicative.
-=======
+
 À partir de `data/blocks/master_YYYY_fob_.csv` NON PAS LES BONS
->>>>>>> Stashed changes
+
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`
 Et `results/block_study/ln_dist_intramax_fob.png`
 
 
 
-Prendre l’appartenance AN  comme une variable explicative.
-<<<<<<< Updated upstream
-À partir de 
-=======
-À partir de 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+

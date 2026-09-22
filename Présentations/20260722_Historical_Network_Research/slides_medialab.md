@@ -704,21 +704,6 @@ backgroundSize: contain
 ## Blondel et al.
 
 ---
-layout: center
----
-
-## The result depends on the order in which *i* are treated.
-<!-- One day we take that into account
--->
- <small>
- 
-  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
-  </small>
-  
-<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
-
-
----
 layout: image
 image: /images/carte_blocs_1850.png
 backgroundSize: contain
@@ -737,7 +722,7 @@ layout: center
 # Trade block analysis
 ### How to define a block?
 > ### Regionalisation and globalisation
-### Determinants of blocks
+### Block determinants
 
 ---
 layout: center
@@ -795,17 +780,87 @@ layout: center
 ---
 layout: center
 ---
+
+
+# Trade block analysis
+### How to define a block?
+### Regionalisation and globalisation
+> ### Block determinants
+
+---
+layout: center
+---
+Probit regression on GPH-pairs each year, on variables:
+ - distance
+ - contiguity
+ - common empire
+ - alliance (inherited from sovereign)
+ - conflict (inherited from sovereign)
+
+We compute the incremental R² (I hope that works for profit quasi-R²)
+
+---
+layout: image
+image: /images/mid_n_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/atop_allie_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/common_empire_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/contig_large_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/ln_dist_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/ln_dist_intramax_fob.png
+backgroundSize: contain
+---
+
+---
+layout: center
+---
+
+
 # Conclusions (2)
 
 ## Pat on the back
 Interdisciplinary work between history, economics and network science
 
-## Possible improvements
+## Improvements?
 
 - more primary sources on trade statistics (and a poney)
 - distinguish unknown but non-zero trade flows and zero trade flows in the analysis
-- Take ambiguity into account (for that public)
-- Advance block determinants (for another public)
+- Take ambiguity in Louvain into account (for that public)
+- Progress on block determinants (for another public)
+
+
+<!-- One day we take that into account
+-->
+
+
+  
+<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
+
+
 
 
  <small>

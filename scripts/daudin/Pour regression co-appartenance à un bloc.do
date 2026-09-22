@@ -79,24 +79,85 @@ end
 
 */
 
+****À faire une fois
 
-import delimited "data/blocks/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/distance.dta", replace
+
+import delimited "external data/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/Controls panel/distance.dta", replace
+
+import delimited "external data/Controls panel/alliances.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/Controls panel/alliances.dta", replace
+
+import delimited "external data/Controls panel/contiguity.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/Controls panel/contiguity.dta", replace
+
+import delimited "external data/Controls panel/disputes.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/Controls panel/disputes.dta", replace
+
+import delimited "external data/BlocselonAN.csv", delimiter(";") bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/BlocselonAN.dta", replace
+
+
+import delimited "data/blocks/panel_blocs_paires.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+save data/blocks/panel_blocs_paires.dta, replace
+
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
+    import delimited "data/blocks/gph_blocks_by_year/`year'_fob.csv" , delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+    save "data/blocks/gph_blocks_by_year/`year'_fob.dta", replace
+  }
+
+
+
+
 
 capture program drop block_regression
 program define block_regression
     args year CafFob NetworkType
 
-import delimited "data/blocks/master_`year'_fob.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+use  "data/blocks/panel_blocs_paires.dta", clear
+keep if year==`year' 
+
+foreach source_target in source target {
+    rename `source_target' id
+    merge m:1 id year using "data/blocks/gph_blocks_by_year/`year'_`CafFob'.dta", keep(1 3)
+    rename blockLouvain `source_target'_blocklouvain
+    rename blockIntraMax `source_target'_blockintramax
+    rename id GPH_code
+    drop _merge
+    merge m:1 GPH_code using "external data/BlocselonAN.dta", keep(1 3)
+    rename region_AndersonNorheim `source_target'_blockAN
+    replace `source_target'_blockAN = subregion_AndersonNorheim if subregion_AndersonNorheim !=""
+    drop continent lat lng subregion_AndersonNorheim Comment period_*
+    rename GPH_code `source_target'
+    drop _merge
+}
+
+generate meme_`NetworkType'=1 if source_block`NetworkType'==target_block`NetworkType'
+replace meme_`NetworkType'=0 if meme_`NetworkType'==.
+
+
+
+merge 1:1 key using "external data/Controls panel/distance.dta", keep(1 3) nogenerate
+merge 1:1 key year using "external data/Controls panel/alliances.dta", keep(1 3) nogenerate
+merge 1:1 key year using "external data/Controls panel/contiguity.dta", keep(1 3) nogenerate
+
+merge 1:1 key year using "external data/Controls panel/disputes.dta", keep(1 3) nogenerate
+
 
 destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
-destring(contig_large), replace force
+
+
+***Dans tous ces cas, je considère les manquants comme nul. Peut-être pas malin.
+destring(conttype), replace force
+generate contig_large=1 if conttype !=0
 replace contig_large=0 if contig_large==.
 destring(mid_n), replace force
 replace mid_n=0 if mid_n==.
+replace mid_n=1 if mid_n>1
 destring(atop_allie), replace force
 replace atop_allie=0 if atop_allie==.
+
 
 
 
@@ -107,14 +168,14 @@ replace sub_empire=0 if sub_empire==.
 drop _merge GPH_code GPH_status sovereign_GPH_code
 
 
-recast str2045 target
+tostring(target), replace
 rename target GPH_code
 merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
 rename sovereign_GPH_code target_sov
 drop _merge
 rename GPH_code target 
 
-recast str2045 source
+tostring(source), replace
 rename source GPH_code
 merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
 rename sovereign_GPH_code source_sov
@@ -137,7 +198,10 @@ replace common_empire=1 if sub_empire==1
 ******************************
 
 
-logistic meme_`NetworkType' $liste_var_ex, vce(cluster source)
+
+
+logistic meme_`NetworkType' $liste_var_ex /*, vce(cluster source)*/
+
 display "`year'"
 
 foreach var_ex in $liste_var_ex {
@@ -167,13 +231,14 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
 
-foreach year of numlist 1833(1)1938  {
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob louvain
   }
 
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
+
 
 
 foreach var_ex of global liste_var_ex {
@@ -183,6 +248,9 @@ foreach var_ex of global liste_var_ex {
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
+    replace ci_high=3 if ci_high>3
+    replace ci_low=3 if ci_low>3
+    replace coef=3 if coef>3
 
   
     foreach NetworkType in intramax louvain {
