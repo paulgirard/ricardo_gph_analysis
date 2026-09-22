@@ -890,7 +890,7 @@ layout: center
 
 # Any questions?
 
-_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/HNR_2026/
+_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/medialab_2026/
 
 _Code & Data:_ https://github.com/paulgirard/ricardo_gph_analysis
 
