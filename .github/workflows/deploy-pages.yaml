@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  HNR_2026_DIR: Présentations/20260722_Historical_Network_Research
+  HNR_2026_DIR: Présentations/2026_Turin_Paris_Bonn
 
 permissions:
   contents: read
@@ -50,6 +50,11 @@ jobs:
       - name: Build médialab
         working-directory: ${{ env.HNR_2026_DIR }}
         run: npm run build -- slides_medialab.md -o dist/medialab_2026/ --base ricardo_gph_analysis/medialab_2026/
+
+      # Exécution du script de build
+      - name: Build Bonn
+        working-directory: ${{ env.HNR_2026_DIR }}
+        run: npm run build -- slides_bonn.md -o dist/bonn_2026/ --base ricardo_gph_analysis/bonn_2026/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

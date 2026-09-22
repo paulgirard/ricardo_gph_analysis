@@ -1,6 +1,7 @@
 ---
 favicon: "/favicon.ico"
 pwa: false
+routerMode: hash
 fonts:
   # basically the text
   sans: Open Sans
@@ -85,6 +86,7 @@ _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
 Missing from the picture:\
 Cuba et Porto-Rico\
 Possessions anglaises
+
 ---
 
 # RICardo: faithful to the sources
@@ -112,7 +114,9 @@ Possessions anglaises
 </div>
 
 <!--
-COW : 1,200 names. Ric : from 10k to c. 2.5k-->
+COW : 1,200 names. Ric : from 10k to c. 2.5k
+-->
+
 ---
 
 # RICentities types

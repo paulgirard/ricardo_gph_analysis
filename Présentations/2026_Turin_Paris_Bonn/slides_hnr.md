@@ -1,6 +1,7 @@
 ---
 favicon: "/favicon.ico"
 pwa: false
+routerMode: hash
 fonts:
   # basically the text
   sans: Open Sans
