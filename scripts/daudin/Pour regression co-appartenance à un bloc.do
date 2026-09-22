@@ -248,9 +248,9 @@ foreach var_ex of global liste_var_ex {
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
-    replace ci_high=3 if ci_high>3
-    replace ci_low=3 if ci_low>3
-    replace coef=3 if coef>3
+    replace ci_high=5 if ci_high>5
+    replace ci_low=5 if ci_low>5
+    replace coef=5 if coef>5
 
   
     foreach NetworkType in intramax louvain {
