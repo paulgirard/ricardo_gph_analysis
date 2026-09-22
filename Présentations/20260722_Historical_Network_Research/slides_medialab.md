@@ -84,7 +84,7 @@ backgroundSize: contain
 _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
 Missing from the picture:\
 Cuba et Porto-Rico\
-Possessions anglaises
+Possessions anglaises d’Amérique
 ---
 
 # RICardo: faithful to the sources
@@ -111,6 +111,8 @@ Possessions anglaises
 
 </div>
 
+<!--
+COW : 1,200 names. Ric : from 10k to c. 2.5k-->
 ---
 
 # RICentities types
