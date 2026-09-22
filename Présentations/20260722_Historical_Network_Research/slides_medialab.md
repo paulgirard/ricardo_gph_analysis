@@ -81,8 +81,10 @@ backgroundSize: contain
 
 # Heterogeneity of<br/> trade entities<br/>in trade archives
 
-_Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)
-
+_Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
+Missing from the picture:\
+Cuba et Porto-Rico\
+Possessions anglaises
 ---
 
 # RICardo: faithful to the sources
@@ -761,21 +763,6 @@ image: /images/Modularity.png
 backgroundSize: contain
 ---
 
----
-layout: center
----
-
-# Conclusion (1)
-##  Outline
-- Gather data
-- Find classifications
-- Explain classifications 
-
-## Our hypothesis:
-- Reported sources are exhaustive: unreported trade flows are not significant enough and thus can be considered 0
-- Trade partner ratios for one reporter are _stable_ in a 10-years window
-- Minimalist theory-gravity models are reliable
-- our sources are reliable (home-brewed)
 
 ---
 layout: center
@@ -796,6 +783,7 @@ Probit regression on GPH-pairs each year, on variables:
  - common empire
  - alliance (inherited from sovereign)
  - conflict (inherited from sovereign)
+- No causality, obviously
 
 We compute the incremental R² (I hope that works for profit quasi-R²)
 
@@ -834,6 +822,21 @@ layout: image
 image: /images/ln_dist_intramax_fob.png
 backgroundSize: contain
 ---
+---
+layout: center
+---
+
+# Conclusion (1)
+##  Outline
+- Gather data
+- Find classifications
+- Explain classifications 
+
+## Our hypothesis:
+- Reported sources are exhaustive: unreported trade flows are not significant enough and thus can be considered 0
+- Trade partner ratios for one reporter are _stable_ in a 10-years window
+- Minimalist theory-gravity models are reliable
+- our sources are reliable (home-brewed)
 
 ---
 layout: center
