@@ -12,16 +12,22 @@ https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time
 
 ### Before gravity (Paul) (YYYY < 1939, from 1833)
 
-From data in https://github.com/medialab/GeoPolHist and https://github.com/medialab/GeoPolHist/ricardo_data, Paul creates data/tradeFlows_YYYY_ratios.csv
+From data in https://github.com/medialab/GeoPolHist and https://github.com/medialab/GeoPolHist/ricardo_data,
+
+Using `npm run quality_ratio`
+
+Paul creates data/tradeFlows_YYYY_ratios.csv + un fichier de diagnostics ‘tradeGraphsStats_ratios.csv’
+
+
 
 ### Gravity (Guillaume) (YYYY < 1939)
 From:
-data/tradeFlows_YYY_ratios.csv pour les flux
-From
+`data/tradeFlows_YYY_ratios.csv` pour les flux
++
 `external data/dependency_relations.csv`
 pour les liens politiques
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
-- Using scripts/daudin/Pour gravité.do (stata), Guillaume creates results/BestGuessBilTrade_YYYY.csv and results/gravity_XXXX.csv
+Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/BestGuessBilTrade_YYYY.csv and results/gravity_XXXX.csv`
 
 ### Post gravity data (Paul) (YYYY < 1939)
 ```
@@ -61,7 +67,8 @@ From Pour results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.c
 Which are the trade flows including gravity
 
 ### Graphique de diagnostic ?
-Qui s’en occupe ?
+`npm run quality-gravity`
+un fichier de diagnostics ‘tradeGraphsStats_gravity.csv’
 
 ### IMF data (YYYY > 1947 up to 2025) (Youssef)
 From:

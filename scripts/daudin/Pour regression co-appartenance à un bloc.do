@@ -267,7 +267,7 @@ foreach var_ex of global liste_var_ex {
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
             xscale(range(1830 2030)) ///
             title(""`NetworkType'" Regression results `var_ex' (fob)") ///
-            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Additional Pseudo R2 (right)") position(6))
+            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
     graph export "results/block_study/`var_ex'_`NetworkType'_fob.png", replace
     restore
