@@ -5,5 +5,6 @@ import Logo from "./ouestware.svg";
     <!-- <a href="https://ouestware.com" target="_blank" rel="no-opener"
       ><img title="OuestWare" src="/logo_ouestware.svg"
     /></a> -->
+    <SlideCurrentNo />
   </footer>
 </template>
