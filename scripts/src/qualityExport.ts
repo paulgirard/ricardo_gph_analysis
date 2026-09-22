@@ -35,6 +35,7 @@ interface FlowDataPoint {
   newReporters?: string;
   newPartners?: string;
   originalReportedTradeFlowIds?: string;
+  valueGeneratedBy?: string;
 }
 
 interface ComputedData {
@@ -99,7 +100,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
     },
   );
   const { nbReportingFT, worldFT, reportingsFT } = await FTPromise;
-  // bilateral flows
+  // bilateral flowsflowData
   const bilaterals: Record<string, FlowStat> = {};
   const sumBilateralWorld = { nbFlows: 0, value: 0 };
   const flowData: FlowDataPoint[] = [];
@@ -201,6 +202,7 @@ async function graphQuality(graph: GraphType): Promise<ComputedData> {
         newPartners: edgeAtts.newPartners,
         newReporters: edgeAtts.newReporters,
         originalReportedTradeFlowIds: edgeAtts.originalReportedTradeFlowIds,
+        valueGeneratedBy: edgeAtts.valueGeneratedBy?.join("|"),
       });
     }
   });
@@ -306,6 +308,7 @@ export async function graphsQuality(
         "originalReportedTradeFlowIds",
 
         "status",
+        "valueGeneratedBy",
         "notes",
       ];
       flowStream.write(
