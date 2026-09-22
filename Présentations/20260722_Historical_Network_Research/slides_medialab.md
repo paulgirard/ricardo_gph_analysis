@@ -84,7 +84,7 @@ backgroundSize: contain
 _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
 Missing from the picture:\
 Cuba et Porto-Rico\
-Possessions anglaises d’Amérique
+Possessions anglaises
 ---
 
 # RICardo: faithful to the sources
