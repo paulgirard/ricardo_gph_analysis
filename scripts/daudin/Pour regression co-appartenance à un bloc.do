@@ -260,7 +260,7 @@ foreach var_ex of global liste_var_ex {
         tsfill, full
 
         
-    twoway (rcap ci_low ci_high year , lcolor(gs8)) ///
+    twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
             yline(1, lpattern(dash) lcolor(red)) ///
