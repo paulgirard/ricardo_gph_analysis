@@ -369,7 +369,7 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 ---
 layout: iframe
 url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_examples_gephi_lite.json
-scale: 1
+	scale: 1
 ---
 
 <!--
@@ -378,7 +378,7 @@ This is an extract around Malta in 1850 that illustrate the diversity of resolut
 
 ---
 layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_gravity_gephi_lite
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_gravity_gephi_lite.json
 scale: 1
 ---
 
