@@ -1,16 +1,12 @@
 import { DirectedGraph } from "graphology";
 import { fromPairs, sum } from "lodash";
 
-import { EntityNodeAttributes, GraphAttributes, TradeEdgeAttributes } from "./types";
-
-type CafFobGraph = DirectedGraph<EntityNodeAttributes, TradeEdgeAttributes & { TIBI?: number }, GraphAttributes>;
-
 /**
  * For a given FOB or CAF trade graph (directed) add a new edge attribute TIBI
  * @param graph
  */
 
-export function assignTIBI(graph: CafFobGraph) {
+export function assignTIBI(graph: DirectedGraph) {
   // sum of exports by nodes
   const X = fromPairs(
     graph.mapNodes((n) => {
