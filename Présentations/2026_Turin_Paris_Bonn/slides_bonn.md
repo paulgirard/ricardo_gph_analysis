@@ -264,107 +264,6 @@ layout: center
 1. Trade partners splits with year ratio method
 1. Trade reporters & partners splits with gravity model method
 
----
-layout: center
----
-
-# Autonomous trade entity resolution
-
-For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
-
-This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
-
-```cypher
-(D)<-[:SPLIT]-(D & part of A)-[:SPLIT]->(part of A)-[:AGGREGATE_INTO]->(A)
-```
-
-Autonomous of **D & part of A** are **D** and **A**.
-
-<!--
-Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
-
-Je ne comprends pas ce que tu ne comprends pas. On suit tous les liens de résolutions qq soit la raison pour laquelle on a créé le lien. J'ajoute un schéma symbolique PG
--->
-
----
-layout: center
----
-
-# Trade reporters aggregation/split
-
-Reporters needs to be treated before the partners as areas desagregations needs a stable reporter scope.
-
-Moreover we need to treat cases of reporters overlaps. It happens that a set of reporters report part of the same trade from different perspectives.
-
-<small>
-
-PS: we don't split reporters trade at this step, we prepare the work for the gravity model
-
-</small>
-
----
-layout: center
----
-
-# Trade partner aggregation
-
-Simple task: sum the trade figure to build the new trade edge.
-
-<small>
-
-PS #1: do not overwrite an existing reported trade flow  
-PS #2: do not create internal trade flows, discard trade flows between part of and its parent
-
-</small>
-
----
-layout: center
----
-
-# Trade partner splits with year ratio method
-
-Difficult task: how to decide the ratios to split one trade value into many?
-
-We look into **adjacent years** (+/- 10-years window) networks  
-for _dissociated_ trade flows with the **same set of partners** for the same reporter.
-
-If we find one compatible year, we calculate **split ratios** for that year and reapply those **on the original trade value**.
-
-This process support partial split.  
-If a set of partners from a group is found as one + another group, the one found will be split, the rest will stay as a group.
-
----
-layout: center
----
-
-# Special cases: Areas
-
-Areas (geographical or colonial) are implicit groups.
-
-The composition of the group is not explicit in the source.
-
-We use geographical or colonial sets which we adapt to the source context:
-
-- we remove all theoretical members of the area which are already cited by the reporter
-- we remove those that would not be part of the trade network otherwise (not directly cited by another source)
-
----
-layout: center
----
-
-# Trade partner/reporter splits with gravity model method
-
-We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
-
-We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables (to be extended).
-
-The inferred values are used to compute a ratio which is then applied on the original values.
-
-<small>
-
-Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, February 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
-
-</small>
 
 ---
 layout: iframe
@@ -378,8 +277,14 @@ This is an extract around Malta in 1850 that illustrate the diversity of resolut
 
 ---
 layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_gravity_gephi_lite.json
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_trade_gephi_lite_post_gravity.json
 scale: 1
+---
+
+---
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_trade_gephi_lite.json
+scale: 0.8
 ---
 
 ---
@@ -937,6 +842,108 @@ layout: image
 image: /images/multilayer_data_model_3.png
 backgroundSize: contain
 ---
+
+---
+layout: center
+---
+
+# Autonomous trade entity resolution
+
+For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
+
+This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
+
+```cypher
+(D)<-[:SPLIT]-(D & part of A)-[:SPLIT]->(part of A)-[:AGGREGATE_INTO]->(A)
+```
+
+Autonomous of **D & part of A** are **D** and **A**.
+
+<!--
+Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
+
+Je ne comprends pas ce que tu ne comprends pas. On suit tous les liens de résolutions qq soit la raison pour laquelle on a créé le lien. J'ajoute un schéma symbolique PG
+-->
+
+---
+layout: center
+---
+
+# Trade reporters aggregation/split
+
+Reporters needs to be treated before the partners as areas desagregations needs a stable reporter scope.
+
+Moreover we need to treat cases of reporters overlaps. It happens that a set of reporters report part of the same trade from different perspectives.
+
+<small>
+
+PS: we don't split reporters trade at this step, we prepare the work for the gravity model
+
+</small>
+
+---
+layout: center
+---
+
+# Trade partner aggregation
+
+Simple task: sum the trade figure to build the new trade edge.
+
+<small>
+
+PS #1: do not overwrite an existing reported trade flow  
+PS #2: do not create internal trade flows, discard trade flows between part of and its parent
+
+</small>
+
+---
+layout: center
+---
+
+# Trade partner splits with year ratio method
+
+Difficult task: how to decide the ratios to split one trade value into many?
+
+We look into **adjacent years** (+/- 10-years window) networks  
+for _dissociated_ trade flows with the **same set of partners** for the same reporter.
+
+If we find one compatible year, we calculate **split ratios** for that year and reapply those **on the original trade value**.
+
+This process support partial split.  
+If a set of partners from a group is found as one + another group, the one found will be split, the rest will stay as a group.
+
+---
+layout: center
+---
+
+# Special cases: Areas
+
+Areas (geographical or colonial) are implicit groups.
+
+The composition of the group is not explicit in the source.
+
+We use geographical or colonial sets which we adapt to the source context:
+
+- we remove all theoretical members of the area which are already cited by the reporter
+- we remove those that would not be part of the trade network otherwise (not directly cited by another source)
+
+---
+layout: center
+---
+
+# Trade partner/reporter splits with gravity model method
+
+We try to impute flows we couldn't split with the adjacent years method by using a gravity model (Anderson et Van Wincoop 2003).
+
+We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables (to be extended).
+
+The inferred values are used to compute a ratio which is then applied on the original values.
+
+<small>
+
+Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, February 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
+
+</small>
 
 
 
