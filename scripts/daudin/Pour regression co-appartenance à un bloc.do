@@ -22,9 +22,6 @@ import delimited "external data/Controls panel/disputes.csv", delimiter(comma) b
 save "external data/Controls panel/disputes.dta", replace
 **Défini jusqu’en 2014
 
-import delimited "external data/BlocselonAN.csv", delimiter(";") bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/BlocselonAN.dta", replace
-
 
 import delimited "data/blocks/panel_blocs_paires.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
 save data/blocks/panel_blocs_paires.dta, replace
@@ -36,7 +33,14 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
 
 
 
+
+
+import delimited "external data/BlocselonAN.csv", delimiter(";") bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+save "external data/BlocselonAN.dta", replace
+
+***BlocsselonAN n’est pas complet mais nous ne l’utilisons pas
 */
+
 
 capture program drop block_regression
 program define block_regression
@@ -79,14 +83,14 @@ generate ln_dist=ln(distance_km)
 
 ***Dans tous ces cas, je considère les manquants comme nul. Peut-être pas malin.
 destring(conttype), replace force
-generate contig_large=1 if conttype ==1 | conttype==2 
+generate contig12=1 if conttype ==1 | conttype==2 
+replace contig12=0 if conttype==0
+replace contig12=0 if distance_km>=5000 & contig12==.
 **1 : contiguous by land 2: 12 miles or less of water
 *replace contig_large=0 if contig_large==.
-destring(mid_herit), replace force
-*replace mid_herit=0 if mid_n==.
-destring(atop_herit), replace force
-*replace atop_herit=0 if atop_allie==.
-
+destring(mid_n), replace force
+replace mid_n=1 if mid_n>=1 & mid_n!=.
+destring(atop_allie), replace force
 
 
 
@@ -127,9 +131,10 @@ replace common_empire=1 if sub_empire==1
 ******************************
 
 
+if `year' >=2015 global liste_var_ex = subinstr("$liste_var_ex","mid_n","",.)
+if `year' >=2019 global liste_var_ex = subinstr("$liste_var_ex","atop_allie","",.)
 
-
-logistic meme_`NetworkType' $liste_var_ex /*, vce(cluster source)*/
+logistic meme_`NetworkType' $liste_var_ex, robust /*, vce(cluster source)*/
 
 display "`year'"
 
@@ -139,7 +144,7 @@ foreach var_ex in $liste_var_ex {
     local uc=_b[`var_ex']+1.96*_se[`var_ex']
     local R2=e(r2_p)
     local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
-    logistic meme_`NetworkType' `var_ex_minus', vce(cluster source)
+    logistic meme_`NetworkType' `var_ex_minus', robust /*vce(cluster source)*/
     local add_R2=`R2'-e(r2_p)
     post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
 }
@@ -148,22 +153,23 @@ end
 
 *********************************************************************
 
-global liste_var_ex ln_dist common_empire contig_large mid_herit atop_herit
+global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
     postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
     
 }
-
-foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2014 {
+/*
+foreach year of numlist 1833(1)1840 /*1938 1948(1)2008 2010(1)2025*/ {
     block_regression `year' fob intramax
   }
-
-foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2014 {
+*/
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob louvain
   }
 
+  global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
@@ -177,6 +183,7 @@ foreach var_ex of global liste_var_ex {
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
+    replace coef=. if ci_low==.
     replace ci_high=5 if ci_high>5
     replace ci_low=5 if ci_low>5
     replace coef=5 if coef>5
@@ -193,6 +200,8 @@ foreach var_ex of global liste_var_ex {
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
             yline(1, lpattern(dash) lcolor(red)) ///
+            xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
+            xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
             xscale(range(1830 2020)) ///
             title(""`NetworkType'" Regression results `var_ex' (fob)") ///

@@ -11,66 +11,58 @@ fonts:
   mono: Fira Code
 ---
 
-# Harmonizing Historical Trade Using Geopolitical Data
+# Ties that trade
 
-## A Multilayer Network Approach to Bilateral Flows
-
-## 1830–1938
+## Trade blocs over two centuries (1833–2025)
 
 <small>
 
-Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France\
+`Guillaume Daudin - Laboratoire d’Economie de Dauphine (LEDa) - France`\
 Béatrice Dedinger - Centre d’histoire de Sciences Po (CHSP) - France \
 Youssef Ghallada - Economic History Department LSE - United Kingdom\
 Paul Girard - OuestWare - France
 
-<div style="display:flex; gap:1em; align-items: center"><img src="/images/logo_medialab.svg" style="height:40px"/> <div>research seminar 2026-09-22 <br/>Paris, France</div></div>
+<div style="display:flex; gap:1em; align-items: center"> <div>6th Macrohistory Conference <br/>Bonn, Germany</div></div>
 
 </small>
 
 ---
+layout: center
+--- 
+# Introduction
 
-# A brief history of the RICardo project
+## What is the evolution of trade blocs over two centuries ?
+- Composition
+- Determinants
 
-<div style="font-size: 70%">
-
-- **2004-2006**: exhumation of ‘_Annales du commerce extérieur_’ trade archive
-  Birth of the RICardo project (RIC = Research on International Commerce)
-
-- **2007-2010**: creation of the RICardo bilateral trade database  
-  2010: bilateral trade database covering all countries of the world over the period 1830-1938: _250 000 data + an exchange rate database_
-
-- **2013-2017**: extension of the RICardo project to the creation of a digital tool  
-  2016: RICardo website (https://ricardo.medialab.sciences-po.fr/), 2017 version of the database (350 000 data)
-
-- **2019-2023**: extension to a political dimension of the RICardo project  
-  2023: GeoPolHist, a database and digital tool (https://medialab.github.io/GeoPolHist/#/GeoPolHist/)
-  to quantify the geopolitical entities of the world since 1816
-
-- **Since 2024**: RICardo data analysis (last version ~ 690 000 data)  
-  Return to the initial question: how has the structure of world trade evolved since the early 19th century?
-
-</div>
+## Outline
+1. Building the two necessary databases
+2. Building yearly coherent bilateral trade matrices
+3. Identifying trade blocs
+4. Finding the determinants of trade blocs
 
 ---
+layout: center
+--- 
+<div style="font-size: 70%">
 
-## RICardo
+# Two necessary databases (1)
+## Building a database of bilateral world trade from 1833
 
-https://ricardo.medialab.sciences-po.fr
+**2004**: exhumation of ‘_Annales du commerce extérieur_’ trade archive
+  Birth of the RICardo project (RIC = Research on International Commerce)
+
+**2010**: bilateral trade database covering all countries of the world over the period 1830-1938: 250 000 trade flows + an exchange rate database
+
+**2016**: RICardo website (https://ricardo.medialab.sciences-po.fr/), 2017 version of the database (350 000 trade flows)
+
+**2026**: 690 000 trade flows
+
+</div>
 
 <small>
 
 Girard, Paul, et al. « **RICardo Project : Exploring XIX Century International Trade** ». _Digital Humanities 2016: Conference Abstracts_ [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
-
-</small>
-
-## GeoPolHist
-
-https://medialab.github.io/GeoPolHist
-
-<small>
-
-Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
 
 </small>
 
@@ -79,8 +71,9 @@ layout: image-left
 image: /images/tableau_generale_Belgique_1850.png
 backgroundSize: contain
 ---
+# Two necessary databases (2)
+## Damn sources: Heterogeneity of<br/> trade entities<br/>in trade archives
 
-# Heterogeneity of<br/> trade entities<br/>in trade archives
 
 _Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
 Missing from the picture:\
@@ -89,13 +82,21 @@ Possessions anglaises
 
 ---
 
-# RICardo: faithful to the sources
+<small>
 
-![](/images/faithful_source_ricardo_tradehist.png)
+## Two necessary databases (3)
+### Trying to be faithful to the sources
+
+</small>
+
+<img src="/images/faithful_source_ricardo_tradehist.png" alt="Trade history" width= "750">
 
 ---
+layout : center
+---
 
-# Standardization of the RIC names
+# Two necessary databases (4)
+## Standardization 
 
 <div style="font-size:50%">
 
@@ -113,13 +114,13 @@ Possessions anglaises
 
 </div>
 
-<!--
-COW : 1,200 names. Ric : from 10k to c. 2.5k
--->
+COW : 1,200 names. RICnames : from 10k to c. 2.5k
+
 
 ---
 
-# RICentities types
+# Two necessary databases (5)
+## How to make sense of different types?
 
 <div style="font-size:50%">
 
@@ -135,23 +136,23 @@ COW : 1,200 names. Ric : from 10k to c. 2.5k
 </div>
 
 ---
+layout : center
+---
+# Two necessary databases (6)
+**2023**: extension to a political dimension of the RICardo project \
+GeoPolHist, a database and digital tool (https://medialab.github.io/GeoPolHist/#/GeoPolHist/)
+  to quantify the geopolitical entities of the world since 1816
 
-# RICentities types
+<small>
 
-<div style="font-size:50%">
+Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
 
-|   **RIC type**    | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
-| :---------------: | :-------------------: | :-------------------: | :-----------------: | :-----------------: |
-|    GPH entity     |         97.3          |         95.6          |        87.2         |        81.2         |
-|     Locality      |          0.6          |          2.5          |         4.6         |         6.5         |
-|       Group       |          2.4          |          1.8          |         6.5         |         5.1         |
-|   Colonial area   |          0.0          |          0.1          |         1.4         |         5.0         |
-| Geographical area |           -           |           -           |         0.4         |         2.2         |
-
-</div>
+</small>
 
 ---
 
+
+# Two necessary databases (7) 
 ## The GeoPolHist dataset
 
 <div style="font-size:45%">
@@ -194,73 +195,26 @@ For each entity, we list their political status along time and their links to so
 layout: statement
 ---
 
-# Sources are not the data we would like them to be!
-
-Not yet...
+# Building yearly coherent bilateral trade matrices
 
 ---
 layout: center
 ---
 
-# Our goal: to reduce trading entities heterogeneity with GeoPolitical data
+# Building yearly coherent bilateral trade matrices (1)
+## Reduce trading entities heterogeneity thanks to GeoPolitical data
 
 - identifying non-autonomous or informal entities
 - aggregating non-autonomous entities and localities to their « sovereign »
 - splitting trade of groups, geographical and colonial areas
 
----
-layout: two-cols-header
----
-
-## Autonomous definition
-
-A very extensive definition.\
-Sufficient political autonomy to have its own trade statistics.  
-Every political status in GeoPolHist but `part of`.
-<!-- Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus :  "Occupied by" n’a pas beaucoup d’autonomie politique GD-->
-<!-- oui, est ce que la définition n'est pas plutôt la négation de ça a été dissout, i.e. tout ce qui n'est pas part of-->
-
-::left::
-
-Sovereign  
-Associated state of  
-Sovereign (limited)  
-Sovereign (unrecognized)  
-Colony of  
-Dependency of  
-Possession of  
-Protectorate of
-
-::right::
-
-Leased to  
-Mandated to  
-Occupied by  
-Vassal of  
-Claimed by  
-Neutral or demilitarized zone of
-
-<!--
-Definitions are available on the paper and website
--->
 
 ---
 layout: center
 ---
 
-# Bilateral trade data model
-
-![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
-
-<!--
-Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
--->
-
----
-layout: center
----
-
-# Multilayer networks bridging trade and politics
+# Building yearly coherent bilateral trade matrices (2)
+## Method: Multilayer networks bridging trade and politics
 
 Build yearly networks which combine
 
@@ -276,7 +230,7 @@ Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into on
 
 ---
 layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_trade_gephi_lite.json
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_trade_gephi_lite.json
 scale: 0.8
 ---
 
@@ -284,43 +238,11 @@ scale: 0.8
 This is the original 1850 trade network
 -->
 
----
-layout: center
----
 
-# Add Geopolitical resolution edges
-
-From RICardo:
-
-```cypher
-(Locality)-[:AGGREGATE_INTO]->(parent entity)
-(Group)-[:SPLIT_INTO]->(members)
-```
-
-From additional data edited for this paper:
-
-```cypher
-(Geographical Area)-[:SPLIT_INTO]->(members)
-(Informal)-[:SPLIT_INTO]->(members)
-```
-
-From GeoPolHist:
-
-```cypher
-(`Part of` GPH entity)-[:AGGREGATE_INTO]->(sovereign)
-(Colonial Area)-[:SPLIT_INTO]->(colonies)
-```
-
-For colonial area we combine geographical area data table with GPH data.
-
-<!--
-Quid des « other » ? GD
-Ce sont des locality RICardo
--->
 
 ---
 layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_GPH_resolution_gephi_lite.json
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_GPH_resolution_gephi_lite.json
 scale: 0.8
 ---
 
@@ -329,24 +251,6 @@ This is the network of the resolution edges
 Zoom to malta
 mention Gephi lite
 -->
-
----
-layout: image
-image: /images/multilayer_data_model_1.png
-backgroundSize: contain
----
-
----
-layout: image
-image: /images/multilayer_data_model_2.png
-backgroundSize: contain
----
-
----
-layout: image
-image: /images/multilayer_data_model_3.png
-backgroundSize: contain
----
 
 ---
 layout: center
@@ -464,13 +368,19 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 
 ---
 layout: iframe
-url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/20260722_Historical_Network_Research/1850_examples_gephi_lite.json
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_examples_gephi_lite.json
 scale: 1
 ---
 
 <!--
 This is an extract around Malta in 1850 that illustrate the diversity of resolution
 -->
+
+---
+layout: iframe
+url: https://lite.gephi.org/v1.0.2/?file=https://raw.githubusercontent.com/paulgirard/ricardo_gph_analysis/refs/heads/main/Pr%C3%A9sentations/2026_Turin_Paris_Bonn/1850_gravity_gephi_lite
+scale: 1
+---
 
 ---
 layout: center
@@ -902,3 +812,131 @@ _Sources:_
 
 - RICardo: https://ricardo.medialab.sciences-po.fr
 - GeoPolHist: https://medialab.github.io/GeoPolHist
+
+----
+layout: statement
+----
+
+# Additional slides
+
+
+---
+
+# RICentities types
+
+<div style="font-size:50%">
+
+|   **RIC type**    | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
+| :---------------: | :-------------------: | :-------------------: | :-----------------: | :-----------------: |
+|    GPH entity     |         97.3          |         95.6          |        87.2         |        81.2         |
+|     Locality      |          0.6          |          2.5          |         4.6         |         6.5         |
+|       Group       |          2.4          |          1.8          |         6.5         |         5.1         |
+|   Colonial area   |          0.0          |          0.1          |         1.4         |         5.0         |
+| Geographical area |           -           |           -           |         0.4         |         2.2         |
+
+</div>
+
+---
+layout: two-cols-header
+---
+
+## Autonomous definition
+
+A very extensive definition.\
+Sufficient political autonomy to have its own trade statistics.  
+Every political status in GeoPolHist but `part of`.
+<!-- Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus :  "Occupied by" n’a pas beaucoup d’autonomie politique GD-->
+<!-- oui, est ce que la définition n'est pas plutôt la négation de ça a été dissout, i.e. tout ce qui n'est pas part of-->
+
+::left::
+
+Sovereign  
+Associated state of  
+Sovereign (limited)  
+Sovereign (unrecognized)  
+Colony of  
+Dependency of  
+Possession of  
+Protectorate of
+
+::right::
+
+Leased to  
+Mandated to  
+Occupied by  
+Vassal of  
+Claimed by  
+Neutral or demilitarized zone of
+
+<!--
+Definitions are available on the paper and website
+-->
+
+
+---
+layout: center
+---
+
+# Bilateral trade data model
+
+![Bilateral trade data model](/images/Bilateral%20Trade%20Data%20model.svg)
+
+<!--
+Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
+-->
+
+---
+layout: center
+---
+
+# Add Geopolitical resolution edges
+
+From RICardo:
+
+```cypher
+(Locality)-[:AGGREGATE_INTO]->(parent entity)
+(Group)-[:SPLIT_INTO]->(members)
+```
+
+From additional data edited for this paper:
+
+```cypher
+(Geographical Area)-[:SPLIT_INTO]->(members)
+(Informal)-[:SPLIT_INTO]->(members)
+```
+
+From GeoPolHist:
+
+```cypher
+(`Part of` GPH entity)-[:AGGREGATE_INTO]->(sovereign)
+(Colonial Area)-[:SPLIT_INTO]->(colonies)
+```
+
+For colonial area we combine geographical area data table with GPH data.
+
+<!--
+Quid des « other » ? GD
+Ce sont des locality RICardo
+-->
+
+
+---
+layout: image
+image: /images/multilayer_data_model_1.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/multilayer_data_model_2.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/multilayer_data_model_3.png
+backgroundSize: contain
+---
+
+
+
