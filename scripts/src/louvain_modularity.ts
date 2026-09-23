@@ -37,11 +37,13 @@ interface ModularityTestResult {
 type OkEdgeAttributes = {
   proximity: number;
   observedTradeValues: number[];
+  maxObservedTradeValues: number;
   TIBI: number;
 };
 type OkNodeAttributes = EntityNodeAttributes & {
   blockLouvainTibi: number;
   blockLouvainProximity: number;
+  blockLouvainMaxobservedtradevalues: number;
   blockIntraMax: string;
   blockAN: string;
 };
@@ -72,6 +74,8 @@ const blocksStats: {
   cafFob: string; //"caf" | "fob";
   louvain_tibi_modularity: number | null;
   intramax_tibi_modularity: number | null;
+
+  louvain_maxObservedTradeValues_modularity: number | null;
   an_tibi_modularity: number | null;
   louvain_proximity_modularity: number | null;
   intramax_proximity_modularity: number | null;
@@ -80,8 +84,8 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-//const years = [...range(1833, 1939), ...range(1948, 2026)];
-const years = [1833, 1850];
+const years = [...range(1833, 1939), ...range(1948, 2026)];
+//const years = [1833, 1850];
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from data/blocks/Intramax
@@ -249,9 +253,16 @@ years.forEach((year) => {
         );
         // reduce to maximum values
         undirectedCafFobGraph.addUndirectedEdgeWithKey(groupKey, sourceTarget[0], sourceTarget[1], {
-          proximity: maxProximity + 1 > 0 ? Math.log(maxProximity + 1) : undefined,
+          proximity: maxProximity + 1 > 0 ? maxProximity + 1 : undefined,
           observedTradeValues: impExpCouple.map((e) => cafFobGraph.getEdgeAttribute(e, "value")),
-          TIBI: max(impExpCouple.map((e) => cafFobGraph.getEdgeAttribute(e, "TIBI"))),
+          maxObservedTradeValues: max(impExpCouple.map((e) => cafFobGraph.getEdgeAttribute(e, "value"))),
+          TIBI: max(
+            impExpCouple.map((e) => {
+              const tibi = cafFobGraph.getEdgeAttribute(e, "TIBI");
+              // rescale TIBI on 0-2 domain around 1
+              return tibi ? tibi + 1 : undefined;
+            }),
+          ),
         });
       });
 
@@ -260,9 +271,9 @@ years.forEach((year) => {
       );
 
       // find optimal resolution
-      const result: ModularityTestResult[] = [];
-      const weightAtts: (keyof OkEdgeAttributes)[] = ["TIBI", "proximity"];
+      const weightAtts: (keyof OkEdgeAttributes)[] = ["TIBI", "proximity", "maxObservedTradeValues"];
       weightAtts.forEach((weightAtt) => {
+        const result: ModularityTestResult[] = [];
         // - calculate louvain blocks
         range(0.2, 4, 0.2).forEach((resolution) => {
           const details = louvain.detailed(undirectedCafFobGraph, {
@@ -285,7 +296,7 @@ years.forEach((year) => {
         // compute Louvain + ambiguity metric
         assignLouvainEdgeAmbiguity(
           {
-            runs: 20,
+            runs: 10,
             getEdgeWeight: weightAtt,
             resolution: optimalResolution || 1,
             communityAttribute: `blockLouvain${capitalize(weightAtt)}`,
@@ -303,6 +314,8 @@ years.forEach((year) => {
         "gphStatus",
         "blockLouvainTibi",
         "blockLouvainProximity",
+
+        "blockLouvainMaxobservedtradevalues",
         "blockAN",
         "blockIntraMax",
         "meanAmbiguityScore",
@@ -315,7 +328,6 @@ years.forEach((year) => {
           target,
           ...atts,
           observedTradeValues: (atts.observedTradeValues || []).join("|"),
-          maxObservedTradeValue: max(atts.observedTradeValues),
           ...mapKeys(pick(srcAtts, nodeAttsToKeep), (_, k) => camelCase(`source ${k}`)),
           ...mapKeys(pick(trgAtts, nodeAttsToKeep), (_, k) => camelCase(`target ${k}`)),
         });
@@ -330,6 +342,7 @@ years.forEach((year) => {
             "target",
             "TIBI",
             "proximity",
+            "maxObservedTradeValues",
             "observedTradeValues",
             "coMembershipScore",
             "bridgeNessEdgeScore",
@@ -341,6 +354,7 @@ years.forEach((year) => {
             "sourceGphStatus",
             "sourceBlockLouvainTibi",
             "sourceBlockLouvainProximity",
+            "sourceBlockLouvainMaxobservedtradevalues",
             "sourceBlockIntraMax",
             "sourceBlockAn",
             "sourceMeanAmbiguityScore",
@@ -350,6 +364,7 @@ years.forEach((year) => {
             "targetGphStatus",
             "targetBlockLouvainTibi",
             "targetBlockLouvainProximity",
+            "targetBlockLouvainMaxobservedtradevalues",
             "targetBlockIntraMax",
             "targetBlockAn",
             "targetMeanAmbiguityScore",
@@ -373,6 +388,7 @@ years.forEach((year) => {
             cafFob,
             blockLouvainTibi: atts.blockLouvainTibi,
             blockLouvainProximity: atts.blockLouvainProximity,
+            blockLouvainMaxobservedtradevalues: atts.blockLouvainMaxobservedtradevalues,
             blockIntraMax: atts.blockIntraMax,
           })),
           (row) => toNumber(row.id),
@@ -395,6 +411,11 @@ years.forEach((year) => {
       modularityScores.louvainTibi = modularity(undirectedCafFobGraph, {
         getEdgeWeight: "TIBI",
         getNodeCommunity: (n) => undirectedCafFobGraph.getNodeAttribute(n, "blockLouvainTibi"),
+        resolution: 1,
+      });
+      modularityScores.louvainMaxobservedtradevalues = modularity(undirectedCafFobGraph, {
+        getEdgeWeight: "maxObservedTradeValues",
+        getNodeCommunity: (n) => undirectedCafFobGraph.getNodeAttribute(n, "blockLouvainMaxobservedtradevalues"),
         resolution: 1,
       });
       if (cafFob === "fob" && intramaxOk) {
@@ -441,6 +462,7 @@ years.forEach((year) => {
         cafFob,
         louvain_tibi_modularity: modularityScores.louvainTibi,
         louvain_proximity_modularity: modularityScores.louvainProximity,
+        louvain_maxObservedTradeValues_modularity: modularityScores.louvainMaxobservedtradevalues,
         intramax_tibi_modularity: modularityScores.intramaxTibi,
         intramax_proximity_modularity: modularityScores.intramaxProximity,
         an_tibi_modularity: modularityScores.AnTibi,
@@ -457,6 +479,7 @@ years.forEach((year) => {
           "cafFob",
           "louvain_tibi_modularity",
           "louvain_proximity_modularity",
+          "louvain_maxObservedTradeValues_modularity",
           "intramax_tibi_modularity",
           "intramax_proximity_modularity",
           "an_tibi_modularity",

@@ -1,5 +1,5 @@
 import { DirectedGraph } from "graphology";
-import { fromPairs, sum } from "lodash";
+import { fromPairs, isNil, sum } from "lodash";
 
 /**
  * For a given FOB or CAF trade graph (directed) add a new edge attribute TIBI
@@ -46,7 +46,8 @@ export function assignTIBI(graph: DirectedGraph) {
     // TIBI : I2 but on I1/I3
     const TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
     // assign result on edge
-    graph.setEdgeAttribute(e, "TIBI", TIBI);
+    // TIBI can be undefined when only one flow between i and j, Xr=0 which leds to infinite value
+    graph.setEdgeAttribute(e, "TIBI", isNaN(TIBI) || isNil(TIBI) ? undefined : TIBI);
   });
 
   return graph;
