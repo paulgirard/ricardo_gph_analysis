@@ -3,96 +3,24 @@ cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 
-
-/*
-*****Importation des données de co-appartenance à un bloc (si on repart de zéro -- pas utile)
-
-capture program drop block_importation
-program define block_importation
-	args year CafFob NetworkType
-*exemple : block_importation 1833 caf louvain
-
-if "`NetworkType'"=="IntraMax" {
-    *importation des données de co-appartenance à un bloc
-    import delimited using "data/blocks/intramax/paires_blocs_`year'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
-}
-
-
-drop year* bloc_exp bloc_imp id *Type value new* original*
-
-
-end
-*/
-
-***Importation des données travaillées par Youssef (du temps du gros fichier)
-/*
-capture program drop master_panel_importation
-program define master_panel_importation
-    args   shape
-***exemple : master_panel_importation rectangle
-
-
-*** -d = décompresser, -k = garder l'original, -f = forcer l'écrasement si le fichier existe déjà
-    ! /opt/homebrew/bin/xz -dkf data/blocks/master_panel_`shape'.csv.xz    
-
-
-    import delimited using "data/blocks/master_panel_`shape'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
-
-    drop intramax_exp intramax_imp id importerType exporterType export_intramax
-    drop reportedBy partial valueToSplit newReporters newPartners originalReportedTradeFlowIds
-    drop status notes louvain_exp louvain_imp export_louvain proximity coMembershipScore 
-    drop bridgeNessEdgeScore ambiguityScore sourceCommunityId exp_Cited exp_Reporting exp_GphStatus 
-    drop exp_MeanAmbiguityScore imp_Cited imp_Reporting imp_GphStatus imp_MeanAmbiguityScore 
-    drop region_AN_exp region_AN_imp lat_exp lng_exp lat_imp lng_imp
-
-    keep if exportateur < importateur 
-    rename exportateur target
-    rename importateur source
-
-    
-
-    save data/blocks/master_panel.dta, replace
-
-    foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
-        preserve
-        keep if year==`year'
-        gen key= string(exporterId) +  "-" + string(importerId) if string(exporterId) < string(importerId)
-        replace key= string(importerId) +  "-" + string(exporterId) if string(exporterId) > string(importerId)
-        assert key !=""
-        sort key
-        order key
-        drop importerId exporterId
-        save data/blocks/master_`year'_fob.dta, replace
-        export delimited using data/blocks/master_`year'_fob.csv, replace delimiter(",") quote
-        restore
-    }
-
-
-end
-*jamais utile
-*master_panel_importation rectangle 
-* à rétablir quand les données changent
-*master_panel_importation carre 
-
-//En fait, la rectangle ne me sert pas à ce niveau : je prends la carré, puis je fixe l’ordre target/source
-
-
-*/
-
+*
 ****À faire une fois
-
+/*
 
 import delimited "external data/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/Controls panel/distance.dta", replace
 
 import delimited "external data/Controls panel/alliances.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/Controls panel/alliances.dta", replace
+**Défini jusqu’en 2018
+
 
 import delimited "external data/Controls panel/contiguity.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/Controls panel/contiguity.dta", replace
 
 import delimited "external data/Controls panel/disputes.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/Controls panel/disputes.dta", replace
+**Défini jusqu’en 2014
 
 import delimited "external data/BlocselonAN.csv", delimiter(";") bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/BlocselonAN.dta", replace
@@ -108,7 +36,7 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
 
 
 
-
+*/
 
 capture program drop block_regression
 program define block_regression
@@ -148,15 +76,16 @@ destring(distance_km), replace force
 generate ln_dist=ln(distance_km)
 
 
+
 ***Dans tous ces cas, je considère les manquants comme nul. Peut-être pas malin.
 destring(conttype), replace force
-generate contig_large=1 if conttype !=0
-replace contig_large=0 if contig_large==.
-destring(mid_n), replace force
-replace mid_n=0 if mid_n==.
-replace mid_n=1 if mid_n>1
-destring(atop_allie), replace force
-replace atop_allie=0 if atop_allie==.
+generate contig_large=1 if conttype ==1 | conttype==2 
+**1 : contiguous by land 2: 12 miles or less of water
+*replace contig_large=0 if contig_large==.
+destring(mid_herit), replace force
+*replace mid_herit=0 if mid_n==.
+destring(atop_herit), replace force
+*replace atop_herit=0 if atop_allie==.
 
 
 
@@ -219,7 +148,7 @@ end
 
 *********************************************************************
 
-global liste_var_ex ln_dist common_empire contig_large mid_n atop_allie
+global liste_var_ex ln_dist common_empire contig_large mid_herit atop_herit
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
@@ -227,11 +156,11 @@ foreach var_ex of global liste_var_ex {
     
 }
 
-foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2014 {
     block_regression `year' fob intramax
   }
 
-foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2014 {
     block_regression `year' fob louvain
   }
 
@@ -265,7 +194,7 @@ foreach var_ex of global liste_var_ex {
             (connected r2p year , yaxis(2) cmissing(n)), ///
             yline(1, lpattern(dash) lcolor(red)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            xscale(range(1830 2030)) ///
+            xscale(range(1830 2020)) ///
             title(""`NetworkType'" Regression results `var_ex' (fob)") ///
             legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
