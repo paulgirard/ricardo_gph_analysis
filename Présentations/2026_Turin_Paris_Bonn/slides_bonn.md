@@ -31,8 +31,9 @@ layout: center
 --- 
 # Introduction
 ### Why?
-- Trade bloc formation has been associated both with phases of de-globalisation (1930s) and globalisation (1990s)
 - The relationship between globalisation and regionalisation has been ambiguous
+- - Trade bloc formation has been associated both with phases of de-globalisation (1930s) and globalisation (1990s)
+
 
 <!-- Some episodes when regionalisation negatively linked with globalisation :  1930s, the exit from empire trade in the 1960s-1970s, the current tensions...
 Some when the reverse seems to be the case, such as the rise of the European Union
