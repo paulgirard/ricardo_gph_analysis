@@ -160,16 +160,18 @@ foreach var_ex of global liste_var_ex {
     postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
     
 }
-/*
-foreach year of numlist 1833(1)1840 /*1938 1948(1)2008 2010(1)2025*/ {
+
+foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob intramax
   }
-*/
+
+global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
+
 foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     block_regression `year' fob louvain
   }
 
-  global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
+global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
@@ -195,7 +197,7 @@ foreach var_ex of global liste_var_ex {
         tsset year
         tsfill, full
 
-        
+        drop if year >= 2026
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
@@ -203,7 +205,7 @@ foreach var_ex of global liste_var_ex {
             xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
             xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            xscale(range(1830 2020)) ///
+            xscale(range(1830 2030)) ///
             title(""`NetworkType'" Regression results `var_ex' (fob)") ///
             legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 

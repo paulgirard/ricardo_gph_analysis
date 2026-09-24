@@ -7,7 +7,7 @@ fonts:
   sans: Open Sans
   # use with `font-serif` css class from UnoCSS
   serif: Robot Slab
-  # for code blocks, inline code, etc.
+  # for code blocs, inline code, etc.
   mono: Fira Code
 ---
 
@@ -30,17 +30,28 @@ Paul Girard - OuestWare - France
 layout: center
 --- 
 # Introduction
+### Why?
+- Trade bloc formation has been associated both with phases of de-globalisation (1930s) and globalisation (1990s)
+- The relationship between globalisation and regionalisation has been ambiguous
 
-## What is the evolution of trade blocs over two centuries ?
+<!-- Some episodes when regionalisation negatively linked with globalisation :  1930s, the exit from empire trade in the 1960s-1970s, the current tensions...
+Some when the reverse seems to be the case, such as the rise of the European Union
+Anderson and Norheim in an old paper (1993) show that generally, regionalisation and globalisation are positively correlated. Is that really the case ? Or is regionalisation a threat to globalisation as it seems to be currently ?-->
+
+### What is the evolution of trade blocs over two centuries ?
 - Composition
 - Determinants
 
-## Outline
+### Outline
 1. Building the two necessary databases
 2. Building yearly coherent bilateral trade matrices
 3. Identifying trade blocs
 4. Finding the determinants of trade blocs
 
+---
+layout: statement
+--- 
+# I. Two necessary databases
 ---
 layout: center
 --- 
@@ -52,7 +63,7 @@ layout: center
 **2004**: exhumation of ‘_Annales du commerce extérieur_’ trade archive
   Birth of the RICardo project (RIC = Research on International Commerce)
 
-**2010**: bilateral trade database covering all countries of the world over the period 1830-1938: 250 000 trade flows + an exchange rate database
+**2010**: bilateral trade database covering as many countries (and more...) of the world over the period 1830-1938: 250 000 trade flows + an exchange rate database
 
 **2016**: RICardo website (https://ricardo.medialab.sciences-po.fr/), 2017 version of the database (350 000 trade flows)
 
@@ -195,17 +206,17 @@ For each entity, we list their political status along time and their links to so
 layout: statement
 ---
 
-# Building yearly coherent bilateral trade matrices
+# II. Building yearly coherent bilateral trade matrices
 
 ---
 layout: center
 ---
 
-# Building yearly coherent bilateral trade matrices (1)
+# Building coherent bilateral trade matrices (1)
 ## Reduce trading entities heterogeneity thanks to GeoPolitical data
 
-- identifying non-autonomous or informal entities
-- aggregating non-autonomous entities and localities to their « sovereign »
+- identifying non-polities or informal entities
+- aggregating non-polities entities and localities to their « sovereign »
 - splitting trade of groups, geographical and colonial areas
 
 
@@ -213,7 +224,7 @@ layout: center
 layout: center
 ---
 
-# Building yearly coherent bilateral trade matrices (2)
+# Building coherent bilateral trade matrices (2)
 ## Method: Multilayer networks bridging trade and politics
 
 Build yearly networks which combine
@@ -256,9 +267,10 @@ mention Gephi lite
 layout: center
 ---
 
-# Harmonization process
+# Building coherent bilateral trade matrices (3) 
+## Harmonization process
 
-1. Autonomous trade entity resolution
+1. Polities resolution
 1. Trade reporters aggregation/split
 1. Trade partners aggregation
 1. Trade partners splits with year ratio method
@@ -291,11 +303,12 @@ scale: 0.8
 layout: center
 ---
 
-# How much trade do we normalize?
+## Building coherent bilateral trade matrices (4)
+### How much trade do we normalize?
 
 <ShareTotalReportedValue />
 
-We convert into bilateral flows between countries or colonies 87% of the bilateral flows corresponding to exchanges involving at least one miscellaneous entity (cities, groups of countries, areas), which accounts for 17.5% on average of the total value of bilateral flows over the period.
+We convert into bilateral flows between polities 87% of the bilateral flows involving non-polities (cities, groups of countries, areas), which accounts for 17.5% on average of the total value of bilateral flows over the period.
 
 <!--
 Keep it mind that we are working with the fringe of the trade networks, ou problematic flows are numerous but with smaller values on average
@@ -305,89 +318,50 @@ Keep it mind that we are working with the fringe of the trade networks, ou probl
 layout: center
 ---
 
-# Which method has the most impact?
+## Building coherent bilateral trade matrices (5)
+### Which method has the most impact?
 
 <ShareGeneratedTradeValue />
 
 The ”aggregation”, ”split by ratio in adjacent years” and ”gravity” methods solved
-12%, 4.6% and 26.19% of the cases respectively.
+12%, 4.6% and 26.19% of the trade flows (in number) respectively.
 
 ---
 layout: center
 ---
 
-# Trade Network density gain!
+## Building coherent bilateral trade matrices (6)
+### Trade Network density gain!
 
 <TradeNetworkDensity />
 
-Our method yields an average 216% increase in trade network density across the period. The
-average density grows from 1.8pp to 8.9pp, including trade flows and partners we could not
-solve.
+Our method yields an average 216% increase in trade network density across the period. The average density grows from 1.8pp to 8.9pp, including trade flows and partners we could not solve.
 <!--Je ne comprends pas « including trade flows and partners we could not solve GD-->
 
 <!--
 The effect on the number of trade flows is much larger than on the value of trade flows
 -->
 
----
-layout: center
----
-
-# Great! What it is good for?
-
-- Trade quantification in the long run
-- Study the effect of colonization: work in progress...
-- What we will talk about: Trade block analysis
 
 ---
-layout: center
+layout: statement
 ---
 
-# Trade block analysis
+# III. Identifying trade blocs
 
-## Why?
-
-- Between 1830 and 2025, the pattern of bilateral trade flows has been heavily affected by successive waves of globalisation and deglobalisation
-  <!-- a pre-1913 wave of globalisation (1830 -1913) (Kevin O'Rourke and Williamson, 2002)
-  - dislocation during and between the two World Wars
-  - reconstruction of the international economy till the 1970s
-  - hyper globalisation till the recent recent tensions-->
-- The relationship between globalisation and regionalisation has been ambiguous
-
-<!-- Some episodes when regionalisation negatively linked with globalisation :  1930s, the exit from empire trade in the 1960s-1970s, the current tensions...
-Some when the reverse seems to be the case, such as the rise of the European Union
-Anderson and Norheim in an old paper (1993) show that generally, regionalisation and globalisation are positively correlated. Is that really the case ? Or is regionalisation a threat to globalisation as it seems to be currently ?-->
-
-<small>
-Anderson, Kym, and Hege Norheim. "Is world trade becoming more regionalized?." <i> Review of International Economics,</i> 1.2 (1993): 91-109.
-</small>
 
 ---
 layout: center
 ---
 
-# Trade block analysis
-
-## Outline
-
-### How to define a block?
-
-### Regionalisation and globalisation
-
-### Determinants of blocks
-
----
-layout: center
----
-
-# How to define a block?
+# Identifying trade blocs (1)
 
 ## Pre-given by geography and judgment?
 
-<!-- This is the most common point of view. Anderson and Norheim. Currency blocks, political trade blocs, empires...
+<!-- This is the most common point of view. Anderson and Norheim. Currency blocs, political trade blocs, empires...
 This leads to
-- endogeneity issue (you might pick the composition of a block because you see increased inblock trade)
-- fixity over time. The relevant block might actually change through time, and you might miss that. Most obvious example : maybe imperial blocks are important in the 1930s and 1950s, but they loose that importance through time. And now continental blocks are important because of regional trade agreements, especially the EU-->
+- endogeneity issue (you might pick the composition of a bloc because you see increased inbloc trade)
+- fixity over time. The relevant bloc might actually change through time, and you might miss that. Most obvious example : maybe imperial blocs are important in the 1930s and 1950s, but they loose that importance through time. And now continental blocs are important because of regional trade agreements, especially the EU-->
 
 ## Let the data speak?
 
@@ -395,7 +369,7 @@ This leads to
 
 Trade studies : Intramax
 
-Network studies: Louvain + ambiguity
+Network studies: Louvain
 
 <small>
 Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
@@ -403,10 +377,12 @@ Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre
 </small>
 
 ---
-layout: center
+layout: two-cols-header
 ---
+# Identifying trade blocs (2)
+## Anderson and Norheim’s blocs
 
-# Anderson and Norheim’s blocks
+::left::
 
 Western Europe (including Turkey and Yugoslavia)\
 Eastern Europe (East of West Germany, including Soviet Central Asia)
@@ -414,6 +390,13 @@ Eastern Europe (East of West Germany, including Soviet Central Asia)
 North America (excluding Mexico and West Indies)\
 Latin America
 
+<small>
+
+Anderson, Kym, and Hege Norheim. "Is world trade becoming more regionalized?." <i> Review of International Economics,</i> 1.2 (1993): 91-109.
+
+</small>
+
+::right::
 (Japan)\
 Australasia\
 Developing Asia
@@ -425,55 +408,46 @@ Middle East (as far as Iran)
 Finger, Karl-Michael, Hege Norheim, and Kym Anderson. 1993. “Trends in the Regionalization of World Trade, 1928 to 1990.” In <i> Regional Integration and the Global Trading System</i>, by Kim Anderson and Richard Blackhurst. https://www.cabidigitallibrary.org/doi/full/10.5555/19941801183.
 
 </small>
-
 ---
 layout: center
 ---
 
-# Intramax (1)
+# Identifying trade blocs (3)
+## Distance measure (from Intramax)
 
-Iterative process on fob trade. One looks for the country/block pair that is the furthest from a no friction model of bilateral trade.\
-$I_{i,j}$ is (eg) fob exports from country/block _i_ to country/block _j_\
-$I’_{i,j}$ is « no friction trade »
+One looks for the polity/bloc pair that is the furthest from a random model of bilateral trade.\
+$I_{i,j}$ is (eg) fob exports from polity/bloc _i_ to polity/bloc _j_\
+$I’_{i,j}$ is counterfactual, random, no friction trade, defined as:
 
  <center>
 
 $I’_{i,j}= \frac{\sum_j I_{i,j}}{\sum_{ij}I_{i,j}}.\frac{\sum_i I_{i,j}}{\sum_{ij}I_{i,j}}.\sum_{ij}I_{i,j}=\frac{\sum_j I_{i,j}.\sum_iI_{i,j}}{\sum_{ij}I_{i,j}}$
 
  </center>
-
----
-layout: center
----
-
-# Intramax (2)
-
-You are looking for the countries/blocks pair (_i_,_j_) that maximises:
-
- <center>
-
-$(I_{ij}-I’_{ij})+ (I_{ji}-I’_{ji})$
-
- </center>
-When we find one, we join the two countries/blocks and treat them as one block for the next search. We stop before the maximising pair includes 10% or more of world trade.
-
- <!-- Without a stopping rule, all countries would be put in a single block... -->
-
-<small>
+ 
+ <small>
  <p class="csl-entry">Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. <i>Economic Geography</i>, vol. 73, no. 4, 1997, pp. 390–404. <a href="https://doi.org/10.2307/144560">https://doi.org/10.2307/144560</a>.</p>
 </small>
 
 ---
 layout: center
 ---
+# Identifying trade blocs (4)
+## Adapting the distance measure
 
-# Intramax (3)
+You are looking for the polities/blocs pair (_i_,_j_) that maximises:
 
-We have issues:
+ <center>
 
-- Poon’s maximisation objective is in monetary terms, and as such gives an advantage to large country pairs
-- Often we are missing one direction of trade
-- We believe if a small country does 100% of its trade with a big one, even if this trade is small in monetary terms, they must be in the same block.
+$(I_{ij}-I’_{ij})+ (I_{ji}-I’_{ji})$
+
+ </center>
+ 
+ We have issues:
+
+- We often miss one of $I_{ij}$ or $I_{ji}$ : use of the mean?
+- Poon’s maximisation objective is in monetary terms, and as such gives an advantage to large polity pairs
+- We believe if a small polity does 100% of its trade with a big one, even if this trade is small in monetary terms, they must be in the same bloc.
   So we use rather:
 
  <center>
@@ -482,29 +456,26 @@ $Max (\frac{(I_{ij}-I’_{ij})}{\sum_{i}I_{i,j}}; \frac{(I_{ji}-I’_{ji})}{\sum
 
  </center>
 
- <small>
 
-Kohl, Tristan, and Aleid E. Brouwer. 2014. “The Development of Trade Blocs in an Era of Globalisation.” _Environment and Planning A: Economy and Space_ 46 (7): 1535–53. https://doi.org/10.1068/a46261.
+ <!-- Without a stopping rule, all polities would be put in a single bloc... -->
 
-</small>
+
 
 ---
 layout: center
 ---
 
-# Louvain (1)
+## Identifying trade blocs (5)
+### Louvain: moving from a local measure to a global objective function
 
-## Objective fonction: modularity Q ($\in[-0.5,1]$)
-
-$Q=\frac{1}{2m}.\sum_{i,j}\left({A_{i,j}}.\frac{k_i.k_j}{2m}.\delta(c_i,c_j)\right)$ is the ratio between the weight of links inside blocks compared to random links
+$Q=\frac{1}{2m}.\sum_{i,j}\left({A_{i,j}}.\frac{k_i.k_j}{2m}.\delta(c_i,c_j)\right)$ is the ratio between the weight of links inside blocs compared to random links ($\in[-0.5,1]$)
 
 <small>
 
-- $A_{i,j}$ is the weight of the link (or proximity) between countries _i_ and _j_ (the same as in IntraMax)
-- $k_i= \sum_{i}{A_{i,j}}$ is total weight of a country’s links (it might be different from one)
+- $A_{i,j}$ is the weight of the link (or proximity) between polities _i_ and _j_ that we just defined
+- $k_i= \sum_{i}{A_{i,j}}$ is total weight of a polity’s links (it might be different from one)
 - $m= \frac{1}{2}.\sum_{i,j}{A_{i,j}}$ is the sum of all weights in the trade network divided by two
-- $c_i$ and $c_j$ are the blocks of countries _i_ and _j_
-- the $\delta$-function $\delta(u,v)$ is 1 if $u=v$ and 0 otherwise
+- $c_i$ and $c_j$ are the blocs of polities _i_ and _j_. The $\delta$-function $\delta(u,v)$ is 1 if $u=v$ and 0 otherwise
 
 </small>
 <small>
@@ -517,12 +488,19 @@ M. E. J. Newman, « Modularity and community structure in networks », _Proc. Na
 layout: center
 ---
 
-# Louvain (2)
+## Identifying trade blocs (6)
+### Louvain’s algorithm
 
-1. All countries are put in its own block
-2. We examine all trade partners _j_ of a country _i_ and we assign _i_ in _j_’s block, where _j_’s block provides the largest gain in modularity. If there are no positive gains, _i_ stays in its block. Once all countries have been considered once, we examine them again in the same order and they can moved from block to block.
-3. When all positive gain-grouping have been made, we re-create the network with the new blocks as units, considering internal trade as a self-loop. Proximity between blocks is the sum of proximity of each pair of countries.\
-   And we iterate (2 and 3) till no change in grouping is made in phase 2. \
+<small>
+
+1. All polities are put in its own bloc
+2. We examine all trade partners _j_ of a polity _i_ and we assign _i_ in _j_’s bloc, where _j_’s bloc provides the largest gain in modularity. If there are no positive gains, _i_ stays in its bloc. Once all polities have been considered once, we examine them again in the same order and they can moved from bloc to bloc.
+3. When all positive gain-grouping have been made, we re-create the network with the new blocs as units, considering internal trade as a self-loop. Proximity between blocs is the sum of proximity of each pair of polities.\
+   And we iterate (2 and 3) till no change in grouping is made in phase 2.
+4. The result depends on the order in which polities are examined. We run it multiple time and aggregate the results.
+
+</small>
+
 
 <small>
 Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” <i> Journal of Statistical Mechanics: Theory and Experiment </i> 2008 (10): P10008.
@@ -536,55 +514,10 @@ backgroundSize: contain
 
 ## Blondel et al.
 
----
-layout: image
-image: /images/carte_blocs_1850.png
-backgroundSize: contain
----
 
 ---
 layout: image
 image: /images/carte_comm_1850.png
-backgroundSize: contain
----
-
----
-layout: center
----
-
-# Trade block analysis
-
-### How to define a block?
-
-> ### Regionalisation and globalisation
-
-### Block determinants
-
----
-layout: center
----
-
-# Regionalisation and globalisation
-
-TIBI is a measure of bilateral trade intensity that solves - range variability - range asymmetry - dynamic ambiguity
-
- <small>
-
-Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Produces for Whom in the World Economy?” _Canadian Journal of Economics/Revue Canadienne d’économique_ 44 (4): 1403–37. https://doi.org/10.1111/j.1540-5982.2011.01679.x.
-
-Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of World Trade.” _Assessment And Measurement of Regional Integration_, 65–85.
-
- </small>
-
----
-layout: image
-image: /images/Intra-block trade share.png
-backgroundSize: contain
----
-
----
-layout: image
-image: /images/tibi_comparaison_avec_diff_nblocs.png
 backgroundSize: contain
 ---
 
@@ -595,35 +528,36 @@ backgroundSize: contain
 ---
 
 ---
-layout: center
+layout: statement
 ---
 
-# Trade block analysis
-
-### How to define a block?
-
-### Regionalisation and globalisation
-
-> ### Block determinants
+# IV. Determinants of trade blocs
 
 ---
 layout: center
 ---
 
-Probit regression on GPH-pairs each year, on variables:
+Logit regression on GPH-pairs each year, on variables:
 
-- distance
-- contiguity
-- common empire
-- alliance (inherited from sovereign)
-- conflict (inherited from sovereign)
-- No causality, obviously
+- distance (Centroids from Wikidata, not time varying)
+- contiguity (Correlates of War + our own work)
+- common empire (GeoPolHist up to 2022)
+- alliance (inherited from sovereign) (Alliance Treaty Obligations and Provisions (ATOP) up to 2018)
+- conflict (inherited from sovereign) (Militarized Interstate
+Disputes (MID) up to 2014)
 
-We compute the incremental R² (I hope that works for profit quasi-R²)
+No causality, obviously\
+We compute the incremental R² (but we need a better idea)
 
 ---
 layout: image
 image: /images/mid_n_louvain_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/contig12_louvain_fob.png
 backgroundSize: contain
 ---
 
@@ -641,46 +575,41 @@ backgroundSize: contain
 
 ---
 layout: image
-image: /images/contig_large_louvain_fob.png
-backgroundSize: contain
----
-
----
-layout: image
 image: /images/ln_dist_louvain_fob.png
 backgroundSize: contain
 ---
 
 ---
-layout: image
-image: /images/ln_dist_intramax_fob.png
-backgroundSize: contain
+layout: statement
 ---
 
----
-layout: center
----
-
-# Conclusion (1)
-
-##  Outline
-
-- Gather data
-- Find classifications
-- Explain classifications
-
-## Our hypothesis:
-
-- Reported sources are exhaustive: unreported trade flows are not significant enough and thus can be considered 0
-- Trade partner ratios for one reporter are _stable_ in a 10-years window
-- Minimalist theory-gravity models are reliable
-- our sources are reliable (home-brewed)
+# Conclusion
 
 ---
 layout: center
 ---
 
-# Conclusions (2)
+## Conclusion (1)
+
+###  Outline
+
+1. Building the two necessary databases
+2. Building yearly coherent bilateral trade matrices
+3. Identifying trade blocs
+4. Finding the determinants of trade blocs
+
+### Tentative findings
+1. The importance of trade blocs has been stable pre-1913 and post-1945, The strong decline in the inter-war period has never been recovered. Source effect?
+2. But trade bloc correlates have changed
+	- Empires were important when the existed 
+	- Alliances have become very important post-45 (except 1970s-1980s)
+	- The effect of distance has been increasing continuously since the 1850s
+
+---
+layout: center
+---
+
+# Conclusion (2)
 
 ## Pat on the back
 
@@ -688,20 +617,15 @@ Interdisciplinary work between history, economics and network science
 
 ## Improvements?
 
-- more primary sources on trade statistics (and a poney)
-- distinguish unknown but non-zero trade flows and zero trade flows in the analysis
-- Take ambiguity in Louvain into account (for that public)
-- Progress on block determinants (for another public)
+- More primary sources on trade statistics (and a poney)
+- Change the proximity measure (TIBI would solve range variability, range asymmetry, dynamic ambiguity)
+- Distinguish unknown but non-zero trade flows and zero trade flows
+- Take ambiguity in Louvain into account
+- Progress on bloc determinants: at least, we need a trade agreement database
 
 <!-- One day we take that into account
 -->
 
-<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
-
- <small>
-
-  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
-  </small>
 
 ---
 layout: center
@@ -709,7 +633,7 @@ layout: center
 
 # Any questions?
 
-_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/medialab_2026/
+_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/bonn_2026/
 
 _Code & Data:_ https://github.com/paulgirard/ricardo_gph_analysis
 
@@ -718,12 +642,21 @@ _Sources:_
 - RICardo: https://ricardo.medialab.sciences-po.fr
 - GeoPolHist: https://medialab.github.io/GeoPolHist
 
+
+
+
 ----
 layout: statement
 ----
 
 # Additional slides
 
+<!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
+
+ <small>
+
+  <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
+  </small>
 
 ---
 
@@ -745,7 +678,7 @@ layout: statement
 layout: two-cols-header
 ---
 
-## Autonomous definition
+## Polity definition
 
 A very extensive definition.\
 Sufficient political autonomy to have its own trade statistics.  
@@ -847,17 +780,17 @@ backgroundSize: contain
 layout: center
 ---
 
-# Autonomous trade entity resolution
+# Polity resolution
 
-For each non-autonomous entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an autonomous entity.
+For each non-polity entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an polity.
 
-This method allows to traverse multiple non-autonomous entities until finding the good one like a group containing a part of:
+This method allows to traverse multiple non-polity entities until finding the good one like a group containing a part of:
 
 ```cypher
 (D)<-[:SPLIT]-(D & part of A)-[:SPLIT]->(part of A)-[:AGGREGATE_INTO]->(A)
 ```
 
-Autonomous of **D & part of A** are **D** and **A**.
+Polities of **D & part of A** are **D** and **A**.
 
 <!--
 Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
@@ -944,6 +877,102 @@ The inferred values are used to compute a ratio which is then applied on the ori
 Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, February 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
 
 </small>
+
+
+
+---
+layout: center
+---
+
+# Intramax (3)
+
+We have issues:
+
+- Poon’s maximisation objective is in monetary terms, and as such gives an advantage to large polity pairs
+- Often we are missing one direction of trade
+- We believe if a small polity does 100% of its trade with a big one, even if this trade is small in monetary terms, they must be in the same bloc.
+  So we use rather:
+
+ <center>
+
+$Max (\frac{(I_{ij}-I’_{ij})}{\sum_{i}I_{i,j}}; \frac{(I_{ji}-I’_{ji})}{\sum_{j}I_{j,i}})=A_{i,j}$
+
+ </center>
+
+ <small>
+
+Kohl, Tristan, and Aleid E. Brouwer. 2014. “The Development of Trade Blocs in an Era of Globalisation.” _Environment and Planning A: Economy and Space_ 46 (7): 1535–53. https://doi.org/10.1068/a46261.
+
+</small>
+
+---
+layout: image
+image: /images/carte_blocs_1850.png
+backgroundSize: contain
+---
+
+---
+layout: center
+---
+
+# Regionalisation and globalisation
+
+TIBI is a measure of bilateral trade intensity that solves - range variability - range asymmetry - dynamic ambiguity
+
+ <small>
+
+Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Produces for Whom in the World Economy?” _Canadian Journal of Economics/Revue Canadienne d’économique_ 44 (4): 1403–37. https://doi.org/10.1111/j.1540-5982.2011.01679.x.
+
+Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of World Trade.” _Assessment And Measurement of Regional Integration_, 65–85.
+
+ </small>
+
+
+---
+layout: image
+image: /images/Intra-bloc trade share.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/tibi_comparaison_avec_diff_nblocs.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/mid_n_intramax_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/contig12_intramax_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/atop_allie_intramax_fob.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/common_empire_intramax_fob.png
+backgroundSize: contain
+---
+
+
+---
+layout: image
+image: /images/ln_dist_intramax_fob.png
+backgroundSize: contain
+---
+
+
+
 
 
 
