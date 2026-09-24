@@ -213,10 +213,10 @@ layout: center
 ---
 
 # Building coherent bilateral trade matrices (1)
-## Reduce trading entities heterogeneity thanks to GeoPolitical data
+## Reduce trading entities heterogeneity thanks to GeoPolHist data
 
 - identifying non-polities or informal entities
-- aggregating non-polities entities and localities to their « sovereign »
+- aggregating non-polities entities and localities to the polities they are part of.
 - splitting trade of groups, geographical and colonial areas
 
 
@@ -227,10 +227,10 @@ layout: center
 # Building coherent bilateral trade matrices (2)
 ## Method: Multilayer networks bridging trade and politics
 
-Build yearly networks which combine
+Build yearly networks that combine:
 
-- trade flow edges from **RICardo** dataset
-- geopolitical resolutions edges mainly from **GeoPolHist**
+1. trade flow edges from **RICardo** dataset
+2. geopolitical resolutions edges mainly from **GeoPolHist** dataset
 
 <!-- Je mets mainly parce que les resolution edges « localities » et group viennent de Ricardo je pense ? GD-->
 <!-- oui le mainly c'est bien. c'est un détail pas important ici et j'ai pas du tout envie de rentrer dans le débat de oui mais une localité peut changer dans le temps...Et surtout j'explique en détail slide 18-->
@@ -523,6 +523,19 @@ backgroundSize: contain
 
 ---
 layout: image
+image: /images/Intra-block trade share.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/tibi_comparaison_avec_diff_nblocs.png
+backgroundSize: contain
+---
+
+
+---
+layout: image
 image: /images/Modularity.png
 backgroundSize: contain
 ---
@@ -644,12 +657,15 @@ _Sources:_
 
 
 
-
-----
-layout: statement
-----
+---
+layout: center
+---
 
 # Additional slides
+
+---
+layout: center
+---
 
 <!-- Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?-->
 
@@ -658,6 +674,8 @@ layout: statement
   <p class="csl-entry">Jacomy, Mathieu, et al. «&nbsp;Cluster Ambiguity in Networks as Substantive Knowledge&nbsp;». <i>Computational Humanities Research 2025</i>, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. <i>anthology.ach.org</i>, <a href="https://doi.org/10.63744/f3L9hsFcGqVc">https://doi.org/10.63744/f3L9hsFcGqVc</a>.</p>
   </small>
 
+---
+layout: center
 ---
 
 # RICentities types
@@ -930,18 +948,6 @@ Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of Wo
 
 ---
 layout: image
-image: /images/Intra-bloc trade share.png
-backgroundSize: contain
----
-
----
-layout: image
-image: /images/tibi_comparaison_avec_diff_nblocs.png
-backgroundSize: contain
----
-
----
-layout: image
 image: /images/mid_n_intramax_fob.png
 backgroundSize: contain
 ---
@@ -970,9 +976,3 @@ layout: image
 image: /images/ln_dist_intramax_fob.png
 backgroundSize: contain
 ---
-
-
-
-
-
-
