@@ -41,7 +41,7 @@ interface ModularityTestResult {
 
 async function computeLouvainResolution() {
   // read existing network file
-  const graphFile = (year: number, cafFob: "caf" | "fob") => `../data/blocks/louvain/${year}_${cafFob}.gexf`;
+  const graphFile = (year: number, cafFob: "caf" | "fob") => `../results/communities/louvain/${year}_${cafFob}.gexf`;
   const yearsCafFob = flatten(
     range(conf.startDate, conf.endDate + 1).map((year) =>
       (["caf", "fob"] as const).map((cafFob) => ({ year, cafFob })),
@@ -115,7 +115,7 @@ async function computeLouvainResolution() {
   console.log(`SD resol=1 ${sd1}, SD varying reso= ${sdManyReso}`);
 
   const dataCSV = stringify(data, { header: true });
-  await writeFile("../data/blocks/louvain_resolution_ratio.csv", dataCSV);
+  await writeFile("../results/communities/louvain_resolution_ratio.csv", dataCSV);
 }
 
 computeLouvainResolution()

@@ -88,9 +88,9 @@ const missingInANAll: Set<string> = new Set();
 const years = [1833, 1850];
 years.forEach((year) => {
   let intramaxOk = true;
-  // read intramax block from data/blocks/Intramax
+  // read intramax block from results/communities/Intramax
   const intraMaxBlocks: { [year: number]: { [node: string]: string } } = {};
-  const intramaxFile = `../data/blocks/Intramax/paires_blocs_${year}.csv`;
+  const intramaxFile = `../results/communities/Intramax/paires_blocs_${year}.csv`;
   if (existsSync(intramaxFile)) {
     const csvString = readFileSync(intramaxFile);
     const intramaxData = parse<{
@@ -373,12 +373,12 @@ years.forEach((year) => {
           header: true,
         },
       );
-      writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.csv`, csvString);
+      writeFileSync(`../results/communities/louvain/${year}_${cafFob}.csv`, csvString);
       // TODO: export in Gephi Lite format
       const gexfString = gexf.write(undirectedCafFobGraph);
-      writeFileSync(`../data/blocks/louvain/${year}_${cafFob}.gexf`, gexfString);
+      writeFileSync(`../results/communities/louvain/${year}_${cafFob}.gexf`, gexfString);
       const gexfStringDirected = gexf.write(cafFobGraph);
-      writeFileSync(`../data/blocks/louvain/${year}_${cafFob}_directed.gexf`, gexfStringDirected);
+      writeFileSync(`../results/communities/louvain/${year}_${cafFob}_directed.gexf`, gexfStringDirected);
 
       const entitiesBlocksCsvString = stringify(
         sortBy(
@@ -399,7 +399,7 @@ years.forEach((year) => {
           header: true,
         },
       );
-      writeFileSync(`../data/blocks/gph_blocks_by_year/${year}_${cafFob}.csv`, entitiesBlocksCsvString);
+      writeFileSync(`../results/communities/gph_blocks_by_year/${year}_${cafFob}.csv`, entitiesBlocksCsvString);
 
       // - compute modularity louvain blocks
       const modularityScores: { [type: string]: number | null } = {};
@@ -473,7 +473,7 @@ years.forEach((year) => {
     });
 
     writeFileSync(
-      "../data/blocks/modularities_by_year.csv",
+      "../results/communities/modularities_by_year.csv",
       stringify(blocksStats, {
         columns: [
           "year",
