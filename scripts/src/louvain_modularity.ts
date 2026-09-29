@@ -84,8 +84,8 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = [...range(1833, 1939), ...range(1948, 2026)];
-//const years = [1833, 1850];
+//const years = [...range(1833, 1939), ...range(1948, 2026)];
+const years = [1833, 1850];
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from data/blocks/Intramax
@@ -217,16 +217,17 @@ years.forEach((year) => {
 
       // compute and assign proximity
       cafFobGraph.forEachEdge((e, atts) => {
-        const totalTradePart = (bilateralGraph.getEdgeAttribute(e, "value") || 0) / totalBilateralTrade;
+        const Iij = bilateralGraph.getEdgeAttribute(e, "value") || 0;
 
-        const expected =
+        const Ipij =
           (weightedDegrees.out[bilateralGraph.source(e)] * weightedDegrees.in[bilateralGraph.target(e)]) /
-          (totalBilateralTrade * totalBilateralTrade);
-        if (expected === 0)
+          totalBilateralTrade;
+
+        if (Ipij === 0)
           throw new Error(
-            `${totalTradePart} ${expected} ${weightedDegrees.out[bilateralGraph.source(e)]} ${weightedDegrees.in[bilateralGraph.target(e)]} ${totalBilateralTrade}`,
+            `${Iij} ${Ipij} ${weightedDegrees.out[bilateralGraph.source(e)]} ${weightedDegrees.in[bilateralGraph.target(e)]} ${totalBilateralTrade}`,
           );
-        const proximity = expected !== 0 ? totalTradePart / expected - 1 : undefined;
+        const proximity = (Iij - Ipij) / weightedDegrees.in[bilateralGraph.target(e)];
         cafFobGraph.setEdgeAttribute(e, "proximity", proximity);
       });
       //compute and assign TIBI
