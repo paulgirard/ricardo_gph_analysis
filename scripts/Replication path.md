@@ -8,13 +8,28 @@ Creates
 From 
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv 
 
+### AN
+??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
+
 ## Data generation
 
 ### Before gravity (Paul) (YYYY < 1939, from 1833)
 
+Salut, j'avais zappé que tu as besoin de la base de données SQLite Ricardo... Elle est un peu relou a construire. Je oeux lancer le script ce matin et t'envoyer un lien vers le fichier SQLite. Je te dis quand c'est fait. 
+la base sqlite est là : https://nextcloud.ouestware.com/s/sEMXMAn8TYPp2X4
+
+dans scripts/src/configuration.json il ya une variable "parthToRICardoData" qui indique où le script va chercher la base
+
+Le plus simple est de cloner le repo RICardo_data dans un dossier ricardo_data à côté du dossier ricardo_gph_analysis
+puis tu bouges la sqlite dnsle dossier sqlite_data
+
+
 From data in https://github.com/medialab/GeoPolHist and https://github.com/medialab/GeoPolHist/ricardo_data,
 
-Using `npm run quality_ratio`
+Using
+
+`npm run entities
+npm run quality_ratio`
 
 Paul creates data/tradeFlows_YYYY_ratios.csv + un fichier de diagnostics ‘tradeGraphsStats_ratios.csv’
 
@@ -45,29 +60,18 @@ npm install sqlite3@latest
 
 
 `npm run gravity `
-**lit le dossier results et exporte les réseaux au format json et gephi lite**
-
-
 `npm run quality-gravity` 
-**exporte au format tradeFlows_{year}.csv** Pour cela:
-Salut, j'avais zappé que tu as besoin de la base de données SQLite Ricardo... Elle est un peu relou a construire. Je oeux lancer le script ce matin et t'envoyer un lien vers le fichier SQLite. Je te dis quand c'est fait. 
-la base sqlite est là : https://nextcloud.ouestware.com/s/sEMXMAn8TYPp2X4
-
-dans scripts/src/configuration.json il ya une variable "parthToRICardoData" qui indique où le script va chercher la base
-
-Le plus simple est de cloner le repo RICardo_data dans un dossier ricardo_data à côté du dossier ricardo_gph_analysis
-puis tu bouges la sqlite dnsle dossier sqlite_data
 
 
-
-
+**lit le dossier results et exporte les réseaux au format json et gephi lite**
+Les scripts « quality » écrivent les csv
 
 
 From Pour results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
 Which are the trade flows including gravity
 
-### Graphique de diagnostic ?
-`npm run quality-gravity`
++
+
 un fichier de diagnostics ‘tradeGraphsStats_gravity.csv’
 
 ### IMF data (YYYY > 1947 up to 2025) (Youssef)
@@ -79,15 +83,16 @@ From:
 - Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity.csv
 
 
-## Block generation
+## Bloc generation
 ### Intramax and Anderson-Norheim (1993) (Youssef)
-Création des blocks intramax : scripts/Ghallada/Network RICardo Year.R"
+À partir de `data/tradeFlows_YYYY_gravity.csv`
+Création des block intramax : scripts/Ghallada/Network RICardo Year.R"
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
-
-??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
 
 
 ### Louvain (Paul)
+
+Utilise `data/tradeFlows_YYYY_gravity.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
 **exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
@@ -100,15 +105,17 @@ Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
-Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `gph_blocks_by_year`
+Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `gph_blocks_by_year`
 
-Ce fichier comprend la liste des GPH avec leurs blocs:
- 
-`data/blocks/master_YYYY_caf/fob.csv`
+
 
 ## Métriques
 ### Modularité (Paul)
-Paul does his magic ???
+Vient aussi de `npm run louvain-modularity `
+`data/blocks/modularities_by_year.csv’
+
+----------------------
+
 ### TIBI (Youssef)
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
 Graphiques : `data/blocks/louvain/tibi_intracomm_moyen.png`, `data/blocks/tibi_comparaison_intramax_louvain.png`, `data/blocks/tibi_comparaison_avec_diff_nblocs.png`
@@ -142,7 +149,8 @@ produit `external data/Controls panel/contiguity.csv`
 
 
 ### Distance
-De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation 
+De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
+On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
 Dans le script "scripts/Ghallada/Variables de controles.R"
 Produit `external data/Controls panel/distance.csv’
 
