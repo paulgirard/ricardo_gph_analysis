@@ -16,11 +16,11 @@ if (user == "guillaumedaudin") {
 }
 
 # --- 1. Mapping Anderson-Norheim ---
-BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
+BlocselonAN <- read.csv("external data/BlocselonAN.csv")
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
-dossier <- "data/blocks/gph_blocks_by_year"
+dossier <- "results/communities/gph_blocks_by_year"
 annees  <- c(1833:1938, 1948:2025)
 
 liste <- list()
@@ -56,7 +56,7 @@ master %>% count(year) %>%
   print()
 
 master <- master[!duplicated(master[, c("key", "year")]), ]
-write.csv(master, "data/blocks/panel_blocs_paires.csv", row.names = FALSE)
+write.csv(master, "external data/Controls panel/panel_blocs_paires.csv", row.names = FALSE)
 
 # --- Distance entre centroides ----------------------------------------
 coord <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
@@ -169,7 +169,7 @@ a_coder <- master %>%
   arrange(distance_km)
 
 write_xlsx(a_coder, "external data/Controls panel/na_contig_a_coder.xlsx")
-write.csv2(a_coder, "external data/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
+write.csv(a_coder, "external data/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
 nrow(a_coder)
 n_distinct(master$key)
 #Bilateral Disputes
