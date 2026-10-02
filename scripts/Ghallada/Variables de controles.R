@@ -148,10 +148,11 @@ table(contiguity$conttype, useNA = "ifany")
 write.csv(contiguity, "external data/Controls panel/contiguity.csv", row.names = FALSE)
 
 #Restant à coder
-library(writexl)
+library(dplyr); library(writexl)
 
 noms <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE) %>%
-  transmute(gph = as.character(GPH_code), nom = GPH_name)
+  transmute(gph = as.character(GPH_code), nom = GPH_name,
+            lat = lat, lng = lng)
 
 a_coder <- master %>%
   filter(as.integer(source) > 999 | as.integer(target) > 999) %>%
@@ -160,10 +161,13 @@ a_coder <- master %>%
   summarise(premiere_annee = min(year),
             derniere_annee = max(year),
             n_annees       = n(), .groups = "drop") %>%
-  left_join(noms, by = c("source" = "gph")) %>% rename(source_nom = nom) %>%
-  left_join(noms, by = c("target" = "gph")) %>% rename(target_nom = nom) %>%
+  left_join(noms, by = c("source" = "gph")) %>%
+  rename(source_nom = nom, source_lat = lat, source_lng = lng) %>%
+  left_join(noms, by = c("target" = "gph")) %>%
+  rename(target_nom = nom, target_lat = lat, target_lng = lng) %>%
   left_join(distance %>% select(key, distance_km), by = "key") %>%
-  select(key, source, source_nom, target, target_nom,
+  select(key, source, source_nom, source_lat, source_lng,
+         target, target_nom, target_lat, target_lng,
          distance_km, premiere_annee, derniere_annee, n_annees) %>%
   mutate(conttype = NA_integer_) %>%
   arrange(distance_km)
@@ -172,6 +176,83 @@ write_xlsx(a_coder, "external data/Controls panel/na_contig_a_coder.xlsx")
 write.csv(a_coder, "external data/Controls panel/na_contig_a_coder.csv", row.names = FALSE)
 nrow(a_coder)
 n_distinct(master$key)
+#Map
+########################################################
+#####  Carte interactive                           #####
+########################################################
+# Au-dela de seuil_km on cartographie pas
+
+library(leaflet); library(leaflet.extras); library(htmlwidgets)
+library(rnaturalearth); library(sf)
+
+seuil_km <- 2500
+
+carte_df <- a_coder %>%
+  filter(!is.na(source_lat), !is.na(target_lat), distance_km <= seuil_km) %>%
+  mutate(
+    ent     = if_else(as.integer(source) > 999, source_nom, target_nom),
+    ent_lat = if_else(as.integer(source) > 999, source_lat, target_lat),
+    ent_lng = if_else(as.integer(source) > 999, source_lng, target_lng),
+    popup   = paste0("<b>", source_nom, " &harr; ", target_nom, "</b><br>",
+                     "cle : ", key, "<br>",
+                     "distance : ", round(distance_km), " km<br>",
+                     "annees : ", premiere_annee, "-", derniere_annee,
+                     " (", n_annees, ")"))
+
+cat(nrow(carte_df), "paires sous", seuil_km, "km\n")
+
+couleur <- function(d) {
+  ifelse(d <=  50, "#CF142B",
+         ifelse(d <= 200, "#E07B39",
+                ifelse(d <= 500, "#0055A4", "#777777")))
+}
+
+# --- fond de carte local (aucun serveur de tuiles) --------------------
+monde <- ne_countries(scale = "medium", returnclass = "sf")
+
+m <- leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
+  addPolygons(data = monde, fillColor = "#f0f0ec", fillOpacity = 1,
+              color = "#999", weight = 0.6, smoothFactor = 0.5)
+
+# --- une couche par entite hors COW -----------------------------------
+entites <- sort(unique(carte_df$ent))
+
+for (e in entites) {
+  sub <- carte_df[carte_df$ent == e, ]
+  m <- m %>%
+    addPolylines(data = sub,
+                 lng = ~c(rbind(source_lng, target_lng, NA)),
+                 lat = ~c(rbind(source_lat, target_lat, NA)),
+                 color = "#0055A4", weight = 2, opacity = 0.7, group = e) %>%
+    addCircleMarkers(data = sub,
+                     lng = ~target_lng, lat = ~target_lat,
+                     radius = 3, stroke = FALSE, fillOpacity = 0.8,
+                     fillColor = ~couleur(distance_km),
+                     popup = ~popup, group = e)
+}
+
+# --- points des entites, cherchables ----------------------------------
+pts <- carte_df %>% distinct(ent, ent_lat, ent_lng)
+
+m <- m %>%
+  addCircleMarkers(data = pts, lng = ~ent_lng, lat = ~ent_lat,
+                   radius = 5, color = "#CF142B", fillOpacity = 0.9,
+                   stroke = FALSE, label = ~ent, group = "entites") %>%
+  addSearchFeatures(targetGroups = "entites",
+                    options = searchFeaturesOptions(zoom = 4, openPopup = TRUE,
+                                                    hideMarkerOnCollapse = FALSE)) %>%
+  addLayersControl(overlayGroups = c("entites", entites),
+                   options = layersControlOptions(collapsed = TRUE)) %>%
+  hideGroup(entites) %>%
+  addLegend("bottomright",
+            colors = c("#CF142B", "#E07B39", "#0055A4", "#777777"),
+            labels = c("< 50 km", "50-200 km", "200-500 km", "> 500 km"),
+            title = "Distance centroides")
+
+saveWidget(m, "external data/Controls panel/carte_paires_a_coder.html",
+           selfcontained = TRUE)
+
+
 #Bilateral Disputes
 # --- 1. MID agrege ----------------------------------------------------
 # =============================================================================
