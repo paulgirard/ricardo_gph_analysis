@@ -8,8 +8,45 @@ Creates
 From 
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv 
 
+## Variables explicatives (Youssef)
+
 ### AN
 ??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
+
+Et mise de tout dans le même fichier: grâce à `scripts/Ghallada/Variables de controles.R`
+- 
+### Contiguité (Youssef)
+De COW :
+Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
+
+Douglas M. Stinnett, Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
+(2002). "The Correlates of War Project Direct Contiguity Data, Version 3." *Conflict
+Management and Peace Science* 19 (2):58-66.
+
++ script (dans "scripts/Ghallada/Variables de controles.R")
+
++ travail à la main pour les xxxx
+
+produit `external data/Controls panel/contiguity.csv`
+
+
+### Distance
+De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
+On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
+Dans le script "scripts/Ghallada/Variables de controles.R"
+Produit `external data/Controls panel/distance.csv’
+
+### Conflit
+De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
+Script : le même
+Produit `external data/Controls panel/disputes.csv`
+
+### Alliances
+De ATOP 5.1
+Produit `external data/Controls panel/alliances.csv`
+### Contiguity manquant
+- Produit `external data/Controls panel/na_contig_a_coder.csv`
+
 
 ## Data generation
 
@@ -42,7 +79,8 @@ From:
 `external data/dependency_relations.csv`
 pour les liens politiques
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
-Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/BestGuessBilTrade_YYYY.csv and results/gravity_XXXX.csv`
+
+Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity_XXXX.csv`
 
 ### Post gravity data (Paul) (YYYY < 1939)
 ```
@@ -82,22 +120,23 @@ From:
 
 - Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity.csv
 
+### Creation of best guess 
+### BestGuessBilTrade avec les 0
+Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY.csv`
+
+
 
 ## Bloc generation
 ### Intramax and Anderson-Norheim (1993) (Youssef)
 À partir de `data/tradeFlows_YYYY_gravity.csv`
 Création des block intramax : scripts/Ghallada/Network RICardo Year.R"
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
-
-
 ### Louvain (Paul)
 
 Utilise `data/tradeFlows_YYYY_gravity.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
 **exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
-
-
 
 creates `data/blocks/louvain/YYYY_caf/fob.csv`
 
@@ -130,43 +169,10 @@ Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
 Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
-## Variables explicatives (Youssef)
-Et mise de tout dans le même fichier: grâce à `scripts/Ghallada/Variables de controles.R`
-- 
-### Contiguité (Youssef)
-De COW :
-Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
 
-Douglas M. Stinnett, Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
-(2002). "The Correlates of War Project Direct Contiguity Data, Version 3." *Conflict
-Management and Peace Science* 19 (2):58-66.
+## Analyse
 
-+ script (dans "scripts/Ghallada/Variables de controles.R")
-
-+ travail à la main pour les xxxx
-
-produit `external data/Controls panel/contiguity.csv`
-
-
-### Distance
-De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
-On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
-Dans le script "scripts/Ghallada/Variables de controles.R"
-Produit `external data/Controls panel/distance.csv’
-
-### Conflit
-De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
-Script : le même
-Produit `external data/Controls panel/disputes.csv`
-
-### Alliances
-De ATOP 5.1
-Produit `external data/Controls panel/alliances.csv`
-### Contiguity manquant
-- Produit `external data/Controls panel/na_contig_a_coder.csv`
-
-## Régressions (Guillaume)
-
+### Régressions sur l’appartenance à un bloc (Guillaume)
 
 Prendre l’appartenance AN  comme une variable explicative.
 
@@ -175,6 +181,9 @@ Prendre l’appartenance AN  comme une variable explicative.
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`
 Et `results/block_study/ln_dist_intramax_fob.png`
+
+
+### Régressions sur l’effet de communautés sur la marge extensive
 
 
 
