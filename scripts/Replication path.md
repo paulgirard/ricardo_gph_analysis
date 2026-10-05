@@ -105,7 +105,7 @@ npm install sqlite3@latest
 Les scripts « quality » écrivent les csv
 
 
-From Pour results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
+From results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
 Which are the trade flows including gravity
 
 +

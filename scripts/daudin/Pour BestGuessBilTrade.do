@@ -1,114 +1,166 @@
+cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
+
 *****************************************
 capture program drop bestguessbiltrade 
 program define bestguessbiltrade
-	args year
+	args year CafFob
 
 ****Maintenant, j’aimerai créer une base du best guess du commerce
-use "data/tradeFlows_`year'_gravity.csv", clear
+
+import delimited "data/tradeFlows_`year'_gravity.csv", /*
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
+	*/ stringcols(13 15)
+***To force newReporters and originalReportedTradeFlowIds to be a string even if empty
+
+generate CafFob=""
+replace CafFob="caf" if reportedBy==importerId
+replace CafFob="fob" if reportedBy==exporterId
+
+keep if CafFob=="`CafFob'"
+
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
+drop if status=="ignore_duplicate" | status=="ignore_internal" | status=="ignore_resolved"
 
-generate value = pred_trade if status=="ok thanks to gravity"
-replace importerLabel=newimporterLabel if newimporterLabel!=""
-replace exporterLabel=newexporterLabel if newexporterLabel!=""
-
-replace value=. if status=="unknown despite gravity"
-
-egen max = max(value), by(importerLabel exporterLabel CafFob)
-egen min = min(value), by(importerLabel exporterLabel CafFob)
-replace status ="both ok and not ok" if max!=min
-assert status !="both ok and not ok"
-
-drop max min
-
-/*bys importerLabel exporterLabel CafFob: assert status==status[1]
-bys importerLabel exporterLabel CafFob: assert value==value[1]
-collapse (first) value status year, by(importerLabel exporterLabel CafFob)
-*/
-bys importerLabel exporterLabel CafFob : assert _N==1
-
-append using "tradeFlows_`year'_FromImporterok_temp.dta"
-append using "tradeFlows_`year'_FromExporterok_temp.dta"
+capture noisily assert value!=.
+if _rc!=0 {
+	di as error "Some ok flows have missing value. This should not happen. Please check the data `year'."
+}
 
 
-***Some flows are both in the "ok" file and in the gravity file.
-***if all are ok : we aggregate them with the sum of flows
-***if any is "unknown despite gravity" : all are "unknown despite gravity"
-**exemple 1833 : id=="200->3349" & id =="200->Ionian Is. & Morea"
-generate good_flow =1 if status=="ok thanks to gravity" | status=="ok"
-generate gravity_flow =1 if status=="ok thanks to gravity"
-replace good_flow =0 if status=="unknown despite gravity"
-
-
-bys importerLabel exporterLabel CafFob : egen nbr_of_gravity_flows=total(gravity_flow)
-bys importerLabel exporterLabel CafFob : egen nbr_of_good_flows=total(good_flow)
-bys importerLabel exporterLabel CafFob: egen at_least_one_good_flow= max(good_flow)
-bys importerLabel exporterLabel CafFob :replace status="unknown despite partial gravity success" if nbr_of_good_flows!=_N & at_least_one_good_flow==1
-bys importerLabel exporterLabel CafFob :replace status="ok thanks partially to gravity" if nbr_of_gravity_flows<_N & nbr_of_gravity_flows>0  & nbr_of_good_flows==_N
-bys importerLabel exporterLabel CafFob : egen value_cum=total(value)
-bys importerLabel exporterLabel CafFob : replace value=value_cum if nbr_of_good_flows==_N
-bys importerLabel exporterLabel CafFob : replace value=. if nbr_of_good_flows!=_N
-bys importerLabel exporterLabel CafFob: gen str_concat = id + "&&" + notes if _n == 1
-bys importerLabel exporterLabel CafFob: replace str_concat = str_concat[_n-1] + "|" + id + "&&" + notes if _n > 1
-bys importerLabel exporterLabel CafFob: replace notes = str_concat[_N] if _N>1
-bys importerLabel exporterLabel CafFob : keep if _n==1
-
-
-drop value_cum str_concat
-bys importerLabel exporterLabel CafFob : assert _N==1
-
-
-
-keep year value status importerLabel exporterLabel CafFob
-
-gen str256 importerLabel_256 = substr(importerLabel, 1, 256)
-gen str256 exporterLabel_256 = substr(exporterLabel, 1, 256)
-drop importerLabel exporterLabel
-rename *_256 *
-
-preserve
-keep if CafFob=="FromImporter"
-fillin importerLabel exporterLabel
-replace value  = 0 if _fillin ==1
-replace status = "imputed zero" if _fillin ==1
-replace CafFob = "FromImporter" if _fillin ==1
-replace year=`year' if _fillin ==1
-drop _fillin
 
 save temp.dta, replace
-restore 
-keep if CafFob=="FromExporter"
-fillin importerLabel exporterLabel
+********Création des flux connus non mesurés
+use temp.dta,clear
+tab status, missing
+drop valueToSplit valueGeneratedBy
+keep if strmatch(status,"split_*")
+drop if strpos(newPartners,"restOfTheWorld")!=0
+replace value=.
+
+/// New method : we split first Partners and Reporters
+split newPartners, parse("|") gen(newPartnerId)
+reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
+drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
+destring(newPartnerId), replace
+
+**RQ A :  This can produce duplicates in newPartnerId & importerId (or expoterId) if there are multiple reporters for a given partner in a split.
+** eg in 1833, we have a value to split for "Bilbao<-Hanover & Hanse Towns" & one for "Cadix<-Hanse Towns|Málaga<-Hanse Towns" 
+** This can proceed as we can assume that the relevant gravity coefficient are the same
+
+
+
+//à faire seulement s’il y a des reporters à splitter
+capture assert missing(newReporters)
+	if _rc!=0 {
+		split newReporters,parse ("|") gen(newReportersId)
+		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
+		drop if newReportersId=="" & reporter_no !=1
+		destring(newReportersId), replace
+		
+	}
+
+gen newimporterId=newPartnerId if CafFob=="fob"
+capture assert missing(newReporters)
+if _rc!=0 replace newimporterId=newReportersId if CafFob=="fob"
+
+gen newexporterId=newPartnerId if CafFob=="caf"
+capture assert missing(newReporters)
+if _rc!=0  replace newexporterId=newReportersId if CafFob=="caf"  
+
+
+///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
+
+destring(importerId), replace force
+destring(exporterId), replace force
+replace newimporterId=importerId if newimporterId==.
+replace newexporterId=exporterId if newexporterId==.
+
+destring(newimporterId), replace
+destring(newexporterId), replace
+
+sort originalReportedTradeFlowId
+*drop importer_lbl-importer exporter
+
+
+tostring(newimporterId), replace
+tostring(newexporterId), replace
+
+drop if newimporterId==newexporterId
+
+capture drop key
+gen key = newimporterId + "-" + newexporterId if newimporterId < newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
+replace key = newexporterId + "-" + newimporterId if newimporterId > newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
+order key
+
+drop if key=="" & id==""
+
+destring(newimporterId), replace
+destring(newexporterId), replace
+
+replace importerId =newimporterId if newimporterId!=.
+replace exporterId =newexporterId if newexporterId!=.
+drop  new*
+
+bys importerLabel exporterLabel CafFob: keep if _n==1
+
+
+save temp_failures.dta, replace
+
+
+
+use temp.dta, clear
+drop if strmatch(status,"split_*")
+
+destring(importerId), replace
+destring(exporterId), replace
+
+bys importerId exporterId CafFob: assert _N==1
+
+
+append using temp_failures.dta
+erase temp_failures.dta
+
+drop newReporters partner_no  importerLabel importerType /*
+	*/ exporterLabel exporterType reportedBy partial newPartners originalReportedTradeFlowIds /*
+	*/ valueGeneratedBy notes
+
+
+********Création des imputed zeros
+bys importerId exporterId CafFob: assert _N==1
+
+fillin exporterId importerId
+blif
+
 replace value  = 0 if _fillin ==1
 replace status = "imputed zero" if _fillin ==1
-replace CafFob = "FromExporter" if _fillin ==1
+replace CafFob = "`CafFob'" if _fillin ==1
 replace year=`year' if _fillin ==1
 drop _fillin
 
-append using temp.dta
-drop if importerLabel==exporterLabel
+
+drop if importerId==exporterId
 
 
-bys importerLabel exporterLabel CafFob: assert _N==1
+bys importerId exporterId CafFob: assert _N==1
 
-export delimited using "results/BestGuessBilTrade_`year'.csv", replace quote
+export delimited using "results/BestGuessBilTrade_`year'_`CafFob'.csv", replace quote
 erase temp.dta
-erase "results/BestGuessBilTrade_`year'_FromImporter.dta"
-erase "results/BestGuessBilTrade_`year'_FromExporter.dta"
+
 
 end
 
 
-bestguessbiltrade 1833
+bestguessbiltrade 1833 fob
 
 
 
 
 
 
-
+/*
 
 foreach year of numlist 1834(1)1938 1948(1)2025 {
-	bestguessbiltrade `year'	
+	bestguessbiltrade `year' fob
 }
