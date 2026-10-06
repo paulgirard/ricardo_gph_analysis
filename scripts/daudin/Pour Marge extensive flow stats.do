@@ -96,7 +96,7 @@ twoway ///
     ytitle("Number") ///
     xtitle("Year") ///
     legend(order(1 "Non-zero trade flows" 2 "Unknown non-zero trade flows" 3 "Imputed zeros" 4 "Not reported") position(6) rows(2)) ///
-    yscale(log ) xscale(range(1830(20)2030)) ylabel(20 50 100 200 500 1000 2000 5000 10000 20000, format(%12.0gc))
+    yscale(log ) xscale(range(1830(20)2030)) ylabel(1 2 5 10 20 50 100 200 500 1000 2000 5000 10000 20000, format(%12.0gc))
 
 graph export "results/extensive/trade_flows_nbr_`CafFob'.png", replace
 
@@ -113,7 +113,7 @@ twoway ///
     ytitle("Share", axis(1) ) ytitle("Number of potential flows",axis(2) ) ///
     xtitle("Year") ///
     legend(order(1 "Non-zero trade flows" 2 "Unknown non-zero trade flows" 3 "Imputed zeros" 4 "Not reported" 5 "Potential flows"  ) position(6) rows(3)) ///
-    yscale(axis(1) log ) xscale(range(1830(20)2030)) ylabel(0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1,axis(1)  format(%12.0gc)) /// 
+    yscale(axis(1) log ) xscale(range(1830(20)2030)) ylabel( 0.00005 0.0001 0.0002 0.0005 0.001 0.002 0.005 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1,axis(1)  format(%12.0gc)) /// 
     yscale(axis(2) range(0(1000)5000 )) ylabel(0(10000)50000, axis(2) format(%12.0gc))
 
 graph export "results/extensive/trade_flows_share_`CafFob'.png", replace
