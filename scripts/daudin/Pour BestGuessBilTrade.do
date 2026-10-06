@@ -47,34 +47,41 @@ replace value=.
 
 /// New method : we split first Partners and Reporters
 split newPartners, parse("|") gen(newPartnerId)
-reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
-drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
+egen nbr_new_partners=rownonmiss(newPartnerId*), strok
+reshape long newPartnerId, i(id CafFob newReporters nbr_new_partners) j(partner_no)
+drop if partner_no>nbr_new_partners
 destring(newPartnerId), replace
 
-**RQ A :  This can produce duplicates in newPartnerId & importerId (or expoterId) if there are multiple reporters for a given partner in a split.
-** eg in 1833, we have a value to split for "Bilbao<-Hanover & Hanse Towns" & one for "Cadix<-Hanse Towns|Málaga<-Hanse Towns" 
-** This can proceed as we can assume that the relevant gravity coefficient are the same
-
+gen newimporterId=.
+gen newexporterId=.
+replace newimporterId=newPartnerId if CafFob=="fob"
+replace newexporterId=newPartnerId if CafFob=="caf"
 
 
 //à faire seulement s’il y a des reporters à splitter
 capture assert missing(newReporters)
 	if _rc!=0 {
 		split newReporters,parse ("|") gen(newReportersId)
+		egen nbr_new_reporters=rownonmiss(newReportersId*), strok
 		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
-		drop if newReportersId=="" & reporter_no !=1
+		drop if reporter_no>nbr_new_reporters
 		destring(newReportersId), replace
+		replace newexporterId=newReportersId if CafFob=="fob"
+		replace newimporterId=newReportersId if CafFob=="caf"
 		
 	}
 
-gen newimporterId=newPartnerId if CafFob=="fob"
-capture assert missing(newReporters)
-if _rc!=0 replace newimporterId=newReportersId if CafFob=="fob"
 
-gen newexporterId=newPartnerId if CafFob=="caf"
-capture assert missing(newReporters)
-if _rc!=0  replace newexporterId=newReportersId if CafFob=="caf"  
 
+capture order importerId exporterId newimporterId newexporterId newPartnerId newPartners newReportersId newReporters
+order importerId exporterId newimporterId newexporterId newPartnerId newPartners newReporters
+
+capture drop nbr_new_reporters 
+drop nbr_new_partners
+assert (newimporterId!=. | importerId!="") & (newexporterId!=. | exporterId!="")
+
+
+	
 
 ///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
 
@@ -219,6 +226,7 @@ capture drop key
 		gen key = "R" + strofreal(importerId) + "<-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
 		replace key = strofreal(exporterId) + "->" + "R" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
 	}
+assert key!=""
 
 order  undir_pair_key key
 
@@ -241,6 +249,9 @@ save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
 end
 
 
+*bestguessbiltrade 1841 fob
+
+
 bestguessbiltrade 1833 fob
 bestguessbiltrade 1833 caf
 
@@ -252,7 +263,7 @@ foreach year of numlist 1834(1)1938  {
 	bestguessbiltrade `year' caf
 }
 
-*/
+
 
 foreach year of numlist 1948(1)2025 {
 	bestguessbiltrade `year' fob
