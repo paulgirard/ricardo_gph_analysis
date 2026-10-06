@@ -222,13 +222,14 @@ capture drop key
 
 order  undir_pair_key key
 
-sort undir_pair_key
+sort undir_pair_key key
 
 
 ////Nettoyage
 
 capture drop id
 capture drop valueToSplit
+capture drop reporter_no
 capture drop importerLabel importerType exporterLabel exporterType /*
     */ reportedBy partial  newReporters newPartners originalReportedTradeFlowIds notes
 
