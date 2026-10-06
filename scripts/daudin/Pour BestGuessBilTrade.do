@@ -9,8 +9,8 @@ program define bestguessbiltrade
 
 import delimited "data/tradeFlows_`year'_gravity.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
-	*/ stringcols(13 15)
-***To force newReporters and originalReportedTradeFlowIds to be a string even if empty
+	*/ stringcols(3 6 10 13 15)
+***To force ReportedBy newReporters and originalReportedTradeFlowIds to be a string even if empty
 
 generate CafFob=""
 replace CafFob="caf" if reportedBy==importerId
@@ -18,23 +18,27 @@ replace CafFob="fob" if reportedBy==exporterId
 
 keep if CafFob=="`CafFob'"
 
+	
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
-drop if status=="ignore_duplicate" | status=="ignore_internal" | status=="ignore_resolved"
+drop if status=="ignore_duplicate" | status=="ignore_internal" | status=="ignore_resolved" | status=="ignore_partial_duplicate"
 
 capture noisily assert value!=.
 if _rc!=0 {
-	di as error "Some ok flows have missing value. This should not happen. Please check the data `year'."
+	di as error "Some ok flows have missing value. This should not happen. Please check the data `year' `CafFob'."
 }
 
 
 
 save temp.dta, replace
-********Création des flux connus non mesurés
+********Création des flux connus non mesurés (only useful for "our" treatment)
+
+if year< 1948 {
 use temp.dta,clear
+
 tab status, missing
-drop valueToSplit valueGeneratedBy
+capture drop valueToSplit valueGeneratedBy
 keep if strmatch(status,"split_*")
 drop if strpos(newPartners,"restOfTheWorld")!=0
 replace value=.
@@ -77,33 +81,21 @@ destring(exporterId), replace force
 replace newimporterId=importerId if newimporterId==.
 replace newexporterId=exporterId if newexporterId==.
 
-destring(newimporterId), replace
-destring(newexporterId), replace
+*destring(newimporterId), replace
+*destring(newexporterId), replace
 
 sort originalReportedTradeFlowId
 *drop importer_lbl-importer exporter
 
-
-tostring(newimporterId), replace
-tostring(newexporterId), replace
-
 drop if newimporterId==newexporterId
 
-capture drop key
-gen key = newimporterId + "-" + newexporterId if newimporterId < newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
-replace key = newexporterId + "-" + newimporterId if newimporterId > newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
-order key
-
-drop if key=="" & id==""
-
-destring(newimporterId), replace
-destring(newexporterId), replace
 
 replace importerId =newimporterId if newimporterId!=.
 replace exporterId =newexporterId if newexporterId!=.
 drop  new*
 
 bys importerLabel exporterLabel CafFob: keep if _n==1
+bys importerId exporterId CafFob: keep if _n==1
 
 
 save temp_failures.dta, replace
@@ -111,10 +103,12 @@ save temp_failures.dta, replace
 
 
 use temp.dta, clear
-drop if strmatch(status,"split_*")
+drop if strmatch(status,"split_*") | strmatch(status,"ignore_*")
 
-destring(importerId), replace
-destring(exporterId), replace
+destring(importerId), replace 
+destring(exporterId), replace 
+
+
 
 bys importerId exporterId CafFob: assert _N==1
 
@@ -126,12 +120,41 @@ drop newReporters partner_no  importerLabel importerType /*
 	*/ exporterLabel exporterType reportedBy partial newPartners originalReportedTradeFlowIds /*
 	*/ valueGeneratedBy notes
 
+save temp.dta, replace
+}
 
+if year>=1948 {
+	use temp.dta, clear
+	destring(importerId), replace 
+	destring(exporterId), replace 
+ 	save temp.dta, replace
+}
 ********Création des imputed zeros
-bys importerId exporterId CafFob: assert _N==1
+use temp.dta, clear
+duplicates report importerId exporterId CafFob
+if r(unique_values)!=r(N) {
+	di as error "Some flows have both missing and existing values. This should not happen. Please check the data `year' `CafFob'."
+}
 
+sort importerId exporterId CafFob value
+bys importerId exporterId CafFob : keep if _n==1
+
+///Beware. Some reporters are not partners. We must add them to the partner list
+save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
+if "`CafFob'"=="fob" {
+	keep exporterId
+	bys exporterId: keep if _n==1
+	rename exporterId importerId
+}
+if "`CafFob'"=="caf" {
+	keep importerId
+	bys importerId: keep if _n==1
+	rename importerId exporterId
+}
+
+append using "results/BestGuessBilTrade_`year'_`CafFob'.dta"
 fillin exporterId importerId
-blif
+
 
 replace value  = 0 if _fillin ==1
 replace status = "imputed zero" if _fillin ==1
@@ -144,23 +167,82 @@ drop if importerId==exporterId
 
 
 bys importerId exporterId CafFob: assert _N==1
+save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
+
+***************Création des flux non rapportés
+
+use "results/BestGuessBilTrade_`year'_`CafFob'.dta", clear
+if "`CafFob'"=="fob" {
+	keep importerId
+	bys importerId: keep if _n==1
+	rename importerId exporterId
+}
+if "`CafFob'"=="caf" {
+	keep exporterId
+	bys exporterId: keep if _n==1
+	rename exporterId importerId
+}
+append using "results/BestGuessBilTrade_`year'_`CafFob'.dta"
+fillin exporterId importerId
+drop if importerId==exporterId
+replace value  = . if _fillin ==1
+replace status = "not reported" if _fillin ==1
+replace CafFob = "`CafFob'" if _fillin ==1
+replace year=`year' if _fillin ==1
+drop _fillin
+
+
+
+
+
+
+***********Création des clefs
+
+
+
+capture drop undir_pair_key
+gen undir_pair_key = strofreal(importerId) + "-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
+		replace undir_pair_key = strofreal(exporterId) + "-" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
+order undir_pair_key
+
+drop if undir_pair_key=="" & id==""
+
+
+capture drop key
+	if CafFob=="fob" {
+		gen key = strofreal(importerId) + "<-R" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
+		replace key = "R" + strofreal(exporterId) + "->" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
+	}
+	if CafFob=="caf" {
+		gen key = "R" + strofreal(importerId) + "<-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
+		replace key = strofreal(exporterId) + "->" + "R" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
+	}
+
+order  undir_pair_key key
+
+sort undir_pair_key
 
 export delimited using "results/BestGuessBilTrade_`year'_`CafFob'.csv", replace quote
 erase temp.dta
+save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
 
 
 end
 
-
-bestguessbiltrade 1833 fob
-
-
-
-
-
-
 /*
+bestguessbiltrade 1833 fob
+bestguessbiltrade 1833 caf
 
-foreach year of numlist 1834(1)1938 1948(1)2025 {
+
+
+
+foreach year of numlist 1834(1)1938 /*1948(1)2025*/ {
+	bestguessbiltrade `year' fob
+	bestguessbiltrade `year' caf
+}
+
+*/
+
+foreach year of numlist 1948(1)2025 {
 	bestguessbiltrade `year' fob
 }
