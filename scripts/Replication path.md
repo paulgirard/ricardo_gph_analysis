@@ -120,9 +120,8 @@ From:
 
 - Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity.csv
 
-### Creation of best guess 
-### BestGuessBilTrade avec les 0
-Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY.csv`
+### Creation of BestGuessBilTrade avec les 0 imputés, les vrais manquants et les non-rapportés
+Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
 
 
 
@@ -170,6 +169,13 @@ Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
 Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 
+
+
+### Marge extensive (Guillaume)
+Using 
+
+
+
 ## Analyse
 
 ### Régressions sur l’appartenance à un bloc (Guillaume)
@@ -184,6 +190,11 @@ Et `results/block_study/ln_dist_intramax_fob.png`
 
 
 ### Régressions sur l’effet de communautés sur la marge extensive
+From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
+Script : `/scripts/daudin/Pour BestGuessBilTrade.do`
+
+Results: 
+`results/extensive/stat.csv`
 
 
 

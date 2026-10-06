@@ -18,7 +18,9 @@ replace CafFob="fob" if reportedBy==exporterId
 
 keep if CafFob=="`CafFob'"
 
-	
+capture drop valueToSplit
+capture dropvalueGeneratedBy
+
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
@@ -38,7 +40,7 @@ if year< 1948 {
 use temp.dta,clear
 
 tab status, missing
-capture drop valueToSplit valueGeneratedBy
+
 keep if strmatch(status,"split_*")
 drop if strpos(newPartners,"restOfTheWorld")!=0
 replace value=.
