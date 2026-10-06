@@ -101,7 +101,7 @@ twoway ///
     (connected total_directed_pairs year, lpattern(solid)   msize(tiny) cmissing(no) yaxis(2)) ///
     , ///
     title("Evolution of the share of flows") ///
-    ytitle("Share" axis(1))ytilet ("Number of potential flows" axis(2)) ///
+    ytitle("Share", axis(1) ) ytitle("Number of potential flows",axis(2) ) ///
     xtitle("Year") ///
     legend(order(1 "Non-zero trade flows" 2 "Unknown non-zero trade flows" 3 "Imputed zeros" 4 "Not reported" 5 "Potential flows"  ) position(6) rows(3)) ///
     yscale(axis(1) log ) xscale(range(1830(20)2030)) ylabel(0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1,axis(1)  format(%12.0gc)) /// 
