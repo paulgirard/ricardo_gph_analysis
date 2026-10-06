@@ -224,6 +224,14 @@ order  undir_pair_key key
 
 sort undir_pair_key
 
+
+////Nettoyage
+
+capture drop id
+capture drop valueToSplit
+capture drop importerLabel importerType exporterLabel exporterType /*
+    */ reportedBy partial  newReporters newPartners originalReportedTradeFlowIds notes
+
 export delimited using "results/BestGuessBilTrade_`year'_`CafFob'.csv", replace quote
 erase temp.dta
 save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
@@ -231,14 +239,14 @@ save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
 
 end
 
-/*
+
 bestguessbiltrade 1833 fob
 bestguessbiltrade 1833 caf
 
 
 
 
-foreach year of numlist 1834(1)1938 /*1948(1)2025*/ {
+foreach year of numlist 1834(1)1938  {
 	bestguessbiltrade `year' fob
 	bestguessbiltrade `year' caf
 }
