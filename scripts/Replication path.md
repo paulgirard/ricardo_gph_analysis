@@ -191,10 +191,13 @@ Et `results/block_study/ln_dist_intramax_fob.png`
 
 ### Régressions sur l’effet de communautés sur la marge extensive
 From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
-Script : `/scripts/daudin/Pour BestGuessBilTrade.do`
+Script : `/scripts/daudin/Pour Marge extensive flow stats.do`
 
 Results: 
-`results/extensive/stat.csv`
+`results/extensive/stat_Caf/Fob.csv`
+`results/extensive/trade_actors_Caf/Fob.png’
+`results/extensive/trade_flows_nbr_Caf/Fob.png’
+`results/extensive/trade_flows_share_Caf/Fob.png’
 
 
 
