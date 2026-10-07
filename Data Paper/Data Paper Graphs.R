@@ -12,8 +12,12 @@ library(tidyr)
 
 setwd('~/Desktop/ricardo_gph_analysis/Data Paper/')
 
-RICardo_trade_flows_deduplicated <- read.csv("RICardo_trade_flows_deduplicated.csv")
 
+
+
+RICardo_trade_flows_deduplicated <- read.csv(
+  unz("RICardo_trade_flows_deduplicated.csv.zip", "RICardo_trade_flows_deduplicated.csv")
+)
 
 
 #Duplicated checks
@@ -523,31 +527,31 @@ plot_data10 <- RICardocleannoworld %>%
   summarise(nb_flows = n(), .groups = "drop") %>%  # n() compte les lignes = flux
   complete(year = all_years, type, fill = list(nb_flows = 0))
 
-ggplot(plot_data10, aes(x = year, y = nb_flows, color = type, group = type)) +
-  geom_line(size = 0.5) +
-  geom_point(size = 0.6) +
+
+ggplot(plot_data10, aes(x = year, y = nb_flows, fill = type)) +
+  geom_col(position = "stack", width = 0.9) +
   labs(
     x = "Year",
     y = "Number of flows",
-    color = "Source type"
+    fill = "Source type"
   ) +
   scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_color_manual(values = c("estimation" = "#d48282", 
-                                "primary" = "#83a1bf", 
-                                "primary_yearbook" ="#9D4EDD",
-                                "secondary" = "gold")) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10),
+                     expand = c(0, 0),
+                     labels = scales::label_comma()) +
+  scale_fill_manual(values = c("estimation"       = "#d48282",
+                               "primary"          = "#83a1bf",
+                               "primary_yearbook" = "#9D4EDD",
+                               "secondary"        = "gold")) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
     legend.position = "bottom"
   )
 
-ggsave("Number of flows (by source type) final.png", 
-       width = 12, 
-       height = 6, 
-       dpi = 300)
+ggsave("Fig 10 Number of flows (by source type) histogram.png",
+       width = 12, height = 6, dpi = 300)
+
 
 
 #NB de partners by reporting over years
