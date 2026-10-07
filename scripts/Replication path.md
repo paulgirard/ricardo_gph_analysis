@@ -1,10 +1,15 @@
 # Replication path
 
 ## External data and controls
-### dependency 
+### dependency et common empire 
 `daudin/Pour relations de dépendance.do`
 Creates 
-`external data/dependency_relations.csv`
+`external data/Controls panel/dependency_relations.csv`
+And 
+`external data/Controls panel/common_empire.csv`
+(And the stata versions)
+
+
 From 
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv 
 
