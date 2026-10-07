@@ -45,6 +45,4 @@ assert max==min
 drop max min
 bysort key year: keep if _n==1
 
-
-save "external data/dependency_relations.dta", replace
-export delimited using "external data/dependency_relations.csv", replace delimiter(",") quote
+export delimited using "external data/Controls Panel/dependency_relations.csv", replace delimiter(",") quote

@@ -34,6 +34,11 @@ rename key undir_pair_key
 save "external data/Controls panel/disputes.dta", replace
 **Défini jusqu’en 2014
 
+import delimited "external data/Controls panel/dependency_relations.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+rename key undir_pair_key
+save "external data/Controls panel/dependency_relations.dta", replace
+
+
 
 import delimited "external data/BlocselonAN.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 save "external data/BlocselonAN.dta", replace
