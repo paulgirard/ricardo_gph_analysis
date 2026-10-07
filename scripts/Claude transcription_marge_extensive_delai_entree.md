@@ -161,8 +161,7 @@ où :
 - **α(d)** : le hazard de base, estimé par dummies de durée ou polynôme de la durée *d* depuis l'origine.
 - **X_ij,t−1** : covariables retardées d'un an (contre la causalité inverse).
 - **μ_i, μ_j** : effets fixes exportateur et importateur invariants dans le temps (ou régionaux si le nombre de paramètres pose problème).
-- **λ_t** : effets fixes année, pour les chocs mondiaux.
-
+	- **λ_t** : effets fixes année, pour les chocs mondiaux.mi
 Variante robuste : un **LPM** sur la même population (`reghdfe`), qui accepte des effets fixes pays-année sans problème de paramètres incidents. Les effets marginaux sont comparables, mais le LPM n'impose pas la structure de hazard.
 
 ## 4. Les variables qui expliquent l'ordre d'entrée
@@ -328,3 +327,19 @@ Quel format souhaitez-vous, et préférez-vous la transcription ou la synthèse 
 ## Utilisateur
 
 Markdown et transcription fidèle
+
+
+
+## There is no single canonical trade reference for cloglog. The usual approach is to cite the statistical source for the model and a trade paper that applies discrete-time hazards. I'm giving these from memory, so please check the details before citing.
+
+**Methodological foundations (the actual justification for cloglog)**
+- **Prentice and Gloeckler (1978), *Biometrics***: shows that grouped data from a proportional hazards model leads to a cloglog specification.
+- **Jenkins (1995), *Oxford Bulletin of Economics and Statistics***, "Easy estimation methods for discrete-time duration models": the standard applied reference for economists. His lecture notes on survival analysis, and his Stata tools such as `pgmhaz8`, are also widely used.
+- **Allison (1982), *Sociological Methodology***: an early reference on discrete-time event history analysis.
+
+**Trade applications (mostly on survival/exit)**
+- **Hess and Persson (2012), *Empirical Economics***, "The duration of trade revisited": probably the closest to a trade-specific justification. They argue for discrete-time models over Cox when data are annual, because of the many tied durations. This is the reference I would check first.
+- **Besedeš and Prusa (2006)**, the foundational duration-of-trade papers, rely mainly on Kaplan-Meier and Cox. They are useful for context but are not a cloglog reference.
+- **Nitsch (2009)** and **Fugazza and Molina (2011)** are other survival studies worth checking for their estimation choices. I don't recall precisely which models they used.
+
+Most of this literature models the **exit** of trade relationships, not first entry. For your entry question, you will probably cite the trade survival papers for the framing and Jenkins (1995) and Prentice and Gloeckler (1978) for the estimator. A search on "discrete-time hazard" with "export survival" or "trade relationships" should turn up more recent applications. I can run that search if you like.

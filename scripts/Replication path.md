@@ -143,7 +143,7 @@ Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
-Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `gph_blocks_by_year`
+Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `results/communities/gph_blocks_by_year/`year'_`CafFob.csv`
 
 
 
@@ -189,7 +189,8 @@ Produit :` results/block_study/regression_results.csv`
 Et `results/block_study/ln_dist_intramax_fob.png`
 
 
-### Régressions sur l’effet de communautés sur la marge extensive
+### Stat des marge extensive
+#### par flows
 From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
 Script : `/scripts/daudin/Pour Marge extensive flow stats.do`
 
@@ -198,6 +199,12 @@ Results:
 `results/extensive/trade_actors_Caf/Fob.png’
 `results/extensive/trade_flows_nbr_Caf/Fob.png’
 `results/extensive/trade_flows_share_Caf/Fob.png’
+
+#### par pair
+From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv` + `https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities`(pour labels) + `results/communities/gph_blocks_by_year/YYYY_Caf/Fob.csv`
+
+
+
 
 
 
