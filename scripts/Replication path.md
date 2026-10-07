@@ -8,14 +8,14 @@ Creates
 From 
 https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time.csv 
 
-## Variables explicatives (Youssef)
+### Variables explicatives (Youssef)
 
-### AN
+#### AN
 ??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
 
 Et mise de tout dans le même fichier: grâce à `scripts/Ghallada/Variables de controles.R`
-- 
-### Contiguité (Youssef)
+
+#### Contiguité (Youssef)
 De COW :
 Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
 
@@ -30,22 +30,26 @@ Management and Peace Science* 19 (2):58-66.
 produit `external data/Controls panel/contiguity.csv`
 
 
-### Distance
+#### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
 On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
 Dans le script "scripts/Ghallada/Variables de controles.R"
 Produit `external data/Controls panel/distance.csv’
 
-### Conflit
+#### Conflit
 De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
 Script : le même
 Produit `external data/Controls panel/disputes.csv`
 
-### Alliances
+#### Alliances
 De ATOP 5.1
 Produit `external data/Controls panel/alliances.csv`
-### Contiguity manquant
+#### Contiguity manquant
 - Produit `external data/Controls panel/na_contig_a_coder.csv`
+
+### Variables explicatives en stata (Guillaume)
+`scripts/daudin/Putting controls in Stata.do`
+Crée des .dta dans le dossier Controls panel
 
 
 ## Data generation

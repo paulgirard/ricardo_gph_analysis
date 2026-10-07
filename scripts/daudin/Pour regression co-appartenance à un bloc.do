@@ -3,28 +3,6 @@ cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 
-*
-****À faire une fois
-/*
-
-import delimited "external data/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/Controls panel/distance.dta", replace
-
-import delimited "external data/Controls panel/alliances.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/Controls panel/alliances.dta", replace
-**Défini jusqu’en 2018
-
-
-import delimited "external data/Controls panel/contiguity.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/Controls panel/contiguity.dta", replace
-
-import delimited "external data/Controls panel/disputes.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/Controls panel/disputes.dta", replace
-**Défini jusqu’en 2014
-
-
-import delimited "data/blocks/panel_blocs_paires.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
-save data/blocks/panel_blocs_paires.dta, replace
 
 foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
     import delimited "data/blocks/gph_blocks_by_year/`year'_fob.csv" , delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
@@ -32,14 +10,6 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
   }
 
 
-
-
-
-import delimited "external data/BlocselonAN.csv", delimiter(";") bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/BlocselonAN.dta", replace
-
-***BlocsselonAN n’est pas complet mais nous ne l’utilisons pas
-*/
 
 
 capture program drop block_regression
