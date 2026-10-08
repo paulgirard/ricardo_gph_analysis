@@ -330,7 +330,10 @@ export function tradingPartners(entityId: string, graph: GraphEntityPartiteType)
       graph
         .filterEdges(
           entityId, //,
-          (_, atts) => atts.type === "trade" && atts.labels.has("REPORTED_TRADE") && atts.reportedBy === entityId, // ignore internal trade, i.e. loop
+          (_, atts) =>
+            atts.type === "trade" &&
+            (atts.labels.has("REPORTED_TRADE") || atts.labels.has("FROM_REPORTER_AGGREGATION")) &&
+            atts.reportedBy === entityId, // ignore internal trade, i.e. loop
         )
         .map((e) => graph.extremities(e).filter((other) => other !== entityId)),
     ),
