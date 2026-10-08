@@ -139,7 +139,7 @@ save tradeFlows_`year'_`CafFob'ok_temp, replace
 
 use tradeFlows_`year'_`CafFob'ok_temp, clear
 
-////Pour rapports de subordination
+////Pour rapports de subordination-- À changer !
 merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
 replace sub_empire=0 if sub_empire==.
 drop _merge GPH_code GPH_status sovereign_GPH_code

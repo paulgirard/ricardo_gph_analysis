@@ -238,10 +238,39 @@ foreach classification in LouvainTibi LouvainProximity IntraMax {
 }
 
 
+*****taking in the controls
+merge m:1 undir_pair_key using "external data/Controls panel/distance.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/alliances.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/contiguity.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/disputes.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/commonempire.dta", keep(1 3) nogenerate
+
+destring(distance_km), replace force
+generate ln_dist=ln(distance_km)
+
+destring(mid_n), replace force
+replace mid_n=1 if mid_n>=1 & mid_n!=.
+destring(atop_allie), replace force
+replace common_empire=0 if common_empire==.
+
+
 ******Regression !
 
 
-xi: cloglog trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi i.importerId i.exporterId 
+
+
+xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi, robust
+
+xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie, robust
+
+xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
+
+xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year i.exporterId i.importerId, robust
+
+
 
 
 
