@@ -48,7 +48,7 @@ RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$partner!="World Fed
 RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$partner!="World sum partners",]
 RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$partner!="World_best_guess",]
 RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$partner!="World undefined",]
-RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$partner!="World sum partners",]
+
 
 
 
@@ -78,7 +78,7 @@ ggplot(plot_data, aes(x = year, y = n_observations, fill = categorie)) +
     fill = "Legend"
   ) +
   scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(0, 20000, by = 1000), expand = c(0, 0)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10), expand = c(0, 0)) +
   scale_fill_manual(values = c( "Exports" = "#316395", 
                                "Imports" = "#b82e2e")) +
   theme_classic() +
@@ -87,7 +87,7 @@ ggplot(plot_data, aes(x = year, y = n_observations, fill = categorie)) +
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),panel.grid.major = element_blank(),
     panel.grid.minor = element_blank()
   )
-color<-c( "#316395", "#109618" , "#bcbd22" , "#efcccc", "#b82e2e", "#c33333", "#d97f7f", "#663333")
+#color<-c( "#316395", "#109618" , "#bcbd22" , "#efcccc", "#b82e2e", "#c33333", "#d97f7f", "#663333")
 
 ggsave("Fig 1 Total nb of bilateral flows.png", 
        width = 12, 
@@ -140,7 +140,7 @@ ggplot(plot_data2, aes(x = year, y = nombre_pays, color = categorie, group = cat
     legend.position = "bottom"
   )
 
-ggsave("Fig 2 nb of distinct entities per year.png", 
+ggsave("Fig 4 nb of distinct entities per year.png", 
        width = 12, 
        height = 6, 
        dpi = 300)
@@ -159,26 +159,30 @@ ggplot(plot_data3, aes(x = year, y = nb_reporting_unique, fill = reporting_type)
     fill = "Reporting Type"
   ) +
   scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(0, 150, by = 10), expand = c(0, 0)) +
-  scale_fill_manual(values = c("GPH_entity" = "#316395",    
-                               "locality" = "#b82e2e",    # Bleu clair #b82e2e
-                               "group" = "#c1d0df",    # Violet
-                               "geographical_area" = "#bcbd22"))+   # Vert"#109618
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10), expand = c(0, 0)) +
+  scale_fill_manual(values = c("GPH_entity"        = "#316395",
+                               "locality"          = "#b82e2e",
+                               "group"             = "#c1d0df",
+                               "geographical_area" = "#9fd5a3",
+                               "colonial_area"     = "orange")) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
     plot.title = element_text(hjust = 0.5, size = 14, face = "bold")
   )
-ggsave("Fig 4a Reporting type over years final.png", 
+ggsave("Fig 5 Reporting type over years final.png", 
        width = 12, 
        height = 6, 
        dpi = 300)
 
 # Count unique partner countries by year and rpartner_type
+reportings_par_an <- RICardocleannoworld %>% distinct(year, reporting)
 plot_data4 <- RICardocleannoworld %>%
+  anti_join(reportings_par_an, by = c("year", "partner" = "reporting")) %>%
   group_by(year, partner_type) %>%
   summarise(nb_partner_unique = n_distinct(partner), .groups = "drop")
 plot_data4$partner_type[plot_data4$partner_type==""]<-"unknown"
+
 # Create the histogram
 ggplot(plot_data4, aes(x = year, y = nb_partner_unique, fill = partner_type)) +
   geom_col() +
@@ -188,7 +192,7 @@ ggplot(plot_data4, aes(x = year, y = nb_partner_unique, fill = partner_type)) +
     fill = "Partner Type"
   ) +
   scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(0, 600, by = 50),expand = c(0, 0)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10), expand = c(0, 0)) +
   scale_fill_manual(values = c("GPH_entity" = "#316395",    
                                "locality" = "#b82e2e",    
                                "group" =  "#c1d0df",    # Violet
@@ -200,12 +204,13 @@ ggplot(plot_data4, aes(x = year, y = nb_partner_unique, fill = partner_type)) +
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
     plot.title = element_text(hjust = 0.5, size = 14, face = "bold")
   )
-ggsave("Fig 4b Partner type over years final.png", 
+ggsave("Fig 6 Partner type over years final.png", 
        width = 12, 
        height = 6, 
        dpi = 300)
 
-##Totals over time comparison (Worldasreported,World estimated,World Federico Tena,World_best_guess,World sum partners, World undefined)
+##Totals over time comparison (Worldasreported, World Federico Tena,World_best_guess,World sum partners)
+
 
 Worldtrade<-RICardoclean[RICardoclean$partner=="World as reported"|RICardoclean$partner=="World_best_guess"|RICardoclean$partner=="World Federico Tena"|RICardoclean$partner=="World sum partners",]
 Reporterunique2<-Worldtrade[!duplicated(Worldtrade$reporting),] #ok same nb entities of reporting as usual
@@ -213,6 +218,7 @@ Reporterunique2<-Worldtrade[!duplicated(Worldtrade$reporting),] #ok same nb enti
 
 Worldtrade$pounds<-(Worldtrade$flow*Worldtrade$unit)/Worldtrade$rate
 
+Worldtrade <- Worldtrade %>% filter(year >= 1830)
 
 # Créer une séquence complète d'années
 all_years <- seq(min(Worldtrade$year), max(Worldtrade$year), by = 1)
@@ -255,13 +261,42 @@ ggsave("World computed with GPH entity over years final.png",
        height = 6, 
        dpi = 300)
 
+ggplot(plot_data5, aes(x = year, y = total, color = partner, group = partner)) +
+  geom_line(linewidth = 0.5) +
+  geom_point(size = 0.6) +
+  labs(
+    x = "Year",
+    y = "Total value",
+    color = "Totals"
+  ) +
+  scale_x_continuous(breaks = seq(1830, 1938, by = 5), expand = c(0, 0)) +
+  scale_y_log10(breaks = c(1e8, 3e8, 1e9, 3e9, 1e10),
+                labels = scales::label_comma()) +
+  annotation_logticks(sides = "l") +
+  coord_cartesian(clip = "off") +
+  scale_color_manual(values = c("World as reported"   = "#b82e2e",
+                                "World Federico Tena" = "#109618",
+                                "World sum partners"  = "#316395",
+                                "World_best_guess"    = "orange")) +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    legend.position = "bottom"
+  )
+
+
+ggsave("World computed with GPH entity over years final (log scaled).png", 
+       width = 12, 
+       height = 6, 
+       dpi = 300)
+
 # Transformer les valeurs en log
 plot_data6 <- plot_data5 %>%
   mutate(total_log = log(total))
 
 # Créer le graphique avec les valeurs transformées
 ggplot(plot_data6, aes(x = year, y = total_log, color = partner, group = partner)) +
-  geom_line(size = 0.5) +
+  geom_line(linewidth = 0.5) +
   geom_point(size = 0.6) +
   labs(
     x = "Year",
@@ -324,12 +359,11 @@ print("Continents in plot_data:")
 print(unique(plot_data7$reporting_continent))
 
 # Créer une palette automatique
-continents_list <- unique(plot_data7$reporting_continent)
-color_values <- c("#d48282", "#83a1bf", "#9D4EDD", "#b7e0ba", "gold")
-names(color_values) <- continents_list[1:min(length(continents_list), 8)]
-
-# Forcer NA à être gris
-color_values["NA"] <- "gray80"
+color_continents_rep <- c("Africa"  = "#d48282",
+                          "America" = "#83a1bf",
+                          "Asia"    = "#9D4EDD",
+                          "Europe"  = "#b7e0ba",
+                          "Oceania" = "gold")
 
 
 # Créer le graphique en aires empilées
@@ -345,7 +379,7 @@ ggplot(plot_data7, aes(x = year, y = percentage, fill = reporting_continent)) +
   scale_y_continuous(breaks = seq(0, 100, by = 10), 
                      expand = c(0, 0),
                      labels = function(x) paste0(x, "%")) +
-  scale_fill_manual(values = color_values) +
+  scale_fill_manual(values = color_continents_rep) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -363,9 +397,12 @@ ggsave("Fig 7 Distribution of reporting (by continent).png",
 all_years <- seq(min(RICardocleannoworld$year), max(RICardocleannoworld$year), by = 1)
 
 # Calculer le nombre d'entités distinctes par continent et année
+reportings_par_an <- RICardocleannoworld %>% distinct(year, reporting)
+
 plot_data8 <- RICardocleannoworld %>%
+  anti_join(reportings_par_an, by = c("year", "partner" = "reporting")) %>%
   group_by(year, partner_continent) %>%
-  summarise(nb_entities =n_distinct(partner[!partner %in% reporting]), .groups = "drop") %>%
+  summarise(nb_entities = n_distinct(partner), .groups = "drop") %>%
   complete(year = all_years, partner_continent, fill = list(nb_entities = 0))
 
 #keep only continents as reporting
@@ -397,13 +434,11 @@ plot_data8<-plot_data8[plot_data8$partner_continent!="NA",]
 print("Continents in plot_data:")
 print(unique(plot_data8$partner_continent)) #no NA
 
-# Créer une palette automatique
-continents_list <- unique(plot_data8$partner_continent)
-color_values <- c("#d48282", "#83a1bf", "#9D4EDD", "#b7e0ba", "gold")
-names(color_values) <- continents_list[1:min(length(continents_list), 8)]
-
-# Forcer NA à être gris
-color_values["NA"] <- "gray80"
+color_continents_part <- c("Africa"  = "#d48282",
+                           "America" = "#83a1bf",
+                           "Asia"    = "#9D4EDD",
+                           "Europe"  = "#b7e0ba",
+                           "Oceania" = "gold")
   
 
 # Créer le graphique en aires empilées
@@ -419,7 +454,7 @@ ggplot(plot_data8, aes(x = year, y = percentage, fill = partner_continent)) +
   scale_y_continuous(breaks = seq(0, 100, by = 10), 
                      expand = c(0, 0),
                      labels = function(x) paste0(x, "%")) +
-  scale_fill_manual(values = color_values) +
+  scale_fill_manual(values = color_continents_part) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -462,13 +497,10 @@ plot_data9<-plot_data9[plot_data9$type!="NA",]
 print("Type in plot_data:")
 print(unique(plot_data9$type))
 
-# Créer une palette automatique
-type_list <- unique(plot_data9$type)
-color_values <- c("#d48282", "#83a1bf", "#9D4EDD", "gold",  "gray")
-names(color_values) <- type_list[1:min(length(type_list), 8)]
-
-# Forcer NA à être gris
-color_values["NA"] <- "gray80"
+color_types <- c("estimation"       = "#d48282",
+                 "primary"          = "#83a1bf",
+                 "primary_yearbook" = "#9D4EDD",
+                 "secondary"        = "gold")
   
 # Créer le graphique en aires empilées
 ggplot(plot_data9, aes(x = year, y = percentage, fill = type)) +
@@ -483,7 +515,7 @@ ggplot(plot_data9, aes(x = year, y = percentage, fill = type)) +
   scale_y_continuous(breaks = seq(0, 100, by = 10), 
                      expand = c(0, 0),
                      labels = function(x) paste0(x, "%")) +
-  scale_fill_manual(values = color_values) +
+  scale_fill_manual(values = color_types) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -505,7 +537,7 @@ ggplot(plot_data9, aes(x = year, y = nb_entities, fill = type)) +
   ) +
   scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 10), expand = c(0, 0)) +
-  scale_fill_manual(values = color_values) +
+  scale_fill_manual(values = color_types) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -556,6 +588,7 @@ ggsave("Fig 10 Number of flows (by source type) histogram.png",
 
 #NB de partners by reporting over years
 plot_data_avg1 <- RICardocleannoworld %>%
+  filter(year >= 1830) %>%
   group_by(year, reporting) %>%
   summarise(nb_partners = n_distinct(partner), .groups = "drop") %>%
   group_by(year) %>%
@@ -564,38 +597,38 @@ plot_data_avg1 <- RICardocleannoworld %>%
     sd_partners = sd(nb_partners),
     n = n(),
     se = sd_partners / sqrt(n),
-    ci_lower = mean_partners - 1.96 * se,  # IC à 95%
+    ci_lower = mean_partners - 1.96 * se,
     ci_upper = mean_partners + 1.96 * se,
     .groups = "drop"
   )
 
-# Créer le graphique
-ggplot(plot_data_avg1, aes(x = year, y = mean_partners)) +
-  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), 
-              fill = "#9D4EDD", alpha = 0.3) +
-  geom_line(color = "#9D4EDD", size = 0.5) +
-  geom_point(color = "#9D4EDD", size = 0.8) +
-  labs(
-    title = "",
-    x = "Year",
-    y = "Average number of partners per reporting entity"
-  ) +
+ggplot(plot_data_avg1, aes(x = year)) +
+  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper, fill = "Average partners"), alpha = 0.3) +
+  geom_line(aes(y = mean_partners, colour = "Average partners"), linewidth = 0.5) +
+  geom_point(aes(y = mean_partners, colour = "Average partners"), size = 0.8) +
+  geom_line(aes(y = n, colour = "Nb of reportings"), linewidth = 0.5) +
+  geom_point(aes(y = n, colour = "Nb of reportings"), size = 0.8) +
+  labs(x = "Year", y = "", colour = "", fill = "") +
   scale_x_continuous(breaks = seq(1830, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(0, max(plot_data_avg1$ci_upper, na.rm = TRUE) + 10, by = 10))  +
+  scale_y_continuous(
+    breaks = seq(0, ceiling(max(c(plot_data_avg1$ci_upper, plot_data_avg1$n), na.rm = TRUE)/10)*10, by = 10)
+  ) +
+  scale_colour_manual(values = c("Average partners" = "#9D4EDD", "Nb of reportings" = "#316395")) +
+  scale_fill_manual(values = c("Average partners" = "#9D4EDD"), guide = "none") +
   theme_classic() +
-  theme(
-    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 14, face = "bold")
-  )
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        legend.position = "bottom")
 
-ggsave("Avg nb of partners per reporting final.png", 
+
+ggsave("Fig 2 Avg nb of partners per reporting.png", 
        width = 12, 
        height = 6, 
        dpi = 300)
 
 
-# Calculer le nombre moyen de partners par reporting et année SANS distinction exp/imp
+# Sans distinction exp/imp
 plot_data_total <- RICardocleannoworld %>%
+  filter(year >= 1830) %>%
   group_by(year, reporting) %>%
   summarise(nb_partners = n_distinct(partner), .groups = "drop") %>%
   group_by(year) %>%
@@ -610,8 +643,9 @@ plot_data_total <- RICardocleannoworld %>%
   ) %>%
   mutate(flow_type = "Total")
 
-# Calculer le nombre moyen de partners par reporting, année AVEC distinction exp/imp
+# Avec distinction exp/imp
 plot_data_by_flow <- RICardocleannoworld %>%
+  filter(year >= 1830) %>%
   group_by(year, reporting, expimp) %>%
   summarise(nb_partners = n_distinct(partner), .groups = "drop") %>%
   group_by(year, expimp) %>%
@@ -626,43 +660,38 @@ plot_data_by_flow <- RICardocleannoworld %>%
   ) %>%
   rename(flow_type = expimp)
 
-# Combiner les deux datasets
 plot_data_avg <- bind_rows(plot_data_total, plot_data_by_flow)
 
-# Créer le graphique avec trois lignes
 ggplot(plot_data_avg, aes(x = year, y = mean_partners, color = flow_type, fill = flow_type)) +
   geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.2, color = NA) +
-  geom_line(size = 0.5) +
+  geom_line(linewidth = 0.5) +
   geom_point(size = 0.8) +
   labs(
-    title = "",
     x = "Year",
     y = "Average number of partners per reporting entity",
     color = "Flow type",
     fill = "Flow type"
   ) +
-  scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(0, max(plot_data_avg$ci_upper, na.rm = TRUE) + 10, by = 10)) +
+  scale_x_continuous(breaks = seq(1830, 1938, by = 5), expand = c(0, 0)) +
+  scale_y_continuous(breaks = seq(0, ceiling(max(plot_data_avg$ci_upper, na.rm = TRUE)/10)*10, by = 10)) +
   scale_color_manual(
     values = c("Exp" = "#d48282", "Imp" = "#83a1bf", "Total" = "#9D4EDD"),
-    labels = c("Exp" = "Export", "Imp" = "Import", "Total" = "Total (Exp + Imp)")
+    labels = c("Exp" = "Export", "Imp" = "Import", "Total" = "All flows")
   ) +
   scale_fill_manual(
     values = c("Exp" = "#d48282", "Imp" = "#83a1bf", "Total" = "#9D4EDD"),
-    labels = c("Exp" = "Export", "Imp" = "Import", "Total" = "Total (Exp + Imp)")
+    labels = c("Exp" = "Export", "Imp" = "Import", "Total" = "All flows")
   ) +
   theme_classic() +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
     legend.position = "bottom",
     legend.title = element_text(face = "bold")
   )
 
-ggsave("Average partners per reporting by flow type with total and CI.png", 
-       width = 12, 
-       height = 6, 
-       dpi = 300)
+
+ggsave("Fig 3 Average partners per reporting by flow type with total and CI.png",
+       width = 12, height = 6, dpi = 300)
 
 # Serie over time by continent
 plot_data11 <- RICardocleannoworld %>%
@@ -672,7 +701,7 @@ plot_data11 <- RICardocleannoworld %>%
 
 plot_data11<-plot_data11[plot_data11$reporting_continent!="World",]
 ggplot(plot_data11, aes(x = year, y = nb_flows, color = reporting_continent, group = reporting_continent)) +
-  geom_line(size = 0.5) +
+  geom_line(linewidth = 0.5) +
   geom_point(size = 0.6) +
   labs(
     x = "Year",
