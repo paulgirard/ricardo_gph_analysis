@@ -267,6 +267,20 @@ xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_Louva
 xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
     */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
 
+xi: logit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
+
+xi: probit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
+
+
+xtset key year
+
+xtlogit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, fe
+
+
+***Ne marche pas
 xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
     */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year i.exporterId i.importerId, robust
 
