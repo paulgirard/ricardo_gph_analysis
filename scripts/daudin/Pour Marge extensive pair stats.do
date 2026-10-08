@@ -274,7 +274,13 @@ xi: probit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_Louvai
     */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
 
 
-xtset key year
+
+ egen key_num = group(key)
+drop if key_num==.
+xtset key_num year
+
+xtlogit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
+    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year
 
 xtlogit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
     */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, fe
