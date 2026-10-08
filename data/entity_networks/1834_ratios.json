@@ -44508,7 +44508,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-2 28435\nFrom a flow part-of reporter Bahia to/from 2\nRio de Janeiro<-2 572941.3624150467\nFrom a flow part-of reporter Rio de Janeiro to/from 2",
         "status": "ok",
@@ -44533,7 +44534,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-200 942956\nFrom a flow part-of reporter Bahia to/from 200\nRio de Janeiro<-200 764185.2378694484\nFrom a flow part-of reporter Rio de Janeiro to/from 200",
         "status": "ok",
@@ -44558,7 +44560,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-210 4428\nFrom a flow part-of reporter Bahia to/from 210\nRio de Janeiro<-210 38722.933459775566\nFrom a flow part-of reporter Rio de Janeiro to/from 210",
         "status": "ok",
@@ -44583,7 +44586,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-220 156733\nFrom a flow part-of reporter Bahia to/from 220\nRio de Janeiro<-220 285482.851272325\nFrom a flow part-of reporter Rio de Janeiro to/from 220",
         "status": "ok",
@@ -44608,7 +44612,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-230 8552\nFrom a flow part-of reporter Bahia to/from 230\nRio de Janeiro<-230 30622.727991149044\nFrom a flow part-of reporter Rio de Janeiro to/from 230",
         "status": "ok",
@@ -44633,7 +44638,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-235 104354\nFrom a flow part-of reporter Bahia to/from 235\nRio de Janeiro<-235 229176.54496601864\nFrom a flow part-of reporter Rio de Janeiro to/from 235",
         "status": "ok",
@@ -44645,26 +44651,25 @@
       "source": "248",
       "target": "140",
       "attributes": {
-        "value": 108758.83467419894,
+        "value": 107473,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "140",
         "originalReporters": [
-          "Bahia",
-          "140"
+          "Bahia"
         ],
         "originalPartners": [
-          "248",
-          "Hanse Towns"
+          "248"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bahia<-248 107473\nFrom a flow part-of reporter Bahia to/from 248\n140<-Hanse Towns 1285.834674198935 (ratio on 228386.28101785996)",
+        "notes": "Bahia<-248 107473\nFrom a flow part-of reporter Bahia to/from 248",
         "status": "ok",
-        "type": "trade"
+        "type": "trade",
+        "partial": "missing Rio de Janeiro"
       }
     },
     {
@@ -44685,7 +44690,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-300 2826\nFrom a flow part-of reporter Bahia to/from 300\nRio de Janeiro<-300 70333.49138612297\nFrom a flow part-of reporter Rio de Janeiro to/from 300",
         "status": "ok",
@@ -44709,13 +44715,14 @@
           "Africa"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bahia<-Africa 3761\nFrom a flow part-of reporter Bahia to/from Africa\ngravity results to be aggregated for partners: 230|235",
+        "notes": "Bahia<-Africa 3761\nFrom a flow part-of reporter Bahia to/from Africa",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 3761,
-        "newPartners": "230|235|401|402|403|411|413|432|433|450|451|483|500|511|516|517|520|530|540|541|561|570|572|580|585|590|600|615|616|640|651|698|4041|4042|4044|4050|4060|4070|4111|4112|4325|4326|4327|4328|4331|4332|4333|4334|4335|4336|4337|4341|4343|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4501|4515|4521|4527|4529|4534|4535|4711|4737|4741|4742|4744|4746|4750|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|4821|4822|4831|4832|4841|4842|4902|4904|4908|4910|5001|5002|5003|5012|5013|5018|5102|5104|5203|5212|5303|5306|5307|5309|5321|5322|5324|5332|5403|5511|5512|5513|5516|5517|5521|5606|5611|5621|5796|5797|5799|5803|5811|5812|5813|5814|5901|5902|5903|6062|6064|6151|6203|6251|6255",
+        "newPartners": "401|402|403|411|413|432|433|450|451|483|500|511|516|517|520|530|540|541|561|570|572|580|585|590|600|615|616|640|651|698|4041|4042|4044|4050|4060|4070|4111|4112|4325|4326|4327|4328|4331|4332|4333|4334|4335|4336|4337|4341|4343|4348|4349|4352|4354|4361|4362|4381|4382|4383|4391|4392|4394|4395|4396|4397|4501|4515|4521|4527|4529|4534|4535|4711|4737|4741|4742|4744|4746|4750|4751|4763|4769|4773|4776|4781|4791|4792|4793|4795|4821|4822|4831|4832|4841|4842|4902|4904|4908|4910|5001|5002|5003|5012|5013|5018|5102|5104|5203|5212|5303|5306|5307|5309|5321|5322|5324|5332|5403|5511|5512|5513|5516|5517|5521|5606|5611|5621|5796|5797|5799|5803|5811|5812|5813|5814|5901|5902|5903|6062|6064|6151|6203|6251|6255",
         "partial": "missing Rio de Janeiro"
       }
     },
@@ -44736,7 +44743,8 @@
           "Buenos Aires & Montevideo"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-Buenos Aires & Montevideo 9592\nFrom a flow part-of reporter Bahia to/from Buenos Aires & Montevideo",
         "status": "ignore_resolved",
@@ -44764,7 +44772,8 @@
           "Denmark & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-Denmark & Sweden 3886\nFrom a flow part-of reporter Bahia to/from Denmark & Sweden",
         "status": "ignore_resolved",
@@ -44794,7 +44803,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bahia<-Sardinia 39521\nFrom a flow part-of reporter Bahia to/from Sardinia\nRio de Janeiro<-Sardinia 55318.47637110795\nFrom a flow part-of reporter Rio de Janeiro to/from Sardinia",
         "status": "ignore_resolved",
@@ -44825,7 +44835,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-220 105294.7684526632\nFrom a flow part-of reporter Sardinia to/from 220\nImperia (Porto Maurizio)<-220 288.44634107792\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 220\nKingdom of Sardinia (continental)<-220 780065.5919076971\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 220\nGenoa<-220 488553.02671092143\nFrom a flow part-of reporter Genoa to/from 220\nNice<-220 185929.35040303462\nFrom a flow part-of reporter Nice to/from 220",
         "status": "ok",
@@ -44851,7 +44862,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-300 4927.295716769401\nFrom a flow part-of reporter Sardinia to/from 300\nKingdom of Sardinia (continental)<-300 309890.15331120597\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 300\nGenoa<-300 296752.0151730678\nFrom a flow part-of reporter Genoa to/from 300",
         "status": "ok",
@@ -44880,7 +44892,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-329 17338.39102260155\nFrom a flow part-of reporter Sardinia to/from 329\nImperia (Porto Maurizio)<-329 707.2862336020231\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 329\nKingdom of Sardinia (continental)<-329 1205089.299826142\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 329\nGenoa<-329 412150.3082029398\nFrom a flow part-of reporter Genoa to/from 329\nNice<-329 774498.1823929192\nFrom a flow part-of reporter Nice to/from 329",
         "status": "ok",
@@ -44908,7 +44921,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-337 18124.70365101944\nFrom a flow part-of reporter Sardinia to/from 337\nImperia (Porto Maurizio)<-337 162.00410937253042\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 337\nKingdom of Sardinia (continental)<-337 324774.7747747748\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 337\nGenoa<-337 254753.4376481745\nFrom a flow part-of reporter Genoa to/from 337\nNice<-337 51734.62936620831\nFrom a flow part-of reporter Nice to/from 337",
         "status": "ok",
@@ -44932,7 +44946,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-338 2030.9783467678205\nFrom a flow part-of reporter Sardinia to/from 338",
         "status": "ok",
@@ -44957,7 +44972,8 @@
           "Kingdom of Sardinia (continental)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia<-Kingdom of Sardinia (continental) 105994.15204678362\nFrom a flow part-of reporter Sardinia to/from Kingdom of Sardinia (continental)",
         "status": "ignore_internal",
@@ -44986,7 +45002,8 @@
           "326"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia->300 4757.3889679152835\nFrom a flow part-of reporter Sardinia to/from 300\nKingdom of Sardinia (continental)->300 681851.5884305357\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 300\nGenoa->300 675031.6105579264\nFrom a flow part-of reporter Genoa to/from 300\n324->326 711.2375533428165",
         "status": "ok",
@@ -45014,7 +45031,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia->329 5887.466413782204\nFrom a flow part-of reporter Sardinia to/from 329\nKingdom of Sardinia (continental)->329 539608.0290817133\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 329\nGenoa->329 533538.8019598546\nFrom a flow part-of reporter Genoa to/from 329\nNice->329 181.76070807649756\nFrom a flow part-of reporter Nice to/from 329",
         "status": "ok",
@@ -45042,7 +45060,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia->337 10715.979137031769\nFrom a flow part-of reporter Sardinia to/from 337\nKingdom of Sardinia (continental)->337 317366.05026078713\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 337\nGenoa->337 301975.6598703967\nFrom a flow part-of reporter Genoa to/from 337\nNice->337 5737.316263632053\nFrom a flow part-of reporter Nice to/from 337",
         "status": "ok",
@@ -45067,7 +45086,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia->338 2406.3537221431957\nFrom a flow part-of reporter Sardinia to/from 338",
         "status": "ok",
@@ -45092,7 +45112,8 @@
           "Kingdom of Sardinia (continental)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Sardinia->Kingdom of Sardinia (continental) 118389.4420736526\nFrom a flow part-of reporter Sardinia to/from Kingdom of Sardinia (continental)",
         "status": "ignore_internal",
@@ -45120,7 +45141,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-200 90461.51414572468\nFrom a flow part-of reporter 3261 to/from 200\n300<-Gibraltar & Ionian Is. & Malta & United Kingdom 26401.578617188592 (ratio on 966465.1493598862)",
         "status": "ok",
@@ -45146,7 +45168,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-220 9182.86707760392\nFrom a flow part-of reporter 3261 to/from 220\n326<-220 94235.02449818239\nFrom a flow part-of reporter 326 to/from 220",
         "status": "ok",
@@ -45173,7 +45196,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-327 94744.74474474475\nFrom a flow part-of reporter 3261 to/from 327\n326<-327 288798.00853485067\nFrom a flow part-of reporter 326 to/from 327\n3343<-327 2461.672198514304\nFrom a flow part-of reporter 3343 to/from 327",
         "status": "ok",
@@ -45200,7 +45224,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-329 66749.64438122333\nFrom a flow part-of reporter 3261 to/from 329\n326<-329 328568.04172593646\nFrom a flow part-of reporter 326 to/from 329\n3343<-329 3500.8692903429746\nFrom a flow part-of reporter 3343 to/from 329",
         "status": "ok",
@@ -45225,7 +45250,8 @@
           "380"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-380 67318.63442389759\nFrom a flow part-of reporter 3261 to/from 380",
         "status": "ok",
@@ -45251,7 +45277,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-640 79259.52268057532\nFrom a flow part-of reporter 3261 to/from 640\n326<-640 611767.0301880828\nFrom a flow part-of reporter 326 to/from 640",
         "status": "ok",
@@ -45279,7 +45306,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261<-3349 154413.62415046626\nFrom a flow part-of reporter 3261 to/from 3349\n300<-Gibraltar & Ionian Is. & Malta & United Kingdom 431639.71476118 (ratio on 966465.1493598862)",
         "status": "ok",
@@ -45307,7 +45335,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->200 11593.172119487908\nFrom a flow part-of reporter 3261 to/from 200\n300->Gibraltar & Ionian Is. & Malta & United Kingdom 24215.337130278014 (ratio on 307373.1626363205)",
         "status": "ok",
@@ -45334,7 +45363,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->220 15501.027343132606\nFrom a flow part-of reporter 3261 to/from 220\n326->220 45681.20752331278\nFrom a flow part-of reporter 326 to/from 220\n3343->220 52722.45930140667\nFrom a flow part-of reporter 3343 to/from 220",
         "status": "ok",
@@ -45361,7 +45391,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->327 117654.49660186503\nFrom a flow part-of reporter 3261 to/from 327\n326->327 328599.6522838629\nFrom a flow part-of reporter 326 to/from 327\n3343->327 5500.237079184448\nFrom a flow part-of reporter 3343 to/from 327",
         "status": "ok",
@@ -45388,7 +45419,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->329 23067.804646752014\nFrom a flow part-of reporter 3261 to/from 329\n326->329 138450.2923976608\nFrom a flow part-of reporter 326 to/from 329\n3343->329 7408.724513987672\nFrom a flow part-of reporter 3343 to/from 329",
         "status": "ok",
@@ -45414,7 +45446,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->640 43804.33064643591\nFrom a flow part-of reporter 3261 to/from 640\n326->640 555523.9449976293\nFrom a flow part-of reporter 326 to/from 640",
         "status": "ok",
@@ -45442,7 +45475,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "3261->3349 55559.50687529635\nFrom a flow part-of reporter 3261 to/from 3349\n300->Gibraltar & Ionian Is. & Malta & United Kingdom 70957.8975592658 (ratio on 307373.1626363205)",
         "status": "ok",
@@ -45467,7 +45501,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58<-2 15535\nFrom a flow part-of reporter 58 to/from 2",
         "status": "ok",
@@ -45491,7 +45526,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58<-200 7690\nFrom a flow part-of reporter 58 to/from 200",
         "status": "ok",
@@ -45515,7 +45551,8 @@
           "British West Indies"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58<-British West Indies 9383\nFrom a flow part-of reporter 58 to/from British West Indies",
         "status": "split_failed_no_ratio",
@@ -45541,7 +45578,8 @@
           "British Northern America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58<-British Northern America 26560\nFrom a flow part-of reporter 58 to/from British Northern America",
         "status": "split_failed_no_ratio",
@@ -45567,13 +45605,14 @@
           "British Colonies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58<-British Colonies (other) 2190\nFrom a flow part-of reporter 58 to/from British Colonies (other)",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 2190,
-        "newPartners": "21|30|31|51|54|110|231|338|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1055|1163|2249|4044|4050|4383|7501|9004"
+        "newPartners": "110|231|338|451|561|590|750|780|901|902|906|1163|2249|4044|4050|4383|7501|9004"
       }
     },
     {
@@ -45593,7 +45632,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58->2 922\nFrom a flow part-of reporter 58 to/from 2",
         "status": "ok",
@@ -45617,7 +45657,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58->200 320182\nFrom a flow part-of reporter 58 to/from 200",
         "status": "ok",
@@ -45641,7 +45682,8 @@
           "British West Indies"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58->British West Indies 29339\nFrom a flow part-of reporter 58 to/from British West Indies",
         "status": "split_failed_no_ratio",
@@ -45667,7 +45709,8 @@
           "British Northern America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "58->British Northern America 27743\nFrom a flow part-of reporter 58 to/from British Northern America",
         "status": "split_failed_no_ratio",
@@ -45693,7 +45736,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-2 75075.07507507507\nFrom a flow part-of reporter Livorno to/from 2",
         "status": "ok",
@@ -45717,7 +45761,8 @@
           "21"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-21 17583.372846530743\nFrom a flow part-of reporter Livorno to/from 21",
         "status": "ok",
@@ -45741,7 +45786,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-220 274972.34076181444\nFrom a flow part-of reporter Livorno to/from 220",
         "status": "ok",
@@ -45765,7 +45811,8 @@
           "225"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-225 114588.27248300932\nFrom a flow part-of reporter Livorno to/from 225",
         "status": "ok",
@@ -45789,7 +45836,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-235 11063.69527422159\nFrom a flow part-of reporter Livorno to/from 235",
         "status": "ok",
@@ -45813,7 +45861,8 @@
           "255"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-255 142247.5106685633\nFrom a flow part-of reporter Livorno to/from 255",
         "status": "split_failed_no_ratio",
@@ -45839,7 +45888,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-300 204678.3625730994\nFrom a flow part-of reporter Livorno to/from 300",
         "status": "ok",
@@ -45863,7 +45913,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-327 122490.91196459618\nFrom a flow part-of reporter Livorno to/from 327",
         "status": "ok",
@@ -45887,7 +45938,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-329 150150.15015015015\nFrom a flow part-of reporter Livorno to/from 329",
         "status": "ok",
@@ -45911,7 +45963,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-365 130393.55144618303\nFrom a flow part-of reporter Livorno to/from 365",
         "status": "ok",
@@ -45923,27 +45976,24 @@
       "source": "615",
       "target": "337",
       "attributes": {
-        "value": 56887.09928685766,
+        "value": 32005.689900426743,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "337",
         "originalReporters": [
-          "Livorno",
-          "337"
+          "Livorno"
         ],
         "originalPartners": [
-          "615",
-          "Barbary Coast & Turkey (Ottoman Empire)"
+          "615"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Livorno<-615 32005.689900426743\nFrom a flow part-of reporter Livorno to/from 615\n337<-Barbary Coast & Turkey (Ottoman Empire) 24881.40938643091 (ratio on 131381.3813813814)",
+        "notes": "Livorno<-615 32005.689900426743\nFrom a flow part-of reporter Livorno to/from 615",
         "status": "ok",
-        "type": "trade",
-        "partial": " unexpected: 337"
+        "type": "trade"
       }
     },
     {
@@ -45963,7 +46013,8 @@
           "651"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-651 59269.79611190138\nFrom a flow part-of reporter Livorno to/from 651",
         "status": "ok",
@@ -45987,7 +46038,8 @@
           "Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-Ionian Is. & Malta & United Kingdom 740477.3194246879\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta & United Kingdom",
         "status": "split_only_partial",
@@ -46016,7 +46068,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-Sardinia 177809.38833570413\nFrom a flow part-of reporter Livorno to/from Sardinia",
         "status": "ignore_resolved",
@@ -46043,15 +46096,13 @@
           "Barbary Coast & Turkey (Ottoman Empire)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-Barbary Coast & Turkey (Ottoman Empire) 131381.3813813814\nFrom a flow part-of reporter Livorno to/from Barbary Coast & Turkey (Ottoman Empire)",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "337<-615"
-        ],
-        "valueToSplit": 106499.97199495048,
+        "valueToSplit": 131381.3813813814,
         "newPartners": "600|616|640|6062|6064|6203"
       }
     },
@@ -46072,7 +46123,8 @@
           "Ionian Is. & Malta"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-Ionian Is. & Malta 46230.44096728307\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta",
         "status": "split_failed_no_ratio",
@@ -46098,7 +46150,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno<-Norway & Sweden 26473.842263315946\nFrom a flow part-of reporter Livorno to/from Norway & Sweden",
         "status": "split_failed_no_ratio",
@@ -46124,7 +46177,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->2 122490.91196459618\nFrom a flow part-of reporter Livorno to/from 2",
         "status": "ok",
@@ -46148,7 +46202,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->220 249723.40761814447\nFrom a flow part-of reporter Livorno to/from 220",
         "status": "ok",
@@ -46172,7 +46227,8 @@
           "225"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->225 33586.21779674411\nFrom a flow part-of reporter Livorno to/from 225",
         "status": "ok",
@@ -46196,7 +46252,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->235 26868.97423739529\nFrom a flow part-of reporter Livorno to/from 235",
         "status": "ok",
@@ -46220,7 +46277,8 @@
           "255"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->255 34771.61371898214\nFrom a flow part-of reporter Livorno to/from 255",
         "status": "split_failed_no_ratio",
@@ -46246,7 +46304,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->300 108661.29287181918\nFrom a flow part-of reporter Livorno to/from 300",
         "status": "ok",
@@ -46270,7 +46329,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->327 184131.4999209736\nFrom a flow part-of reporter Livorno to/from 327",
         "status": "ok",
@@ -46294,7 +46354,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->329 110834.51872925558\nFrom a flow part-of reporter Livorno to/from 329",
         "status": "ok",
@@ -46318,7 +46379,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->365 47415.8368895211\nFrom a flow part-of reporter Livorno to/from 365",
         "status": "ok",
@@ -46330,27 +46392,24 @@
       "source": "337",
       "target": "615",
       "attributes": {
-        "value": 64695.383859277565,
+        "value": 35561.87766714083,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "337",
         "originalReporters": [
-          "Livorno",
-          "337"
+          "Livorno"
         ],
         "originalPartners": [
-          "615",
-          "Barbary Coast & Turkey (Ottoman Empire)"
+          "615"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Livorno->615 35561.87766714083\nFrom a flow part-of reporter Livorno to/from 615\n337->Barbary Coast & Turkey (Ottoman Empire) 29133.506192136738 (ratio on 218112.84969179705)",
+        "notes": "Livorno->615 35561.87766714083\nFrom a flow part-of reporter Livorno to/from 615",
         "status": "ok",
-        "type": "trade",
-        "partial": " unexpected: 337"
+        "type": "trade"
       }
     },
     {
@@ -46370,7 +46429,8 @@
           "651"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->651 126442.2317053896\nFrom a flow part-of reporter Livorno to/from 651",
         "status": "ok",
@@ -46394,7 +46454,8 @@
           "Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->Ionian Is. & Malta & United Kingdom 367472.7358937885\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta & United Kingdom",
         "status": "split_only_partial",
@@ -46423,7 +46484,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->Sardinia 146198.8304093567\nFrom a flow part-of reporter Livorno to/from Sardinia",
         "status": "ignore_resolved",
@@ -46450,15 +46512,13 @@
           "Barbary Coast & Turkey (Ottoman Empire)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->Barbary Coast & Turkey (Ottoman Empire) 218112.84969179705\nFrom a flow part-of reporter Livorno to/from Barbary Coast & Turkey (Ottoman Empire)",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "337->615"
-        ],
-        "valueToSplit": 188979.34349966032,
+        "valueToSplit": 218112.84969179705,
         "newPartners": "600|616|640|6062|6064|6203"
       }
     },
@@ -46479,7 +46539,8 @@
           "Ionian Is. & Malta"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Livorno->Ionian Is. & Malta 27659.238185553975\nFrom a flow part-of reporter Livorno to/from Ionian Is. & Malta",
         "status": "split_failed_no_ratio",
@@ -46507,7 +46568,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-200 162098.94104630945\nFrom a flow part-of reporter Syros to/from 200\nThessaloniki<-200 15252.094199462621\nFrom a flow part-of reporter Thessaloniki to/from 200\nPatras & Pylos<-200 4192.350244981824\nFrom a flow part-of reporter Patras & Pylos to/from 200",
         "status": "ok",
@@ -46534,7 +46596,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-220 23976.6081871345\nFrom a flow part-of reporter Syros to/from 220\nThessaloniki<-220 10467.045993361782\nFrom a flow part-of reporter Thessaloniki to/from 220\nPatras & Pylos<-220 486.01232811759127\nFrom a flow part-of reporter Patras & Pylos to/from 220",
         "status": "ok",
@@ -46561,7 +46624,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-300 73229.80875612455\nFrom a flow part-of reporter Syros to/from 300\nThessaloniki<-300 15287.65607712976\nFrom a flow part-of reporter Thessaloniki to/from 300\nPatras & Pylos<-300 22656.8673937095\nFrom a flow part-of reporter Patras & Pylos to/from 300",
         "status": "ok",
@@ -46586,7 +46650,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-329 3951.319740793425\nFrom a flow part-of reporter Syros to/from 329",
         "status": "ok",
@@ -46612,7 +46677,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-337 24648.332543069384\nFrom a flow part-of reporter Syros to/from 337\nPatras & Pylos<-337 1620.0410937253043\nFrom a flow part-of reporter Patras & Pylos to/from 337",
         "status": "ok",
@@ -46637,7 +46703,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-365 4314.84115694642\nFrom a flow part-of reporter Syros to/from 365",
         "status": "ok",
@@ -46662,7 +46729,8 @@
           "Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-Turkey (Ottoman Empire) (other) 127552.55255255256\nFrom a flow part-of reporter Syros to/from Turkey (Ottoman Empire) (other)",
         "status": "ignore_resolved",
@@ -46690,7 +46758,8 @@
           "Crete & Egypt Arab Republic (Egypt)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros<-Crete & Egypt Arab Republic (Egypt) 25509.720246562352\nFrom a flow part-of reporter Syros to/from Crete & Egypt Arab Republic (Egypt)",
         "status": "ignore_resolved",
@@ -46720,7 +46789,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->220 201.51730678046468\nFrom a flow part-of reporter Syros to/from 220\nThessaloniki->220 19661.767030188083\nFrom a flow part-of reporter Thessaloniki to/from 220\nPatras & Pylos->220 3923.660502607871\nFrom a flow part-of reporter Patras & Pylos to/from 220",
         "status": "ok",
@@ -46747,7 +46817,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->300 11948.790896159317\nFrom a flow part-of reporter Syros to/from 300\nThessaloniki->300 7859.1749644381225\nFrom a flow part-of reporter Thessaloniki to/from 300\nPatras & Pylos->300 18148.411569464202\nFrom a flow part-of reporter Patras & Pylos to/from 300",
         "status": "ok",
@@ -46772,7 +46843,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->337 1651.6516516516517\nFrom a flow part-of reporter Syros to/from 337",
         "status": "ok",
@@ -46797,7 +46869,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->365 2370.791844476055\nFrom a flow part-of reporter Syros to/from 365",
         "status": "ok",
@@ -46822,7 +46895,8 @@
           "Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->Turkey (Ottoman Empire) (other) 156737.0001580528\nFrom a flow part-of reporter Syros to/from Turkey (Ottoman Empire) (other)",
         "status": "ignore_resolved",
@@ -46850,7 +46924,8 @@
           "Crete & Egypt Arab Republic (Egypt)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Syros->Crete & Egypt Arab Republic (Egypt) 19590.643274853803\nFrom a flow part-of reporter Syros to/from Crete & Egypt Arab Republic (Egypt)",
         "status": "ignore_resolved",
@@ -46880,7 +46955,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-200 241496.75991781254\nFrom a flow part-of reporter Szczecin to/from 200\n291<-200 198984.51082661608\nFrom a flow part-of reporter 291 to/from 200\nKlaipėda (Memel)<-200 47230.12486170381\nFrom a flow part-of reporter Klaipėda (Memel) to/from 200",
         "status": "ok",
@@ -46906,7 +46982,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-210 46044.728939465786\nFrom a flow part-of reporter Szczecin to/from 210\n291<-210 27291.765449660186\nFrom a flow part-of reporter 291 to/from 210\nKlaipėda (Memel)<-210 1975.6598703967124\nFrom a flow part-of reporter Klaipėda (Memel) to/from 210",
         "status": "ok",
@@ -46932,7 +47009,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-220 141998.5775248933\nFrom a flow part-of reporter Szczecin to/from 220\n291<-220 44140.19282440335\nFrom a flow part-of reporter 291 to/from 220\nKlaipėda (Memel)<-220 3896.001264422317\nFrom a flow part-of reporter Klaipėda (Memel) to/from 220",
         "status": "ok",
@@ -46956,7 +47034,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-329 50628.25983878616\nFrom a flow part-of reporter Szczecin to/from 329",
         "status": "ok",
@@ -46983,7 +47062,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-365 416690.37458511145\nFrom a flow part-of reporter Szczecin to/from 365\n291<-365 41927.45376955903\nFrom a flow part-of reporter 291 to/from 365\nKlaipėda (Memel)<-365 4709.973131025763\nFrom a flow part-of reporter Klaipėda (Memel) to/from 365",
         "status": "ok",
@@ -47009,7 +47089,8 @@
           "390"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-390 40706.495969653864\nFrom a flow part-of reporter Szczecin to/from 390\n291<-390 11755.176228860439\nFrom a flow part-of reporter 291 to/from 390\nKlaipėda (Memel)<-390 1604.2358147621305\nFrom a flow part-of reporter Klaipėda (Memel) to/from 390",
         "status": "ok",
@@ -47035,7 +47116,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-Norway & Sweden 87750.90880354038\nFrom a flow part-of reporter Szczecin to/from Norway & Sweden\n291<-Norway & Sweden 25877.19298245614\nFrom a flow part-of reporter 291 to/from Norway & Sweden\nKlaipėda (Memel)<-Norway & Sweden 20507.349454717874\nFrom a flow part-of reporter Klaipėda (Memel) to/from Norway & Sweden",
         "status": "ignore_resolved",
@@ -47064,7 +47146,8 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin<-Hanse Towns 69325.90485222064\nFrom a flow part-of reporter Szczecin to/from Hanse Towns\n291<-Hanse Towns 143140.5089299826\nFrom a flow part-of reporter 291 to/from Hanse Towns\nKlaipėda (Memel)<-Hanse Towns 38485.85427532796\nFrom a flow part-of reporter Klaipėda (Memel) to/from Hanse Towns",
         "status": "split_failed_no_ratio",
@@ -47092,7 +47175,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->200 58736.367946894265\nFrom a flow part-of reporter Szczecin to/from 200\n291->200 212268.84779516357\nFrom a flow part-of reporter 291 to/from 200\nKlaipėda (Memel)->200 363533.27011221746\nFrom a flow part-of reporter Klaipėda (Memel) to/from 200",
         "status": "ok",
@@ -47118,7 +47202,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->210 35700.17385806859\nFrom a flow part-of reporter Szczecin to/from 210\n291->210 76303.93551446183\nFrom a flow part-of reporter 291 to/from 210\nKlaipėda (Memel)->210 35435.43543543544\nFrom a flow part-of reporter Klaipėda (Memel) to/from 210",
         "status": "ok",
@@ -47144,7 +47229,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->220 75000\nFrom a flow part-of reporter Szczecin to/from 220\n291->220 48075.7072862336\nFrom a flow part-of reporter 291 to/from 220\nKlaipėda (Memel)->220 21076.339497392128\nFrom a flow part-of reporter Klaipėda (Memel) to/from 220",
         "status": "ok",
@@ -47170,7 +47256,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->365 246949.58116010748\nFrom a flow part-of reporter Szczecin to/from 365\n291->365 44507.66556029714\nFrom a flow part-of reporter 291 to/from 365\nKlaipėda (Memel)->365 6432.748538011696\nFrom a flow part-of reporter Klaipėda (Memel) to/from 365",
         "status": "ok",
@@ -47196,7 +47283,8 @@
           "390"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->390 20764.18523786945\nFrom a flow part-of reporter Szczecin to/from 390\n291->390 5666.192508297771\nFrom a flow part-of reporter 291 to/from 390\nKlaipėda (Memel)->390 790.263948158685\nFrom a flow part-of reporter Klaipėda (Memel) to/from 390",
         "status": "ok",
@@ -47222,7 +47310,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->Norway & Sweden 72265.68673937095\nFrom a flow part-of reporter Szczecin to/from Norway & Sweden\n291->Norway & Sweden 3500.8692903429746\nFrom a flow part-of reporter 291 to/from Norway & Sweden\nKlaipėda (Memel)->Norway & Sweden 4666.508613877035\nFrom a flow part-of reporter Klaipėda (Memel) to/from Norway & Sweden",
         "status": "ignore_resolved",
@@ -47251,7 +47340,8 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Szczecin->Hanse Towns 1299.9841947210368\nFrom a flow part-of reporter Szczecin to/from Hanse Towns\n291->Hanse Towns 4812.707444286391\nFrom a flow part-of reporter 291 to/from Hanse Towns\nKlaipėda (Memel)->Hanse Towns 2378.6944839576418\nFrom a flow part-of reporter Klaipėda (Memel) to/from Hanse Towns",
         "status": "split_failed_no_ratio",
@@ -47277,7 +47367,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-2 335688.3198988462\nFrom a flow part-of reporter 326 to/from 2",
         "status": "ok",
@@ -47302,7 +47393,8 @@
           "41"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-41 21526.78994784258\nFrom a flow part-of reporter 326 to/from 41",
         "status": "ok",
@@ -47327,7 +47419,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-140 580926.9796111902\nFrom a flow part-of reporter 326 to/from 140",
         "status": "ok",
@@ -47352,7 +47445,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-210 42480.63853327011\nFrom a flow part-of reporter 326 to/from 210",
         "status": "ok",
@@ -47377,7 +47471,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-230 118737.15821084242\nFrom a flow part-of reporter 326 to/from 230",
         "status": "ok",
@@ -47402,7 +47497,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-235 27169.27453769559\nFrom a flow part-of reporter 326 to/from 235",
         "status": "ok",
@@ -47427,7 +47523,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-337 15611.664295874822\nFrom a flow part-of reporter 326 to/from 337",
         "status": "ok",
@@ -47452,7 +47549,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-350 69875.13829619093\nFrom a flow part-of reporter 326 to/from 350",
         "status": "ok",
@@ -47477,7 +47575,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-365 157017.54385964913\nFrom a flow part-of reporter 326 to/from 365",
         "status": "ok",
@@ -47502,7 +47601,8 @@
           "651"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-651 248107.31784415996\nFrom a flow part-of reporter 326 to/from 651",
         "status": "ok",
@@ -47527,7 +47627,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-Gibraltar & Ionian Is. & Malta & United Kingdom 966465.1493598862\nFrom a flow part-of reporter 326 to/from Gibraltar & Ionian Is. & Malta & United Kingdom",
         "status": "split_only_partial",
@@ -47559,7 +47660,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-Sardinia 34767.662399241344\nFrom a flow part-of reporter 326 to/from Sardinia\n3343<-Sardinia 98.78299351983563\nFrom a flow part-of reporter 3343 to/from Sardinia",
         "status": "ignore_resolved",
@@ -47587,7 +47689,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326<-Norway & Sweden 15840.840840840841\nFrom a flow part-of reporter 326 to/from Norway & Sweden\ngravity results to be aggregated for partners: 380",
         "status": "split_failed_no_ratio",
@@ -47614,7 +47717,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->2 36071.597913703175\nFrom a flow part-of reporter 326 to/from 2",
         "status": "ok",
@@ -47639,7 +47743,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->140 20736.525999683894\nFrom a flow part-of reporter 326 to/from 140",
         "status": "ok",
@@ -47664,7 +47769,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->210 16674.569306148253\nFrom a flow part-of reporter 326 to/from 210",
         "status": "ok",
@@ -47689,7 +47795,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->230 8459.775565038723\nFrom a flow part-of reporter 326 to/from 230",
         "status": "ok",
@@ -47714,7 +47821,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->235 8127.864706812075\nFrom a flow part-of reporter 326 to/from 235",
         "status": "ok",
@@ -47739,7 +47847,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->337 38074.917022285445\nFrom a flow part-of reporter 326 to/from 337",
         "status": "ok",
@@ -47764,7 +47873,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->350 129595.38485854275\nFrom a flow part-of reporter 326 to/from 350",
         "status": "ok",
@@ -47789,7 +47899,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->365 5895.36905326379\nFrom a flow part-of reporter 326 to/from 365",
         "status": "ok",
@@ -47814,7 +47925,8 @@
           "651"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->651 113173.70001580528\nFrom a flow part-of reporter 326 to/from 651",
         "status": "ok",
@@ -47839,7 +47951,8 @@
           "Gibraltar & Ionian Is. & Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->Gibraltar & Ionian Is. & Malta & United Kingdom 307373.1626363205\nFrom a flow part-of reporter 326 to/from Gibraltar & Ionian Is. & Malta & United Kingdom",
         "status": "split_only_partial",
@@ -47871,7 +47984,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "326->Sardinia 25588.74664137822\nFrom a flow part-of reporter 326 to/from Sardinia\n3343->Sardinia 7716.927453769559\nFrom a flow part-of reporter 3343 to/from Sardinia",
         "status": "ignore_resolved",
@@ -47901,7 +48015,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Imperia (Porto Maurizio)<-327 39.51319740793425\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 327\nKingdom of Sardinia (continental)<-327 66326.85316895843\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 327\nGenoa<-327 56902.955587166114\nFrom a flow part-of reporter Genoa to/from 327",
         "status": "ok",
@@ -47929,7 +48044,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Imperia (Porto Maurizio)->220 126971.70855065592\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 220\nKingdom of Sardinia (continental)->220 1665066.3821716453\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 220\nGenoa->220 232234.86644539275\nFrom a flow part-of reporter Genoa to/from 220\nNice->220 1271534.6925873242\nFrom a flow part-of reporter Nice to/from 220",
         "status": "ok",
@@ -47954,7 +48070,8 @@
           "326"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Imperia (Porto Maurizio)->326 711.2375533428165\nFrom a flow part-of reporter Imperia (Porto Maurizio) to/from 326",
         "status": "ignore_resolved",
@@ -47985,7 +48102,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-2 76667.45693061482\nFrom a flow part-of reporter Cadix to/from 2\nMálaga<-2 18966.33475580844\nFrom a flow part-of reporter Málaga to/from 2\nBilbao<-2 10474.94863284337\nFrom a flow part-of reporter Bilbao to/from 2\nSantander<-2 7902.63948158685\nFrom a flow part-of reporter Santander to/from 2",
         "status": "ok",
@@ -48010,7 +48128,8 @@
           "135"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-135 53876.244665718354\nFrom a flow part-of reporter Cadix to/from 135",
         "status": "ok",
@@ -48040,7 +48159,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-200 334356.7251461988\nFrom a flow part-of reporter Cadix to/from 200\nCartagena (Spain)<-200 15572.151098466888\nFrom a flow part-of reporter Cartagena (Spain) to/from 200\nA Coruna<-200 26078.710289236606\nFrom a flow part-of reporter A Coruna to/from 200\nMálaga<-200 44452.34708392603\nFrom a flow part-of reporter Málaga to/from 200\nBilbao<-200 176319.740793425\nFrom a flow part-of reporter Bilbao to/from 200\nSantander<-200 1817.6070807649755\nFrom a flow part-of reporter Santander to/from 200",
         "status": "ok",
@@ -48066,7 +48186,8 @@
           "211"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-211 11427.216690374586\nFrom a flow part-of reporter Cadix to/from 211\nMálaga<-211 15015.015015015015\nFrom a flow part-of reporter Málaga to/from 211",
         "status": "ok",
@@ -48096,7 +48217,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-220 109775.56503872294\nFrom a flow part-of reporter Cadix to/from 220\nCartagena (Spain)<-220 13612.296507033348\nFrom a flow part-of reporter Cartagena (Spain) to/from 220\nA Coruna<-220 38280.3856488067\nFrom a flow part-of reporter A Coruna to/from 220\nMálaga<-220 50576.89268215584\nFrom a flow part-of reporter Málaga to/from 220\nBilbao<-220 98241.66271534693\nFrom a flow part-of reporter Bilbao to/from 220\nSantander<-220 5334.281650071124\nFrom a flow part-of reporter Santander to/from 220",
         "status": "ok",
@@ -48123,7 +48245,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-365 20673.304883831202\nFrom a flow part-of reporter Cadix to/from 365\nA Coruna<-365 3437.64817449028\nFrom a flow part-of reporter A Coruna to/from 365\nMálaga<-365 10075.865339023234\nFrom a flow part-of reporter Málaga to/from 365",
         "status": "ok",
@@ -48151,7 +48274,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-380 6266.793108898372\nFrom a flow part-of reporter Cadix to/from 380\n230<-Norway & Sweden 3996.72525711307 (ratio on 45562.66793108899)",
         "status": "ok",
@@ -48176,7 +48300,8 @@
           "390"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-390 9775.565038722934\nFrom a flow part-of reporter Cadix to/from 390",
         "status": "ok",
@@ -48201,7 +48326,8 @@
           "1161"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-1161 39659.39623834361\nFrom a flow part-of reporter Cadix to/from 1161",
         "status": "ignore_resolved",
@@ -48232,7 +48358,8 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-Hanse Towns 79326.6951161688\nFrom a flow part-of reporter Cadix to/from Hanse Towns\nMálaga<-Hanse Towns 38327.801485696225\nFrom a flow part-of reporter Málaga to/from Hanse Towns\nBilbao<-Hanse Towns 24225.541330804488\nFrom a flow part-of reporter Bilbao to/from Hanse Towns\nSantander<-Hanse Towns 2607.8710289236606\nFrom a flow part-of reporter Santander to/from Hanse Towns",
         "status": "split_failed_no_ratio",
@@ -48260,7 +48387,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-Sardinia 17231.705389600127\nFrom a flow part-of reporter Cadix to/from Sardinia\nCartagena (Spain)<-Sardinia 3093.8833570412517\nFrom a flow part-of reporter Cartagena (Spain) to/from Sardinia",
         "status": "ignore_resolved",
@@ -48288,7 +48416,8 @@
           "Montevideo"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-Montevideo 5097.202465623518\nFrom a flow part-of reporter Cadix to/from Montevideo",
         "status": "ignore_resolved",
@@ -48316,7 +48445,8 @@
           "Cuba & Philippines & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix<-Cuba & Philippines & Puerto Rico 368251.14588272484\nFrom a flow part-of reporter Cadix to/from Cuba & Philippines & Puerto Rico",
         "status": "ignore_resolved",
@@ -48345,7 +48475,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->2 125256.83578315158\nFrom a flow part-of reporter Cadix to/from 2\nMálaga->2 115477.31942468784\nFrom a flow part-of reporter Málaga to/from 2",
         "status": "ok",
@@ -48370,7 +48501,8 @@
           "135"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->135 62395.29002686898\nFrom a flow part-of reporter Cadix to/from 135",
         "status": "ok",
@@ -48399,7 +48531,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->200 1030144.618302513\nFrom a flow part-of reporter Cadix to/from 200\nCartagena (Spain)->200 1797.8504820610083\nFrom a flow part-of reporter Cartagena (Spain) to/from 200\nMálaga->200 62707.444286391656\nFrom a flow part-of reporter Málaga to/from 200\nBilbao->200 38288.28828828829\nFrom a flow part-of reporter Bilbao to/from 200\nSantander->200 28844.634107792004\nFrom a flow part-of reporter Santander to/from 200",
         "status": "ok",
@@ -48425,7 +48558,8 @@
           "211"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->211 2386.5971234392287\nFrom a flow part-of reporter Cadix to/from 211\nMálaga->211 14619.883040935672\nFrom a flow part-of reporter Málaga to/from 211",
         "status": "ok",
@@ -48455,7 +48589,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->220 30156.47226173542\nFrom a flow part-of reporter Cadix to/from 220\nCartagena (Spain)->220 5180.18018018018\nFrom a flow part-of reporter Cartagena (Spain) to/from 220\nA Coruna->220 27.659238185553974\nFrom a flow part-of reporter A Coruna to/from 220\nMálaga->220 192773.03619408884\nFrom a flow part-of reporter Málaga to/from 220\nBilbao->220 25691.48095463885\nFrom a flow part-of reporter Bilbao to/from 220\nSantander->220 6519.677572309151\nFrom a flow part-of reporter Santander to/from 220",
         "status": "ok",
@@ -48482,7 +48617,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->365 2331.278647068121\nFrom a flow part-of reporter Cadix to/from 365\nA Coruna->365 177.8093883357041\nFrom a flow part-of reporter A Coruna to/from 365\nMálaga->365 5729.413624150467\nFrom a flow part-of reporter Málaga to/from 365",
         "status": "ok",
@@ -48510,7 +48646,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->380 2054.686265212581\nFrom a flow part-of reporter Cadix to/from 380\n230->Norway & Sweden 20.959422717614295 (ratio on 2070.491544175755)",
         "status": "ok",
@@ -48535,7 +48672,8 @@
           "390"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->390 44009.79927295717\nFrom a flow part-of reporter Cadix to/from 390",
         "status": "ok",
@@ -48560,7 +48698,8 @@
           "1161"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->1161 12197.724039829303\nFrom a flow part-of reporter Cadix to/from 1161",
         "status": "ignore_resolved",
@@ -48590,7 +48729,8 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->Hanse Towns 3753.7537537537537\nFrom a flow part-of reporter Cadix to/from Hanse Towns\nMálaga->Hanse Towns 26671.40825035562\nFrom a flow part-of reporter Málaga to/from Hanse Towns\nBilbao->Hanse Towns 786.3126284178916\nFrom a flow part-of reporter Bilbao to/from Hanse Towns",
         "status": "split_failed_no_ratio",
@@ -48618,7 +48758,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->Sardinia 8831.199620673306\nFrom a flow part-of reporter Cadix to/from Sardinia\nCartagena (Spain)->Sardinia 3319.1085822664772\nFrom a flow part-of reporter Cartagena (Spain) to/from Sardinia",
         "status": "ignore_resolved",
@@ -48646,7 +48787,8 @@
           "Montevideo"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->Montevideo 5030.0300300300305\nFrom a flow part-of reporter Cadix to/from Montevideo",
         "status": "ignore_resolved",
@@ -48674,7 +48816,8 @@
           "Cuba & Philippines & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cadix->Cuba & Philippines & Puerto Rico 214544.8079658606\nFrom a flow part-of reporter Cadix to/from Cuba & Philippines & Puerto Rico",
         "status": "ignore_resolved",
@@ -48702,7 +48845,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-2 102564.40651177493\nFrom a flow part-of reporter Montevideo to/from 2",
         "status": "ok",
@@ -48726,7 +48870,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-140 93839.89252410305\nFrom a flow part-of reporter Montevideo to/from 140",
         "status": "ok",
@@ -48750,7 +48895,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-200 156460.40777619724\nFrom a flow part-of reporter Montevideo to/from 200",
         "status": "ok",
@@ -48774,7 +48920,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-220 55219.69337758811\nFrom a flow part-of reporter Montevideo to/from 220",
         "status": "ok",
@@ -48798,7 +48945,8 @@
           "1161"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-1161 42069.70128022759\nFrom a flow part-of reporter Montevideo to/from 1161",
         "status": "ignore_resolved",
@@ -48825,7 +48973,8 @@
           "Mediterranean Sea"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo<-Mediterranean Sea 62691.63900742848\nFrom a flow part-of reporter Montevideo to/from Mediterranean Sea",
         "status": "split_failed_no_ratio",
@@ -48851,7 +49000,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo->2 83574.36383752173\nFrom a flow part-of reporter Montevideo to/from 2",
         "status": "ok",
@@ -48875,7 +49025,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo->140 61284.96917970602\nFrom a flow part-of reporter Montevideo to/from 140",
         "status": "ok",
@@ -48899,7 +49050,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo->200 190955.42911332386\nFrom a flow part-of reporter Montevideo to/from 200",
         "status": "ok",
@@ -48923,7 +49075,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Montevideo->220 79804.80480480481\nFrom a flow part-of reporter Montevideo to/from 220",
         "status": "ok",
@@ -48935,7 +49088,7 @@
       "source": "6",
       "target": "230",
       "attributes": {
-        "value": 75979.33595936476,
+        "value": 70599.10873091232,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -48950,13 +49103,13 @@
         "originalPartners": [
           "6",
           "Cuba & Philippines & Puerto Rico",
-          "Cuba & Puerto Rico",
-          "West Indies (other)"
+          "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Cartagena (Spain)<-6 8198.988462146357\nFrom a flow part-of reporter Cartagena (Spain) to/from 6\nMálaga<-6 23707.91844476055\nFrom a flow part-of reporter Málaga to/from 6\nSantander<-6 30899.320373004583\nFrom a flow part-of reporter Santander to/from 6\n230<-Cuba & Philippines & Puerto Rico 4437.446219504487 (ratio on 368251.14588272484)\n230<-Cuba & Puerto Rico 3355.4352314963517 (ratio on 41607.39687055477)\n230<-West Indies (other) 5380.227228452442 (ratio on 69938.35941204362)",
+        "notes": "Cartagena (Spain)<-6 8198.988462146357\nFrom a flow part-of reporter Cartagena (Spain) to/from 6\nMálaga<-6 23707.91844476055\nFrom a flow part-of reporter Málaga to/from 6\nSantander<-6 30899.320373004583\nFrom a flow part-of reporter Santander to/from 6\n230<-Cuba & Philippines & Puerto Rico 4437.446219504487 (ratio on 368251.14588272484)\n230<-Cuba & Puerto Rico 3355.4352314963517 (ratio on 41607.39687055477)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cadix|A Coruna|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: 230"
@@ -48967,7 +49120,7 @@
       "source": "40",
       "target": "230",
       "attributes": {
-        "value": 661825.2268598103,
+        "value": 601654.897411635,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -48982,13 +49135,13 @@
         "originalPartners": [
           "40",
           "Cuba & Philippines & Puerto Rico",
-          "Cuba & Puerto Rico",
-          "West Indies (other)"
+          "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Cartagena (Spain)<-40 21218.58700806069\nFrom a flow part-of reporter Cartagena (Spain) to/from 40\nMálaga<-40 24498.182392919236\nFrom a flow part-of reporter Málaga to/from 40\nSantander<-40 155010.27343132606\nFrom a flow part-of reporter Santander to/from 40\n230<-Cuba & Philippines & Puerto Rico 362675.89294027054 (ratio on 368251.14588272484)\n230<-Cuba & Puerto Rico 38251.96163905841 (ratio on 41607.39687055477)\n230<-West Indies (other) 60170.329448175224 (ratio on 69938.35941204362)",
+        "notes": "Cartagena (Spain)<-40 21218.58700806069\nFrom a flow part-of reporter Cartagena (Spain) to/from 40\nMálaga<-40 24498.182392919236\nFrom a flow part-of reporter Málaga to/from 40\nSantander<-40 155010.27343132606\nFrom a flow part-of reporter Santander to/from 40\n230<-Cuba & Philippines & Puerto Rico 362675.89294027054 (ratio on 368251.14588272484)\n230<-Cuba & Puerto Rico 38251.96163905841 (ratio on 41607.39687055477)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cadix|A Coruna|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: 230"
@@ -49014,7 +49167,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "A Coruna<-Norway & Sweden 3161.05579263474\nFrom a flow part-of reporter A Coruna to/from Norway & Sweden\nMálaga<-Norway & Sweden 8100.205468626521\nFrom a flow part-of reporter Málaga to/from Norway & Sweden\nBilbao<-Norway & Sweden 27386.597123439227\nFrom a flow part-of reporter Bilbao to/from Norway & Sweden\nSantander<-Norway & Sweden 6914.809546388494\nFrom a flow part-of reporter Santander to/from Norway & Sweden",
         "status": "ignore_resolved",
@@ -49042,7 +49196,8 @@
           "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "A Coruna<-Cuba & Puerto Rico 41607.39687055477\nFrom a flow part-of reporter A Coruna to/from Cuba & Puerto Rico",
         "status": "ignore_resolved",
@@ -49072,7 +49227,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "A Coruna->Norway & Sweden 94.8316737790422\nFrom a flow part-of reporter A Coruna to/from Norway & Sweden\nMálaga->Norway & Sweden 1975.6598703967124\nFrom a flow part-of reporter Málaga to/from Norway & Sweden",
         "status": "ignore_resolved",
@@ -49100,7 +49256,8 @@
           "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "A Coruna->Cuba & Puerto Rico 6013.908645487593\nFrom a flow part-of reporter A Coruna to/from Cuba & Puerto Rico",
         "status": "ignore_resolved",
@@ -49132,7 +49289,8 @@
           "Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Thessaloniki<-640 17871.81918760866\nFrom a flow part-of reporter Thessaloniki to/from 640\nPatras & Pylos<-640 1461.9883040935672\nFrom a flow part-of reporter Patras & Pylos to/from 640\n350<-Turkey (Ottoman Empire) (other) 127552.55255255256",
         "status": "ok",
@@ -49157,7 +49315,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Thessaloniki<-Sardinia 3903.903903903904\nFrom a flow part-of reporter Thessaloniki to/from Sardinia",
         "status": "ignore_resolved",
@@ -49188,7 +49347,8 @@
           "Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Thessaloniki->640 23000.63221115853\nFrom a flow part-of reporter Thessaloniki to/from 640\nPatras & Pylos->640 27.659238185553974\nFrom a flow part-of reporter Patras & Pylos to/from 640\n350->Turkey (Ottoman Empire) (other) 156737.0001580528",
         "status": "ok",
@@ -49214,7 +49374,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Thessaloniki->Sardinia 7554.923344397029\nFrom a flow part-of reporter Thessaloniki to/from Sardinia\nPatras & Pylos->Sardinia 2513.039355144618\nFrom a flow part-of reporter Patras & Pylos to/from Sardinia",
         "status": "ignore_resolved",
@@ -49242,7 +49403,8 @@
           "326"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-326 38181.602655286864\nFrom a flow part-of reporter Trabzon to/from 326",
         "status": "ignore_resolved",
@@ -49272,7 +49434,8 @@
           "Russia (Black Sea)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-365 11759.127548601233\nFrom a flow part-of reporter Trabzon to/from 365\n640<-Russia (Black Sea) 14683.104156788368",
         "status": "ok",
@@ -49297,7 +49460,8 @@
           "3361"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-3361 4089.615931721195\nFrom a flow part-of reporter Trabzon to/from 3361",
         "status": "ok",
@@ -49322,7 +49486,8 @@
           "Istanbul (Constantinople) & Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-Istanbul (Constantinople) & Turkey (Ottoman Empire) (other) 514829.3029871977\nFrom a flow part-of reporter Trabzon to/from Istanbul (Constantinople) & Turkey (Ottoman Empire) (other)",
         "status": "ignore_internal",
@@ -49347,7 +49512,8 @@
           "Tabriz (Tauris)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-Tabriz (Tauris) 49063.53722143196\nFrom a flow part-of reporter Trabzon to/from Tabriz (Tauris)",
         "status": "ignore_resolved",
@@ -49375,7 +49541,8 @@
           "London"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon<-London 9206.574996048681\nFrom a flow part-of reporter Trabzon to/from London",
         "status": "ignore_resolved",
@@ -49405,7 +49572,8 @@
           "Russia (Black Sea)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon->365 11952.74221590011\nFrom a flow part-of reporter Trabzon to/from 365\n640->Russia (Black Sea) 118630.472577841",
         "status": "ok",
@@ -49430,7 +49598,8 @@
           "3361"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon->3361 742.848111269164\nFrom a flow part-of reporter Trabzon to/from 3361",
         "status": "ok",
@@ -49455,7 +49624,8 @@
           "Istanbul (Constantinople) & Turkey (Ottoman Empire) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon->Istanbul (Constantinople) & Turkey (Ottoman Empire) (other) 78536.43116801011\nFrom a flow part-of reporter Trabzon to/from Istanbul (Constantinople) & Turkey (Ottoman Empire) (other)",
         "status": "ignore_internal",
@@ -49480,7 +49650,8 @@
           "Tabriz (Tauris)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon->Tabriz (Tauris) 495376.9559032717\nFrom a flow part-of reporter Trabzon to/from Tabriz (Tauris)",
         "status": "ignore_resolved",
@@ -49508,7 +49679,8 @@
           "London"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Trabzon->London 454.4017701912439\nFrom a flow part-of reporter Trabzon to/from London",
         "status": "ignore_resolved",
@@ -49536,7 +49708,8 @@
           "231"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga<-231 24498.182392919236\nFrom a flow part-of reporter Málaga to/from 231",
         "status": "ok",
@@ -49561,7 +49734,8 @@
           "239"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga<-239 3951.319740793425\nFrom a flow part-of reporter Málaga to/from 239",
         "status": "ok",
@@ -49587,17 +49761,13 @@
           "West Indies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga<-West Indies (other) 62825.98387861546\nFrom a flow part-of reporter Málaga to/from West Indies (other)\nSantander<-West Indies (other) 7112.375533428165\nFrom a flow part-of reporter Santander to/from West Indies (other)",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "230<-100",
-          "230<-40",
-          "230<-6"
-        ],
-        "valueToSplit": 3638.8898078004518,
+        "valueToSplit": 69938.35941204362,
         "newPartners": "5|30|31|41|42|51|54|65|66|68|89|1032|1048|1055|1058|1063|1064",
         "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301"
       }
@@ -49607,7 +49777,7 @@
       "source": "230",
       "target": "6",
       "attributes": {
-        "value": 66223.03533395565,
+        "value": 39491.92036338416,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -49621,13 +49791,13 @@
         "originalPartners": [
           "6",
           "Cuba & Philippines & Puerto Rico",
-          "Cuba & Puerto Rico",
-          "West Indies (other)"
+          "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Málaga->6 22127.39054844318\nFrom a flow part-of reporter Málaga to/from 6\nSantander->6 2410.3050418839894\nFrom a flow part-of reporter Santander to/from 6\n230->Cuba & Philippines & Puerto Rico 14487.840020957954 (ratio on 214544.8079658606)\n230->Cuba & Puerto Rico 466.3847520990378 (ratio on 6013.908645487593)\n230->West Indies (other) 26731.11497057148 (ratio on 141457.24672040463)",
+        "notes": "Málaga->6 22127.39054844318\nFrom a flow part-of reporter Málaga to/from 6\nSantander->6 2410.3050418839894\nFrom a flow part-of reporter Santander to/from 6\n230->Cuba & Philippines & Puerto Rico 14487.840020957954 (ratio on 214544.8079658606)\n230->Cuba & Puerto Rico 466.3847520990378 (ratio on 6013.908645487593)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: 230"
@@ -49638,7 +49808,7 @@
       "source": "230",
       "target": "40",
       "attributes": {
-        "value": 389291.6649982792,
+        "value": 283850.96380128385,
         "valueGeneratedBy": [
           "aggregation",
           "split_by_years_ratio"
@@ -49652,13 +49822,13 @@
         "originalPartners": [
           "40",
           "Cuba & Philippines & Puerto Rico",
-          "Cuba & Puerto Rico",
-          "West Indies (other)"
+          "Cuba & Puerto Rico"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Málaga->40 33388.65180970444\nFrom a flow part-of reporter Málaga to/from 40\nSantander->40 72585.74363837522\nFrom a flow part-of reporter Santander to/from 40\n230->Cuba & Philippines & Puerto Rico 172329.04445981566 (ratio on 214544.8079658606)\n230->Cuba & Puerto Rico 5547.523893388555 (ratio on 6013.908645487593)\n230->West Indies (other) 105440.70119699533 (ratio on 141457.24672040463)",
+        "notes": "Málaga->40 33388.65180970444\nFrom a flow part-of reporter Málaga to/from 40\nSantander->40 72585.74363837522\nFrom a flow part-of reporter Santander to/from 40\n230->Cuba & Philippines & Puerto Rico 172329.04445981566 (ratio on 214544.8079658606)\n230->Cuba & Puerto Rico 5547.523893388555 (ratio on 6013.908645487593)",
         "status": "ok",
         "type": "trade",
         "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: 230"
@@ -49681,7 +49851,8 @@
           "231"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga->231 31215.42595226806\nFrom a flow part-of reporter Málaga to/from 231",
         "status": "ok",
@@ -49706,7 +49877,8 @@
           "239"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga->239 7705.073494547179\nFrom a flow part-of reporter Málaga to/from 239",
         "status": "ok",
@@ -49731,16 +49903,14 @@
           "West Indies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Málaga->West Indies (other) 141457.24672040463\nFrom a flow part-of reporter Málaga to/from West Indies (other)",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "230->100"
-        ],
-        "valueToSplit": 5110.631270622639,
-        "newPartners": "30|31|41|42|51|54|65|66|68|89|1032|1048|1055|1058|1063|1064",
+        "valueToSplit": 141457.24672040463,
+        "newPartners": "5|30|31|41|42|51|54|65|66|68|89|1032|1048|1055|1058|1063|1064",
         "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Bilbao|Santander|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301"
       }
     },
@@ -49761,7 +49931,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bilbao<-210 19207.365259996837\nFrom a flow part-of reporter Bilbao to/from 210",
         "status": "ok",
@@ -49786,7 +49957,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bilbao->210 2568.357831515726\nFrom a flow part-of reporter Bilbao to/from 210",
         "status": "ok",
@@ -49799,27 +49971,25 @@
       "source": "100",
       "target": "230",
       "attributes": {
-        "value": 31174.07493172487,
+        "value": 30425.162004109374,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "230",
         "originalReporters": [
-          "Santander",
-          "230"
+          "Santander"
         ],
         "originalPartners": [
-          "100",
-          "West Indies (other)"
+          "100"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Santander<-100 30425.162004109374\nFrom a flow part-of reporter Santander to/from 100\n230<-West Indies (other) 748.9129276154979 (ratio on 69938.35941204362)",
+        "notes": "Santander<-100 30425.162004109374\nFrom a flow part-of reporter Santander to/from 100",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Málaga|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301 unexpected: 230"
+        "partial": "missing Cadix|Cartagena (Spain)|A Coruna|Málaga|Bilbao|Spain (Atlantic Coast)|Spain (Mediterranean Coast)|410|2301"
       }
     },
     {
@@ -49839,7 +50009,8 @@
           "352"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus<-352 2054.686265212581\nFrom a flow part-of reporter Tarsus to/from 352",
         "status": "ignore_internal",
@@ -49868,7 +50039,8 @@
           "Egypt Arab Republic (Egypt) & Syria"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus<-651 6175.912754860124\nFrom a flow part-of reporter Tarsus to/from 651\nBeirut<-651 146787.57705073495\nFrom a flow part-of reporter Beirut to/from 651\n640<-Egypt Arab Republic (Egypt) & Syria 9420.710090994453 (ratio on 9704.441283388653)",
         "status": "ok",
@@ -49893,7 +50065,8 @@
           "665"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus<-665 6104.788999525842\nFrom a flow part-of reporter Tarsus to/from 665",
         "status": "ignore_internal",
@@ -49918,7 +50091,8 @@
           "Syria (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus<-Syria (other) 7120.278172909752\nFrom a flow part-of reporter Tarsus to/from Syria (other)",
         "status": "ignore_resolved",
@@ -49950,7 +50124,8 @@
           "London"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus->200 3556.1877667140825\nFrom a flow part-of reporter Tarsus to/from 200\nBeirut->200 9340.919867235656\nFrom a flow part-of reporter Beirut to/from 200\nIzmir (Smyrna)->200 295199.146514936\nFrom a flow part-of reporter Izmir (Smyrna) to/from 200\n640->London 454.4017701912439",
         "status": "ok",
@@ -49975,7 +50150,8 @@
           "352"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus->352 2370.791844476055\nFrom a flow part-of reporter Tarsus to/from 352",
         "status": "ignore_internal",
@@ -50000,7 +50176,8 @@
           "Syria (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus->Syria (other) 1580.52789631737\nFrom a flow part-of reporter Tarsus to/from Syria (other)",
         "status": "ignore_resolved",
@@ -50028,7 +50205,8 @@
           "Istanbul (Constantinople)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tarsus->Istanbul (Constantinople) 442.5478109688636\nFrom a flow part-of reporter Tarsus to/from Istanbul (Constantinople)",
         "status": "ignore_internal",
@@ -50053,7 +50231,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos<-327 1718.82408724514\nFrom a flow part-of reporter Patras & Pylos to/from 327",
         "status": "ok",
@@ -50078,7 +50257,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos<-338 2066.540224434961\nFrom a flow part-of reporter Patras & Pylos to/from 338",
         "status": "ok",
@@ -50103,7 +50283,8 @@
           "3349"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos<-3349 13311.996206733049\nFrom a flow part-of reporter Patras & Pylos to/from 3349",
         "status": "ok",
@@ -50128,7 +50309,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos<-Norway & Sweden 1299.9841947210368\nFrom a flow part-of reporter Patras & Pylos to/from Norway & Sweden",
         "status": "split_failed_no_ratio",
@@ -50155,7 +50337,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos->200 78662.8733997155\nFrom a flow part-of reporter Patras & Pylos to/from 200",
         "status": "ok",
@@ -50180,7 +50363,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos->338 379.3266951161688\nFrom a flow part-of reporter Patras & Pylos to/from 338",
         "status": "ok",
@@ -50205,7 +50389,8 @@
           "3349"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Patras & Pylos->3349 4306.938517464833\nFrom a flow part-of reporter Patras & Pylos to/from 3349",
         "status": "ok",
@@ -50230,7 +50415,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-2 35269.67757230915\nFrom a flow part-of reporter Cartagena (Colombia) to/from 2",
         "status": "ok",
@@ -50255,7 +50441,8 @@
           "51"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-51 225222.26173541963\nFrom a flow part-of reporter Cartagena (Colombia) to/from 51",
         "status": "ok",
@@ -50280,7 +50467,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-200 51767.62288604394\nFrom a flow part-of reporter Cartagena (Colombia) to/from 200",
         "status": "ok",
@@ -50305,7 +50493,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-230 8654.773194246878\nFrom a flow part-of reporter Cartagena (Colombia) to/from 230",
         "status": "ok",
@@ -50330,7 +50519,8 @@
           "1065"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-1065 84.55824245297929\nFrom a flow part-of reporter Cartagena (Colombia) to/from 1065",
         "status": "ignore_resolved",
@@ -50358,7 +50548,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-Sardinia 2679.785048206101\nFrom a flow part-of reporter Cartagena (Colombia) to/from Sardinia",
         "status": "ignore_resolved",
@@ -50386,7 +50577,8 @@
           "St. Thomas"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-St. Thomas 1752.410305041884\nFrom a flow part-of reporter Cartagena (Colombia) to/from St. Thomas",
         "status": "ignore_resolved",
@@ -50414,7 +50606,8 @@
           "Colombia (New Granada) (Gran Colombia) (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cartagena (Colombia)<-Colombia (New Granada) (Gran Colombia) (other) 172.27754069859333\nFrom a flow part-of reporter Cartagena (Colombia) to/from Colombia (New Granada) (Gran Colombia) (other)",
         "status": "ignore_internal",
@@ -50440,7 +50633,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-2 73138.9284020863\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 2\nGenoa<-2 73138.9284020863\nFrom a flow part-of reporter Genoa to/from 2",
         "status": "ok",
@@ -50466,7 +50660,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-140 246953.53247984828\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 140\nGenoa<-140 246953.53247984828\nFrom a flow part-of reporter Genoa to/from 140",
         "status": "ok",
@@ -50492,7 +50687,8 @@
           "160"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-160 92654.49660186503\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 160\nGenoa<-160 92654.49660186503\nFrom a flow part-of reporter Genoa to/from 160",
         "status": "ok",
@@ -50518,7 +50714,8 @@
           "225"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-225 104152.83704757389\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 225\nGenoa<-225 104152.83704757389\nFrom a flow part-of reporter Genoa to/from 225",
         "status": "ok",
@@ -50544,7 +50741,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-230 154666.50861387703\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 230\nGenoa<-230 147652.9160739687\nFrom a flow part-of reporter Genoa to/from 230",
         "status": "ok",
@@ -50570,7 +50768,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-235 62608.66129287182\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 235\nGenoa<-235 62608.66129287182\nFrom a flow part-of reporter Genoa to/from 235",
         "status": "ok",
@@ -50595,7 +50794,8 @@
           "335"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-335 6361.624782677414\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 335",
         "status": "ok",
@@ -50621,7 +50821,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-365 57302.03888098625\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 365\nGenoa<-365 56318.160265528684\nFrom a flow part-of reporter Genoa to/from 365",
         "status": "ok",
@@ -50648,7 +50849,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-640 140410.14698909436\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 640\nGenoa<-640 77742.21590011063\nFrom a flow part-of reporter Genoa to/from 640\nNice<-640 62667.93108898372\nFrom a flow part-of reporter Nice to/from 640",
         "status": "ok",
@@ -50675,7 +50877,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-Sardinia 121234.39228702386\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from Sardinia\nGenoa<-Sardinia 109807.17559664928\nFrom a flow part-of reporter Genoa to/from Sardinia\nNice<-Sardinia 11427.216690374586\nFrom a flow part-of reporter Nice to/from Sardinia",
         "status": "ignore_internal",
@@ -50701,13 +50904,14 @@
           "British Colonies & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Kingdom of Sardinia (continental)<-British Colonies & United Kingdom 1155405.4054054054\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from British Colonies & United Kingdom\nGenoa<-British Colonies & United Kingdom 1130496.2857594437\nFrom a flow part-of reporter Genoa to/from British Colonies & United Kingdom\ngravity results to be aggregated for partners: 338",
+        "notes": "Kingdom of Sardinia (continental)<-British Colonies & United Kingdom 1155405.4054054054\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from British Colonies & United Kingdom\nGenoa<-British Colonies & United Kingdom 1130496.2857594437\nFrom a flow part-of reporter Genoa to/from British Colonies & United Kingdom",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 2285901.6911648493,
-        "newPartners": "21|30|31|51|54|110|200|231|338|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|7501|9004",
+        "newPartners": "21|30|31|51|54|110|200|231|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|7501|9004",
         "partial": "missing Sardinia|Imperia (Porto Maurizio)|Nice"
       }
     },
@@ -50730,7 +50934,8 @@
           "Barbary Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)<-Barbary Coast 193606.76465939623\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from Barbary Coast\nGenoa<-Barbary Coast 98743.4803224277\nFrom a flow part-of reporter Genoa to/from Barbary Coast\nNice<-Barbary Coast 94863.28433696854\nFrom a flow part-of reporter Nice to/from Barbary Coast",
         "status": "split_only_partial",
@@ -50761,7 +50966,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->2 1169.5906432748538\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 2\nGenoa->2 1169.5906432748538\nFrom a flow part-of reporter Genoa to/from 2",
         "status": "ok",
@@ -50787,7 +50993,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->140 101675.3595700964\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 140\nGenoa->140 101675.3595700964\nFrom a flow part-of reporter Genoa to/from 140",
         "status": "ok",
@@ -50813,7 +51020,8 @@
           "160"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->160 24166.271534692587\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 160\nGenoa->160 23739.529002686897\nFrom a flow part-of reporter Genoa to/from 160",
         "status": "ok",
@@ -50839,7 +51047,8 @@
           "225"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->225 33440.018966334756\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 225\nGenoa->225 33440.018966334756\nFrom a flow part-of reporter Genoa to/from 225",
         "status": "ok",
@@ -50865,7 +51074,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->230 111743.32226963805\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 230\nGenoa->230 109704.44128338865\nFrom a flow part-of reporter Genoa to/from 230",
         "status": "ok",
@@ -50891,7 +51101,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->235 106812.07523312786\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 235\nGenoa->235 106812.07523312786\nFrom a flow part-of reporter Genoa to/from 235",
         "status": "ok",
@@ -50917,7 +51128,8 @@
           "327"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->327 186691.95511300775\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 327\nGenoa->327 185838.47004899636\nFrom a flow part-of reporter Genoa to/from 327",
         "status": "ok",
@@ -50942,7 +51154,8 @@
           "335"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->335 159957.32574679944\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 335",
         "status": "ok",
@@ -50968,7 +51181,8 @@
           "365"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->365 25719.140192824405\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 365\nGenoa->365 25758.65339023234\nFrom a flow part-of reporter Genoa to/from 365",
         "status": "ok",
@@ -50994,7 +51208,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->640 47506.717243559346\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from 640\nGenoa->640 47506.717243559346\nFrom a flow part-of reporter Genoa to/from 640",
         "status": "ok",
@@ -51021,7 +51236,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->Sardinia 41745.69306148253\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from Sardinia\nGenoa->Sardinia 129449.1860281334\nFrom a flow part-of reporter Genoa to/from Sardinia\nNice->Sardinia 1730.67804646752\nFrom a flow part-of reporter Nice to/from Sardinia",
         "status": "ignore_internal",
@@ -51047,13 +51263,14 @@
           "British Colonies & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Kingdom of Sardinia (continental)->British Colonies & United Kingdom 147083.92603129445\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from British Colonies & United Kingdom\nGenoa->British Colonies & United Kingdom 144665.71834992888\nFrom a flow part-of reporter Genoa to/from British Colonies & United Kingdom\ngravity results to be aggregated for partners: 338",
+        "notes": "Kingdom of Sardinia (continental)->British Colonies & United Kingdom 147083.92603129445\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from British Colonies & United Kingdom\nGenoa->British Colonies & United Kingdom 144665.71834992888\nFrom a flow part-of reporter Genoa to/from British Colonies & United Kingdom",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 291749.64438122336,
-        "newPartners": "21|30|31|51|54|110|200|231|338|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|7501|9004",
+        "newPartners": "21|30|31|51|54|110|200|231|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1055|1063|1163|2249|4044|4050|4383|7501|9004",
         "partial": "missing Sardinia|Imperia (Porto Maurizio)|Nice"
       }
     },
@@ -51075,7 +51292,8 @@
           "Barbary Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kingdom of Sardinia (continental)->Barbary Coast 17808.598071755965\nFrom a flow part-of reporter Kingdom of Sardinia (continental) to/from Barbary Coast\nGenoa->Barbary Coast 17808.598071755965\nFrom a flow part-of reporter Genoa to/from Barbary Coast",
         "status": "split_failed_no_ratio",
@@ -51105,7 +51323,8 @@
           "London"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-200 104571.676940098\nFrom a flow part-of reporter Beirut to/from 200\nIzmir (Smyrna)<-200 178690.53263790105\nFrom a flow part-of reporter Izmir (Smyrna) to/from 200\n640<-London 9206.574996048681",
         "status": "ok",
@@ -51131,7 +51350,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-220 66729.88778251936\nFrom a flow part-of reporter Beirut to/from 220\nIzmir (Smyrna)<-220 61656.393235340605\nFrom a flow part-of reporter Izmir (Smyrna) to/from 220",
         "status": "ok",
@@ -51159,7 +51379,8 @@
           "326"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-300 9708.392603129445\nFrom a flow part-of reporter Beirut to/from 300\nIzmir (Smyrna)<-300 144318.00221273905\nFrom a flow part-of reporter Izmir (Smyrna) to/from 300\n640<-326 38181.602655286864",
         "status": "ok",
@@ -51184,7 +51405,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-337 50960.1706970128\nFrom a flow part-of reporter Beirut to/from 337",
         "status": "ok",
@@ -51210,7 +51432,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-350 158.052789631737\nFrom a flow part-of reporter Beirut to/from 350\nIzmir (Smyrna)<-350 3654.970760233918\nFrom a flow part-of reporter Izmir (Smyrna) to/from 350",
         "status": "ok",
@@ -51236,7 +51459,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut<-Sardinia 280.54370159633316\nFrom a flow part-of reporter Beirut to/from Sardinia\nIzmir (Smyrna)<-Sardinia 2607.8710289236606\nFrom a flow part-of reporter Izmir (Smyrna) to/from Sardinia",
         "status": "ignore_resolved",
@@ -51265,7 +51489,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut->220 106567.09340919867\nFrom a flow part-of reporter Beirut to/from 220\nIzmir (Smyrna)->220 322000.9483167378\nFrom a flow part-of reporter Izmir (Smyrna) to/from 220",
         "status": "ok",
@@ -51291,7 +51516,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut->300 2805.4370159633318\nFrom a flow part-of reporter Beirut to/from 300\nIzmir (Smyrna)->300 292014.3828038565\nFrom a flow part-of reporter Izmir (Smyrna) to/from 300",
         "status": "ok",
@@ -51316,7 +51542,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut->337 25268.689742373954\nFrom a flow part-of reporter Beirut to/from 337",
         "status": "ok",
@@ -51342,7 +51569,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut->350 347.7161371898214\nFrom a flow part-of reporter Beirut to/from 350\nIzmir (Smyrna)->350 39287.972182709025\nFrom a flow part-of reporter Izmir (Smyrna) to/from 350",
         "status": "ok",
@@ -51370,7 +51598,8 @@
           "Egypt Arab Republic (Egypt) & Syria"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Beirut->651 118824.08724513988\nFrom a flow part-of reporter Beirut to/from 651\n640->Egypt Arab Republic (Egypt) & Syria 2522.5093386201597 (ratio on 3046.4675201517307)",
         "status": "ok",
@@ -51395,7 +51624,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-200 29306.938517464834\nFrom a flow part-of reporter Tunis to/from 200",
         "status": "ok",
@@ -51419,7 +51649,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-220 114627.78568041726\nFrom a flow part-of reporter Tunis to/from 220",
         "status": "ok",
@@ -51443,7 +51674,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-300 23028.29144934408\nFrom a flow part-of reporter Tunis to/from 300",
         "status": "ok",
@@ -51467,7 +51699,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-329 40666.98277224593\nFrom a flow part-of reporter Tunis to/from 329",
         "status": "ok",
@@ -51491,7 +51724,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-337 93563.3001422475\nFrom a flow part-of reporter Tunis to/from 337",
         "status": "ok",
@@ -51515,7 +51749,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-350 32136.083451872924\nFrom a flow part-of reporter Tunis to/from 350",
         "status": "ok",
@@ -51539,7 +51774,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-640 62529.63489805595\nFrom a flow part-of reporter Tunis to/from 640",
         "status": "ok",
@@ -51563,7 +51799,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis<-Sardinia 111494.38912596807\nFrom a flow part-of reporter Tunis to/from Sardinia",
         "status": "ignore_resolved",
@@ -51590,7 +51827,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->200 24936.778884147305\nFrom a flow part-of reporter Tunis to/from 200",
         "status": "ok",
@@ -51614,7 +51852,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->220 214833.25430693853\nFrom a flow part-of reporter Tunis to/from 220",
         "status": "ok",
@@ -51638,7 +51877,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->300 8206.891101627943\nFrom a flow part-of reporter Tunis to/from 300",
         "status": "ok",
@@ -51662,7 +51902,8 @@
           "329"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->329 12960.328749802435\nFrom a flow part-of reporter Tunis to/from 329",
         "status": "ok",
@@ -51686,7 +51927,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->337 55211.79073810653\nFrom a flow part-of reporter Tunis to/from 337",
         "status": "ok",
@@ -51710,7 +51952,8 @@
           "350"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->350 18018.018018018018\nFrom a flow part-of reporter Tunis to/from 350",
         "status": "ok",
@@ -51734,7 +51977,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->640 65180.97044412834\nFrom a flow part-of reporter Tunis to/from 640",
         "status": "ok",
@@ -51758,7 +52002,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Tunis->Sardinia 288560.929350403\nFrom a flow part-of reporter Tunis to/from Sardinia",
         "status": "ignore_resolved",
@@ -51785,7 +52030,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-200 367394\nFrom a flow part-of reporter Java & Madura to/from 200",
         "status": "ok",
@@ -51810,7 +52056,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-210 357969\nFrom a flow part-of reporter Java & Madura to/from 210",
         "status": "ok",
@@ -51835,7 +52082,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-220 13664\nFrom a flow part-of reporter Java & Madura to/from 220",
         "status": "ok",
@@ -51860,7 +52108,8 @@
           "248"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-248 10905\nFrom a flow part-of reporter Java & Madura to/from 248",
         "status": "ok",
@@ -51885,7 +52134,8 @@
           "380"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-380 6675\nFrom a flow part-of reporter Java & Madura to/from 380",
         "status": "ok",
@@ -51910,7 +52160,8 @@
           "561"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-561 552\nFrom a flow part-of reporter Java & Madura to/from 561",
         "status": "ok",
@@ -51935,7 +52186,8 @@
           "590"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-590 45\nFrom a flow part-of reporter Java & Madura to/from 590",
         "status": "ok",
@@ -51960,7 +52212,8 @@
           "740"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-740 38955\nFrom a flow part-of reporter Java & Madura to/from 740",
         "status": "ok",
@@ -51985,7 +52238,8 @@
           "800"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-800 2609\nFrom a flow part-of reporter Java & Madura to/from 800",
         "status": "ok",
@@ -52010,7 +52264,8 @@
           "900"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-900 294\nFrom a flow part-of reporter Java & Madura to/from 900",
         "status": "split_failed_no_ratio",
@@ -52037,7 +52292,8 @@
           "9002"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-9002 135\nFrom a flow part-of reporter Java & Madura to/from 9002",
         "status": "ok",
@@ -52062,13 +52318,14 @@
           "America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-America 30842\nFrom a flow part-of reporter Java & Madura to/from America",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 30842,
-        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
+        "newPartners": "2|3|10|21|70|80|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
         "partial": "missing Madura|Sumatra|Java unexpected: Java & Madura"
       }
     },
@@ -52089,7 +52346,8 @@
           "Persian Gulf"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-Persian Gulf 1591\nFrom a flow part-of reporter Java & Madura to/from Persian Gulf",
         "status": "split_failed_no_ratio",
@@ -52116,7 +52374,8 @@
           "Bengal & Coromandel Coast Posts & Malabar Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-Bengal & Coromandel Coast Posts & Malabar Coast 15947\nFrom a flow part-of reporter Java & Madura to/from Bengal & Coromandel Coast Posts & Malabar Coast",
         "status": "split_failed_no_ratio",
@@ -52143,7 +52402,8 @@
           "Macao & People's Republic of China (China)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-Macao & People's Republic of China (China) 53987\nFrom a flow part-of reporter Java & Madura to/from Macao & People's Republic of China (China)",
         "status": "split_failed_no_ratio",
@@ -52170,7 +52430,8 @@
           "Manila"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura<-Manila 2004\nFrom a flow part-of reporter Java & Madura to/from Manila",
         "status": "ignore_resolved",
@@ -52198,13 +52459,15 @@
           "East Indian Archipelago"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Java & Madura<-East Indian Archipelago 566648\nFrom a flow part-of reporter Java & Madura to/from East Indian Archipelago\ngravity results to be aggregated for partners: 840",
-        "status": "split_failed_no_ratio",
+        "notes": "Java & Madura<-East Indian Archipelago 566648\nFrom a flow part-of reporter Java & Madura to/from East Indian Archipelago",
+        "status": "ignore_resolved",
         "type": "trade",
-        "valueToSplit": 566648,
-        "newPartners": "840|860",
+        "mergedIn": [
+          "850<-860"
+        ],
         "partial": "missing Madura|Sumatra|Java unexpected: Java & Madura"
       }
     },
@@ -52225,7 +52488,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->200 43303\nFrom a flow part-of reporter Java & Madura to/from 200",
         "status": "ok",
@@ -52250,7 +52514,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->210 1594141\nFrom a flow part-of reporter Java & Madura to/from 210",
         "status": "ok",
@@ -52275,7 +52540,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->220 31788\nFrom a flow part-of reporter Java & Madura to/from 220",
         "status": "ok",
@@ -52300,7 +52566,8 @@
           "248"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->248 11209\nFrom a flow part-of reporter Java & Madura to/from 248",
         "status": "ok",
@@ -52325,7 +52592,8 @@
           "380"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->380 4292\nFrom a flow part-of reporter Java & Madura to/from 380",
         "status": "ok",
@@ -52350,7 +52618,8 @@
           "561"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->561 3944\nFrom a flow part-of reporter Java & Madura to/from 561",
         "status": "ok",
@@ -52375,7 +52644,8 @@
           "590"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->590 221\nFrom a flow part-of reporter Java & Madura to/from 590",
         "status": "ok",
@@ -52400,7 +52670,8 @@
           "740"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->740 18566\nFrom a flow part-of reporter Java & Madura to/from 740",
         "status": "ok",
@@ -52425,7 +52696,8 @@
           "800"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->800 906\nFrom a flow part-of reporter Java & Madura to/from 800",
         "status": "ok",
@@ -52450,7 +52722,8 @@
           "900"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->900 6725\nFrom a flow part-of reporter Java & Madura to/from 900",
         "status": "split_failed_no_ratio",
@@ -52477,7 +52750,8 @@
           "9002"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->9002 689\nFrom a flow part-of reporter Java & Madura to/from 9002",
         "status": "ok",
@@ -52502,13 +52776,14 @@
           "America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->America 18905\nFrom a flow part-of reporter Java & Madura to/from America",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 18905,
-        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
+        "newPartners": "2|3|10|21|70|80|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
         "partial": "missing Madura|Sumatra|Java unexpected: Java & Madura"
       }
     },
@@ -52529,7 +52804,8 @@
           "Bengal & Coromandel Coast Posts & Malabar Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->Bengal & Coromandel Coast Posts & Malabar Coast 1691\nFrom a flow part-of reporter Java & Madura to/from Bengal & Coromandel Coast Posts & Malabar Coast",
         "status": "split_failed_no_ratio",
@@ -52556,7 +52832,8 @@
           "Macao & People's Republic of China (China)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->Macao & People's Republic of China (China) 169031\nFrom a flow part-of reporter Java & Madura to/from Macao & People's Republic of China (China)",
         "status": "split_failed_no_ratio",
@@ -52583,7 +52860,8 @@
           "Manila"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->Manila 953\nFrom a flow part-of reporter Java & Madura to/from Manila",
         "status": "ignore_resolved",
@@ -52611,13 +52889,15 @@
           "East Indian Archipelago"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Java & Madura->East Indian Archipelago 526128\nFrom a flow part-of reporter Java & Madura to/from East Indian Archipelago\ngravity results to be aggregated for partners: 840",
-        "status": "split_failed_no_ratio",
+        "notes": "Java & Madura->East Indian Archipelago 526128\nFrom a flow part-of reporter Java & Madura to/from East Indian Archipelago",
+        "status": "ignore_resolved",
         "type": "trade",
-        "valueToSplit": 526128,
-        "newPartners": "840|860",
+        "mergedIn": [
+          "850->860"
+        ],
         "partial": "missing Madura|Sumatra|Java unexpected: Java & Madura"
       }
     },
@@ -52638,7 +52918,8 @@
           "West Indies"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Java & Madura->West Indies 2232\nFrom a flow part-of reporter Java & Madura to/from West Indies",
         "status": "split_failed_no_ratio",
@@ -52666,7 +52947,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town<-2 4349\nFrom a flow part-of reporter Cape Town to/from 2\nPort Simon<-2 5391\nFrom a flow part-of reporter Port Simon to/from 2",
         "status": "ok",
@@ -52693,7 +52975,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town<-200 275049\nFrom a flow part-of reporter Cape Town to/from 200\nPort Simon<-200 503\nFrom a flow part-of reporter Port Simon to/from 200\nPort Elizabeth<-200 56868\nFrom a flow part-of reporter Port Elizabeth to/from 200",
         "status": "ok",
@@ -52719,7 +53002,8 @@
           "British Colonies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town<-British Colonies (other) 27200\nFrom a flow part-of reporter Cape Town to/from British Colonies (other)\nPort Simon<-British Colonies (other) 3338\nFrom a flow part-of reporter Port Simon to/from British Colonies (other)\nPort Elizabeth<-British Colonies (other) 3430\nFrom a flow part-of reporter Port Elizabeth to/from British Colonies (other)",
         "status": "split_failed_no_ratio",
@@ -52746,7 +53030,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town->2 4603\nFrom a flow part-of reporter Cape Town to/from 2\nPort Simon->2 61\nFrom a flow part-of reporter Port Simon to/from 2",
         "status": "ok",
@@ -52773,7 +53058,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town->200 171319\nFrom a flow part-of reporter Cape Town to/from 200\nPort Simon->200 5797\nFrom a flow part-of reporter Port Simon to/from 200\nPort Elizabeth->200 61142\nFrom a flow part-of reporter Port Elizabeth to/from 200",
         "status": "ok",
@@ -52799,7 +53085,8 @@
           "British Colonies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Cape Town->British Colonies (other) 106830\nFrom a flow part-of reporter Cape Town to/from British Colonies (other)\nPort Simon->British Colonies (other) 570\nFrom a flow part-of reporter Port Simon to/from British Colonies (other)\nPort Elizabeth->British Colonies (other) 4156\nFrom a flow part-of reporter Port Elizabeth to/from British Colonies (other)",
         "status": "split_failed_no_ratio",
@@ -52825,7 +53112,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56<-2 1776\nFrom a flow part-of reporter 56 to/from 2",
         "status": "ok",
@@ -52849,7 +53137,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56<-200 817\nFrom a flow part-of reporter 56 to/from 200",
         "status": "ok",
@@ -52873,7 +53162,8 @@
           "British West Indies"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56<-British West Indies 32138\nFrom a flow part-of reporter 56 to/from British West Indies",
         "status": "split_failed_no_ratio",
@@ -52899,7 +53189,8 @@
           "British Northern America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56<-British Northern America 13814\nFrom a flow part-of reporter 56 to/from British Northern America",
         "status": "split_failed_no_ratio",
@@ -52925,13 +53216,14 @@
           "British Colonies (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56<-British Colonies (other) 80\nFrom a flow part-of reporter 56 to/from British Colonies (other)",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 80,
-        "newPartners": "21|30|31|51|54|110|231|338|451|561|590|750|780|901|902|906|1022|1023|1024|1025|1026|1048|1063|1163|2249|4044|4050|4383|7501|9004"
+        "newPartners": "110|231|338|451|561|590|750|780|901|902|906|1163|2249|4044|4050|4383|7501|9004"
       }
     },
     {
@@ -52951,7 +53243,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56->2 860\nFrom a flow part-of reporter 56 to/from 2",
         "status": "ok",
@@ -52975,7 +53268,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56->200 52450\nFrom a flow part-of reporter 56 to/from 200",
         "status": "ok",
@@ -52999,7 +53293,8 @@
           "British West Indies"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56->British West Indies 9499\nFrom a flow part-of reporter 56 to/from British West Indies",
         "status": "split_failed_no_ratio",
@@ -53025,7 +53320,8 @@
           "British Northern America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "56->British Northern America 11945\nFrom a flow part-of reporter 56 to/from British Northern America",
         "status": "split_failed_no_ratio",
@@ -53051,7 +53347,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-2 146827.0902481429\nFrom a flow part-of reporter Izmir (Smyrna) to/from 2",
         "status": "ok",
@@ -53076,7 +53373,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-210 16627.153469258734\nFrom a flow part-of reporter Izmir (Smyrna) to/from 210",
         "status": "ok",
@@ -53101,7 +53399,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-338 7100.521574205784\nFrom a flow part-of reporter Izmir (Smyrna) to/from 338",
         "status": "ok",
@@ -53126,7 +53425,8 @@
           "Russia (Black Sea)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-Russia (Black Sea) 14683.104156788368\nFrom a flow part-of reporter Izmir (Smyrna) to/from Russia (Black Sea)",
         "status": "ignore_resolved",
@@ -53154,7 +53454,8 @@
           "Egypt Arab Republic (Egypt) & Syria"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-Egypt Arab Republic (Egypt) & Syria 9704.441283388653\nFrom a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) & Syria",
         "status": "ignore_resolved",
@@ -53183,7 +53484,8 @@
           "Barbary Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)<-Barbary Coast 7464.04299035878\nFrom a flow part-of reporter Izmir (Smyrna) to/from Barbary Coast",
         "status": "split_failed_no_ratio",
@@ -53210,7 +53512,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->2 113470.04899636479\nFrom a flow part-of reporter Izmir (Smyrna) to/from 2",
         "status": "ok",
@@ -53235,7 +53538,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->210 58961.59317211949\nFrom a flow part-of reporter Izmir (Smyrna) to/from 210",
         "status": "ok",
@@ -53260,7 +53564,8 @@
           "338"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->338 5840.050576892682\nFrom a flow part-of reporter Izmir (Smyrna) to/from 338",
         "status": "ok",
@@ -53285,7 +53590,8 @@
           "Russia (Black Sea)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->Russia (Black Sea) 118630.472577841\nFrom a flow part-of reporter Izmir (Smyrna) to/from Russia (Black Sea)",
         "status": "ignore_resolved",
@@ -53313,7 +53619,8 @@
           "Egypt Arab Republic (Egypt) & Syria"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->Egypt Arab Republic (Egypt) & Syria 3046.4675201517307\nFrom a flow part-of reporter Izmir (Smyrna) to/from Egypt Arab Republic (Egypt) & Syria",
         "status": "ignore_resolved",
@@ -53342,7 +53649,8 @@
           "Barbary Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->Barbary Coast 3200.568990042674\nFrom a flow part-of reporter Izmir (Smyrna) to/from Barbary Coast",
         "status": "split_failed_no_ratio",
@@ -53369,7 +53677,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Izmir (Smyrna)->Sardinia 177204.83641536272\nFrom a flow part-of reporter Izmir (Smyrna) to/from Sardinia",
         "status": "ignore_resolved",
@@ -53397,7 +53706,8 @@
           "41"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Genoa<-41 20839.260312944523\nFrom a flow part-of reporter Genoa to/from 41",
         "status": "ok",
@@ -53422,7 +53732,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Genoa<-210 37193.77272008851\nFrom a flow part-of reporter Genoa to/from 210",
         "status": "ok",
@@ -53447,7 +53758,8 @@
           "Norway & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Genoa<-Norway & Sweden 20610.083767978504\nFrom a flow part-of reporter Genoa to/from Norway & Sweden",
         "status": "split_failed_no_ratio",
@@ -53474,7 +53786,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Genoa->210 17271.21858700806\nFrom a flow part-of reporter Genoa to/from 210",
         "status": "ok",
@@ -53499,7 +53812,8 @@
           "211"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro<-211 12051.525209419946\nFrom a flow part-of reporter Rio de Janeiro to/from 211",
         "status": "ok",
@@ -53527,7 +53841,8 @@
           "Denmark & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro<-380 26473.842263315946\nFrom a flow part-of reporter Rio de Janeiro to/from 380\n140<-Denmark & Sweden 1466.4150943396228 (ratio on 3886)",
         "status": "ok",
@@ -53554,7 +53869,8 @@
           "Denmark & Sweden"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro<-390 15410.146989094357\nFrom a flow part-of reporter Rio de Janeiro to/from 390\n140<-Denmark & Sweden 2419.5849056603774 (ratio on 3886)",
         "status": "ok",
@@ -53578,7 +53894,8 @@
           "1161"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro<-1161 8692.903429745535\nFrom a flow part-of reporter Rio de Janeiro to/from 1161",
         "status": "ignore_resolved",
@@ -53606,15 +53923,13 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro<-Hanse Towns 228386.28101785996\nFrom a flow part-of reporter Rio de Janeiro to/from Hanse Towns",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "140<-248"
-        ],
-        "valueToSplit": 227100.44634366102,
+        "valueToSplit": 228386.28101785996,
         "newPartners": "246|276",
         "partial": "missing Bahia"
       }
@@ -53636,7 +53951,8 @@
           "2"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->2 491149.0437806227\nFrom a flow part-of reporter Rio de Janeiro to/from 2",
         "status": "ok",
@@ -53661,7 +53977,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->200 557136.0834518729\nFrom a flow part-of reporter Rio de Janeiro to/from 200",
         "status": "ok",
@@ -53686,7 +54003,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->210 73889.67915283705\nFrom a flow part-of reporter Rio de Janeiro to/from 210",
         "status": "ok",
@@ -53711,7 +54029,8 @@
           "211"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->211 33586.21779674411\nFrom a flow part-of reporter Rio de Janeiro to/from 211",
         "status": "ok",
@@ -53736,7 +54055,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->220 231942.46878457404\nFrom a flow part-of reporter Rio de Janeiro to/from 220",
         "status": "ok",
@@ -53761,7 +54081,8 @@
           "230"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->230 16990.67488541173\nFrom a flow part-of reporter Rio de Janeiro to/from 230",
         "status": "ok",
@@ -53786,7 +54107,8 @@
           "235"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->235 204283.23059902008\nFrom a flow part-of reporter Rio de Janeiro to/from 235",
         "status": "ok",
@@ -53811,7 +54133,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->300 236288.92049944683\nFrom a flow part-of reporter Rio de Janeiro to/from 300",
         "status": "ok",
@@ -53836,7 +54159,8 @@
           "380"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->380 34771.61371898214\nFrom a flow part-of reporter Rio de Janeiro to/from 380",
         "status": "ok",
@@ -53861,7 +54185,8 @@
           "390"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->390 43464.517148727675\nFrom a flow part-of reporter Rio de Janeiro to/from 390",
         "status": "ok",
@@ -53886,7 +54211,8 @@
           "1161"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->1161 45440.177019124385\nFrom a flow part-of reporter Rio de Janeiro to/from 1161",
         "status": "ignore_resolved",
@@ -53914,15 +54240,13 @@
           "Hanse Towns"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->Hanse Towns 257112.37553342816\nFrom a flow part-of reporter Rio de Janeiro to/from Hanse Towns",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "140->248"
-        ],
-        "valueToSplit": 256694.75933061264,
+        "valueToSplit": 257112.37553342816,
         "newPartners": "246|276",
         "partial": "missing Bahia"
       }
@@ -53944,7 +54268,8 @@
           "Sardinia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Rio de Janeiro->Sardinia 64011.37980085349\nFrom a flow part-of reporter Rio de Janeiro to/from Sardinia",
         "status": "ignore_resolved",
@@ -53972,7 +54297,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria<-220 155105.10510510512\nFrom a flow part-of reporter Alexandria to/from 220",
         "status": "ok",
@@ -53997,7 +54323,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria<-300 637387.3873873873\nFrom a flow part-of reporter Alexandria to/from 300",
         "status": "ok",
@@ -54022,7 +54349,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria<-337 402236.4469732891\nFrom a flow part-of reporter Alexandria to/from 337",
         "status": "ok",
@@ -54047,7 +54375,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria<-640 709728.1492018334\nFrom a flow part-of reporter Alexandria to/from 640",
         "status": "ok",
@@ -54072,7 +54401,8 @@
           "Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria<-Malta & United Kingdom 193930.7728781413\nFrom a flow part-of reporter Alexandria to/from Malta & United Kingdom",
         "status": "ignore_resolved",
@@ -54100,7 +54430,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria->220 343488.22506717243\nFrom a flow part-of reporter Alexandria to/from 220",
         "status": "ok",
@@ -54125,7 +54456,8 @@
           "300"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria->300 354354.3543543544\nFrom a flow part-of reporter Alexandria to/from 300",
         "status": "ok",
@@ -54150,7 +54482,8 @@
           "337"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria->337 138193.45661450925\nFrom a flow part-of reporter Alexandria to/from 337",
         "status": "ok",
@@ -54175,7 +54508,8 @@
           "640"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria->640 518828.03856488067\nFrom a flow part-of reporter Alexandria to/from 640",
         "status": "ok",
@@ -54200,7 +54534,8 @@
           "Malta & United Kingdom"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Alexandria->Malta & United Kingdom 39208.94578789316\nFrom a flow part-of reporter Alexandria to/from Malta & United Kingdom",
         "status": "ignore_resolved",
@@ -54230,7 +54565,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-200 1657016.657593903\nFrom a flow part-of reporter Bengal to/from 200\nChennai (Madras)<-200 243843.11377245508\nFrom a flow part-of reporter Chennai (Madras) to/from 200\nMumbai (Bombay)<-200 1019359.7169297767\nFrom a flow part-of reporter Mumbai (Bombay) to/from 200",
         "status": "ok",
@@ -54257,7 +54593,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-220 84066.41262928688\nFrom a flow part-of reporter Bengal to/from 220\nChennai (Madras)<-220 21535.764833968427\nFrom a flow part-of reporter Chennai (Madras) to/from 220\nMumbai (Bombay)<-220 38507.022318998366\nFrom a flow part-of reporter Mumbai (Bombay) to/from 220",
         "status": "ok",
@@ -54270,29 +54607,27 @@
       "source": "561",
       "target": "750",
       "attributes": {
-        "value": 13845.167844989057,
+        "value": 2976.9188894937397,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "750",
         "originalReporters": [
           "Bengal",
           "Chennai (Madras)",
-          "Mumbai (Bombay)",
-          "750"
+          "Mumbai (Bombay)"
         ],
         "originalPartners": [
-          "561",
-          "Africa Coast"
+          "561"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bengal<-561 354.1643984757757\nFrom a flow part-of reporter Bengal to/from 561\nChennai (Madras)<-561 1990.6369080021773\nFrom a flow part-of reporter Chennai (Madras) to/from 561\nMumbai (Bombay)<-561 632.1175830157865\nFrom a flow part-of reporter Mumbai (Bombay) to/from 561\n750<-Africa Coast 10868.248955495317 (ratio on 48835.05715841045)",
+        "notes": "Bengal<-561 354.1643984757757\nFrom a flow part-of reporter Bengal to/from 561\nChennai (Madras)<-561 1990.6369080021773\nFrom a flow part-of reporter Chennai (Madras) to/from 561\nMumbai (Bombay)<-561 632.1175830157865\nFrom a flow part-of reporter Mumbai (Bombay) to/from 561",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Cape Town|Port Simon|Port Elizabeth unexpected: 561|Africa Coast"
+        "partial": "missing East India Company|Kolkata (Calcutta)|Sadras|8271|7566|7503|8272|7695"
       }
     },
     {
@@ -54315,7 +54650,8 @@
           "Mauritius & Reunion (Bourbon I.)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-590 16763.96298312466\nFrom a flow part-of reporter Bengal to/from 590\n750<-Mauritius & Reunion (Bourbon I.) 7434.871688741948 (ratio on 7958.410451823625)",
         "status": "ok",
@@ -54342,7 +54678,8 @@
           "710"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-710 129779.64071856286\nFrom a flow part-of reporter Bengal to/from 710\nChennai (Madras)<-710 41140.228633641804\nFrom a flow part-of reporter Chennai (Madras) to/from 710\nMumbai (Bombay)<-710 390150.02721829066\nFrom a flow part-of reporter Mumbai (Bombay) to/from 710",
         "status": "ok",
@@ -54369,7 +54706,8 @@
           "780"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-780 11304.735982580294\nFrom a flow part-of reporter Bengal to/from 780\nChennai (Madras)<-780 94115.73217201959\nFrom a flow part-of reporter Chennai (Madras) to/from 780\nMumbai (Bombay)<-780 2730.647795318454\nFrom a flow part-of reporter Mumbai (Bombay) to/from 780",
         "status": "ok",
@@ -54395,7 +54733,8 @@
           "781"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-781 13890.038105606967\nFrom a flow part-of reporter Bengal to/from 781\nChennai (Madras)<-781 8998.693522046815\nFrom a flow part-of reporter Chennai (Madras) to/from 781",
         "status": "ok",
@@ -54421,7 +54760,8 @@
           "901"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-901 1621.9923788786064\nFrom a flow part-of reporter Bengal to/from 901\nChennai (Madras)<-901 1846.924333151878\nFrom a flow part-of reporter Chennai (Madras) to/from 901",
         "status": "ok",
@@ -54448,13 +54788,14 @@
           "America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bengal<-America 28118.127381600432\nFrom a flow part-of reporter Bengal to/from America\nChennai (Madras)<-America 1253.8922155688622\nFrom a flow part-of reporter Chennai (Madras) to/from America\nMumbai (Bombay)<-America 6227.32716385411\nFrom a flow part-of reporter Mumbai (Bombay) to/from America\ngravity results to be aggregated for partners: 140",
+        "notes": "Bengal<-America 28118.127381600432\nFrom a flow part-of reporter Bengal to/from America\nChennai (Madras)<-America 1253.8922155688622\nFrom a flow part-of reporter Chennai (Madras) to/from America\nMumbai (Bombay)<-America 6227.32716385411\nFrom a flow part-of reporter Mumbai (Bombay) to/from America",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 35599.34676102341,
-        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
+        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|70|80|89|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1164|10200|10210",
         "partial": "missing East India Company|Kolkata (Calcutta)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -54475,13 +54816,14 @@
           "Southern America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bengal<-Southern America 15550.789330430049\nFrom a flow part-of reporter Bengal to/from Southern America\ngravity results to be aggregated for partners: 140",
+        "notes": "Bengal<-Southern America 15550.789330430049\nFrom a flow part-of reporter Bengal to/from Southern America",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 15550.789330430049,
-        "newPartners": "68|100|101|110|120|130|135|140|145|150|155|160|165|1163",
+        "newPartners": "68|100|101|110|120|130|135|145|150|155|160|165|1163",
         "partial": "missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Sadras|Mumbai (Bombay)|8271|7566|7503|8272|7695"
       }
     },
@@ -54502,7 +54844,8 @@
           "Sumatra"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-Sumatra 242.89602612955906\nFrom a flow part-of reporter Bengal to/from Sumatra",
         "status": "ignore_resolved",
@@ -54530,13 +54873,12 @@
           "Arabia & Persian Gulf"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-Arabia & Persian Gulf 29063.908546543276\nFrom a flow part-of reporter Bengal to/from Arabia & Persian Gulf",
-        "status": "split_failed_no_ratio",
+        "status": "split_failed_error",
         "type": "trade",
-        "valueToSplit": 29063.908546543276,
-        "newPartners": "630|640|651|670|678|690|692|696|698|6800|6821",
         "partial": "missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Sadras|Mumbai (Bombay)|8271|7566|7503|8272|7695"
       }
     },
@@ -54558,13 +54900,12 @@
           "Eastern Asia (other) & Penang"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Bengal<-Eastern Asia (other) & Penang 164093.30430048992\nFrom a flow part-of reporter Bengal to/from Eastern Asia (other) & Penang\nMumbai (Bombay)<-Eastern Asia (other) & Penang 86501.36091453457\nFrom a flow part-of reporter Mumbai (Bombay) to/from Eastern Asia (other) & Penang\ngravity results to be aggregated for partners: 710|775|840|850",
-        "status": "split_failed_no_ratio",
+        "notes": "Bengal<-Eastern Asia (other) & Penang 164093.30430048992\nFrom a flow part-of reporter Bengal to/from Eastern Asia (other) & Penang\nMumbai (Bombay)<-Eastern Asia (other) & Penang 86501.36091453457\nFrom a flow part-of reporter Mumbai (Bombay) to/from Eastern Asia (other) & Penang",
+        "status": "split_failed_error",
         "type": "trade",
-        "valueToSplit": 250594.6652150245,
-        "newPartners": "365|710|721|730|740|775|800|811|815|835|840|850|860|8002|8201|8202|8203|8210|8221|8223|8401|8501|8510|8531|8532|8560",
         "partial": "missing East India Company|Kolkata (Calcutta)|Chennai (Madras)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -54585,7 +54926,8 @@
           "Java"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-Java 453.56559608056614\nFrom a flow part-of reporter Bengal to/from Java",
         "status": "ignore_resolved",
@@ -54614,7 +54956,8 @@
           "Bago (Pegu)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Bengal<-Bago (Pegu) 24196.624931954273\nFrom a flow part-of reporter Bengal to/from Bago (Pegu)\nChennai (Madras)<-Bago (Pegu) 15989.87479586282\nFrom a flow part-of reporter Chennai (Madras) to/from Bago (Pegu)",
         "status": "ignore_resolved",
@@ -54644,7 +54987,8 @@
           "200"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->200 1940090.3647250952\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 200\nChennai (Madras)->200 301867.5013609145\nFrom a flow part-of reporter Chennai (Madras) to/from 200\nMumbai (Bombay)->200 1053507.8933043005\nFrom a flow part-of reporter Mumbai (Bombay) to/from 200",
         "status": "ok",
@@ -54671,7 +55015,8 @@
           "220"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->220 285796.8426782798\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 220\nChennai (Madras)->220 19016.657593903103\nFrom a flow part-of reporter Chennai (Madras) to/from 220\nMumbai (Bombay)->220 18410.34295046271\nFrom a flow part-of reporter Mumbai (Bombay) to/from 220",
         "status": "ok",
@@ -54684,29 +55029,27 @@
       "source": "750",
       "target": "561",
       "attributes": {
-        "value": 11419.544988127509,
+        "value": 8759.716929776809,
         "valueGeneratedBy": [
-          "aggregation",
-          "split_by_years_ratio"
+          "aggregation"
         ],
         "reportedBy": "750",
         "originalReporters": [
           "Kolkata (Calcutta)",
           "Chennai (Madras)",
-          "Mumbai (Bombay)",
-          "750"
+          "Mumbai (Bombay)"
         ],
         "originalPartners": [
-          "561",
-          "Africa Coast"
+          "561"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Kolkata (Calcutta)->561 5149.3739793140985\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 561\nChennai (Madras)->561 112.0304844855743\nFrom a flow part-of reporter Chennai (Madras) to/from 561\nMumbai (Bombay)->561 3498.3124659771365\nFrom a flow part-of reporter Mumbai (Bombay) to/from 561\n750->Africa Coast 2659.8280583507008 (ratio on 34021.012520413715)",
+        "notes": "Kolkata (Calcutta)->561 5149.3739793140985\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 561\nChennai (Madras)->561 112.0304844855743\nFrom a flow part-of reporter Chennai (Madras) to/from 561\nMumbai (Bombay)->561 3498.3124659771365\nFrom a flow part-of reporter Mumbai (Bombay) to/from 561",
         "status": "ok",
         "type": "trade",
-        "partial": "missing Cape Town|Port Simon|Port Elizabeth unexpected: 561|Africa Coast"
+        "partial": "missing East India Company|Bengal|Sadras|8271|7566|7503|8272|7695"
       }
     },
     {
@@ -54729,7 +55072,8 @@
           "Mauritius & Reunion (Bourbon I.)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->590 141117.69188894937\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 590\n750->Mauritius & Reunion (Bourbon I.) 8003.297933370726 (ratio on 19808.383233532935)",
         "status": "ok",
@@ -54756,7 +55100,8 @@
           "710"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->710 1379497.7681001632\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 710\nChennai (Madras)->710 44076.53783342406\nFrom a flow part-of reporter Chennai (Madras) to/from 710\nMumbai (Bombay)->710 1699352.3135547086\nFrom a flow part-of reporter Mumbai (Bombay) to/from 710",
         "status": "ok",
@@ -54783,7 +55128,8 @@
           "780"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->780 2372.3462166575937\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 780\nChennai (Madras)->780 170066.6303756124\nFrom a flow part-of reporter Chennai (Madras) to/from 780\nMumbai (Bombay)->780 7282.852476864453\nFrom a flow part-of reporter Mumbai (Bombay) to/from 780",
         "status": "ok",
@@ -54809,7 +55155,8 @@
           "781"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->781 4579.749591725639\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 781\nChennai (Madras)->781 2667.6102340773\nFrom a flow part-of reporter Chennai (Madras) to/from 781",
         "status": "ok",
@@ -54835,7 +55182,8 @@
           "901"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->901 19447.14207947741\nFrom a flow part-of reporter Kolkata (Calcutta) to/from 901\nChennai (Madras)->901 7120.740337506804\nFrom a flow part-of reporter Chennai (Madras) to/from 901",
         "status": "ok",
@@ -54862,13 +55210,14 @@
           "America"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->America 134540.99074578116\nFrom a flow part-of reporter Kolkata (Calcutta) to/from America\nChennai (Madras)->America 7172.89058247142\nFrom a flow part-of reporter Chennai (Madras) to/from America\nMumbai (Bombay)->America 20250.84376701143\nFrom a flow part-of reporter Mumbai (Bombay) to/from America",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 161964.725095264,
-        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|68|70|80|89|100|101|110|120|130|135|140|145|150|155|160|165|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1163|1164|10200|10210",
+        "newPartners": "2|3|5|6|10|21|30|31|40|41|42|51|54|65|66|70|80|89|1016|1019|1020|1022|1023|1024|1025|1026|1029|1032|1048|1055|1058|1063|1064|1072|1094|1105|1106|1111|1160|1164|10200|10210",
         "partial": "missing East India Company|Bengal|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -54889,7 +55238,8 @@
           "Sumatra"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->Sumatra 60.09798584648884\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Sumatra",
         "status": "ignore_resolved",
@@ -54917,13 +55267,12 @@
           "Arabia & Persian Gulf"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->Arabia & Persian Gulf 94086.44529123571\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Arabia & Persian Gulf",
-        "status": "split_failed_no_ratio",
+        "status": "split_failed_error",
         "type": "trade",
-        "valueToSplit": 94086.44529123571,
-        "newPartners": "630|640|651|670|678|690|692|696|698|6800|6821",
         "partial": "missing East India Company|Bengal|Chennai (Madras)|Sadras|Mumbai (Bombay)|8271|7566|7503|8272|7695"
       }
     },
@@ -54945,7 +55294,8 @@
           "Java"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->Java 5323.244420250408\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Java\nChennai (Madras)->Java 8609.036472509526\nFrom a flow part-of reporter Chennai (Madras) to/from Java",
         "status": "ignore_resolved",
@@ -54974,7 +55324,8 @@
           "Bago (Pegu)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Kolkata (Calcutta)->Bago (Pegu) 11367.991290146978\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Bago (Pegu)\nChennai (Madras)->Bago (Pegu) 32159.825802939573\nFrom a flow part-of reporter Chennai (Madras) to/from Bago (Pegu)",
         "status": "ignore_resolved",
@@ -55003,13 +55354,12 @@
           "Eastern Asia (other) & Penang"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Kolkata (Calcutta)->Eastern Asia (other) & Penang 250468.26347305387\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Eastern Asia (other) & Penang\nMumbai (Bombay)->Eastern Asia (other) & Penang 91231.13772455089\nFrom a flow part-of reporter Mumbai (Bombay) to/from Eastern Asia (other) & Penang\ngravity results to be aggregated for partners: 710|775|850",
-        "status": "split_failed_no_ratio",
+        "notes": "Kolkata (Calcutta)->Eastern Asia (other) & Penang 250468.26347305387\nFrom a flow part-of reporter Kolkata (Calcutta) to/from Eastern Asia (other) & Penang\nMumbai (Bombay)->Eastern Asia (other) & Penang 91231.13772455089\nFrom a flow part-of reporter Mumbai (Bombay) to/from Eastern Asia (other) & Penang",
+        "status": "split_failed_error",
         "type": "trade",
-        "valueToSplit": 341699.4011976048,
-        "newPartners": "365|710|721|730|740|775|800|811|815|835|840|850|860|8002|8201|8202|8203|8210|8221|8223|8401|8501|8510|8531|8532|8560",
         "partial": "missing East India Company|Bengal|Chennai (Madras)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -55030,7 +55380,8 @@
           "751"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-751 32114.861186717473\nFrom a flow part-of reporter Chennai (Madras) to/from 751",
         "status": "ok",
@@ -55055,7 +55406,8 @@
           "7504"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-7504 16680.56614044638\nFrom a flow part-of reporter Chennai (Madras) to/from 7504",
         "status": "ok",
@@ -55080,7 +55432,8 @@
           "7566"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-7566 21341.643984757757\nFrom a flow part-of reporter Chennai (Madras) to/from 7566",
         "status": "ignore_internal",
@@ -55105,7 +55458,8 @@
           "7591"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-7591 473.48938486663036\nFrom a flow part-of reporter Chennai (Madras) to/from 7591",
         "status": "ignore_resolved",
@@ -55133,7 +55487,8 @@
           "8271"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-8271 33104.73598258029\nFrom a flow part-of reporter Chennai (Madras) to/from 8271",
         "status": "ignore_internal",
@@ -55158,7 +55513,8 @@
           "Canary Is. & Madeira Isles"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Canary Is. & Madeira Isles 4302.123026673925\nFrom a flow part-of reporter Chennai (Madras) to/from Canary Is. & Madeira Isles\ngravity results to be aggregated for partners: 401",
         "status": "split_failed_no_ratio",
@@ -55186,13 +55542,14 @@
           "Arabia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Arabia 890.0381056069679\nFrom a flow part-of reporter Chennai (Madras) to/from Arabia\nMumbai (Bombay)<-Arabia 123742.29722373435\nFrom a flow part-of reporter Mumbai (Bombay) to/from Arabia",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 124632.33532934132,
-        "newPartners": "651|670|678|690|692|696|698|6800|6821",
+        "newPartners": "678|6800|6821",
         "partial": "missing East India Company|Bengal|Kolkata (Calcutta)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -55214,7 +55571,8 @@
           "Persian Gulf"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Persian Gulf 581.0560696788241\nFrom a flow part-of reporter Chennai (Madras) to/from Persian Gulf\nMumbai (Bombay)<-Persian Gulf 152360.47904191617\nFrom a flow part-of reporter Mumbai (Bombay) to/from Persian Gulf",
         "status": "split_failed_no_ratio",
@@ -55242,7 +55600,8 @@
           "Manila"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Manila 282.19923788786065\nFrom a flow part-of reporter Chennai (Madras) to/from Manila\nMumbai (Bombay)<-Manila 32196.516058791505\nFrom a flow part-of reporter Mumbai (Bombay) to/from Manila",
         "status": "ignore_resolved",
@@ -55271,7 +55630,8 @@
           "Mauritius & Reunion (Bourbon I.)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Mauritius & Reunion (Bourbon I.) 6398.911268372346\nFrom a flow part-of reporter Chennai (Madras) to/from Mauritius & Reunion (Bourbon I.)\nMumbai (Bombay)<-Mauritius & Reunion (Bourbon I.) 1559.4991834512791\nFrom a flow part-of reporter Mumbai (Bombay) to/from Mauritius & Reunion (Bourbon I.)",
         "status": "ignore_resolved",
@@ -55300,7 +55660,8 @@
           "Sumatra (West)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)<-Sumatra (West) 6349.918345127926\nFrom a flow part-of reporter Chennai (Madras) to/from Sumatra (West)",
         "status": "ignore_resolved",
@@ -55328,7 +55689,8 @@
           "210"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->210 21.774632553075666\nFrom a flow part-of reporter Chennai (Madras) to/from 210",
         "status": "ok",
@@ -55353,7 +55715,8 @@
           "751"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->751 30703.53837778987\nFrom a flow part-of reporter Chennai (Madras) to/from 751",
         "status": "ok",
@@ -55378,7 +55741,8 @@
           "7504"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->7504 641.8072945019053\nFrom a flow part-of reporter Chennai (Madras) to/from 7504",
         "status": "ok",
@@ -55403,7 +55767,8 @@
           "7566"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->7566 3995.2095808383233\nFrom a flow part-of reporter Chennai (Madras) to/from 7566",
         "status": "ignore_internal",
@@ -55429,7 +55794,8 @@
           "7591"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->7591 25138.70440936309\nFrom a flow part-of reporter Chennai (Madras) to/from 7591\nMumbai (Bombay)->7591 17185.30212302667\nFrom a flow part-of reporter Mumbai (Bombay) to/from 7591",
         "status": "ignore_resolved",
@@ -55457,7 +55823,8 @@
           "8271"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->8271 178709.85302123026\nFrom a flow part-of reporter Chennai (Madras) to/from 8271",
         "status": "ignore_internal",
@@ -55483,13 +55850,14 @@
           "Arabia"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->Arabia 162970.0598802395\nFrom a flow part-of reporter Chennai (Madras) to/from Arabia\nMumbai (Bombay)->Arabia 123108.00217746325\nFrom a flow part-of reporter Mumbai (Bombay) to/from Arabia",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 286078.06205770274,
-        "newPartners": "651|670|678|690|692|696|698|6800|6821",
+        "newPartners": "678|6800|6821",
         "partial": "missing East India Company|Bengal|Kolkata (Calcutta)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -55510,13 +55878,14 @@
           "Eastern Asia (other)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
-        "notes": "Chennai (Madras)->Eastern Asia (other) 2400\nFrom a flow part-of reporter Chennai (Madras) to/from Eastern Asia (other)\ngravity results to be aggregated for partners: 710|775|850",
+        "notes": "Chennai (Madras)->Eastern Asia (other) 2400\nFrom a flow part-of reporter Chennai (Madras) to/from Eastern Asia (other)",
         "status": "split_failed_no_ratio",
         "type": "trade",
         "valueToSplit": 2400,
-        "newPartners": "365|710|721|730|740|775|800|811|815|835|840|850|860|8002|8201|8202|8203|8210|8221|8223|8401|8501|8510|8531|8532|8560",
+        "newPartners": "365|721|730|740|800|811|815|835|860|8002|8201|8202|8203|8210|8221|8223|8401|8501|8510|8531|8532|8560",
         "partial": "missing East India Company|Bengal|Kolkata (Calcutta)|Sadras|Mumbai (Bombay)|8271|7566|7503|8272|7695"
       }
     },
@@ -55538,7 +55907,8 @@
           "Persian Gulf"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->Persian Gulf 929.6679368535655\nFrom a flow part-of reporter Chennai (Madras) to/from Persian Gulf\nMumbai (Bombay)->Persian Gulf 229800\nFrom a flow part-of reporter Mumbai (Bombay) to/from Persian Gulf",
         "status": "split_failed_no_ratio",
@@ -55566,7 +55936,8 @@
           "Mauritius & Reunion (Bourbon I.)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->Mauritius & Reunion (Bourbon I.) 17452.58573761568\nFrom a flow part-of reporter Chennai (Madras) to/from Mauritius & Reunion (Bourbon I.)\nMumbai (Bombay)->Mauritius & Reunion (Bourbon I.) 2355.797495917256\nFrom a flow part-of reporter Mumbai (Bombay) to/from Mauritius & Reunion (Bourbon I.)",
         "status": "ignore_resolved",
@@ -55595,7 +55966,8 @@
           "Sadras"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->Sadras 2.939575394665215\nFrom a flow part-of reporter Chennai (Madras) to/from Sadras",
         "status": "ignore_internal",
@@ -55620,7 +55992,8 @@
           "Sumatra (West)"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Chennai (Madras)->Sumatra (West) 9380.293957539467\nFrom a flow part-of reporter Chennai (Madras) to/from Sumatra (West)",
         "status": "ignore_resolved",
@@ -55648,7 +56021,8 @@
           "140"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)<-140 9809.363091997822\nFrom a flow part-of reporter Mumbai (Bombay) to/from 140",
         "status": "ok",
@@ -55673,7 +56047,8 @@
           "401"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)<-401 2125.421883505716\nFrom a flow part-of reporter Mumbai (Bombay) to/from 401",
         "status": "ok",
@@ -55700,7 +56075,8 @@
           "7591"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)<-752 21152.095808383234\nFrom a flow part-of reporter Mumbai (Bombay) to/from 752\n750<-7591 473.48938486663036",
         "status": "ok",
@@ -55725,7 +56101,8 @@
           "Kutch & Sindh"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)<-Kutch & Sindh 69249.10179640718\nFrom a flow part-of reporter Mumbai (Bombay) to/from Kutch & Sindh",
         "status": "ignore_resolved",
@@ -55753,16 +56130,14 @@
           "Africa Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)<-Africa Coast 48835.05715841045\nFrom a flow part-of reporter Mumbai (Bombay) to/from Africa Coast",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "750<-561"
-        ],
-        "valueToSplit": 37966.808202915134,
-        "newPartners": "411|433|450|451|520|530|540|541|600|615|616|651|4041|4042|4044|4341|4348|4381|4521|4535|4781|4792|4793|4842|5012|5332|5403|5621|6062|6064|6203",
+        "valueToSplit": 48835.05715841045,
+        "newPartners": "411|433|450|451|520|530|540|541|600|615|616|4041|4042|4044|4341|4348|4381|4521|4535|4781|4792|4793|4842|5012|5332|5403|5621|6062|6064|6203",
         "partial": "missing East India Company|Bengal|Kolkata (Calcutta)|Chennai (Madras)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -55783,7 +56158,8 @@
           "Kutch & Sindh"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)->Kutch & Sindh 207048.12193794228\nFrom a flow part-of reporter Mumbai (Bombay) to/from Kutch & Sindh",
         "status": "ignore_resolved",
@@ -55811,16 +56187,14 @@
           "Africa Coast"
         ],
         "labels": [
-          "GENERATED_TRADE"
+          "GENERATED_TRADE",
+          "FROM_REPORTER_AGGREGATION"
         ],
         "notes": "Mumbai (Bombay)->Africa Coast 34021.012520413715\nFrom a flow part-of reporter Mumbai (Bombay) to/from Africa Coast",
-        "status": "split_only_partial",
+        "status": "split_failed_no_ratio",
         "type": "trade",
-        "mergedIn": [
-          "750->561"
-        ],
-        "valueToSplit": 31361.184462063015,
-        "newPartners": "411|433|450|451|520|530|540|541|600|615|616|651|4041|4042|4044|4341|4348|4381|4521|4535|4781|4792|4793|4842|5012|5332|5403|5621|6062|6064|6203",
+        "valueToSplit": 34021.012520413715,
+        "newPartners": "411|433|450|451|520|530|540|541|600|615|616|4041|4042|4044|4341|4348|4381|4521|4535|4781|4792|4793|4842|5012|5332|5403|5621|6062|6064|6203",
         "partial": "missing East India Company|Bengal|Kolkata (Calcutta)|Chennai (Madras)|Sadras|8271|7566|7503|8272|7695"
       }
     },
@@ -58487,54 +58861,6 @@
       }
     },
     {
-      "key": "230->5",
-      "source": "230",
-      "target": "5",
-      "attributes": {
-        "value": 1767.7757345924222,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "230",
-        "originalReporters": [
-          "230"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "230->West Indies (other) 1767.7757345924222 (ratio on 141457.24672040463)",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
-      "key": "230->100",
-      "source": "230",
-      "target": "100",
-      "attributes": {
-        "value": 2407.023547622763,
-        "valueGeneratedBy": [
-          "split_by_years_ratio"
-        ],
-        "reportedBy": "230",
-        "originalReporters": [
-          "230"
-        ],
-        "originalPartners": [
-          "West Indies (other)"
-        ],
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "230->West Indies (other) 2407.023547622763 (ratio on 141457.24672040463)",
-        "status": "ok",
-        "type": "trade"
-      }
-    },
-    {
       "key": "324<-615",
       "source": "615",
       "target": "324",
@@ -58559,25 +58885,49 @@
       }
     },
     {
-      "key": "140->248",
-      "source": "140",
-      "target": "248",
+      "key": "850<-860",
+      "source": "860",
+      "target": "850",
       "attributes": {
-        "value": 417.61620281553024,
+        "value": 566648,
         "valueGeneratedBy": [
           "split_by_years_ratio"
         ],
-        "reportedBy": "140",
+        "reportedBy": "850",
         "originalReporters": [
-          "140"
+          "850"
         ],
         "originalPartners": [
-          "Hanse Towns"
+          "East Indian Archipelago"
         ],
         "labels": [
           "GENERATED_TRADE"
         ],
-        "notes": "140->Hanse Towns 417.61620281553024 (ratio on 257112.37553342816)",
+        "notes": "850<-East Indian Archipelago 566648",
+        "status": "ok",
+        "type": "trade"
+      }
+    },
+    {
+      "key": "850->860",
+      "source": "850",
+      "target": "860",
+      "attributes": {
+        "value": 526128,
+        "valueGeneratedBy": [
+          "split_by_years_ratio"
+        ],
+        "reportedBy": "850",
+        "originalReporters": [
+          "850"
+        ],
+        "originalPartners": [
+          "East Indian Archipelago"
+        ],
+        "labels": [
+          "GENERATED_TRADE"
+        ],
+        "notes": "850->East Indian Archipelago 526128",
         "status": "ok",
         "type": "trade"
       }

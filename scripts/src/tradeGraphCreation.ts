@@ -504,6 +504,7 @@ export function treatReporters(graph: GraphType) {
             if (newEdgeId !== null) {
               (graph as GraphEntityPartiteType).updateEdgeAttributes(newEdgeId, (atts) => ({
                 ...atts,
+                labels: new Set([...atts.labels, "FROM_REPORTER_AGGREGATION"]),
                 // This new trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
                 status:
                   graph.getNodeAttribute(partner, "entityType") === "GPH-AUTONOMOUS-CITED"
@@ -549,6 +550,7 @@ export function treatReporters(graph: GraphType) {
           if (newEdgeId !== null) {
             (graph as GraphEntityPartiteType).updateEdgeAttributes(newEdgeId, (atts) => ({
               ...atts,
+              labels: new Set([...atts.labels, "FROM_REPORTER_AGGREGATION"]),
               // This new trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
               status:
                 graph.getNodeAttribute(originalPartner, "entityType") === "GPH-AUTONOMOUS-CITED" ? "ok" : "toTreat",
@@ -568,6 +570,7 @@ export function treatReporters(graph: GraphType) {
 
           (graph as GraphEntityPartiteType).updateEdgeAttributes(edgeToTreat, (atts) => ({
             ...atts,
+            labels: new Set([...atts.labels, "FROM_REPORTER_AGGREGATION"]),
             newReporters: autonomousReporters.autonomousIds.join("|"),
             // This trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
             status:

@@ -39,12 +39,19 @@ export function assignTIBI(graph: DirectedGraph) {
         else return 0;
       }),
     );
-    // I1
-    const I1 = Xij / X[i] / (Xrj / Xr);
-    // I3
-    const I3 = (1 - Xij / X[i]) / (1 - Xrj / Xr);
-    // TIBI : I2 but on I1/I3
-    const TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
+
+    let TIBI: number | undefined = undefined;
+    // case of isolated trade partners with only one edge
+    // TIBI can't be calculated
+    if (Xrj == 0 || Xr == 0) TIBI = 1;
+    else {
+      // I1
+      const I1 = Xij / X[i] / (Xrj / Xr);
+      // I3
+      const I3 = (1 - Xij / X[i]) / (1 - Xrj / Xr);
+      // TIBI : I2 but on I1/I3
+      TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
+    }
     // assign result on edge
     // TIBI can be undefined when only one flow between i and j, Xr=0 which leds to infinite value
     graph.setEdgeAttribute(e, "TIBI", isNaN(TIBI) || isNil(TIBI) ? undefined : TIBI);

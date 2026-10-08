@@ -4,7 +4,7 @@ import { groupBy, identity, sortBy, toPairs, uniq, values } from "lodash";
 
 import { aggregatedFlowNote } from "./graphTraversals";
 import { flagPartialAggregations, flagReporters, tradeEdgeKey } from "./tradeGraphCreation";
-import { EntityNodeAttributes, GraphEntityPartiteType } from "./types";
+import { GraphEntityPartiteType } from "./types";
 import { exportGephLiteFile, getTradeGraphsByYear, setReplacer } from "./utils";
 
 interface GravityResultsType {
@@ -22,19 +22,6 @@ interface GravityResultsType {
   pred_trade: number;
 }
 
-interface ModularityTestResult {
-  year: number;
-  resolution: number;
-  modularity: number;
-  nb_communities: number;
-}
-
-type OkEdgeAttributes = {
-  proximity: number;
-  observedTradeValues: number[];
-};
-type OkNodeAttributes = EntityNodeAttributes;
-
 async function readGravityResults() {
   // read existing network file
   const tradeGraphsByYear = await getTradeGraphsByYear("ratios");
@@ -50,9 +37,10 @@ async function readGravityResults() {
       cast: (v, ctx) => {
         switch (ctx.column) {
           case "year":
+            return v ? parseInt(v) : undefined;
           case "valueToSplit":
           case "pred_trade":
-            return v ? parseInt(v) : undefined;
+            return v ? parseFloat(v) : undefined;
           default:
             return v;
         }
