@@ -893,6 +893,12 @@ image: /images/probit dur1.png
 backgroundSize: contain
 ---
 
+---
+layout: image
+image: /images/xtlogit dur1.jpg
+backgroundSize: contain
+---
+
 
 
 ---
