@@ -55,6 +55,11 @@ jobs:
       - name: Build Bonn
         working-directory: ${{ env.HNR_2026_DIR }}
         run: npm run build -- slides_bonn.md -o dist/bonn_2026/ --base ricardo_gph_analysis/bonn_2026/
+        
+      # Exécution du script de build
+      - name: Build LEDa
+        working-directory: ${{ env.HNR_2026_DIR }}
+        run: npm run build -- slides_LEDa.md -o dist/leda_2026/ --base ricardo_gph_analysis/leda_2026/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

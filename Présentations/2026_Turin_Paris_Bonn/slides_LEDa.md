@@ -881,6 +881,18 @@ image: /images/cloglogreg1.jpg
 backgroundSize: contain
 ---
 
+---
+layout: image
+image: /images/logit dur1.png
+backgroundSize: contain
+---
+
+---
+layout: image
+image: /images/probit dur1.png
+backgroundSize: contain
+---
+
 
 
 ---
@@ -939,7 +951,7 @@ layout: center
 
 # Any questions?
 
-_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/bonn_2026/
+_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/LEDa_2026/ (?)
 
 _Code & Data:_ https://github.com/paulgirard/ricardo_gph_analysis
 
