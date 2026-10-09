@@ -394,13 +394,13 @@ write.csv(alliances, "external data/Controls panel/alliances.csv", row.names = F
 #################
 library(tidyverse)
 library(haven)
+tad_public <- read_dta("external data/Pahre data/tad_public.dta")
 tad_codes <- read.csv2("external data/Pahre data/TAD country codes.csv",
                        fileEncoding = "UTF-8-BOM", stringsAsFactors = FALSE)
 tad_codes <- tad_codes %>% mutate(GPH = na_if(trimws(GPH), "XXX"))
 
 aggregats <- c("sum","esum","asum")
 tous <- c(tad_codes$code, aggregats)
-c("wld", "trv") %in% tous      # doit donner TRUE TRUE
 
 split_pair <- function(x) {
   s <- sub("^[tz]", "", x)
@@ -420,7 +420,7 @@ lookup <- tibble(colonne   = cles,
                  country_A = paires[, 1],
                  country_B = paires[, 2])
 
-# contrôle : doit renvoyer 0 ligne
+# contrôle : ok 0 ligne
 lookup %>% filter(is.na(country_A))
 
 tad_long <- tad_public %>%
@@ -443,15 +443,18 @@ tad_pairs <- tad_bilat_gph %>%
 
 # Controles : self-pairs et collisions après clé
 tad_pairs %>% filter(GPH_A == GPH_B) %>% count(country_A, country_B)
-tad_pairs %>% count(key, year, serie) %>% filter(n > 1) #Ok juste us-uk mais pas de contradiction (sauf na dans l'un et pas dans l'autre)
+tad_pairs %>%
+  group_by(key, year) %>% filter(n() > 1) %>% ungroup() %>%
+  distinct(key, serie, country_A, country_B) %>%
+  arrange(key, serie) %>% print(n = Inf) #ok normal
 
-# --- Une ligne par cle-annee, une colonne par serie -------------------
+# --- Une ligne par cle-annee -------------------
 tad_key <- tad_pairs %>%
   group_by(key, year) %>%
   summarise(TA = if (all(is.na(TA))) NA_real_ else max(TA, na.rm = TRUE),
             .groups = "drop")
 
-tad_key %>% count(key, year) %>% filter(n > 1)   # 0 ligne ok 48
+tad_key %>% count(key, year) %>% filter(n > 1)   # 0 ligne ok
 
 trade_agreements <- master %>%
   select(key, year, source, target) %>%
