@@ -147,6 +147,7 @@ ggsave("Fig 4 nb of distinct entities per year.png",
 
 # Count unique reporting countries by year and reporting_type
 plot_data3 <- RICardocleannoworld %>%
+  filter(reporting_type != "colonial_area") %>%
   group_by(year, reporting_type) %>%
   summarise(nb_reporting_unique = n_distinct(reporting), .groups = "drop")
 
