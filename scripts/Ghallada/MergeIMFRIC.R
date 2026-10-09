@@ -3,6 +3,7 @@ rm(list = ls(all = TRUE))
 gc()
 library(readxl); library(dplyr)
 
+setwd('~/Desktop/ricardo_gph_analysis/')
 zipf <- "scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip"
 DOT  <- read.csv(unz(zipf, unzip(zipf, list = TRUE)$Name[1]))
 

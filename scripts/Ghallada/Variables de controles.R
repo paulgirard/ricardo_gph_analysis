@@ -387,3 +387,79 @@ alliances <- master %>%
   select(key, year, starts_with("atop_"))
 
 write.csv(alliances, "external data/Controls panel/alliances.csv", row.names = FALSE)
+
+
+#################
+#Trade Agreement# '(Raw Dataset directly given by Pahre)
+#################
+library(tidyverse)
+library(haven)
+tad_codes <- read.csv2("external data/Pahre data/TAD country codes.csv",
+                       fileEncoding = "UTF-8-BOM", stringsAsFactors = FALSE)
+tad_codes <- tad_codes %>% mutate(GPH = na_if(trimws(GPH), "XXX"))
+
+aggregats <- c("sum","esum","asum")
+tous <- c(tad_codes$code, aggregats)
+c("wld", "trv") %in% tous      # doit donner TRUE TRUE
+
+split_pair <- function(x) {
+  s <- sub("^[tz]", "", x)
+  if (s %in% tous) return(c(s, NA_character_))      # zngc, zsum : un seul code
+  for (i in seq_len(nchar(s) - 1)) {
+    a <- substr(s, 1, i); b <- substr(s, i + 1, nchar(s))
+    if (a %in% tous && b %in% tous) return(c(a, b))
+  }
+  c(NA_character_, NA_character_)
+}
+
+cles   <- grep("^[tz]", setdiff(names(tad_public), "year"), value = TRUE)
+paires <- t(sapply(cles, split_pair))
+
+lookup <- tibble(colonne   = cles,
+                 serie     = substr(cles, 1, 1),
+                 country_A = paires[, 1],
+                 country_B = paires[, 2])
+
+# contrôle : doit renvoyer 0 ligne
+lookup %>% filter(is.na(country_A))
+
+tad_long <- tad_public %>%
+  select(year, all_of(cles)) %>%
+  pivot_longer(-year, names_to = "colonne", values_to = "TA") %>%
+  left_join(lookup, by = "colonne") %>%
+  left_join(tad_codes %>% select(code, name_A = Name, GPH_A = GPH),
+            by = c("country_A" = "code")) %>%
+  left_join(tad_codes %>% select(code, name_B = Name, GPH_B = GPH),
+            by = c("country_B" = "code")) %>%
+  select(serie, country_A, name_A, GPH_A,
+         country_B, name_B, GPH_B, year, TA)
+
+tad_bilat <- tad_long %>% filter(!is.na(country_B), !country_B %in% aggregats)
+tad_bilat_gph <- tad_bilat %>% filter(!is.na(GPH_A), !is.na(GPH_B))
+
+# --- Cle non orientee, meme convention que master ---------------------
+tad_pairs <- tad_bilat_gph %>%
+  mutate(key = paste0(pmin(GPH_A, GPH_B), "-", pmax(GPH_A, GPH_B)))
+
+# Controles : self-pairs et collisions après clé
+tad_pairs %>% filter(GPH_A == GPH_B) %>% count(country_A, country_B)
+tad_pairs %>% count(key, year, serie) %>% filter(n > 1) #Ok juste us-uk mais pas de contradiction (sauf na dans l'un et pas dans l'autre)
+
+# --- Une ligne par cle-annee, une colonne par serie -------------------
+tad_key <- tad_pairs %>%
+  group_by(key, year) %>%
+  summarise(TA = if (all(is.na(TA))) NA_real_ else max(TA, na.rm = TRUE),
+            .groups = "drop")
+
+tad_key %>% count(key, year) %>% filter(n > 1)   # 0 ligne ok 48
+
+trade_agreements <- master %>%
+  select(key, year, source, target) %>%
+  left_join(tad_key, by = c("key", "year")) %>%
+  select(key, year, TA)
+
+colSums(is.na(trade_agreements))
+table(trade_agreements$TA, useNA = "ifany")
+
+write.csv(trade_agreements, "external data/Controls panel/trade_agreements.csv",
+          row.names = FALSE)
