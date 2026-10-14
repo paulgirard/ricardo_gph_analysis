@@ -16,6 +16,8 @@ end
 import delimited "external data/Controls panel/distance.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 
 rename key undir_pair_key
+replace distance="." if distance=="NA"
+destring distance, replace
 
 save "external data/Controls panel/distance.dta", replace
 
