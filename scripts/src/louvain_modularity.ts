@@ -84,8 +84,8 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-//const years = [...range(1833, 1939), ...range(1948, 2026)];
-const years = [1833, 1850];
+const years = [...range(1833, 1939), ...range(1948, 2026)];
+//const years = [1833, 1850];
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
@@ -217,7 +217,7 @@ years.forEach((year) => {
 
       // compute and assign proximity
       cafFobGraph.forEachEdge((e, atts) => {
-        const Iij = bilateralGraph.getEdgeAttribute(e, "value") || 0;
+        const Iij = atts.value || 0;
 
         const Ipij =
           (weightedDegrees.out[bilateralGraph.source(e)] * weightedDegrees.in[bilateralGraph.target(e)]) /
@@ -227,11 +227,17 @@ years.forEach((year) => {
           throw new Error(
             `${Iij} ${Ipij} ${weightedDegrees.out[bilateralGraph.source(e)]} ${weightedDegrees.in[bilateralGraph.target(e)]} ${totalBilateralTrade}`,
           );
-        const proximity = (Iij - Ipij) / weightedDegrees.in[bilateralGraph.target(e)];
+        const proximity =
+          cafFob === "fob"
+            ? // FOB
+              (Iij - Ipij) / weightedDegrees.out[bilateralGraph.source(e)]
+            : // CAF
+              (Iij - Ipij) / weightedDegrees.in[bilateralGraph.target(e)];
+
         cafFobGraph.setEdgeAttribute(e, "proximity", proximity);
       });
       //compute and assign TIBI
-      assignTIBI(cafFobGraph);
+      assignTIBI(cafFobGraph, cafFob as "fob" | "caf");
 
       // reduce to undirected
       const undirectedCafFobGraph: UndirectedGraph<OkNodeAttributes, Partial<OkEdgeAttributes>> = UndirectedGraph.from(

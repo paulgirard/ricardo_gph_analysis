@@ -6,14 +6,18 @@ import { fromPairs, isNil, sum } from "lodash";
  * @param graph
  */
 
-export function assignTIBI(graph: DirectedGraph) {
-  // sum of exports by nodes
+export function assignTIBI(graph: DirectedGraph, cafFob: "caf" | "fob") {
+  // FOB ok
+  // if CAF reverse edge direction
+
+  // X(n)
+  // FOB: sum of exports by n
+  // CAF: sum of imports by n
   const X = fromPairs(
     graph.mapNodes((n) => {
-      let totalExportN = 0;
-      graph.forEachOutboundEdge(n, (_, eAtts) => {
-        totalExportN += eAtts.value || 0;
-      });
+      const xEdges = cafFob === "fob" ? graph.outboundEdges(n) : graph.inboundEdges(n);
+      const totalExportN = sum(xEdges.map((e) => graph.getEdgeAttribute(e, "value") || 0));
+
       return [n, totalExportN];
     }),
   );
@@ -21,39 +25,54 @@ export function assignTIBI(graph: DirectedGraph) {
   graph.forEachEdge((e, atts, i, j) => {
     // Xij as export of i to j
     const Xij = atts.value || 0;
-
-    // Xrj as all export from all the World but i to j
+    const xrEdges = cafFob === "fob" ? graph.inboundEdges(j) : graph.outboundEdges(j);
+    // Xrj as
+    // FOB: all export from all the World but i to j
+    // CAF: all import to all the World but i from j
     const Xrj = sum(
-      graph.mapInboundEdges(j, (_, rjAtts, rjSource) => {
-        if (rjSource !== i) {
-          return rjAtts.value || 0;
+      xrEdges.map((rj) => {
+        if (cafFob === "fob" ? graph.source(rj) !== i : graph.target(rj) !== i) {
+          return graph.getEdgeAttribute(rj, "value") || 0;
         }
         return 0;
       }),
     );
 
-    //Xr as total exports from all the world but i and j
-    const Xr = sum(
-      graph.mapOutEdges((_, rAtts, rSource) => {
-        if (rSource !== i && rSource !== j) return rAtts.value || 0;
-        else return 0;
-      }),
-    );
+    //Xr as
+    // FOB: total exports from all the world but i
+    // CAF: total imports from all the world but i
+    const Xr =
+      cafFob === "fob"
+        ? sum(
+            graph.mapOutEdges((_, rAtts, rSource) => {
+              if (rSource !== i) return rAtts.value || 0;
+              else return 0;
+            }),
+          )
+        : sum(
+            graph.mapInEdges((_, rAtts, __, rTarget) => {
+              if (rTarget !== i) return rAtts.value || 0;
+              else return 0;
+            }),
+          );
 
     let TIBI: number | undefined = undefined;
     // case of isolated trade partners with only one edge
     // TIBI can't be calculated
     if (Xrj == 0 || Xr == 0) TIBI = 1;
     else {
-      // I1
-      const I1 = Xij / X[i] / (Xrj / Xr);
+      // I1. If Xrj = 0 => infinity
+      const I1 = Xij / X[i] / (Xrj / Xr); // Xij * Xr / (X[i] * Xrj)
+
       // I3
       const I3 = (1 - Xij / X[i]) / (1 - Xrj / Xr);
+
       // TIBI : I2 but on I1/I3
       TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
     }
+
     // assign result on edge
-    // TIBI can be undefined when only one flow between i and j, Xr=0 which leds to infinite value
+    // TIBI can be undefined when : i,j is the only flow to j (fob) from j (caf)
     graph.setEdgeAttribute(e, "TIBI", isNaN(TIBI) || isNil(TIBI) ? undefined : TIBI);
   });
 
