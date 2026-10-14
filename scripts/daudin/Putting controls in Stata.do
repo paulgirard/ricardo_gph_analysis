@@ -29,6 +29,11 @@ import delimited "external data/Controls panel/contiguity.csv", delimiter(comma)
 rename key undir_pair_key
 save "external data/Controls panel/contiguity.dta", replace
 
+import delimited "external data/Controls panel/trade_agreements.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+rename key undir_pair_key
+save "external data/Controls panel/trade_agreements.dta", replace
+//**Défini jusqu’en 1913
+
 import delimited "external data/Controls panel/disputes.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 rename key undir_pair_key
 save "external data/Controls panel/disputes.dta", replace
