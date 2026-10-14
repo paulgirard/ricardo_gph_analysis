@@ -3,21 +3,6 @@ cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 
-*************Importation des données de localisation
-
-import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-
-tostring(GPH_code), replace
-save GeoPolHist_entities_temp.dta, replace
-
-
-
-**********Importation de la contiguité
-import delimited "data/blocks/Controls panel/contiguity.csv",/*
-	*/ delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-save "external data/contiguity.dta", replace
-
 
 /***************************************************************************************/
 *************Importation des flux commerciaux
@@ -88,9 +73,22 @@ gen totreat_flows=r(N)
 
 
 ///Création de la clef pour les paires de GPH
-gen key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
-replace key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
-order key
+gen undir_pair_key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
+replace undir_pair_key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
+order undir_pair_key
+
+
+///Création des flux nuls imputés
+
+
+
+
+
+
+
+
+
+
 
 save tradeFlows_`year'_temp.dta, replace
 
@@ -106,70 +104,19 @@ keep if status=="ok"
 keep if CafFob=="`CafFob'"
 
 
-*****Calcul de la distance
 
 keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld" & exporterId!="Unknown" & importerId!="Unknown"
 *destring exporterId importerId, replace
 
 
-foreach trader in importer exporter {
-	rename `trader'Id GPH_code
-	recast str2045 GPH_code
-	merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(1 3)
-	assert _merge==3
-	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
-	rename GPH_code `trader'Id
-	rename lat `trader'_lat
-	rename lng `trader'_lng
-}
-
-geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
-
-
+merge m:1 undir_pair_key using "external data/Controls panel/distance.dta", keep(1 3) nogenerate
 gen ln_distance=ln(distance_km)
+merge m:1 undir_pair_key year using "external data/Controls panel/alliances.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/contiguity.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/disputes.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/commonempire.dta", keep(1 3) nogenerate
+merge m:1 undir_pair_key year using "external data/Controls panel/trade_agreements.dta", keep(1 3) nogenerate
 
-
-
-
-save tradeFlows_`year'_`CafFob'ok_temp, replace
-
-*****Calcul de le relation géopolitique
-
-
-
-use tradeFlows_`year'_`CafFob'ok_temp, clear
-
-////Pour rapports de subordination-- À changer !
-merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
-replace sub_empire=0 if sub_empire==.
-drop _merge GPH_code GPH_status sovereign_GPH_code
-
-recast str2045 importerId
-rename importerId GPH_code
-merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code importerId_sov
-drop _merge
-rename GPH_code importerId 
-
-recast str2045 exporterId
-rename exporterId GPH_code
-merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code exporterId_sov
-drop _merge
-rename GPH_code exporterId
-
-
-generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
-replace common_empire=0 if common_empire==.
-bysort importerId exporterId : egen max=max(common_empire)
-bysort importerId exporterId : replace common_empire = max
-bysort importerId exporterId : keep if _n==1
-drop max
-bysort importerId exporterId : assert  _N==1
-***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
-*Cracow dès 1833
-
-replace common_empire=1 if sub_empire==1
 
 
 ***contiguité
