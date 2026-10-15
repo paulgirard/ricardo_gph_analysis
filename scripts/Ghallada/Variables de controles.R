@@ -124,6 +124,22 @@ manuel <- read.csv2("external data/na_contig_paires complete.csv",
 nrow(manuel)
 table(manuel$conttype_manuel, useNA = "ifany")
 
+# --- Complement manuel : paires codees dans un second temps -----------
+manuel_2 <- read.csv("external data/Controls panel/na_contig_a_coder_in_process.csv",
+                     stringsAsFactors = FALSE) %>%
+  filter(!is.na(conttype)) %>%
+  transmute(key, conttype_manuel = as.integer(conttype)) %>%
+  distinct(key, .keep_all = TRUE)
+
+nrow(manuel_2)
+table(manuel_2$conttype_manuel, useNA = "ifany")
+
+manuel <- bind_rows(manuel, manuel_2) %>%
+  distinct(key, .keep_all = TRUE)  
+
+nrow(manuel)
+table(manuel$conttype_manuel, useNA = "ifany")
+
 # --- Controle : le complement manuel couvre-t-il tout ? ---------------
 master %>%
   filter(as.integer(source) > 999 | as.integer(target) > 999) %>%
@@ -138,14 +154,15 @@ contiguity <- master %>%
   mutate(
     hors_cow = as.integer(source) > 999 | as.integer(target) > 999,
     conttype = if_else(hors_cow, conttype_manuel, as.integer(conttype)),
-    conttype = if_else(hors_cow, conttype, coalesce(conttype, 0L))
+    conttype = if_else(hors_cow, conttype, coalesce(conttype, 0L)),
+    conttype = if_else(conttype > 2, 0L, conttype) # put zero for conttype above 2
   ) %>%
   select(key, year, conttype)
 
 table(contiguity$conttype, useNA = "ifany")
 
-
 write.csv(contiguity, "external data/Controls panel/contiguity.csv", row.names = FALSE)
+
 
 #Restant à coder
 library(dplyr); library(writexl)

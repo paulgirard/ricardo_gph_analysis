@@ -4,10 +4,21 @@ gc()
 library(readxl); library(dplyr)
 
 setwd('~/Desktop/ricardo_gph_analysis/')
-zipf <- "scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip"
+zipf <- "scripts/dataset_2026-10-11T15_40_00.199306226Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip"
 DOT  <- read.csv(unz(zipf, unzip(zipf, list = TRUE)$Name[1]))
 
 DOT <- distinct(DOT)
+
+table(DOT$FREQUENCY)
+DOT <- DOT %>% filter(FREQUENCY == "Annual")
+DOT$TIME_PERIOD <- as.integer(DOT$TIME_PERIOD)
+
+table(DOT$INDICATOR)
+DOT <- DOT %>%
+  filter(INDICATOR %in% c("Exports of goods, Free on board (FOB), US dollar",
+                          "Imports of goods, Cost insurance freight (CIF), US dollar"))
+nrow(DOT)
+
 #library(dplyr)
 #countries <- bind_rows(
 # DOT %>% select(COUNTRY.ID, COUNTRY),
@@ -149,18 +160,21 @@ setdiff(unique(c(DOT$GPH_reporter, DOT$GPH_partner)), noms$gph)
 # 2. Mise au format RICardo
 # -----------------------------------------------------------------------------
 
-flux <- DOT %>%
-  transmute(
-    id                           = paste0(GPH_reporter, "->", GPH_partner),
-    year                         = TIME_PERIOD,
-    importerId                   = as.character(GPH_partner),
-    importerLabel                = noms$nom[match(GPH_partner,  noms$gph)],
-    importerType                 = "GPH", #to update if autonomous and cited later
-    exporterId                   = as.character(GPH_reporter),
-    exporterLabel                = noms$nom[match(GPH_reporter, noms$gph)],
-    exporterType                 = "GPH",#to update if autonomous and cited later
-    value                        = VALUE_GBP,
-    reportedBy                   = as.character(GPH_reporter),
+mise_au_format <- function(d, sens) {
+  exp_gph <- if (sens == "export") d$GPH_reporter else d$GPH_partner
+  imp_gph <- if (sens == "export") d$GPH_partner  else d$GPH_reporter
+  
+  tibble(
+    id                           = paste0(exp_gph, "->", imp_gph),
+    year                         = d$TIME_PERIOD,
+    importerId                   = as.character(imp_gph),
+    importerLabel                = noms$nom[match(imp_gph, noms$gph)],
+    importerType                 = "GPH",
+    exporterId                   = as.character(exp_gph),
+    exporterLabel                = noms$nom[match(exp_gph, noms$gph)],
+    exporterType                 = "GPH",
+    value                        = d$VALUE_GBP,
+    reportedBy                   = as.character(d$GPH_reporter),
     partial                      = NA,
     valueToSplit                 = NA,
     newReporters                 = NA,
@@ -169,18 +183,26 @@ flux <- DOT %>%
     status                       = "ok",
     notes                        = NA_character_
   )
-
-
-
-
-# -----------------------------------------------------------------------------
-# 3. Ecriture d'un fichier par annee
-# -----------------------------------------------------------------------------
-for (an in sort(unique(flux$year))) {
-  d <- flux[flux$year == an, ]
-  f <- paste0("data/tradeFlows_", an, "_gravity.csv")
-  write.csv(d, f, row.names = FALSE)
-  message("  ", an, " : ", nrow(d), " flux, ",
-          length(unique(c(d$exporterId, d$importerId))), " pays")
 }
 
+flux_fob <- DOT %>% filter(INDICATOR == "Exports of goods, Free on board (FOB), US dollar") %>%
+  mise_au_format("export")
+flux_cif <- DOT %>% filter(INDICATOR == "Imports of goods, Cost insurance freight (CIF), US dollar") %>%
+  mise_au_format("import")
+
+nrow(flux_fob); nrow(flux_cif)
+# -----------------------------------------------------------------------------
+# 3. Ecriture d'un fichier par annee et par base
+# -----------------------------------------------------------------------------
+ecrire_par_annee <- function(flux, suffixe) {
+  for (an in sort(unique(flux$year))) {
+    d <- flux[flux$year == an, ]
+    f <- paste0("data/tradeFlows_", an, "_gravity_", suffixe, ".csv")
+    write.csv(d, f, row.names = FALSE)
+    message("  ", suffixe, " ", an, " : ", nrow(d), " flux, ",
+            length(unique(c(d$exporterId, d$importerId))), " pays")
+  }
+}
+
+ecrire_par_annee(flux_fob, "fob")
+ecrire_par_annee(flux_cif, "cif")
