@@ -328,7 +328,7 @@ replace id = importerId + "<-" + exporterId if CafFob=="caf"
 ///////////Traitement des flux à agréger post-aggretation
 
 
-sort id
+sort id notes
 by id : egen nbr_of_successes=count(value)
 by id : replace status="failed_PG_aggregation" if nbr_of_successes!=_N & _N>1
 by id : egen pred_trade_cum=total(pred_trade)
@@ -490,6 +490,13 @@ foreach year of numlist 1834(1)1840 1842(1)1938 {
 	
 }
 
+global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
+foreach var_ex of global liste_var_ex {
+    postclose reg_result_`var_ex'
+}
+
 
 erase GeoPolHist_entities_temp.dta
 erase GeoPolHist_entities_status_over_time_temp.dta
+
+
