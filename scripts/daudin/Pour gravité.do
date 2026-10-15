@@ -1,4 +1,7 @@
-*ssc install geodist
+
+*ssc install ppmlhdfe, replace
+*ssc install ftools, replace
+*ssc install reghdfe, replace
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
@@ -9,16 +12,17 @@ global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 capture program drop trade_importation
 program define trade_importation
-	args year
+	args year CafFob
 
 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(13 15)
 ***To force newReporters and originalReportedTradeFlowIds to be a string even if empty
 
+recast str2045 importerId, force
+recast str2045 exporterId, force
+format value valueToSplit %20.0fc
 
-
-format value* %20.0fc
 
 capture noisily tostring(reportedBy), replace
 
@@ -26,8 +30,8 @@ capture noisily tostring(reportedBy), replace
 keep if year==`year'
 tempfile tradeFlows
 save `tradeFlows', replace
-replace valueFromImporter=valueToSplit if valueFromImporter!=. & valueToSplit!=.
-replace valueFromExporter=valueToSplit if valueFromExporter!=. & valueToSplit!=.
+replace valuecaf=valueToSplit if valuecaf!=. & valueToSplit!=.
+replace valuefob=valueToSplit if valuefob!=. & valueToSplit!=.
 drop valueToSplit
  
 reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
@@ -46,6 +50,8 @@ drop if status =="ignore_internal" | status=="ignore_resolved"
 drop if status=="ignore_duplicate"
 drop if status=="split_failed_error"
 drop if status=="ignore_partial_reporter"
+drop if status=="ignore_partial_duplicate"
+
 
 //Restent les "split_failed_no_ratio"
 
@@ -54,11 +60,12 @@ gen ln_value=ln(value)
 encode importerLabel, gen(importer_lbl)
 encode exporterLabel, gen(exporter_lbl)
 
-generate CafFob="FromUnknown"
-replace CafFob="FromImporter" if reportedBy==importerId 
-replace CafFob="FromExporter" if reportedBy==exporterId 
+generate CafFob=""
+replace CafFob="caf" if reportedBy==importerId 
+replace CafFob="fob" if reportedBy==exporterId 
 assert CafFob!=""
 tab CafFob
+keep if CafFob=="`CafFob'"
 
 bys exporterId importerId CafFob : assert _N==1
 
@@ -77,36 +84,166 @@ gen undir_pair_key = importerId + "-" + exporterId if importerId < exporterId & 
 replace undir_pair_key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
 order undir_pair_key
 
+save tradeFlows_`year'_`CafFob'.dta, replace
+assert CafFob=="`CafFob'"
+
+
+
+*****
+/////Création des flux à mesurer inconnus
+use tradeFlows_`year'_`CafFob'.dta, clear
+
+
+tab status, missing
+keep if strmatch(status,"split_*") | status==""
+drop if strpos(newPartners,"restOfTheWorld")!=0
+keep if CafFob=="`CafFob'"
+drop value
+
+
+split newPartners, parse("|") gen(newPartnerId)
+egen nbr_new_partners=rownonmiss(newPartnerId*), strok
+reshape long newPartnerId, i(id CafFob newReporters nbr_new_partners) j(partner_no)
+drop if partner_no>nbr_new_partners
+destring(newPartnerId), replace
+
+gen newimporterId=.
+gen newexporterId=.
+replace newimporterId=newPartnerId if CafFob=="fob"
+replace newexporterId=newPartnerId if CafFob=="caf"
+
+
+//à faire seulement s’il y a des reporters à splitter
+capture assert missing(newReporters)
+	if _rc!=0 {
+		split newReporters,parse ("|") gen(newReportersId)
+		egen nbr_new_reporters=rownonmiss(newReportersId*), strok
+		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
+		drop if reporter_no>nbr_new_reporters
+		destring(newReportersId), replace
+		replace newexporterId=newReportersId if CafFob=="fob"
+		replace newimporterId=newReportersId if CafFob=="caf"
+		
+	}
+
+
+tostring(newimporterId), replace
+tostring(newexporterId), replace
+
+assert strofreal(real(newimporterId))==newimporterId
+assert strofreal(real(newexporterId))==newexporterId
+
+
+drop importerLabel exporterLabel importer_lbl exporter_lbl
+
+
+
+
+replace importerId = newimporterId if  newimporterId !="."
+replace exporterId = newexporterId if  newexporterId !="."
+
+
+
+
+assert strofreal(real(importerId))==importerId
+assert strofreal(real(exporterId))==exporterId
+
+
+
+drop newimporterId newexporterId newPartnerId newPartners 
+capture drop newReportersId newReporters
+
+drop undir_pair_key
+gen undir_pair_key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
+replace undir_pair_key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
+order undir_pair_key
+
+drop if undir_pair_key=="" & id==""
+
+save Unknown_to_compute_`CafFob'_`year'.dta, replace
+assert CafFob=="`CafFob'"
+
+
+//////////
+
+
+
+
 
 ///Création des flux nuls imputés
+********Création des imputed zeros
+
+use tradeFlows_`year'_`CafFob'.dta, clear
+drop if strmatch(status,"*split*")==1
+
+
+append using Unknown_to_compute_`CafFob'_`year'.dta
+
+duplicates report importerId exporterId CafFob
+
+if r(unique_values)!=r(N) {
+	di as error "Some flows have both missing and existing values. `year' `CafFob'."
+}
+
+***In 1833 caf that happens because we have two flows : 300<-200 ; 300<-Gibraltar & Malta & United Kingdom. Both are legit and should b kept
+
+sort importerId exporterId CafFob value
+bys importerId exporterId CafFob : keep if _n==1
+
+///Beware. Some reporters are not partners. We must add them to the partner list
+save "Imputed_zeros_`CafFob'_`year'.dta", replace
+if "`CafFob'"=="fob" {
+	keep exporterId
+	bys exporterId: keep if _n==1
+	rename exporterId importerId
+}
+if "`CafFob'"=="caf" {
+	keep importerId
+	bys importerId: keep if _n==1
+	rename importerId exporterId
+}
+
+append using "Imputed_zeros_`CafFob'_`year'.dta"
+
+
+fillin exporterId importerId
+drop if exporterId=="" | importerId==""
+drop if importerId==exporterId
+
+replace value  = 0 if _fillin ==1
+replace valueGeneratedBy = "imputed zero" if _fillin ==1
+replace status="ok" if _fillin==1
+replace CafFob = "`CafFob'" if _fillin ==1
+replace year=`year' if _fillin ==1
+keep if _fillin==1
+drop _fillin
+
+bys importerId exporterId CafFob: assert _N==1
 
 
 
 
+drop undir_pair_key
+gen undir_pair_key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
+replace undir_pair_key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
+order undir_pair_key
 
-
-
-
-
-
-
-save tradeFlows_`year'_temp.dta, replace
-
+save "Imputed_zeros_`CafFob'_`year'.dta", replace
+assert CafFob=="`CafFob'"
 end
 ***************Gravity trade estimation program ***************
 capture program drop gravity_trade_estimation
 program define gravity_trade_estimation
 	args year CafFob
 
-use tradeFlows_`year'_temp, clear
+use tradeFlows_`year'_`CafFob'.dta, clear
 *'
 keep if status=="ok"
-keep if CafFob=="`CafFob'"
+append using Imputed_zeros_`CafFob'_`year'.dta
+append using Unknown_to_compute_`CafFob'_`year'.dta
+assert CafFob=="`CafFob'"
 
 
-
-keep if exporterId!="restOfTheWorld" & importerId!="restOfTheWorld" & exporterId!="Unknown" & importerId!="Unknown"
-*destring exporterId importerId, replace
 
 
 merge m:1 undir_pair_key using "external data/Controls panel/distance.dta", keep(1 3) nogenerate
@@ -117,6 +254,20 @@ merge m:1 undir_pair_key year using "external data/Controls panel/disputes.dta",
 merge m:1 undir_pair_key year using "external data/Controls panel/commonempire.dta", keep(1 3) nogenerate
 merge m:1 undir_pair_key year using "external data/Controls panel/trade_agreements.dta", keep(1 3) nogenerate
 
+destring(mid_n), replace force
+replace mid_n=1 if mid_n>=1 & mid_n!=.
+replace mid_n=0 if mid_n==.
+destring(atop_allie), replace force
+replace atop_allie=1 if atop_allie!=.
+replace common_empire=0 if common_empire==.
+replace TA="0" if TA=="" | TA=="NA"
+destring(TA), replace
+generate contig12=0
+replace contig12=1 if contig12==1 | contig12==2
+
+codebook value ln_distance contig12 common_empire mid_n atop_allie TA
+
+
 
 
 ***contiguité
@@ -125,188 +276,36 @@ merge m:1 undir_pair_key year using "external data/Controls panel/trade_agreemen
 
 *****Régression de gravité
 
-destring importerId exporterId, replace force
-
-reg ln_value ln_distance common_empire i.importerId i.exporterId
+destring importerId exporterId, replace
 
 
 
-matrix b = e(b)
-local constant= b[1,1]
-local coef_empire= b[1,2]
-local coef_distance= b[1,3]
-local cnames : colnames b
+if `year' >=2015 global liste_var_ex = subinstr("$liste_var_ex","mid_n","",.)
+if `year' >=2019 global liste_var_ex = subinstr("$liste_var_ex","atop_allie","",.)
+if `year' >=1914 global liste_var_ex = subinstr("$liste_var_ex","TA","",.)
+if `year' >=2022 global liste_var_ex = subinstr("$liste_var_ex","common_empire","",.)
 
-display "cenames: `cnames'"
+ppmlhdfe value $liste_var_ex, absorb(importerId exporterId, savefe)
+predict double xb, xb
+bysort importerId: egen double fe_imp = max(__hdfe1__)
+bysort exporterId: egen double fe_exp = max(__hdfe2__)
+gen double pred = exp(xb + fe_imp + fe_exp)
 
-////Create coefficient files for importer and exporter
+display "`year'"
 
-foreach trader in exporter importer  {
-	tempfile `trader'_coefs
-	capture postclose handle
-	postfile handle /*str200 `trader'_part*/ int new`trader'Id double coefficient str15 CafFob using ``trader'_coefs', replace
-	*'
-	local i = 1
-	foreach var_name of local cnames {
-    	if strpos("`var_name'","`trader'Id") {
-        	local coef = b[1,`i']
-			if regexm("`var_name'", "^([0-9]+)") {
-    			local code = regexs(1)
-			}
-			*display "`code'"
-			label dir
-			*local lbl :  label `trader'Id  `code'
-        	post handle /*("`lbl'")*/ (`code')  (`coef') ("`CafFob'")
-    	}
-    	local ++i
-	}
-	postclose handle
-	*use ``trader'_coefs', clear
-	*'
-	*list
+foreach var_ex in $liste_var_ex {
+    local coef = _b[`var_ex']
+    local lc=_b[`var_ex']-1.96*_se[`var_ex']
+    local uc=_b[`var_ex']+1.96*_se[`var_ex']
+    local R2=e(r2_p)
+    local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
+    ppmlhdfe value `var_ex_minus', absorb(importerId exporterId)
+    local add_R2=`R2'-e(r2_p)
+    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
 }
 
-////Exporter les coefficient et les diagnostics de la régression pour chaque année et chaque CafFob
+tostring importerId exporterId, replace
 
-/*
-foreach trader in exporter importer  {
-	use ``trader'_coefs', clear
-	list
-}
-*/
-
-use tradeFlows_`year'_temp, clear
-*****'
-tab status, missing
-keep if strmatch(status,"split_*") | status==""
-drop if strpos(newPartners,"restOfTheWorld")!=0
-keep if CafFob=="`CafFob'"
-
-/// New method : we split first Partners and Reporters
-split newPartners, parse("|") gen(newPartnerId)
-reshape long newPartnerId, i(id CafFob newReporters) j(partner_no)
-drop if (newPartnerId=="" & newReporters=="") | (partner_no!=1 & newReporters!="" & newPartners =="") 
-destring(newPartnerId), replace
-
-**RQ A :  This can produce duplicates in newPartnerId & importerId (or expoterId) if there are multiple reporters for a given partner in a split.
-** eg in 1833, we have a value to split for "Bilbao<-Hanover & Hanse Towns" & one for "Cadix<-Hanse Towns|Málaga<-Hanse Towns" 
-** This can proceed as we can assume that the relevant gravity coefficient are the same
-
-
-
-//à faire seulement s’il y a des reporters à splitter
-capture assert missing(newReporters)
-	if _rc!=0 {
-		split newReporters,parse ("|") gen(newReportersId)
-		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
-		drop if newReportersId=="" & reporter_no !=1
-		destring(newReportersId), replace
-		
-	}
-
-gen newimporterId=newPartnerId if CafFob=="FromExporter"
-capture assert missing(newReporters)
-if _rc!=0 replace newimporterId=newReportersId if CafFob=="FromImporter"
-
-gen newexporterId=newPartnerId if CafFob=="FromImporter"
-capture assert missing(newReporters)
-if _rc!=0  replace newexporterId=newReportersId if CafFob=="FromExporter"  
-
-
-///Putting importer and exporterId to newimporterId and newexporterId if no treatment is necessary.
-
-destring(importerId), replace force
-destring(exporterId), replace force
-replace newimporterId=importerId if newimporterId==.
-replace newexporterId=exporterId if newexporterId==.
-
-destring(newimporterId), replace
-destring(newexporterId), replace
-
-merge m:1 newimporterId CafFob using `importer_coefs', keep(1 3)
-rename coefficient importer_coef
-drop _merge
-merge m:1 newexporterId CafFob using `exporter_coefs',keep(1 3)
-rename coefficient exporter_coef
-drop _merge
-
-sort originalReportedTradeFlowId
-*drop importer_lbl-importer exporter
-
-
-tostring(newimporterId), replace
-tostring(newexporterId), replace
-
-drop if newimporterId==newexporterId
-
-drop key
-gen key = newimporterId + "-" + newexporterId if newimporterId < newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
-replace key = newexporterId + "-" + newimporterId if newimporterId > newexporterId & real(newimporterId)!=. & real(newexporterId)!=.
-order key
-
-drop if key=="" & id==""
-
-
-/*
-***On vérifie que par originalReportedTradeFlowId on a bien les coeffcients pour toutes les parties
-bysort id: egen ok_exp = min(!missing(exporter_coef))
-bysort id: egen ok_imp = min(!missing(importer_coef))
-
-drop if ok_exp==0 | ok_imp==0
-drop ok_exp ok_imp
-
-*/
-
-/////intégration de la distance
-foreach trader in importer exporter {
-	rename new`trader'Id GPH_code
-	merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(1 3)
-	drop if _merge!=3
-	drop _merge GPH_name continent wikidata wikidata_alt1 wikidata_alt2 wikidata_alt3
-	rename GPH_code new`trader'Id
-	rename lat `trader'_lat
-	rename lng `trader'_lng
-}
-
-geodist importer_lat importer_lng exporter_lat exporter_lng, gen(distance_km)
-gen ln_distance=ln(distance_km)
-
-
-////intégration de la relation géopolitique
-
-////Pour rapports de subordination
-merge m:1 key year using "external data/dependency_relations.dta", keep(1 3)
-replace sub_empire=0 if sub_empire==.
-drop _merge GPH_code GPH_status sovereign_GPH_code
-
-rename newimporterId GPH_code
-merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code importerId_sov
-drop _merge
-rename GPH_code newimporterId 
-
-rename newexporterId GPH_code
-merge m:m GPH_code year using "external data/dependency_relations.dta", keep(1 3)
-rename sovereign_GPH_code exporterId_sov
-drop _merge
-rename GPH_code newexporterId
-
-
-generate common_empire=1 if importerId_sov==exporterId_sov & importerId_sov!=""
-replace common_empire=0 if common_empire==.
-bysort newimporterId newexporterId : egen max=max(common_empire)
-bysort newimporterId newexporterId : replace common_empire = max
-bysort newimporterId newexporterId : keep if _n==1
-drop max
-bysort newimporterId newexporterId : assert  _N==1
-***Il y a des cas de GHP qui a plusieurs souverains.  (eg Samoa 1889-1900)
-*Cracow dès 1833
-
-replace common_empire=1 if sub_empire==1
-
-////estimation of the trade
-
-gen pred=exp(`constant' + `coef_empire'*common_empire + `coef_distance'*ln_distance + importer_coef + exporter_coef)
 sort id
 egen sum_pred = total(pred), by(id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
@@ -316,54 +315,93 @@ by id: egen success = max(pred_trade), missing
 
 drop pred sum_pred
 
-by id: replace status ="ok thanks to gravity" if success!=.
-by id: replace status ="unknown despite gravity" if success==.
+replace valueGeneratedBy = valueGeneratedBy +"&" + "gravity" if valueGeneratedBy!="" & success !=. & strmatch(status,"*split*")==1
+replace valueGeneratedBy = "gravity" if valueGeneratedBy=="" & success !=. & strmatch(status,"*split*")==1
+replace status ="failed_gravity" if success==. & strmatch(status,"*split*")==1 
+replace status ="ok" if success!=. & strmatch(status,"*split*")==1 
 
 
 
-///at that point, we need to put together the flows of RqA (c. line 250)
+replace id = exporterId + "->" + importerId if CafFob=="fob" 
+replace id = importerId + "<-" + exporterId if CafFob=="caf"
+
+///////////Traitement des flux à agréger post-aggretation
+
+
+sort id
+by id : egen nbr_of_successes=count(value)
+by id : replace status="failed_PG_aggregation" if nbr_of_successes!=_N & _N>1
+by id : egen pred_trade_cum=total(pred_trade)
+
+by id : gen str str_concatn = notes if _n == 1
+by id : replace str_concatn = str_concatn[_n-1] + "&" + notes if _n > 1
+by id : replace notes = str_concatn[_N] if _N>1
+
+
+by id : gen str str_concato = originalReportedTradeFlowIds if _n == 1
+by id : replace str_concato = str_concato[_n-1] + "&" + originalReportedTradeFlowIds if _n > 1
+by id : replace originalReportedTradeFlowIds = str_concato[_N] if _N>1
+
+
+by id : replace  valueGeneratedBy = valueGeneratedBy +"-----" + "PG-aggregation" if valueGeneratedBy!="" & _n>1
+by id : replace  valueGeneratedBy = "PG-aggregation" if  _n>1
+
+
+by id  : keep if _n==1
+replace valueGeneratedBy = "" if status=="failed_PG_aggregation"
+replace pred_trade=pred_trade_cum
+
+
+replace status ="ok" if strmatch(valueGeneratedBy,"*gravity*") & status==""
+
+
+drop  pred_trade_cum str_concat* nbr_of_successes 
+
+
+replace originalReportedTradeFlowIds = "none" if valueGeneratedBy=="imputed zero"
+replace originalReportedTradeFlowId = id if originalReportedTradeFlowId==""
+
+
+*assert originalReportedTradeFlowId==id if strmatch(status,"ok")
+
+
+///at that point, we need to put together the flows of imputed thanks to gravity
 ///if all are succeses : we aggregate them with the sum of flows
 ///if any is a failure : it is globally a failure
-bys newexporterId newimporterId reportedBy CafFob : egen nbr_of_successes=count(success)
-bys newexporterId newimporterId CafFob :replace status="unknown despite gravity" if nbr_of_successes!=_N
-bys newexporterId newimporterId CafFob : egen pred_trade_cum=total(pred_trade)
-bys newexporterId newimporterId CafFob: gen str str_concat = originalReportedTradeFlowId if _n == 1
-by newexporterId newimporterId CafFob: replace str_concat = str_concat[_n-1] + "|" + originalReportedTradeFlowId if _n > 1
-by newexporterId newimporterId CafFob: replace originalReportedTradeFlowId = str_concat[_N] if _N>1
-bys newexporterId newimporterId CafFob : keep if _n==1
-replace pred_trade=pred_trade_cum
-drop  pred_trade_cum str_concat nbr_of_successes 
-
-bys newexporterId newimporterId CafFob : assert _N==1
 
 
-if "`CafFob'"=="FromExporter" {
+by id  : assert _N==1
+
+
+if "`CafFob'"=="fob" {
 	*blif
 }
 
 
 
-*br if status=="ok thanks to gravity"
+
 drop success
-codebook id if status=="ok thanks to gravity"
+
 ///Récupération des labels
-rename newimporterId GPH_code
+drop importerLabel exporterLabel
+rename importerId GPH_code
+destring GPH_code, replace
 merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
 drop _merge
-rename GPH_code newimporterId 
-rename GPH_name newimporterLabel
+rename GPH_code importerId
+tostring importerId, replace 
+rename GPH_name importerLabel
 
-rename newexporterId GPH_code
+rename exporterId GPH_code
+destring GPH_code, replace
 merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
 drop _merge
-rename GPH_code newexporterId 
-rename GPH_name newexporterLabel
+rename GPH_code exporterId
+tostring importerId, replace 
+rename GPH_name exporterLabel
 
-keep id year  CafFob newimporterId newexporterId pred_trade valueToSplit importerLabel exporterLabel newimporterLabel newexporterLabel totreat_flows status id notes
-order year id importerLabel exporterLabel  CafFob newimporterId newimporterLabel newexporterId newexporterLabel valueToSplit id notes
-
-replace importerLabel=newimporterLabel if newimporterLabel!=""
-replace exporterLabel=newexporterLabel if newexporterLabel!=""
+keep id year  CafFob importerId exporterId pred_trade valueToSplit importerLabel exporterLabel totreat_flows status id notes
+order year id importerLabel exporterLabel  CafFob importerId  exporterId  valueToSplit id notes
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
@@ -371,8 +409,8 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 
 
 ////exportation des résultats gravity
-keep if status=="ok thanks to gravity"
-sort id pred_trade newimporterId newexporterId 
+*keep if status=="ok thanks to gravity"
+sort id
 format value pred_trade %20.0fc
 
 
@@ -390,35 +428,51 @@ capture program drop gravity_cleanup
 program define gravity_cleanup
 	args year
 
-use "results/gravity_`year'_FromImporter.dta", clear
-append using "results/gravity_`year'_FromExporter.dta"
+use "results/gravity_`year'_caf.dta", clear
+append using "results/gravity_`year'_fob.dta"
 
-gen full_id=id+CafFob
 
-codebook full_id
-levelsof full_id
 generate treated_flows=r(r)
-order year id full_id
+order year id 
 export delimited using "results/gravity_`year'.csv", replace quote
 
-erase "results/gravity_`year'_FromImporter.dta"
-erase "results/gravity_`year'_FromExporter.dta"
+erase "results/gravity_`year'_caf.dta"
+erase "results/gravity_`year'_fob.dta"
 
-erase  tradeFlows_`year'_temp.dta
-erase  tradeFlows_`year'_FromImporterok_temp.dta
-erase  tradeFlows_`year'_FromExporterok_temp.dta
-*erase GeoPolHist_dependency_`year'.dta
+erase  tradeFlows_`year'_caf.dta
+erase  tradeFlows_`year'_fob.dta
+erase Unknown_to_compute_caf_`year'.dta
+erase Unknown_to_compute_fob_`year'.dta
+erase "Imputed_zeros_caf_`year'.dta"
+erase "Imputed_zeros_fob_`year'.dta"
 
 end
 
 
 ************************
+global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
+
+foreach var_ex of global liste_var_ex {
+    capture postclose reg_result_`var_ex'
+    postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/gravity/regression_results_`var_ex'.dta", replace
+    
+}
 
 
-trade_importation 1833
-gravity_trade_estimation 1833 FromImporter
-gravity_trade_estimation 1833 FromExporter
-bestguessbiltrade 1833
+///1841 est la première année avec des rapporteurs à splitter
+
+trade_importation 1841 caf
+gravity_trade_estimation 1841 caf
+
+trade_importation 1841 fob
+gravity_trade_estimation 1841 fob
+gravity_cleanup 1841
+
+trade_importation 1833 caf
+gravity_trade_estimation 1833 caf
+
+trade_importation 1833 fob
+gravity_trade_estimation 1833 fob
 gravity_cleanup 1833
 
 
@@ -427,11 +481,11 @@ gravity_cleanup 1833
 
 
 
-foreach year of numlist 1834(1)1938 {
-	trade_importation `year'
-	gravity_trade_estimation `year' FromImporter
-	gravity_trade_estimation `year' FromExporter
-	bestguessbiltrade `year'
+foreach year of numlist 1834(1)1840 1842(1)1938 {
+	trade_importation `year' caf
+	trade_importation `year' fob
+	gravity_trade_estimation `year' caf
+	gravity_trade_estimation `year' fob
 	gravity_cleanup `year'
 	
 }

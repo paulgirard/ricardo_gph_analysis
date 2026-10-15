@@ -83,11 +83,9 @@ Paul creates data/tradeFlows_YYYY_ratios.csv + un fichier de diagnostics ‘trad
 From:
 `data/tradeFlows_YYY_ratios.csv` pour les flux
 +
-`external data/dependency_relations.csv`
-pour les liens politiques
-https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
+Variables de contrôle
 
-Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity_XXXX.csv`
+Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity_XXXX.csv`--avec les imputed zero et les échecs
 
 ### Post gravity data (Paul) (YYYY < 1939)
 ```
