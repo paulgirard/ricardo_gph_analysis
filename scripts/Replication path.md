@@ -33,6 +33,12 @@ Management and Peace Science* 19 (2):58-66.
 produit `external data/Controls panel/contiguity.csv`
 
 
+### GeoPolHist_entities in stata
+De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" 
+`script/daudin/Pour GeoPolHist_entities.do’
+Crée
+`external data/GeoPolHist_entities.dta’
+
 ### Distance
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
 On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 

@@ -386,7 +386,7 @@ drop success
 drop importerLabel exporterLabel
 rename importerId GPH_code
 destring GPH_code, replace
-merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
+merge m:1 GPH_code using "external data/GeoPolHist_entities.dta", keep(3)
 drop _merge
 rename GPH_code importerId
 tostring importerId, replace 
@@ -394,7 +394,7 @@ rename GPH_name importerLabel
 
 rename exporterId GPH_code
 destring GPH_code, replace
-merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
+merge m:1 GPH_code using "external data/GeoPolHist_entities.dta", keep(3)
 drop _merge
 rename GPH_code exporterId
 tostring importerId, replace 
@@ -477,7 +477,7 @@ gravity_cleanup 1833
 
 
 
-
+/*
 
 
 
@@ -490,13 +490,54 @@ foreach year of numlist 1834(1)1840 1842(1)1938 {
 	
 }
 
-global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
+*/
+
+global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
 
 
-erase GeoPolHist_entities_temp.dta
-erase GeoPolHist_entities_status_over_time_temp.dta
+
+
+foreach var_ex of global liste_var_ex {
+
+    use "results/gravity/regression_results_`var_ex'.dta", clear
+    export delimited using "results/gravity/regression_results_`var_ex'.csv", replace delimiter(",") quote
+    replace coef=exp(coef)
+    replace ci_low=exp(ci_low)
+    replace ci_high=exp(ci_high)
+    replace coef=. if ci_low==.
+    replace ci_high=5 if ci_high>5
+    replace ci_low=5 if ci_low>5
+    replace coef=5 if coef>5
+
+  
+    
+    foreach CafFob in caf fob {   
+    preserve
+	keep if CafFob=="`CafFob"
+	tsset year
+    tsfill, full
+
+        drop if year >= 2026
+    twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
+           (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
+            (connected r2p year , yaxis(2) cmissing(n)), ///
+            yline(1, lpattern(dash) lcolor(red)) ///
+            xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
+            xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
+            xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
+            xscale(range(1830 2030)) ///
+            title(""`NetworkType'" Regression results `var_ex' (fob)") ///
+            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
+
+    graph export "results/gravity/`var_ex'_`CafFob'.png", replace
+    restore
+    }
+}
+
+
+
 
 
