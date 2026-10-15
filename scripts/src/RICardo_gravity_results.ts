@@ -38,6 +38,7 @@ async function readGravityResults() {
         switch (ctx.column) {
           case "year":
             return v ? parseInt(v) : undefined;
+          case "value":
           case "valueToSplit":
           case "pred_trade":
             return v ? parseFloat(v) : undefined;

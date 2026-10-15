@@ -1,0 +1,104 @@
+{
+  "type": "gephi-lite",
+  "version": "1.1.0",
+  "graphDataset": {
+    "nodeData": {},
+    "edgeData": {},
+    "layout": {},
+    "metadata": { "title": "year" },
+    "nodeFields": [
+      { "id": "label", "itemType": "nodes", "type": "text" },
+      { "id": "id", "itemType": "nodes", "type": "number" },
+      { "id": "type", "itemType": "nodes", "type": "text" },
+      { "id": "blockLouvainTibi", "itemType": "nodes", "type": "category" },
+      { "id": "blockIntraMax", "itemType": "nodes", "type": "category" },
+      { "id": "blockAN", "itemType": "nodes", "type": "category" },
+      { "id": "blockLouvainMaxobservedtradevalues", "itemType": "nodes", "type": "category" },
+      { "id": "meanAmbiguityScore", "itemType": "nodes", "type": "number" }
+    ],
+    "edgeFields": [
+      { "id": "observedTradeValues", "itemType": "edges", "type": "text" },
+      { "id": "maxObservedTradeValues", "itemType": "edges", "type": "number" },
+      { "id": "TIBI", "itemType": "edges", "type": "number" },
+      { "id": "coMembershipScore", "itemType": "edges", "type": "number" },
+      { "id": "bridgeNessEdgeScore", "itemType": "edges", "type": "number" },
+      { "id": "ambiguityScore", "itemType": "edges", "type": "number" },
+      { "id": "sourceCommunityId", "itemType": "edges", "type": "text" },
+      { "id": "weight", "itemType": "edges", "type": "number" }
+    ],
+    "fullGraph": {
+      "options": { "type": "undirected", "multi": false, "allowSelfLoops": false }
+    }
+  },
+  "filters": { "filters": [] },
+  "appearance": {
+    "showEdges": { "value": true },
+    "nodesSize": { "type": "fixed", "value": 5 },
+    "edgesSize": {
+      "type": "ranking",
+      "field": { "id": "maxObservedTradeValues", "itemType": "edges", "type": "number" },
+      "missingSize": 1,
+      "minSize": 1,
+      "maxSize": 10,
+      "transformationMethod": { "pow": 0.5 }
+    },
+    "backgroundColor": "#FFFFFF00",
+    "layoutGridColor": "#666666",
+    "backgroundLayer": { "type": "map", "enabled": false },
+    "backgroundMapStyle": null,
+    "nodesColor": {
+      "type": "partition",
+      "field": { "id": "blockLouvainTibi", "itemType": "nodes", "type": "category" },
+      "colorPalette": {
+        "0": "#663e86",
+        "1": "#6b9141",
+        "2": "#bf6037",
+        "3": "#8c7bd5",
+        "4": "#c24f7b",
+        "5": "#a143cc",
+        "6": "#4d98c5"
+      },
+      "missingColor": "#d0d0d0"
+    },
+    "edgesColor": {
+      "type": "ranking",
+      "field": { "id": "TIBI", "itemType": "edges", "type": "number" },
+      "colorScalePoints": [
+        { "scalePoint": 0, "color": "#fcf4af" },
+        { "color": "#c3c087", "scalePoint": 0.4 },
+        { "scalePoint": 1, "color": "#222200" }
+      ],
+      "missingColor": "#BD10E0FF"
+    },
+    "nodesLabel": {
+      "type": "field",
+      "field": { "id": "label", "itemType": "nodes", "type": "text" },
+      "missingValue": null
+    },
+    "edgesLabel": { "type": "none" },
+    "nodesLabelSize": { "type": "fixed", "value": 14, "zoomCorrelation": 0, "density": 1 },
+    "edgesLabelSize": { "type": "fixed", "value": 14, "zoomCorrelation": 0, "density": 1 },
+    "nodesLabelEllipsis": { "type": "ellipsis", "enabled": false, "maxLength": 25 },
+    "edgesLabelEllipsis": { "type": "ellipsis", "enabled": false, "maxLength": 25 },
+    "nodesImage": { "type": "none" },
+    "edgesZIndex": { "type": "none" }
+  },
+  "layout": {
+    "quality": { "enabled": false, "showGrid": true },
+    "lastRun": {
+      "layoutId": "fa2",
+      "params": {
+        "adjustSizes": false,
+        "barnesHutOptimize": false,
+        "barnesHutTheta": 0.5,
+        "edgeWeightInfluence": 1,
+        "gravity": 0.05,
+        "linLogMode": false,
+        "outboundAttractionDistribution": false,
+        "slowDown": 6.313205979041787,
+        "strongGravityMode": true,
+        "scalingRatio": 20
+      }
+    }
+  }
+}
