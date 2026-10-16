@@ -278,6 +278,7 @@ codebook value ln_distance contig12 common_empire mid_n atop_allie TA
 
 destring importerId exporterId, replace
 
+set seed 4563
 
 
 if `year' >=2015 global liste_var_ex = subinstr("$liste_var_ex","mid_n","",.)
@@ -301,7 +302,7 @@ foreach var_ex in $liste_var_ex {
     local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
     ppmlhdfe value `var_ex_minus', absorb(importerId exporterId)
     local add_R2=`R2'-e(r2_p)
-    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
+    post reg_result_`var_ex'  ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
 }
 
 tostring importerId exporterId, replace
@@ -454,7 +455,7 @@ global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
-    postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/gravity/regression_results_`var_ex'.dta", replace
+    postfile reg_result_`var_ex' str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/gravity/regression_results_`var_ex'.dta", replace
     
 }
 
@@ -468,20 +469,9 @@ trade_importation 1841 fob
 gravity_trade_estimation 1841 fob
 gravity_cleanup 1841
 
-trade_importation 1833 caf
-gravity_trade_estimation 1833 caf
-
-trade_importation 1833 fob
-gravity_trade_estimation 1833 fob
-gravity_cleanup 1833
 
 
-
-/*
-
-
-
-foreach year of numlist 1834(1)1840 1842(1)1938 {
+foreach year of numlist 1833(1)1840 1842(1)1938 {
 	trade_importation `year' caf
 	trade_importation `year' fob
 	gravity_trade_estimation `year' caf
@@ -490,7 +480,7 @@ foreach year of numlist 1834(1)1840 1842(1)1938 {
 	
 }
 
-*/
+
 
 global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
 foreach var_ex of global liste_var_ex {
@@ -503,6 +493,7 @@ foreach var_ex of global liste_var_ex {
 foreach var_ex of global liste_var_ex {
 
     use "results/gravity/regression_results_`var_ex'.dta", clear
+	
     export delimited using "results/gravity/regression_results_`var_ex'.csv", replace delimiter(",") quote
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
@@ -516,23 +507,23 @@ foreach var_ex of global liste_var_ex {
     
     foreach CafFob in caf fob {   
     preserve
-	keep if CafFob=="`CafFob"
+	keep if CafFob=="`CafFob'"
+	
 	tsset year
     tsfill, full
 
-        drop if year >= 2026
+    drop if year >= 2026
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
-            yline(1, lpattern(dash) lcolor(red)) ///
-            xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
-            xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
+			xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of FTA data", place(e) orientation(vertical)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            xscale(range(1830 2030)) ///
-            title(""`NetworkType'" Regression results `var_ex' (fob)") ///
-            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
+            xscale(range(1830 1940)) ///
+            title(" Regression results `var_ex' (fob)") ///
+            legend(order(2 "Coefficient of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
     graph export "results/gravity/`var_ex'_`CafFob'.png", replace
+	
     restore
     }
 }
