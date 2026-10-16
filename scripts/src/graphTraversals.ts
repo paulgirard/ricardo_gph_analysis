@@ -149,6 +149,9 @@ export function generateTradeFlow(
 
         // indicate in the original flow where the information has been merged
         graph.updateEdgeAttribute(originalFlow, "mergedIn", (v) => sortBy(uniq([...(v || []), idEdge])));
+        graph.updateEdgeAttribute(idEdge, "originalReportedTradeFlowIds", (originalReportedTradeFlowIds) =>
+          [originalReportedTradeFlowIds, originalFlow].filter(identity).join("|"),
+        );
 
         graph.setEdgeAttribute(
           idEdge,
@@ -208,6 +211,7 @@ export function generateTradeFlow(
             ? "split_failed_no_ratio"
             : "ok",
         type: "trade",
+        originalReportedTradeFlowIds: originalFlow,
       });
 
       // state the edge as resolved
