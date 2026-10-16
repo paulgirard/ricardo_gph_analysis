@@ -218,4 +218,4 @@ ecrire_par_annee <- function(flux, suffixe) {
 }
 
 ecrire_par_annee(flux_fob, "fob")
-ecrire_par_annee(flux_cif, "cif")
+ecrire_par_annee(flux_cif, "caf")
