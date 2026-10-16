@@ -8,52 +8,55 @@ library(readxl); library(dplyr)
 setwd('~/Desktop/ricardo_gph_analysis/')
 library(rsdmx); library(dplyr)
 
-tele <- function(an, indic, essais = 5) {
-  for (i in seq_len(essais)) {
-    d <- try(as.data.frame(readSDMX(providerId = "IMF_DATA",
-                                    resource   = "data",
-                                    flowRef    = "IMF.STA,IMTS",
-                                    key        = paste0(".", indic, "..A"),
-                                    start      = an, end = an)), silent = TRUE)
-    if (!inherits(d, "try-error")) {
-      message(an, " : ", nrow(d), " lignes")
-      gc()
-      return(d)
-    }
-    message(an, " : echec ", i, ", nouvelle tentative dans 5s")
-    Sys.sleep(5)
-  }
-  message(an, " : ABANDON")
-  NULL
-}
+#tele <- function(an, indic, essais = 5) {
+  #for (i in seq_len(essais)) {
+    #d <- try(as.data.frame(readSDMX(providerId = "IMF_DATA",
+        #                            resource   = "data",
+       #                             flowRef    = "IMF.STA,IMTS",
+      #                              key        = paste0(".", indic, "..A"),
+     #                               start      = an, end = an)), silent = TRUE)
+    #if (!inherits(d, "try-error")) {
+     # message(an, " : ", nrow(d), " lignes")
+    #  gc()
+     # return(d)
+    #}
+    #message(an, " : echec ", i, ", nouvelle tentative dans 5s")
+   # Sys.sleep(5)
+  #}
+  #message(an, " : ABANDON")
+ # NULL
+#}
 
-res <- list()
-for (an in 1948:2024) {
-  res[[as.character(an)]] <- tele(an, "XG_FOB_USD")
-  saveRDS(res, "external data/IMTS_fob_partiel.rds")
-}
+#res <- list()
+#for (an in 1948:2024) {
+  #res[[as.character(an)]] <- tele(an, "XG_FOB_USD")
+ # saveRDS(res, "external data/IMTS_fob_partiel.rds")
+#}
 
-res[["2025"]] <- tele(2025, "XG_FOB_USD")
-saveRDS(res, "external data/IMTS_fob_partiel.rds")
+#res[["2025"]] <- tele(2025, "XG_FOB_USD")
+#saveRDS(res, "external data/IMTS_fob_partiel.rds")
 
-fob <- bind_rows(res)
-nrow(fob)
-table(fob$TIME_PERIOD)
-saveRDS(fob, "external data/IMTS_fob.rds")
+#fob <- bind_rows(res)
+#nrow(fob)
+#table(fob$TIME_PERIOD)
+#saveRDS(fob, "external data/IMTS_fob.rds")
 
-res_cif <- list()
-for (an in 1948:2025) {
-  k <- as.character(an)
-  if (!is.null(res_cif[[k]])) next
-  res_cif[[k]] <- tele(an, "MG_CIF_USD")
-  saveRDS(res_cif, "external data/IMTS_cif_partiel.rds")
-}
+#res_cif <- list()
+#for (an in 1948:2025) {
+  #k <- as.character(an)
+  #if (!is.null(res_cif[[k]])) next
+  #res_cif[[k]] <- tele(an, "MG_CIF_USD")
+ # saveRDS(res_cif, "external data/IMTS_cif_partiel.rds")
+#}
 
-cif <- bind_rows(res_cif)
-nrow(cif)
-table(cif$TIME_PERIOD)
-saveRDS(cif, "external data/IMTS_cif.rds")
+#cif <- bind_rows(res_cif)
+#nrow(cif)
+#table(cif$TIME_PERIOD)
+#saveRDS(cif, "external data/IMTS_cif.rds")
 
+
+fob <- readRDS("external data/IMTS_fob.rds")
+cif <- readRDS("external data/IMTS_cif.rds")
 # --- Assemblage des deux indicateurs ---------------------------------
 DOT <- bind_rows(fob, cif)
 
