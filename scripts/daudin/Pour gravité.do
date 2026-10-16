@@ -27,6 +27,8 @@ if `year' >=1948 {
 
 	destring valueToSplit, replace force
 	gen valueGeneratedBy =""
+	capture tostring importerId, replace
+	capture tostring exporterId, replace
 }
 	
 
@@ -38,23 +40,6 @@ format value valueToSplit %20.0fc
 
 capture noisily tostring(reportedBy), replace
 
-/* Plus nécessaire avec le nouveau format des données (1 ligne par flux)
-keep if year==`year'
-tempfile tradeFlows
-save `tradeFlows', replace
-replace valuecaf=valueToSplit if valuecaf!=. & valueToSplit!=.
-replace valuefob=valueToSplit if valuefob!=. & valueToSplit!=.
-drop valueToSplit
- 
-reshape long value, i(year status notes importerLabel importerId exporterLabel exporterId  splitToGPHCodes importerType exporterType) j(ExportsImports) string
-*/
-
-/* cela devrait avoir été réparé le 10 septembre 2026
-////Il me semble que ces flux ne devraient pas avoir le statut "ok". Tant qu’on ne peut pas réparer le bug en amont, voici un correctif pour ne pas les traiter comme des flux valides.
-assert  value!=0 | (strmatch(notes,"* 0 *")==1 & partial!="")
- 
-replace status="split_failed_no_ratio" if value==0 & strmatch(notes,"* 0 *")==1 & partial!=""
-*/
 
 drop importerType exporterType
 drop if value==. & status !="to_impute"
