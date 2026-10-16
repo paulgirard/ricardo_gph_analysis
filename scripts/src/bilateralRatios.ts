@@ -26,7 +26,7 @@ export function findBilateralRatiosInOneYear(
         .isSupersetOf(new Set(partnersGPHIds));
       if (!foundAllPartners) throw new Error(`can't find ratios in year ${year} can't find all entities`);
 
-      console.log(year, reportingGPHId, partnersByTradeEdges);
+      //console.log(year, reportingGPHId, partnersByTradeEdges);
       const tradeValues = mapValues(partnersByTradeEdges, (_, edge) => {
         const { value } = graph.getEdgeAttributes(edge);
         if (value === undefined) throw new Error(`Edge ${edge} is not reported by ${reportingGPHId}`);
@@ -129,7 +129,7 @@ export function findBilateralRatios(
 
   for (const currentYear of yearsInScope) {
     const missingPartners = keys(partnerRatios).filter((p) => partnerRatios[p]?.status !== "ok");
-    console.log(currentYear, reportingGPHId, missingPartners);
+    //console.log(currentYear, reportingGPHId, missingPartners);
     // early exit when all partners have a ratio
     if (missingPartners.length === 0) break;
 
@@ -141,7 +141,7 @@ export function findBilateralRatios(
           direction,
           tradeGraphsByYear[currentYear + ""],
         );
-        console.log(currentYear, reportingGPHId, { ratios, groupRatios });
+        //console.log(currentYear, reportingGPHId, { ratios, groupRatios });
         //update partners ratios
         toPairs(ratios).forEach(([partner, ratio]) => {
           partnerRatios[partner] = {
@@ -161,7 +161,7 @@ export function findBilateralRatios(
           });
         });
       } catch (error) {
-        console.log((error as Error).message);
+        //console.log((error as Error).message);
         // try next year
       }
     } else console.log(`${currentYear} not available in tradeGraphs`);

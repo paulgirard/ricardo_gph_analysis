@@ -86,13 +86,13 @@ function checkDissolved(gphCode: string, year: number) {
   while (firstKnownPastStatus === null && pastYear >= 1816) {
     const pastStatus = GPH_status(gphCode, pastYear + "", true);
     if (pastStatus !== null) {
-      console.log(`found pastStatus ${JSON.stringify(pastStatus)} ${pastYear}`);
+      //console.log(`found pastStatus ${JSON.stringify(pastStatus)} ${pastYear}`);
       firstKnownPastStatus = pastStatus;
     }
     pastYear -= 1;
   }
   if (firstKnownPastStatus !== null && firstKnownPastStatus.GPH_status === "Dissolved into") {
-    console.log("replace dissolved", gphCode, year, firstKnownPastStatus.sovereign);
+    //console.log("replace dissolved", gphCode, year, firstKnownPastStatus.sovereign);
     return autonomousGPHEntity(firstKnownPastStatus.sovereign, year);
   } else {
     // we don't log missing status here. Missing status can be searched when looking at the network

@@ -77,7 +77,8 @@ export function resolveAutonomous(
     },
     { autonomousIds: [], traversedLabels },
   );
-  if (autonomousEntities.autonomousIds.length === 0) console.log(`could not find autonomous for ${entityId}`);
+  if (autonomousEntities.autonomousIds.length === 0 && graph.getNodeAttribute(entityId, "ricType") === "GPH_entity")
+    console.log(`could not find autonomous for ${entityId} in ${graph.getAttribute("year")}`);
   return autonomousEntities;
 }
 
@@ -149,6 +150,9 @@ export function generateTradeFlow(
 
         // indicate in the original flow where the information has been merged
         graph.updateEdgeAttribute(originalFlow, "mergedIn", (v) => sortBy(uniq([...(v || []), idEdge])));
+        graph.updateEdgeAttribute(idEdge, "originalReportedTradeFlowIds", (originalReportedTradeFlowIds) =>
+          [originalReportedTradeFlowIds, originalFlow].filter(identity).join("|"),
+        );
 
         graph.setEdgeAttribute(
           idEdge,
@@ -208,6 +212,7 @@ export function generateTradeFlow(
             ? "split_failed_no_ratio"
             : "ok",
         type: "trade",
+        originalReportedTradeFlowIds: originalFlow,
       });
 
       // state the edge as resolved
@@ -267,19 +272,10 @@ export function propagateReporting(
   const propagationTargets = graph
     .filterOutEdges(fromReporting, (_, atts) => atts.labels.has(label))
     .map((e) => graph.target(e));
-  console.log(`propagate reporting from ${reportingLabel} to ${propagationTargets.join("|")}`);
+  //console.log(`propagate reporting from ${reportingLabel} to ${propagationTargets.join("|")}`);
   propagationTargets.forEach((target) => {
     const targetAtts = graph.getNodeAttributes(target);
     // we propagate reporting status if
-    console.log(
-      targetAtts,
-      graph.filterEdges(
-        target,
-        (_, atts) =>
-          atts.labels.has("GENERATED_TRADE") && // has one generated trade edge
-          atts.reportedBy === target,
-      ).length,
-    );
     if (
       targetAtts.entityType === "GPH-AUTONOMOUS-CITED" &&
       targetAtts.reporting !== true && // not already a normal reporter
