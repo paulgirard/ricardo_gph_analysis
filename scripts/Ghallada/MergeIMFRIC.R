@@ -56,9 +56,9 @@ library(rsdmx); library(dplyr)
 
 
 fob <- readRDS("external data/IMTS_fob.rds")
-cif <- readRDS("external data/IMTS_cif.rds")
+caf <- readRDS("external data/IMTS_cif.rds")
 # --- Assemblage des deux indicateurs ---------------------------------
-DOT <- bind_rows(fob, cif)
+DOT <- bind_rows(fob, caf)
 
 names(DOT)
 DOT$TIME_PERIOD <- as.integer(DOT$TIME_PERIOD)
@@ -200,10 +200,10 @@ mise_au_format <- function(d, sens) {
 }
 
 flux_fob <- DOT %>% filter(INDICATOR == "XG_FOB_USD") %>% mise_au_format("export")
-flux_cif <- DOT %>% filter(INDICATOR == "MG_CIF_USD") %>% mise_au_format("import")
+flux_caf <- DOT %>% filter(INDICATOR == "MG_CIF_USD") %>% mise_au_format("import")
 
 
-nrow(flux_fob); nrow(flux_cif)
+nrow(flux_fob); nrow(caf)
 # -----------------------------------------------------------------------------
 # 3. Ecriture d'un fichier par annee et par base
 # -----------------------------------------------------------------------------
@@ -218,4 +218,4 @@ ecrire_par_annee <- function(flux, suffixe) {
 }
 
 ecrire_par_annee(flux_fob, "fob")
-ecrire_par_annee(flux_cif, "cif")
+ecrire_par_annee(flux_caf, "caf")

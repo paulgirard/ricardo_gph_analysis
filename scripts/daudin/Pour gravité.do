@@ -21,7 +21,7 @@ if `year' <=1938 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 
 if `year' >=1948 {
 	
-	import delimited "data/tradeFlows_`year'_gravity.csv", /*
+	import delimited "data/tradeFlows_`year'_gravity_`CafFob'.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(3 6 13 15)
 
@@ -479,6 +479,11 @@ foreach var_ex of global liste_var_ex {
 
 trade_importation 1948 fob
 gravity_trade_estimation 1948 fob
+trade_importation 1948 caf
+gravity_trade_estimation 1948 caf
+gravity_cleanup 1948
+
+
 
 trade_importation 1841 caf
 gravity_trade_estimation 1841 caf
@@ -499,9 +504,9 @@ foreach year of numlist 1833(1)1840 1842(1)1938 {
 }
 
 foreach year of numlist 1948(1)1938 {
-	*trade_importation `year' caf
+	trade_importation `year' caf
 	trade_importation `year' fob
-	*gravity_trade_estimation `year' caf
+	gravity_trade_estimation `year' caf
 	gravity_trade_estimation `year' fob
 	gravity_cleanup `year'
 	
@@ -523,9 +528,6 @@ foreach var_ex of global liste_var_ex {
     use "results/gravity/regression_results_`var_ex'.dta", clear
 	
     export delimited using "results/gravity/regression_results_`var_ex'.csv", replace delimiter(",") quote
-    replace coef=exp(coef)
-    replace ci_low=exp(ci_low)
-    replace ci_high=exp(ci_high)
     replace coef=. if ci_low==.
     *replace ci_high=5 if ci_high>5
     *replace ci_low=5 if ci_low>5
