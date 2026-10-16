@@ -100,6 +100,7 @@ async function readGravityResults() {
             return;
           }
         } else {
+          // use exporterId at exporterId à la place de newexporterId newimporterId
           graph.addEdgeWithKey(newFlowId, gr.newexporterId, gr.newimporterId, {
             type: "trade",
             labels: new Set(["GENERATED_TRADE"]),
@@ -108,7 +109,7 @@ async function readGravityResults() {
             originalPartners: originalFlowAtts.originalPartners,
             status: "ok",
             value: gr.pred_trade,
-            valueGeneratedBy: ["split_by_gravity"],
+            valueGeneratedBy: ["split_by_gravity"], // récupérer variable
             originalReportedTradeFlowIds: originalFlowId,
             notes: aggregatedFlowNote(originalFlowId, gr.pred_trade, graph as GraphEntityPartiteType),
           });

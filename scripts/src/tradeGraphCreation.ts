@@ -96,11 +96,10 @@ export async function tradeGraph(year: number, RICentities: Record<string, RICen
               lat: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lat : undefined,
               lng: reporting.GPH_code ? GPHEntitiesByCode[reporting.GPH_code].lng : undefined,
             });
-            console.log(reporting, partner, r.expimp);
+
             const from = r.expimp === "Exp" ? nodeId(reporting) : nodeId(partner);
             const to = r.expimp === "Imp" ? nodeId(reporting) : nodeId(partner);
             // add trade value on directed edges: bilateral trade
-            console.log(from, to, reporting, partner, r.expimp);
             graph.mergeDirectedEdgeWithKey(tradeEdgeKey(nodeId(reporting), nodeId(partner), r.expimp), from, to, {
               labels: new Set(["REPORTED_TRADE"]),
               // add reported by attribute to trade flows
@@ -340,7 +339,7 @@ export function splitInformalUnknownEntities(graph: GraphType) {
     .forEach((informalNode) => {
       //console.log("treating informal", informalNode, atts);
       const parts = GPH_informal_parts(informalNode, year);
-      console.log(`found ${parts.length} parts for ${informalNode}`, parts);
+      //console.log(`found ${parts.length} parts for ${informalNode}`, parts);
       if (parts.length > 0) {
         parts.forEach((p) => {
           // TODO: remove from those the one which have a political link to another entity the year studied
@@ -516,7 +515,7 @@ export function treatReporters(graph: GraphType) {
                   .filter(identity)
                   .join("\n"),
               }));
-              console.log(`${e} Rerouted as ${newEdgeId}`);
+              //console.log(`${e} Rerouted as ${newEdgeId}`);
             } else console.log(`${e} ignored cause ${status}`);
 
             (graph as GraphEntityPartiteType).setEdgeAttribute(e, "status", "ignore_partial_duplicate");
@@ -534,7 +533,7 @@ export function treatReporters(graph: GraphType) {
         // move all reported trade flows from badReporter to autonomousReporter
         allreportedFlows.forEach((edgeToTreat) => {
           const edgeToTreatAtts = (graph as GraphEntityPartiteType).getEdgeAttributes(edgeToTreat);
-          console.log(edgeToTreat);
+
           const originalPartner =
             graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
 
@@ -559,12 +558,11 @@ export function treatReporters(graph: GraphType) {
                 .join("\n"),
             }));
           }
-          console.log(`${edgeToTreat} rerouted as ${newEdgeId}`);
+          //console.log(`${edgeToTreat} rerouted as ${newEdgeId}`);
         });
       } else {
         // multiple new reporters, add newReporter attribute
         allreportedFlows.forEach((edgeToTreat) => {
-          console.log(edgeToTreat);
           const originalPartner =
             graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
 
@@ -582,7 +580,7 @@ export function treatReporters(graph: GraphType) {
               .join("\n"),
           }));
 
-          console.log(`${edgeToTreat} add newReporters fields ${autonomousReporters.autonomousIds.join("|")}`);
+          //console.log(`${edgeToTreat} add newReporters fields ${autonomousReporters.autonomousIds.join("|")}`);
         });
       }
     });
@@ -719,9 +717,9 @@ export function resolveEntityTransform(
 
           // case 1->n
           if (edgeToTreatAtts.value !== undefined && autonomousPartnersIds.length > 1) {
-            console.log(
-              `looking for ratios for ${year} ${reporterLabel} ${reporterId} ${edgeToTreatAtts.value} to/from ${autonomousPartnersIds}`,
-            );
+            // console.log(
+            //   `looking for ratios for ${year} ${reporterLabel} ${reporterId} ${edgeToTreatAtts.value} to/from ${autonomousPartnersIds}`,
+            // );
             // we need to find the percentages to split the value of the flow among the destinations
             const ratios = findBilateralRatios(
               year,
@@ -958,10 +956,10 @@ export function deprecatedReportersTradeFlowAlgo(graph: GraphType) {
               // filter the list of autonomous partners to avoid overlapping areas
               partnerIds = filterTradePartners(originalPartner, autonomousPartners, badReporter, graph);
               if (partnerIds.length === 0) {
-                console.log(autonomousPartners, originalPartner);
-                console.log(
-                  `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
-                );
+                // console.log(autonomousPartners, originalPartner);
+                // console.log(
+                //   `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
+                // );
                 partnerIds = [originalPartner];
               }
               break;
@@ -973,10 +971,10 @@ export function deprecatedReportersTradeFlowAlgo(graph: GraphType) {
           // filter the list of autonomous partners to avoid overlapping areas
           partnerIds = filterTradePartners(originalPartner, autonomousPartners, badReporter, graph);
           if (partnerIds.length === 0) {
-            console.log(autonomousPartners, originalPartner);
-            console.log(
-              `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
-            );
+            // console.log(autonomousPartners, originalPartner);
+            // console.log(
+            //   `no more partner ${edgeToTreat} ${JSON.stringify(edgeToTreatAtts)} \n ${originalPartner} ->${autonomousPartners.autonomousIds.join("|")}`,
+            // );
             partnerIds = [originalPartner];
           }
 
