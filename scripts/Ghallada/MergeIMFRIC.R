@@ -3,21 +3,75 @@ rm(list = ls(all = TRUE))
 gc()
 library(readxl); library(dplyr)
 
+#install.packages("remotes")
+#remotes::install_github("opensdmx/rsdmx")
 setwd('~/Desktop/ricardo_gph_analysis/')
-zipf <- "scripts/dataset_2026-10-11T15_40_00.199306226Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip"
-DOT  <- read.csv(unz(zipf, unzip(zipf, list = TRUE)$Name[1]))
+library(rsdmx); library(dplyr)
 
-DOT <- distinct(DOT)
+tele <- function(an, indic, essais = 5) {
+  for (i in seq_len(essais)) {
+    d <- try(as.data.frame(readSDMX(providerId = "IMF_DATA",
+                                    resource   = "data",
+                                    flowRef    = "IMF.STA,IMTS",
+                                    key        = paste0(".", indic, "..A"),
+                                    start      = an, end = an)), silent = TRUE)
+    if (!inherits(d, "try-error")) {
+      message(an, " : ", nrow(d), " lignes")
+      gc()
+      return(d)
+    }
+    message(an, " : echec ", i, ", nouvelle tentative dans 5s")
+    Sys.sleep(5)
+  }
+  message(an, " : ABANDON")
+  NULL
+}
 
-table(DOT$FREQUENCY)
-DOT <- DOT %>% filter(FREQUENCY == "Annual")
+res <- list()
+for (an in 1948:2024) {
+  res[[as.character(an)]] <- tele(an, "XG_FOB_USD")
+  saveRDS(res, "external data/IMTS_fob_partiel.rds")
+}
+
+res[["2025"]] <- tele(2025, "XG_FOB_USD")
+saveRDS(res, "external data/IMTS_fob_partiel.rds")
+
+fob <- bind_rows(res)
+nrow(fob)
+table(fob$TIME_PERIOD)
+saveRDS(fob, "external data/IMTS_fob.rds")
+
+res_cif <- list()
+for (an in 1948:2025) {
+  k <- as.character(an)
+  if (!is.null(res_cif[[k]])) next
+  res_cif[[k]] <- tele(an, "MG_CIF_USD")
+  saveRDS(res_cif, "external data/IMTS_cif_partiel.rds")
+}
+
+cif <- bind_rows(res_cif)
+nrow(cif)
+table(cif$TIME_PERIOD)
+saveRDS(cif, "external data/IMTS_cif.rds")
+
+# --- Assemblage des deux indicateurs ---------------------------------
+DOT <- bind_rows(fob, cif)
+
+names(DOT)
 DOT$TIME_PERIOD <- as.integer(DOT$TIME_PERIOD)
+DOT$OBS_VALUE   <- as.numeric(DOT$OBS_VALUE)
+
+DOT <- DOT %>% filter(!is.na(OBS_VALUE), !is.na(TIME_PERIOD))
+DOT <- distinct(DOT)
+nrow(DOT)
 
 table(DOT$INDICATOR)
-DOT <- DOT %>%
-  filter(INDICATOR %in% c("Exports of goods, Free on board (FOB), US dollar",
-                          "Imports of goods, Cost insurance freight (CIF), US dollar"))
-nrow(DOT)
+table(DOT$FREQUENCY)
+table(DOT$SCALE)
+table(DOT$DERIVATION_TYPE, useNA = "ifany")
+table(DOT$STATUS, useNA = "ifany")
+table(DOT$OVERLAP, useNA = "ifany")
+
 
 #library(dplyr)
 #countries <- bind_rows(
@@ -30,110 +84,67 @@ nrow(DOT)
 #library(openxlsx)
 #write.xlsx(countries, "~/Dropbox/Postdoc Track/Project RICardo/IMF Integration/countries.xlsx") I complete it under a new file tablegphdot
 
-
-# 1. La table de correspondance (colonnes A:C, E et F = légende)
-correspondancetable <- read_excel(
-  "scripts/tablegphdot.xlsx",
-  sheet = "New", range = cell_cols("A:C")
-)
-names(correspondancetable) <- c("COUNTRY.ID", "COUNTRY", "GPH")
+# --- Correspondance GPH ----------------------------------------------
+correspondancetable <- read_excel("scripts/tablegphdot.xlsx",
+                                  sheet = "New", range = cell_cols("A:C"))
+names(correspondancetable) <- c("CODE", "LIBELLE", "GPH")
 correspondancetable$GPH <- as.integer(correspondancetable$GPH)
 
-# 2. Deux jointures : reporter, puis partner
 DOT <- DOT %>%
-  left_join(correspondancetable %>%
-              select(COUNTRY.ID, GPH_reporter = GPH),
-            by = "COUNTRY.ID") %>%
-  left_join(correspondancetable %>%
-              select(COUNTERPART_COUNTRY.ID = COUNTRY.ID, GPH_partner = GPH),
-            by = "COUNTERPART_COUNTRY.ID")
-#Delete non-GPH (groups
-DOT %>%
-  filter(is.na(GPH_reporter) | is.na(GPH_partner)) %>%
-  distinct(id   = ifelse(is.na(GPH_reporter), COUNTRY.ID, COUNTERPART_COUNTRY.ID),
-           name = ifelse(is.na(GPH_reporter), COUNTRY, COUNTERPART_COUNTRY)) %>%
-  arrange(id) %>%
-  as.data.frame() #Ok delete
-## volume total concerné
-DOT %>% summarise(
-  total      = n(),
-  na_rep     = sum(is.na(GPH_reporter)),
-  na_par     = sum(is.na(GPH_partner)),
-  na_l_un    = sum(is.na(GPH_reporter) | is.na(GPH_partner)),
-  pct        = round(100 * mean(is.na(GPH_reporter) | is.na(GPH_partner)), 1)
-)
+  left_join(correspondancetable %>% select(COUNTRY = CODE, GPH_reporter = GPH),
+            by = "COUNTRY") %>%
+  left_join(correspondancetable %>% select(COUNTERPART_COUNTRY = CODE, GPH_partner = GPH),
+            by = "COUNTERPART_COUNTRY")
 
-# détail par code, côté reporter
-DOT %>% filter(is.na(GPH_reporter)) %>%
-  count(COUNTRY.ID, COUNTRY, sort = TRUE) %>% as.data.frame()
+# diagnostics
+DOT %>% summarise(total = n(),
+                  na_rep = sum(is.na(GPH_reporter)),
+                  na_par = sum(is.na(GPH_partner)),
+                  pct = round(100 * mean(is.na(GPH_reporter) | is.na(GPH_partner)), 1))
 
-# détail par code, côté partenaire
-DOT %>% filter(is.na(GPH_partner)) %>%
-  count(COUNTERPART_COUNTRY.ID, COUNTERPART_COUNTRY, sort = TRUE) %>% as.data.frame()
-#OK
+DOT %>% filter(is.na(GPH_reporter)) %>% count(COUNTRY, sort = TRUE) %>% as.data.frame()
+DOT %>% filter(is.na(GPH_partner))  %>% count(COUNTERPART_COUNTRY, sort = TRUE) %>% as.data.frame()
+
 DOT <- DOT %>% filter(!is.na(GPH_reporter), !is.na(GPH_partner))
 
+
+# --- URSS / Russie ----------------------------------------------------
 n0 <- nrow(DOT)
-
 DOT <- DOT %>%
-  group_by(COUNTRY.ID, GPH_partner, INDICATOR.ID, TIME_PERIOD,
-           FREQUENCY.ID, UNIT.ID, TRADE_FLOW.ID) %>%
-  filter(!(COUNTERPART_COUNTRY.ID == "SUN" &
-             TIME_PERIOD > 1991 &
-             any(COUNTERPART_COUNTRY.ID == "RUS"))) %>%
+  group_by(COUNTRY, GPH_partner, INDICATOR, TIME_PERIOD, FREQUENCY) %>%
+  filter(!(COUNTERPART_COUNTRY == "SUN" & TIME_PERIOD > 1991 &
+             any(COUNTERPART_COUNTRY == "RUS"))) %>%
   ungroup()
-
-print(n0 - nrow(DOT))  # doit valoir 68
-#Same for Serbia (only UK report both in 2005, choose Serbia and Montenegro for consistency)
+print(n0 - nrow(DOT))  # ok 153 obs toute impliquant SUN
+# --- Serbie / Serbie-Montenegro ---------------------------------------
 n1 <- nrow(DOT)
-
 DOT <- DOT %>%
-  group_by(COUNTRY.ID, GPH_partner, INDICATOR.ID, TIME_PERIOD,
-           FREQUENCY.ID, UNIT.ID, TRADE_FLOW.ID) %>%
-  filter(!(COUNTERPART_COUNTRY.ID == "SRB" &
-             TIME_PERIOD <= 2005 &
-             any(COUNTERPART_COUNTRY.ID == "SCG"))) %>%
+  group_by(COUNTRY, GPH_partner, INDICATOR, TIME_PERIOD, FREQUENCY) %>%
+  filter(!(COUNTERPART_COUNTRY == "SRB" & TIME_PERIOD <= 2005 &
+             any(COUNTERPART_COUNTRY == "SCG"))) %>%
   ungroup()
+print(n1 - nrow(DOT))
 
-print(n1 - nrow(DOT))   # 1, OK
+# doublons residuels
+DOT %>% count(GPH_reporter, GPH_partner, INDICATOR, TIME_PERIOD, FREQUENCY) %>%
+  filter(n > 1) %>% count(GPH_partner)
+# 1, OK
 
-DOT %>%
-  count(GPH_reporter, GPH_partner, INDICATOR.ID, TIME_PERIOD,
-        FREQUENCY.ID, UNIT.ID, TRADE_FLOW.ID) %>%
-  filter(n > 1) %>%
-  count(GPH_partner)
-# Zero duplicates
 
-# 3. Vérif : qui n'a pas matché ?
-DOT %>% filter(is.na(GPH_reporter)) %>% distinct(COUNTRY.ID, COUNTRY) %>% print(n = 50)
-DOT %>% filter(is.na(GPH_partner))  %>% distinct(COUNTERPART_COUNTRY.ID, COUNTERPART_COUNTRY) %>% print(n = 50)
-#Aucun parfait
-#Enlever les lignes sans années (pas de valeurs anyway)
-DOT <- DOT %>% filter(!(is.na(TIME_PERIOD) & is.na(OBS_VALUE)))
 
-#Include Sterling/Dollar rate and convert
+# --- Conversion en livres ---------------------------------------------
 fx <- read.csv("scripts/EXCHANGEPOUND_1948-2026.csv", skip = 4)
-fx$Unit <- NULL          # constante ("$"), inutile
+fx$Unit <- NULL
 fx$Year <- as.integer(fx$Year)
 fx$Rate <- as.numeric(fx$Rate)
-
-#
-fx <- fx[!duplicated(fx$Year), ]   # 2021 est en double dans le fichier
+fx <- fx[!duplicated(fx$Year), ]  # 2021 est en double dans le fichier
 
 
 DOT <- DOT %>%
-  left_join(fx %>% select(TIME_PERIOD = Year, USD_per_GBP = Rate),
-            by = "TIME_PERIOD")
+  left_join(fx %>% select(TIME_PERIOD = Year, USD_per_GBP = Rate), by = "TIME_PERIOD") %>%
+  mutate(VALUE_USD = OBS_VALUE,
+         VALUE_GBP = VALUE_USD / USD_per_GBP)
 
-# valeurs en livres (OBS_VALUE est en millions de USD)
-DOT <- DOT %>%
-  mutate(
-    VALUE_USD = if_else(SCALE == "Millions", OBS_VALUE * 1e6, OBS_VALUE),
-    VALUE_GBP = VALUE_USD / USD_per_GBP
-  )
-
-#write.csv(DOT, "data/IMFdatawithgph.csv",
-         # row.names = FALSE)
 write.csv(DOT, gzfile("data/DOT_gph.csv.gz"), row.names = FALSE)
 
 # =============================================================================
@@ -148,7 +159,7 @@ DOT <- DOT[!is.na(DOT$VALUE_GBP) & !is.na(DOT$TIME_PERIOD), ]
 # -----------------------------------------------------------------------------
 # 1. Nom canonique par code GPH
 # -----------------------------------------------------------------------------
-noms <- read.csv("data/GeoPolHist_entities.csv") %>%
+noms <- read.csv("external data/GeoPolHist_entities.csv") %>%
   select(gph = GPH_code, nom = GPH_name) %>%
   mutate(gph = as.integer(gph)) %>%
   distinct()
@@ -185,10 +196,9 @@ mise_au_format <- function(d, sens) {
   )
 }
 
-flux_fob <- DOT %>% filter(INDICATOR == "Exports of goods, Free on board (FOB), US dollar") %>%
-  mise_au_format("export")
-flux_cif <- DOT %>% filter(INDICATOR == "Imports of goods, Cost insurance freight (CIF), US dollar") %>%
-  mise_au_format("import")
+flux_fob <- DOT %>% filter(INDICATOR == "XG_FOB_USD") %>% mise_au_format("export")
+flux_cif <- DOT %>% filter(INDICATOR == "MG_CIF_USD") %>% mise_au_format("import")
+
 
 nrow(flux_fob); nrow(flux_cif)
 # -----------------------------------------------------------------------------
