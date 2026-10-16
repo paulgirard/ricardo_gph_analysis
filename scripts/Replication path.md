@@ -93,6 +93,8 @@ Variables de contrôle
 
 Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity_XXXX.csv`--avec les imputed zero et les échecs
 
+J’y mets aussi les "data/tradeFlows_`year'_gravity.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
+
 ### Post gravity data (Paul) (YYYY < 1939)
 ```
 cd scripts

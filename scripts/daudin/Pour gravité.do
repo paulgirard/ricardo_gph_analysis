@@ -14,13 +14,25 @@ capture program drop trade_importation
 program define trade_importation
 	args year CafFob
 
-import delimited "data/tradeFlows_`year'_ratios.csv", /*
+if `year' <=1938 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(13 15)
 ***To force newReporters and originalReportedTradeFlowIds to be a string even if empty
 
+if `year' >=1948 {
+	
+	import delimited "data/tradeFlows_`year'_gravity.csv", /*
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
+	*/stringcols(3 6 13 15)
+
+	destring valueToSplit, replace force
+	gen valueGeneratedBy =""
+}
+	
+
 recast str2045 importerId, force
 recast str2045 exporterId, force
+
 format value valueToSplit %20.0fc
 
 
@@ -92,6 +104,7 @@ assert CafFob=="`CafFob'"
 *****
 /////Création des flux à mesurer inconnus
 use tradeFlows_`year'_`CafFob'.dta, clear
+if `year' <=1938 {
 
 
 tab status, missing
@@ -163,7 +176,7 @@ drop if undir_pair_key=="" & id==""
 save Unknown_to_compute_`CafFob'_`year'.dta, replace
 assert CafFob=="`CafFob'"
 
-
+}
 //////////
 
 
@@ -177,7 +190,7 @@ use tradeFlows_`year'_`CafFob'.dta, clear
 drop if strmatch(status,"*split*")==1
 
 
-append using Unknown_to_compute_`CafFob'_`year'.dta
+if `year' <=1938 append using Unknown_to_compute_`CafFob'_`year'.dta
 
 duplicates report importerId exporterId CafFob
 
@@ -240,7 +253,7 @@ use tradeFlows_`year'_`CafFob'.dta, clear
 *'
 keep if status=="ok"
 append using Imputed_zeros_`CafFob'_`year'.dta
-append using Unknown_to_compute_`CafFob'_`year'.dta
+if `year' <=1938 append using Unknown_to_compute_`CafFob'_`year'.dta
 assert CafFob=="`CafFob'"
 
 
@@ -259,11 +272,12 @@ replace mid_n=1 if mid_n>=1 & mid_n!=.
 replace mid_n=0 if mid_n==.
 destring(atop_allie), replace force
 replace atop_allie=1 if atop_allie!=.
+replace atop_allie=0 if atop_allie==.
 replace common_empire=0 if common_empire==.
 replace TA="0" if TA=="" | TA=="NA"
 destring(TA), replace
 generate contig12=0
-replace contig12=1 if contig12==1 | contig12==2
+replace contig12=1 if conttype=="1" | conttype=="2"
 
 codebook value ln_distance contig12 common_empire mid_n atop_allie TA
 
@@ -440,11 +454,11 @@ export delimited using "results/gravity_`year'.csv", replace quote
 erase "results/gravity_`year'_caf.dta"
 erase "results/gravity_`year'_fob.dta"
 
-erase  tradeFlows_`year'_caf.dta
+capture erase  tradeFlows_`year'_caf.dta
 erase  tradeFlows_`year'_fob.dta
-erase Unknown_to_compute_caf_`year'.dta
-erase Unknown_to_compute_fob_`year'.dta
-erase "Imputed_zeros_caf_`year'.dta"
+capture erase Unknown_to_compute_caf_`year'.dta
+capture erase Unknown_to_compute_fob_`year'.dta
+capture erase "Imputed_zeros_caf_`year'.dta"
 erase "Imputed_zeros_fob_`year'.dta"
 
 end
@@ -461,6 +475,10 @@ foreach var_ex of global liste_var_ex {
 
 
 ///1841 est la première année avec des rapporteurs à splitter
+
+
+trade_importation 1948 fob
+gravity_trade_estimation 1948 fob
 
 trade_importation 1841 caf
 gravity_trade_estimation 1841 caf
@@ -480,9 +498,19 @@ foreach year of numlist 1833(1)1840 1842(1)1938 {
 	
 }
 
+foreach year of numlist 1948(1)1938 {
+	*trade_importation `year' caf
+	trade_importation `year' fob
+	*gravity_trade_estimation `year' caf
+	gravity_trade_estimation `year' fob
+	gravity_cleanup `year'
+	
+}
 
 
-global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
+
+
+global liste_var_ex ln_distance common_empire contig12 mid_n atop_allie TA
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
@@ -499,9 +527,9 @@ foreach var_ex of global liste_var_ex {
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
     replace coef=. if ci_low==.
-    replace ci_high=5 if ci_high>5
-    replace ci_low=5 if ci_low>5
-    replace coef=5 if coef>5
+    *replace ci_high=5 if ci_high>5
+    *replace ci_low=5 if ci_low>5
+    *replace coef=5 if coef>5
 
   
     
@@ -516,7 +544,7 @@ foreach var_ex of global liste_var_ex {
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
-			xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of FTA data", place(e) orientation(vertical)) ///
+			xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
             xscale(range(1830 1940)) ///
             title(" Regression results `var_ex' (fob)") ///
