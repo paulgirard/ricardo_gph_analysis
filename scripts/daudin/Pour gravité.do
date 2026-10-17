@@ -286,6 +286,8 @@ if `year' >=1914 local liste_var_ex = subinstr("`liste_var_ex'","TA","",.)
 if `year' >=2022 local liste_var_ex = subinstr("`liste_var_ex'","common_empire","",.)
 
 ppmlhdfe value `liste_var_ex', absorb(importerId exporterId, savefe)
+estimates store full
+gen byte in_sample=e(sample)
 predict double xb, xb
 bysort importerId: egen double fe_imp = max(__hdfe1__)
 bysort exporterId: egen double fe_exp = max(__hdfe2__)
@@ -294,14 +296,17 @@ gen double pred = exp(xb + fe_imp + fe_exp)
 display "`year'"
 
 foreach var_ex in `liste_var_ex' {
+	estimates restore full
     local coef = _b[`var_ex']
     local lc=_b[`var_ex']-1.96*_se[`var_ex']
     local uc=_b[`var_ex']+1.96*_se[`var_ex']
     local R2=e(r2_p)
+	local ll_full = e(ll)
     local var_ex_minus = subinstr("`liste_var_ex'","`var_ex'","",.)
-    ppmlhdfe value `var_ex_minus', absorb(importerId exporterId)
+    ppmlhdfe value `var_ex_minus' if in_sample, absorb(importerId exporterId)
     local add_R2=`R2'-e(r2_p)
-    post reg_result_`var_ex'  ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
+	local add_ll = 2*(`ll_full' - e(ll))
+    post reg_result_`var_ex'  ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2') (`add_ll')
 }
 
 tostring importerId exporterId, replace
@@ -452,7 +457,7 @@ global liste_var_ex TA ln_distance common_empire contig12 mid_n atop_allie
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
-    postfile reg_result_`var_ex' str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/gravity/regression_results_`var_ex'.dta", replace
+    postfile reg_result_`var_ex' str10(CafFob) year str40(var) coef ci_low ci_high r2p llp using "results/gravity/regression_results_`var_ex'.dta", replace
     
 }
 
@@ -514,7 +519,8 @@ foreach var_ex of global liste_var_ex {
 foreach var_ex of global liste_var_ex {
 
     use "results/gravity/regression_results_`var_ex'.dta", clear
-	sort year
+	sort year CafFob
+	save "results/gravity/regression_results_`var_ex'.dta", replace
 	
     export delimited using "results/gravity/regression_results_`var_ex'.csv", replace delimiter(",") quote
     replace coef=. if ci_low==.
@@ -534,7 +540,7 @@ foreach var_ex of global liste_var_ex {
     drop if year >= 2026
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
-            (connected r2p year , yaxis(2) cmissing(n)), ///
+            (connected R2p year , yaxis(2) cmissing(n)), ///
 			xline(1913.5, lpattern(dash) lcolor(blue)) ///
 			text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
 			yline(0, lpattern(dash) lcolor(red)) ///
@@ -543,7 +549,7 @@ foreach var_ex of global liste_var_ex {
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
             xscale(range(1830 1920)) ///
             title(" Regression results `var_ex' (`CafFob')") ///
-            legend(order(2 "Coefficient of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
+            legend(order(2 "Coefficient of `var_ex' (left)" 3 "Incremental R{sup:2} (right)") position(6))
 
     graph export "results/gravity/`var_ex'_`CafFob'.png", replace
 	
