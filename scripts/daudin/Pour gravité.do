@@ -279,13 +279,13 @@ destring importerId exporterId, replace
 
 set seed 4563
 
+local liste_var_ex = "$liste_var_ex"
+if `year' >=2015 local liste_var_ex = subinstr("`liste_var_ex'","mid_n","",.)
+if `year' >=2019 local liste_var_ex = subinstr("`liste_var_ex'","atop_allie","",.)
+if `year' >=1914 local liste_var_ex = subinstr("`liste_var_ex'","TA","",.)
+if `year' >=2022 local liste_var_ex = subinstr("`liste_var_ex'","common_empire","",.)
 
-if `year' >=2015 global liste_var_ex = subinstr("$liste_var_ex","mid_n","",.)
-if `year' >=2019 global liste_var_ex = subinstr("$liste_var_ex","atop_allie","",.)
-if `year' >=1914 global liste_var_ex = subinstr("$liste_var_ex","TA","",.)
-if `year' >=2022 global liste_var_ex = subinstr("$liste_var_ex","common_empire","",.)
-
-ppmlhdfe value $liste_var_ex, absorb(importerId exporterId, savefe)
+ppmlhdfe value `liste_var_ex', absorb(importerId exporterId, savefe)
 predict double xb, xb
 bysort importerId: egen double fe_imp = max(__hdfe1__)
 bysort exporterId: egen double fe_exp = max(__hdfe2__)
@@ -293,12 +293,12 @@ gen double pred = exp(xb + fe_imp + fe_exp)
 
 display "`year'"
 
-foreach var_ex in $liste_var_ex {
+foreach var_ex in `liste_var_ex' {
     local coef = _b[`var_ex']
     local lc=_b[`var_ex']-1.96*_se[`var_ex']
     local uc=_b[`var_ex']+1.96*_se[`var_ex']
     local R2=e(r2_p)
-    local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
+    local var_ex_minus = subinstr("`liste_var_ex'","`var_ex'","",.)
     ppmlhdfe value `var_ex_minus', absorb(importerId exporterId)
     local add_R2=`R2'-e(r2_p)
     post reg_result_`var_ex'  ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
@@ -431,8 +431,6 @@ program define gravity_cleanup
 use "results/gravity_`year'_caf.dta", clear
 append using "results/gravity_`year'_fob.dta"
 
-
-generate treated_flows=r(r)
 order year id 
 export delimited using "results/gravity_`year'.csv", replace quote
 
@@ -450,7 +448,7 @@ end
 
 
 ************************
-global liste_var_ex ln_distance common_empire /*contig12*/ mid_n atop_allie TA
+global liste_var_ex TA ln_distance common_empire contig12 mid_n atop_allie 
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
@@ -462,11 +460,6 @@ foreach var_ex of global liste_var_ex {
 ///1841 est la première année avec des rapporteurs à splitter
 
 
-trade_importation 1948 fob
-gravity_trade_estimation 1948 fob
-trade_importation 1948 caf
-gravity_trade_estimation 1948 caf
-gravity_cleanup 1948
 
 
 
@@ -479,38 +472,49 @@ gravity_cleanup 1841
 
 
 
+trade_importation 1948 caf
+gravity_trade_estimation 1948 caf
+trade_importation 1948 fob
+gravity_trade_estimation 1948 fob
+
+gravity_cleanup 1948
+
+
+
+
 foreach year of numlist 1833(1)1840 1842(1)1938 {
 	trade_importation `year' caf
-	trade_importation `year' fob
 	gravity_trade_estimation `year' caf
+	trade_importation `year' fob
 	gravity_trade_estimation `year' fob
 	gravity_cleanup `year'
 	
 }
 
-foreach year of numlist 1948(1)1938 {
+
+foreach year of numlist 1949(1)2025 {
 	trade_importation `year' caf
-	trade_importation `year' fob
 	gravity_trade_estimation `year' caf
+	trade_importation `year' fob
 	gravity_trade_estimation `year' fob
 	gravity_cleanup `year'
 	
 }
+*/
+
+postutil dir
 
 
-
-
-global liste_var_ex ln_distance common_empire contig12 mid_n atop_allie TA
 foreach var_ex of global liste_var_ex {
     postclose reg_result_`var_ex'
 }
 
 
 
-
 foreach var_ex of global liste_var_ex {
 
     use "results/gravity/regression_results_`var_ex'.dta", clear
+	sort year
 	
     export delimited using "results/gravity/regression_results_`var_ex'.csv", replace delimiter(",") quote
     replace coef=. if ci_low==.
@@ -531,10 +535,14 @@ foreach var_ex of global liste_var_ex {
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
             (connected r2p year , yaxis(2) cmissing(n)), ///
-			xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
+			xline(1913.5, lpattern(dash) lcolor(blue)) ///
+			text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
+			yline(0, lpattern(dash) lcolor(red)) ///
+            xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
+            xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2018.5 "end of alliance data", place(e) orientation(vertical)) ///
             xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            xscale(range(1830 1940)) ///
-            title(" Regression results `var_ex' (fob)") ///
+            xscale(range(1830 1920)) ///
+            title(" Regression results `var_ex' (`CafFob')") ///
             legend(order(2 "Coefficient of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
     graph export "results/gravity/`var_ex'_`CafFob'.png", replace
