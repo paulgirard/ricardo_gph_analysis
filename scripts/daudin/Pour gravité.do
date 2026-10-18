@@ -540,7 +540,7 @@ foreach var_ex of global liste_var_ex {
     drop if year >= 2026
     twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
-            (connected R2p year , yaxis(2) cmissing(n)), ///
+            (connected r2p year , yaxis(2) cmissing(n)), ///
 			xline(1913.5, lpattern(dash) lcolor(blue)) ///
 			text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
 			yline(0, lpattern(dash) lcolor(red)) ///
