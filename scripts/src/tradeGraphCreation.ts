@@ -561,27 +561,41 @@ export function treatReporters(graph: GraphType) {
           //console.log(`${edgeToTreat} rerouted as ${newEdgeId}`);
         });
       } else {
-        // multiple new reporters, add newReporter attribute
-        allreportedFlows.forEach((edgeToTreat) => {
-          const originalPartner =
-            graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
+        if (autonomousReporters.autonomousIds.length > 0) {
+          // multiple new reporters, add newReporter attribute
+          allreportedFlows.forEach((edgeToTreat) => {
+            const originalPartner =
+              graph.source(edgeToTreat) === badReporter ? graph.target(edgeToTreat) : graph.source(edgeToTreat);
 
-          (graph as GraphEntityPartiteType).updateEdgeAttributes(edgeToTreat, (atts) => ({
-            ...atts,
-            labels: new Set([...atts.labels, "FROM_REPORTER_AGGREGATION"]),
-            newReporters: autonomousReporters.autonomousIds.join("|"),
-            // This trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
-            status:
-              graph.getNodeAttribute(originalPartner, "entityType") === "GPH-AUTONOMOUS-CITED"
-                ? "split_failed_no_ratio"
-                : "toTreat",
-            notes: [atts?.notes, `From a flow part-of reporter ${badReporter} to/from ${originalPartner}`]
-              .filter(identity)
-              .join("\n"),
-          }));
+            (graph as GraphEntityPartiteType).updateEdgeAttributes(edgeToTreat, (atts) => ({
+              ...atts,
+              labels: new Set([...atts.labels, "FROM_REPORTER_AGGREGATION"]),
+              newReporters: autonomousReporters.autonomousIds.join("|"),
+              // This trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
+              status:
+                graph.getNodeAttribute(originalPartner, "entityType") === "GPH-AUTONOMOUS-CITED"
+                  ? "split_failed_no_ratio"
+                  : "toTreat",
+              notes: [atts?.notes, `From a flow part-of reporter ${badReporter} to/from ${originalPartner}`]
+                .filter(identity)
+                .join("\n"),
+            }));
 
-          //console.log(`${edgeToTreat} add newReporters fields ${autonomousReporters.autonomousIds.join("|")}`);
-        });
+            //console.log(`${edgeToTreat} add newReporters fields ${autonomousReporters.autonomousIds.join("|")}`);
+          });
+        } else {
+          //no autonomous reporters
+          allreportedFlows.forEach((edgeToTreat) => {
+            (graph as GraphEntityPartiteType).updateEdgeAttributes(edgeToTreat, (atts) => ({
+              ...atts,
+              // This trade flow can be later treated on partner side let's check if that's necessary or delegate to gravity
+              status: "split_failed_error",
+              notes: [atts?.notes, `From a flow part-of reporter ${badReporter} but no autonomous reporter found`]
+                .filter(identity)
+                .join("\n"),
+            }));
+          });
+        }
       }
     });
 }

@@ -77,7 +77,11 @@ export function resolveAutonomous(
     },
     { autonomousIds: [], traversedLabels },
   );
-  if (autonomousEntities.autonomousIds.length === 0 && graph.getNodeAttribute(entityId, "ricType") === "GPH_entity")
+  if (
+    autonomousEntities.autonomousIds.length === 0 &&
+    (graph.getNodeAttribute(entityId, "ricType") === "GPH_entity" ||
+      graph.getNodeAttribute(entityId, "ricType") === "locality")
+  )
     console.log(`could not find autonomous for ${entityId} in ${graph.getAttribute("year")}`);
   return autonomousEntities;
 }
