@@ -14,6 +14,7 @@ capture program drop trade_importation
 program define trade_importation
 	args year CafFob
 
+*local year 1841
 if `year' <=1938 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(13 15)
@@ -32,6 +33,8 @@ if `year' >=1948 {
 }
 	
 
+replace valueGeneratedBy="source" if status=="ok" & valueGeneratedBy==""
+
 recast str2045 importerId, force
 recast str2045 exporterId, force
 
@@ -42,15 +45,6 @@ capture noisily tostring(reportedBy), replace
 
 
 drop importerType exporterType
-drop if value==. & status !="to_impute"
-drop if status =="ignore_internal" | status=="ignore_resolved"
-drop if status=="ignore_duplicate"
-drop if status=="split_failed_error"
-drop if status=="ignore_partial_reporter"
-drop if status=="ignore_partial_duplicate"
-
-
-//Restent les "split_failed_no_ratio"
 
 gen ln_value=ln(value)
 
@@ -71,8 +65,12 @@ replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLab
 assert reportedByIX!=""
 */
 tab status, missing
-count if status !="ok"
-gen totreat_flows=r(N)
+
+preserve 
+collapse  (sum) totvalue=value  (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
+generate step = "before gravity"
+save "results/diag_before_gravity_`year'_`CafFob'.dta", replace
+restore
 
 
 
@@ -92,8 +90,11 @@ use tradeFlows_`year'_`CafFob'.dta, clear
 if `year' <=1938 {
 
 
+
+
 tab status, missing
-keep if strmatch(status,"split_*") | status==""
+
+keep if strmatch(status,"split_*")!=0 & strmatch(status,"split_failed_error")==0
 drop if strpos(newPartners,"restOfTheWorld")!=0
 keep if CafFob=="`CafFob'"
 drop value
@@ -101,6 +102,7 @@ drop value
 
 split newPartners, parse("|") gen(newPartnerId)
 egen nbr_new_partners=rownonmiss(newPartnerId*), strok
+replace nbr_new_partners = 1 if  nbr_new_partners==0
 reshape long newPartnerId, i(id CafFob newReporters nbr_new_partners) j(partner_no)
 drop if partner_no>nbr_new_partners
 destring(newPartnerId), replace
@@ -116,14 +118,13 @@ capture assert missing(newReporters)
 	if _rc!=0 {
 		split newReporters,parse ("|") gen(newReportersId)
 		egen nbr_new_reporters=rownonmiss(newReportersId*), strok
-		reshape long newReportersId, i(id partner_no CafFob ) j(reporter_no)
+		replace nbr_new_reporters = 1 if  nbr_new_reporters==0
+		reshape long newReportersId, i(id newPartnerId CafFob nbr_new_reporters) j(reporter_no)
 		drop if reporter_no>nbr_new_reporters
 		destring(newReportersId), replace
 		replace newexporterId=newReportersId if CafFob=="fob"
-		replace newimporterId=newReportersId if CafFob=="caf"
-		
+		replace newimporterId=newReportersId if CafFob=="caf"	
 	}
-
 
 tostring(newimporterId), replace
 tostring(newexporterId), replace
@@ -159,6 +160,7 @@ order undir_pair_key
 drop if undir_pair_key=="" & id==""
 
 save Unknown_to_compute_`CafFob'_`year'.dta, replace
+
 assert CafFob=="`CafFob'"
 
 }
@@ -172,7 +174,7 @@ assert CafFob=="`CafFob'"
 ********Création des imputed zeros
 
 use tradeFlows_`year'_`CafFob'.dta, clear
-drop if strmatch(status,"*split*")==1
+keep if status=="ok"
 
 
 if `year' <=1938 append using Unknown_to_compute_`CafFob'_`year'.dta
@@ -267,15 +269,10 @@ replace contig12=1 if conttype=="1" | conttype=="2"
 codebook value ln_distance contig12 common_empire mid_n atop_allie TA
 
 
-
-
-***contiguité
-*merge m:1 key  year using "external data/contiguity.dta",  keep(1 3)
-*missing 6 keys in 1833 ???
-
 *****Régression de gravité
 
 destring importerId exporterId, replace
+
 
 set seed 4563
 
@@ -291,6 +288,7 @@ gen byte in_sample=e(sample)
 predict double xb, xb
 bysort importerId: egen double fe_imp = max(__hdfe1__)
 bysort exporterId: egen double fe_exp = max(__hdfe2__)
+
 gen double pred = exp(xb + fe_imp + fe_exp)
 
 display "`year'"
@@ -306,37 +304,57 @@ foreach var_ex in `liste_var_ex' {
     ppmlhdfe value `var_ex_minus' if in_sample, absorb(importerId exporterId)
     local add_R2=`R2'-e(r2_p)
 	local add_ll = 2*(`ll_full' - e(ll))
+	local add_ll_pct = 2*(`ll_full' - e(ll))/`ll_full'
     post reg_result_`var_ex'  ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2') (`add_ll')
 }
 
 tostring importerId exporterId, replace
+
+
+gen old_id = id
+replace id = exporterId + "->" + importerId if CafFob=="fob" 
+replace id = importerId + "<-" + exporterId if CafFob=="caf"
 
 sort id
 egen sum_pred = total(pred), by(id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
 format pred_trade %20.0fc
 
+
 by id: egen success = max(pred_trade), missing
 
-drop pred sum_pred
 
-replace valueGeneratedBy = valueGeneratedBy +"&" + "gravity" if valueGeneratedBy!="" & success !=. & strmatch(status,"*split*")==1
+
+replace value=pred_trade if success!=. & strmatch(status,"*split*")==1
+replace valueGeneratedBy = valueGeneratedBy +"|" + "gravity" if valueGeneratedBy!="" & success !=. & strmatch(status,"*split*")==1
 replace valueGeneratedBy = "gravity" if valueGeneratedBy=="" & success !=. & strmatch(status,"*split*")==1
 replace status ="failed_gravity" if success==. & strmatch(status,"*split*")==1 
+
+
 replace status ="ok" if success!=. & strmatch(status,"*split*")==1 
 
 
 
-replace id = exporterId + "->" + importerId if CafFob=="fob" 
-replace id = importerId + "<-" + exporterId if CafFob=="caf"
+
+drop pred sum_pred
+
+
+
+
+
 
 ///////////Traitement des flux à agréger post-aggretation
+
+///at that point, we need to put together the flows of imputed thanks to gravity
+///if all are succeses : we aggregate them with the sum of flows
+///if any is a failure : it is globally a failure
+
 
 
 sort id notes
 by id : egen nbr_of_successes=count(value)
 by id : replace status="failed_PG_aggregation" if nbr_of_successes!=_N & _N>1
-by id : egen pred_trade_cum=total(pred_trade)
+by id : egen value_cum=total(value)
 
 by id : gen str str_concatn = notes if _n == 1
 by id : replace str_concatn = str_concatn[_n-1] + "&" + notes if _n > 1
@@ -353,26 +371,26 @@ by id : replace  valueGeneratedBy = "PG-aggregation" if  _n>1
 
 
 by id  : keep if _n==1
+replace value=value_cum
 replace valueGeneratedBy = "" if status=="failed_PG_aggregation"
-replace pred_trade=pred_trade_cum
+replace value =. if status=="failed_PG_aggregation"
 
 
 replace status ="ok" if strmatch(valueGeneratedBy,"*gravity*") & status==""
 
 
-drop  pred_trade_cum str_concat* nbr_of_successes 
+
+drop  value_cum str_concat* nbr_of_successes 
 
 
 replace originalReportedTradeFlowIds = "none" if valueGeneratedBy=="imputed zero"
 replace originalReportedTradeFlowId = id if originalReportedTradeFlowId==""
 
 
+
+
 *assert originalReportedTradeFlowId==id if strmatch(status,"ok")
 
-
-///at that point, we need to put together the flows of imputed thanks to gravity
-///if all are succeses : we aggregate them with the sum of flows
-///if any is a failure : it is globally a failure
 
 
 by id  : assert _N==1
@@ -405,8 +423,10 @@ rename GPH_code exporterId
 tostring importerId, replace 
 rename GPH_name exporterLabel
 
-keep id year  CafFob importerId exporterId pred_trade valueToSplit importerLabel exporterLabel totreat_flows status id notes
-order year id importerLabel exporterLabel  CafFob importerId  exporterId  valueToSplit id notes
+keep id year  CafFob importerId exporterId value pred_trade valueToSplit importerLabel exporterLabel status id notes valueGeneratedBy
+order year id importerLabel exporterLabel  value pred_trade CafFob importerId  exporterId  valueToSplit id notes valueGeneratedBy
+
+
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
@@ -417,6 +437,13 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 *keep if status=="ok thanks to gravity"
 sort id
 format value pred_trade %20.0fc
+
+preserve 
+collapse  (sum) totvalue=value  totpred_trade = pred_trade (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
+generate step = "after gravity"
+save "results/diag_after_gravity_`year'_`CafFob'.dta", replace
+restore
+
 
 
 
@@ -449,6 +476,20 @@ capture erase Unknown_to_compute_fob_`year'.dta
 capture erase "Imputed_zeros_caf_`year'.dta"
 erase "Imputed_zeros_fob_`year'.dta"
 
+
+use "results/diag_before_gravity_`year'_caf.dta", clear
+append using "results/diag_before_gravity_`year'_fob.dta"
+append using "results/diag_after_gravity_`year'_caf.dta"
+append using "results/diag_after_gravity_`year'_fob.dta"
+save "results/diag_gravity_`year'.dta", replace
+export delimited using "results/diag_gravity_`year'.csv", replace quote
+
+erase "results/diag_before_gravity_`year'_caf.dta"
+erase "results/diag_before_gravity_`year'_fob.dta"
+erase "results/diag_after_gravity_`year'_caf.dta"
+erase "results/diag_after_gravity_`year'_fob.dta"
+
+
 end
 
 
@@ -475,7 +516,8 @@ trade_importation 1841 fob
 gravity_trade_estimation 1841 fob
 gravity_cleanup 1841
 
-
+blif
+/*
 
 trade_importation 1948 caf
 gravity_trade_estimation 1948 caf
