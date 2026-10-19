@@ -94,4 +94,20 @@ twoway (area share_valuemixed  year , cmissing(n) ) (area share_valuegravity yea
 */ yscale(range (0.5 1))  ytitle("share of reported value") legend(order(1 "Mixed" 2 "Gravity" 3 "Split" 4 "Aggregation" 5 "Sources") position (6) rows(2)) /*
 */ scheme(s2color)
 
-graph export "results/gravity/trade_share_method.png", replace
+graph export "results/gravity/value_share_method.png", replace
+
+restore
+preserve
+
+replace shareflowsaggregation=shareflowssource + shareflowsaggregation
+replace shareflowssplit=shareflowsaggregation + shareflowssplit
+replace shareflowsgravity = shareflowssplit + shareflowsgravity 
+generate shareflowsmixed = shareflowsgravity + shareflowsmixed_with_gravity + shareflowsmixed_without_gravity 
+
+twoway (area shareflowsmixed  year , cmissing(n) ) (area shareflowsgravity year , cmissing(n) ) /*
+*/ (area shareflowssplit year  , cmissing(n) ) (area shareflowsaggregation year  , cmissing(n) )/*
+*/  (area shareflowssource year , cmissing(n) ) if year <=1938, /*
+*/  ytitle("share of potential flows") legend(order(1 "Mixed" 2 "Gravity" 3 "Split" 4 "Aggregation" 5 "Sources") position (6) rows(2)) /*
+*/ scheme(s2color)
+
+graph export "results/gravity/flows_share_method.png", replace
