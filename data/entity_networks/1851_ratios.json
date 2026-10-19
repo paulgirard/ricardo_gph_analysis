@@ -12584,15 +12584,13 @@
       "target": "East London",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 142,
         "type": "trade",
-        "status": "split_failed_no_ratio",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from 200"
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -12601,15 +12599,13 @@
       "target": "East London",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 1727,
         "type": "trade",
-        "status": "split_failed_no_ratio",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from 590"
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -13128,18 +13124,13 @@
       "target": "Key River",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 52,
         "type": "trade",
-        "status": "ignore_resolved",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from Key River",
-        "mergedIn": [
-          "East London->20"
-        ]
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -57107,32 +57098,6 @@
         "status": "ok",
         "type": "trade",
         "originalReportedTradeFlowIds": "Piraeus<-640"
-      }
-    },
-    {
-      "key": "East London->20",
-      "source": "East London",
-      "target": "20",
-      "attributes": {
-        "value": 52,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "East London",
-        "originalReporters": [
-          "East London"
-        ],
-        "originalPartners": [
-          "Key River"
-        ],
-        "newReporters": "",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "East London->Key River 52",
-        "status": "split_failed_no_ratio",
-        "type": "trade",
-        "originalReportedTradeFlowIds": "East London->Key River"
       }
     },
     {

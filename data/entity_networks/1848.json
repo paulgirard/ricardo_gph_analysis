@@ -9732,17 +9732,6 @@
       }
     },
     {
-      "key": "5531",
-      "attributes": {
-        "type": "entity",
-        "entityType": "GPH",
-        "gphStatus": "Part of",
-        "label": "Zwangendaba Ngoni",
-        "reporting": false,
-        "ricType": "GPH_entity"
-      }
-    },
-    {
       "key": "5601",
       "attributes": {
         "type": "entity",
@@ -17493,15 +17482,13 @@
       "target": "590",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 382,
         "type": "trade",
-        "status": "split_failed_no_ratio",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from 590"
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -17510,18 +17497,13 @@
       "target": "Durban (Port Natal)",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 51,
         "type": "trade",
-        "status": "ignore_resolved",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from Durban (Port Natal)",
-        "mergedIn": [
-          "East London->561"
-        ]
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -41858,17 +41840,6 @@
       }
     },
     {
-      "key": "Africa-resolve-into-5531",
-      "source": "Africa",
-      "target": "5531",
-      "attributes": {
-        "type": "resolution",
-        "labels": [
-          "SPLIT_OTHER"
-        ]
-      }
-    },
-    {
       "key": "Africa-resolve-into-5601",
       "source": "Africa",
       "target": "5601",
@@ -50508,32 +50479,6 @@
         "status": "ok",
         "type": "trade",
         "originalReportedTradeFlowIds": "750<-Alexandria & Suez Canal Zone"
-      }
-    },
-    {
-      "key": "East London->561",
-      "source": "East London",
-      "target": "561",
-      "attributes": {
-        "value": 51,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "East London",
-        "originalReporters": [
-          "East London"
-        ],
-        "originalPartners": [
-          "Durban (Port Natal)"
-        ],
-        "newReporters": "",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "East London->Durban (Port Natal) 51",
-        "status": "split_failed_no_ratio",
-        "type": "trade",
-        "originalReportedTradeFlowIds": "East London->Durban (Port Natal)"
       }
     },
     {

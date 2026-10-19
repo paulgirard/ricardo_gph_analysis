@@ -25760,15 +25760,13 @@
       "target": "East London",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 244,
         "type": "trade",
-        "status": "split_failed_no_ratio",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from 200"
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -25777,18 +25775,13 @@
       "target": "East London",
       "attributes": {
         "labels": [
-          "REPORTED_TRADE",
-          "FROM_REPORTER_AGGREGATION"
+          "REPORTED_TRADE"
         ],
         "reportedBy": "East London",
         "value": 370,
         "type": "trade",
-        "status": "ignore_resolved",
-        "newReporters": "",
-        "notes": "From a flow part-of reporter East London to/from Durban (Port Natal)",
-        "mergedIn": [
-          "East London<-561"
-        ]
+        "status": "split_failed_error",
+        "notes": "From a flow part-of reporter East London but no autonomous reporter found"
       }
     },
     {
@@ -57117,33 +57110,6 @@
         "type": "trade",
         "originalReportedTradeFlowIds": "101<-Sardinia",
         "partial": "missing Piedmont"
-      }
-    },
-    {
-      "key": "East London<-561",
-      "source": "561",
-      "target": "East London",
-      "attributes": {
-        "value": 370,
-        "valueGeneratedBy": [
-          "aggregation"
-        ],
-        "reportedBy": "East London",
-        "originalReporters": [
-          "East London"
-        ],
-        "originalPartners": [
-          "Durban (Port Natal)"
-        ],
-        "newReporters": "",
-        "labels": [
-          "GENERATED_TRADE"
-        ],
-        "notes": "East London<-Durban (Port Natal) 370",
-        "status": "split_failed_no_ratio",
-        "type": "trade",
-        "originalReportedTradeFlowIds": "East London<-Durban (Port Natal)",
-        "partial": "missing Cape Town|Port Simon|Port Elizabeth|5614|562 unexpected: Durban (Port Natal)"
       }
     },
     {
