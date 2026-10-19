@@ -72,7 +72,7 @@ tab status, missing
 preserve 
 collapse  (sum) totvalue=value  (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
 generate step = "before gravity"
-save "results/diag_before_gravity_`year'_`CafFob'.dta", replace
+save "results/gravity/diag_before_gravity_`year'_`CafFob'.dta", replace
 restore
 
 
@@ -451,13 +451,13 @@ format value pred_trade %20.0fc
 preserve 
 collapse  (sum) totvalue=value  totpred_trade = pred_trade (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
 generate step = "after gravity"
-save "results/diag_after_gravity_`year'_`CafFob'.dta", replace
+save "results/gravity/diag_after_gravity_`year'_`CafFob'.dta", replace
 restore
 
 
 
 
-save "results/gravity_`year'_`CafFob'.dta", replace 
+save "results/gravity/gravity_`year'_`CafFob'.dta", replace 
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 
@@ -470,16 +470,16 @@ capture program drop gravity_cleanup
 program define gravity_cleanup
 	args year
 
-use "results/gravity_`year'_caf.dta", clear
-append using "results/gravity_`year'_fob.dta"
-capture append using "results/errors_caf_`year'.dta, replace"
-capture append using "results/errors_fob_`year'.dta, replace"
+use "results/gravity/gravity_`year'_caf.dta", clear
+append using "results/gravity/gravity_`year'_fob.dta"
+capture append using "results/gravity/errors_caf_`year'.dta, replace"
+capture append using "results/gravity/errors_fob_`year'.dta, replace"
 
 order year id 
-export delimited using "results/gravity_`year'.csv", replace quote
+export delimited using "results/gravity/gravity_`year'.csv", replace quote
 
-erase "results/gravity_`year'_caf.dta"
-erase "results/gravity_`year'_fob.dta"
+erase "results/gravity/gravity_`year'_caf.dta"
+erase "results/gravity/gravity_`year'_fob.dta"
 
 capture erase  tradeFlows_`year'_caf.dta
 erase  tradeFlows_`year'_fob.dta
@@ -489,17 +489,18 @@ capture erase "Imputed_zeros_caf_`year'.dta"
 erase "Imputed_zeros_fob_`year'.dta"
 
 
-use "results/diag_before_gravity_`year'_caf.dta", clear
-append using "results/diag_before_gravity_`year'_fob.dta"
-append using "results/diag_after_gravity_`year'_caf.dta"
-append using "results/diag_after_gravity_`year'_fob.dta"
-save "results/diag_gravity_`year'.dta", replace
-export delimited using "results/diag_gravity_`year'.csv", replace quote
+use "results/gravity/diag_before_gravity_`year'_caf.dta", clear
+append using "results/gravity/diag_before_gravity_`year'_fob.dta"
+append using "results/gravity/diag_after_gravity_`year'_caf.dta"
+append using "results/gravity/diag_after_gravity_`year'_fob.dta"
+sort step status valueGeneratedBy CafFob
+save "results/gravity/diag_gravity_`year'.dta", replace
+export delimited using "results/gravity/diag_gravity_`year'.csv", replace quote
 
-erase "results/diag_before_gravity_`year'_caf.dta"
-erase "results/diag_before_gravity_`year'_fob.dta"
-erase "results/diag_after_gravity_`year'_caf.dta"
-erase "results/diag_after_gravity_`year'_fob.dta"
+erase "results/gravity/diag_before_gravity_`year'_caf.dta"
+erase "results/gravity/diag_before_gravity_`year'_fob.dta"
+erase "results/gravity/diag_after_gravity_`year'_caf.dta"
+erase "results/gravity/diag_after_gravity_`year'_fob.dta"
 
 
 end
