@@ -18,14 +18,16 @@ export interface AutonomousResolutionType {
 function getEntityAutonomousResolutionEdges(
   entityNodeId: string,
   graph: GraphType,
-  limitToResolutionTypes: Set<EntityResolutionLabelType>,
+  limitToResolutionTypes: Set<EntityResolutionLabelType> | undefined,
 ) {
   return (
     graph
       // only traverse aggregate and split edges
       .filterOutboundEdges(
         entityNodeId,
-        (_, atts) => atts.type === "resolution" && atts.labels.intersection(limitToResolutionTypes).size > 0,
+        (_, atts) =>
+          atts.type === "resolution" &&
+          (!limitToResolutionTypes || atts.labels.intersection(limitToResolutionTypes).size > 0),
       )
   );
 }
@@ -33,7 +35,7 @@ function getEntityAutonomousResolutionEdges(
 export function resolveAutonomous(
   entityId: string,
   graph: GraphType,
-  limitToResolutionTypes: Set<EntityResolutionLabelType> = new Set(["AGGREGATE_INTO", "SPLIT", "SPLIT_OTHER"]),
+  limitToResolutionTypes: Set<EntityResolutionLabelType> | undefined,
 ): AutonomousResolutionType {
   if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
     return { autonomousIds: [entityId], traversedLabels: new Set() };
@@ -44,7 +46,7 @@ export function resolveAutonomous(
     getEntityAutonomousResolutionEdges(entityId, graph, limitToResolutionTypes).map((e) => {
       // track traversed labels
       graph.getEdgeAttribute(e, "labels").forEach((l) => {
-        if (limitToResolutionTypes.has(l as EntityResolutionLabelType))
+        if (!limitToResolutionTypes || limitToResolutionTypes.has(l as EntityResolutionLabelType))
           traversedLabels.add(l as EntityResolutionLabelType);
       });
 
@@ -78,6 +80,7 @@ export function resolveAutonomous(
     { autonomousIds: [], traversedLabels },
   );
   if (
+    limitToResolutionTypes === undefined &&
     autonomousEntities.autonomousIds.length === 0 &&
     (graph.getNodeAttribute(entityId, "ricType") === "GPH_entity" ||
       graph.getNodeAttribute(entityId, "ricType") === "locality")
