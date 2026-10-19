@@ -60,6 +60,9 @@ keep if CafFob=="`CafFob'"
 
 bys exporterId importerId CafFob : assert _N==1
 
+****Flag d’erreurs précédentes
+replace status = "pre-gravity_error" if (status =="split_failed_no_ratio" | status =="split_only_partial") & (newReporters=="" & newPartners =="")
+
 /*gen reportedByIX = "I" if reportedBy== importerId | reportedBy== importerLabel
 replace reportedByIX = "X" if reportedBy== exporterId | reportedBy== exporterLabel
 assert reportedByIX!=""
@@ -81,6 +84,13 @@ order undir_pair_key
 
 save tradeFlows_`year'_`CafFob'.dta, replace
 assert CafFob=="`CafFob'"
+*******Création des erreurs (pas les ignores)
+use tradeFlows_`year'_`CafFob'.dta, clear
+if `year' <=1938 {
+
+	keep if strmatch(status,"*error*") == 1
+	save errors_`CafFob'_`year'.dta, replace
+}
 
 
 
@@ -462,6 +472,8 @@ program define gravity_cleanup
 
 use "results/gravity_`year'_caf.dta", clear
 append using "results/gravity_`year'_fob.dta"
+capture append using "results/errors_caf_`year'.dta, replace"
+capture append using "results/errors_fob_`year'.dta, replace"
 
 order year id 
 export delimited using "results/gravity_`year'.csv", replace quote
@@ -503,11 +515,20 @@ foreach var_ex of global liste_var_ex {
 }
 
 
+
+
+trade_importation 1848 fob
+gravity_trade_estimation 1848 fob
+
+trade_importation 1848 caf
+gravity_trade_estimation 1848 caf
+
+gravity_cleanup 1848
+
+
+
+
 ///1841 est la première année avec des rapporteurs à splitter
-
-
-
-
 
 trade_importation 1841 caf
 gravity_trade_estimation 1841 caf
@@ -516,8 +537,7 @@ trade_importation 1841 fob
 gravity_trade_estimation 1841 fob
 gravity_cleanup 1841
 
-blif
-/*
+
 
 trade_importation 1948 caf
 gravity_trade_estimation 1948 caf
