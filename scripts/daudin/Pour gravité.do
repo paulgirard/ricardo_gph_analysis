@@ -517,17 +517,6 @@ foreach var_ex of global liste_var_ex {
 
 
 
-trade_importation 1848 fob
-gravity_trade_estimation 1848 fob
-
-trade_importation 1848 caf
-gravity_trade_estimation 1848 caf
-
-gravity_cleanup 1848
-
-
-
-
 ///1841 est la première année avec des rapporteurs à splitter
 
 trade_importation 1841 caf
