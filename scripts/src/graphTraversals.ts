@@ -35,7 +35,7 @@ function getEntityAutonomousResolutionEdges(
 export function resolveAutonomous(
   entityId: string,
   graph: GraphType,
-  limitToResolutionTypes: Set<EntityResolutionLabelType> | undefined,
+  limitToResolutionTypes?: Set<EntityResolutionLabelType>,
 ): AutonomousResolutionType {
   if (graph.getNodeAttribute(entityId, "entityType") === "GPH-AUTONOMOUS-CITED")
     return { autonomousIds: [entityId], traversedLabels: new Set() };
