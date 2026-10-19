@@ -366,7 +366,7 @@ drop pred sum_pred
 
 
 
-sort id notes
+sort id old_id notes
 by id : egen nbr_of_successes=count(value)
 by id : replace status="failed_PG_aggregation" if nbr_of_successes!=_N & _N>1
 by id : egen value_cum=total(value)
@@ -406,7 +406,7 @@ replace originalReportedTradeFlowId = id if originalReportedTradeFlowId==""
 
 *assert originalReportedTradeFlowId==id if strmatch(status,"ok")
 
-
+sort id old_id notes
 
 by id  : assert _N==1
 
@@ -417,7 +417,7 @@ if "`CafFob'"=="fob" {
 
 
 
-
+sort id old_id notes
 drop success
 
 ///Récupération des labels
@@ -438,8 +438,10 @@ rename GPH_code exporterId
 tostring importerId, replace 
 rename GPH_name exporterLabel
 
-keep id year  CafFob importerId exporterId value pred_trade valueToSplit importerLabel exporterLabel status id notes valueGeneratedBy
-order year id importerLabel exporterLabel  value pred_trade CafFob importerId  exporterId  valueToSplit id notes valueGeneratedBy
+sort id old_id notes
+
+keep id year  CafFob importerId exporterId value pred_trade valueToSplit importerLabel exporterLabel status  old_id notes valueGeneratedBy
+order year id importerLabel exporterLabel  value pred_trade CafFob importerId  exporterId  valueToSplit old_id notes valueGeneratedBy
 
 
 
@@ -450,7 +452,7 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 
 ////exportation des résultats gravity
 *keep if status=="ok thanks to gravity"
-sort id
+sort id old_id notes
 format value pred_trade %20.0fc
 
 
