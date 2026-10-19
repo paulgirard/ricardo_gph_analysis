@@ -40,6 +40,10 @@ recast str2045 exporterId, force
 
 format value valueToSplit %20.0fc
 
+replace valueToSplit=value if (status =="split_failed_no_ratio") & valueToSplit==. 
+
+
+
 
 capture noisily tostring(reportedBy), replace
 
@@ -326,12 +330,12 @@ replace id = exporterId + "->" + importerId if CafFob=="fob"
 replace id = importerId + "<-" + exporterId if CafFob=="caf"
 
 sort id
-egen sum_pred = total(pred), by(id)
+egen sum_pred = total(pred), by(old_id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
 format pred_trade %20.0fc
 
 
-by id: egen success = max(pred_trade), missing
+bys old_id: egen success = max(pred_trade), missing
 
 
 
@@ -339,10 +343,11 @@ replace value=pred_trade if success!=. & strmatch(status,"*split*")==1
 replace valueGeneratedBy = valueGeneratedBy +"|" + "gravity" if valueGeneratedBy!="" & success !=. & strmatch(status,"*split*")==1
 replace valueGeneratedBy = "gravity" if valueGeneratedBy=="" & success !=. & strmatch(status,"*split*")==1
 replace status ="failed_gravity" if success==. & strmatch(status,"*split*")==1 
+bys old_id : replace value=valueToSplit if _n==1 & status=="failed_gravity"
+**This is useful for diagnostic
 
 
 replace status ="ok" if success!=. & strmatch(status,"*split*")==1 
-
 
 
 
@@ -357,7 +362,7 @@ drop pred sum_pred
 
 ///at that point, we need to put together the flows of imputed thanks to gravity
 ///if all are succeses : we aggregate them with the sum of flows
-///if any is a failure : it is globally a failure
+///if any is a failure : it is globally a fabilure
 
 
 
@@ -379,8 +384,8 @@ by id : replace originalReportedTradeFlowIds = str_concato[_N] if _N>1
 by id : replace  valueGeneratedBy = valueGeneratedBy +"-----" + "PG-aggregation" if valueGeneratedBy!="" & _n>1
 by id : replace  valueGeneratedBy = "PG-aggregation" if  _n>1
 
-
 by id  : keep if _n==1
+
 replace value=value_cum
 replace valueGeneratedBy = "" if status=="failed_PG_aggregation"
 replace value =. if status=="failed_PG_aggregation"
@@ -396,7 +401,7 @@ drop  value_cum str_concat* nbr_of_successes
 replace originalReportedTradeFlowIds = "none" if valueGeneratedBy=="imputed zero"
 replace originalReportedTradeFlowId = id if originalReportedTradeFlowId==""
 
-
+*******
 
 
 *assert originalReportedTradeFlowId==id if strmatch(status,"ok")
@@ -448,8 +453,10 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 sort id
 format value pred_trade %20.0fc
 
+
 preserve 
-collapse  (sum) totvalue=value  totpred_trade = pred_trade (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
+gen yearbis=year
+collapse  (sum) totvalue=value  (count) nbrflows=yearbis , by(year CafFob status valueGeneratedBy)
 generate step = "after gravity"
 save "results/gravity/diag_after_gravity_`year'_`CafFob'.dta", replace
 restore
@@ -527,7 +534,7 @@ trade_importation 1841 fob
 gravity_trade_estimation 1841 fob
 gravity_cleanup 1841
 
-
+blif
 
 trade_importation 1948 caf
 gravity_trade_estimation 1948 caf
