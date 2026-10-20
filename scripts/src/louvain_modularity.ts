@@ -12,7 +12,6 @@ import {
   capitalize,
   fromPairs,
   groupBy,
-  isNil,
   keys,
   mapKeys,
   mapValues,
@@ -28,7 +27,7 @@ import {
 } from "lodash";
 
 import { assignTIBI } from "./TIBI";
-import { EntityNodeAttributes } from "./types";
+import { EntityNodeAttributes, FlowValueImputationMethod } from "./types";
 import gephiLiteTemplate from "./undirectedLouvainTemplate.gephilite.json";
 
 interface ModularityTestResult {
@@ -52,25 +51,44 @@ type OkNodeAttributes = EntityNodeAttributes & {
 };
 
 type FlowData = {
-  id: string;
-  year: number;
-  importerId: string;
-  importerLabel: string;
-  importerType: string;
-  exporterId: string;
-  exporterLabel: string;
-  exporterType: string;
+  // id: string;
+  // year: number;
+  // importerId: string;
+  // importerLabel: string;
+  //importerType: string;
+  // exporterId: string;
+  // exporterLabel: string;
+  //exporterType: string;
   value: number;
-  reportedBy: string;
-  partial: string;
-  valueToSplit: string;
-  newReporters: string;
-  newPartners: string;
-  originalReportedTradeFlowIds: string;
+  //reportedBy: string;
+  //partial: string;
+  // valueToSplit: number;
+  // newReporters: string;
+  // newPartners: string;
+  //originalReportedTradeFlowIds: string;
   status: string;
   notes: string;
+  valueGeneratedBy: FlowValueImputationMethod[];
+  CafFob: "caf" | "fob";
 };
 export type LouvainGraph = DirectedGraph<OkNodeAttributes, Partial<OkEdgeAttributes>>;
+
+interface GravityResultsType {
+  year: number;
+  id: string;
+  old_id: string;
+  value: number;
+  pred_trade: number;
+  CafFob: "caf" | "fob";
+  importerId: string;
+  importerLabel: string;
+  exporterId: string;
+  exporterLabel: string;
+  valueToSplit: number;
+  status: string;
+  valueGeneratedBy: FlowValueImputationMethod[];
+  notes: string;
+}
 
 const blocksStats: {
   year: number;
@@ -79,7 +97,7 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = range(1833, 2026);
+const years = range(1833, 1834);
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
@@ -122,22 +140,32 @@ years.forEach((year) => {
   } else {
     throw new Error("file AN does not exist");
   }
-  // read csv flows data/tradeFlows_{yyyy}_gravity.csv
-  const tradeFlowsFile = `../data/tradeFlows_${year}_gravity.csv`;
+  // read csv flows from gravity results
+  const tradeFlowsFile = `../results/gravity/gravity_${year}.csv`;
 
   if (existsSync(tradeFlowsFile)) {
     const tradeFlowsCsvString = readFileSync(tradeFlowsFile);
-
-    const tradeFlowsData = parse<FlowData>(tradeFlowsCsvString, {
+    const tradeFlowsData = parse<GravityResultsType>(tradeFlowsCsvString, {
       columns: true,
-      cast: (value, ctx) => {
-        if (ctx.column === "value") return toNumber(value);
-        return value;
+      cast: (v, ctx) => {
+        switch (ctx.column) {
+          case "year":
+            return v ? parseInt(v) : undefined;
+          case "value":
+          case "valueToSplit":
+          case "pred_trade":
+            return v ? parseFloat(v) : undefined;
+          case "valueGeneratedBy":
+            return v.split("|");
+          default:
+            return v;
+        }
       },
     });
+
     const bilateralGraph = new MultiDirectedGraph<
       { id: string; label: string; type: string; blockLouvain: number; blockIntraMax: string; blockAN: string },
-      FlowData & { TIBI?: number; cafFob?: "caf" | "fob" }
+      FlowData & { TIBI?: number; CafFob?: "caf" | "fob" }
     >({ multi: true });
     tradeFlowsData.forEach((flow) => {
       bilateralGraph.mergeNode(flow.exporterId, {
@@ -156,23 +184,14 @@ years.forEach((year) => {
         blockIntraMax: intraMaxBlocks[year][flow.exporterId],
         blockAN: anBlocks[flow.exporterId],
       });
-      bilateralGraph.addDirectedEdgeWithKey(flow.id, flow.exporterId, flow.importerId, flow);
+      bilateralGraph.addDirectedEdgeWithKey(flow.id, flow.exporterId, flow.importerId, {
+        ...pick(flow, ["CafFob", "status", "valueGeneratedBy", "notes", "value"]),
+      });
     });
 
     // flag CAF and FOB flows
     // FOB = reporter is exporter
     // CAF = reporter is importer
-    bilateralGraph.updateEachEdgeAttributes((_, atts, source, target) => ({
-      ...atts,
-      cafFob:
-        atts.status === "ok" && !isNil(atts.value) && isFinite(atts.value)
-          ? atts.reportedBy === source
-            ? "fob"
-            : atts.reportedBy === target
-              ? "caf"
-              : undefined
-          : undefined,
-    }));
 
     // total trade = sum of values
     // const totalBilateralTrade = sum(edges.map((e) => bilateralGraph.getEdgeAttribute(e, "value") || 0));
@@ -194,7 +213,9 @@ years.forEach((year) => {
     // });
 
     // remove deprecated edges/nodes
-    bilateralGraph.filterEdges((_, atts) => atts.cafFob === undefined).forEach((e) => bilateralGraph.dropEdge(e));
+    bilateralGraph
+      .filterEdges((_, atts) => atts.status !== "ok" || atts.CafFob === undefined)
+      .forEach((e) => bilateralGraph.dropEdge(e));
     bilateralGraph.filterNodes((n) => bilateralGraph.degree(n) === 0).forEach((n) => bilateralGraph.dropNode(n));
     console.log(
       `${year} directed after filter out non-ok edges and no-degree ${bilateralGraph.size} flows ${bilateralGraph.order} nodes`,
@@ -239,6 +260,7 @@ years.forEach((year) => {
       const tibis = impExpCouple
         .map((e) => bilateralGraph.getEdgeAttribute(e, "TIBI"))
         .filter((tibi) => tibi !== undefined);
+      console.log(tibis);
       // we use max over mean as we want to boost local max proximity when calculating blocks
       const maxTIBI = max(tibis);
 
@@ -333,28 +355,28 @@ years.forEach((year) => {
           "TIBI",
           "maxObservedTradeValues",
           "observedTradeValues",
-          "coMembershipScore",
-          "bridgeNessEdgeScore",
-          "ambiguityScore",
+          // "coMembershipScore",
+          // "bridgeNessEdgeScore",
+          // "ambiguityScore",
           "maxObservedTradeValue",
-          "sourceCited",
-          "sourceReporting",
+          // "sourceCited",
+          // "sourceReporting",
           "sourceLabel",
-          "sourceGphStatus",
+          // "sourceGphStatus",
 
           "sourceBlockLouvainMaxobservedtradevalues",
           "sourceBlockIntraMax",
           "sourceBlockAn",
-          "sourceMeanAmbiguityScore",
-          "targetCited",
-          "targetReporting",
+          // "sourceMeanAmbiguityScore",
+          // "targetCited",
+          // "targetReporting",
           "targetLabel",
-          "targetGphStatus",
+          // "targetGphStatus",
 
           "targetBlockLouvainMaxobservedtradevalues",
           "targetBlockIntraMax",
           "targetBlockAn",
-          "targetMeanAmbiguityScore",
+          // "targetMeanAmbiguityScore",
         ],
         header: true,
       },
@@ -442,4 +464,4 @@ years.forEach((year) => {
   );
 });
 console.log(`missing entities in AN`);
-console.log(missingInANAll);
+console.log([...missingInANAll].join("\n"));

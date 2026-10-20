@@ -12,7 +12,7 @@ export function assignTIBI(graph: DirectedGraph) {
   const _X: Record<string, number> = {};
   const X = (i: string): number => {
     if (_X[i] !== undefined) return _X[i];
-    const xEdges = graph.outboundEdges(i).filter((e) => graph.getEdgeAttribute(e, "cafFob") === "fob");
+    const xEdges = graph.outboundEdges(i).filter((e) => graph.getEdgeAttribute(e, "CafFob") === "fob");
     _X[i] = sum(xEdges.map((e) => graph.getEdgeAttribute(e, "value") || 0));
     return _X[i];
   };
@@ -21,7 +21,7 @@ export function assignTIBI(graph: DirectedGraph) {
   const _M: Record<string, number> = {};
   const M = (j: string): number => {
     if (_M[j] !== undefined) return _M[j];
-    const xEdges = graph.inboundEdges(j).filter((e) => graph.getEdgeAttribute(e, "cafFob") === "caf");
+    const xEdges = graph.inboundEdges(j).filter((e) => graph.getEdgeAttribute(e, "CafFob") === "caf");
     _M[j] = sum(xEdges.map((e) => graph.getEdgeAttribute(e, "value") || 0));
     return _M[j];
   };
@@ -31,7 +31,7 @@ export function assignTIBI(graph: DirectedGraph) {
     if (_Xr_[i] !== undefined) return _Xr_[i];
     _Xr_[i] = sum(
       graph.outEdges().map((e) => {
-        if (graph.getEdgeAttribute(e, "cafFob") === "fob" && graph.source(e) !== i)
+        if (graph.getEdgeAttribute(e, "CafFob") === "fob" && graph.source(e) !== i)
           return graph.getEdgeAttribute(e, "value") || 0;
         else return 0;
       }),
@@ -44,7 +44,7 @@ export function assignTIBI(graph: DirectedGraph) {
     if (_M_r[j] !== undefined) return _M_r[j];
     _M_r[j] = sum(
       graph.inEdges().map((e) => {
-        if (graph.getEdgeAttribute(e, "cafFob") === "caf" && graph.target(e) !== j)
+        if (graph.getEdgeAttribute(e, "CafFob") === "caf" && graph.target(e) !== j)
           return graph.getEdgeAttribute(e, "value") || 0;
         else return 0;
       }),
@@ -53,21 +53,21 @@ export function assignTIBI(graph: DirectedGraph) {
   };
 
   graph.updateEachEdgeAttributes((e, atts) => {
-    const cafFob = atts.cafFob;
+    const CafFob = atts.CafFob;
 
     const i = graph.source(e);
     const j = graph.target(e);
     // Xij as export of i to j
     const XMij = atts.value || 0;
 
-    if (cafFob === "fob") {
+    if (CafFob === "fob") {
       const Xi = X(i);
       if (Xi == 0) throw new Error("PAS CONTENT");
       // Xrj as
       // FOB/CAF: all export from all the World but i to j
       const Xrj = sum(
         graph.inboundEdges(j).map((rj) => {
-          if (graph.getEdgeAttribute(rj, "cafFob") === cafFob && graph.source(rj) !== i) {
+          if (graph.getEdgeAttribute(rj, "CafFob") === CafFob && graph.source(rj) !== i) {
             return graph.getEdgeAttribute(rj, "value") || 0;
           }
           return 0;
@@ -89,7 +89,7 @@ export function assignTIBI(graph: DirectedGraph) {
         TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
       }
       if (isNaN(TIBI) || isNil(TIBI)) {
-        console.log(TIBI, cafFob, { XMij, Xrj, Xr_i, Xi });
+        console.log(TIBI, CafFob, { XMij, Xrj, Xr_i, Xi });
         throw new Error("TIBI is undefined");
       }
       return {
@@ -97,13 +97,13 @@ export function assignTIBI(graph: DirectedGraph) {
         TIBI,
       };
     } //end FOB
-    else if (cafFob === "caf") {
+    else if (CafFob === "caf") {
       const Mj = M(j);
       if (Mj == 0) throw new Error("PAS CONTENT");
 
       const Mir = sum(
         graph.outboundEdges(i).map((ir) => {
-          if (graph.getEdgeAttribute(ir, "cafFob") === cafFob && graph.target(ir) !== j) {
+          if (graph.getEdgeAttribute(ir, "CafFob") === CafFob && graph.target(ir) !== j) {
             return graph.getEdgeAttribute(ir, "value") || 0;
           }
           return 0;
@@ -126,7 +126,7 @@ export function assignTIBI(graph: DirectedGraph) {
         TIBI = (I1 / I3 - 1) / (I1 / I3 + 1);
       }
       if (isNaN(TIBI) || isNil(TIBI)) {
-        console.log(TIBI, cafFob, { XMij, Mir, M_rj, Mj });
+        console.log(TIBI, CafFob, { XMij, Mir, M_rj, Mj });
         throw new Error("TIBI is undefined");
       }
       return {

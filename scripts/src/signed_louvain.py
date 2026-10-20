@@ -41,8 +41,8 @@ flow_file_headers = [
 if __name__ == "__main__":
     # read undirected TIBI weighted networks
 
-    for year in range(1865, 2026):
-        flowCsvFilePath = join("../results/communities/louvain", f"{year}.csv")
+    for year in range(1833,1834):
+        flowCsvFilePath = join("../../results/communities/louvain", f"{year}.csv")
         if exists(flowCsvFilePath):
             print(year)
             graph = networkx.Graph()
@@ -114,7 +114,7 @@ if __name__ == "__main__":
                 "cafFob",
             ]
             flowCsvFilePath = join(
-                "../results/communities/gph_blocks_by_year/", f"{year}.csv"
+                "../../results/communities/gph_blocks_by_year/", f"{year}.csv"
             )
             with open(flowCsvFilePath, "r") as blockFile:
                 blocks = list(DictReader(blockFile))
@@ -126,12 +126,13 @@ if __name__ == "__main__":
                     writer.writerow(block)
 
             # Gephi lite
-            with open(join("../results/communities/louvain/", f"{year}_gephi_lite.json"), 'r', encoding='utf8') as f:
+            with open(join("../../results/communities/louvain/", f"{year}_gephi_lite.json"), 'r', encoding='utf8') as f:
                 gephiLiteFileString = f.read()
                 
                 gephiLiteFile = json.loads(gephiLiteFileString)
-            with open(join("../results/communities/louvain/", f"{year}_gephi_lite.json"), 'w') as f:
+            with open(join("../../results/communities/louvain/", f"{year}_gephi_lite.json"), 'w') as f:
                 for node, community in communities.items():
                     gephiLiteFile['graphDataset']['nodeData'][node]['blockLouvainTibi']=community
                 json.dump(gephiLiteFile, f)
-
+        else:
+            print(f'file {flowCsvFilePath} does not exist')
