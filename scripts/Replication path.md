@@ -95,7 +95,7 @@ Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/grav
 
 J’y mets aussi les "data/tradeFlows_`year'_gravity.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
 
-### Post gravity data (Paul) (YYYY < 1939)
+
 ```
 cd scripts
 
@@ -110,20 +110,7 @@ npm install sqlite3@latest
 
 
 
-`npm run gravity `
-`npm run quality-gravity` 
 
-
-**lit le dossier results et exporte les réseaux au format json et gephi lite**
-Les scripts « quality » écrivent les csv
-
-
-From results/gravity_XXXX.csv, Paul creates `data/tradeFlows_YYYY_gravity.csv`
-Which are the trade flows including gravity
-
-+
-
-un fichier de diagnostics ‘tradeGraphsStats_gravity.csv’
 
 ### IMF data (YYYY > 1947 up to 2025) (Youssef)
 From:
@@ -145,18 +132,18 @@ Création des block intramax : scripts/Ghallada/Network RICardo Year.R"
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
 ### Louvain (Paul)
 
-Utilise `data/tradeFlows_YYYY_gravity.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
+Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
 **exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
 
-creates `data/blocks/louvain/YYYY_caf/fob.csv`
+creates `data/blocks/louvain/YYYY.csv`
 
 Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec les valeurs avec la métrique
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
-Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `results/communities/gph_blocks_by_year/`year'_`CafFob.csv`
+Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `results/communities/gph_blocks_by_year/`year'`.csv`
 
 
 
