@@ -260,7 +260,7 @@ years.forEach((year) => {
       const tibis = impExpCouple
         .map((e) => bilateralGraph.getEdgeAttribute(e, "TIBI"))
         .filter((tibi) => tibi !== undefined);
-      console.log(tibis);
+
       // we use max over mean as we want to boost local max proximity when calculating blocks
       const maxTIBI = max(tibis);
 

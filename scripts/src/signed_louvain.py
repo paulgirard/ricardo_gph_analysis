@@ -41,7 +41,7 @@ flow_file_headers = [
 if __name__ == "__main__":
     # read undirected TIBI weighted networks
 
-    for year in range(1833,1834):
+    for year in range(1833, 2026):
         flowCsvFilePath = join("../../results/communities/louvain", f"{year}.csv")
         if exists(flowCsvFilePath):
             print(year)
