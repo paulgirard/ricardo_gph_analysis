@@ -62,17 +62,15 @@ Crée des .dta dans le dossier Controls panel
 
 
 
-
-
 ## Data generation
 
-### IMF data (YYYY > 1947 up to 2025) (Youssef)
+### IMF data (YYYY >= 1948 up to 2025) (Youssef)
 From:
-- scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
-- scripts/EXCHANGEPOUND_1948-2026.csv (exchange rates from Lawrence H. Officer, 'Dollar-Pound Exchange Rate From 1791,' MeasuringWorth, 2026.)
+external data/DoT Direction of Trade (IMF)/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
+- external data/EXCHANGEPOUND_1948-2026.csv (exchange rates from Lawrence H. Officer, 'Dollar-Pound Exchange Rate From 1791,' MeasuringWorth, 2026.)
 - scripts/tablegphdot.xlsx (pour traduction nom FMI vers GPH)
 
-- Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity_CafFob.csv
+- Youssef uses scripts/Ghallada/MergeIMFRIC.R to create external data/DoT Direction of Trade (IMF)/tradeFlows_YYYY_gravity_CafFob.csv
 
 ### Before gravity (Paul) (YYYY < 1939, from 1833)
 
@@ -102,7 +100,7 @@ From:
 +
 Variables de contrôle
 +
-J’y mets aussi les "data/tradeFlows_`year'_gravity.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
+J’y mets aussi les « external data/DoT Direction of Trade (IMF)/tradeFlows_`year'_gravity_CafFob.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
 
 
 
