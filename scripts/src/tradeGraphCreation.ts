@@ -298,23 +298,12 @@ export function splitAreas(graph: GraphType, RICentities: Record<string, RICenti
               // add member to the graph as autonomous resolution
               const autonomousMember = autonomousGPHEntity(member.GPH_code, year);
               if (
+                // for SPLIT_OTHER areas we don't keep the resolution target if the target isn't already in the graph (ie already cited by another entity or trading directly)
                 autonomousMember.entity.GPH_code !== n &&
-                autonomousMember.status !== undefined
-                // opened question : should we restrict to autonomous or filter out discovered/unknown status
-                //autonomousMember.autonomous === true
-                //graph.degree(autonomousMember.entity.GPH_code) > 0
+                autonomousMember.status !== undefined &&
+                graph.hasNode(autonomousMember.entity.GPH_code) &&
+                graph.degree(autonomousMember.entity.GPH_code) > 0
               ) {
-                if (!graph.hasNode(autonomousMember.entity.GPH_code)) {
-                  graph.addNode(nodeId(autonomousMember.entity), {
-                    type: "entity",
-                    entityType: autonomousMember.autonomous ? "GPH-AUTONOMOUS" : "GPH",
-                    gphStatus: autonomousMember.status,
-                    label: autonomousMember.entity.GPH_name,
-                    reporting: false,
-                    ricType: "GPH_entity",
-                  });
-                }
-
                 addResolutionEdge(
                   graph as GraphResolutionPartiteType,
                   n,
