@@ -61,7 +61,18 @@ Produit `external data/Controls panel/alliances.csv`
 Crée des .dta dans le dossier Controls panel
 
 
+
+
+
 ## Data generation
+
+### IMF data (YYYY > 1947 up to 2025) (Youssef)
+From:
+- scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
+- scripts/EXCHANGEPOUND_1948-2026.csv (exchange rates from Lawrence H. Officer, 'Dollar-Pound Exchange Rate From 1791,' MeasuringWorth, 2026.)
+- scripts/tablegphdot.xlsx (pour traduction nom FMI vers GPH)
+
+- Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity_CafFob.csv
 
 ### Before gravity (Paul) (YYYY < 1939, from 1833)
 
@@ -87,13 +98,23 @@ Paul creates data/tradeFlows_YYYY_ratios.csv + un fichier de diagnostics ‘trad
 
 ### Gravity (Guillaume) (YYYY < 1939)
 From:
-`data/tradeFlows_YYY_ratios.csv` pour les flux
+`data/tradeFlows_YYY_ratios.csv` pour les flux pre-1938
 +
 Variables de contrôle
-
-Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity_XXXX.csv`--avec les imputed zero et les échecs
-
++
 J’y mets aussi les "data/tradeFlows_`year'_gravity.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
+
+
+
+
+Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity/gravity_XXXX.csv`-- avec les imputed zero et les échecs (mais pas les « ignore ») et `results/gravity/diag_gravity_XXXX.csv’
+
+
+### Post-gravity diagnostics
+From ‘results/gravity/diag_gravity_XXXX.csv’, using ‘scripts/daudin/Pour graphiques de diagnostique post-gravité.do’
+Cela donne des graphiques : `results/gravity/value_share_method.png' et `results/gravity/flows_share_method.png’
+
+
 
 ### Post gravity data (Paul) (YYYY < 1939)
 ```
@@ -125,18 +146,8 @@ Which are the trade flows including gravity
 
 un fichier de diagnostics ‘tradeGraphsStats_gravity.csv’
 
-### IMF data (YYYY > 1947 up to 2025) (Youssef)
-From:
-- scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
-- scripts/EXCHANGEPOUND_1948-2026.csv (exchange rates from Lawrence H. Officer, 'Dollar-Pound Exchange Rate From 1791,' MeasuringWorth, 2026.)
-- scripts/tablegphdot.xlsx (pour traduction nom FMI vers GPH)
-
-- Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity.csv
-
 ### Creation of BestGuessBilTrade avec les 0 imputés, les vrais manquants et les non-rapportés
 Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
-
-
 
 ## Bloc generation
 ### Intramax and Anderson-Norheim (1993) (Youssef)

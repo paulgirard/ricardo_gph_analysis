@@ -22,7 +22,7 @@ if `year' <=1938 import delimited "data/tradeFlows_`year'_ratios.csv", /*
 
 if `year' >=1948 {
 	
-	import delimited "data/tradeFlows_`year'_gravity_`CafFob'.csv", /*
+	import delimited "external data/DoT Direction of Trade (IMF)/tradeFlows_`year'_gravity_`CafFob'.csv", /*
 	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear /*
 	*/stringcols(3 6 13 15)
 

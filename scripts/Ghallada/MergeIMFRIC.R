@@ -55,8 +55,8 @@ library(rsdmx); library(dplyr)
 #saveRDS(cif, "external data/IMTS_cif.rds")
 
 
-fob <- readRDS("external data/IMTS_fob.rds")
-cif <- readRDS("external data/IMTS_cif.rds")
+fob <- readRDS("external data/DoT Direction of Trade (IMF)/IMTS_fob.rds")
+cif <- readRDS("external data/DoT Direction of Trade (IMF)/IMTS_cif.rds")
 # --- Assemblage des deux indicateurs ---------------------------------
 DOT <- bind_rows(fob, cif)
 
@@ -136,7 +136,7 @@ DOT %>% count(GPH_reporter, GPH_partner, INDICATOR, TIME_PERIOD, FREQUENCY) %>%
 
 
 # --- Conversion en livres ---------------------------------------------
-fx <- read.csv("scripts/EXCHANGEPOUND_1948-2026.csv", skip = 4)
+fx <- read.csv("external data/EXCHANGEPOUND_1948-2026.csv", skip = 4)
 fx$Unit <- NULL
 fx$Year <- as.integer(fx$Year)
 fx$Rate <- as.numeric(fx$Rate)
@@ -148,7 +148,7 @@ DOT <- DOT %>%
   mutate(VALUE_USD = OBS_VALUE,
          VALUE_GBP = VALUE_USD / USD_per_GBP)
 
-write.csv(DOT, gzfile("data/DOT_gph.csv.gz"), row.names = FALSE)
+write.csv(DOT, gzfile("external data/DoT Direction of Trade (IMF)/DOT_gph.csv.gz"), row.names = FALSE)
 
 # =============================================================================
 # Conversion du DOT (FMI) au format tradeFlows_<year>_gravity.csv
@@ -210,7 +210,7 @@ nrow(flux_fob); nrow(flux_cif)
 ecrire_par_annee <- function(flux, suffixe) {
   for (an in sort(unique(flux$year))) {
     d <- flux[flux$year == an, ]
-    f <- paste0("data/tradeFlows_", an, "_gravity_", suffixe, ".csv")
+    f <- paste0("external data/DoT Direction of Trade (IMF)/tradeFlows_", an, "_gravity_", suffixe, ".csv")
     write.csv(d, f, row.names = FALSE)
     message("  ", suffixe, " ", an, " : ", nrow(d), " flux, ",
             length(unique(c(d$exporterId, d$importerId))), " pays")
