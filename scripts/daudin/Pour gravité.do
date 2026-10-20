@@ -93,7 +93,7 @@ use tradeFlows_`year'_`CafFob'.dta, clear
 if `year' <=1938 {
 
 	keep if strmatch(status,"*error*") == 1
-	save errors_`CafFob'_`year'.dta, replace
+	save "results/gravity/errors_`CafFob'_`year'.dta", replace
 }
 
 
@@ -440,8 +440,8 @@ rename GPH_name exporterLabel
 
 sort id old_id notes
 
-keep id year  CafFob importerId exporterId value pred_trade valueToSplit importerLabel exporterLabel status  old_id notes valueGeneratedBy
-order year id importerLabel exporterLabel  value pred_trade CafFob importerId  exporterId  valueToSplit old_id notes valueGeneratedBy
+keep id year  CafFob importerId exporterId value importerLabel exporterLabel status  old_id notes valueGeneratedBy
+order year id importerLabel exporterLabel  value  CafFob importerId  exporterId  old_id notes valueGeneratedBy
 
 
 
@@ -453,7 +453,7 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 ////exportation des résultats gravity
 *keep if status=="ok thanks to gravity"
 sort id old_id notes
-format value pred_trade %20.0fc
+format value  %20.0fc
 
 
 preserve 
@@ -481,8 +481,10 @@ program define gravity_cleanup
 
 use "results/gravity/gravity_`year'_caf.dta", clear
 append using "results/gravity/gravity_`year'_fob.dta"
-capture append using "results/gravity/errors_caf_`year'.dta, replace"
-capture append using "results/gravity/errors_fob_`year'.dta, replace"
+capture append using "results/gravity/errors_caf_`year'.dta"
+capture append using "results/gravity/errors_fob_`year'.dta"
+capture erase "results/gravity/errors_caf_`year'.dta"
+capture erase "results/gravity/errors_fob_`year'.dta"
 
 order year id 
 export delimited using "results/gravity/gravity_`year'.csv", replace quote
@@ -490,11 +492,11 @@ export delimited using "results/gravity/gravity_`year'.csv", replace quote
 erase "results/gravity/gravity_`year'_caf.dta"
 erase "results/gravity/gravity_`year'_fob.dta"
 
-capture erase  tradeFlows_`year'_caf.dta
+erase  tradeFlows_`year'_caf.dta
 erase  tradeFlows_`year'_fob.dta
 capture erase Unknown_to_compute_caf_`year'.dta
 capture erase Unknown_to_compute_fob_`year'.dta
-capture erase "Imputed_zeros_caf_`year'.dta"
+erase "Imputed_zeros_caf_`year'.dta"
 erase "Imputed_zeros_fob_`year'.dta"
 
 
