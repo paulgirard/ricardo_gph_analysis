@@ -97,7 +97,7 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = range(1833, 1834);
+const years = range(1833, 2026);
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
