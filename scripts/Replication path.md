@@ -144,11 +144,11 @@ Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/trade
 ## Bloc generation
 ### Intramax and Anderson-Norheim (1993) (Youssef)
 À partir de `data/tradeFlows_YYYY_gravity.csv`
-Création des block intramax : scripts/Ghallada/Network RICardo Year.R"
+Création des block intramax : scripts/Ghallada/Intramax.R »
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
 ### Louvain (Paul)
 
-Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
+Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `external data/data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
 Crée `results/communities/gph_blocks_by_year/1833.csv’ (ie index des blocs)
@@ -156,11 +156,7 @@ Crée `results/communities/gph_blocks_by_year/1833.csv’ (ie index des blocs)
 `results/communities/louvain/1833.csv’
 
 
-**exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
-
-creates `data/blocks/louvain/YYYY.csv`
-
-Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec les valeurs avec la métrique
+Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain TIBI ajusté, Louvain TIBI signé) avec les valeurs avec la métrique
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
@@ -175,7 +171,7 @@ Vient aussi de `npm run louvain-modularity `
 
 ### TIBI (Youssef)
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
-Graphiques : `data/blocks/louvain/tibi_intracomm_moyen.png`, `data/blocks/tibi_comparaison_intramax_louvain.png`, `data/blocks/tibi_comparaison_avec_diff_nblocs.png`
+Graphiques : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
 ### Commerce intrabloc (Guillaume)
 À partir de `data/blocks/louvain/`year'_fob_enrichi.csv`
 Avec `Pour part commerce intra-bloc.do`
@@ -186,7 +182,7 @@ Cartes avec `scripts/Ghallada/Map year.R`
 Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 ### Corrélation (Youssef)
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
-Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
+Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 
 ## Analyse
 
@@ -194,7 +190,7 @@ Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 
 Prendre l’appartenance AN  comme une variable explicative.
 
-À partir de `data/blocks/master_YYYY_fob_.csv` NON PAS LES BONS
+À partir de `results/communities/master_YYYY_fob_.csv` NON PAS LES BONS
 
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`

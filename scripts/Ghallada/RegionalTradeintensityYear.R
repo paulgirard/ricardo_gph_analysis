@@ -4,18 +4,14 @@ gc()
 library(dplyr)
 library(readxl)
 library(tidyverse)
-library
-user <- Sys.info()["user"]
-if (user == "guillaumedaudin") {
-  setwd("~/Répertoires Git/ricardo_gph_analysis")
-} else {
-  setwd("~/Desktop/ricardo_gph_analysis")
-}
-BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
+library(here)
+
+
+BlocselonAN <- read.csv2(here("external data","BlocselonAN.csv"))
 region_map  <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 
 codes_post45 <- unique(unlist(lapply(1948:2025, function(y) {
-  f <- paste0("data/blocks/Intramax/paires_blocs_", y, ".csv")
+  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", y, ".csv"))
   if (!file.exists(f)) return(NULL)
   d <- read.csv(f); c(d$exporterId, d$importerId)
 })))
@@ -28,7 +24,7 @@ annees <- annees_all
 resultats_intra <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 
 for (year in annees) {
-  f <- paste0("data/blocks/Intramax/paires_blocs_", year, ".csv")
+  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
   d <- d[!is.na(d$value), ]
@@ -98,16 +94,16 @@ p <- ggplot(resultats_intra, aes(year, moyenne)) +
 print(p)
 
 
-ggsave("results/block_study/Intramax/tibi_intrabloc_moyen.png",
+ggsave(here("results","block_study","Intramax","tibi_intrabloc_moyen.png"),
        plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_intra, "results/block_study/Intramax/tibi_intrabloc_moyen.csv", row.names = FALSE)
+write.csv(resultats_intra, here("results","block_study","Intramax","tibi_intrabloc_moyen.csv"), row.names = FALSE)
 
 #####Louvain method#####
 
 annees <- annees_all
 resultats_louvain <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 for (year in annees) {
-  f <- paste0("data/blocks/louvain/", year, "_fob_enrichi.csv")
+  f <- here("data", "blocks", "louvain",  paste0(year, "_fob_enrichi.csv"))
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
   if (nrow(d) == 0) next
@@ -181,9 +177,9 @@ p <- ggplot(resultats_louvain, aes(year, moyenne)) +
        title = "Commerce Intra-communauté (Louvain) moyen pondéré par année") +
   theme_minimal()
 print(p)
-ggsave("results/block_study/louvain/tibi_intracomm_moyen.png",
+ggsave(here("results","block_study","louvain","tibi_intracomm_moyen.png"),
        plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_louvain, "results/block_study/louvain/tibi_intracomm_moyen.csv", row.names = FALSE)
+write.csv(resultats_louvain, here("results","block_study","louvain","tibi_intracomm_moyen.csv"), row.names = FALSE)
 
 
 
@@ -206,19 +202,19 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 45, hjust = 1))
 print(p_combine)
-ggsave("results/block_study/tibi_comparaison_intramax_louvain.png",
+ggsave(here("results","block_study","tibi_comparaison_intramax_louvain.png"),
        plot = p_combine, width = 10, height = 5, dpi = 150)
 
 
 ###Regional blocs (as echoed by Anderson and Norheim)
-BlocselonAN <- read.csv2("external data/BlocselonAN.csv")
+BlocselonAN <- read.csv2(here("external data","BlocselonAN.csv"))
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
 resultats_AN <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
 
 for (year in annees_all) {
-  f <- paste0("data/blocks/Intramax/paires_blocs_", year, ".csv")
+  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
   if (!file.exists(f) || file.info(f)$size == 0) next
   d <- read.csv(f, stringsAsFactors = FALSE)
   d <- d[!is.na(d$value), ]
@@ -313,7 +309,7 @@ p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
 
 print(p_combine)
 
-ggsave("results/block_study/tibi_comparaison_trois_methodes.png",
+ggsave(here("results","block_study","tibi_comparaison_trois_methodes.png"),
        plot = p_combine, width = 10, height = 5, dpi = 150)
 
 
@@ -400,6 +396,6 @@ p_combine <- ggplot() +
 
 print(p_combine)
 
-ggsave("results/block_study/tibi_comparaison_avec_diff_nblocs.png",
+ggsave(here("results","block_study","tibi_comparaison_avec_diff_nblocs.png"),
        plot = p_combine, width = 11, height = 6, dpi = 150)
 

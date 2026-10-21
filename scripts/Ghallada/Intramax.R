@@ -113,7 +113,7 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
     mutate(importerId = coalesce(as.character(importerId), gph_id)) %>%
     select(-gph_id)
   # ---- export ----
-  out <- file.path(here("data", "blocks", "Intramax"), paste0("paires_blocs_", year, ".csv"))
+  out <- file.path(here("results","communities","Intramax"), paste0("paires_blocs_", year, ".csv"))
   write.csv(paires, out, row.names = FALSE)
   message("  OK ", year, " : ", nrow(paires), " paires -> ", basename(out))
   return(paires)
@@ -129,7 +129,7 @@ for (year in annees_all) {
 }
 
 # ================= Recupérere les corrélations =================
-dossier <- here("data", "blocks", "Intramax")
+dossier <- here("results","communities", "Intramax")
 annees  <- annees_all
 
 cor_par_annee <- data.frame(year = integer(), cor = numeric())
@@ -179,18 +179,18 @@ p <-ggplot(cor_par_annee, aes(year, cor)) +
 
 # ---- SAUVEGARDES ----
 # le graphe en PNG
-ggsave(here("data", "blocks", "Intramax", "correlation_meme_bloc.png"),
+ggsave(here("results","communities","Intramax", "correlation_meme_bloc.png"),
        plot = p, width = 9, height = 5, dpi = 150)
 
 # le fichier des correlations en CSV
 write.csv(cor_par_annee,
-          here("data", "blocks", "Intramax", "cor_par_annee.csv"),
+          here("results", "communities", "Intramax", "cor_par_annee.csv"),
           row.names = FALSE)
 
 # ================= Avec Louvain=================
 
 
-dossier <- here("data", "blocks", "louvain")  
+dossier <- here("results","communities", "louvain")  
 annees  <- annees_all
 
 cor_comm <- data.frame(year = integer(), cor = numeric(),
@@ -229,15 +229,15 @@ p_louvain <- ggplot(cor_comm, aes(year, cor)) +
        title = "Corrélation même communauté ↔ commerce (IC 95%)") +
   theme_minimal()
 
-ggsave(here("data", "blocks", "louvain", "correlation_louvain.png"),
+ggsave(here("results", "communities", "louvain", "correlation_louvain.png"),
        plot = p_louvain, width = 9, height = 5, dpi = 150)
-write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm.csv"), row.names = FALSE)
+write.csv(cor_comm, here("results", "communities", "louvain", "cor_comm.csv"), row.names = FALSE)
 
 
 
 #Correlation Louvain mais avec les flux i==>j et j==>i
 
-dossier <- here("data", "blocks", "louvain")
+dossier <- here("results", "communities", "louvain")
 annees  <- annees_all
 cor_comm <- data.frame(year = integer(), cor = numeric(),
                        ic_bas = numeric(), ic_haut = numeric())
@@ -286,17 +286,17 @@ p_louvain <- ggplot(cor_comm, aes(year, cor)) +
 
 print(p_louvain)
 
-ggsave(here("data", "blocks", "louvain", "correlation_louvain_oriente.png"),
+ggsave(here("results", "communities", "louvain", "correlation_louvain_oriente.png"),
        plot = p_louvain, width = 9, height = 5, dpi = 150)
-write.csv(cor_comm, here("data", "blocks", "louvain", "cor_comm_oriente.csv"), row.names = FALSE)
+write.csv(cor_comm, here("results","communities", "louvain", "cor_comm_oriente.csv"), row.names = FALSE)
 
 
 
 #Corrélation entre Louvain et Intramax same blocs
 
 
-dossier_intra   <- here("data", "blocks", "Intramax")
-dossier_louvain <- here("data", "blocks", "louvain")
+dossier_intra   <- here("results","communities", "Intramax")
+dossier_louvain <- here("results","communities", "louvain")
 annees <- annees_all
 
 cor_methodes <- data.frame(year = integer(), cor = numeric(),
@@ -362,9 +362,9 @@ p <- ggplot(cor_methodes, aes(year, cor)) +
 print(p)
 
 # --- sauvegardes ---
-ggsave(here("data", "blocks", "corr_intramax_louvain.png"),
+ggsave(here("results","communities", "corr_intramax_louvain.png"),
        plot = p, width = 9, height = 5, dpi = 150)
-write.csv(cor_methodes, here("data", "blocks", "cor_intramax_louvain.csv"),
+write.csv(cor_methodes, here("results","communities", "cor_intramax_louvain.csv"),
           row.names = FALSE)
 
 
