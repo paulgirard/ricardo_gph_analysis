@@ -1,3 +1,18 @@
+
+**installer les dépendances à ne faire qu'une seule fois**
+```
+cd scripts
+
+npm i 
+De Guillaume ?
+npm uninstall sqlite3
+npm install sqlite3@latest
+
+```
+
+
+
+
 # Replication path
 
 ## External data and controls
@@ -117,39 +132,11 @@ Cela donne des graphiques : `results/gravity/value_share_method.png' et `results
 
 
 
-Using `scripts/daudin/Pour gravité.do` (stata), Guillaume creates `results/gravity/gravity_XXXX.csv`-- avec les imputed zero et les échecs (mais pas les « ignore ») et `results/gravity/diag_gravity_XXXX.csv’
-
-
-### Post-gravity diagnostics
-From ‘results/gravity/diag_gravity_XXXX.csv’, using ‘scripts/daudin/Pour graphiques de diagnostique post-gravité.do’
-Cela donne des graphiques : `results/gravity/value_share_method.png' et `results/gravity/flows_share_method.png’
-
-
-
-
-```
-cd scripts
-
-npm i 
-De Guillaume ?
-npm uninstall sqlite3
-npm install sqlite3@latest
-
-```
-**installer les dépendances à ne faire qu'une seule fois**
 
 
 
 
 
-
-### IMF data (YYYY > 1947 up to 2025) (Youssef)
-From:
-- scripts/dataset_2026-09-10T10_46_06.578468509Z_DEFAULT_INTEGRATION_IMF.STA_IMTS_1.0.0.csv.zip (Comtrade data)
-- scripts/EXCHANGEPOUND_1948-2026.csv (exchange rates from Lawrence H. Officer, 'Dollar-Pound Exchange Rate From 1791,' MeasuringWorth, 2026.)
-- scripts/tablegphdot.xlsx (pour traduction nom FMI vers GPH)
-
-- Youssef uses scripts/Ghallada/MergeIMFRIC.R to create data/tradeFlows_YYYY_gravity.csv
 
 ### Creation of BestGuessBilTrade avec les 0 imputés, les vrais manquants et les non-rapportés
 Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
