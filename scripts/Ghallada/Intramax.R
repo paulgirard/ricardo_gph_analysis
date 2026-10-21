@@ -18,7 +18,7 @@ annees_all <- c(annees_ric, annees_imf)
 
 traiter_annee <- function(year, dossier, seuil = 0.10) {
   
-  fichier <- file.path(dossier, paste0("tradeFlows_", year, "_gravity.csv"))
+  fichier <- file.path(dossier, paste0("gravity_", year, ".csv"))
   if (!file.exists(fichier)) { message("  fichier absent : ", year); return(NULL) }
   
   # ---- chargement + filtre exportateur (FOB) ----
@@ -120,7 +120,7 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
 }
 
 # ================= BOUCLE =================
-dossier <- here("data")
+dossier <- here("results/gravity")
 
 for (year in annees_all) {
   message("Annee ", year)
