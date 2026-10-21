@@ -151,6 +151,11 @@ Création des block intramax : scripts/Ghallada/Network RICardo Year.R"
 Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
+Crée `results/communities/gph_blocks_by_year/1833.csv’ (ie index des blocs)
+`results/communities/louvain/1833_gephi_lite.json’,
+`results/communities/louvain/1833.csv’
+
+
 **exporte les blocs (il faut avoir recalculé intramax avant) à la fois louvain et gph_by_year**
 
 creates `data/blocks/louvain/YYYY.csv`
@@ -159,18 +164,12 @@ Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain) avec
 + fichier avec modularité et nombre de blocks par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
-Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `results/communities/gph_blocks_by_year/`year'`.csv`
-
-
 
 ## Métriques
 ### Modularité (Paul)
 Vient aussi de `npm run louvain-modularity `
-`data/blocks/modularities_by_year.csv’
 
-Crée `results/communities/gph_blocks_by_year/1833.csv’
-`results/communities/louvain/1833_gephi_lite.json’,
-`results/communities/louvain/1833.csv’,
+**Semble mort**
 `results/communities/modularities_by_year.csv’
 ----------------------
 
