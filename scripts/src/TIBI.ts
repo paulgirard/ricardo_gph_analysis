@@ -62,7 +62,7 @@ export function assignTIBI(graph: DirectedGraph) {
 
     if (CafFob === "fob") {
       const Xi = X(i);
-      if (Xi == 0) throw new Error("PAS CONTENT");
+
       // Xrj as
       // FOB/CAF: all export from all the World but i to j
       const Xrj = sum(
@@ -77,6 +77,7 @@ export function assignTIBI(graph: DirectedGraph) {
       let TIBI: number | undefined = undefined;
       // case of isolated trade partners with only one edge
       // TIBI can't be calculated
+      if (Xi === 0) return atts;
       if (Xrj === 0 || Xr_i === 0 || XMij === Xi) TIBI = 1;
       else if (XMij === 0) TIBI = -1;
       else {
@@ -99,7 +100,6 @@ export function assignTIBI(graph: DirectedGraph) {
     } //end FOB
     else if (CafFob === "caf") {
       const Mj = M(j);
-      if (Mj == 0) throw new Error("PAS CONTENT");
 
       const Mir = sum(
         graph.outboundEdges(i).map((ir) => {
@@ -113,6 +113,7 @@ export function assignTIBI(graph: DirectedGraph) {
       let TIBI: number | undefined = undefined;
       // case of isolated trade partners with only one edge
       // TIBI can't be calculated
+      if (Mj === 0) return atts;
       if (Mir === 0 || M_rj === 0 || XMij === Mj) TIBI = 1;
       else if (XMij === 0) TIBI = -1;
       else {

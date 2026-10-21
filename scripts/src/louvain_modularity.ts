@@ -97,7 +97,7 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = range(1833, 1834);
+const years = range(1833, 2026);
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
@@ -260,7 +260,7 @@ years.forEach((year) => {
       const tibis = impExpCouple
         .map((e) => bilateralGraph.getEdgeAttribute(e, "TIBI"))
         .filter((tibi) => tibi !== undefined);
-      console.log(tibis);
+
       // we use max over mean as we want to boost local max proximity when calculating blocks
       const maxTIBI = max(tibis);
 
