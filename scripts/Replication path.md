@@ -168,6 +168,10 @@ Et aussi Pour avoir les blocs des GPH, il faut regarder les index de blocs.  `re
 Vient aussi de `npm run louvain-modularity `
 `data/blocks/modularities_by_year.csv’
 
+Crée `results/communities/gph_blocks_by_year/1833.csv’
+`results/communities/louvain/1833_gephi_lite.json’,
+`results/communities/louvain/1833.csv’,
+`results/communities/modularities_by_year.csv’
 ----------------------
 
 ### TIBI (Youssef)
@@ -178,19 +182,12 @@ Graphiques : `data/blocks/louvain/tibi_intracomm_moyen.png`, `data/blocks/tibi_c
 Avec `Pour part commerce intra-bloc.do`
 Produit : `results/block_study/intra_block_share_fob.csv` et
 `results/block_study/Intra-block trade share.png`
-### Divers (Youssef)
+### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
 Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
-
+### Corrélation (Youssef)
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
 Cela donne `data/blocks/cor_intramax_louvain.csv, corr_intramax_louvain.png`
-
-
-
-### Marge extensive (Guillaume)
-Using 
-
-
 
 ## Analyse
 

@@ -1,13 +1,15 @@
+
 rm(list = ls(all = TRUE))
 gc()
 library(here)
 library(ggplot2)
 library(maps)
 
-setwd("/Users/youssef/Desktop/ricardo_gph_analysis/")
+
+here()
 
 monde <- map_data("world")
-coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
+coord <- read.csv(here("external data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
 
@@ -197,7 +199,7 @@ for (year in annees) {
 
 
 monde <- map_data("world")
-coord <- read.csv(here("data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
+coord <- read.csv(here("external data", "GeoPolHist_entities.csv"), stringsAsFactors = FALSE)
 coord <- coord[, c("GPH_code", "lat", "lng")]
 coord$GPH_code <- as.character(coord$GPH_code)
 
