@@ -65,7 +65,7 @@ if __name__ == "__main__":
             communities:dict= cd.best_partition(
                     layers=[posgraph, neggraph],
                     layer_weights=[1.0, -1.0],
-                    resolutions=[1.0, 1.0],
+                    resolutions=[1.2, 0.5],
                     masks=[False, True],
                     k=2,
                     initial_membership=None,
@@ -83,7 +83,15 @@ if __name__ == "__main__":
                         print("not in posgraph")
                     if not neggraph.has_node(n):
                         print("not in neggraph")
-            print(year, communities)
+            communities_keys = set(c for _,c in communities.items())
+            print(f"{year} {len(communities_keys)} communities")
+            total_nodes =0
+            nb_nodes_by_community = {}
+            for k in communities_keys:
+                nb_nodes = len([1 for _,ck in communities.items() if ck ==k])
+                total_nodes += nb_nodes
+                nb_nodes_by_community[k] = nb_nodes
+            print(", ".join([f"{nb/total_nodes:.0%}" for c, nb in nb_nodes_by_community.items()]))
             
             for flow in flows:
                 try:
