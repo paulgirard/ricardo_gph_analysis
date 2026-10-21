@@ -46,6 +46,7 @@ type OkNodeAttributes = EntityNodeAttributes & {
   blockLouvainTibi: number;
   blockLouvainProximity: number;
   blockLouvainMaxobservedtradevalues: number;
+  blockLouvainTibirescale: number;
   blockIntraMax: string;
   blockAN: string;
 };
@@ -97,7 +98,7 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = range(1833, 2026);
+const years = range(1833, 1834);
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
@@ -273,6 +274,7 @@ years.forEach((year) => {
         observedTradeValues: impExpCouple.map((e) => bilateralGraph.getEdgeAttribute(e, "value")),
         maxObservedTradeValues: max(impExpCouple.map((e) => bilateralGraph.getEdgeAttribute(e, "value"))),
         TIBI: maxTIBI,
+        TIBIRescale: maxTIBI ? maxTIBI + 1 : undefined,
       });
     });
 
@@ -281,11 +283,11 @@ years.forEach((year) => {
     );
 
     // find optimal resolution
-    const weightAtts: (keyof OkEdgeAttributes)[] = ["maxObservedTradeValues"];
+    const weightAtts: (keyof OkEdgeAttributes)[] = ["maxObservedTradeValues", "TIBIRescale"];
     weightAtts.forEach((weightAtt) => {
       const result: ModularityTestResult[] = [];
       // - calculate louvain blocks
-      range(0.2, 4, 0.2).forEach((resolution) => {
+      range(0.2, 2, 0.2).forEach((resolution) => {
         const details = louvain.detailed(undirectedGraph, {
           resolution,
           getEdgeWeight: weightAtt,
@@ -328,6 +330,7 @@ years.forEach((year) => {
       "label",
       "gphStatus",
       "blockLouvainMaxobservedtradevalues",
+      "blockLouvainTibirescale",
       "blockAN",
       "blockIntraMax",
       "meanAmbiguityScore",
@@ -365,6 +368,7 @@ years.forEach((year) => {
           // "sourceGphStatus",
 
           "sourceBlockLouvainMaxobservedtradevalues",
+          "sourceBlockLouvainTibirescale",
           "sourceBlockIntraMax",
           "sourceBlockAn",
           // "sourceMeanAmbiguityScore",
@@ -374,6 +378,7 @@ years.forEach((year) => {
           // "targetGphStatus",
 
           "targetBlockLouvainMaxobservedtradevalues",
+          "targetBlockLouvainTibirescale",
           "targetBlockIntraMax",
           "targetBlockAn",
           // "targetMeanAmbiguityScore",
@@ -410,12 +415,20 @@ years.forEach((year) => {
           label: atts.label,
           year,
           blockLouvainMaxobservedtradevalues: atts.blockLouvainMaxobservedtradevalues,
+          blockLouvainTibirescale: atts.blockLouvainTibirescale,
           blockIntraMax: atts.blockIntraMax,
         })),
         (row) => toNumber(row.id),
       ),
       {
-        columns: ["id", "label", "blockLouvainMaxobservedtradevalues", "blockIntraMax", "year"],
+        columns: [
+          "id",
+          "label",
+          "blockLouvainMaxobservedtradevalues",
+          "blockLouvainTibirescale",
+          "blockIntraMax",
+          "year",
+        ],
         header: true,
       },
     );

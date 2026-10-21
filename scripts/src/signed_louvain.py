@@ -23,6 +23,7 @@ flow_file_headers = [
     "sourceGphStatus",
     "sourceBlockLouvainTibi",
     "sourceBlockLouvainMaxobservedtradevalues",
+    "sourceBlockLouvainTibirescale",
     "sourceBlockIntraMax",
     "sourceBlockAn",
     "sourceMeanAmbiguityScore",
@@ -32,6 +33,7 @@ flow_file_headers = [
     "targetGphStatus",
     "targetBlockLouvainTibi",
     "targetBlockLouvainMaxobservedtradevalues",
+    "targetBlockLouvainTibirescale",
     "targetBlockIntraMax",
     "targetBlockAn",
     "targetMeanAmbiguityScore",
@@ -117,9 +119,9 @@ if __name__ == "__main__":
                 "label",
                 "blockTibi",
                 "blockLouvainMaxobservedtradevalues",
+                "blockLouvainTibirescale",
                 "blockIntraMax",
-                "year",
-                "cafFob",
+                "year"
             ]
             flowCsvFilePath = join(
                 "../../results/communities/gph_blocks_by_year/", f"{year}.csv"
