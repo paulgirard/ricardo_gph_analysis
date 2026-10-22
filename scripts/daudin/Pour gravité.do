@@ -52,12 +52,13 @@ if `year' >=2022 local liste_var_ex = subinstr("`liste_var_ex'","common_empire",
 ppmlhdfe value `liste_var_ex', absorb(importerId exporterId, savefe)
 estimates store full
 gen byte in_sample=e(sample)
-predict double xb, xb
-bysort importerId: egen double fe_imp = max(__hdfe1__)
-bysort exporterId: egen double fe_exp = max(__hdfe2__)
+if year <=1940 {
+    predict double xb, xb
+    bysort importerId: egen double fe_imp = max(__hdfe1__)
+    bysort exporterId: egen double fe_exp = max(__hdfe2__)
 
-gen double pred = exp(xb + fe_imp + fe_exp)
-
+    gen double pred = exp(xb + fe_imp + fe_exp)
+}   
 display "`year'"
 
 foreach var_ex in `liste_var_ex' {
@@ -77,7 +78,7 @@ foreach var_ex in `liste_var_ex' {
 
 tostring importerId exporterId, replace
 
-
+if year <=1940 {
 gen old_id = id
 replace id = exporterId + "->" + importerId if CafFob=="fob" 
 replace id = importerId + "<-" + exporterId if CafFob=="caf"
@@ -208,7 +209,11 @@ bys importerLabel exporterLabel CafFob : assert _N==1
 ////exportation des résultats gravity
 *keep if status=="ok thanks to gravity"
 sort id old_id notes
-format value  %20.0fc
+
+}
+
+if year >= 1945 sort id 
+format value  %30.0fc
 
 
 
@@ -297,10 +302,15 @@ gravity_trade_estimation 1841 fob
 diag 1841
 
 
+gravity_trade_estimation 1948 caf
+gravity_trade_estimation 1948 fob
+diag 1948
 
 
 
-foreach year of numlist 1833(1)1840 1842(1)1938 {
+
+
+foreach year of numlist 1833(1)1840 1842(1)1938 1949(1)2025 {
 	gravity_trade_estimation `year' caf
 	gravity_trade_estimation `year' fob
     diag `year'
@@ -308,11 +318,7 @@ foreach year of numlist 1833(1)1840 1842(1)1938 {
 }
 
 
-foreach year of numlist 1948(1)2025 {
-	use "data/trade_flows_before_gravity_`CafFob'_`year'.dta", clear
-    save "results/gravity/gravity_`year'_`CafFob'.dta", replace
-    diag `year'
-}
+
 
 
 
