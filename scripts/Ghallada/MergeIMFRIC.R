@@ -157,8 +157,8 @@ write.csv(DOT, gzfile("external data/DoT Direction of Trade (IMF)/DOT_gph.csv.gz
 library(dplyr); library(here); library(data.table)
 
 
-DOT <- DOT[!is.na(DOT$VALUE_GBP) & !is.na(DOT$TIME_PERIOD), ]
-
+#DOT <- DOT[!is.na(DOT$VALUE_GBP) & !is.na(DOT$TIME_PERIOD), ]
+DOT <- DOT[!is.na(DOT$VALUE_USD) & !is.na(DOT$TIME_PERIOD), ]
 # -----------------------------------------------------------------------------
 # 1. Nom canonique par code GPH
 # -----------------------------------------------------------------------------
@@ -187,7 +187,7 @@ mise_au_format <- function(d, sens) {
     exporterId                   = as.character(exp_gph),
     exporterLabel                = noms$nom[match(exp_gph, noms$gph)],
     exporterType                 = "GPH",
-    value                        = d$VALUE_GBP,
+    value                        = d$VALUE_USD,
     reportedBy                   = as.character(d$GPH_reporter),
     partial                      = NA,
     valueToSplit                 = NA,
