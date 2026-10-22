@@ -250,12 +250,13 @@ Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 
 Prendre l’appartenance AN  comme une variable explicative.
 
-À partir de `"results/communities/gph_blocks_by_year/`year'.csv"`
+À partir de "results/communities/intra_bloc_pairs_year'.dta", clear" + variables de contrôle
 
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
-Produit :` results/block_study/regression_results.csv`
-Et `results/block_study/ln_dist_intramax_fob.png`...
+Produit :"` results/block_study/shared_bloc_reg_`var_exp`.csv`"
 
+Et `results/block_study/shared_bloc_reg_`var_exp`.png`
+Et `results/block_study/shared_bloc_reg_`var_exp`_`class_type’.png`
 
 ### Stat des marge extensive
 #### par flows
