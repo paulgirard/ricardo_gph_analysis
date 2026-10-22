@@ -17,8 +17,10 @@ program define intra_bloc_pairs
 ****We import the relevant blocs for the year
 import delimited "results/communities/gph_blocks_by_year/`year'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 
+
 rename blockLouvainMaxobservedtradevalu blockLouvainMaxtrade
 drop label year
+drop blockAN
 merge 1:1 id using BlocselonAN_temp.dta, keep(1 3)
 assert _merge==3
 drop _merge

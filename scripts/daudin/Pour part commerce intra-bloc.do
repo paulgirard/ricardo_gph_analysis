@@ -8,13 +8,12 @@ program define intra_bloc_share
 	args year 
 
 ****We use the trade
-use "results/communities/intra_bloc_pairs_`year'.dta", clear
 
 import delimited "results/gravity/gravity_`year'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
 gen undir_pair_key = strofreal(importerId) + "-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
 replace undir_pair_key = strofreal(exporterId) + "-" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
 keep undir_pair_key value
-merge m:1 undir_pair_key using intrabloc.dta, keep(3)
+merge m:1 undir_pair_key using "results/communities/intra_bloc_pairs_`year'.dta", keep(3)
 
 *Some pairs do not have any trade
 
@@ -65,10 +64,12 @@ twoway          ///
  		(line intra_Tibi_share               year, cmissing(n) lcolor("213 94 0")    lpattern(dash))                 ///
  		(line intra_AN_share                 year, cmissing(n) lcolor("0 0 0")       lwidth(medthick))                ///
  		(line intra_LouvainTibirescale_share year, cmissing(n) lcolor("204 121 167")  )             ///
- 		(line intra_LouvainMaxtrade_share    year, cmissing(n) lcolor("230 159 0")    lpattern(dotdash) lwidth(med)) /*
-		(line intra_IntraMax_share           year, cmissing(n) lcolor("0 114 178")   lwidth(medthick))   
-	*/  (line intra_LouvainMaxtrade_share year, cmissing(n)) , legend(order(2 "AN" /*5 "IntraMax"*/ 4 "Louvain-trade" 3 "Louvain-TIBI rescale" 1 "Louvain-TIBI") /*
-	*/   position(6) rows(2))  ytitle("Intra-bloc trade share") scheme(s2color)
+ 		(line intra_LouvainMaxtrade_share    year, cmissing(n) lcolor("230 159 0")    lpattern(dotdash) lwidth(med)) ///
+		(line intra_IntraMax_share           year, cmissing(n) lcolor("0 114 178")   lwidth(medthick)) /*  
+	*/  (line intra_LouvainMaxtrade_share year, cmissing(n)) if year <=2026, /*
+	*/  legend(order(2 "AN" 5 "IntraMax" 4 "Louvain-trade" 3 "Louvain-TIBI rescale" 1 "Louvain-TIBI") /*
+	*/   position(6) rows(2))  ytitle("Intra-bloc trade share") scheme(s2color) /*
+	*/   xscale(range(1830 2030)) xlabel(1830(20)2030)
 
 graph export "results/bloc_study/Intra-bloc trade share.png", replace
 
