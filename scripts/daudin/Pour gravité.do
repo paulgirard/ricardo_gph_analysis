@@ -78,12 +78,12 @@ foreach var_ex in `liste_var_ex' {
 
 tostring importerId exporterId, replace
 
-if year <=1940 {
+
 gen old_id = id
 replace id = exporterId + "->" + importerId if CafFob=="fob" 
 replace id = importerId + "<-" + exporterId if CafFob=="caf"
 
-
+if year <=1940 {
 sort id
 egen sum_pred = total(pred), by(old_id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
@@ -309,7 +309,6 @@ diag 1948
 
 
 
-
 foreach year of numlist 1833(1)1840 1842(1)1938 1949(1)2025 {
 	gravity_trade_estimation `year' caf
 	gravity_trade_estimation `year' fob
@@ -371,6 +370,9 @@ foreach var_ex of global liste_var_ex {
     restore
     }
 }
+
+
+blif
 
 
 foreach year of numlist 1833(1)1938 1948(1)2025 {
