@@ -52,22 +52,31 @@ if __name__ == "__main__":
             flows = []
             with open(flowCsvFilePath, "r") as dataF:
                 flows = list(DictReader(dataF))
-                
+                sum_pos = 0
+                sum_neg = 0
                 for flow in flows:
                     if flow["TIBI"] != "":
+
+
                         if not graph.has_node(flow["source"]):
                             graph.add_node(flow["source"])
                         if not graph.has_node(flow["target"]):
                             graph.add_node(flow["target"])
+                        tibi = float(flow["TIBI"])
+                        if tibi > 0:
+                            sum_pos+=tibi
+                        if tibi < 0:
+                            sum_neg += -1*tibi
                         graph.add_edge(
                             flow["source"], flow["target"], TIBI=float(flow["TIBI"])
                         )
             # SIGNED-LOUVAIN
             posgraph, neggraph = util.build_subgraphs(graph, weight="TIBI")
+            print(sum_pos, sum_neg, sum_pos/sum_neg)
             communities:dict= cd.best_partition(
                     layers=[posgraph, neggraph],
-                    layer_weights=[1.0, -1.0],
-                    resolutions=[1.2, 0.5],
+                    layer_weights=[1 , -1 * sum_pos/sum_neg],
+                    resolutions=[1.2, 1.2],
                     masks=[False, True],
                     k=2,
                     initial_membership=None,
@@ -121,6 +130,7 @@ if __name__ == "__main__":
                 "blockLouvainMaxobservedtradevalues",
                 "blockLouvainTibirescale",
                 "blockIntraMax",
+                "blockAN",
                 "year"
             ]
             flowCsvFilePath = join(
