@@ -98,7 +98,7 @@ const blocksStats: {
 }[] = [];
 const missingInANAll: Set<string> = new Set();
 
-const years = range(1833, 1834);
+const years = range(1833, 2026);
 years.forEach((year) => {
   let intramaxOk = true;
   // read intramax block from results/communities/Intramax
@@ -182,8 +182,8 @@ years.forEach((year) => {
           pickBy(flow, (_, k) => k.startsWith("importer")),
           (_, k) => k.replace(/^importer/, "").toLowerCase(),
         ),
-        blockIntraMax: intraMaxBlocks[year][flow.exporterId],
-        blockAN: anBlocks[flow.exporterId],
+        blockIntraMax: intraMaxBlocks[year][flow.importerId],
+        blockAN: anBlocks[flow.importerId],
       });
       bilateralGraph.addDirectedEdgeWithKey(flow.id, flow.exporterId, flow.importerId, {
         ...pick(flow, ["CafFob", "status", "valueGeneratedBy", "notes", "value"]),
@@ -417,6 +417,7 @@ years.forEach((year) => {
           blockLouvainMaxobservedtradevalues: atts.blockLouvainMaxobservedtradevalues,
           blockLouvainTibirescale: atts.blockLouvainTibirescale,
           blockIntraMax: atts.blockIntraMax,
+          bockAN: atts.blockAN,
         })),
         (row) => toNumber(row.id),
       ),
@@ -427,6 +428,7 @@ years.forEach((year) => {
           "blockLouvainMaxobservedtradevalues",
           "blockLouvainTibirescale",
           "blockIntraMax",
+          "blockAN",
           "year",
         ],
         header: true,
