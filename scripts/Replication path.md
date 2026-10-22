@@ -173,10 +173,10 @@ Vient aussi de `npm run louvain-modularity `
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
 Graphiques : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
 ### Commerce intrabloc (Guillaume)
-À partir de `data/blocks/louvain/`year'_fob_enrichi.csv`
+À partir de "results/communities/gph_blocks_by_year/year'.csv", "external data/BlocselonAN.csv" et "results/gravity/gravity_year'.csv"
 Avec `Pour part commerce intra-bloc.do`
-Produit : `results/block_study/intra_block_share_fob.csv` et
-`results/block_study/Intra-block trade share.png`
+Produit : `results/bloc_study/intra_block_share_fob.csv` et
+`results/bloc_study/Intra-block trade share.png`
 ### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
 Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
