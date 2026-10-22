@@ -161,8 +161,8 @@ replace exporterId = newexporterId if  newexporterId !="."
 assert strofreal(real(importerId))==importerId
 assert strofreal(real(exporterId))==exporterId
 
-
-
+drop if exporterId==importerId 
+***This happens, for example with id=="1055 & 1063<-West Indies (other)" in 1841 caf
 drop newimporterId newexporterId newPartnerId newPartners 
 capture drop newReportersId newReporters
 
@@ -170,6 +170,8 @@ drop undir_pair_key
 gen undir_pair_key = importerId + "-" + exporterId if importerId < exporterId & real(importerId)!=. & real(exporterId)!=.
 replace undir_pair_key = exporterId + "-" + importerId if importerId > exporterId & real(importerId)!=. & real(exporterId)!=.
 order undir_pair_key
+
+
 
 drop if undir_pair_key=="" & id==""
 
@@ -282,6 +284,8 @@ end
 trade_importation 1841 caf
 trade_importation 1841 fob
 cleanup 1841
+
+
 
 trade_importation 1948 caf
 trade_importation 1948 fob
