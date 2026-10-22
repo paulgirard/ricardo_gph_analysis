@@ -182,8 +182,8 @@ years.forEach((year) => {
           pickBy(flow, (_, k) => k.startsWith("importer")),
           (_, k) => k.replace(/^importer/, "").toLowerCase(),
         ),
-        blockIntraMax: intraMaxBlocks[year][flow.exporterId],
-        blockAN: anBlocks[flow.exporterId],
+        blockIntraMax: intraMaxBlocks[year][flow.importerId],
+        blockAN: anBlocks[flow.importerId],
       });
       bilateralGraph.addDirectedEdgeWithKey(flow.id, flow.exporterId, flow.importerId, {
         ...pick(flow, ["CafFob", "status", "valueGeneratedBy", "notes", "value"]),
