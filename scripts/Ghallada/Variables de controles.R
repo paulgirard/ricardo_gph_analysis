@@ -20,33 +20,37 @@ BlocselonAN <- read.csv("external data/BlocselonAN.csv")
 region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
 region_map$GPH_code <- as.character(region_map$GPH_code)
 
-dossier <- "results/communities/gph_blocks_by_year"
+dossier <- "data"
 annees  <- c(1833:1938, 1948:2025)
 
 liste <- list()
 
 for (an in annees) {
-  f <- file.path(dossier, paste0(an, "_fob.csv"))
-  if (!file.exists(f) || file.info(f)$size == 0) next
-  d <- read.csv(f, stringsAsFactors = FALSE)
-  if (nrow(d) == 0) next
-  
-  ids <- as.character(d$id)
+  dc <- read.csv(file.path(dossier, paste0("trade_flows_before_gravity_caf_", an, ".csv")),
+                 stringsAsFactors = FALSE)
+  df <- read.csv(file.path(dossier, paste0("trade_flows_before_gravity_fob_", an, ".csv")),
+                 stringsAsFactors = FALSE)
+  dc <- dc[dc$status != "", ]
+  df <- df[df$status != "", ]
+  ids <- sort(unique(as.character(c(dc$importerId, dc$exporterId,
+                                    df$importerId, df$exporterId))))
   
   p <- expand.grid(source = ids, target = ids, stringsAsFactors = FALSE)
   p <- p[p$source != p$target, ]
   p$year <- an
   
   liste[[as.character(an)]] <- p
-  cat(an, ":", length(ids), "pays ->", nrow(p), "paires\n")
+  cat(an, ":", length(ids), "entites ->", nrow(p), "paires\n")
 }
+
+
 
 master <- bind_rows(liste) %>%
   mutate(key = paste0(pmin(source, target), "-", pmax(source, target))) %>%
   select(key, year, source, target)
 
 cat("\nDimensions :", dim(master), "\n")
-
+master %>% filter(!grepl("^[0-9]+-[0-9]+$", key)) %>% nrow()
 # --- Controles ---------------------------------------------------------
 # chaque annee doit avoir exactement n*(n-1) paires
 master %>% count(year) %>%
