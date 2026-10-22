@@ -82,6 +82,7 @@ gen old_id = id
 replace id = exporterId + "->" + importerId if CafFob=="fob" 
 replace id = importerId + "<-" + exporterId if CafFob=="caf"
 
+
 sort id
 egen sum_pred = total(pred), by(old_id)
 gen pred_trade =  valueToSplit * pred/ sum_pred
@@ -210,17 +211,33 @@ sort id old_id notes
 format value  %20.0fc
 
 
-preserve 
-gen yearbis=year
-collapse  (sum) totvalue=value  (count) nbrflows=yearbis , by(year CafFob status valueGeneratedBy)
-generate step = "after gravity"
-save "results/gravity/diag_after_gravity_`year'_`CafFob'.dta", replace
-restore
-
-
-
 
 save "results/gravity/gravity_`year'_`CafFob'.dta", replace 
+
+end
+
+capture program drop diag
+program define diag
+    args year
+
+    foreach CafFob in caf fob {
+
+    use  "results/gravity/gravity_`year'_`CafFob'.dta", clear
+    gen yearbis=year
+    replace value=round(value)
+    collapse  (sum) totvalue=value  (count) nbrflows=yearbis , by(year CafFob status valueGeneratedBy)
+    format totvalue %30.0fc
+    generate step = "after gravity"
+    save "results/gravity/diag_after_gravity_`year'_`CafFob'.dta", replace
+    }
+
+use "results/gravity/diag_before_gravity_`year'.dta", clear
+append using "results/gravity/diag_after_gravity_`year'_caf.dta"
+append using "results/gravity/diag_after_gravity_`year'_fob.dta"
+sort step status valueGeneratedBy CafFob
+save "results/gravity/diag_gravity_`year'.dta", replace
+format totvalue %30.0fc
+export delimited using "results/gravity/diag_gravity_`year'.csv", replace quote
 
 **en 1833, ce qui marche : Brême / Hambourg ; Norway / Sweden ; île Maurince / Réunion ; Chine / Philippine ; Portugal / Spain ; 
 
@@ -235,11 +252,12 @@ program define gravity_cleanup
 
 use "results/gravity/gravity_`year'_caf.dta", clear
 append using "results/gravity/gravity_`year'_fob.dta"
-capture append using "results/gravity/errors_caf_`year'.dta"
-capture append using "results/gravity/errors_fob_`year'.dta"
-capture erase "results/gravity/errors_caf_`year'.dta"
-capture erase "results/gravity/errors_fob_`year'.dta"
-
+if `year' <=1938 {
+    capture append using "results/gravity/errors_caf_`year'.dta"
+    capture append using "results/gravity/errors_fob_`year'.dta"
+    capture erase "results/gravity/errors_caf_`year'.dta"
+    capture erase "results/gravity/errors_fob_`year'.dta"
+}
 order year id 
 export delimited using "results/gravity/gravity_`year'.csv", replace quote
 
@@ -249,15 +267,11 @@ erase "results/gravity/gravity_`year'_fob.dta"
 
 
 
-use "results/gravity/diag_gravity_`year'.dta", clear
-append using "results/gravity/diag_after_gravity_`year'_caf.dta"
-append using "results/gravity/diag_after_gravity_`year'_fob.dta"
-sort step status valueGeneratedBy CafFob
-save "results/gravity/diag_gravity_`year'.dta", replace
-export delimited using "results/gravity/diag_gravity_`year'.csv", replace quote
+
 
 erase "results/gravity/diag_after_gravity_`year'_caf.dta"
 erase "results/gravity/diag_after_gravity_`year'_fob.dta"
+erase "results/gravity/diag_before_gravity_`year'.dta"
 
 
 end
@@ -280,14 +294,8 @@ foreach var_ex of global liste_var_ex {
 
 gravity_trade_estimation 1841 caf
 gravity_trade_estimation 1841 fob
-gravity_cleanup 1841
+diag 1841
 
-
-
-
-gravity_trade_estimation 1948 caf
-gravity_trade_estimation 1948 fob
-gravity_cleanup 1948
 
 
 
@@ -295,18 +303,18 @@ gravity_cleanup 1948
 foreach year of numlist 1833(1)1840 1842(1)1938 {
 	gravity_trade_estimation `year' caf
 	gravity_trade_estimation `year' fob
-	gravity_cleanup `year'
+    diag `year'
 	
 }
 
 
-foreach year of numlist 1949(1)2025 {
-	gravity_trade_estimation `year' caf
-	gravity_trade_estimation `year' fob
-	gravity_cleanup `year'
-	
+foreach year of numlist 1948(1)2025 {
+	use "data/trade_flows_before_gravity_`CafFob'_`year'.dta", clear
+    save "results/gravity/gravity_`year'_`CafFob'.dta", replace
+    diag `year'
 }
-*/
+
+
 
 postutil dir
 
@@ -359,6 +367,9 @@ foreach var_ex of global liste_var_ex {
 }
 
 
+foreach year of numlist 1833(1)1938 1948(1)2025 {
+    gravity_cleanup `year'
+}
 
 
 

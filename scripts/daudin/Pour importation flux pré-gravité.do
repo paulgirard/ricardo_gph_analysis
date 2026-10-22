@@ -74,6 +74,7 @@ assert reportedByIX!=""
 tab status, missing
 
 preserve 
+replace value=round(value)
 collapse  (sum) totvalue=value  (count) nbrflows=value , by(year CafFob status valueGeneratedBy)
 generate step = "before gravity"
 save "results/gravity/diag_before_gravity_`year'_`CafFob'.dta", replace
@@ -267,7 +268,7 @@ program define cleanup
 	use "results/gravity/diag_before_gravity_`year'_caf.dta", clear
 	append using "results/gravity/diag_before_gravity_`year'_fob.dta"
 	sort step status valueGeneratedBy CafFob
-	save "results/gravity/diag_gravity_`year'.dta", replace
+	save "results/gravity/diag_before_gravity_`year'.dta", replace
 	
 	foreach CafFob in caf fob {
 	erase  tradeFlows_`year'_`CafFob'.dta
