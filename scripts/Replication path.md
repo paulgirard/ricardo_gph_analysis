@@ -1,5 +1,11 @@
 
-**installer les dépendances à ne faire qu'une seule fois**
+
+# Replication path
+
+
+## Setup
+### JavaScript
+**installer les dépendances JS à ne faire qu'une seule fois**
 ```
 cd scripts
 
@@ -10,10 +16,16 @@ npm install sqlite3@latest
 
 ```
 
+### Python
+Installer « uv » : https://docs.astral.sh/uv/
+
+### Code python signed louvain
+`git submodule init     # Enregistre les URLs depuis .gitmodules
+git submodule update   # Clone les submodules au commit référencé'
+
+On va le chercher là : https://github.com/lejohnyjohn/signed-louvain
 
 
-
-# Replication path
 
 ## External data and controls
 Youssef has a general script for « his » controls: `scripts/Ghallada/Variables de controles.R`
@@ -142,18 +154,27 @@ Cela donne des graphiques : `results/gravity/value_share_method.png' et `results
 Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
 
 ## Bloc generation
-### Intramax and Anderson-Norheim (1993) (Youssef)
+### Intramax  (Youssef)
 À partir de `data/tradeFlows_YYYY_gravity.csv`
 Création des block intramax : scripts/Ghallada/Intramax.R »
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
 ### Louvain (Paul)
-
+#### JS (en premier ; prend un peu de temps)
 Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `external data/data_BlocselonAN.csv`
 `npm run louvain-modularity `
 
+
+#### Python (en second)
+cd ./code/src 
+uv run signed_louvain.py
+#### Résultat (récupère aussi IntraMax)
+(c’est important d'être dans /src)
 Crée `results/communities/gph_blocks_by_year/1833.csv’ (ie index des blocs)
 `results/communities/louvain/1833_gephi_lite.json’,
 `results/communities/louvain/1833.csv’
+
+
+
 
 
 Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain TIBI ajusté, Louvain TIBI signé) avec les valeurs avec la métrique
@@ -172,6 +193,9 @@ Vient aussi de `npm run louvain-modularity `
 ### TIBI (Youssef)
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
 Graphiques : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
+### Corrélation (Youssef)
+Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
+Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 ### Commerce intrabloc (Guillaume)
 À partir de "results/communities/gph_blocks_by_year/year'.csv", "external data/BlocselonAN.csv" et "results/gravity/gravity_year'.csv"
 Avec `Pour part commerce intra-bloc.do`
@@ -180,9 +204,7 @@ Produit : `results/bloc_study/intra_block_share_fob.csv` et
 ### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
 Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
-### Corrélation (Youssef)
-Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
-Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
+
 
 ## Analyse
 
@@ -194,7 +216,7 @@ Prendre l’appartenance AN  comme une variable explicative.
 
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`
-Et `results/block_study/ln_dist_intramax_fob.png`
+Et `results/block_study/ln_dist_intramax_fob.png`...
 
 
 ### Stat des marge extensive
