@@ -183,11 +183,27 @@ Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
 
 ## Métriques
+
+### Création des paires intra-blocs (Guillaume)
+
+À partir de "results/communities/gph_blocks_by_year/year'.csv", "external data/BlocselonAN.csv" 
+
+Avec `Pour paires intra-bloc.do`
+
+Donne "results/communities/intra_bloc_pairs_YYYY.dta"
+
+
+
+
 ### Modularité (Paul)
 Vient aussi de `npm run louvain-modularity `
 
 **Semble mort**
+
 `results/communities/modularities_by_year.csv’
+
+Que les deux TIBI-rescaled and MaxTrade 
+Manque IntraMax et Signed-Louvain
 ----------------------
 
 ### TIBI (Youssef)
@@ -197,9 +213,9 @@ Graphiques : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/co
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
 Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 ### Commerce intrabloc (Guillaume)
-À partir de "results/communities/gph_blocks_by_year/year'.csv", "external data/BlocselonAN.csv" et "results/gravity/gravity_year'.csv"
+À partir de "results/communities/intra_bloc_pairs_YYYY.dta" et "results/gravity/gravity_year'.csv"
 Avec `Pour part commerce intra-bloc.do`
-Produit : `results/bloc_study/intra_block_share_fob.csv` et
+Produit : `results/bloc_study/intra_block_share.csv/dta` et
 `results/bloc_study/Intra-block trade share.png`
 ### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
@@ -212,7 +228,7 @@ Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 
 Prendre l’appartenance AN  comme une variable explicative.
 
-À partir de `results/communities/master_YYYY_fob_.csv` NON PAS LES BONS
+À partir de `"results/communities/gph_blocks_by_year/`year'.csv"`
 
 Programme : `scripts/daudin/Pour regression co-appartenance à un bloc.do`
 Produit :` results/block_study/regression_results.csv`

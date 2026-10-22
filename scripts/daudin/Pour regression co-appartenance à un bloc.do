@@ -5,8 +5,8 @@ global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
 
 foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
-    import delimited "data/blocks/gph_blocks_by_year/`year'_fob.csv" , delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
-    save "data/blocks/gph_blocks_by_year/`year'_fob.dta", replace
+    import delimited "results/communities/gph_blocks_by_year/`year'.csv" , delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear
+    save "results/communities/gph_blocks_by_year/`year'.dta", replace
   }
 
 
@@ -14,14 +14,14 @@ foreach year of numlist 1833(1)1938 1948(1)2008 2010(1)2025 {
 
 capture program drop block_regression
 program define block_regression
-    args year CafFob NetworkType
+    args year NetworkType
 
-use  "data/blocks/panel_blocs_paires.dta", clear
+use  "results/communities/panel_blocs_paires.dta", clear
 keep if year==`year' 
 
 foreach source_target in source target {
     rename `source_target' id
-    merge m:1 id year using "data/blocks/gph_blocks_by_year/`year'_`CafFob'.dta", keep(1 3)
+    merge m:1 id year using "results/communities/gph_blocks_by_year/`year'.dta", keep(1 3)
     rename blockLouvain `source_target'_blocklouvain
     rename blockIntraMax `source_target'_blockintramax
     rename id GPH_code
@@ -116,7 +116,7 @@ foreach var_ex in $liste_var_ex {
     local var_ex_minus = subinstr("$liste_var_ex","`var_ex'","",.)
     logistic meme_`NetworkType' `var_ex_minus', robust /*vce(cluster source)*/
     local add_R2=`R2'-e(r2_p)
-    post reg_result_`var_ex' ("`NetworkType'") ("`CafFob'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
+    post reg_result_`var_ex' ("`NetworkType'") (`year') ("`var_ex'") (`coef') (`lc') (`uc') (`add_R2')
 }
 
 end
@@ -127,7 +127,7 @@ global liste_var_ex ln_dist common_empire contig12 mid_n atop_allie
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'
-    postfile reg_result_`var_ex' str10(NetworkType) str10(CafFob) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
+    postfile reg_result_`var_ex' str10(NetworkType) year str40(var) coef ci_low ci_high r2p using "results/block_study/regression_results_`var_ex'.dta", replace
     
 }
 
@@ -179,7 +179,7 @@ foreach var_ex of global liste_var_ex {
             title(""`NetworkType'" Regression results `var_ex' (fob)") ///
             legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
-    graph export "results/block_study/`var_ex'_`NetworkType'_fob.png", replace
+    graph export "results/block_study/`var_ex'_`NetworkType'.png", replace
     restore
     }
 }
