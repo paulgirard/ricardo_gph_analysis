@@ -26,11 +26,7 @@ git submodule update   # Clone les submodules au commit référencé'
 On va le chercher là : https://github.com/lejohnyjohn/signed-louvain
 
 
-
-## External data and controls
-Youssef has a general script for « his » controls: `scripts/Ghallada/Variables de controles.R`
-
-### dependency et common empire 
+### dependency et common empire  (Guillaume)
 `daudin/Pour relations de dépendance.do`
 Creates 
 `external data/Controls panel/dependency_relations.csv`
@@ -45,47 +41,13 @@ https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities_status_over_time
 ### AN (Youssef)
 ??? Les blocs AN (géographiques) sont faits avec un code + "à la main" pour renseigner le fichier `data_BlocselonAN.csv`
 
-### Contiguité (Youssef)
-De COW :
-Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
-
-Douglas M. Stinnett, Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
-(2002). "The Correlates of War Project Direct Contiguity Data, Version 3." *Conflict
-Management and Peace Science* 19 (2):58-66.
-
-+ script (dans "scripts/Ghallada/Variables de controles.R")
-
-+ travail à la main pour les xxxx
-
-produit `external data/Controls panel/contiguity.csv`
-
-
 ### GeoPolHist_entities in stata
 De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" 
 `script/daudin/Pour GeoPolHist_entities.do’
 Crée
 `external data/GeoPolHist_entities.dta’
 
-### Distance
-De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
-On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
-Dans le script "scripts/Ghallada/Variables de controles.R"
-Produit `external data/Controls panel/distance.csv’
 
-### Conflit
-De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
-Script : le même
-Produit `external data/Controls panel/disputes.csv`
-
-### Alliances
-De ATOP 5.1
-Produit `external data/Controls panel/alliances.csv`
-### Contiguity manquant
-- Produit `external data/Controls panel/na_contig_a_coder.csv`
-
-### Variables explicatives en stata (Guillaume)
-`scripts/daudin/Putting controls in Stata.do`
-Crée des .dta dans le dossier Controls panel
 
 
 
@@ -120,14 +82,69 @@ npm run quality_ratio`
 Paul creates data/tradeFlows_YYYY_ratios.csv + un fichier de diagnostics ‘tradeGraphsStats_ratios.csv’
 
 
+### Pour importation flux pré-gravité
+« scripts/daudin/Pour importation flux pré-gravité_`CafFob'_`year’.do »
+
+À partir de  « data/tradeFlows_YYYY_ratios.csv »
+
+Donne "data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta »
+
+### Control variables
+#### External data and controls
+Youssef has a general script for « his » controls: `scripts/Ghallada/Variables de controles.R`
+
+Utilise la liste des entités : qui vient de GPH bloc, mais c’est fait après ? Trouver une meilleure solution ? Il faudrait générer un fichier des entités avant la gravité.
+Il faudrait utiliser `data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta’
+Il faut extraire les entités, en faire une matrice carré puis faire les contrôles.
+
+
+
+
+
+#### Contiguité (Youssef)
+De COW :
+Correlates of War Project. Direct Contiguity Data, 1816-2016. Version 3.2.
+
+Douglas M. Stinnett, Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
+(2002). "The Correlates of War Project Direct Contiguity Data, Version 3." *Conflict
+Management and Peace Science* 19 (2):58-66.
+
++ script (dans "scripts/Ghallada/Variables de controles.R")
+
++ travail à la main pour les xxxx
+
+produit `external data/Controls panel/contiguity.csv`
+
+#### Distance
+De.... https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities.csv" pour les données de localisation
+On peut récupérer les données Wikidata en json. Mais il est affreux. Donc difficile à utiliser pour la contiguité. 
+Dans le script "scripts/Ghallada/Variables de controles.R"
+Produit `external data/Controls panel/distance.csv’
+
+#### Conflit
+De COW + GPH (deux pays sont en conflit si leurs souverains sont en conflit)
+Script : le même
+Produit `external data/Controls panel/disputes.csv`
+
+#### Alliances
+De ATOP 5.1
+Produit `external data/Controls panel/alliances.csv`
+#### Contiguity manquant
+- Produit `external data/Controls panel/na_contig_a_coder.csv`
+
+#### Variables explicatives en stata (Guillaume)
+`scripts/daudin/Putting controls in Stata.do`
+Crée des .dta dans le dossier Controls panel
+
+
+
 
 ### Gravity (Guillaume) (YYYY < 1939)
 From:
-`data/tradeFlows_YYY_ratios.csv` pour les flux pre-1938
+"data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta »
 +
 Variables de contrôle
-+
-J’y mets aussi les « external data/DoT Direction of Trade (IMF)/tradeFlows_`year'_gravity_CafFob.csv" venus du FMI pour pouvoir les intégrer dans les graphiques.
+
 
 
 
@@ -142,20 +159,13 @@ Cela donne des graphiques : `results/gravity/value_share_method.png' et `results
 
 
 
-
-
-
-
-
-
-
-
 ### Creation of BestGuessBilTrade avec les 0 imputés, les vrais manquants et les non-rapportés
 Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de data/tradeFlows_YYYY_gravity.csv Guillaume creates `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
 
 ## Bloc generation
 ### Intramax  (Youssef)
-À partir de `data/tradeFlows_YYYY_gravity.csv`
+À partir de `results/gravity/gravity_XXXX.csv`
+En utilisant comme proximité la moyenne des 4  flux
 Création des block intramax : scripts/Ghallada/Intramax.R »
 - donne data/blocks/Intramax/paires_blocs_YYYY.csv
 ### Louvain (Paul)
@@ -169,22 +179,19 @@ cd ./code/src
 uv run signed_louvain.py
 #### Résultat (récupère aussi IntraMax)
 (c’est important d'être dans /src)
-Crée `results/communities/gph_blocks_by_year/1833.csv’ (ie index des blocs)
-`results/communities/louvain/1833_gephi_lite.json’,
-`results/communities/louvain/1833.csv’
+Crée `results/communities/gph_blocks_by_year/YYYY.csv’ (ie index des blocs)
+`results/communities/louvain/YYYY_gephi_lite.json’,
+`results/communities/louvain/YYYY.csv’
 
 
 
 
 
 Ce fichier comprend en fait tous les types de block (AN, Intramax, Louvain TIBI ajusté, Louvain TIBI signé) avec les valeurs avec la métrique
-+ fichier avec modularité et nombre de blocks par année.
++ fichier avec modularité et nombre de blocs par année.
 Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
-
-## Métriques
-
-### Création des paires intra-blocs (Guillaume)
+## Création des paires intra-blocs (Guillaume)
 
 À partir de "results/communities/gph_blocks_by_year/year'.csv", "external data/BlocselonAN.csv" 
 
@@ -195,7 +202,13 @@ Donne "results/communities/intra_bloc_pairs_YYYY.dta"
 
 
 
-### Modularité (Paul)
+
+
+## Métriques
+
+
+
+### Modularité (Paul) (Mort pour l’instant)
 Vient aussi de `npm run louvain-modularity `
 
 **Semble mort**
@@ -208,9 +221,11 @@ Manque IntraMax et Signed-Louvain
 
 ### TIBI (Youssef)
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
-Graphiques : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
+Utilisant `results/communities/gph_blocks_by_year/YYYY.csv’ (ie index des blocs) + `results/gravity/gravity_XXXX.csv` (ie le commerce)
+Graphiques pour les 5 méthodes de partition : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
 ### Corrélation (Youssef)
-Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R`
+Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R` (faire un script différent?)
+À partir de `results/communities/gph_blocks_by_year/YYYY.csv’
 Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 ### Commerce intrabloc (Guillaume)
 À partir de "results/communities/intra_bloc_pairs_YYYY.dta" et "results/gravity/gravity_year'.csv"
@@ -219,6 +234,13 @@ Produit : `results/bloc_study/intra_block_share.csv/dta` et
 `results/bloc_study/Intra-block trade share.png`
 ### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
+À partir de `results/communities/gph_blocks_by_year/YYYY.csv’
+
+À faire : Changer les couleurs post-48
+Rajouter des symboles
+Mettre les toutes petits communautés en gris (2 max)
+Faire pour toutes les partitions
+
 Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
 
 

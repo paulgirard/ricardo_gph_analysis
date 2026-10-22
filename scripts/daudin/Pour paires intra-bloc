@@ -19,7 +19,7 @@ import delimited "results/communities/gph_blocks_by_year/`year'.csv", delimiter(
 
 
 rename blockLouvainMaxobservedtradevalu blockLouvainMaxtrade
-drop label year
+drop label
 drop blockAN
 merge 1:1 id using BlocselonAN_temp.dta, keep(1 3)
 assert _merge==3
