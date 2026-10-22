@@ -261,10 +261,17 @@ end
 capture program drop cleanup
 program define cleanup
 	args year
+
+	use "results/gravity/diag_before_gravity_`year'_caf.dta", clear
+	append using "results/gravity/diag_before_gravity_`year'_fob.dta"
+	sort step status valueGeneratedBy CafFob
+	save "results/gravity/diag_gravity_`year'.dta", replace
+	
 	foreach CafFob in caf fob {
 	erase  tradeFlows_`year'_`CafFob'.dta
 	if `year' <= 1940 erase Unknown_to_compute_`CafFob'_`year'.dta
 	erase "Imputed_zeros_`CafFob'_`year'.dta"
+	erase "results/gravity/diag_before_gravity_`year'_`CafFob'.dta"
 	}
 end
 
@@ -284,23 +291,10 @@ cleanup 1948
 
 
 
-foreach year of numlist 1833(1)1840 1842(1)1938 {
+foreach year of numlist 1833(1)1840 1842(1)1938 1949(1)2025 {
 	trade_importation `year' caf
-
 	trade_importation `year' fob
-
-
-	
+	cleanup `year'	
 }
 
-
-foreach year of numlist 1949(1)2025 {
-	trade_importation `year' caf
-
-	trade_importation `year' fob
-
-
-	
-}
-*/
 
