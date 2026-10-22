@@ -258,18 +258,27 @@ export delimited "data/trade_flows_before_gravity_`CafFob'_`year'.csv", replace
 end
 
 
+capture program drop cleanup
+program define cleanup
+	args year
+	foreach CafFob in caf fob {
+	erase  tradeFlows_`year'_`CafFob'.dta
+	if `year' <= 1940 erase Unknown_to_compute_`CafFob'_`year'.dta
+	erase "Imputed_zeros_`CafFob'_`year'.dta"
+	}
+end
+
+
 
 ///1841 est la première année avec des rapporteurs à splitter
 
 trade_importation 1841 caf
-
-
 trade_importation 1841 fob
-
+cleanup 1841
 
 trade_importation 1948 caf
-
 trade_importation 1948 fob
+cleanup 1948
 
 
 
