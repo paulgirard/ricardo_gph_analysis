@@ -251,8 +251,8 @@ end
 
 
 **************************
-capture program drop gravity_cleanup
-program define gravity_cleanup
+capture program drop gravity_aggreg
+program define gravity_aggreg
 	args year
 
 use "results/gravity/gravity_`year'_caf.dta", clear
@@ -260,19 +260,23 @@ append using "results/gravity/gravity_`year'_fob.dta"
 if `year' <=1938 {
     capture append using "results/gravity/errors_caf_`year'.dta"
     capture append using "results/gravity/errors_fob_`year'.dta"
-    capture erase "results/gravity/errors_caf_`year'.dta"
-    capture erase "results/gravity/errors_fob_`year'.dta"
 }
 order year id 
 export delimited using "results/gravity/gravity_`year'.csv", replace quote
 
+
+end
+
+capture program drop cleanup
+    program define cleanup
+        args year
+
+if `year' <=1938 {
+    capture erase "results/gravity/errors_caf_`year'.dta"
+    capture erase "results/gravity/errors_fob_`year'.dta"
+}
 erase "results/gravity/gravity_`year'_caf.dta"
 erase "results/gravity/gravity_`year'_fob.dta"
-
-
-
-
-
 
 erase "results/gravity/diag_after_gravity_`year'_caf.dta"
 erase "results/gravity/diag_after_gravity_`year'_fob.dta"
@@ -300,11 +304,13 @@ foreach var_ex of global liste_var_ex {
 gravity_trade_estimation 1841 caf
 gravity_trade_estimation 1841 fob
 diag 1841
+gravity_aggreg 1841
 
 
 gravity_trade_estimation 1948 caf
 gravity_trade_estimation 1948 fob
 diag 1948
+gravity_aggreg 1948
 
 
 
@@ -313,12 +319,9 @@ foreach year of numlist 1833(1)1840 1842(1)1938 1949(1)2025 {
 	gravity_trade_estimation `year' caf
 	gravity_trade_estimation `year' fob
     diag `year'
+    gravity_aggreg `year'
 	
 }
-
-
-
-
 
 
 postutil dir
@@ -372,12 +375,10 @@ foreach var_ex of global liste_var_ex {
 }
 
 
-blif
 
 
 foreach year of numlist 1833(1)1938 1948(1)2025 {
-    gravity_cleanup `year'
+    cleanup `year'
 }
-
 
 
