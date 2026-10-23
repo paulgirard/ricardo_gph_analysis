@@ -176,6 +176,11 @@ if "`CafFob'"=="fob" {
 sort id old_id notes
 drop success
 
+
+
+
+}
+
 ///Récupération des labels
 drop importerLabel exporterLabel
 rename importerId GPH_code
@@ -197,10 +202,6 @@ rename GPH_name exporterLabel
 
 
 bys importerLabel exporterLabel CafFob : assert _N==1
-
-
-}
-
 sort id old_id notes
 
 keep id year  undir_pair_key CafFob importerId exporterId value importerLabel exporterLabel status  old_id notes valueGeneratedBy
