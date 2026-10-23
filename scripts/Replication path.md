@@ -257,7 +257,7 @@ Et `results/block_study/shared_bloc_reg_`var_exp`_`class_type’.png`
 #### Creation of BestGuessBilTrade avec les les non-rapportés
 Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de "results/gravity/gravity_year'.csv" Guillaume creates `results/extensive/BestGuessBilTrade_YYYY.csv`
 #### par flows
-From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv`
+From : `results/BestGuessBilTrade_YYYY.csv`
 Script : `/scripts/daudin/Pour Marge extensive flow stats.do`
 
 Results: 
