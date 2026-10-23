@@ -1,4 +1,15 @@
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
+global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
+
+
+*************Importation des données GPH pour labels
+
+import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
+	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
+
+    keep GPH_code GPH_name
+save GeoPolHist_entities_temp.dta, replace
+
 
 *****************************************
 capture program drop bestguessbiltrade 
@@ -86,6 +97,28 @@ order  undir_pair_key id
 sort undir_pair_key id
 
 
+
+
+//////Ajout des labels
+
+****Adding labels
+foreach i in importer exporter {
+
+    rename `i'Id GPH_code
+    merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
+    replace `i'Label= GPH_name  if `i'Label==""
+    rename GPH_code `i'Id
+    drop _merge
+}
+
+
+
+
+
+
+
+
+
 ////Nettoyage
 
 capture drop valueToSplit
@@ -93,9 +126,18 @@ capture drop reporter_no
 capture drop importerLabel importerType exporterLabel exporterType /*
     */ reportedBy partial  newReporters newPartners originalReportedTradeFlowIds notes
 
-export delimited using "results/extensive/BestGuessBilTrade_`year'.csv", replace quote
+
+	export delimited using "results/extensive/BestGuessBilTrade_`year'.csv", replace quote
 erase temp.dta
 save "results/extensive/BestGuessBilTrade_`year'.dta", replace
+
+
+
+
+
+
+
+
 
 
 end
@@ -117,3 +159,5 @@ foreach year of numlist 1833(1)1840 1842(1)1938  {
 foreach year of numlist 1949(1)2025 {
 	bestguessbiltrade `year'
 }
+
+erase GeoPolHist_entities_temp.dta
