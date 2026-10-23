@@ -174,7 +174,7 @@ Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.cs
 
 
 #### Python (en second)
-cd ./code/src 
+cd ./code/src (cd ./scripts/src  ?)
 uv run signed_louvain.py
 #### Résultat (récupère aussi IntraMax)
 (c’est important d'être dans /src)
