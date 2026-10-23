@@ -22,6 +22,7 @@ if _rc!=0 {
 	di as error "Some ok flows have missing value. This should not happen. Please check the data `year' `CafFob'."
 }
 
+destring value, replace
 
 
 save temp.dta, replace
@@ -61,91 +62,58 @@ drop if importerId==exporterId
 drop if CafFob==""
 drop if importerId==.
 drop if exporterId==.
+drop if importerId==exporterId
 drop _fillin
+
 
 gen id = strofreal(importerId)+"<-"+strofreal(exporterId) if CafFob=="caf"
 replace id = strofreal(exporterId)+"->"+strofreal(importerId) if CafFob=="fob"
 
 merge  1:1 id using temp.dta
 
+replace value  = . if _merge ==1
+replace status = "not reported" if _merge ==1
+replace year=`year' if _merge ==1
+
+replace undir_pair_key = strofreal(importerId) + "-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=. & _merge==1
+replace undir_pair_key = strofreal(exporterId) + "-" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=. & _merge==1
+
+drop _merge
 
 
-blif
+order  undir_pair_key id
 
-
-fillin exporterId importerId
-drop if importerId==exporterId
-replace value  = . if _fillin ==1
-replace status = "not reported" if _fillin ==1
-replace CafFob = "`CafFob'" if _fillin ==1
-replace year=`year' if _fillin ==1
-drop _fillin
-
-
-
-
-
-
-***********Création des clefs
-
-
-
-capture drop undir_pair_key
-gen undir_pair_key = strofreal(importerId) + "-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
-		replace undir_pair_key = strofreal(exporterId) + "-" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
-order undir_pair_key
-
-drop if undir_pair_key=="" & id==""
-
-
-capture drop key
-	if CafFob=="fob" {
-		gen key = strofreal(importerId) + "<-R" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
-		replace key = "R" + strofreal(exporterId) + "->" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
-	}
-	if CafFob=="caf" {
-		gen key = "R" + strofreal(importerId) + "<-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
-		replace key = strofreal(exporterId) + "->" + "R" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
-	}
-assert key!=""
-
-order  undir_pair_key key
-
-sort undir_pair_key key
+sort undir_pair_key id
 
 
 ////Nettoyage
 
-capture drop id
 capture drop valueToSplit
 capture drop reporter_no
 capture drop importerLabel importerType exporterLabel exporterType /*
     */ reportedBy partial  newReporters newPartners originalReportedTradeFlowIds notes
 
-export delimited using "results/BestGuessBilTrade_`year'_`CafFob'.csv", replace quote
+export delimited using "results/extensive/BestGuessBilTrade_`year'.csv", replace quote
 erase temp.dta
-save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
+save "results/extensive/BestGuessBilTrade_`year'.dta", replace
 
 
 end
 
 
 bestguessbiltrade 1841
-
-blif
-bestguessbiltrade 1833 fob
-bestguessbiltrade 1833 caf
+bestguessbiltrade 1948
 
 
 
 
-foreach year of numlist 1834(1)1938  {
-	bestguessbiltrade `year' fob
-	bestguessbiltrade `year' caf
+
+foreach year of numlist 1833(1)1840 1842(1)1938  {
+	bestguessbiltrade `year'
 }
 
 
 
-foreach year of numlist 1948(1)2025 {
-	bestguessbiltrade `year' fob
+foreach year of numlist 1949(1)2025 {
+	bestguessbiltrade `year'
 }
