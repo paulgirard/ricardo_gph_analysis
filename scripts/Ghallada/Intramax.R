@@ -103,7 +103,32 @@ traiter_annee <- function(year, dossier, seuil = 0.10) {
   paires <- paires %>%
     left_join(lab %>% rename(label_a = label), by = c("a" = "id")) %>%
     left_join(lab %>% rename(label_b = label), by = c("b" = "id"))
-  
+  # ---- remise au format des anciennes colonnes ----
+  paires <- paires %>%
+    rename(exportateur = label_a,
+           importateur = label_b,
+           bloc_exp    = bloc_a,
+           bloc_imp    = bloc_b,
+           exporterId  = a,
+           importerId  = b) %>%
+    mutate(year.x                       = year,
+           id                           = paste0(exporterId, "->", importerId),
+           year.y                       = year,
+           importerType                 = "GPH",
+           exporterType                 = "GPH",
+           reportedBy                   = NA,
+           partial                      = NA,
+           valueToSplit                 = NA,
+           newReporters                 = NA,
+           newPartners                  = NA,
+           originalReportedTradeFlowIds = NA_character_,
+           status                       = ifelse(is.na(value), NA_character_, "ok"),
+           notes                        = NA_character_) %>%
+    select(exportateur, importateur, bloc_exp, bloc_imp, meme_bloc,
+           year.x, id, year.y, importerId, importerType,
+           exporterId, exporterType, value, reportedBy, partial,
+           valueToSplit, newReporters, newPartners,
+           originalReportedTradeFlowIds, status, notes)
   # ---- export ----
   out <- file.path(here("results","communities","Intramax"), paste0("paires_blocs_", year, ".csv"))
   write.csv(paires, out, row.names = FALSE)
