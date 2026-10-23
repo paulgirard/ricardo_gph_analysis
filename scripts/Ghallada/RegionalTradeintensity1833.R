@@ -1,129 +1,140 @@
-
-rm(list = ls(all = TRUE))
-gc()
-
-library(dplyr)
-library(readxl)
-library(tidyverse)
-
-setwd("/Users/youssef/Desktop/ricardo_gph_analysis")
-
-
-d <- read.csv("data/blocks/Intramax/paires_blocs_1833.csv",
-              stringsAsFactors = FALSE)
-d <- d[!is.na(d$value), ]
-
-# ---- flux agrege par paire de blocs (i -> j), y compris i == j (intra-bloc) ----
-Xij <- aggregate(value ~ bloc_exp + bloc_imp, data = d, FUN = sum)
-names(Xij) <- c("i", "j", "Xij")
-
-blocs <- sort(unique(c(d$bloc_exp, d$bloc_imp)))
-
-# grille complete de TOUTES les paires (i, j), diagonale INCLUSE
-grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
-grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
-grille$Xij[is.na(grille$Xij)] <- 0
-
-# ---- totaux ----
-X_tot <- sum(grille$Xij)                          # total mondial (intra + inter)
-Xi <- tapply(grille$Xij, grille$i, sum)           # X_i. : exports totaux du bloc i (vers tous, i inclus)
-Xj <- tapply(grille$Xij, grille$j, sum)           # X_.j : exports totaux vers le bloc j
-
-# ---- TIBI pour chaque paire (i, j) ----
-grille$Xi   <- Xi[as.character(grille$i)]
-grille$Xj   <- Xj[as.character(grille$j)]
-grille$s_ij <- grille$Xij / grille$Xi             # X_ij/X_i the share of exports to region j in the total exports of region i
-
-grille$Xrj  <- grille$Xj  - grille$Xij            # X_rj is the amount of exports to region j in exports from
-                                                  # from the row excluding exports from region i
-grille$Xr   <- X_tot      - grille$Xi             # X_r. is the total exports excluding export of region i
-grille$s_rj <- grille$Xrj / grille$Xr
-
-grille$I1 <- grille$s_ij / grille$s_rj                     # A2 in Daudin et al.(2011, p. 1434)
-grille$I3 <- (1 - grille$s_ij) / (1 - grille$s_rj)        # A4
-ratio <- grille$I1 / grille$I3
-grille$TIBI <- (ratio - 1) / (ratio + 1)                  # A5
-
-# ---- resultat ----
-tibi <- grille[, c("i", "j", "Xij", "TIBI")]
-tibi <- tibi[order(tibi$i, tibi$j), ]
-
-# rassembler chaque entite avec son bloc (les deux cotes)
-exp <- unique(d[, c("exportateur", "bloc_exp")]); names(exp) <- c("pays", "bloc")
-imp <- unique(d[, c("importateur", "bloc_imp")]); names(imp) <- c("pays", "bloc")
-pays_bloc <- unique(rbind(exp, imp))
-
-# taille de chaque bloc
-taille <- table(pays_bloc$bloc)
-
-# les blocs singletons (un seul pays)
-blocs_singletons <- as.integer(names(taille)[taille == 1])
-
-# filtrer le data.frame tibi
-tibi_sans_singletons <- tibi[!(tibi$i %in% blocs_singletons) &
-                               !(tibi$j %in% blocs_singletons), ]
-
-# matrice propre
-mat <- xtabs(TIBI ~ i + j, data = tibi_sans_singletons)
-df_final <- round(as.data.frame.matrix(mat), 3)
-
-diag_tibi <- tibi_sans_singletons[tibi_sans_singletons$i == tibi_sans_singletons$j & !is.nan(tibi_sans_singletons$TIBI), c("i", "TIBI")]
-
-
-library(dplyr)
+library(dplyr); library(tidyr)
 setwd("~/Desktop/ricardo_gph_analysis")
 
-d <- read.csv("data/blocks/louvain/1833_fob_enrichi.csv", stringsAsFactors = FALSE)
+year    <- 1833
+methode <- "blockAN"
+serie   <- "fob_source"
 
-# ---- construire les flux orientes bloc->bloc a partir de export et import (fob), reporter de import est l'export du flux inverse ----
-# sens 1 : source -> target, flux = export, blocs (sourceCommunity -> targetCommunity)
-f1 <- data.frame(i = d$sourceCommunity, j = d$targetCommunity, value = d$export)
-# sens 2 : target -> source, flux = import, blocs (targetCommunity -> sourceCommunity)
-f2 <- data.frame(i = d$targetCommunity, j = d$sourceCommunity, value = d$import)
+# ============================================================
+# 1. Les blocs de l annee
+# ============================================================
+b <- read.csv(file.path("results/communities/gph_blocks_by_year", paste0(year, ".csv")),
+              stringsAsFactors = FALSE)
+b$id <- as.character(b$id)
 
-flux <- rbind(f1, f2)
-flux <- flux[!is.na(flux$value), ]        # garder les flux observes
+# completer blockAN depuis la table Anderson-Norheim
+BlocselonAN <- read.csv("external data/BlocselonAN.csv", stringsAsFactors = FALSE)
+region_map  <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
+region_map$GPH_code <- as.character(region_map$GPH_code)
 
-# ---- flux agrege par paire de blocs (i -> j) ----
-Xij <- aggregate(value ~ i + j, data = flux, FUN = sum)
+b <- b %>%
+  left_join(region_map, by = c("id" = "GPH_code")) %>%
+  mutate(blockAN = ifelse(is.na(blockAN) | blockAN == "",
+                          region_AndersonNorheim, as.character(blockAN))) %>%
+  select(-region_AndersonNorheim)
 
-blocs <- sort(unique(c(flux$i, flux$j)))
+nrow(b)                          # nombre d entites
+sum(is.na(b$blockAN))            # entites sans region AN
 
+# ============================================================
+# 2. Les flux, ventiles en 4 series
+# ============================================================
+g <- read.csv(file.path("results/gravity", paste0("gravity_", year, ".csv")),
+              stringsAsFactors = FALSE)
+g <- g[g$status == "ok" & !is.na(g$value), ]
+g$exporterId <- as.character(g$exporterId)
+g$importerId <- as.character(g$importerId)
+
+# cle non orientee : a est le code le plus petit
+g$a <- pmin(g$exporterId, g$importerId)
+g$b <- pmax(g$exporterId, g$importerId)
+
+g$serie <- case_when(
+  g$exporterId == g$a & g$CafFob == "fob" ~ "fob_source",
+  g$exporterId == g$a & g$CafFob == "caf" ~ "caf_target",
+  g$exporterId == g$b & g$CafFob == "fob" ~ "fob_target",
+  g$exporterId == g$b & g$CafFob == "caf" ~ "caf_source"
+)
+
+table(g$serie, useNA = "ifany")
+
+flux <- g %>%
+  select(a, b, serie, value) %>%
+  pivot_wider(names_from = serie, values_from = value)
+
+head(flux)
+
+# ============================================================
+# 3. Toutes les paires non orientees
+# ============================================================
+p <- as.data.frame(t(combn(sort(b$id), 2)), stringsAsFactors = FALSE)
+names(p) <- c("a", "b")
+
+p <- p %>%
+  left_join(b %>% select(a = id, bloc_a = all_of(methode)), by = "a") %>%
+  left_join(b %>% select(b = id, bloc_b = all_of(methode)), by = "b") %>%
+  left_join(flux, by = c("a", "b"))
+
+nrow(p)                     # paires possibles
+sum(!is.na(p[[serie]]))     # paires avec un flux dans cette serie
+
+# ============================================================
+# 4. Matrice bloc-bloc
+# ============================================================
+dd <- p[!is.na(p[[serie]]) & !is.na(p$bloc_a) & !is.na(p$bloc_b), ]
+
+# le sens de la serie decide qui est exportateur
+sens_ab <- serie %in% c("fob_source", "caf_target")
+type    <- if (grepl("^fob", serie)) "fob" else "caf"
+
+mat <- data.frame(
+  i     = if (sens_ab) dd$bloc_a else dd$bloc_b,   # bloc exportateur
+  j     = if (sens_ab) dd$bloc_b else dd$bloc_a,   # bloc importateur
+  value = dd[[serie]], stringsAsFactors = FALSE)
+
+Xij <- aggregate(value ~ i + j, data = mat, FUN = sum)
+names(Xij)[3] <- "Xij"
+
+blocs  <- sort(unique(c(mat$i, mat$j)))
 grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
 grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
-names(grille)[names(grille) == "value"] <- "Xij"
 grille$Xij[is.na(grille$Xij)] <- 0
 
-# ---- totaux (commerce mondial complet) ----
+# marges
 X_tot <- sum(grille$Xij)
-Xi <- tapply(grille$Xij, grille$i, sum)
-Xj <- tapply(grille$Xij, grille$j, sum)
+Xi <- tapply(grille$Xij, grille$i, sum)   # exports du bloc i
+Xj <- tapply(grille$Xij, grille$j, sum)   # imports du bloc j
 grille$Xi <- Xi[as.character(grille$i)]
 grille$Xj <- Xj[as.character(grille$j)]
 
-# ---- TIBI ----
-grille$s_ij <- grille$Xij / grille$Xi
-grille$Xrj  <- grille$Xj - grille$Xij
-grille$Xr   <- X_tot - grille$Xi
-grille$s_rj <- grille$Xrj / grille$Xr
-grille$I1 <- grille$s_ij / grille$s_rj
-grille$I3 <- (1 - grille$s_ij) / (1 - grille$s_rj)
-ratio <- grille$I1 / grille$I3
-grille$TIBI <- (ratio - 1) / (ratio + 1)
+# ============================================================
+# 5. TIBI
+# ============================================================
+if (type == "fob") {
+  grille$base <- grille$Xi                                        # on raisonne en part des exports de i
+  grille$s1   <- grille$Xij / grille$Xi                           # part de i allant vers j
+  grille$s2   <- (grille$Xj - grille$Xij) / (X_tot - grille$Xi)    # meme part pour le reste du monde
+} else {
+  grille$base <- grille$Xj                                        # on raisonne en part des imports de j
+  grille$s1   <- grille$Xij / grille$Xj                           # part de j venant de i
+  grille$s2   <- (grille$Xi - grille$Xij) / (X_tot - grille$Xj)
+}
 
-tibi <- grille[, c("i", "j", "Xij", "TIBI")]
+I1 <- grille$s1 / grille$s2
+I3 <- (1 - grille$s1) / (1 - grille$s2)
+grille$TIBI <- (I1/I3 - 1) / (I1/I3 + 1)
 
-# ---- identifier les singletons (communautes a un seul pays) , normalement il n'y en a pas----
-src <- unique(d[, c("sourceLabel", "sourceCommunity")]); names(src) <- c("pays", "bloc")
-tgt <- unique(d[, c("targetLabel", "targetCommunity")]); names(tgt) <- c("pays", "bloc")
-pays_bloc <- unique(rbind(src, tgt))
-taille <- table(pays_bloc$bloc)
-blocs_singletons <- as.integer(names(taille)[taille == 1])
+# cas limites
+grille$TIBI[grille$base == 0] <- NA_real_
+grille$TIBI[grille$base > 0 & grille$Xij == grille$base] <- 1
+grille$TIBI[grille$base > 0 & grille$Xij == 0] <- -1
 
-# ---- diagonale sans singletons + poids ----
-tibi_ss <- tibi[!(tibi$i %in% blocs_singletons) & !(tibi$j %in% blocs_singletons), ]
-diag_df <- tibi_ss[tibi_ss$i == tibi_ss$j & !is.nan(tibi_ss$TIBI) & is.finite(tibi_ss$TIBI),
-                   c("i", "TIBI")]
-diag_df$poids <- Xi[as.character(diag_df$i)] / X_tot
-diag_df$w <- diag_df$poids #/ sum(diag_df$poids)
+# ============================================================
+# 6. Diagonale, singletons, moyenne ponderee
+# ============================================================
+pb <- unique(rbind(
+  data.frame(id = dd$a, bloc = dd$bloc_a),
+  data.frame(id = dd$b, bloc = dd$bloc_b)
+))
+taille     <- table(pb$bloc)
+singletons <- names(taille)[taille == 1]
+singletons
 
+g2 <- grille[!(grille$i %in% singletons) & !(grille$j %in% singletons), ]
+
+diag_df <- g2[g2$i == g2$j & is.finite(g2$TIBI), c("i", "TIBI", "base")]
+diag_df$w <- diag_df$base / X_tot
+diag_df
+
+sum(diag_df$w * diag_df$TIBI)   # le TIBI intra-bloc moyen pondere
+nrow(diag_df)                   # nombre de blocs retenus
