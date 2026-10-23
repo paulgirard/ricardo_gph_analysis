@@ -199,10 +199,6 @@ Avec `Pour paires intra-bloc.do`
 Donne "results/communities/intra_bloc_pairs_YYYY.dta"
 
 
-
-
-
-
 ## Métriques
 
 
@@ -228,7 +224,7 @@ Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R` (faire un scr
 Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
 ### Commerce intrabloc (Guillaume)
 À partir de "results/communities/intra_bloc_pairs_YYYY.dta" et "results/gravity/gravity_year'.csv"
-Avec `Pour part commerce intra-bloc.do`
+Avec "scripts/daudin/Pour part commerce intra-bloc.do"
 Produit : `results/bloc_study/intra_block_share.csv/dta` et
 `results/bloc_study/Intra-block trade share.png`
 ### Cartes (Youssef)

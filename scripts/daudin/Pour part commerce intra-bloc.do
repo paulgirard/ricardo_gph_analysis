@@ -10,8 +10,6 @@ program define intra_bloc_share
 ****We use the trade
 
 import delimited "results/gravity/gravity_`year'.csv", delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-gen undir_pair_key = strofreal(importerId) + "-" + strofreal(exporterId) if strofreal(importerId) < strofreal(exporterId) & importerId!=. & exporterId!=.
-replace undir_pair_key = strofreal(exporterId) + "-" + strofreal(importerId) if strofreal(importerId) > strofreal(exporterId) & importerId!=. & exporterId!=.
 keep undir_pair_key value
 merge m:1 undir_pair_key using "results/communities/intra_bloc_pairs_`year'.dta", keep(3)
 
@@ -26,7 +24,6 @@ foreach bloc_type in Tibi LouvainMaxtrade LouvainTibirescale IntraMax AN {
 }
 
 keep if _n==1
-generate year=`year'
 keep  year intra*share
 
 if `year' !=1833 {
