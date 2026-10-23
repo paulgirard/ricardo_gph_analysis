@@ -1,401 +1,257 @@
 rm(list = ls(all = TRUE))
 gc()
+library(dplyr); library(tidyr); library(ggplot2)
 
-library(dplyr)
-library(readxl)
-library(tidyverse)
-library(here)
+setwd("~/Desktop/ricardo_gph_analysis")
 
+annees_all <- c(1833:1938, 1948:2025)
 
-BlocselonAN <- read.csv2(here("external data","BlocselonAN.csv"))
+methodes <- c("blockTibi",
+              "blockLouvainMaxobservedtradevalues",
+              "blockLouvainTibirescale",
+              "blockIntraMax",
+              "blockAN")
+
+series <- c("fob_source", "caf_target", "fob_target", "caf_source")
+
+# ---- table Anderson-Norheim ----
+BlocselonAN <- read.csv("external data/BlocselonAN.csv", stringsAsFactors = FALSE)
 region_map  <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
+region_map$GPH_code <- as.character(region_map$GPH_code)
+region_map$region_AndersonNorheim <- trimws(region_map$region_AndersonNorheim)
+region_map$region_AndersonNorheim[region_map$region_AndersonNorheim == ""] <- NA
+region_map <- region_map[!is.na(region_map$region_AndersonNorheim), ]
+region_map <- region_map[!duplicated(region_map$GPH_code), ]
 
-codes_post45 <- unique(unlist(lapply(1948:2025, function(y) {
-  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", y, ".csv"))
-  if (!file.exists(f)) return(NULL)
-  d <- read.csv(f); c(d$exporterId, d$importerId)
-})))
+# ============================================================
+# 1. Base : une ligne par paire non orientee, 4 colonnes de flux
+#      fob_source : a -> b, declare par a (exportateur)
+#      caf_target : a -> b, declare par b (importateur)
+#      fob_target : b -> a, declare par b (exportateur)
+#      caf_source : b -> a, declare par a (importateur)
+# ============================================================
+construire_paires <- function(year) {
+  f_bloc <- file.path("results/communities/gph_blocks_by_year", paste0(year, ".csv"))
+  f_grav <- file.path("results/gravity", paste0("gravity_", year, ".csv"))
+  if (!file.exists(f_bloc) || !file.exists(f_grav)) return(NULL)
+  
+  b <- read.csv(f_bloc, stringsAsFactors = FALSE)
+  b$id <- as.character(b$id)
+  
+  b <- b %>%
+    left_join(region_map, by = c("id" = "GPH_code")) %>%
+    mutate(blockAN = ifelse(is.na(blockAN) | blockAN == "",
+                            region_AndersonNorheim, as.character(blockAN))) %>%
+    select(-region_AndersonNorheim)
+  
+  g <- read.csv(f_grav, stringsAsFactors = FALSE)
+  g <- g[g$status == "ok" & !is.na(g$value), ]
+  g$exporterId <- as.character(g$exporterId)
+  g$importerId <- as.character(g$importerId)
+  
+  g$a <- pmin(g$exporterId, g$importerId)
+  g$b <- pmax(g$exporterId, g$importerId)
+  
+  g$serie <- case_when(
+    g$exporterId == g$a & g$CafFob == "fob" ~ "fob_source",
+    g$exporterId == g$a & g$CafFob == "caf" ~ "caf_target",
+    g$exporterId == g$b & g$CafFob == "fob" ~ "fob_target",
+    g$exporterId == g$b & g$CafFob == "caf" ~ "caf_source"
+  )
+  
 
-length(setdiff(as.character(codes_post45), as.character(region_map$GPH_code)))
-annees_ric <- 1833:1938
-annees_imf <- 1948:2025
-annees_all <- c(annees_ric, annees_imf)
-annees <- annees_all
-resultats_intra <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
-
-for (year in annees) {
-  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
-  if (!file.exists(f) || file.info(f)$size == 0) next
-  d <- read.csv(f, stringsAsFactors = FALSE)
-  d <- d[!is.na(d$value), ]
-  if (nrow(d) == 0) next
+  flux <- g %>%
+    select(a, b, serie, value) %>%
+    pivot_wider(names_from = serie, values_from = value)
   
-  # ---- flux agrege par paire de blocs (TOUS les blocs, diagonale incluse) ----
-  Xij <- aggregate(value ~ bloc_exp + bloc_imp, data = d, FUN = sum)
-  names(Xij) <- c("i", "j", "Xij")
-  blocs <- sort(unique(c(d$bloc_exp, d$bloc_imp)))
+  for (s in series) if (!s %in% names(flux)) flux[[s]] <- NA_real_
   
-  grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
-  grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
-  grille$Xij[is.na(grille$Xij)] <- 0
+  p <- as.data.frame(t(combn(sort(b$id), 2)), stringsAsFactors = FALSE)
+  names(p) <- c("a", "b")
+  p$year <- year
   
-  # ---- totaux (sur TOUT le commerce mondial) ----
-  X_tot <- sum(grille$Xij)
-  Xi <- tapply(grille$Xij, grille$i, sum)
-  Xj <- tapply(grille$Xij, grille$j, sum)
-  grille$Xi   <- Xi[as.character(grille$i)]
-  grille$Xj   <- Xj[as.character(grille$j)]
+  p <- p %>%
+    left_join(b %>% select(id, label, all_of(methodes)) %>%
+                rename_with(~ paste0(.x, "_a"), all_of(c("label", methodes))),
+              by = c("a" = "id")) %>%
+    left_join(b %>% select(id, label, all_of(methodes)) %>%
+                rename_with(~ paste0(.x, "_b"), all_of(c("label", methodes))),
+              by = c("b" = "id")) %>%
+    left_join(flux %>% select(a, b, all_of(series)), by = c("a", "b"))
   
-  # ---- TIBI ----
-  grille$s_ij <- grille$Xij / grille$Xi
-  grille$Xrj  <- grille$Xj  - grille$Xij
-  grille$Xr   <- X_tot      - grille$Xi
-  grille$s_rj <- grille$Xrj / grille$Xr
-  grille$I1 <- grille$s_ij / grille$s_rj
-  grille$I3 <- (1 - grille$s_ij) / (1 - grille$s_rj)
-  ratio <- grille$I1 / grille$I3
-  grille$TIBI <- (ratio - 1) / (ratio + 1)
+  for (m in methodes) {
+    p[[paste0("meme_", m)]] <- as.integer(p[[paste0(m, "_a")]] == p[[paste0(m, "_b")]])
+  }
   
-  tibi <- grille[, c("i", "j", "Xij", "TIBI")]
-  
-  # ---- identifier les singletons ----
-  exp <- unique(d[, c("exportateur", "bloc_exp")]); names(exp) <- c("pays", "bloc")
-  imp <- unique(d[, c("importateur", "bloc_imp")]); names(imp) <- c("pays", "bloc")
-  pays_bloc <- unique(rbind(exp, imp))
-  taille <- table(pays_bloc$bloc)
-  blocs_singletons <- as.integer(names(taille)[taille == 1])
-  
-  # ---- retirer les singletons APRES le calcul, puis diagonale ----
-  tibi_ss <- tibi[!(tibi$i %in% blocs_singletons) & !(tibi$j %in% blocs_singletons), ]
-  diag_df <- tibi_ss[tibi_ss$i == tibi_ss$j & !is.nan(tibi_ss$TIBI) & is.finite(tibi_ss$TIBI),
-                     c("i", "TIBI")]
-  if (nrow(diag_df) < 1) next
-  
-  # ---- poids = part du bloc dans le commerce mondial ----
-  diag_df$poids <- Xi[as.character(diag_df$i)] / X_tot
-  diag_df$w <- diag_df$poids #/ sum(diag_df$poids)     # si on veut renormaliser sur les blocs retenus
-  
-  # ---- moyenne ponderee ----
-  m <- sum(diag_df$w * diag_df$TIBI)
-  
-  resultats_intra <- rbind(resultats_intra, data.frame(
-    year = year, moyenne = m, n_blocs = nrow(diag_df)))
+  p
 }
 
-# ---- graphe ----
-p <- ggplot(resultats_intra, aes(year, moyenne)) +
-  geom_line() + geom_point() +
-  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  coord_cartesian(ylim = c(-1, 1)) +
-  labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
-       title = "Commerce Intra-bloc (intramax) moyen pondérée par année") +
-  theme_minimal()
-
-print(p)
-
-
-ggsave(here("results","block_study","Intramax","tibi_intrabloc_moyen.png"),
-       plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_intra, here("results","block_study","Intramax","tibi_intrabloc_moyen.csv"), row.names = FALSE)
-
-#####Louvain method#####
-
-annees <- annees_all
-resultats_louvain <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
-for (year in annees) {
-  f <- here("data", "blocks", "louvain",  paste0(year, "_fob_enrichi.csv"))
-  if (!file.exists(f) || file.info(f)$size == 0) next
-  d <- read.csv(f, stringsAsFactors = FALSE)
-  if (nrow(d) == 0) next
+# ============================================================
+# 2. TIBI intra-bloc pondere, une partition et une serie
+#    Le sens fixe l orientation de la matrice bloc-bloc.
+#    Le type fixe le denominateur : Xi pour fob, Xj pour caf.
+# ============================================================
+calc_tibi <- function(d, methode, serie) {
+  col_a <- paste0(methode, "_a")
+  col_b <- paste0(methode, "_b")
   
-  # ---- flux orientes bloc->bloc a partir de export et import ----
-  # sens 1 : source -> target = export (sourceCommunity -> targetCommunity)
-  f1 <- data.frame(i = d$sourceBlockLouvain, j = d$targetBlockLouvain, value = d$export)
-  # sens 2 : target -> source = import (targetCommunity -> sourceCommunity)
-  f2 <- data.frame(i = d$targetBlockLouvain, j = d$sourceBlockLouvain, value = d$import)
-  flux <- rbind(f1, f2)
-  flux <- flux[!is.na(flux$value), ]
-  if (nrow(flux) == 0) next
+  dd <- d[!is.na(d[[serie]]) & !is.na(d[[col_a]]) & !is.na(d[[col_b]]), ]
+  if (nrow(dd) == 0) return(c(NA_real_, 0))
   
-  # ---- flux agrege par paire de blocs (TOUS les blocs, diagonale incluse) ----
+  sens_ab <- serie %in% c("fob_source", "caf_target")
+  type    <- if (grepl("^fob", serie)) "fob" else "caf"
+  
+  flux <- data.frame(
+    i = as.character(if (sens_ab) dd[[col_a]] else dd[[col_b]]), # bloc exportateur
+    j = as.character(if (sens_ab) dd[[col_b]] else dd[[col_a]]), # bloc importateur
+    value = dd[[serie]], stringsAsFactors = FALSE)
+  
   Xij <- aggregate(value ~ i + j, data = flux, FUN = sum)
-  names(Xij) <- c("i", "j", "Xij")
+  names(Xij)[3] <- "Xij"
   blocs <- sort(unique(c(flux$i, flux$j)))
   
   grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
   grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
   grille$Xij[is.na(grille$Xij)] <- 0
   
-  # ---- totaux (sur TOUT le commerce mondial) ----
-  X_tot <- sum(grille$Xij)
-  Xi <- tapply(grille$Xij, grille$i, sum)
-  Xj <- tapply(grille$Xij, grille$j, sum)
-  grille$Xi   <- Xi[as.character(grille$i)]
-  grille$Xj   <- Xj[as.character(grille$j)]
-  
-  # ---- TIBI ----
-  grille$s_ij <- grille$Xij / grille$Xi
-  grille$Xrj  <- grille$Xj  - grille$Xij
-  grille$Xr   <- X_tot      - grille$Xi
-  grille$s_rj <- grille$Xrj / grille$Xr
-  grille$I1 <- grille$s_ij / grille$s_rj
-  grille$I3 <- (1 - grille$s_ij) / (1 - grille$s_rj)
-  ratio <- grille$I1 / grille$I3
-  grille$TIBI <- (ratio - 1) / (ratio + 1)
-  
-  tibi <- grille[, c("i", "j", "Xij", "TIBI")]
-  
-  # ---- identifier les singletons (communautes a un seul pays) ----
-  src <- unique(d[, c("sourceLabel", "sourceBlockLouvain")]); names(src) <- c("pays", "bloc")
-  tgt <- unique(d[, c("targetLabel", "targetBlockLouvain")]); names(tgt) <- c("pays", "bloc")
-  pays_bloc <- unique(rbind(src, tgt))
-  taille <- table(pays_bloc$bloc)
-  blocs_singletons <- as.integer(names(taille)[taille == 1])
-  
-  # ---- retirer les singletons APRES le calcul, puis diagonale ----
-  tibi_ss <- tibi[!(tibi$i %in% blocs_singletons) & !(tibi$j %in% blocs_singletons), ]
-  diag_df <- tibi_ss[tibi_ss$i == tibi_ss$j & !is.nan(tibi_ss$TIBI) & is.finite(tibi_ss$TIBI),
-                     c("i", "TIBI")]
-  if (nrow(diag_df) < 1) next
-  
-  # ---- poids = part du bloc dans le commerce mondial ----
-  diag_df$poids <- Xi[as.character(diag_df$i)] / X_tot
-  diag_df$w <- diag_df$poids #/ sum(diag_df$poids)     # si on veut renormaliser sur les blocs retenus
-  
-  # ---- moyenne ponderee ----
-  m <- sum(diag_df$w * diag_df$TIBI)
-  
-  resultats_louvain <- rbind(resultats_louvain, data.frame(
-    year = year, moyenne = m, n_blocs = nrow(diag_df)))
-}
-# ---- graphe ----
-p <- ggplot(resultats_louvain, aes(year, moyenne)) +
-  geom_line() + geom_point() +
-  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  coord_cartesian(ylim = c(-1, 1)) +
-  labs(x = "année", y = "TIBI intra-communauté moyen (pondéré)",
-       title = "Commerce Intra-communauté (Louvain) moyen pondéré par année") +
-  theme_minimal()
-print(p)
-ggsave(here("results","block_study","louvain","tibi_intracomm_moyen.png"),
-       plot = p, width = 9, height = 5, dpi = 150)
-write.csv(resultats_louvain, here("results","block_study","louvain","tibi_intracomm_moyen.csv"), row.names = FALSE)
-
-
-
-#####Superposition des deux courbes#####
-resultats_intra$methode   <- "Intramax"
-resultats_louvain$methode <- "Louvain"
-combine <- rbind(resultats_intra[, c("year", "moyenne", "methode")],
-                 resultats_louvain[, c("year", "moyenne", "methode")])
-
-p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
-  geom_line() + geom_point(size = 1) +
-  geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1835, 2025, 5)) +
-  scale_color_manual(values = c("Intramax" = "#0055A4", "Louvain" = "#CF142B")) +
-  labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
-       title = "Commerce intra-bloc moyen : Intramax vs Louvain",
-       color = "Méthode") +
-  theme_minimal() +
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 45, hjust = 1))
-print(p_combine)
-ggsave(here("results","block_study","tibi_comparaison_intramax_louvain.png"),
-       plot = p_combine, width = 10, height = 5, dpi = 150)
-
-
-###Regional blocs (as echoed by Anderson and Norheim)
-BlocselonAN <- read.csv2(here("external data","BlocselonAN.csv"))
-region_map <- BlocselonAN[, c("GPH_code", "region_AndersonNorheim")]
-region_map$GPH_code <- as.character(region_map$GPH_code)
-
-resultats_AN <- data.frame(year = integer(), moyenne = numeric(), n_blocs = integer())
-
-for (year in annees_all) {
-  f <- here("data", "blocks", "Intramax", paste0("paires_blocs_", year, ".csv"))
-  if (!file.exists(f) || file.info(f)$size == 0) next
-  d <- read.csv(f, stringsAsFactors = FALSE)
-  d <- d[!is.na(d$value), ]
-  if (nrow(d) == 0) next
-
-  # ---- merger la region AN par code GPH (exportateur + importateur) ----
-  d$exporterId <- as.character(d$exporterId)
-  d$importerId <- as.character(d$importerId)
-  d <- merge(d, region_map, by.x = "exporterId", by.y = "GPH_code", all.x = TRUE)
-  names(d)[names(d) == "region_AndersonNorheim"] <- "region_exp"
-  d <- merge(d, region_map, by.x = "importerId", by.y = "GPH_code", all.x = TRUE)
-  names(d)[names(d) == "region_AndersonNorheim"] <- "region_imp"
-  
-  d <- d[!is.na(d$region_exp) & !is.na(d$region_imp) &
-           d$region_exp != "" & d$region_imp != "", ]
-  if (nrow(d) == 0) next
-  
-  Xij <- aggregate(value ~ region_exp + region_imp, data = d, FUN = sum)
-  names(Xij) <- c("i", "j", "Xij")
-  blocs <- sort(unique(c(d$region_exp, d$region_imp)))
-  
-  grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
-  grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
-  grille$Xij[is.na(grille$Xij)] <- 0
-
   X_tot <- sum(grille$Xij)
   Xi <- tapply(grille$Xij, grille$i, sum)
   Xj <- tapply(grille$Xij, grille$j, sum)
   grille$Xi <- Xi[as.character(grille$i)]
   grille$Xj <- Xj[as.character(grille$j)]
-
   
-  grille$s_ij <- grille$Xij / grille$Xi
-  grille$Xrj  <- grille$Xj - grille$Xij
-  grille$Xr   <- X_tot - grille$Xi
-  grille$s_rj <- grille$Xrj / grille$Xr
-  grille$I1 <- grille$s_ij / grille$s_rj
-  grille$I3 <- (1 - grille$s_ij) / (1 - grille$s_rj)
-  ratio <- grille$I1 / grille$I3
+  if (type == "fob") {
+    grille$base <- grille$Xi  # on raisonne en part des exports de i
+    grille$s1   <- grille$Xij / grille$Xi # part de i allant vers j
+    grille$s2   <- (grille$Xj - grille$Xij) / (X_tot - grille$Xi) # meme part pour le reste du monde
+  } else {
+    grille$base <- grille$Xj # on raisonne en part des imports de j
+    grille$s1   <- grille$Xij / grille$Xj   
+    grille$s2   <- (grille$Xi - grille$Xij) / (X_tot - grille$Xj)
+  }
+  
+  I1 <- grille$s1 / grille$s2
+  I3 <- (1 - grille$s1) / (1 - grille$s2)
+  ratio <- I1 / I3
   grille$TIBI <- (ratio - 1) / (ratio + 1)
   
-  tibi <- grille[, c("i", "j", "Xij", "TIBI")]
+  grille$TIBI[grille$base == 0] <- NA_real_
+  grille$TIBI[grille$base > 0 & grille$Xij == grille$base] <- 1
+  grille$TIBI[grille$base > 0 & grille$Xij == 0] <- -1
   
+  pb <- unique(rbind(
+    data.frame(id = dd$a, bloc = as.character(dd[[col_a]])),
+    data.frame(id = dd$b, bloc = as.character(dd[[col_b]]))
+  ))
+  taille <- table(pb$bloc)
+  singletons <- names(taille)[taille == 1]
   
-  exp <- unique(d[, c("exporterId", "region_exp")]); names(exp) <- c("gph", "bloc")
-  imp <- unique(d[, c("importerId", "region_imp")]); names(imp) <- c("gph", "bloc")
-  pays_bloc <- unique(rbind(exp, imp))
-  taille <- table(pays_bloc$bloc)
-  blocs_singletons <- names(taille)[taille == 1]
+  g2 <- grille[!(grille$i %in% singletons) & !(grille$j %in% singletons), ]
+  diag_df <- g2[g2$i == g2$j & is.finite(g2$TIBI), c("i", "TIBI", "base")]
+  if (nrow(diag_df) < 1) return(c(NA_real_, 0))
   
-  
-  tibi_ss <- tibi[!(tibi$i %in% blocs_singletons) & !(tibi$j %in% blocs_singletons), ]
-  diag_df <- tibi_ss[tibi_ss$i == tibi_ss$j & !is.nan(tibi_ss$TIBI) & is.finite(tibi_ss$TIBI),
-                     c("i", "TIBI")]
-  if (nrow(diag_df) < 1) next
-  
-
-  diag_df$poids <- Xi[as.character(diag_df$i)] / X_tot
-  diag_df$w <- diag_df$poids   #/ sum(diag_df$poids)
-  m <- sum(diag_df$w * diag_df$TIBI)
-  
-  resultats_AN <- rbind(resultats_AN, data.frame(
-    year = year, moyenne = m, n_blocs = nrow(diag_df)))
+  diag_df$w <- diag_df$base / X_tot
+  c(sum(diag_df$w * diag_df$TIBI), nrow(diag_df))
 }
 
+# ============================================================
+# 3. Boucle
+# ============================================================
+dir.create("results/block_study/paires", recursive = TRUE, showWarnings = FALSE)
 
-##############################################################
-#####  4. SUPERPOSITION DES TROIS COURBES  ###################
-##############################################################
-resultats_intra$methode   <- "Intramax"
-resultats_louvain$methode <- "Louvain"
-resultats_AN$methode      <- "Anderson-Norheim"
+res <- list()
 
-combine <- rbind(resultats_intra[, c("year", "moyenne", "methode")],
-                 resultats_louvain[, c("year", "moyenne", "methode")],
-                 resultats_AN[, c("year", "moyenne", "methode")])
+for (year in annees_all) {
+  p <- construire_paires(year)
+  if (is.null(p)) { message(year, " : fichier absent"); next }
+  
+  write.csv(p, file.path("results/block_study/paires", paste0("paires_", year, ".csv")),
+            row.names = FALSE)
+  
+  for (m in methodes) for (s in series) {
+    v <- calc_tibi(p, m, s)
+    res[[length(res) + 1]] <- data.frame(year = year, methode = m, serie = s,
+                                         moyenne = v[1], n_blocs = v[2])
+  }
+  
+  message(year, " : ", nrow(p), " paires | ",
+          paste(sapply(series, function(s) paste0(s, " ", sum(!is.na(p[[s]])))),
+                collapse = " | "))
+}
 
-p_combine <- ggplot(combine, aes(year, moyenne, color = methode)) +
-  geom_line() + geom_point(size = 1) +
+tibi <- bind_rows(res)
+write.csv(tibi, "results/block_study/tibi_cinq_methodes_quatre_series.csv", row.names = FALSE)
+
+# ============================================================
+# 4. Graphe
+# ============================================================
+libelles <- c(blockTibi = "Tibi",
+              blockLouvainMaxobservedtradevalues = "Louvain (valeurs observées)",
+              blockLouvainTibirescale = "Louvain (Tibi rescalé)",
+              blockIntraMax = "Intramax",
+              blockAN = "Anderson-Norheim")
+
+tibi$methode_lbl <- libelles[tibi$methode]
+
+p_combine <- ggplot(tibi %>% complete(methode_lbl, serie, year = 1833:2025),
+                    aes(year, moyenne, colour = methode_lbl)) +
+  geom_line(linewidth = 0.6) +
+  geom_point(size = 0.7) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
+  facet_wrap(~ serie, ncol = 2) +
   coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1835, 2025, 5)) +
-  scale_color_manual(values = c("Intramax" = "#0055A4",
-                                "Louvain" = "#CF142B",
-                                "Anderson-Norheim" = "#2E8B57")) +
+  scale_x_continuous(breaks = seq(1840, 2020, 20)) +
+  scale_colour_manual(values = c("Tibi" = "purple",
+                                 "Louvain (valeurs observées)" = "#CF142B",
+                                 "Louvain (Tibi rescalé)" = "#F2A623",
+                                 "Intramax" = "#0055A4",
+                                 "Anderson-Norheim" = "#2E8B57")) +
   labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
-       title = "Commerce intra-bloc moyen : Intramax vs Louvain vs Anderson-Norheim",
-       color = "Méthode") +
+       title = "Commerce intra-bloc moyen : cinq partitions, quatre séries de flux",
+       colour = "Méthode") +
   theme_minimal() +
   theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 45, hjust = 1))
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
 
 print(p_combine)
 
-ggsave(here("results","block_study","tibi_comparaison_trois_methodes.png"),
-       plot = p_combine, width = 10, height = 5, dpi = 150)
+ggsave("results/block_study/tibi_cinq_methodes_quatre_series.png",
+       plot = p_combine, width = 12, height = 8, dpi = 150)
 
 
-######################################################################################################################
-#####  5. SUPERPOSITION + différence de blocs Intramax-Anderson-Norheim et Louvain--Anderson-Norheim   ###############
-######################################################################################################################
+# ============================================================
+# 5. Graphe : maximum sur les quatre series
+# ============================================================
+tibi_max <- tibi %>%
+  filter(!is.na(moyenne)) %>%
+  group_by(year, methode, methode_lbl) %>%
+  slice_max(moyenne, n = 1, with_ties = FALSE) %>%
+  ungroup()
 
-# --- 1. n_blocs par méthode, format wide ---
-n_blocs_all <- resultats_AN       %>% select(year, `Anderson-Norheim` = n_blocs) %>%
-  left_join(resultats_intra   %>% select(year, Intramax = n_blocs), by = "year") %>%
-  left_join(resultats_louvain %>% select(year, Louvain  = n_blocs), by = "year")
-# --- 2. Calcul des différences vs AN ---
-diff_long <- n_blocs_all %>%
-  mutate(`Intramax − AN` = Intramax - `Anderson-Norheim`,
-         `Louvain − AN`  = Louvain  - `Anderson-Norheim`) %>%
-  select(year, `Intramax − AN`, `Louvain − AN`) %>%
-  pivot_longer(cols = c(`Intramax − AN`, `Louvain − AN`),
-               names_to = "comparaison", values_to = "diff")
+write.csv(tibi_max, "results/block_study/tibi_max_quatre_series.csv", row.names = FALSE)
 
-# --- 3. Couleurs communes (identiques à celles des courbes) ---
-couleurs_methodes <- c("Intramax"         = "#0055A4",
-                       "Louvain"          = "#CF142B",
-                       "Anderson-Norheim" = "#2E8B57")
-
-# 4. Coef de rescaling : plus grande valeur absolue pour occuper [-1, 1]
-coef <- max(abs(diff_long$diff), na.rm = TRUE)
-coef<-coef+1 #(nb pair)
-
-# 5. Graph
-accolade <- function(x1, x2, y, rx = 1.2, h = 0.08, n = 30) {
-  ry <- h / 2
-  xm <- (x1 + x2) / 2
-  a1 <- seq(pi, 3*pi/2, length.out = n)
-  a2 <- seq(pi/2, 0,    length.out = n)
-  gauche <- rbind(
-    data.frame(x = (x1 + rx) + rx*cos(a1), y = y + ry*sin(a1)),
-    data.frame(x = c(x1 + rx, xm - rx),    y = c(y - ry, y - ry)),
-    data.frame(x = (xm - rx) + rx*cos(a2), y = (y - 2*ry) + ry*sin(a2))
-  )
-  droite <- data.frame(x = 2*xm - rev(gauche$x), y = rev(gauche$y))
-  rbind(gauche, droite)
-}
-
-acc <- accolade(1939, 1947, y = 0.84, h = -0.07)
-
-library(tidyr)
-combine <- combine %>% complete(methode, year = 1833:2025)
-
-p_combine <- ggplot() +
-  # Barres différence nb blocs, rescalées pour occuper [-1, 1]
-  geom_col(data = diff_long,
-           aes(x = year, y = diff / coef, fill = comparaison),
-           position = position_dodge(width = 0.85),
-           width = 0.5, alpha = 0.6) +
-  
-  # Courbes TIBI (les trois méthodes)
-  geom_line(data = combine,  aes(year, moyenne, color = methode), linewidth = 0.7) +
-  geom_point(data = combine, aes(year, moyenne, color = methode), size = 1.2) +
+p_max <- ggplot(tibi_max %>% complete(methode_lbl, year = 1833:2025),
+                aes(year, moyenne, colour = methode_lbl)) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 1) +
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
-  geom_path(data = acc, aes(x, y), inherit.aes = FALSE,
-            linewidth = 0.4, colour = "grey25") +
-  annotate("text", x = 1943, y = 0.96, label = "no data",
-           size = 3, fontface = "bold", colour = "grey25") +
   coord_cartesian(ylim = c(-1, 1)) +
-  scale_x_continuous(breaks = seq(1833, 2025, 5)) +
-  scale_y_continuous(
-    name     = "Average intra-bloc TIBI (weighted)",
-    breaks   = seq(-1, 1, 0.25),
-    sec.axis = sec_axis(~ . * coef,
-                        name   = "Difference in number of blocs vs AN",
-                        breaks = seq(-floor(coef), floor(coef), by = 2))
-  ) +
-  scale_color_manual(values = couleurs_methodes) +
-  scale_fill_manual(values = c("Intramax − AN" = "#0055A4",
-                               "Louvain − AN"  = "#CF142B")) +
-  labs(x     = "year",
-       title = "Average Intra-bloc Trade + Difference in number of blocs with regional blocs (Anderson-Norheim)",
-       color = "Method (TIBI curves)",
-       fill  = "Diff in nb blocs vs AN") +
+  scale_x_continuous(breaks = seq(1835, 2025, 10)) +
+  scale_colour_manual(values = c("Tibi" = "purple",
+                                 "Louvain (valeurs observées)" = "#CF142B",
+                                 "Louvain (Tibi rescalé)" = "#F2A623",
+                                 "Intramax" = "#0055A4",
+                                 "Anderson-Norheim" = "#2E8B57")) +
+  labs(x = "année", y = "TIBI intra-bloc moyen (maximum sur les quatre séries)",
+       title = "Commerce intra-bloc moyen : maximum des quatre séries de flux",
+       colour = "Méthode") +
   theme_minimal() +
   theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 45, hjust = 1), plot.title  = element_text(hjust = 0.5))
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
 
+print(p_max)
 
-print(p_combine)
-
-ggsave(here("results","block_study","tibi_comparaison_avec_diff_nblocs.png"),
-       plot = p_combine, width = 11, height = 6, dpi = 150)
-
+ggsave("results/block_study/tibi_max_quatre_series.png",
+       plot = p_max, width = 11, height = 6, dpi = 150)
