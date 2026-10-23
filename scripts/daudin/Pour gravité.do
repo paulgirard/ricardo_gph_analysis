@@ -194,23 +194,19 @@ rename GPH_code exporterId
 tostring importerId, replace 
 rename GPH_name exporterLabel
 
-sort id old_id notes
-
-keep id year  CafFob importerId exporterId value importerLabel exporterLabel status  old_id notes valueGeneratedBy
-order year id importerLabel exporterLabel  value  CafFob importerId  exporterId  old_id notes valueGeneratedBy
-
 
 
 bys importerLabel exporterLabel CafFob : assert _N==1
 
-*save "results/BestGuessBilTrade_`year'_`CafFob'.dta", replace
-
-
-////exportation des résultats gravity
-*keep if status=="ok thanks to gravity"
-sort id old_id notes
 
 }
+
+sort id old_id notes
+
+keep id year  undir_pair_key CafFob importerId exporterId value importerLabel exporterLabel status  old_id notes valueGeneratedBy
+order year id undir_pair_key importerLabel exporterLabel  value  CafFob importerId  exporterId  old_id notes valueGeneratedBy
+
+
 
 if year >= 1945 sort id 
 format value  %30.0fc
