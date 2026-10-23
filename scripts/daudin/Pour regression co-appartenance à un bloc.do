@@ -180,7 +180,7 @@ twoway ///
             title("`NetworkType' Regression results `var_ex'") ///
             legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
 
-    graph export "results/bloc_study/shared_bloc_reg__`var_ex'_`NetworkType'.png", replace
+    graph export "results/bloc_study/shared_bloc_reg_`var_ex'_`NetworkType'.png", replace
     restore
     }
 }
