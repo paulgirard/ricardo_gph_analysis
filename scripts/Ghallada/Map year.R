@@ -1,6 +1,6 @@
 rm(list = ls(all = TRUE))
 gc()
-library(dplyr); library(tidyr); library(ggplot2); library(maps); library(magick)
+library(dplyr); library(tidyr); library(ggplot2); library(maps); library(magick); library(patchwork)
 
 setwd("~/Desktop/ricardo_gph_analysis")
 
@@ -12,7 +12,6 @@ methodes <- c(blockTibi = "LouvainTibi",
               blockLouvainTibirescale = "Louvain_tibirescale",
               blockIntraMax = "Intramax",
               blockAN = "AndersonNorheim")
-
 monde <- map_data("world")
 coord <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE)
 coord <- coord[, c("GPH_code", "lat", "lng")]
@@ -317,9 +316,9 @@ for (year in annees_all) {
     
     g <- ggplot() +
       geom_polygon(data = monde, aes(long, lat, group = group), fill = "grey93", colour = NA) +
-      geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays), size = 2.5) +
+      geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays), size = 2.3) +
       geom_text(data = carte, aes(lng, lat, label = pays), size = 1.6, vjust = -0.8,
-                show.legend = FALSE) +
+                , show.legend = FALSE) +
       scale_colour_manual(values = couleurs,
                           name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
       scale_shape_manual(values  = formes,
@@ -330,9 +329,24 @@ for (year in annees_all) {
             legend.text  = element_text(size = 6),
             legend.title = element_text(size = 7)) +
       labs(title = paste0(methodes[[m]], " — ", year))
-    
+    # ---- encart Europe ----
+    g_eu <- ggplot() +
+      geom_polygon(data = monde, aes(long, lat, group = group), fill = "grey93", colour = NA) +
+      geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays),
+                 size = 2, show.legend = FALSE) +
+      geom_text(data = carte, aes(lng, lat, label = pays), size = 1.8, vjust = -0.9,
+               , show.legend = FALSE) +
+      scale_colour_manual(values = couleurs) +
+      scale_shape_manual(values = formes) +
+      coord_quickmap(xlim = c(-19, 42), ylim = c(32, 68)) +
+      theme_void() +
+      theme(panel.border = element_rect(colour = "grey40", fill = NA, linewidth = 0.4),
+            plot.background = element_rect(fill = "white", colour = NA))
+    g <- g + inset_element(g_eu, left = 0.28, bottom = 0.78, right = 0.80, top = 1.32)
+    #g <- g + inset_element(g_eu, left = 0.30, bottom = 0.72, right = 0.66, top = 1.20)
+  
     ggsave(file.path(dossier, paste0("carte_", year, ".png")),
-           plot = g, width = 13, height = 7, dpi = 150)
+           plot = g, width = 13, height = 9, dpi = 150)
   }
   
   message(year, " : cartes generees")
