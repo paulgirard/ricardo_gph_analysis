@@ -157,7 +157,7 @@ calc_tibi <- function(d, methode, serie) {
 # ============================================================
 # 3. Boucle
 # ============================================================
-dir.create("results/block_study/paires", recursive = TRUE, showWarnings = FALSE)
+dir.create("results/bloc_study/TIBI/paires", recursive = TRUE, showWarnings = FALSE)
 
 res <- list()
 
@@ -165,7 +165,7 @@ for (year in annees_all) {
   p <- construire_paires(year)
   if (is.null(p)) { message(year, " : fichier absent"); next }
   
-  write.csv(p, file.path("results/block_study/paires", paste0("paires_", year, ".csv")),
+  write.csv(p, file.path("results/bloc_study/TIBI/paires", paste0("paires_", year, ".csv")),
             row.names = FALSE)
   
   for (m in methodes) for (s in series) {
@@ -180,7 +180,7 @@ for (year in annees_all) {
 }
 
 tibi <- bind_rows(res)
-write.csv(tibi, "results/block_study/tibi_cinq_methodes_quatre_series.csv", row.names = FALSE)
+write.csv(tibi, "results/bloc_study/TIBI/tibi_cinq_methodes_quatre_series.csv", row.names = FALSE)
 
 # ============================================================
 # 4. Graphe
@@ -216,7 +216,7 @@ p_combine <- ggplot(tibi %>% complete(methode_lbl, serie, year = 1833:2025),
 
 print(p_combine)
 
-ggsave("results/block_study/tibi_cinq_methodes_quatre_series.png",
+ggsave("results/bloc_study/TIBI/tibi_cinq_methodes_quatre_series.png",
        plot = p_combine, width = 12, height = 8, dpi = 150)
 
 
@@ -229,7 +229,7 @@ tibi_max <- tibi %>%
   slice_max(moyenne, n = 1, with_ties = FALSE) %>%
   ungroup()
 
-write.csv(tibi_max, "results/block_study/tibi_max_quatre_series.csv", row.names = FALSE)
+write.csv(tibi_max, "results/bloc_study/TIBI/tibi_max_quatre_series.csv", row.names = FALSE)
 
 p_max <- ggplot(tibi_max %>% complete(methode_lbl, year = 1833:2025),
                 aes(year, moyenne, colour = methode_lbl)) +
@@ -253,5 +253,5 @@ p_max <- ggplot(tibi_max %>% complete(methode_lbl, year = 1833:2025),
 
 print(p_max)
 
-ggsave("results/block_study/tibi_max_quatre_series.png",
+ggsave("results/bloc_study/TIBI/tibi_max_quatre_series.png",
        plot = p_max, width = 11, height = 6, dpi = 150)
