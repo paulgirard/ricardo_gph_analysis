@@ -196,7 +196,7 @@ Attention ! Ce fichier ne comprend pas toutes les paires qui commercent.
 
 Avec `Pour paires intra-bloc.do`
 
-Donne "results/communities/intra_bloc_pairs_YYYY.dta"
+Donne "results/communities/intra_bloc_pairs_YYYY.dta" et "results/communities/intra_bloc_pairs.dta"
 
 
 ## Métriques
@@ -255,7 +255,7 @@ Et `results/block_study/shared_bloc_reg_`var_exp`_`class_type’.png`
 
 ### Stat des marge extensive
 #### Creation of BestGuessBilTrade avec les les non-rapportés
-Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de "results/gravity/gravity_year'.csv" Guillaume creates `results/extensive/BestGuessBilTrade_YYYY.csv`
+Using `scripts/daudin/Pour BestGuessBilTrade.do` (stata) à partir de "results/gravity/gravity_year'.csv" Guillaume creates `results/extensive/BestGuessBilTrade_YYYY.csv/dta` and "results/extensive/BestGuessBilTrade.dta"
 #### par flows
 From : `results/BestGuessBilTrade_YYYY.csv`
 Script : `/scripts/daudin/Pour Marge extensive flow stats.do`
@@ -266,8 +266,12 @@ Results:
 `results/extensive/trade_flows_nbr_Caf/Fob.png’
 `results/extensive/trade_flows_share_Caf/Fob.png’
 
-#### par pair
-From : `results/BestGuessBilTrade_YYYY_Caf/Fob.csv` + `https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities`(pour labels) + `results/communities/gph_blocks_by_year/YYYY_Caf/Fob.csv`
+#### par paire
+From : `results/BestGuessBilTrade_YYYY.csv` + `https://github.com/medialab/GeoPolHist/data/GeoPolHist_entities`(pour labels) + `results/communities/gph_blocks_by_year/YYYY.csv`
+
+Script: `/script/daudin/Pour Marge extensive pair stats.do’
+
+
 
 
 

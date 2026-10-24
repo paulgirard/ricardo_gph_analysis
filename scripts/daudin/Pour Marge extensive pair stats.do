@@ -1,89 +1,13 @@
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
-************************** Importation des données de commerce
-
-local CafFob fob
-
-if "`CafFob'"=="fob" local yearlist "1833(1)1938 1948(1)2025"
-if "`CafFob'"=="caf" local yearlist "1833(1)1938"
-
-capture erase "results/BestGuessBilTrade_`CafFob'.dta"
-
-foreach year of numlist `yearlist' {
-    
-    use "results/BestGuessBilTrade_`year'_`CafFob'.dta", clear
-    if year !=1833 append using "results/BestGuessBilTrade_`CafFob'.dta"
-    save "results/BestGuessBilTrade_`CafFob'.dta", replace
-
-}
-
-sort year key
-save "results/BestGuessBilTrade_`CafFob'.dta", replace
-
-
-*************Importation des données de localisation
-
-import delimited "$dirGeoPolHist/data/GeoPolHist_entities.csv", /*
-	*/delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-
-    keep GPH_code GPH_name
-save GeoPolHist_entities_temp.dta, replace
-
-
-*************Importation des données de bloc
-
-local CafFob fob
-
-if "`CafFob'"=="fob" local yearlist "1833(1)1938 1948(1)2025"
-if "`CafFob'"=="caf" local yearlist "1833(1)1938"
-capture erase "results/communities/gph_blocks_by_year/blocs_`CafFob'.dta" 
-foreach year of numlist `yearlist' {
-    import delimited "results/communities/gph_blocks_by_year/`year'_`CafFob'.csv", /*
-	    */delimiter(comma) bindquote(strict) varnames(1) case(preserve) encoding(UTF-8) maxquotedrows(100) clear 
-    rename cafFob CafFob
-    save temp.dta, replace
-    keep id block*
-    rename id target
-    rename block* target_block*
-    cross using temp.dta
-    drop label
-    rename id source
-    rename block* source_block*
-    drop if source==target
-    tostring(target), replace
-    tostring(source), replace
-    keep if source < target
-    gen undir_pair_key= source+"-"+ target if source < target
-    
-    *replace undir_pair_key =target+"-"+ source if source > target
-    
-
-    foreach classification in LouvainTibi LouvainProximity IntraMax {
-
-        gen common_`classification'= 1 if target_block`classification' == source_block`classification'
-        replace common_`classification'=0 if common_`classification' != 1
-    }
-    keep undir_pair_key CafFob year common*
-    capture append using "results/communities/gph_blocks_by_year/blocs_`CafFob'.dta"
-    save "results/communities/gph_blocks_by_year/blocs_`CafFob'.dta", replace
-}
-
 
 ****************** Exploration des données
 
-local CafFob fob
-use "results/BestGuessBilTrade_`CafFob'.dta", clear
+use "results/extensive/BestGuessBilTrade.dta", clear
 
-****Adding labels
-foreach i in importer exporter {
 
-    rename `i'Id GPH_code
-    merge m:1 GPH_code using GeoPolHist_entities_temp.dta, keep(3)
-    rename GPH_name `i'Label
-    rename GPH_code `i'Id
-    drop _merge
-}
+
 
 
 
@@ -100,7 +24,7 @@ label variable log10_trade_share "Trade share (bilateral trade/total trade this 
 hist log10_trade_share, freq title ("Trade share distribution, `CafFob'") ///
      xlabel(-12 "10{sup:-12}" -11 "10{sup:-11}" -10 "10{sup:-10}" -9 "10{sup:-9}" -8 "10{sup:-8}" -7 "10{sup:-7}" ///
      -6 "10{sup:-6}" -5 "10{sup:-5}" -4 "10{sup:-4}" -3 "10{sup:-3}" -2 "0.01" -1 "0.1")
-graph export "results/trade_share_distribution_`CafFob'.png", replace
+graph export "results/trade_share_distribution.png", replace
 
 gen vst=1 if trade_share <=10^(-10)
 label var vst "Very small trade"
@@ -221,9 +145,9 @@ save temp.dta, replace
 
 
 **************************** importation des appartenances communes
-local CafFob fob
+
 use temp.dta, clear
-merge m:1 undir_pair_key year CafFob using  "results/communities/gph_blocks_by_year/blocs_`CafFob'.dta"
+merge m:1 undir_pair_key year  using  save "results/extensive/BestGuessBilTrade.dta", replace
 drop _merge
 
 ***il ne devrait pas y avoir de _merge==1
@@ -240,18 +164,24 @@ foreach classification in LouvainTibi LouvainProximity IntraMax {
 
 *****taking in the controls
 merge m:1 undir_pair_key using "external data/Controls panel/distance.dta", keep(1 3) nogenerate
+gen ln_dist=ln(distance_km)
 merge m:1 undir_pair_key year using "external data/Controls panel/alliances.dta", keep(1 3) nogenerate
 merge m:1 undir_pair_key year using "external data/Controls panel/contiguity.dta", keep(1 3) nogenerate
 merge m:1 undir_pair_key year using "external data/Controls panel/disputes.dta", keep(1 3) nogenerate
 merge m:1 undir_pair_key year using "external data/Controls panel/commonempire.dta", keep(1 3) nogenerate
-
-destring(distance_km), replace force
-generate ln_dist=ln(distance_km)
+merge m:1 undir_pair_key year using "external data/Controls panel/trade_agreements.dta", keep(1 3) nogenerate
 
 destring(mid_n), replace force
 replace mid_n=1 if mid_n>=1 & mid_n!=.
+replace mid_n=0 if mid_n==.
 destring(atop_allie), replace force
+replace atop_allie=1 if atop_allie!=.
+replace atop_allie=0 if atop_allie==.
 replace common_empire=0 if common_empire==.
+replace TA="0" if TA=="" | TA=="NA"
+destring(TA), replace
+generate contig12=0
+replace contig12=1 if conttype=="1" | conttype=="2"
 
 
 ******Regression !

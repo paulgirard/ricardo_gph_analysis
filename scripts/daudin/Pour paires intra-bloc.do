@@ -65,3 +65,19 @@ intra_bloc_pairs 1833
 foreach y of numlist 1834(1)1938 1948(1)2025 {
 	intra_bloc_pairs `y'
 }
+
+
+global yearlist "1833(1)1938 1948(1)2025"
+
+capture erase "results/extensive/BestGuessBilTrade.dta"
+
+foreach year of numlist $yearlist {
+    
+    use "results/communities/intra_bloc_pairs_`year'.dta"
+    if year !=1833 append using "results/communities/intra_bloc_pairs.dta"
+    save "results/communities/intra_bloc_pairs.dta", replace
+
+}
+
+sort year 
+save "results/communities/intra_bloc_pairs.dta", replace

@@ -160,4 +160,23 @@ foreach year of numlist 1949(1)2025 {
 	bestguessbiltrade `year'
 }
 
+
+
+global yearlist "1833(1)1938 1948(1)2025"
+
+capture erase "results/extensive/BestGuessBilTrade.dta"
+
+foreach year of numlist $yearlist {
+    
+
+    use "results/extensive/BestGuessBilTrade_`year'.dta", clear
+    if year !=1833 append using "results/extensive/BestGuessBilTrade.dta"
+    save "results/extensive/BestGuessBilTrade.dta", replace
+
+}
+
+sort year id
+save "results/extensive/BestGuessBilTrade.dta", replace
+
+
 erase GeoPolHist_entities_temp.dta
