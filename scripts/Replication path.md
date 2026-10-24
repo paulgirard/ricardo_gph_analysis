@@ -93,9 +93,8 @@ Donne "data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta »
 #### External data and controls
 Youssef has a general script for « his » controls: `scripts/Ghallada/Variables de controles.R`
 
-Utilise la liste des entités : qui vient de GPH bloc, mais c’est fait après ? Trouver une meilleure solution ? Il faudrait générer un fichier des entités avant la gravité.
-Il faudrait utiliser `data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta’
-Il faut extraire les entités, en faire une matrice carré puis faire les contrôles.
+Utilise `data/trade_flows_before_gravity_`CafFob'_`year'.csv/dta’ et external data/BlocselonAN.csv"
+Extraction des entités, et genère une matrice carré puis faire les contrôles.
 
 
 
@@ -166,7 +165,7 @@ Cela donne des graphiques : `results/gravity/value_share_method.png' et `results
 À partir de `results/gravity/gravity_XXXX.csv`
 En utilisant comme proximité la moyenne des 4  flux
 Création des block intramax : scripts/Ghallada/Intramax.R »
-- donne data/blocks/Intramax/paires_blocs_YYYY.csv
+- donne results/communities/Intramax
 ### Louvain (Paul)
 #### JS (en premier ; prend un peu de temps)
 Utilise `results/gravity/YYYY.csv` et `data/blocks/Intramax/paires_blocs_YYYY.csv`et `external data/data_BlocselonAN.csv`
@@ -217,8 +216,9 @@ Manque IntraMax et Signed-Louvain
 ### TIBI (Youssef)
 À partir de "scripts/Ghallada/RegionalTradeintensityYear.R".
 Utilisant `results/communities/gph_blocks_by_year/YYYY.csv’ (ie index des blocs) + `results/gravity/gravity_XXXX.csv` (ie le commerce)
-Graphiques pour les 5 méthodes de partition : `results/communities/louvain/tibi_intracomm_moyen.png`, `results/communities/tibi_comparaison_intramax_louvain.png`, `results/communities/tibi_comparaison_avec_diff_nblocs.png`
-### Corrélation (Youssef)
+
+Graphiques pour les 5 méthodes de partition : `results/bloc_study/TIBI/tibi_max_quatre_series.png`, `results/bloc_study/TIBI/tibi_cinq_methodes_quatre_series.png`
+### Corrélation (Youssef) (pas encore updaté)
 Corrélations avec `scripts/Ghallada/RegionalTradeintensityYear.R` (faire un script différent?)
 À partir de `results/communities/gph_blocks_by_year/YYYY.csv’
 Cela donne `results/communities/cor_intramax_louvain.csv, corr_intramax_louvain.png`
@@ -229,14 +229,18 @@ Produit : `results/bloc_study/intra_block_share.csv/dta` et
 `results/bloc_study/Intra-block trade share.png`
 ### Cartes (Youssef)
 Cartes avec `scripts/Ghallada/Map year.R`
-À partir de `results/communities/gph_blocks_by_year/YYYY.csv’
+A partir de
+A partir de "external data/GeoPolHist_entities.csv"
+A partir de results/bloc_study/TIBI/paires/paires_yyyy.csv"
 
-À faire : Changer les couleurs post-48
-Rajouter des symboles
+À faire : Changer les couleurs post-48 (fait)
+Rajouter des symboles (fait)
 Mettre les toutes petits communautés en gris (2 max)
 Faire pour toutes les partitions
 
-Cela donne cartes/louvainmap/.... et cartes/Intramaxmap/....
+Cela donne cartes/AndersonNorheim/.... et cartes/Intramax/....cartes/Louvain_observe 
+cartes/Louvain_tibi 
+cartes/Tibi
 
 
 ## Analyse des blocs
