@@ -7,9 +7,9 @@ setwd("~/Desktop/ricardo_gph_analysis")
 annees_all <- c(1833:1938, 1948:2025)
 series     <- c("fob_source", "caf_target", "fob_target", "caf_source")
 
-methodes <- c(blockTibi = "Tibi",
-              blockLouvainMaxobservedtradevalues = "Louvain_observe",
-              blockLouvainTibirescale = "Louvain_tibi",
+methodes <- c(blockTibi = "LouvainTibi",
+              blockLouvainMaxobservedtradevalues = "Louvain_maxobservedtrade",
+              blockLouvainTibirescale = "Louvain_tibirescale",
               blockIntraMax = "Intramax",
               blockAN = "AndersonNorheim")
 
@@ -172,7 +172,7 @@ style <- tribble(
   
   # --- cas particuliers ---
   "Colombia (New Granada) (Gran Colombia)",   "darkslategray1",  16,
-  "bloc d'un seul pays",                      "darkgray",         16
+  "single-country bloc",                      "darkgray",         16
 )
 
 # filet de securite : toute etiquette non prevue sort en gris clair
@@ -182,8 +182,30 @@ if (length(autres) > 0) {
   style <- bind_rows(style, data.frame(pays = autres, couleur = "grey70", forme = 1))
 }
 
+
 couleur_pays <- setNames(style$couleur, style$pays)
 forme_pays   <- setNames(style$forme,   style$pays)
+
+# ---- couleurs fixes pour les regions Anderson-Norheim ----
+BlocselonAN <- read.csv("external data/BlocselonAN.csv", stringsAsFactors = FALSE)
+regions_an  <- sort(unique(trimws(BlocselonAN$region_AndersonNorheim)))
+regions_an  <- regions_an[regions_an != "" & !is.na(regions_an)]
+print(regions_an)
+
+style_an <- data.frame(
+  pays    = regions_an,
+  couleur = c("#0055A4", "#CF142B", "#008C45", "#F58231", "#911EB4",
+              "#42D4F4", "#9A6324", "#000000", "#BFEF45", "#F032E6",
+              "#469990", "#800000")[seq_along(regions_an)],
+  forme   = 16,
+  stringsAsFactors = FALSE
+)
+
+style        <- bind_rows(style, style_an)
+couleur_pays <- setNames(style$couleur, style$pays)
+forme_pays   <- setNames(style$forme,   style$pays)
+
+# ============================================================
 # ============================================================
 # 2bis. Qui donne son nom a un bloc, et combien de fois
 # ============================================================
@@ -248,12 +270,16 @@ for (year in annees_all) {
     pb <- pays_bloc_annee(p, m, vol)
     if (nrow(pb) == 0) next
     
-    pb <- pb %>%
-      group_by(bloc) %>%
-      mutate(gros_pays = pays[which.max(total)],
-             singleton = n() == 1) %>%
-      ungroup() %>%
-      mutate(gros_pays = ifelse(singleton, "bloc d'un seul pays", gros_pays))
+    if (m == "blockAN") {
+      pb$gros_pays <- pb$bloc
+    } else {
+      pb <- pb %>%
+        group_by(bloc) %>%
+        mutate(gros_pays = pays[which.max(total)],
+               singleton = n() == 1) %>%
+        ungroup() %>%
+        mutate(gros_pays = ifelse(singleton, "single-country bloc", gros_pays))
+    }
     
     carte <- pb %>%
       left_join(coord, by = c("gph" = "GPH_code")) %>%
@@ -270,8 +296,10 @@ for (year in annees_all) {
       geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays), size = 2.5) +
       geom_text(data = carte, aes(lng, lat, label = pays), size = 1.6, vjust = -0.8,
                 show.legend = FALSE) +
-      scale_colour_manual(values = couleurs, name = "Bloc (plus gros membre)") +
-      scale_shape_manual(values  = formes,   name = "Bloc (plus gros membre)") +
+      scale_colour_manual(values = couleurs,
+                          name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
+      scale_shape_manual(values  = formes,
+                         name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
       coord_quickmap() +
       theme_void() +
       theme(legend.position = "right",
