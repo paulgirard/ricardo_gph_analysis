@@ -2,8 +2,9 @@
 *ssc install ftools
 *ssc install require
 
-local explo 1
+local explo 0
 local share_sample 0.05 
+global model reghdfe /*or cloglog*/
 
 
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
@@ -129,9 +130,9 @@ foreach trade_type in incl_fs n_fs {
     bys id : egen zero_entry_`trade_type'=min(zero_year_`trade_type')
 }
     
-save temp.dta, replace
+save temp1.dta, replace
 ****** tag trade_entry
-use temp.dta, clear
+use temp1.dta, clear
 sort year
 
 foreach trade_type in incl_fs n_fs {
@@ -169,13 +170,13 @@ by id : gen dur3_n_fs    = year-zero_entry_n_fs+1
 
 *br id year *Label value status pair_entry trade_entry* dur*
 
-save temp.dta, replace
+save temp2.dta, replace
 
 
 
 **************************** importation des appartenances communes
 
-use temp.dta, clear
+use temp2.dta, clear
 merge m:1 undir_pair_key year using "results/communities/intra_bloc_pairs.dta", keep(3)
 drop _merge
 
@@ -213,15 +214,6 @@ generate contig12=0
 replace contig12=1 if conttype=="1" | conttype=="2"
 
 
-save temp.dta, replace
-*------------------------------------------------------------
-* Régressions : tableaux avec -collect-
-* 1 tableau par définition de Louvain
-* 6 colonnes = 2 variables dépendantes x 3 spécifications de durée
-*------------------------------------------------------------
-
-use temp.dta, clear
-
 * --- Préparation du panel ---
 capture drop id_num
 egen id_num = group(id)
@@ -229,6 +221,18 @@ egen id_num = group(id)
 
 drop if id_num == .
 xtset id_num year
+
+
+save temp3.dta, replace
+*------------------------------------------------------------
+* Régressions : tableaux avec -collect-
+* 1 tableau par définition de Louvain
+* 6 colonnes = 2 variables dépendantes x 3 spécifications de durée
+*------------------------------------------------------------
+
+use temp3.dta, clear
+
+
 
 
 
@@ -240,7 +244,7 @@ local depvars  flag_trade_entry_n_fs flag_trade_entry_incl_fs
 local controls ln_dist common_empire contig12 mid_n atop_allie TA
 
 * Dossier de sortie (à adapter)
-local out "results/extensive"
+global out "results/extensive"
 
 foreach classification of global classification_types {
 
@@ -265,71 +269,88 @@ foreach classification of global classification_types {
         foreach d of local durlist {
             local ++k
 
-            capture drop dur_c
-            gen dur_c = `d'
+            capture drop dur
+            capture drop dur_sq
+            gen dur = `d'
+            gen dur_sq = dur^2
 
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
-            collect, tag(depvar[`y'] spec[d`k']): ///
-                cloglog `y' dur_c nbr_c share_c `controls' i.year, vce(cluster id_num)
-                *xtlogit `y' dur_c nbr_c share_c `controls' i.year, level(95)
+            if "$model" =="reghdfe" collect, tag(depvar[`y'] spec[d`k']): ///    
+            reghdfe `y' dur dur_sq nbr_c share_c `controls' , absorb(year) vce(cluster id_num)
+
+            if "$model" =="cloglog" collect, tag(depvar[`y'] spec[d`k']): ///  
+            cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, vce(cluster id_num)
         }
     }
+
 
     *--------------------------------------------------------
     * Mise en forme
     *--------------------------------------------------------
+    
     collect stars _r_p 0.01 "***" 0.05 "**" 0.10 "*", attach(_r_b) shownote
 
-    collect style cell result[_r_b _r_ci], nformat(%7.3f)
+    collect style cell result[_r_b _r_ci r2], nformat(%7.3f)
     collect style cell result[_r_ci], sformat("[%s]") cidelimiter(", ")
-    collect style cell result[N], nformat(%9.0fc)
+    collect style cell colname[dur dur_sq nbr_c]#result[_r_b _r_ci], nformat(%9.2e)
+    collect style cell result[N N_clust], nformat(%9.0fc)
     collect style cell result[ll], nformat(%9.1f)
 
     * Libellés des lignes
     collect label levels colname ///
-        dur_c         "Durée" ///
+        dur         "Hazard (years)" ///
+        dur_sq        "Hazard²" ///
         nbr_c         "Nb. years in same community" ///
         share_c       "Share years in same community" ///
         ln_dist       "Ln(distance)" ///
         common_empire "Same empire" ///
         contig12      "Contiguity" ///
         mid_n         "Conflict (MID)" ///
-        mid_n         "Trade agreement" ///
+        TA            "Trade agreement" ///
         atop_allie    "Alliance (ATOP)", modify
 
     * Libellés des colonnes
     collect label levels depvar ///
-        flag_trade_entry_n_fs    "Entrée (n_fs)" ///
-        flag_trade_entry_incl_fs "Entrée (incl_fs)", modify
+        flag_trade_entry_n_fs    "Start trade (excluding very small flows and failed splits)" ///
+        flag_trade_entry_incl_fs "Start trade (including very small flows and failed splits)", modify
     collect label levels spec ///
         d1 "dur1" ///
         d2 "dur2" ///
         d3 "dur3", modify
 
     collect label levels result ///
-        _r_b  "Coef." ///
-        _r_ci "IC 95 %" ///
+        _r_b  " " ///
+        _r_ci " " ///
         N     "Observations" ///
-        ll    "Log-vraisemblance", modify
+        ll    "Log-likelihood" ///
+        N_clust "Pairs" ///
+        r2  "R²", modify
 
-    collect style header result, level(hide)
+    collect style header result, level(label)
+    collect style header result[_r_b _r_ci], level(hide)
     collect style column, dups(center) extraspace(1) nodelimiter
     collect style row stack, nobinder spacer
+    
 
     * Disposition : variables en lignes, (dépendante x durée) en colonnes
-    collect layout ///
-        (colname[dur_c nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie]#result[_r_b _r_ci] ///
-         result[N ll]) ///
+    if "$model" =="reghdfe"   collect layout ///
+        (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
+         result[N N_clust r2]) ///
         (depvar#spec)
 
-    collect title "Community definition : `classification' (xtlogit, year fixed effects)"
+    if "$model" =="cloglog"   collect layout ///
+        (colname[dur nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
+         result[N N_clust ll]) ///
+        (depvar#spec)
+
+    collect title "Community definition : `classification' (${model}, year fixed effects)"
     collect notes 1: "95 % confidence intervals in brackets."
     collect notes 2: "dur3 = dur_n_fs for flag_trade_entry_n_fs ; dur3_incl_fs for flag_trade_entry_incl_fs."
 
     * Export : .docx, .tex et .csv
-    collect export "`out'/ext_reg_`classification'.docx", replace
-    collect export "`out'/ext_reg_`classification'.tex",  replace tableonly
-    collect export "`out'/ext_reg_`classification'.txt",  replace
+    collect export "$out/ext_reg_${model}_`classification'.docx", replace
+    collect export "$out/ext_reg_${model}_`classification'.tex",  replace tableonly
+    collect export "$out/ext_reg_${model}_`classification'.txt",  replace
 }
 
 
