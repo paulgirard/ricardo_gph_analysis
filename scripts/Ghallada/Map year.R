@@ -204,7 +204,26 @@ style_an <- data.frame(
 style        <- bind_rows(style, style_an)
 couleur_pays <- setNames(style$couleur, style$pays)
 forme_pays   <- setNames(style$forme,   style$pays)
+# ============================================================
+# 2ter. Volumes de reference, figes par periode
+# ============================================================
+annee_ref <- function(year) {
+  if (year <= 1860) 1860
+  else if (year <= 1913) 1913
+  else if (year <= 1938) 1938
+  else if (year <= 1990) 1990
+  else 2025
+}
 
+annees_ref <- c(1860, 1913, 1938, 1990, 2025)
+vol_ref <- list()
+
+for (ar in annees_ref) {
+  f <- file.path("results/bloc_study/TIBI/paires", paste0("paires_", ar, ".csv"))
+  if (!file.exists(f)) { message("reference absente : ", ar); next }
+  vol_ref[[as.character(ar)]] <- volume_annee(read.csv(f, stringsAsFactors = FALSE))
+  message("reference ", ar, " : ", nrow(vol_ref[[as.character(ar)]]), " entites")
+}
 # ============================================================
 # ============================================================
 # 2bis. Qui donne son nom a un bloc, et combien de fois
@@ -273,12 +292,17 @@ for (year in annees_all) {
     if (m == "blockAN") {
       pb$gros_pays <- pb$bloc
     } else {
+      vr <- vol_ref[[as.character(annee_ref(year))]]
       pb <- pb %>%
+        left_join(vr %>% rename(total_ref = total), by = "gph") %>%
+        mutate(total_ref = coalesce(total_ref, 0)) %>%
         group_by(bloc) %>%
-        mutate(gros_pays = pays[which.max(total)],
+        mutate(gros_pays = if (max(total_ref) > 0) pays[which.max(total_ref)]
+               else pays[which.max(total)],
                singleton = n() == 1) %>%
         ungroup() %>%
-        mutate(gros_pays = ifelse(singleton, "single-country bloc", gros_pays))
+        mutate(gros_pays = ifelse(singleton, "single-country bloc", gros_pays)) %>%
+        select(-total_ref)
     }
     
     carte <- pb %>%
