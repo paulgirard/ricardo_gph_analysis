@@ -21,16 +21,44 @@ coord$GPH_code <- as.character(coord$GPH_code)
 # 1a. Volume declare par entite : ne depend pas de la partition
 # ============================================================
 volume_annee <- function(p) {
+  # Quatre totaux par entite :
+  #   exp / self : ses exports qu elle declare        (fob, quelle que soit sa position)
+  #   exp / part : ses exports declares par le partenaire (caf de celui-ci)
+  #   imp / self : ses imports qu elle declare        (caf)
+  #   imp / part : ses imports declares par le partenaire (fob de celui-ci)
+  # On moyenne self et part separement pour les exports et pour les imports,
+  # puis on additionne les deux volets.
   bind_rows(
-    p %>% transmute(gph = a, v = fob_source),   # a exporte vers b, a declare
-    p %>% transmute(gph = a, v = caf_source),   # a importe de b,   a declare
-    p %>% transmute(gph = b, v = fob_target),   # b exporte vers a, b declare
-    p %>% transmute(gph = b, v = caf_target)    # b importe de a,   b declare
+    p %>% transmute(gph = a, volet = "exp", mes = "self", v = fob_source),
+    p %>% transmute(gph = b, volet = "exp", mes = "self", v = fob_target),
+    p %>% transmute(gph = a, volet = "exp", mes = "part", v = caf_target),
+    p %>% transmute(gph = b, volet = "exp", mes = "part", v = caf_source),
+    p %>% transmute(gph = a, volet = "imp", mes = "self", v = caf_source),
+    p %>% transmute(gph = b, volet = "imp", mes = "self", v = caf_target),
+    p %>% transmute(gph = a, volet = "imp", mes = "part", v = fob_target),
+    p %>% transmute(gph = b, volet = "imp", mes = "part", v = fob_source)
   ) %>%
     filter(!is.na(v)) %>%
     mutate(gph = as.character(gph)) %>%
-    group_by(gph) %>% summarise(total = sum(v), .groups = "drop")
+    group_by(gph, volet, mes) %>%
+    summarise(somme = sum(v), .groups = "drop") %>%
+    group_by(gph, volet) %>%
+    summarise(moy = mean(somme), .groups = "drop") %>%
+    group_by(gph) %>%
+    summarise(total = sum(moy), .groups = "drop")
 }
+
+# volume_annee <- function(p) {
+#   bind_rows(
+#     p %>% transmute(gph = a, v = fob_source),   # a exporte vers b, a declare
+#     p %>% transmute(gph = a, v = caf_source),   # a importe de b,   a declare
+#     p %>% transmute(gph = b, v = fob_target),   # b exporte vers a, b declare
+#     p %>% transmute(gph = b, v = caf_target)    # b importe de a,   b declare
+#   ) %>%
+#     filter(!is.na(v)) %>%
+#     mutate(gph = as.character(gph)) %>%
+#     group_by(gph) %>% summarise(total = sum(v), .groups = "drop")
+# }
 
 # ============================================================
 # 1b. Entite -> bloc, pour une partition donnee
@@ -203,25 +231,42 @@ style_an <- data.frame(
 style        <- bind_rows(style, style_an)
 couleur_pays <- setNames(style$couleur, style$pays)
 forme_pays   <- setNames(style$forme,   style$pays)
+
+# 2ter. Volumes de reference, moyenne sur chaque periode
 # ============================================================
-# 2ter. Volumes de reference, figes par periode
-# ============================================================
-annee_ref <- function(year) {
-  if (year <= 1860) 1860
-  else if (year <= 1913) 1913
-  else if (year <= 1938) 1938
-  else if (year <= 1990) 1990
-  else 2025
+periodes <- list(
+  "1" = 1833:1860,
+  "2" = 1861:1913,
+  "3" = 1914:1938,
+  "4" = 1948:1990,
+  "5" = 1991:2025
+)
+
+num_periode <- function(year) {
+  if (year <= 1860) "1"
+  else if (year <= 1913) "2"
+  else if (year <= 1938) "3"
+  else if (year <= 1990) "4"
+  else "5"
 }
 
-annees_ref <- c(1860, 1913, 1938, 1990, 2025)
 vol_ref <- list()
 
-for (ar in annees_ref) {
-  f <- file.path("results/bloc_study/TIBI/paires", paste0("paires_", ar, ".csv"))
-  if (!file.exists(f)) { message("reference absente : ", ar); next }
-  vol_ref[[as.character(ar)]] <- volume_annee(read.csv(f, stringsAsFactors = FALSE))
-  message("reference ", ar, " : ", nrow(vol_ref[[as.character(ar)]]), " entites")
+for (k in names(periodes)) {
+  acc <- list()
+  for (an in periodes[[k]]) {
+    f <- file.path("results/bloc_study/TIBI/paires", paste0("paires_", an, ".csv"))
+    if (!file.exists(f) || file.info(f)$size == 0) next
+    acc[[as.character(an)]] <- volume_annee(read.csv(f, stringsAsFactors = FALSE))
+  }
+  if (length(acc) == 0) { message("periode ", k, " : aucune annee"); next }
+  
+  vol_ref[[k]] <- bind_rows(acc) %>%
+    group_by(gph) %>%
+    summarise(total = mean(total), n_annees = n(), .groups = "drop")
+  
+  message("periode ", k, " : ", length(acc), " annees, ",
+          nrow(vol_ref[[k]]), " entites")
 }
 # ============================================================
 # ============================================================
@@ -291,7 +336,7 @@ for (year in annees_all) {
     if (m == "blockAN") {
       pb$gros_pays <- pb$bloc
     } else {
-      vr <- vol_ref[[as.character(annee_ref(year))]]
+      vr <- vol_ref[[num_periode(year)]]
       pb <- pb %>%
         left_join(vr %>% rename(total_ref = total), by = "gph") %>%
         mutate(total_ref = coalesce(total_ref, 0)) %>%
