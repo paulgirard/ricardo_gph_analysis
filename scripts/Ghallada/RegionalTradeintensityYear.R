@@ -185,9 +185,9 @@ write.csv(tibi, "results/bloc_study/TIBI/tibi_cinq_methodes_quatre_series.csv", 
 # ============================================================
 # 4. Graphe
 # ============================================================
-libelles <- c(blockTibi = "Tibi",
-              blockLouvainMaxobservedtradevalues = "Louvain (valeurs observées)",
-              blockLouvainTibirescale = "Louvain (Tibi rescalé)",
+libelles <- c(blockTibi = "LouvainTibi",
+              blockLouvainMaxobservedtradevalues = "Louvain_maxobservedtrade",
+              blockLouvainTibirescale = "Louvain_tibirescale",
               blockIntraMax = "Intramax",
               blockAN = "Anderson-Norheim")
 
@@ -201,14 +201,14 @@ p_combine <- ggplot(tibi %>% complete(methode_lbl, serie, year = 1833:2025),
   facet_wrap(~ serie, ncol = 2) +
   coord_cartesian(ylim = c(-1, 1)) +
   scale_x_continuous(breaks = seq(1840, 2020, 20)) +
-  scale_colour_manual(values = c("Tibi" = "purple",
-                                 "Louvain (valeurs observées)" = "#CF142B",
-                                 "Louvain (Tibi rescalé)" = "#F2A623",
+  scale_colour_manual(values = c("LouvainTibi" = "purple",
+                                 "Louvain_maxobservedtrade" = "#CF142B",
+                                 "Louvain_tibirescale" = "#F2A623",
                                  "Intramax" = "#0055A4",
                                  "Anderson-Norheim" = "#2E8B57")) +
-  labs(x = "année", y = "TIBI intra-bloc moyen (pondéré)",
-       title = "Commerce intra-bloc moyen : cinq partitions, quatre séries de flux",
-       colour = "Méthode") +
+  labs(x = "year", y = "Average intra-bloc TIBI (weighted)",
+       title = "Average intra-bloc trade: five partitions, four flow series",
+       colour = "Method") +
   theme_minimal() +
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 45, hjust = 1),
@@ -238,14 +238,14 @@ p_max <- ggplot(tibi_max %>% complete(methode_lbl, year = 1833:2025),
   geom_hline(yintercept = 0, linetype = 3, colour = "grey60") +
   coord_cartesian(ylim = c(-1, 1)) +
   scale_x_continuous(breaks = seq(1835, 2025, 10)) +
-  scale_colour_manual(values = c("Tibi" = "purple",
-                                 "Louvain (valeurs observées)" = "#CF142B",
-                                 "Louvain (Tibi rescalé)" = "#F2A623",
+  scale_colour_manual(values = c("LouvainTibi" = "purple",
+                                 "Louvain_maxobservedtrade" = "#CF142B",
+                                 "Louvain_tibirescale" = "#F2A623",
                                  "Intramax" = "#0055A4",
                                  "Anderson-Norheim" = "#2E8B57")) +
-  labs(x = "année", y = "TIBI intra-bloc moyen (maximum sur les quatre séries)",
-       title = "Commerce intra-bloc moyen : maximum des quatre séries de flux",
-       colour = "Méthode") +
+  labs(x = "year", y = "Average intra-bloc TIBI (maximum across the four series)",
+       title = "Average intra-bloc trade: maximum of the four flow series",
+       colour = "Method") +
   theme_minimal() +
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 45, hjust = 1),
