@@ -2,6 +2,10 @@
 *ssc install ftools
 *ssc install require
 
+local explo 1
+local share_sample 0.05 
+
+
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
@@ -10,6 +14,22 @@ global classification_types Tibi LouvainMaxtrade LouvainTibirescale IntraMax AN
 ****************** Exploration des données
 
 use "results/extensive/BestGuessBilTrade.dta", clear
+
+
+if `explo' {
+
+    *Tirage aléatoire de paires (toutes les années d'une paire sont gardées)
+    set seed 12345
+    tempvar u
+    bysort id (year): gen double `u' = runiform() if _n == 1
+    bysort id (year): replace `u' = `u'[1]
+    keep if `u' <= `share_sample'
+}
+else {
+    local yearvar "i.year"
+}
+
+
 
 
 ****Cleanup status
@@ -78,7 +98,7 @@ collect export "results/extensive/tradingobservations.txt", as(txt) replace
 
 
 sort undir_pair_key id year
-br if id=="10<-100"
+*br if id=="10<-100"
 
 
 ******* Entry and exit trade for actors
@@ -147,7 +167,7 @@ by id : gen dur2 = year-max(exporter_start_year,importer_start_year)+1
 by id : gen dur3_incl_fs = year-zero_entry_incl_fs+1
 by id : gen dur3_n_fs    = year-zero_entry_n_fs+1
 
-br id year *Label value status pair_entry trade_entry* dur*
+*br id year *Label value status pair_entry trade_entry* dur*
 
 save temp.dta, replace
 
@@ -156,10 +176,10 @@ save temp.dta, replace
 **************************** importation des appartenances communes
 
 use temp.dta, clear
-merge m:1 undir_pair_key year using "results/communities/intra_bloc_pairs.dta"
+merge m:1 undir_pair_key year using "results/communities/intra_bloc_pairs.dta", keep(3)
 drop _merge
 
-***il ne devrait pas y avoir de _merge==1
+** merge n’est pas égal à 3 car j’ai déjà droppé les années post-trade (et celles sans trade ?)
 
 
 sort undir_pair_key id year
@@ -206,7 +226,7 @@ use temp.dta, clear
 capture drop id_num
 egen id_num = group(id)
 
-flip
+
 drop if id_num == .
 xtset id_num year
 
@@ -250,7 +270,7 @@ foreach classification of global classification_types {
 
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
             collect, tag(depvar[`y'] spec[d`k']): ///
-                reghdfe `y' dur_c nbr_c share_c `controls', absorb(year) vce(cluster id_num)
+                cloglog `y' dur_c nbr_c share_c `controls' i.year, vce(cluster id_num)
                 *xtlogit `y' dur_c nbr_c share_c `controls' i.year, level(95)
         }
     }
@@ -302,14 +322,14 @@ foreach classification of global classification_types {
          result[N ll]) ///
         (depvar#spec)
 
-    collect title "Community definition : `c' (xtlogit, year fixed effects)"
+    collect title "Community definition : `classification' (xtlogit, year fixed effects)"
     collect notes 1: "95 % confidence intervals in brackets."
     collect notes 2: "dur3 = dur_n_fs for flag_trade_entry_n_fs ; dur3_incl_fs for flag_trade_entry_incl_fs."
 
     * Export : .docx, .tex et .csv
-    collect export "`out'/ext_reg_`c'.docx", replace
-    collect export "`out'/ext_reg_`c'.tex",  replace tableonly
-    collect export "`out'/ext_reg_`c'.txt",  replace
+    collect export "`out'/ext_reg_`classification'.docx", replace
+    collect export "`out'/ext_reg_`classification'.tex",  replace tableonly
+    collect export "`out'/ext_reg_`classification'.txt",  replace
 }
 
 
