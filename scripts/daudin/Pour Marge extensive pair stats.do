@@ -1,3 +1,7 @@
+*ssc install reghdfe
+*ssc install ftools
+*ssc install require
+
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
@@ -74,7 +78,7 @@ collect export "results/extensive/tradingobservations.txt", as(txt) replace
 
 
 sort undir_pair_key id year
-br if id=="10<-R100"
+br if id=="10<-100"
 
 
 ******* Entry and exit trade for actors
@@ -191,7 +195,7 @@ replace contig12=1 if conttype=="1" | conttype=="2"
 
 save temp.dta, replace
 *------------------------------------------------------------
-* Régressions xtlogit (FE) : tableaux avec -collect-
+* Régressions : tableaux avec -collect-
 * 1 tableau par définition de Louvain
 * 6 colonnes = 2 variables dépendantes x 3 spécifications de durée
 *------------------------------------------------------------
@@ -201,8 +205,12 @@ use temp.dta, clear
 * --- Préparation du panel ---
 capture drop id_num
 egen id_num = group(id)
+
+flip
 drop if id_num == .
 xtset id_num year
+
+
 
 * --- Listes de la boucle ---
 local depvars  flag_trade_entry_n_fs flag_trade_entry_incl_fs
@@ -227,7 +235,7 @@ foreach classification of global classification_types {
 
         * Les 3 durées (dur1, dur2, durée spécifique à la variable dépendante)
         if "`y'" == "flag_trade_entry_n_fs" {
-            local durlist dur1 dur2 dur_n_fs
+            local durlist dur1 dur2 dur3_n_fs
         }
         else {
             local durlist dur1 dur2 dur3_incl_fs
@@ -242,7 +250,8 @@ foreach classification of global classification_types {
 
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
             collect, tag(depvar[`y'] spec[d`k']): ///
-                xtlogit `y' dur_c nbr_c share_c `controls' i.year, level(95)
+                reghdfe `y' dur_c nbr_c share_c `controls', absorb(year) vce(cluster id_num)
+                *xtlogit `y' dur_c nbr_c share_c `controls' i.year, level(95)
         }
     }
 
@@ -300,7 +309,7 @@ foreach classification of global classification_types {
     * Export : .docx, .tex et .csv
     collect export "`out'/ext_reg_`c'.docx", replace
     collect export "`out'/ext_reg_`c'.tex",  replace tableonly
-    collect export "`out'/ext_reg_`c'.csv",  replace
+    collect export "`out'/ext_reg_`c'.txt",  replace
 }
 
 
