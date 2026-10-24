@@ -172,7 +172,7 @@ style <- tribble(
   
   # --- cas particuliers ---
   "Colombia (New Granada) (Gran Colombia)",   "darkslategray1",  16,
-  "bloc d'un seul pays",                      "darkgray",         16
+  "single-country bloc",                      "darkgray",         16
 )
 
 # filet de securite : toute etiquette non prevue sort en gris clair
@@ -278,7 +278,7 @@ for (year in annees_all) {
         mutate(gros_pays = pays[which.max(total)],
                singleton = n() == 1) %>%
         ungroup() %>%
-        mutate(gros_pays = ifelse(singleton, "bloc d'un seul pays", gros_pays))
+        mutate(gros_pays = ifelse(singleton, "single-country bloc", gros_pays))
     }
     
     carte <- pb %>%
@@ -296,8 +296,10 @@ for (year in annees_all) {
       geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays), size = 2.5) +
       geom_text(data = carte, aes(lng, lat, label = pays), size = 1.6, vjust = -0.8,
                 show.legend = FALSE) +
-      scale_colour_manual(values = couleurs, name = "Bloc (plus gros membre)") +
-      scale_shape_manual(values  = formes,   name = "Bloc (plus gros membre)") +
+      scale_colour_manual(values = couleurs,
+                          name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
+      scale_shape_manual(values  = formes,
+                         name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
       coord_quickmap() +
       theme_void() +
       theme(legend.position = "right",
