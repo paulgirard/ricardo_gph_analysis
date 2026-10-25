@@ -4,7 +4,7 @@
 
 local explo 0
 local share_sample 0.05 
-global model reghdfe /*or cloglog*/
+global model  reghdfe /*or cloglog*/
 
 
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
@@ -22,8 +22,8 @@ if `explo' {
     *Tirage aléatoire de paires (toutes les années d'une paire sont gardées)
     set seed 12345
     tempvar u
-    bysort id (year): gen double `u' = runiform() if _n == 1
-    bysort id (year): replace `u' = `u'[1]
+    bysort undir_pair_key (year): gen double `u' = runiform() if _n == 1
+    bysort undir_pair_key (year): replace `u' = `u'[1]
     keep if `u' <= `share_sample'
 }
 else {
@@ -124,12 +124,13 @@ codebook exporter_end_year
 ***** tag zero_entry
 
 generate zero_year_incl_fs = year if value==0
-generate zero_year_n_fs = year if trade_share >= 10^(-10) 
+generate zero_year_n_fs = year if trade_share <= 10^(-10) 
 foreach trade_type in incl_fs n_fs {
-    replace zero_year_`trade_type'= 0 if zero_year_`trade_type'==.
+    *replace zero_year_`trade_type'= 0 if zero_year_`trade_type'==.
     bys id : egen zero_entry_`trade_type'=min(zero_year_`trade_type')
 }
-    
+
+
 save temp1.dta, replace
 ****** tag trade_entry
 use temp1.dta, clear
@@ -158,17 +159,24 @@ replace flag_trade_entry_n_fs=0 if trade_entry_n_fs ==. | year < trade_entry_n_f
 
 *****work on duration
 
-***Duration 1 : years of directed pair bexistence before first trade
-***Duration 2 : time since appearance
+***Duration 1 : years of directed pair existence before first trade
+***Duration 2 : time since appearance of directed pair 
 ***Duration 3 : time since imputedzero (or very small trade in the n_fs case)
 
 sort id year
-by id : gen dur1 = _n
-by id : gen dur2 = year-max(exporter_start_year,importer_start_year)+1
-by id : gen dur3_incl_fs = year-zero_entry_incl_fs+1
-by id : gen dur3_n_fs    = year-zero_entry_n_fs+1
+by id : gen dur1 = _n/4
+by id : gen dur2 = year-max(exporter_start_year,importer_start_year)
+by id : gen dur3_incl_fs = year-zero_entry_incl_fs
+by id : gen dur3_n_fs    = year-zero_entry_n_fs
 
+
+replace  dur3_incl_fs=1 if dur3_incl_fs<=0
+replace  dur3_n_fs=1 if dur3_incl_fs<=0
 *br id year *Label value status pair_entry trade_entry* dur*
+
+foreach durtype in 1 2 3_n_fs 3_incl_fs {
+    replace dur`durtype'=. if dur`durtype'==0
+}
 
 save temp2.dta, replace
 
@@ -274,12 +282,32 @@ foreach classification of global classification_types {
             gen dur = `d'
             gen dur_sq = dur^2
 
+            display  "Estimation $model / `classification' / `y' / d`k'"
+
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
             if "$model" =="reghdfe" collect, tag(depvar[`y'] spec[d`k']): ///    
             reghdfe `y' dur dur_sq nbr_c share_c `controls' , absorb(year) vce(cluster id_num)
+            
+            local failure 0
+            if "$model" =="cloglog" {
+                capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
+                cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, ///
+                vce(cluster id_num) level(95) iterate(100) eform
+            
+                if _rc {
+                    capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
+                    cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, ///
+                    vce(cluster id_num) level(95) eform ///
+                    difficult technique(nr 5 bhhh 10) iterate(200)
+                }
 
-            if "$model" =="cloglog" collect, tag(depvar[`y'] spec[d`k']): ///  
-            cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, vce(cluster id_num)
+                if _rc {
+                    local failed `failed' `community'/`y'/d`k'
+                    display as error "Non-convergence : `classification' / `y' / d`k'"
+                    local failure 1
+                }
+}
+
         }
     }
 
@@ -287,12 +315,13 @@ foreach classification of global classification_types {
     *--------------------------------------------------------
     * Mise en forme
     *--------------------------------------------------------
-    
+    if `failure' !=1 {
+
     collect stars _r_p 0.01 "***" 0.05 "**" 0.10 "*", attach(_r_b) shownote
 
     collect style cell result[_r_b _r_ci r2], nformat(%7.3f)
     collect style cell result[_r_ci], sformat("[%s]") cidelimiter(", ")
-    collect style cell colname[dur dur_sq nbr_c]#result[_r_b _r_ci], nformat(%9.2e)
+    if "$model"=="reghdfe" collect style cell colname[dur dur_sq nbr_c]#result[_r_b _r_ci], nformat(%9.2e)
     collect style cell result[N N_clust], nformat(%9.0fc)
     collect style cell result[ll], nformat(%9.1f)
 
@@ -314,9 +343,9 @@ foreach classification of global classification_types {
         flag_trade_entry_n_fs    "Start trade (excluding very small flows and failed splits)" ///
         flag_trade_entry_incl_fs "Start trade (including very small flows and failed splits)", modify
     collect label levels spec ///
-        d1 "dur1" ///
-        d2 "dur2" ///
-        d3 "dur3", modify
+        d1 "Years of existence" ///
+        d2 "Time since appearance" ///
+        d3 "Time since appearance with zero trade", modify
 
     collect label levels result ///
         _r_b  " " ///
@@ -351,6 +380,7 @@ foreach classification of global classification_types {
     collect export "$out/ext_reg_${model}_`classification'.docx", replace
     collect export "$out/ext_reg_${model}_`classification'.tex",  replace tableonly
     collect export "$out/ext_reg_${model}_`classification'.txt",  replace
+    }
 }
 
 

@@ -275,6 +275,8 @@ From : `results/BestGuessBilTrade_YYYY.csv` + `https://github.com/medialab/Geo
 
 Script: `/script/daudin/Pour Marge extensive pair stats.do’
 
+Gives regression tables "results/extensive/ext_reg_model’_`communities’.txt/tex/doc » 
+
 
 
 
