@@ -4,7 +4,8 @@
 
 local explo 0
 local share_sample 0.05 
-global model  reghdfe /*or cloglog*/
+*global model  reghdfe
+global model  cloglog
 
 
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
@@ -90,8 +91,8 @@ foreach trade_type in incl_fs n_fs {
     bys id : egen flag_trade_`trade_type'_id=max(flag_trade_`trade_type')
     replace flag_trade_`trade_type'_id=0 if flag_trade_`trade_type'_id==.
     tab flag_trade_`trade_type'_id
-    codebook undir_pair_key if flag_trade_`trade_type'_id==1
-    codebook id if flag_trade_`trade_type'_id==1
+    *codebook undir_pair_key if flag_trade_`trade_type'_id==1
+    *codebook id if flag_trade_`trade_type'_id==1
 }
 
 table flag_trade_n_fs flag_trade_incl_fs 
@@ -115,8 +116,8 @@ bys importerId: egen importer_start_year=min(year)
 bys importerId: egen importer_end_year=max(year)
 bys exporterId: egen exporter_end_year=max(year)
 
-codebook exporter_start_year
-codebook exporter_end_year
+*codebook exporter_start_year
+*codebook exporter_end_year
 
 
 
@@ -139,15 +140,16 @@ sort year
 foreach trade_type in incl_fs n_fs {
     generate trade_year_`trade_type' = year if flag_trade_`trade_type'==1
     bys id : egen trade_entry_`trade_type'=min(trade_year_`trade_type')
+    gen at_risk_`trade_type' = 1
+    replace at_risk_`trade_type' = 0 if year >trade_entry_`trade_type'
 }
-
-drop if year >trade_entry_n_fs
 
 bys id : egen pair_entry=min(year)
 
 drop if trade_entry_n_fs==pair_entry
 
 sort undir_pair_key id year
+
 
 
 generate flag_trade_entry_incl_fs = 1 if year==trade_entry_incl_fs
@@ -164,19 +166,19 @@ replace flag_trade_entry_n_fs=0 if trade_entry_n_fs ==. | year < trade_entry_n_f
 ***Duration 3 : time since imputedzero (or very small trade in the n_fs case)
 
 sort id year
-by id : gen dur1 = _n/4
+by id : gen dur1 = _n
 by id : gen dur2 = year-max(exporter_start_year,importer_start_year)
 by id : gen dur3_incl_fs = year-zero_entry_incl_fs
 by id : gen dur3_n_fs    = year-zero_entry_n_fs
 
 
-replace  dur3_incl_fs=1 if dur3_incl_fs<=0
-replace  dur3_n_fs=1 if dur3_incl_fs<=0
+replace  dur3_incl_fs=. if dur3_incl_fs<0
+replace  dur3_n_fs=. if dur3_n_fs<0
 *br id year *Label value status pair_entry trade_entry* dur*
 
-foreach durtype in 1 2 3_n_fs 3_incl_fs {
-    replace dur`durtype'=. if dur`durtype'==0
-}
+
+*br  undir_pair_key id year zero_year_incl_fs-dur3_n_fs in 1/600
+*br  undir_pair_key id year zero_year_incl_fs-dur3_n_fs if id=="10->305"
 
 save temp2.dta, replace
 
@@ -265,12 +267,14 @@ foreach classification of global classification_types {
 
     foreach y of local depvars {
 
-        * Les 3 durées (dur1, dur2, durée spécifique à la variable dépendante)
+        * Les 3 durées / at risk (dur1, dur2, durée spécifique à la variable dépendante)
         if "`y'" == "flag_trade_entry_n_fs" {
             local durlist dur1 dur2 dur3_n_fs
+            local at_risk at_risk_n_fs
         }
         else {
             local durlist dur1 dur2 dur3_incl_fs
+            local at_risk at_risk_incl_fs
         }
 
         local k = 0
@@ -286,17 +290,17 @@ foreach classification of global classification_types {
 
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
             if "$model" =="reghdfe" collect, tag(depvar[`y'] spec[d`k']): ///    
-            reghdfe `y' dur dur_sq nbr_c share_c `controls' , absorb(year) vce(cluster id_num)
+            reghdfe `y' dur dur_sq nbr_c share_c `controls' if `at_risk'==1, absorb(year) vce(cluster id_num)
             
             local failure 0
             if "$model" =="cloglog" {
                 capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
-                cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, ///
+                cloglog `y' dur dur_sq nbr_c share_c `controls' i.year if `at_risk'==1, ///
                 vce(cluster id_num) level(95) iterate(100) eform
             
                 if _rc {
                     capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
-                    cloglog `y' dur dur_sq nbr_c share_c `controls' i.year, ///
+                    cloglog `y' dur dur_sq nbr_c share_c `controls' i.year if `at_risk'==1, ///
                     vce(cluster id_num) level(95) eform ///
                     difficult technique(nr 5 bhhh 10) iterate(200)
                 }
@@ -319,7 +323,8 @@ foreach classification of global classification_types {
 
     collect stars _r_p 0.01 "***" 0.05 "**" 0.10 "*", attach(_r_b) shownote
 
-    collect style cell result[_r_b _r_ci r2], nformat(%7.3f)
+    if "$model"=="reghdfe" collect style cell result[_r_b _r_ci r2], nformat(%7.3f)
+    if "$model"=="cloglog" collect style cell result[_r_b _r_ci r2], nformat(%7.2f)
     collect style cell result[_r_ci], sformat("[%s]") cidelimiter(", ")
     if "$model"=="reghdfe" collect style cell colname[dur dur_sq nbr_c]#result[_r_b _r_ci], nformat(%9.2e)
     collect style cell result[N N_clust], nformat(%9.0fc)
@@ -368,7 +373,7 @@ foreach classification of global classification_types {
         (depvar#spec)
 
     if "$model" =="cloglog"   collect layout ///
-        (colname[dur nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
+        (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
          result[N N_clust ll]) ///
         (depvar#spec)
 
