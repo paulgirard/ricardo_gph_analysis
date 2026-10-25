@@ -233,10 +233,34 @@ A partir de
 A partir de "external data/GeoPolHist_entities.csv"
 A partir de results/bloc_study/TIBI/paires/paires_yyyy.csv"
 
+Les leaders des blocs sont designés comme ceci suivant le classement des commerces totaux moyens sur la période
+en question (1833–1860; 1861–1913; 1914–1938; 1948–1990; 1991–2025)
+
+Pour chaque entité et chaque année, on calcule son commerce total estimé comme ceci :
+
+1) On calcul 4 totaux:
+a) Export déclaré (FOB) 
+b) Export déclaré par partner (leur caf)
+c) Import déclaré (CAF)
+d) Import déclaré par partner (leur fob)
+
+2) Avec ces 4 totaux on calcule un export total estimé et import total estimé:
+export total estimé = moyenne des deux totaux d’export disponible
+import total estimé = moyenne des deux totaux d’import disponible
+
+3) On somme ensuite ces deux export et import estimé:
+
+commerce total estimé = export estimé + import estimé
+
+4) Puis on prends moyenne du commerce total estimé sur la période par entité (dans les années où elles existent):
+Puis, par période :
+
+5) On a donc par période un classement des plus membres pour chaque bloc
+
 À faire : Changer les couleurs post-48 (fait)
 Rajouter des symboles (fait)
 Mettre les toutes petits communautés en gris (2 max)
-Faire pour toutes les partitions
+Faire pour toutes les partitions (fait)
 
 Cela donne cartes/AndersonNorheim/.... et cartes/Intramax/....cartes/Louvain_observe 
 cartes/Louvain_tibi 
