@@ -1,6 +1,7 @@
 rm(list = ls(all = TRUE))
 library(dplyr); library(tidyr)
-setwd("~/Desktop/ricardo_gph_analysis")
+library(here)
+here::i_am("scripts/Ghallada/Examplecalcul.R")   # adapter au chemin reel du script
 
 year <- 1938
 options(digits = 4)
@@ -17,7 +18,7 @@ options(digits = 4)
 #   importateur en colonne, et un indice par sens.
 # ============================================================================
 
-g <- read.csv(file.path("results/gravity", paste0("gravity_", year, ".csv")),
+g <- read.csv(here("results", "gravity", paste0("gravity_", year, ".csv")),
               stringsAsFactors = FALSE)
 g <- g[g$status == "ok" & !is.na(g$value) & g$CafFob == "fob", ]
 g$exporterId <- as.character(g$exporterId)
