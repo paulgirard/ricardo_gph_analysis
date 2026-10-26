@@ -1,10 +1,12 @@
 rm(list = ls(all = TRUE))
 gc()
-library(dplyr); library(tidyr); library(ggplot2); library(maps); library(magick); library(patchwork)
+library(dplyr); library(tidyr); library(ggplot2); library(maps); library(magick); library(patchwork); library(ggrepel)
 
 setwd("~/Desktop/ricardo_gph_analysis")
 
 annees_all <- c(1833:1938, 1948:2025)
+#annees_all <- 1900
+
 series     <- c("fob_source", "caf_target", "fob_target", "caf_source")
 
 methodes <- c(blockTibi = "LouvainTibi",
@@ -12,6 +14,7 @@ methodes <- c(blockTibi = "LouvainTibi",
               blockLouvainTibirescale = "Louvain_tibirescale",
               blockIntraMax = "Intramax",
               blockAN = "AndersonNorheim")
+#methodes   <- c(blockIntraMax = "Intramax")
 monde <- map_data("world")
 coord <- read.csv("external data/GeoPolHist_entities.csv", stringsAsFactors = FALSE)
 coord <- coord[, c("GPH_code", "lat", "lng")]
@@ -353,7 +356,9 @@ for (year in annees_all) {
       left_join(coord, by = c("gph" = "GPH_code")) %>%
       filter(!is.na(lat), !is.na(lng))
     if (nrow(carte) == 0) next
-    
+    carte$pays_court <- ifelse(nchar(carte$pays) > 12,
+                               paste0(substr(carte$pays, 1, 12), "..."),
+                               carte$pays)
     carte$gros_pays <- factor(carte$gros_pays)
     niv <- levels(carte$gros_pays)
     couleurs <- couleur_pays[niv]; names(couleurs) <- niv
@@ -362,8 +367,11 @@ for (year in annees_all) {
     g <- ggplot() +
       geom_polygon(data = monde, aes(long, lat, group = group), fill = "grey93", colour = NA) +
       geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays), size = 2.3) +
-      geom_text(data = carte, aes(lng, lat, label = pays), size = 1.6, vjust = -0.8,
-                , show.legend = FALSE) +
+      geom_text_repel(data = carte, aes(lng, lat, label = pays_court), size = 1.4,
+                      segment.size = 0.15, segment.colour = "grey50",
+                      min.segment.length = 0.1, max.overlaps = Inf,
+                      box.padding = 0.12, point.padding = 0.08,
+                      seed = 1, show.legend = FALSE) +
       scale_colour_manual(values = couleurs,
                           name = if (m == "blockAN") "Region" else "Bloc (largest member)") +
       scale_shape_manual(values  = formes,
@@ -375,12 +383,18 @@ for (year in annees_all) {
             legend.title = element_text(size = 7)) +
       labs(title = paste0(methodes[[m]], " — ", year))
     # ---- encart Europe ----
+    carte_eu <- carte %>% filter(lng >= -19, lng <= 42, lat >= 32, lat <= 68)
     g_eu <- ggplot() +
       geom_polygon(data = monde, aes(long, lat, group = group), fill = "grey93", colour = NA) +
       geom_point(data = carte, aes(lng, lat, colour = gros_pays, shape = gros_pays),
                  size = 2, show.legend = FALSE) +
-      geom_text(data = carte, aes(lng, lat, label = pays), size = 1.8, vjust = -0.9,
-               , show.legend = FALSE) +
+      geom_point(data = carte_eu, aes(lng, lat, colour = gros_pays, shape = gros_pays),
+                 size = 2, show.legend = FALSE) +
+      geom_text_repel(data = carte_eu, aes(lng, lat, label = pays_court), size = 1.5,
+                      segment.size = 0.15, segment.colour = "grey50",
+                      min.segment.length = 0.1, max.overlaps = 20,
+                      box.padding = 0.15, point.padding = 0.1,
+                      seed = 1, show.legend = FALSE) +
       scale_colour_manual(values = couleurs) +
       scale_shape_manual(values = formes) +
       coord_quickmap(xlim = c(-19, 42), ylim = c(32, 68)) +
