@@ -25,13 +25,11 @@ if `explo' {
     tempvar u
     bysort undir_pair_key (year): gen double `u' = runiform() if _n == 1
     bysort undir_pair_key (year): replace `u' = `u'[1]
-    keep if `u' <= `share_sample'
+    keep if `u' <= `share_sample' | undir_pair_key=="200-220" | undir_pair_key== "10-305"
 }
 else {
     local yearvar "i.year"
 }
-
-
 
 
 ****Cleanup status
@@ -99,6 +97,8 @@ table flag_trade_n_fs flag_trade_incl_fs
 collect export "results/extensive/tradingobservations.txt", as(txt) replace 
 
 
+
+
 sort undir_pair_key id year
 *br if id=="10<-100"
 
@@ -137,16 +137,16 @@ save temp1.dta, replace
 use temp1.dta, clear
 sort year
 
+bys id : egen pair_entry=min(year)
+
 foreach trade_type in incl_fs n_fs {
     generate trade_year_`trade_type' = year if flag_trade_`trade_type'==1
     bys id : egen trade_entry_`trade_type'=min(trade_year_`trade_type')
     gen at_risk_`trade_type' = 1
     replace at_risk_`trade_type' = 0 if year >trade_entry_`trade_type'
+    replace at_risk_`trade_type' = 0 if trade_entry_`trade_type'==pair_entry
 }
 
-bys id : egen pair_entry=min(year)
-
-drop if trade_entry_n_fs==pair_entry
 
 sort undir_pair_key id year
 
@@ -179,6 +179,15 @@ replace  dur3_n_fs=. if dur3_n_fs<0
 
 *br  undir_pair_key id year zero_year_incl_fs-dur3_n_fs in 1/600
 *br  undir_pair_key id year zero_year_incl_fs-dur3_n_fs if id=="10->305"
+
+
+table flag_trade_n_fs flag_trade_incl_fs if at_risk_incl_fs ==1
+collect export "results/extensive/tradingobservations_at_risk_incl_fs.txt", as(txt) replace 
+
+table flag_trade_n_fs flag_trade_incl_fs if at_risk_n_fs ==1
+collect export "results/extensive/tradingobservations_at_risk_n_fs.txt", as(txt) replace 
+
+
 
 save temp2.dta, replace
 
@@ -255,10 +264,11 @@ local controls ln_dist common_empire contig12 mid_n atop_allie TA
 
 * Dossier de sortie (à adapter)
 global out "results/extensive"
+collect clear
 
 foreach classification of global classification_types {
 
-    collect clear
+    
 
     * Noms communs pour aligner les lignes dans le tableau
     capture drop nbr_c share_c
@@ -289,37 +299,40 @@ foreach classification of global classification_types {
             display  "Estimation $model / `classification' / `y' / d`k'"
 
             * Estimation + collecte : 2 étiquettes (dépendante, spécification de durée)
-            if "$model" =="reghdfe" collect, tag(depvar[`y'] spec[d`k']): ///    
+            if "$model" =="reghdfe" collect, tag(depvar[`y'] spec[d`k'] classification[`classification']): ///    
             reghdfe `y' dur dur_sq nbr_c share_c `controls' if `at_risk'==1, absorb(year) vce(cluster id_num)
             
             local failure 0
             if "$model" =="cloglog" {
-                capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
+                capture noisily  collect, tag(depvar[`y'] spec[d`k'] classification[`classification']): ///
                 cloglog `y' dur dur_sq nbr_c share_c `controls' i.year if `at_risk'==1, ///
                 vce(cluster id_num) level(95) iterate(100) eform
             
                 if _rc {
-                    capture noisily  collect, tag(depvar[`y'] spec[d`k']): ///
+                    capture noisily  collect, tag(depvar[`y'] spec[d`k'] classification[`classification']): ///
                     cloglog `y' dur dur_sq nbr_c share_c `controls' i.year if `at_risk'==1, ///
                     vce(cluster id_num) level(95) eform ///
                     difficult technique(nr 5 bhhh 10) iterate(200)
                 }
 
                 if _rc {
-                    local failed `failed' `community'/`y'/d`k'
+                    local failed `failed' `classification'/`y'/d`k'
                     display as error "Non-convergence : `classification' / `y' / d`k'"
-                    local failure 1
+                    local failure`classification'/`y'/d`k' 1
                 }
-}
+            }
 
         }
     }
+}
 
 
+foreach classification of global classification_types { 
+   * local classification AN
+    local failure 0
     *--------------------------------------------------------
     * Mise en forme
     *--------------------------------------------------------
-    if `failure' !=1 {
 
     collect stars _r_p 0.01 "***" 0.05 "**" 0.10 "*", attach(_r_b) shownote
 
@@ -327,6 +340,11 @@ foreach classification of global classification_types {
     if "$model"=="cloglog" collect style cell result[_r_b _r_ci r2], nformat(%7.2f)
     collect style cell result[_r_ci], sformat("[%s]") cidelimiter(", ")
     if "$model"=="reghdfe" collect style cell colname[dur dur_sq nbr_c]#result[_r_b _r_ci], nformat(%9.2e)
+    if "$model"=="cloglog" {
+        collect style cell colname[dur]#result[_r_b _r_ci], nformat(%5.4f)
+        collect style cell colname[ dur_sq ]#result[_r_b _r_ci], nformat(%7.6f)
+        collect style cell colname[ nbr_c ]#result[_r_b _r_ci], nformat(%6.5f)
+    }
     collect style cell result[N N_clust], nformat(%9.0fc)
     collect style cell result[ll], nformat(%9.1f)
 
@@ -370,12 +388,12 @@ foreach classification of global classification_types {
     if "$model" =="reghdfe"   collect layout ///
         (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
          result[N N_clust r2]) ///
-        (depvar#spec)
+        (depvar#spec[d3 d1 d2]#classification[`classification'])
 
     if "$model" =="cloglog"   collect layout ///
         (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
          result[N N_clust ll]) ///
-        (depvar#spec)
+        (depvar#spec[d3 d1 d2]#classification[`classification'])
 
     collect title "Community definition : `classification' (${model}, year fixed effects)"
     collect notes 1: "95 % confidence intervals in brackets."
@@ -385,9 +403,29 @@ foreach classification of global classification_types {
     collect export "$out/ext_reg_${model}_`classification'.docx", replace
     collect export "$out/ext_reg_${model}_`classification'.tex",  replace tableonly
     collect export "$out/ext_reg_${model}_`classification'.txt",  replace
-    }
+
+
+
 }
 
+ if "$model" =="reghdfe"   collect layout ///
+        (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
+         result[N N_clust r2]) ///
+        (depvar[flag_trade_entry_n_fs]#spec[d3]#classification)
+
+if "$model" =="cloglog"   collect layout ///
+       (colname[dur dur_sq nbr_c share_c ln_dist common_empire contig12 mid_n atop_allie TA]#result[_r_b _r_ci] ///
+        result[N N_clust ll]) ///
+       (depvar[flag_trade_entry_n_fs]#spec[d3]#classification)
+
+   collect title "(${model}, year fixed effects)"
+   collect notes 1: "95 % confidence intervals in brackets."
+   collect notes 2: "dur3 = dur_n_fs for flag_trade_entry_n_fs"
+
+   * Export : .docx, .tex et .csv
+   collect export "$out/ext_reg_${model}.docx", replace
+   collect export "$out/ext_reg_${model}.tex",  replace tableonly
+   collect export "$out/ext_reg_${model}.txt",  replace
 
 
 
@@ -400,56 +438,6 @@ foreach classification of global classification_types {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-blif
-
-******Regression ! (avant)
-
-
-
-
-xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi, robust
-
-xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie, robust
-
-xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
-
-xi: logit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
-
-xi: probit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, robust
-
-
-
- egen id_num = group(id)
-drop if id_num==.
-xtset id_num year
-
-xtlogit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year, fe
-
-xtlogit flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year
-
-
-
-
-***Ne marche pas
-xi: cloglog flag_trade_entry_n_fs dur1 nbr_cyears_LouvainTibi share_cyears_LouvainTibi /*
-    */ ln_dist common_empire /*contig12*/ mid_n atop_allie i.year i.exporterId i.importerId, robust
 
 
 
