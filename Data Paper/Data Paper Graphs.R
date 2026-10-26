@@ -820,3 +820,21 @@ ggsave("Fig Distribution of GeoPolHist entities (by continent).png",
 
 write.csv(plot_datagph,"Geopolhistbycontinent.csv", row.names = FALSE)
 
+
+GPH_status_over_time <- GeoPolHist_entities_status_over_time %>%
+  filter(start_year != "?", end_year != "?") %>%
+  mutate(start_year = as.integer(start_year),
+         end_year   = as.integer(end_year)) %>%
+  filter(!is.na(start_year), !is.na(end_year), end_year >= start_year) %>%
+  rowwise() %>%
+  mutate(year = list(seq(start_year, end_year))) %>%
+  ungroup() %>%
+  unnest(year) %>%
+  distinct(GPH_code, year, GPH_status) %>%
+  dplyr::count(GPH_status, year) %>%
+  arrange(year) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  arrange(GPH_status)
+
+write.csv(GPH_status_over_time,
+          "GPH_status_over_timenew.csv", row.names = FALSE)
