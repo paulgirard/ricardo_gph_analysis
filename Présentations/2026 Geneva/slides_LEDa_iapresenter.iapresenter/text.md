@@ -521,7 +521,7 @@ Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre
 ---
 
 ## Anderson and Norheim (1993)’s blocs as a reference
-/assets/carteAN_2025.png
+/assets/carte_AN2025.png
 size: contain
 
 
