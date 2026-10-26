@@ -94,7 +94,7 @@ ggsave("Fig 1 Total nb of bilateral flows.png",
        height = 6, 
        dpi = 300)
 
-
+write.csv(plot_data,"Total nb of bilateral flows.csv", row.names = FALSE)
 #Delete pre-1830
 RICardocleannoworld<-RICardocleannoworld[RICardocleannoworld$year>1829,]
 
@@ -144,7 +144,7 @@ ggsave("Fig 4 nb of distinct entities per year.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data2,"nb of distinct entities per year.csv", row.names = FALSE)
 # Count unique reporting countries by year and reporting_type
 plot_data3 <- RICardocleannoworld %>%
   filter(reporting_type != "colonial_area") %>%
@@ -175,7 +175,7 @@ ggsave("Fig 5 Reporting type over years final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data3,"Reporting type over years final.csv", row.names = FALSE)
 # Count unique partner countries by year and rpartner_type
 reportings_par_an <- RICardocleannoworld %>% distinct(year, reporting)
 plot_data4 <- RICardocleannoworld %>%
@@ -209,7 +209,7 @@ ggsave("Fig 6 Partner type over years final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data4,"Partner type over years final.csv", row.names = FALSE)
 ##Totals over time comparison (Worldasreported, World Federico Tena,World_best_guess,World sum partners)
 
 
@@ -261,7 +261,7 @@ ggsave("World computed with GPH entity over years final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data5,"World computed with GPH entity over years final.csv", row.names = FALSE)
 ggplot(plot_data5, aes(x = year, y = total, color = partner, group = partner)) +
   geom_line(linewidth = 0.5) +
   geom_point(size = 0.6) +
@@ -290,7 +290,7 @@ ggsave("World computed with GPH entity over years final (log scaled).png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data5,"World computed with GPH entity over years final (log scaled).csv", row.names = FALSE)
 # Transformer les valeurs en log
 plot_data6 <- plot_data5 %>%
   mutate(total_log = log(total))
@@ -322,7 +322,7 @@ ggsave("World computed with GPH entity over years (logy) final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data6,"World computed with GPH entity over years (logy) final.csv", row.names = FALSE)
 # Créer une séquence complète d'années
 all_years <- seq(min(RICardocleannoworld$year), max(RICardocleannoworld$year), by = 1)
 
@@ -392,7 +392,7 @@ ggsave("Fig 7 Distribution of reporting (by continent).png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data7,"Distribution of reporting (by continent).csv", row.names = FALSE)
 
 # Créer une séquence complète d'années
 all_years <- seq(min(RICardocleannoworld$year), max(RICardocleannoworld$year), by = 1)
@@ -467,7 +467,7 @@ ggsave("Fig 8 Distribution of partners (only) (by continent).png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data8,"Distribution of partners (only) (by continent).csv", row.names = FALSE)
 
 # Calculer le nombre d'entités distinctes par source et année
 plot_data9 <- RICardocleannoworld %>%
@@ -527,6 +527,7 @@ ggsave("Fig 9 Distribution of RIC reportings (by source type).png",
        width = 12, 
        height = 6, 
        dpi = 300)
+write.csv(plot_data9,"Number of RIC reportings (by source type).csv", row.names = FALSE)
 
 ### With total and histogram
 ggplot(plot_data9, aes(x = year, y = nb_entities, fill = type)) +
@@ -547,7 +548,7 @@ ggplot(plot_data9, aes(x = year, y = nb_entities, fill = type)) +
 
 ggsave("Fig 9bis Number of RIC reportings (by source type).png",
        width = 12, height = 6, dpi = 300)
-
+write.csv(plot_data9,"Number of RIC reportings (by source type) bis.csv", row.names = FALSE)
 
 #Uniqueestimationric
 Uniqueestimationric<-RICardocleannoworld[RICardocleannoworld$type=="estimation",c(2,3,5,11,12)]
@@ -585,7 +586,7 @@ ggplot(plot_data10, aes(x = year, y = nb_flows, fill = type)) +
 ggsave("Fig 10 Number of flows (by source type) histogram.png",
        width = 12, height = 6, dpi = 300)
 
-
+write.csv(plot_data10,"Number of flows (by source type) histogram.csv", row.names = FALSE)
 
 #NB de partners by reporting over years
 plot_data_avg1 <- RICardocleannoworld %>%
@@ -625,6 +626,7 @@ ggsave("Fig 2 Avg nb of partners per reporting.png",
        width = 12, 
        height = 6, 
        dpi = 300)
+write.csv(plot_data_avg1,"Avg nb of partners per reporting.csv", row.names = FALSE)
 
 
 # Sans distinction exp/imp
@@ -693,7 +695,7 @@ ggplot(plot_data_avg, aes(x = year, y = mean_partners, color = flow_type, fill =
 
 ggsave("Fig 3 Average partners per reporting by flow type with total and CI.png",
        width = 12, height = 6, dpi = 300)
-
+write.csv(plot_data_avg,"Average partners per reporting by flow type with total and CI.csv", row.names = FALSE)
 # Serie over time by continent
 plot_data11 <- RICardocleannoworld %>%
   group_by(year, reporting_continent) %>%
@@ -727,8 +729,94 @@ ggsave("Number of flows (by reporting continent) final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
-
+write.csv(plot_data11,"Number of flows (by reporting continent) final.csv", row.names = FALSE)
  
 ###GPH geopolhist by continent
+GeoPolHist_entities_status_over_time <- read.csv("~/Desktop/ricardo_gph_analysis/Data Paper/GeoPolHist_entities_status_over_time.csv")
 Geopolhist<-GeoPolHist_entities_status_over_time[GeoPolHist_entities_status_over_time$GPH_status!="International",]
 Geopolhist<-Geopolhist[Geopolhist$GPH_status!="Part of",]
+
+library(dplyr); library(tidyr)
+
+Geopolhist_long <- Geopolhist %>%
+  filter(start_year != "?", end_year != "?") %>%
+  mutate(start_year = as.integer(start_year),
+         end_year   = as.integer(end_year)) %>%
+  filter(end_year >= start_year) %>%
+  rowwise() %>%
+  mutate(year = list(seq(start_year, end_year))) %>%
+  ungroup() %>%
+  unnest(year) %>%
+  select(GPH_code, GPH_name, year, GPH_status, sovereign_GPH_code, continent)
+
+Geopolhist_long<-Geopolhist_long[Geopolhist_long$year<1939,]
+dim(Geopolhist_long)
+
+# Calculer le nombre d'entités distinctes par continent et année
+plot_datagph <- Geopolhist_long %>%
+  group_by(year, continent) %>%
+  summarise(nb_entities = n_distinct(GPH_code), .groups = "drop") %>%
+  complete(year = all_years, continent, fill = list(nb_entities = 0))
+
+
+# Ajouter la catégorie NA pour toutes les années
+na_data <- data.frame(
+  year = all_years,
+  continent = "NA",
+  nb_entities = 0
+)
+
+plot_datagph <- plot_datagph %>%
+  bind_rows(na_data) %>%
+  group_by(year) %>%
+  mutate(
+    total_year = sum(nb_entities),
+    percentage = if_else(total_year == 0, 
+                         if_else(continent == "NA", 100, 0),
+                         (nb_entities / total_year) * 100)
+  ) %>%
+  ungroup()
+
+#No NA so delete
+plot_datagph<-plot_datagph[plot_datagph$continent!="NA",]
+
+# Vérifier les continents présents
+print("Continents in plot_data:")
+print(unique(plot_datagph$continent))
+
+# Créer une palette automatique
+color_continents_rep <- c("Africa"  = "#d48282",
+                          "America" = "#83a1bf",
+                          "Asia"    = "#9D4EDD",
+                          "Europe"  = "#b7e0ba",
+                          "Oceania" = "gold")
+
+
+# Créer le graphique en aires empilées
+ggplot(plot_datagph, aes(x = year, y = percentage, fill = continent)) +
+  geom_area(position = "stack", alpha = 0.8)  +
+  labs(
+    title = "",
+    x = "Year",
+    y = "Distribution of GeoPolHist entities by continent (per cent)",
+    fill = ""
+  ) +
+  scale_x_continuous(breaks = seq(1785, 1938, by = 5), expand = c(0, 0)) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     expand = c(0, 0),
+                     labels = function(x) paste0(x, "%")) +
+  scale_fill_manual(values = color_continents_rep) +
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    legend.position = "bottom"
+  )
+
+ggsave("Fig Distribution of GeoPolHist entities (by continent).png", 
+       width = 12, 
+       height = 6, 
+       dpi = 300)
+
+write.csv(plot_datagph,"Geopolhistbycontinent.csv", row.names = FALSE)
+
