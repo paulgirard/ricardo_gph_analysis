@@ -1,3 +1,39 @@
+# ============================================================================
+# EXEMPLE PEDAGOGIQUE : Intramax puis TIBI, sur un petit echantillon de 1938
+#
+# Objet : derouler les deux calculs etape par etape, en affichant chaque
+#         matrice intermediaire, pour pouvoir les expliquer.
+#
+# Echantillon : neuf entites, declarations FOB uniquement. Toutes les
+#         valeurs ci-dessous decrivent donc le commerce A L INTERIEUR du
+#         sous-echantillon, pas le commerce mondial. Chaque entite y perd
+#         la quasi-totalite de ses partenaires reels.
+#
+# PARTIE A - INTRAMAX
+#   A1  une valeur par paire : moyenne des declarations disponibles
+#   A2  matrice symetrique, normalisee (la somme des cases vaut 1)
+#   A3  la boucle : a chaque etape on calcule l attendu E = ligne x colonne
+#       / total, l ecart Dd = M/E - 1, on fusionne la paire au plus fort
+#       ecart et on neutralise la diagonale. Le "flux interne" mesure ce que
+#       cette fusion seule internalise, pas le cumul.
+#   A4  on retient la partition obtenue juste avant la premiere fusion qui
+#       internalise plus de 10 % du commerce.
+#
+# PARTIE B - TIBI, sur la partition issue de A
+#   B1  les flux, avec le bloc de l exportateur et celui de l importateur
+#   B2  matrice bloc-bloc : ligne = exportateur, colonne = importateur
+#   B3  marges : Xi = exports du bloc i, Xj = imports du bloc j
+#   B3b indice de Balassa : observe rapporte a l attendu Xi x Xj / X
+#   B4  s1 = part des exports de i allant vers j ; s2 = meme part pour le
+#       reste du monde ; I1 = s1/s2 corrige la variabilite de l intervalle ;
+#       la transformation (I1/I3 - 1)/(I1/I3 + 1) borne l indice dans [-1,1]
+#   B5  trois cas limites : base nulle -> NA, concentration totale -> 1,
+#       aucun commerce -> -1
+#   B6  diagonale : intensite interne de chaque bloc, et son poids
+#   B7  moyenne ponderee par la part de chaque bloc dans les exports
+# ============================================================================
+
+
 rm(list = ls(all = TRUE))
 library(dplyr); library(tidyr)
 setwd("~/Desktop/ricardo_gph_analysis")
@@ -43,12 +79,12 @@ solo <- bind_rows(
 cat("\n=== Entites a un seul partenaire ===\n"); print(as.data.frame(head(solo, 10)))
 
 #Je choisis l'échantillon
-ech <- c("200",   # Royaume-Uni
-         "2",     # Etats-Unis
-         "220",   # France
-         "9973",   # flux nul avec un des gros
-         "811")   # flux unique
-
+# ech <- c("2", "20", "70",        # Etats-Unis, Canada, Mexique
+#          "200", "900", "750",    # Royaume-Uni, Australie, Inde
+#          "220", "211", "210")    # France, Belgique, Pays-Bas
+ech <- c("2", "20",            # Etats-Unis, Canada
+         "200", "750",   # Royaume-Uni, Inde
+         "220", "211", "210")  # France, Belgique, Pays-Bas
 
 G <- g %>% filter(exporterId %in% ech, importerId %in% ech) %>%
   select(exporterId, exporterLabel, importerId, importerLabel, value)
@@ -142,9 +178,14 @@ cat("\n=== A3. Historique des fusions ===\n")
 print(historique)
 
 # --- A4. partition retenue ---
-# Sur un echantillon aussi petit, le seuil de 0.10 tombe des la premiere
-# fusion. On fixe l etape a la main pour l illustration.
-etape_choisie <- 2
+#Avec threshold, on retient la partition obtenue juste avant la premiere fusion qui
+#       internalise plus de 10 % du commerce.
+seuil <- 0.10
+etape_choisie <- which(historique$flux_interne >= seuil)[1]
+if (is.na(etape_choisie)) etape_choisie <- nrow(historique)
+
+cat("\n=== Seuil de", seuil, "franchi a l etape", etape_choisie,
+    "(flux interne =", round(historique$flux_interne[etape_choisie], 4), ") ===\n")
 
 cat("\n=== A4. Partition a l etape", etape_choisie, "===\n")
 groupes <- strsplit(etats[[etape_choisie]], "+", fixed = TRUE)
@@ -193,6 +234,17 @@ cat("Xi, exports de chaque bloc :\n"); print(Xi)
 cat("Xj, imports de chaque bloc :\n"); print(Xj)
 cat("X_tot =", X_tot, "\n")
 
+# --- B3b. Indice de Balassa : observe sur attendu ---
+grille$Xprime <- grille$Xi * grille$Xj / X_tot
+grille$I0     <- grille$Xij / grille$Xprime
+
+cat("\n=== B3b. Attendu X'_ij = Xi x Xj / X ===\n")
+print(xtabs(round(Xprime) ~ i + j, data = grille))
+
+cat("\n=== B3b. Indice Xij / X'_ij ===\n")
+print(xtabs(round(I0, 3) ~ i + j, data = grille))
+
+#Retour
 grille$base  <- grille$Xi
 grille$s1    <- grille$Xij / grille$Xi
 grille$s2    <- (grille$Xj - grille$Xij) / (X_tot - grille$Xi)
@@ -202,8 +254,9 @@ grille$ratio <- grille$I1 / grille$I3
 grille$TIBI  <- (grille$ratio - 1) / (grille$ratio + 1)
 
 cat("\n=== B4. Detail avant traitement des cas limites ===\n")
-print(grille %>% select(i, j, Xij, base, s1, s2, I1, I3, ratio, TIBI) %>%
+print(grille %>% select(i, j, Xij, Xprime, I0, base, s1, s2, I1, I3, ratio, TIBI) %>%
         mutate(across(where(is.numeric), ~ round(.x, 3))))
+
 
 grille$TIBI[grille$base == 0] <- NA_real_
 grille$TIBI[grille$base > 0 & grille$Xij == grille$base] <- 1
