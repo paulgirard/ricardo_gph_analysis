@@ -727,3 +727,8 @@ ggsave("Number of flows (by reporting continent) final.png",
        width = 12, 
        height = 6, 
        dpi = 300)
+
+ 
+###GPH geopolhist by continent
+Geopolhist<-GeoPolHist_entities_status_over_time[GeoPolHist_entities_status_over_time$GPH_status!="International",]
+Geopolhist<-Geopolhist[Geopolhist$GPH_status!="Part of",]

@@ -98,51 +98,35 @@ construire_paires <- function(year) {
 #    Le sens fixe l orientation de la matrice bloc-bloc.
 #    Le type fixe le denominateur : Xi pour fob, Xj pour caf.
 # ============================================================
-calc_tibi <- function(d, methode, univers, norm) {
-  col_a <- paste0(methode, "_a")
-  col_b <- paste0(methode, "_b")
+calc_tibi <- function(g, bloc, univers, norm) {
   
-  dd <- d[!is.na(d[[col_a]]) & !is.na(d[[col_b]]), ]
-  if (nrow(dd) == 0) return(c(NA_real_, 0))
+  gg <- g[g$CafFob == univers, ]
+  gg$i <- bloc[gg$exporterId]
+  gg$j <- bloc[gg$importerId]
+  gg <- gg[!is.na(gg$i) & !is.na(gg$j), ]
+  if (nrow(gg) == 0) return(c(NA_real_, 0))
   
-  # univers fob : les deux sens, declares par l exportateur
-  # univers caf : les deux sens, declares par l importateur
-  if (univers == "fob") {
-    s_ab <- "fob_source"; s_ba <- "fob_target"
-  } else {
-    s_ab <- "caf_target"; s_ba <- "caf_source"
-  }
-  
-  flux <- rbind(
-    data.frame(i = as.character(dd[[col_a]]), j = as.character(dd[[col_b]]),
-               value = dd[[s_ab]], stringsAsFactors = FALSE),
-    data.frame(i = as.character(dd[[col_b]]), j = as.character(dd[[col_a]]),
-               value = dd[[s_ba]], stringsAsFactors = FALSE)
-  )
-  flux <- flux[!is.na(flux$value), ]
-  if (nrow(flux) == 0) return(c(NA_real_, 0))
-  
-  Xij <- aggregate(value ~ i + j, data = flux, FUN = sum)
+  Xij <- aggregate(value ~ i + j, data = gg, FUN = sum)
   names(Xij)[3] <- "Xij"
-  blocs <- sort(unique(c(flux$i, flux$j)))
+  blocs <- sort(unique(c(gg$i, gg$j)))
   
   grille <- expand.grid(i = blocs, j = blocs, stringsAsFactors = FALSE)
   grille <- merge(grille, Xij, by = c("i", "j"), all.x = TRUE)
   grille$Xij[is.na(grille$Xij)] <- 0
   
   X_tot <- sum(grille$Xij)
-  Xi <- tapply(grille$Xij, grille$i, sum)
-  Xj <- tapply(grille$Xij, grille$j, sum)
+  Xi <- tapply(grille$Xij, grille$i, sum)   # exports du bloc i
+  Xj <- tapply(grille$Xij, grille$j, sum)   # imports du bloc j
   grille$Xi <- Xi[as.character(grille$i)]
   grille$Xj <- Xj[as.character(grille$j)]
   
-  if (norm == "exp")  {
-    grille$base <- grille$Xi  # on raisonne en part des exports de i
-    grille$s1   <- grille$Xij / grille$Xi # part de i allant vers j
-    grille$s2   <- (grille$Xj - grille$Xij) / (X_tot - grille$Xi) # meme part pour le reste du monde
+  if (norm == "exp") {
+    grille$base <- grille$Xi
+    grille$s1   <- grille$Xij / grille$Xi
+    grille$s2   <- (grille$Xj - grille$Xij) / (X_tot - grille$Xi)
   } else {
-    grille$base <- grille$Xj # on raisonne en part des imports de j
-    grille$s1   <- grille$Xij / grille$Xj   
+    grille$base <- grille$Xj
+    grille$s1   <- grille$Xij / grille$Xj
     grille$s2   <- (grille$Xi - grille$Xij) / (X_tot - grille$Xj)
   }
   
@@ -155,11 +139,8 @@ calc_tibi <- function(d, methode, univers, norm) {
   grille$TIBI[grille$base > 0 & grille$Xij == grille$base] <- 1
   grille$TIBI[grille$base > 0 & grille$Xij == 0] <- -1
   
-  pb <- unique(rbind(
-    data.frame(id = dd$a, bloc = as.character(dd[[col_a]])),
-    data.frame(id = dd$b, bloc = as.character(dd[[col_b]]))
-  ))
-  taille <- table(pb$bloc)
+  pres <- unique(c(gg$exporterId, gg$importerId))
+  taille <- table(bloc[pres])
   singletons <- names(taille)[taille == 1]
   
   g2 <- grille[!(grille$i %in% singletons) & !(grille$j %in% singletons), ]
@@ -184,16 +165,29 @@ for (year in annees_all) {
   write.csv(p, file.path("results/bloc_study/TIBI/paires", paste0("paires_", year, ".csv")),
             row.names = FALSE)
   
-  for (m in methodes) for (ms in mesures) {
-    v <- calc_tibi(p, m, ms[["univers"]], ms[["norm"]])
-    res[[length(res) + 1]] <- data.frame(year = year, methode = m,
-                                         serie = ms[["lbl"]],
-                                         moyenne = v[1], n_blocs = v[2])
+  # ---- flux orientes, directement depuis gravity ----
+  g <- read.csv(file.path("results/gravity", paste0("gravity_", year, ".csv")),
+                stringsAsFactors = FALSE)
+  g <- g[g$status == "ok" & !is.na(g$value), ]
+  g$exporterId <- as.character(g$exporterId)
+  g$importerId <- as.character(g$importerId)
+  
+  for (m in methodes) {
+    pb <- bind_rows(
+      p %>% select(gph = a, bl = all_of(paste0(m, "_a"))),
+      p %>% select(gph = b, bl = all_of(paste0(m, "_b")))
+    ) %>% filter(!is.na(bl)) %>% distinct(gph, .keep_all = TRUE)
+    bloc <- setNames(as.character(pb$bl), as.character(pb$gph))
+    
+    for (ms in mesures) {
+      v <- calc_tibi(g, bloc, ms[["univers"]], ms[["norm"]])
+      res[[length(res) + 1]] <- data.frame(year = year, methode = m,
+                                           serie = ms[["lbl"]],
+                                           moyenne = v[1], n_blocs = v[2])
+    }
   }
   
-  message(year, " : ", nrow(p), " paires | ",
-          paste(sapply(series, function(s) paste0(s, " ", sum(!is.na(p[[s]])))),
-                collapse = " | "))
+  message(year, " : ", nrow(p), " paires, ", nrow(g), " flux")
 }
 
 tibi <- bind_rows(res)
