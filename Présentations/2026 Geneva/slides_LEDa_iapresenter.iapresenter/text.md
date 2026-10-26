@@ -556,7 +556,8 @@ It also leads to fixity over time. The relevant bloc might actually change throu
 	1. What is the algorithm that creates the communities
 	2. What is the weight/proximity mesure to use?
 ---
-# Identifying trade communities -- Algorithms (4)
+# Identifying trade communities (4)
+# Algorithms
 ## Intramax algorithm:
 	1. Computes all proximities between actors/groups
 	2. Regroup the closest pair
@@ -588,7 +589,8 @@ Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre
 
 
 ---
-# Identifying trade communities -- weight/proximity (4)
+# Identifying trade communities (5)
+# Weight/proximity 
 ## We can have up to four flows by pair.
 	But we cannot simply look at exports or imports because of the large number of missing observations 
 	In all cases, we compute 1 to 4 proximities and we take the max
@@ -612,12 +614,11 @@ X is world exports, Xi. is polity/bloc i’s exports. X.j is exports going to  p
 
 Kohl, Tristan, and Aleid E. Brouwer. 2014. “The Development of Trade Blocs in an Era of Globalisation.” _Environment and Planning A: Economy and Space_ 46 (7): 1535–53. https://doi.org/10.1068/a46261.
 
-
 ---
 ## 3. TIBI (Trade Intensity Bilateral Index)
-	Poon’s maximisation objective can also be expressed as a ratio as in Balassa (1965)’s index of comparative advantage:
+	Poon’s maximisation objective can also be expressed as a ratio : CEPII’s Relative bilateral intensity of port Intensity:
 	$X_{ij}/X'_{ij}=(X_{ij}/X_{i.})/(X_{.j}/X)) \in[-1,X/X_{.j}]$.
-	CEPII’s Relative Export Intensity. Eg Gaulier and Ünal-Kesenci (2004)
+	Inspired by Balassa (1965)’s index of comparative advantage. Eg Gaulier and Ünal-Kesenci (2004)
 CEPII’s "Relative bilateral intensity of exports" Deutsch and Savage (1960), Drysdale and Garnet (1982), Freudenberg, Gaulier and Ûnal-Kensenci (1998), pp.66-68
 	Iapadre (2006), Daudin et al. (2011)  mention three issues:
 ### Solving range variability
@@ -637,21 +638,77 @@ Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Pr
 Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of World Trade.” _Assessment And Measurement of Regional Integration_, 65–85.
 
 ---
-
-## Identifying trade communities (5)
-
----
-
+## Proximity measures in 1938
+/assets/Proximity measures 1938.png
+size: contain
 
 ---
-
 ## Identifying trade communities (6)
+	1. Intramax with Poon 2 measure ($\frac{X_{ij}-X'_{ij}}{X_{i.}}$)
+	2. Louvain (only accepts positive weights)
+		a. With raw trade
+		b. With TIBI + 1  
+		Issue : missing and zeros are treated the same way
+	3. Signed Louvain with raw TIBI
+
+
+---
+
+/assets/carte_2025 intramax.png
+
+/assets/carte_2025 Louvain Trade.png
+
+/assets/carte_2025 Tibi Rescale.png
+
+/assets/carte_2025 Tibi.png
+
+
+---
+/assets/carte_2025 intramax.png
+size: contain
+---
+/assets/carte_2025 Louvain Trade.png
+size: contain
+---
+/assets/carte_2025 Tibi Rescale.png
+size: contain
+---
+/assets/carte_2025 Tibi.png
+size: contain
+---
+
+/assets/carte_1938 intramax.png
+
+/assets/carte_1938 Louvain Trade.png
+
+/assets/carte_1938 Tibi Rescale.png
+
+/assets/carte_1938 Tibi.png
+
+
+---
+/assets/carte_1938 intramax.png
+size: contain
+---
+/assets/carte_1938 Louvain Trade.png
+size: contain
+---
+/assets/carte_1938 Tibi Rescale.png
+size: contain
+---
+/assets/carte_1938 Tibi.png
+size: contain
+---
+
+/assets/cor_entre_partitions.png
+size: contain
+
 
 ---
 
 
 
-/assets/carte_comm_1850.png
+
 
 
 
@@ -659,7 +716,7 @@ Iapadre, Lelio. 2006. “Regional Integration Agreements and the Geography of Wo
 
 
 
-/assets/Intra-block%20trade%20share.png
+
 
 
 
