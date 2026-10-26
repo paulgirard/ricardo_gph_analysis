@@ -36,7 +36,8 @@
 
 rm(list = ls(all = TRUE))
 library(dplyr); library(tidyr)
-setwd("~/Desktop/ricardo_gph_analysis")
+library (here)
+setwd(here())
 
 year <- 1938
 options(digits = 4)
@@ -274,3 +275,4 @@ print(diag_df %>% mutate(across(where(is.numeric), ~ round(.x, 4))))
 
 cat("\n=== B7. TIBI intra-bloc moyen pondere =",
     round(sum(diag_df$w * diag_df$TIBI), 4), "===\n")
+
