@@ -30,6 +30,8 @@ Current rising international tensions have increased the interest for securing s
 
 This is probably bad for global trade. It does not need to be so. Anderson and Norheim in an old paper (1993) even show that generally, regionalisation and globalisation are positively correlated. And the story of "hyperglobalisation" from the 1980s to the 2000s, around the rise of the European Union, NAFTA, and Factory Asia can lead to a positive view of the formation of trade blocs. The 1930s, with decoupling between trade blocs organised around formal and informal empires, gives less reason for optimism. 
 
+Bhagwati-style “building blocs or stumbling blocs”
+
 We look at this phenomenon, with historical depth, which allows to show if the current period is unusual.
 
 
@@ -379,6 +381,17 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 	- Trade agreements (Pahre (2008)’s data up to 1913 )
 
 ---
+/assets/TA_fob.png
+size: contain
+
+
+/assets/atop_allie_fob.png
+size: contain
+
+
+/assets/mid_n_fob.png
+size: contain
+
 
 /assets/ln_distance_fob.png
 size: contain
@@ -392,20 +405,23 @@ size: contain
 size: contain
 
 
+---
+
 /assets/TA_fob.png
 size: contain
 
-
+---
 
 
 /assets/atop_allie_fob.png
 size: contain
-
+---
 
 /assets/mid_n_fob.png
 size: contain
 
 ---
+
 
 /assets/ln_distance_fob.png
 size: contain
@@ -416,20 +432,6 @@ size: contain
 ---
 
 /assets/common_empire_fob.png
-size: contain
-
----
-/assets/TA_fob.png
-size: contain
-
----
-
-
-/assets/atop_allie_fob.png
-size: contain
----
-
-/assets/mid_n_fob.png
 size: contain
 
 ---
@@ -702,18 +704,13 @@ size: contain
 
 /assets/cor_entre_partitions.png
 size: contain
-
-
 ---
 
+/assets/Classification_withcontrols_fob.png
+size: contain
 
-
-
-
-
-
----
-
+/assets/Classification_withoutcontrols_fob.png
+size: contain
 
 
 
@@ -722,170 +719,147 @@ size: contain
 
 ---
 
+/assets/Classification_withcontrols_caf.png
+size: contain
 
-
-/assets/Modularity.png
-
+/assets/Classification_withoutcontrols_caf.png
+size: contain
 
 
 ---
 
+/assets/Classification_LouvainMaxtrade_withcontrols_fob.png
+size: contain
+
+/assets/Classification_IntraMax_withcontrols_fob.png
+size: contain
 
 
-/assets/tibi_comparaison_avec_diff_nblocs.png
-
-
+If we believe these classifications: decline of the importance of regionalisation till the 1890s, stability till WWI, then increase till WWII. Decline since WWII, with not much happening since.
 
 ---
 
 # IV. Determinants of trade communities
-
----
-
-	Logit regression on GPH-pairs each year, on variables:
-
----
-	- distance (Centroids from Wikidata, not time varying)
-	- contiguity (Correlates of War + our own work)
-	- common empire (GeoPolHist up to 2022)
-	- alliance (inherited from sovereign) (Alliance Treaty Obligations and Provisions (ATOP) up to 2018)
-	- conflict (inherited from sovereign) (Militarized Interstate Disputes (MID) up to 2014)
+	Logit regression on polity-pairs each year, with the usual control variables
 
 	No causality, obviously\
-	We compute the incremental R² (but we need a better idea)
+We compute the incremental R² (but we need a better idea)
 
 ---
 
+/assets/shared_bloc_reg_TA.png
+size: contain
 
+/assets/shared_bloc_reg_atop_allie.png
+size: contain
 
-/assets/mid_n_louvain_fob.png
+/assets/shared_bloc_reg_mid_n.png
+size: contain
 
+/assets/shared_bloc_reg_ln_distance.png
+size: contain
 
+/assets/shared_bloc_reg_contig12.png
+size: contain
 
----
-
-
-
-/assets/contig12_louvain_fob.png
-
-
-
----
-
-
-
-/assets/atop_allie_louvain_fob.png
-
+/assets/shared_bloc_reg_common_empire.png
+size: contain
 
 
 ---
-
-
-
-/assets/common_empire_louvain_fob.png
-
-
-
+/assets/shared_bloc_reg_TA.png
+size: contain
+---
+/assets/shared_bloc_reg_atop_allie.png
+size: contain
+---
+/assets/shared_bloc_reg_mid_n.png
+size: contain
+---
+/assets/shared_bloc_reg_ln_distance.png
+size: contain
+---
+/assets/shared_bloc_reg_contig12.png
+size: contain
+---
+/assets/shared_bloc_reg_common_empire.png
+size: contain
 ---
 
-
-
-/assets/ln_dist_louvain_fob.png
-
-
-
+# IV. Effects of trade communities
 ---
-
-# V. Effects of trade communities
-
----
-
 ## Effects of trade communities (1)
+	Importance of the extensive margin (Helpman, Melitz & Rubinstein (2008), Hummels & Klenow (2005) and Felbermayr & Kohler (2006))
+	Basic model in the trade duration literature: Cox model with proportional hazard (Besedeš and Prusa (2006))
+	Method : cloglog. Said to be preferable to Cox model in discrete time (Hess and Persson (2012)
 
-	Importance of the extensive margin
-
-	Basic model in the trade duration litterature: Cox model with proportional hazard
-
-	Method : cloglog. Said to be preferable to Cox model in discrete time (but still proportional hazards)
-
-	Or even log (weakly proportional hazards) or probit?
+Or even log (weakly proportional hazards) or probit?
 
 “Proportional hazards” means that covariates multiply a shared baseline risk by a constant factor, so the ratio of risks between any two individuals never changes over time.
 
-	Besedeš, Tibor, and Thomas J. Prusa. 2006. “Product Differentiation and Duration of US Import Trade.” _Journal of International Economics_ 70 (2): 339–58.
+Besedeš, Tibor, and Thomas J. Prusa. 2006. “Product Differentiation and Duration of US Import Trade.” _Journal of International Economics_ 70 (2): 339–58.
 
-	Hess, Wolfgang, and Maria Persson. 2012. “The Duration of Trade Revisited: Continuous-Time versus Discrete-Time Hazards.” _Empirical Economics_ 43 (3): 1083–107.
-
----
-
-
-
-/assets/trade_actors_fob.png
-
+Hess, Wolfgang, and Maria Persson. 2012. “The Duration of Trade Revisited: Continuous-Time versus Discrete-Time Hazards.” _Empirical Economics_ 43 (3): 1083–107.
 
 
 ---
 
+/assets/trade_share_distribution.png
+size: contain
+
+We have an issue with the gravity model as it creates very small non-zero trade flows. So we probably want to cut off very small trade flows -- we choose one tenth of a billionth (c. 5k $ in 2025).
+Same question with failed splits
+---
 
 
-/assets/trade_flows_nbr_fob.png
+## Trading flows
+| Excluding ↓ / Including very small flows and failed splits → |         0 |         1 |      Total |
+| :----------------------------------------------------------- | --------: | --------: | ---------: |
+| **0**                                                        | 7,867,646 |   158,949 |  8,026,595 |
+| **1**                                                        |           | 2,613,141 |  2,613,141 |
+| **Total**                                                    | 7,867,646 | 2,772,090 | 10,639,736 |
+
+---
+## Trading pairs
+| Excluding ↓ / Including very small flows and failed splits → |      0 |       1 |   Total |
+| :----------------------------------------------------------- | -----: | ------: | ------: |
+| **0**                                                        | 89,212 |  89,235 | 178,447 |
+| **1**                                                        |        |  92,981 |  92,981 |
+| **Total**                                                    | 89,212 | 182,216 | 271,428 |
 
 
+---
+# Trading flows "at risk" (excluding second and subsequent trade observations)
+
+| Excluding  very small flows and failed splits |     Total |
+| :-------------------------------------------- | --------: |
+| **0**                                         | 6,387,135 |
+| **1**                                         |    86,158 |
+| **Total**                                     | 6,473,293 |
+
+| Including  very small flows and failed splits |     Total |
+| :-------------------------------------------- | --------: |
+| **0**                                         | 6,220,999 |
+| **1**                                         |    91,083 |
+| **Total**                                     | 6,312,082 |
+---
+## Time at risk
+	- Duration 1 : years of directed pair existence before first trade (not counting gaps)
+	- Duration 2 : time since appearance (counting gaps) 
+	- Duration 3 : time since appearance with zero (and/or very small) trade
 
 ---
 
 
-
-/assets/trade_flows_share_fob.png
-
-
-
----
-
-
-
-/assets/trade_share_distribution_fob.png
-
-
+/assets/ext_reg_cloglog_LouvainMaxtrade.png
+size: contain
+Duration dependence is mildly negative over the first three decades (hazard about 3% lower than in the first year) and turns positive for longer durations, although the latter is estimated on fewer observations.
 
 ---
 
-
-
-/assets/tradingobservations.png
-
-
-
----
-
-
-
-/assets/tradingpairs.png
-
-
-
----
-
-	- cloglog model
-	- Without small flows and failed splits
-	- *Duration 1* : years of directed pair existence before first trade
-	- (Duration 2 : time since appearance Duration 3 : time since imputedzero (or very small trade in the n_fs case)
-
----
-
-
-
-/assets/cloglogreg1.jpg
-
-
-
----
-
-
-
-/assets/logit%20dur1.png
-
-
+/assets/ext_reg_cloglog.png
+size: contain
+Membership in the same community raises the hazard of starting trade, by up to 33% for a pair that has always been together, but this advantage declines by about 0.9% for each additional year and disappears after about three decades
 
 ---
 

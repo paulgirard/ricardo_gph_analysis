@@ -284,7 +284,7 @@ end
 
 
 ************************
-global liste_var_ex TA ln_distance common_empire contig12 mid_n atop_allie 
+global liste_var_ex TA ln_distance common_empire contig12 mid_n atop_allie
 
 foreach var_ex of global liste_var_ex {
     capture postclose reg_result_`var_ex'

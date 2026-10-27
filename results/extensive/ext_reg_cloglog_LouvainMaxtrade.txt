@@ -1,13 +1,13 @@
-Community definition : LouvainMaxtrade (cloglog, year fixed effects)
+Community definition : LouvainMaxtrade (cloglog, year fixed effects) -- Hazard ratios
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                               |               Start trade (excluding very small flows and failed splits)                             Start trade (including very small flows and failed splits)             
                               |  Time since appearance with zero trade     Years of existence   Time since appearance   Time since appearance with zero trade     Years of existence   Time since appearance
                               |                        LouvainMaxtrade        LouvainMaxtrade         LouvainMaxtrade                         LouvainMaxtrade        LouvainMaxtrade         LouvainMaxtrade
 ------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Hazard (years)                |                              0.9976***              0.9986***               0.9961***                               0.9976***              0.9986***               0.9962***
+Duration (years)              |                              0.9976***              0.9986***               0.9961***                               0.9976***              0.9986***               0.9962***
                               |                       [0.9970, 0.9982]       [0.9979, 0.9994]        [0.9956, 0.9967]                        [0.9970, 0.9982]       [0.9978, 0.9993]        [0.9956, 0.9967]
                               |                                                                                                                                                                             
-Hazard²                       |                            1.000042***            1.000051***             1.000043***                             1.000041***            1.000048***             1.000043***
+Duration²                     |                            1.000042***            1.000051***             1.000043***                             1.000041***            1.000048***             1.000043***
                               |                   [1.000037, 1.000047]   [1.000045, 1.000057]    [1.000040, 1.000047]                    [1.000037, 1.000046]   [1.000042, 1.000054]    [1.000039, 1.000047]
                               |                                                                                                                                                                             
 Nb. years in same community   |                             0.99086***             0.98881***              0.99298***                              0.99067***             0.98922***              0.99272***
@@ -40,6 +40,5 @@ Pairs                         |                                161,646          
                               |                                                                                                                                                                             
 Log-likelihood                |                              -360752.8              -412705.3               -412667.2                               -371911.1              -427428.3               -427334.1
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-*** p<.01, ** p<.05, * p<.1
-95 % confidence intervals in brackets.
-dur3 = dur_n_fs for flag_trade_entry_n_fs ; dur3_incl_fs for flag_trade_entry_incl_fs.
+*** p<.01, ** p<.05, * p<.1 -- 95 % confidence intervals in brackets.
+
