@@ -51,14 +51,35 @@ replace log10_trade_share=-13 if log10_trade_share<=-13
 
 
 label variable log10_trade_share "Trade share (bilateral trade/total trade this year)"
-hist log10_trade_share, percent title("Trade share distribution") ///
+
+quietly summarize log10_trade_share, detail
+local q1 = r(p25)
+local q2 = r(p50)
+local q3 = r(p75)
+local q1s = string(`q1', "%4.2f")
+local q2s = string(`q2', "%4.2f")
+local q3s = string(`q3', "%4.2f")
+
+* Height of the tallest bar, to place the labels above it
+twoway__histogram_gen log10_trade_share, percent bin(50) gen(h_tmp x_tmp)
+quietly summarize h_tmp
+local ytop = r(max) * 1.2
+local y1   = `ytop'
+local y2   = `ytop' * 0.93
+local y3   = `ytop' * 0.86
+drop h_tmp x_tmp
+
+hist log10_trade_share, percent bin(50) title("Trade share distribution") ///
      xlabel(-13 `" "10{sup:-13}" "or less" "' -12 "10{sup:-12}" -11 "10{sup:-11}" -10 `""10{sup:-10}" "5040 USD" "in 2025" "' -9 "10{sup:-9}" -8 "10{sup:-8}" -7 "10{sup:-7}" ///
      -6 "10{sup:-6}" -5 "10{sup:-5}" -4 "10{sup:-4}" -3 "10{sup:-3}" -2 "0.01" -1 "0.1") ///
-     scheme(s2color)
-graph export "results/trade_share_distribution.png", replace
+     xline(`q1' `q2' `q3', lpattern(dash) lcolor(red) lwidth(medthin)) ///
+     yscale(range(0 `ytop')) ///
+     text(`y1' `q1' "Q1 = 10{sup:`q1s'}",     place(e) size(small) color(red)) ///
+     text(`y2' `q2' "Median = 10{sup:`q1s'}", place(e) size(small) color(red)) ///
+     text(`y3' `q3' "Q3 = 10{sup:`q3s'}",     place(e) size(small) color(red)) ///
+     scheme(s2color) graphregion(color(white))
 
-
-
+graph export "results/extensive/trade_share_distribution.png", replace
 
 ****looking at trading pairs
 preserve
@@ -188,8 +209,37 @@ table flag_trade_n_fs flag_trade_incl_fs if at_risk_n_fs ==1
 collect export "results/extensive/tradingobservations_at_risk_n_fs.txt", as(txt) replace 
 
 
+quietly summarize dur3_n_fs if flag_trade_entry_n_fs==1 & at_risk_n_fs==1, detail
+local q1 = r(p25)
+local q2 = r(p50)
+local q3 = r(p75)
+
+* Height of the tallest bar, to place the labels above it
+twoway__histogram_gen dur3_n_fs if flag_trade_entry_n_fs==1 & at_risk_n_fs==1, ///
+    fraction width(1) gen(h_tmp x_tmp)
+quietly summarize h_tmp
+local ytop = r(max) * 1
+local y1   = `ytop'
+local y2   = `ytop' * 0.93
+local y3   = `ytop' * 0.86
+drop h_tmp x_tmp
+
+hist dur3_n_fs if flag_trade_entry_n_fs==1 & at_risk_n_fs==1, ///
+    frac width(1) ///
+    xtitle("Duration (≠0) since entry (first zero or near-zero trade) at first trade") ///
+    xline(`q1' `q2' `q3', lpattern(dash) lcolor(red) lwidth(medthin)) ///
+    yscale(range(0 `ytop')) ///
+    text(`y1' `q1' "Q1 = `q1'",       place(e) size(small) color(red)) ///
+    text(`y2' `q2' "Median = `q2'",   place(e) size(small) color(red)) ///
+    text(`y3' `q3' "Q3 = `q3'",       place(e) size(small) color(red)) ///
+    graphregion(color(white))
+
+
+graph export "results/extensive/duration_1st_trade.png", replace
 
 save temp2.dta, replace
+
+use temp2.dta, clear
 
 
 
