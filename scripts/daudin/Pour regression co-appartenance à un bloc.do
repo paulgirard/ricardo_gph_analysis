@@ -112,37 +112,49 @@ foreach var_ex of global liste_var_ex {
 foreach var_ex of global liste_var_ex {
 
     use "results/bloc_study/shared_bloc_reg_`var_ex'.dta", clear
+    sort NetworkType year
     export delimited using "results/bloc_study/shared_bloc_reg_`var_ex'.csv", replace delimiter(",") quote
+
+
+
     replace coef=exp(coef)
     replace ci_low=exp(ci_low)
     replace ci_high=exp(ci_high)
     replace coef=. if ci_low==.
-    replace ci_high=5 if ci_high>5
-    replace ci_low=5 if ci_low>5
-    replace coef=5 if coef>5
+    replace ci_high=5 if ci_high>10
+    replace ci_low=5 if ci_low>10
+    replace coef=5 if coef>10
 
-* Okabe-Ito colorblind-safe palette (same as your previous graph)
-local c_tibi   "213 94 0"
-local c_louv   "230 159 0"
-local c_louvr  "204 121 167"
-local c_imax   "0 114 178"
-local c_an     "0 0 0"
+    egen id = group(NetworkType)
+    tsset id year
+    sort id year
+    tsfill
+    fillin NetworkType year
 
-* Vertical position for the annotation text
-quietly summ coef if year <= 2025
-local ymid = (r(max) + r(min)) / 2
 
-twoway ///
-    (connected coef year if NetworkType=="Tibi"               & year<=2025, cmissing(n) ///
-        lcolor("`c_tibi'")  mcolor("`c_tibi'")  msymbol(circle)   msize(small) lwidth(medthick) lpattern(dash)) ///
-    (connected coef year if NetworkType=="LouvainMaxtrade"    & year<=2025, cmissing(n) ///
-        lcolor("`c_louv'")  mcolor("`c_louv'")  msymbol(diamond)  msize(small) lwidth(medthick) lpattern(dash_dot)) ///
-    (connected coef year if NetworkType=="LouvainTibirescale" & year<=2025, cmissing(n) ///
-        lcolor("`c_louvr'") mcolor("`c_louvr'") msymbol(triangle) msize(small) lwidth(medthick)) ///
-    (connected coef year if NetworkType=="IntraMax"           & year<=2025, cmissing(n) ///
-        lcolor("`c_imax'")  mcolor("`c_imax'")  msymbol(square)   msize(small) lwidth(medthick)) ///
-    (connected coef year if NetworkType=="AN"                 & year<=2025, cmissing(n) ///
-        lcolor("`c_an'")    mcolor("`c_an'")    msymbol(X)        msize(small) lwidth(medthick)), ///
+
+    * Okabe-Ito colorblind-safe palette (same as your previous graph)
+    local c_tibi   "213 94 0"
+    local c_louv   "230 159 0"
+    local c_louvr  "204 121 167"
+    local c_imax   "0 114 178"
+    local c_an     "0 0 0"
+
+    * Vertical position for the annotation text
+    quietly summ coef if year <= 2025
+    local ymid = (r(max) + r(min)) / 2
+
+    twoway ///
+    (line coef year if NetworkType=="Tibi"               & year<=2025, cmissing(n) ///
+        lcolor("`c_tibi'")  lwidth(medthick) lpattern(dash)) ///
+    (line coef year if NetworkType=="LouvainMaxtrade"    & year<=2025, cmissing(n) ///
+        lcolor("`c_louv'")  lwidth(medthick) lpattern(dash_dot)) ///
+    (line coef year if NetworkType=="LouvainTibirescale" & year<=2025, cmissing(n) ///
+        lcolor("`c_louvr'") lwidth(medthick) lpattern(solid)) ///
+    (line coef year if NetworkType=="IntraMax"           & year<=2025, cmissing(n) ///
+        lcolor("`c_imax'")  lwidth(medthick) lpattern(longdash)) ///
+    (line coef year if NetworkType=="AN"                 & year<=2025, cmissing(n) ///
+        lcolor("`c_an'")    lwidth(medthick) lpattern(shortdash_dot)), ///
     yline(1, lpattern(shortdash) lcolor(gs8) lwidth(thin)) ///
     xline(1913.5 2014.5 2018.5, lpattern(dash) lcolor(gs12) lwidth(thin)) ///
     text(`ymid' 1913.5 "End of TA data",       place(w) orientation(vertical) size(small) color(gs6)) ///
@@ -153,14 +165,14 @@ twoway ///
     ylabel(, angle(0) labsize(small) grid glcolor(gs15)) ///
     title("Regression results `var_ex'") ///
     legend(order(1 "Louvain signed TIBI" 2 "Louvain trade" 3 "Louvain rescaled TIBI" ///
-                 4 "IntraMax" 5 "AN") rows(2) position(6) size(small) region(lcolor(none))) ///
+        4 "IntraMax" 5 "AN") rows(2) position(6) size(small) keygap(1) symxsize(10) region(lcolor(none))) ///
     scheme(s2color) graphregion(color(white)) plotregion(margin(small))
     
     graph export "results/bloc_study/shared_bloc_reg_`var_ex'.png", replace
 
 
-
-  
+    
+    display `"liste_network = [$liste_network]"'
     foreach NetworkType of global liste_network {
         preserve
         keep if NetworkType=="`NetworkType'"
@@ -168,17 +180,17 @@ twoway ///
         tsfill, full
 
         drop if year >= 2026
-    twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
-           (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
-            (connected r2p year , yaxis(2) cmissing(n)), ///
-            yline(1, lpattern(dash) lcolor(red)) ///
-            xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
-            xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
-            xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
-            xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
-            xscale(range(1830 2025)) xlabel(1830(20)2010 2025, labsize(small)) ///
-            title("`NetworkType' Regression results `var_ex'") ///
-            legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6))
+        twoway (rarea ci_low ci_high year , lcolor(gs8) cmissing(n)) ///
+            (connected coef year , mcolor(navy) lcolor(navy) msymbol(circle) cmissing(n)) ///
+                (connected r2p year , yaxis(2) cmissing(n)), ///
+                yline(1, lpattern(dash) lcolor(red)) ///
+                xline(1913.5, lpattern(dash) lcolor(blue)) text(1 1913.5 "end of TA data", place(e) orientation(vertical)) ///
+                xline(2014.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of dispute data", place(w) orientation(vertical)) ///
+                xline(2018.5, lpattern(dash) lcolor(blue)) text(1 2014.5 "end of alliance data", place(e) orientation(vertical)) ///
+                xtitle("Year") ytitle("",axis(1) ) ytitle( "",axis(2)) ///
+                xscale(range(1830 2025)) xlabel(1830(20)2010 2025, labsize(small)) ///
+                title("`NetworkType' Regression results `var_ex'") ///
+                legend(order(2 "Odds Ratio of `var_ex' (left)" 3 "Incremental Pseudo R2 (right)") position(6) rows(1))
 
     graph export "results/bloc_study/shared_bloc_reg_`var_ex'_`NetworkType'.png", replace
     restore
