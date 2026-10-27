@@ -15,6 +15,7 @@ Do not forget to introduce co-authors
 # Introduction
 ## Caveat emptor
 This is a work in progress. We are still in the garden of forking paths.
+I would not mind impressing you, but more realistically I am here to share and learn.
 ## What do we call trade communities?
 Trade blocs, trade regions... groups of countries that trade more with one another than with the rest of the world according to some metric
 
@@ -735,7 +736,7 @@ size: contain
 size: contain
 
 
-If we believe these classifications: decline of the importance of regionalisation till the 1890s, stability till WWI, then increase till WWII. Decline since WWII, with not much happening since.
+If we believe these classifications: decline of the importance of trade communities till the 1890s, stability till WWI, then increase till WWII. Decline since WWII, with not much happening since.
 
 ---
 
@@ -785,6 +786,56 @@ size: contain
 /assets/shared_bloc_reg_common_empire.png
 size: contain
 ---
+
+/assets/shared_bloc_reg_TA_LouvainMaxtrade.png
+size: contain
+
+
+/assets/shared_bloc_reg_atop_allie_LouvainMaxtrade.png
+size: contain
+
+
+/assets/shared_bloc_reg_mid_n_LouvainMaxtrade.png
+size: contain
+
+
+/assets/shared_bloc_reg_contig12_LouvainMaxtrade.png
+size: contain
+
+
+/assets/shared_bloc_reg_common_empire_LouvainMaxtrade.png
+size: contain
+
+
+/assets/shared_bloc_reg_ln_distance_LouvainMaxtrade.png
+size: contain
+---
+/assets/shared_bloc_reg_TA_LouvainMaxtrade.png
+size: contain
+
+---
+/assets/shared_bloc_reg_atop_allie_LouvainMaxtrade.png
+size: contain
+
+---
+/assets/shared_bloc_reg_mid_n_LouvainMaxtrade.png
+size: contain
+
+---
+/assets/shared_bloc_reg_contig12_LouvainMaxtrade.png
+size: contain
+
+---
+/assets/shared_bloc_reg_common_empire_LouvainMaxtrade.png
+size: contain
+
+---
+/assets/shared_bloc_reg_ln_distance_LouvainMaxtrade.png
+size: contain
+
+
+---
+
 
 # IV. Effects of trade communities
 ---
@@ -850,6 +901,12 @@ Same question with failed splits
 
 ---
 
+/assets/duration_1st_trade.png
+Some pairs stay at risk a long time !
+
+---
+
+
 
 /assets/ext_reg_cloglog_LouvainMaxtrade.png
 size: contain
@@ -864,185 +921,34 @@ Membership in the same community raises the hazard of starting trade, by up to 3
 ---
 
 
-
-/assets/probit%20dur1.png
-
-
-
----
-
-
-
-/assets/xtlogit%20dur1.jpg
-
-
-
----
-
 # Conclusion
+## Outline
+	1. Data
+	2. Identifying trade communities
+	3. Finding the determinants of trade communities
+	4. Finding the effect of trade communities
+
 
 ---
 
-## Conclusion (1)
-
----
-### Outline
-
-	1. Building the two necessary databases
-	2. Building yearly coherent bilateral trade matrices
-	3. Identifying trade communities
-	4. Finding the determinants of trade communities
-	5. Finding the effects of trade communities
-
----
 ### Tentative findings
+	1. Chronology of the importance of trade communities
+Decline of the importance of trade communities till the 1890s, stability till WWI, then increase till WWII. Decline since WWII, with not much happening since.
+No sign of them being "building blocs"
+	2. They are not pure artefacts
+They play a causal role in the formation of new trade links, 
 
-	1. The importance of trade communities has been stable pre-1913 and post-1945, The strong decline in the inter-war period has never been recovered. Source effect?
-	2. But trade bloc correlates have changed
----
-		- Empires were important when the existed
-		- Alliances have become very important post-45 (except 1970s-1980s)
-		- The effect of distance has been increasing continuously since the 1850s
-	3. Trade communities are indeed important as a determinant of trade link formation
-
----
-
-# Conclusion (2)
 
 ---
 ## Pat on the back
-
-	Interdisciplinary work between history, economics and network science
-
+Interdisciplinary work between history, economics and network science
+## Much yet to be done
+1. More primary sources on trade statistics -- paradoxically, mainly for post-45
+2. Improve the classification algorithm:
+a) Optimise signed Louvain
+b) Take ambiguity in Louvain into account
+3. Explore non-linearity
 ---
-## Improvements?
-
----
-	- More primary sources on trade statistics (and a poney)
-	- Change the proximity measure (TIBI would solve range variability, range asymmetry, dynamic ambiguity)
-	- Distinguish unknown but non-zero trade flows and zero trade flows
-	- Take ambiguity in Louvain into account
-	- Progress on bloc determinants: at least, we need a trade agreement database
-
-// One day we take that into account
-
----
-
-# Any questions?
-
-	_Slides:_ https://paulgirard.github.io/ricardo_gph_analysis/LEDa_2026/ (?)
-
-	_Code & Data:_ https://github.com/paulgirard/ricardo_gph_analysis
-
-	_Sources:_
-
----
-	- RICardo: https://ricardo.medialab.sciences-po.fr
+	- RICardo:  [https://ricardo.medialab.sciences-po.fr]
 	- GeoPolHist: https://medialab.github.io/GeoPolHist
-
----
-
-# Additional slides
-
----
-
-// Je suis embetté par l’utilisation de Jacomy et al., parce qu’il porte essentiellement sur l’ambiguïté et sa représentation et que ce n’est pas notre sujet. Sauf si... On pourrait considérer que les nodes au positionnement ambigu sont des singletons?
-
-	Jacomy, Mathieu, et al. « Cluster Ambiguity in Networks as Substantive Knowledge ». _Computational Humanities Research 2025_, édité par Taylor Arnold et al., Anthology of Computers and the Humanities, 2025, p. 119‑30. _anthology.ach.org_, [https://doi.org/10.63744/f3L9hsFcGqVc](https://doi.org/10.63744/f3L9hsFcGqVc).
-
----
-
-# RICentities types
-
-| **RIC type** | **Reporting % value** | **Reporting % flows** | **Partner % value** | **Partner % flows** |
-|:-:|:-:|:-:|:-:|:-:|
-| GPH entity | 97.3 | 95.6 | 87.2 | 81.2 |
-| Locality | 0.6 | 2.5 | 4.6 | 6.5 |
-| Group | 2.4 | 1.8 | 6.5 | 5.1 |
-| Colonial area | 0.0 | 0.1 | 1.4 | 5.0 |
-| Geographical area | - | - | 0.4 | 2.2 |
-
----
-
-## Polity definition
-
-	A very extensive definition.\
-	Sufficient political autonomy to have its own trade statistics.\
-	Every political status in GeoPolHist but `part of`.
-
-	Sovereign\
-	Associated state of\
-	Sovereign (limited)\
-	Sovereign (unrecognized)\
-	Colony of\
-	Dependency of\
-	Possession of\
-	Protectorate of
-
-	Leased to\
-	Mandated to\
-	Occupied by\
-	Vassal of\
-	Claimed by\
-	Neutral or demilitarized zone of
-
-Definitions are available on the paper and website
-
-// Il faudrait réfléchir à cette définition "handle trade" ne veut pas dire grand chose. La définition actuelle n’est pas extraordinaire non plus : "Occupied by" n’a pas beaucoup d’autonomie politique GD
-// oui, est ce que la définition n'est pas plutôt la négation de ça a été dissout, i.e. tout ce qui n'est pas part of
-
----
-
-
-
-/assets/carte_blocs_1850.png
-
-
-
----
-
-# Regionalisation and globalisation
-
-	TIBI is a measure of bilateral trade intensity that solves:
-
----
-
-
-
-/assets/mid_n_intramax_fob.png
-
-
-
----
-
-
-
-/assets/contig12_intramax_fob.png
-
-
-
----
-
-
-
-/assets/atop_allie_intramax_fob.png
-
-
-
----
-
-
-
-/assets/common_empire_intramax_fob.png
-
-
-
----
-
-
-
-/assets/ln_dist_intramax_fob.png
-
-
-
 
