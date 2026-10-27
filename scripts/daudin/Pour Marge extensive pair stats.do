@@ -11,7 +11,7 @@ global model  cloglog
 cd "/Users/guillaumedaudin/Répertoires Git/ricardo_gph_analysis"
 global dirGeoPolHist "/Users/guillaumedaudin/Répertoires Git/GeoPolHist"
 
-global classification_types Tibi LouvainMaxtrade LouvainTibirescale IntraMax AN
+global classification_types LouvainMaxtrade IntraMax Tibi  LouvainTibirescale  AN
 
 ****************** Exploration des données
 
@@ -350,8 +350,8 @@ foreach classification of global classification_types {
 
     * Libellés des lignes
     collect label levels colname ///
-        dur         "Hazard (years)" ///
-        dur_sq        "Hazard²" ///
+        dur         "Duration (years)" ///
+        dur_sq        "Duration²" ///
         nbr_c         "Nb. years in same community" ///
         share_c       "Share years in same community" ///
         ln_dist       "Ln(distance)" ///
