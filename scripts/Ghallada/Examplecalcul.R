@@ -107,7 +107,9 @@ prox_tibi <- grille %>%
   mutate(
     # --- Balassa / Poon : observe rapporte a l attendu ---
     Xprime = Xi * Xj / X_tot,
-    I0     = Xij / Xprime,
+    Poon1 = Xij-Xprime,
+    Poon2= (Xij-Xprime)/Xi,
+    REI     = Xij / Xprime,
     
     # --- I1 : part de i vers j, rapportee a la meme part du reste du monde ---
     s1 = Xij / Xi,
@@ -133,7 +135,9 @@ prox_tibi$TIBI[prox_tibi$Xi > 0 & prox_tibi$Xij == prox_tibi$Xi] <- 1
 prox_tibi$TIBI[prox_tibi$Xi > 0 & prox_tibi$Xij == 0] <- -1
 
 cat("\n=== B1. Une ligne par paire orientee ===\n")
-cat("  I0   : Xij / (Xi x Xj / X), l indice de Balassa\n")
+cat("  Poon1   :Xij-Xprime, Intramax absolu\n")
+cat("  Poon2   :(Xij-Xprime)/Xi, Intramax relatif\n")
+cat("  REI   : Xij / (Xi x Xj / X), l indice du CEPII\n")
 cat("  s1   : part des exports de i allant vers j\n")
 cat("  s2   : la meme part, pour le reste du monde\n")
 cat("  I1   : s1 / s2, corrige la variabilite de l intervalle\n")
