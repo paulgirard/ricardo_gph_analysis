@@ -914,6 +914,9 @@ print(GPH_status_over_time[, 1:6])
 write.csv(GPH_status_over_time,
           "GPH_status_over_timenew.csv", row.names = FALSE)
 
+
+
+
 library(dplyr); library(tidyr)
 
 
@@ -967,3 +970,45 @@ tableau <- bind_rows(
 print(as.data.frame(tableau))
 
 write.csv(tableau, "Table entity type by role.csv", row.names = FALSE)
+
+
+###les RIC entities par continent et par type
+# ---- une ligne par entite-role, avec son type et son continent ----
+rep_ent <- RICardocleannoworld %>%
+  distinct(entity = reporting, type = reporting_type, continent = reporting_continent) %>%
+  mutate(role = "Reporting (all)")
+
+par_ent <- RICardocleannoworld %>%
+  distinct(entity = partner, type = partner_type, continent = partner_continent) %>%
+  mutate(type = ifelse(type == "" | is.na(type), "unknown", type),
+         role = "Partner (all)")
+
+ent2 <- bind_rows(rep_ent, par_ent)
+
+# ---- controles ----
+cat("continents rencontres :", paste(sort(unique(ent2$continent)), collapse = ", "), "\n")
+cat("types rencontres      :", paste(sort(unique(ent2$type)), collapse = ", "), "\n")
+
+# ---- le tableau ----
+exclus <- c("World", "Antarctic", "Arctic", "Atlantic", "Pacific", "")
+
+libelles_type <- c(GPH_entity        = "GPH entity",
+                   locality          = "Locality",
+                   group             = "Group",
+                   colonial_area     = "Colonial area",
+                   geographical_area = "Geographical area")
+
+ttab_cont <- ent2 %>%
+  filter(!continent %in% exclus, !is.na(continent)) %>%
+  mutate(type = factor(libelles_type[type], levels = libelles_type),
+         role = factor(role, levels = c("Reporting (all)", "Partner (all)"))) %>%
+  filter(!is.na(type)) %>%
+  dplyr::count(continent, role, type) %>%
+  arrange(role, type) %>%
+  pivot_wider(names_from = c(role, type), values_from = n,
+              values_fill = 0, names_sep = " / ") %>%
+  arrange(continent)
+
+print(as.data.frame(ttab_cont))
+
+write.csv(tab_cont, "Table entity type by continent and role.csv", row.names = FALSE)
