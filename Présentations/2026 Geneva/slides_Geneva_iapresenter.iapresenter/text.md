@@ -10,6 +10,10 @@
 	**Geneva Trade and Development Workshop, Octobre 27th, 2026**
 
 Do not forget to introduce co-authors
+Economic Historian
+Post-doc in economic history
+Now entrepreneur, formerly technical director of Médialab at SciencesPo. Our data scientist
+
 ---
 
 # Introduction
@@ -18,46 +22,60 @@ This is a work in progress. We are still in the garden of forking paths.
 I would not mind impressing you, but more realistically I am here to share and learn.
 ## What do we call trade communities?
 Trade blocs, trade regions... groups of countries that trade more with one another than with the rest of the world according to some metric
+## Why are we interested?
 
 ---
 ## Trade communities play a role in world trade
-	Gopinath et al. (2025), Bonadio et al. (2026), Anderson and Norheim (1993)
+	Gopinath et al. (2025), Bonadio et al. (2026), Bhagwati (1991...), Anderson and Norheim (1993),
 https://doi.org/10.1016/j.jinteco.2024.104042 ; Gopinath, Gita, et al. "Changing global linkages: A new Cold War?." Journal of International Economics 153 (2025): 104042.
 
 https://doi.org/10.1016/j.jinteco.2025.104204 ; Bonadio, Barthélémy, et al. "Playing with blocs: Quantifying decoupling." Journal of International Economics (2026): 104204.
 
 
-Current rising international tensions have increased the interest for securing supply chains through trade fragmentation by geopolitical lines. Studies show the rise of friend-shoring, near-shoring and decoupling by trading more with geopolitical friends. 
+Current rising international tensions have increased the interest for securing supply chains through trade fragmentation by geopolitical lines. Studies show the rise of friend-shoring, near-shoring and decoupling by trading more with geopolitical friends, as in these two recent Journal of International Economics papers
+This is probably bad for global trade. 
 
-This is probably bad for global trade. It does not need to be so. Anderson and Norheim in an old paper (1993) even show that generally, regionalisation and globalisation are positively correlated. And the story of "hyperglobalisation" from the 1980s to the 2000s, around the rise of the European Union, NAFTA, and Factory Asia can lead to a positive view of the formation of trade blocs. The 1930s, with decoupling between trade blocs organised around formal and informal empires, gives less reason for optimism. 
 
-Bhagwati-style “building blocs or stumbling blocs”
+Bhagwati asked whether regional trade blocs were “building blocs or stumbling blocs”
+It does not need to be so. Anderson and Norheim in an old paper (1993) even show that generally, regionalisation and globalisation are positively correlated.
 
-We look at this phenomenon, with historical depth, which allows to show if the current period is unusual.
+And the story of "hyperglobalisation" from the 1980s to the 2000s, around the rise of the European Union, NAFTA, and Factory Asia can lead to a positive view of the formation of trade blocs.
+Still, in the 1930s, with decoupling between trade blocs organised around formal and informal empires, gives less reason for optimism. 
+
+We look at this phenomenon with historical depth, which allows to show if the current period is unusual.
 
 
 ---
 ## We look for trade communities with network science
 	Fagiolo et al. (2010) De Benedictis & Tajoli (2011), Piccardi & Tajoli (2012), Iapadre & Tajoli (2014)
 
-We do not pre-impose trade blocs
-
-It is not only that countries trade with friends. It is also that you want to become friends with the countries you trade with. So trade communities arising from the ground are interesting to study. 
-
 Blocs might arise from reasons that are not linked to geopolitical tensions, and the contrast between different periods is interesting.
+
+It is not only that countries trade with friends. It is also that you want to become friends with the countries you trade with. So trade communities arising from the bottom up, ie trade relations, are interesting to study. 
+
 In the early 1990s, it was not obvious with whom Eastern Europe would trade more. You could argue that trade created the community rather than the reverse. 
+
+We do not pre-impose trade blocs using network science. There is a small literature on that subject, but it has not really become mainstream.
+
+We want to "break into the mainstream" by adding another step
 
 ---
 ## Trade communities have economic consequences.
-	Lesger (2006), Miller (2012), Rauch (1999, 2001), Rauch & Trindade (2002), Combes, Lafourcade & Mayer (2005), Chaney (2014)
+	Lesger (2006), Greif (1993), Miller (2012), Rauch (1999, 2001), Rauch & Trindade (2002), Combes, Lafourcade & Mayer (2005), Chaney (2014)
 
-But then you have an issue. The creation of trade communities is important because it has consequences for trade. It might encourage more trade, but of course that relationship is deeply endogenous to the creation of communities. 
+T
+
+The creation of trade communities is important because it has consequences for trade, in that it might encourage more trade.
+
+But then you have an issue, because of course that relationship is deeply endogenous to the creation of communities. 
+
 Except for the extensive margin.
 Look at the story of Amsterdam in the 16th and 17th centuries (Lesger 2006). From an actual entrepôt for goods to an information entrepôt that encouraged the formation of direct links between the Baltic and Western Europe for naval stores, grain, and various raw materials.
 We argue this happened because of the creation of trade communities of people. 
 Ethnic work, eg. Greif’s work on the Maghribi traders of the 10th-11th century
-Double entendre 
-European expansion created intercontinental networks of business and administrative people that encouraged the formation of trade 
+Double entendre in 
+Miller on the 20th European expansion created intercontinental networks of business and administrative people with shared overseas experience that encouraged trade 
+
 Shared business and financial networks give access to shared information through intermediaries.
 
 
@@ -78,14 +96,14 @@ Shared business and financial networks give access to shared information through
 ---
 
 # Data (1)
-## Besides well known IMF data from 1948
-
-## A database of bilateral world trade 1833-1938
+## Well known IMF data from 1948
+## A database of bilateral world trade 1833-1938 (Girard et al. (2016))
 	RICardo project since 2004. 690,000 trade flows
 	https://ricardo.medialab.sciences-po.fr/
 
 All started with the discovery of the "Annales du Commerce Extérieur", an annual French source from the 1830s that reported bilateral trade statistics from numerous foreign countries
-	Girard, Paul, et al. « **RICardo Project : Exploring XIX Century International Trade** ». _Digital Humanities 2016: Conference Abstracts_ [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
+
+Girard, Paul, et al. « **RICardo Project : Exploring XIX Century International Trade** ». _Digital Humanities 2016: Conference Abstracts_ [Agiellonian University & Pedagogical University, Kraków, Poland], 2016, p. 208‑10, http://dh2016.adho.org/abstracts/177.
 
 ---
 
@@ -104,14 +122,13 @@ size: contain
 
 ## Issue with the sources: Heterogeneity of trade entities in trade archives
 	_Tableau général du commerce avec les pays étrangers_ (Belgique, 1850)\
-	Missing from the picture:\
-	Cuba et Porto-Rico\
-	Possessions anglaises
+Missing from the picture:\
+Cuba et Porto-Rico\
+Possessions anglaises
 
 ---
 
-# Data (3)
-	Trying to be faithful to the sources
+# Data (3) : Trying to be faithful to the sources
 /assets/faithful_source_ricardo_tradehist.png
 size: contain
 
@@ -119,8 +136,8 @@ Les Îles Ioniennes sont un protectorat britannique jusqu’aux années 1860
 
 ---
 
-# Data (4)
-## Standardization of names (including translation): From c. 10,000 names to c. 2.500 names (COW : 1,200)
+# Data (4) Standardization of names (including translation)
+	From c. 10,000 names to c. 2.500 names (COW : 1,200)
 | **COW code** | **COW name** | **ISO code** | **ISO name** |
 |:-:|--|:-:|:-:|
 | 7501 | Andaman and Nicobar Is. | - | - |
@@ -137,10 +154,10 @@ Les Îles Ioniennes sont un protectorat britannique jusqu’aux années 1860
 ---
 
 # Data (5)
-## There are very different geopolitical denominations in the sources
+## There are very trading actors in the sources
 |   **RIC type**    | **All entities** | **Reporting** | **Partner** | **Examples**                                          |
 | :---------------: | :--------------: | :-----------: | :---------: | :---------------------------------------------------- |
-|   Trade actors    |   530 (22.7%)    |      286      |     483     | Bulgaria, Gambia, Singapore, Queensland…              |
+|      Polity       |   530 (22.7%)    |      286      |     483     | Bulgaria, Gambia, Singapore, Queensland…              |
 |     Locality      |   707 (30.2%)    |      120      |     571     | Asian Russia, Bahia, France (Atlantic Coast)…         |
 |       Group       |   860 (36.8%)    |      37       |     797     | Altona & Holstein, Trinidad & United Kingdom…         |
 |   Colonial area   |    130 (5.6%)    |       0       |     120     | British Africa, Portuguese Asia, Spanish West Indies… |
@@ -151,10 +168,10 @@ To identify "British Africa" we need to know what are the British African coloni
 ---
 
 # Data (6)
-## A database of geopolitical entities of the world since 1816
+## A database of geopolitical entities of the world since 1816 (Dedinger & Girard (2021) 
 	GeoPolHist https://medialab.github.io/GeoPolHist/#/GeoPolHist/
 
-	Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
+Dedinger, Béatrice, and Paul Girard, **‘How Many Countries in the World? The Geopolitical Entities of the World and Their Political Status from 1816 to the Present’**, _Historical Methods: A Journal of Quantitative and Interdisciplinary History_, 54.4 (2021), 208–227 <https://doi.org/10.1080/01615440.2021.1939826>
 
 ---
 # Data (7)
@@ -196,7 +213,7 @@ For each entity, we list their political status along with time and their links 
 ---
 
 # Data (8)
-## To build coherent bilateral trade matrices, one needs to reduce trading entities heterogeneity thanks to GeoPolHist data
+## To build coherent bilateral trade matrices, one needs to reduce trading actors heterogeneity thanks to GeoPolHist data
 	1. identify non-polities, groups... informal entities.
 	2. aggregate non-polities entities (localities, part-of...) to their polities.
 	3. split trade of groups, geographical and colonial areas
@@ -207,7 +224,7 @@ For each entity, we list their political status along with time and their links 
 ## Method: Multilayer networks combining trade and politics
 Build yearly networks that combine:
 trade flow edges from **RICardo** dataset
-geopolitical resolutions edges mainly from **GeoPolHist** dataset (« localities » , eg Bilabo, come from **RICardo**)
+geopolitical resolutions edges mainly from **GeoPolHist** dataset (« localities » , eg Bilbao, come from **RICardo**)
 
 Our proposal is to merge those two dataset RICardo for trade, GeoPolHist into one multilayer network.
 
@@ -257,90 +274,9 @@ Bilateral trade data model
 size: contain
 
 
-Note that we have trade between reporters but also between reporter and partners, i.e. entity citing in sources but for which we don't have extensive source
-
-Add Geopolitical resolution edges
-
-From RICardo:
+Note that we have trade between reporters but also between reporter and partners, i.e. entity mentioned in sources but for which we don't have a "own" source. They can be approached through mirror flows
 
 
-cypher
-(Locality)-[:AGGREGATE_INTO]->(parent entity)
-(Group)-[:SPLIT_INTO]->(members)
-
-
-From additional data edited for this paper:
-
-
-cypher
-(Geographical Area)-[:SPLIT_INTO]->(members)
-(Informal)-[:SPLIT_INTO]->(members)
-
-
-From GeoPolHist:
-
-cypher
-(`Part of` GPH entity)-[:AGGREGATE_INTO]->(sovereign)
-(Colonial Area)-[:SPLIT_INTO]->(colonies)
-
-
-For colonial area we combine geographical area data table with GPH data.
-
-// Quid des « other » ? GD
-// Ce sont des locality RICardo
-
-
-
-
-
-===/assets/multilayer_data_model_1.png
-size: contain
-
-
-
-
-
-
-===/assets/multilayer_data_model_2.png
-size: contain
-
-
-
-===/assets/multilayer_data_model_3.ain
-
-
-
-
-
-Polity resolution
-
-For each non-polity entity (source: GPH + Ricardo localities), we traverse resolution edges until finding an polity.
-
-This method allows to traverse multiple non-polity entities until finding the good one like a group containing a part of:
-
-cypher
-(D)<-[:SPLIT]-(D & part of A)-[:SPLIT]->(part of A)-[:AGGREGATE_INTO]->(A)
-
-
-Polities of **D & part of A** are **D** and **A**.
-
-// Je ne comprends pas ce que les groupes ont à voir là dedans. Si c’est un part of ou une locality, ce n’est jamais un group ? Ou bien est-ce que c’est pour le cas où les part of/localities font partie d’un groupe ? GD
-// Je ne comprends pas ce que tu ne comprends pas. On suit tous les liens de résolutions qq soit la raison pour laquelle on a créé le lien. J'ajoute un schéma symbolique PG
-
-Trade reporters aggregation/split
-
-Reporters needs to be treated before the partners as areas desagregations needs a stable reporter scope.
-
-Moreover we need to treat cases of reporters overlaps. It happens that a set of reporters report part of the same trade from different perspectives.
-
-PS: we don't split reporters trade at this step, we prepare the work for the gravity model
-
-Trade partner aggregation
-
-Simple task: sum the trade figure to build the new trade edge.
-
-PS #1: do not overwrite an existing reported trade flow\
-PS #2: do not create internal trade flows, discard trade flows between part of and its parent
 
 ---
 # Trade partner splits with year ratio method
@@ -366,7 +302,7 @@ we remove those that would not be part of the trade network otherwise (not direc
 # Trade partner/reporter splits with gravity model method
 	We try to impute flows we couldn't split with the adjacent years method by using a ppml gravity model (Anderson et Van Wincoop (2003), Santos Silva & Tenreyro (2006)).
 	We do this cross-section. Very far from a balanced panel
-We use fixed effects on importer and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables (to be extended).
+We use fixed effects on importers and exporters, geographical distance, geopolitical link existence (GeoPolHist) variables (to be extended).
 The inferred values are used to compute a ratio which is then applied on the original values.
 Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to the Border Puzzle ». _American Economic Review_, vol. 93, no 1, February 2003, p. 170‑92. DOI.org (Crossref), [https://doi.org/10.1257/000282803321455214](https://doi.org/10.1257/000282803321455214).
 
@@ -374,6 +310,7 @@ Anderson, James E., et Eric Van Wincoop. « Gravity with Gravitas: A Solution to
 ---
 # Data (11)
 ## Control variables
+	- Country x direction fixed effects
 	- distance (Centroids from Wikidata, not time varying)
 	- contiguity (Correlates of War + our own work)
 	- common empire (GeoPolHist up to 2022)
@@ -490,16 +427,19 @@ The effect on the number of trade flows is much larger than on the value of trad
 
 
 /assets/trade_actors.png
+size: contain
 
 ---
 
 
 /assets/trade_flows_nbr.png
+size: contain
 
 
 ---
 
 /assets/trade_flows_share.png
+size: contain
 
 
 ---
@@ -509,8 +449,8 @@ The effect on the number of trade flows is much larger than on the value of trad
 ---
 
 # Identifying trade communities (1)
-	> « The problem of community detection requires the partition of a network into communities of densely connected nodes, with the nodes belonging to different communities being only sparsely connected »
-## Trade studies: Either exogenous, or ad hoc method, such as IntraMax
+	> « The problem of community detection requires the partition of a network into communities of densely connected nodes, with the nodes belonging to different communities being only sparsely connected » Blondel et al. (2008)
+## Trade studies: Either exogenous, sometimes endogenous, such as IntraMax
 	Poon (1997)
 Poon, Jessie P. ‘The Cosmopolitanization of Trade Regions: Global Trends and Implications, 1965-1990’. _Economic Geography_, vol. 73, no. 4, 1997, pp. 390–404. [https://doi.org/10.2307/144560](https://doi.org/10.2307/144560).
 ## Network community has worked a lot on the subject
@@ -556,8 +496,8 @@ It also leads to fixity over time. The relevant bloc might actually change throu
 
 # Identifying trade communities (3)
 ## Two issues:
-	1. What is the algorithm that creates the communities
-	2. What is the weight/proximity mesure to use?
+	1. What is the algorithm?
+	2. What is the weight/proximity mesure?
 ---
 # Identifying trade communities (4)
 # Algorithms
@@ -566,7 +506,7 @@ It also leads to fixity over time. The relevant bloc might actually change throu
 	2. Regroup the closest pair
 	3. Repeat till the regrouping increases internal trade in the group by more than 10% of world trade
 ## Louvain algorithm:
-	Louvain adds a global measure grouping quality "modularity" (Newman (2006)
+	Louvain adds a global measure grouping quality "modularity" (Newman (2006))
 	$$Q=\frac{1}{2m}.\sum_{i,j}\left({A_{i,j}}.\frac{k_i.k_j}{2m}.\delta(c_i,c_j)\right)$$
 	$$Q \in[-0.5,1]$$
 	Which is the ratio between the weight of links inside groups compared to random links 
@@ -580,7 +520,9 @@ M. E. J. Newman, « Modularity and community structure in networks », _Proc. Na
 ---
 /assets/Louvain_algorithm.png
 size: contain
-	Blondel et al.
+	Basic: Blondel et al. (2008)
+	Ambiguity: Jacomy et al. (2025)
+	Signed Louvain: Pougué-Biyong and Lambiotte (2024)
 
 
 1. All polities are put in their own bloc
@@ -589,6 +531,8 @@ size: contain
 4. The result depends on the order in which polities are examined. We run it multiple time and aggregate the results.
 
 Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, and Etienne Lefebvre. 2008. “Fast Unfolding of Communities in Large Networks.” _Journal of Statistical Mechanics: Theory and Experiment_ 2008 (10): P10008.
+
+Pougué-Biyong, John N., and Renaud Lambiotte. "SignedLouvain: Louvain for signed networks." arXiv preprint arXiv:2407.19288 (2024).
 
 
 ---
@@ -633,7 +577,7 @@ The range is not symmetric around neutrality. I1 ranges from 0 to 1 if trade is 
 ## Solving dynamic ambiguity
 A change in the index might be in the same direction as the change in the complementary index measuring the intensity of trade between region i and all non-j regions.
 	Solution: $TIBI_{ij}=(I¹_{ij}/I³_{ij}-1)/(I¹_{ij}/I³_{ij}+1) \in[-1,1]$
-	Where: $I³=(1-(X_{ij}/X_{i.}))/(1-(X_{rj}/X))\in[-1,1]$
+	Where: $I³=(1-(X_{ij}/X_{i.}))/(1-(X_{rj}/X))$
 
 
 Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Produces for Whom in the World Economy?” _Canadian Journal of Economics/Revue Canadienne d’économique_ 44 (4): 1403–37. https://doi.org/10.1111/j.1540-5982.2011.01679.x.
