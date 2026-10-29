@@ -1011,4 +1011,35 @@ ttab_cont <- ent2 %>%
 
 print(as.data.frame(ttab_cont))
 
-write.csv(tab_cont, "Table entity type by continent and role.csv", row.names = FALSE)
+write.csv(ttab_cont, "Table entity type by continent and role.csv", row.names = FALSE)
+
+
+### Reporting and partner all by continent
+exclus <- c("World", "Antarctic", "Arctic", "Atlantic", "Pacific", "")
+
+# ---- Reporting (all), type GPH_entity ----
+tab_rep_gph <- RICardocleannoworld %>%
+  filter(reporting_type == "GPH_entity",
+         !reporting_continent %in% exclus, !is.na(reporting_continent)) %>%
+  distinct(year, continent = reporting_continent, entity = reporting) %>%
+  dplyr::count(continent, year) %>%
+  arrange(year) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  arrange(continent)
+
+print(as.data.frame(tab_rep_gph[, 1:10]))
+
+# ---- Partner (all), type GPH_entity ----
+tab_par_gph <- RICardocleannoworld %>%
+  filter(partner_type == "GPH_entity",
+         !partner_continent %in% exclus, !is.na(partner_continent)) %>%
+  distinct(year, continent = partner_continent, entity = partner) %>%
+  dplyr::count(continent, year) %>%
+  arrange(year) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  arrange(continent)
+
+print(as.data.frame(tab_par_gph[, 1:10]))
+
+write.csv(tab_rep_gph, "Table GPH reporting(all) by continent and year.csv", row.names = FALSE)
+write.csv(tab_par_gph, "Table GPH partner(all) by continent and year.csv", row.names = FALSE)
