@@ -820,21 +820,226 @@ ggsave("Fig Distribution of GeoPolHist entities (by continent).png",
 
 write.csv(plot_datagph,"Geopolhistbycontinent.csv", row.names = FALSE)
 
+library(dplyr); library(tidyr)
 
-GPH_status_over_time <- GeoPolHist_entities_status_over_time %>%
+# ---- Etape 1 : nettoyer les annees ----
+e1 <- GeoPolHist_entities_status_over_time %>%
   filter(start_year != "?", end_year != "?") %>%
   mutate(start_year = as.integer(start_year),
          end_year   = as.integer(end_year)) %>%
-  filter(!is.na(start_year), !is.na(end_year), end_year >= start_year) %>%
+  filter(!is.na(start_year), !is.na(end_year), end_year >= start_year)
+
+cat("Etape 1 :", nrow(GeoPolHist_entities_status_over_time), "->", nrow(e1), "lignes\n")
+cat("  entites :", n_distinct(e1$GPH_code), "\n")
+
+
+# ---- Etape 2 : trier et reperer la derniere periode de chaque entite ----
+e2 <- e1 %>%
+  arrange(GPH_code, start_year) %>%
+  group_by(GPH_code) %>%
+  mutate(rang       = row_number(),
+         n_periodes = n(),
+         derniere   = rang == n_periodes,
+         un_an      = end_year == start_year) %>%
+  ungroup()
+
+cat("\nEtape 2 :\n")
+cat("  periodes d un an :", sum(e2$un_an), "\n")
+cat("  dont non dernieres :", sum(e2$un_an & !e2$derniere), "\n")
+print(e2 %>% dplyr::count(n_periodes) %>% head(10))
+
+
+# ---- Etape 3 : calculer la fin corrigee ----
+e3 <- e2 %>%
+  mutate(fin = ifelse(derniere | un_an, end_year, end_year - 1))
+
+cat("\nEtape 3 : exemples de correction\n")
+print(e3 %>% filter(!derniere, !un_an) %>%
+        select(GPH_code, GPH_name, start_year, end_year, fin, GPH_status) %>%
+        head(10) %>% as.data.frame())
+
+
+# ---- Etape 4 : deplier en annees ----
+e4 <- e3 %>%
   rowwise() %>%
-  mutate(year = list(seq(start_year, end_year))) %>%
+  mutate(year = list(seq(start_year, fin))) %>%
   ungroup() %>%
-  unnest(year) %>%
+  unnest(year)
+
+cat("\nEtape 4 :", nrow(e3), "periodes ->", nrow(e4), "lignes entite-annee\n")
+cat("  annees couvertes :", min(e4$year), "-", max(e4$year), "\n")
+
+
+# ---- Etape 5 : controler les doublons ----
+doublons <- e4 %>%
   distinct(GPH_code, year, GPH_status) %>%
-  dplyr::count(GPH_status, year) %>%
+  dplyr::count(GPH_code, year) %>%
+  filter(n > 1)
+
+cat("\nEtape 5 :", nrow(doublons), "couples entite-annee en double\n")
+if (nrow(doublons) > 0) {
+  print(e4 %>% semi_join(doublons, by = c("GPH_code", "year")) %>%
+          select(GPH_code, GPH_name, year, start_year, end_year, GPH_status) %>%
+          arrange(GPH_code, year) %>% head(20) %>% as.data.frame())
+}
+
+
+# ---- Etape 6 : compter par statut et par annee ----
+e6 <- e4 %>%
+  distinct(GPH_code, year, GPH_status) %>%
+  dplyr::count(GPH_status, year)
+
+cat("\nEtape 6 :", n_distinct(e6$GPH_status), "statuts distincts\n")
+print(e6 %>% group_by(GPH_status) %>%
+        summarise(total = sum(n), annees = n(), .groups = "drop") %>%
+        arrange(desc(total)) %>% as.data.frame())
+
+cat("\n  Nombre d entites par annee, quelques reperes :\n")
+print(e6 %>% group_by(year) %>% summarise(n_ent = sum(n), .groups = "drop") %>%
+        filter(year %in% c(1816, 1850, 1900, 1938, 1960, 2000, 2020)) %>%
+        as.data.frame())
+
+
+# ---- Etape 7 : format large ----
+GPH_status_over_time <- e6 %>%
   arrange(year) %>%
   pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
   arrange(GPH_status)
 
+cat("\nEtape 7 :", nrow(GPH_status_over_time), "lignes x",
+    ncol(GPH_status_over_time), "colonnes\n")
+print(names(GPH_status_over_time)[1:8])
+print(GPH_status_over_time[, 1:6])
+
 write.csv(GPH_status_over_time,
           "GPH_status_over_timenew.csv", row.names = FALSE)
+
+
+
+
+library(dplyr); library(tidyr)
+
+
+###Table type of partner/reporting
+
+rep_ent <- RICardocleannoworld %>%
+  distinct(entity = reporting, type = reporting_type) %>%
+  mutate(role_rep = TRUE)
+
+par_ent <- RICardocleannoworld %>%
+  distinct(entity = partner, type = partner_type) %>%
+  mutate(type = ifelse(type == "" | is.na(type), "unknown", type),
+         role_par = TRUE)
+
+entites <- full_join(rep_ent, par_ent, by = c("entity", "type")) %>%
+  mutate(role_rep = coalesce(role_rep, FALSE),
+         role_par = coalesce(role_par, FALSE),
+         role = case_when(
+           role_rep & !role_par ~ "Reporting (only)",
+           role_rep &  role_par ~ "Reporting (also partner)",
+           !role_rep & role_par ~ "Partner (only)"
+         ))
+
+# controles
+cat("entites a plusieurs types :",
+    entites %>% dplyr::count(entity) %>% filter(n > 1) %>% nrow(), "\n")
+cat("types rencontres :", paste(sort(unique(entites$type)), collapse = ", "), "\n")
+
+libelles_type <- c(GPH_entity        = "GPH entity",
+                   locality          = "Locality",
+                   group             = "Group",
+                   colonial_area     = "Colonial area",
+                   geographical_area = "Geographical area")
+
+tableau <- entites %>%
+  mutate(type = factor(libelles_type[type], levels = libelles_type)) %>%
+  dplyr::count(type, role) %>%
+  pivot_wider(names_from = role, values_from = n, values_fill = 0) %>%
+  mutate(`All entities` = `Reporting (only)` + `Reporting (also partner)` +
+           `Partner (only)`) %>%
+  arrange(type) %>%
+  select(`RIC type` = type, `Reporting (only)`, `Reporting (also partner)`,
+         `Partner (only)`, `All entities`)
+
+tableau <- bind_rows(
+  tableau %>% mutate(`RIC type` = as.character(`RIC type`)),
+  tableau %>% summarise(across(where(is.numeric), sum)) %>%
+    mutate(`RIC type` = "Total")
+)
+
+print(as.data.frame(tableau))
+
+write.csv(tableau, "Table entity type by role.csv", row.names = FALSE)
+
+
+###les RIC entities par continent et par type
+# ---- une ligne par entite-role, avec son type et son continent ----
+rep_ent <- RICardocleannoworld %>%
+  distinct(entity = reporting, type = reporting_type, continent = reporting_continent) %>%
+  mutate(role = "Reporting (all)")
+
+par_ent <- RICardocleannoworld %>%
+  distinct(entity = partner, type = partner_type, continent = partner_continent) %>%
+  mutate(type = ifelse(type == "" | is.na(type), "unknown", type),
+         role = "Partner (all)")
+
+ent2 <- bind_rows(rep_ent, par_ent)
+
+# ---- controles ----
+cat("continents rencontres :", paste(sort(unique(ent2$continent)), collapse = ", "), "\n")
+cat("types rencontres      :", paste(sort(unique(ent2$type)), collapse = ", "), "\n")
+
+# ---- le tableau ----
+exclus <- c("World", "Antarctic", "Arctic", "Atlantic", "Pacific", "")
+
+libelles_type <- c(GPH_entity        = "GPH entity",
+                   locality          = "Locality",
+                   group             = "Group",
+                   colonial_area     = "Colonial area",
+                   geographical_area = "Geographical area")
+
+ttab_cont <- ent2 %>%
+  filter(!continent %in% exclus, !is.na(continent)) %>%
+  mutate(type = factor(libelles_type[type], levels = libelles_type),
+         role = factor(role, levels = c("Reporting (all)", "Partner (all)"))) %>%
+  filter(!is.na(type)) %>%
+  dplyr::count(continent, role, type) %>%
+  arrange(role, type) %>%
+  pivot_wider(names_from = c(role, type), values_from = n,
+              values_fill = 0, names_sep = " / ") %>%
+  arrange(continent)
+
+print(as.data.frame(ttab_cont))
+
+write.csv(ttab_cont, "Table entity type by continent and role.csv", row.names = FALSE)
+
+
+### Reporting and partner all by continent
+exclus <- c("World", "Antarctic", "Arctic", "Atlantic", "Pacific", "")
+
+# ---- Reporting (all), type GPH_entity ----
+tab_rep_gph <- RICardocleannoworld %>%
+  filter(reporting_type == "GPH_entity",
+         !reporting_continent %in% exclus, !is.na(reporting_continent)) %>%
+  distinct(year, continent = reporting_continent, entity = reporting) %>%
+  dplyr::count(continent, year) %>%
+  arrange(year) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  arrange(continent)
+
+print(as.data.frame(tab_rep_gph[, 1:10]))
+
+# ---- Partner (all), type GPH_entity ----
+tab_par_gph <- RICardocleannoworld %>%
+  filter(partner_type == "GPH_entity",
+         !partner_continent %in% exclus, !is.na(partner_continent)) %>%
+  distinct(year, continent = partner_continent, entity = partner) %>%
+  dplyr::count(continent, year) %>%
+  arrange(year) %>%
+  pivot_wider(names_from = year, values_from = n, values_fill = 0) %>%
+  arrange(continent)
+
+print(as.data.frame(tab_par_gph[, 1:10]))
+
+write.csv(tab_rep_gph, "Table GPH reporting(all) by continent and year.csv", row.names = FALSE)
+write.csv(tab_par_gph, "Table GPH partner(all) by continent and year.csv", row.names = FALSE)
